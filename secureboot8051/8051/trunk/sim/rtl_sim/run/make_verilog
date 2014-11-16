@@ -1,4 +1,4 @@
-verilog 						\
+vcs -full64 						\
 ../../../bench/verilog/oc8051_tb.v			\
 ../../../bench/verilog/oc8051_xram.v 			\
 ../../../bench/verilog/oc8051_uart_test.v 		\
@@ -29,4 +29,6 @@ verilog 						\
 ../../../rtl/verilog/oc8051_sfr.v			\
 ../../../rtl/verilog/oc8051_rom.v 			\
 ../../../rtl/verilog/oc8051_cache_ram.v			\
+../../../rtl/verilog/oc8051_ram_256x8_two_bist.v	\
+../../../rtl/verilog/oc8051_ram_64x32_dual_bist.v	\
 ../../../../common/generic_memories/rtl/verilog/generic_dpram.v
