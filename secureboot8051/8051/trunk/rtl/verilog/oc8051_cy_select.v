@@ -75,7 +75,7 @@ reg data_out;
 
 always @(cy_sel or cy_in or data_in)
 begin
-  case (cy_sel) /* synopsys full_case parallel_case */
+  case (cy_sel) 
     `OC8051_CY_0: data_out = 1'b0;
     `OC8051_CY_PSW: data_out = cy_in;
     `OC8051_CY_RAM: data_out = data_in;

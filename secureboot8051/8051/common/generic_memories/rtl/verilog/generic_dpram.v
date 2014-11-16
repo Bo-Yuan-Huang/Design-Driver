@@ -311,6 +311,23 @@ module generic_dpram(
 	//
 	assign do = (oe & rce) ? do_reg : {dw{1'bz}};
 
+    wire [dw-1:0] mem0 = mem[0];
+    wire [dw-1:0] mem1 = mem[1];
+    wire [dw-1:0] mem2 = mem[2];
+    wire [dw-1:0] mem3 = mem[3];
+    wire [dw-1:0] mem4 = mem[4];
+
+
+    integer i;
+    always @(posedge rclk)
+    begin
+        if(rrst) begin
+            for(i=0; i < (1<<aw); i=i+1) begin
+                mem[i] = 0;
+            end
+        end
+    end
+
 	// read operation
 	always @(posedge rclk)
 		if (rce)

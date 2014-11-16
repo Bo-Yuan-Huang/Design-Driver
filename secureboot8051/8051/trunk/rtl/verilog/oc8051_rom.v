@@ -233,7 +233,7 @@ end
 // always read tree bits in row
 always @(posedge clk)
 begin
-  case(addr[6:0]) /* synopsys parallel_case */
+  case(addr[6:0]) 
     7'd0: begin
       data1 <= #1 int_data0;
       data2 <= #1 int_data1;

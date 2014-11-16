@@ -108,7 +108,7 @@ begin
   else if (wr_acc)
     acc = data_in;
   else if (wr_bit_acc)
-    case (wr_addr[2:0]) /* synopsys full_case parallel_case */
+    case (wr_addr[2:0]) 
       3'b000: acc = {data_out[7:1], bit_in};
       3'b001: acc = {data_out[7:2], bit_in, data_out[0]};
       3'b010: acc = {data_out[7:3], bit_in, data_out[1:0]};

@@ -403,7 +403,7 @@ end
 
 always @(rd_sel or sp or ri or rn or imm or dadr_o[15:0] or bank)
 begin
-  case (rd_sel) /* synopsys full_case parallel_case */
+  case (rd_sel) 
     `OC8051_RRS_RN   : rd_addr = {3'h0, rn};
     `OC8051_RRS_I    : rd_addr = ri;
     `OC8051_RRS_D    : rd_addr = imm;
@@ -423,7 +423,7 @@ end
 //
 always @(wr_sel or sp_w or rn_r or imm_r or ri_r or imm2_r or op1_r or dadr_o[15:0])
 begin
-  case (wr_sel) /* synopsys full_case parallel_case */
+  case (wr_sel) 
     `OC8051_RWS_RN : wr_addr = {3'h0, rn_r};
     `OC8051_RWS_I  : wr_addr = ri_r;
     `OC8051_RWS_D  : wr_addr = imm_r;
@@ -504,7 +504,7 @@ begin
     dstb_o <= #1 1'b0;
     dmem_wait <= #1 1'b0;
   end else begin
-    case (mem_act) /* synopsys full_case parallel_case */
+    case (mem_act) 
       `OC8051_MAS_DPTR_R: begin  // read from external rom: acc=(dptr)
         dwe_o <= #1 1'b0;
         dstb_o <= #1 1'b1;
@@ -572,7 +572,7 @@ end
 
 always @(op_pos or idat_cur or idat_old)
 begin
-  case (op_pos)  /* synopsys parallel_case */
+  case (op_pos)  
     3'b000: begin
        op1 = idat_old[7:0]  ;
        op2 = idat_old[15:8] ;
@@ -683,7 +683,7 @@ end
 
 always @(op1_out)
 begin
-        casex (op1_out) /* synopsys parallel_case */
+        casex (op1_out) 
           `OC8051_ACALL :  op_length = 2'h2;
           `OC8051_AJMP :   op_length = 2'h2;
 
@@ -945,7 +945,7 @@ begin
   end else if (pc_wr) begin
 //
 //case of writing new value to pc (jupms)
-      case (pc_wr_sel) /* synopsys full_case parallel_case */
+      case (pc_wr_sel) 
         `OC8051_PIS_ALU: pc_buf        <= #1 alu;
         `OC8051_PIS_AL:  pc_buf[7:0]   <= #1 alu[7:0];
         `OC8051_PIS_AH:  pc_buf[15:8]  <= #1 alu[7:0];

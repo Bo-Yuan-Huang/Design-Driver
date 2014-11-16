@@ -220,7 +220,7 @@ defparam oc8051_cache_ram.ADR_WIDTH = ADR_WIDTH;
 always @(stb_b or data0 or data1 or byte_sel)
 begin
   if (stb_b) begin
-    case (byte_sel) /* synopsys full_case parallel_case */
+    case (byte_sel) 
       2'b00  : dat_o = data0;
       2'b01  : dat_o = {data1[7:0],   data0[31:8]};
       2'b10  : dat_o = {data1[15:0],  data0[31:16]};
