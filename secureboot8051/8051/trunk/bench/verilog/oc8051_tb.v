@@ -92,8 +92,8 @@
 module oc8051_tb;
 
 
-//parameter FREQ  = 20000; // frequency in kHz
-parameter FREQ  = 12000; // frequency in kHz
+parameter FREQ  = 20000; // frequency in kHz
+//parameter FREQ  = 12000; // frequency in kHz
 
 parameter DELAY = 500000/FREQ;
 
@@ -307,8 +307,8 @@ initial begin
 #220
   rst = 1'b0;
 
-#80000000
-  $display("time ",$time, "\n faulire: end of time\n \n");
+#800000
+  $display("time ",$time, "\n failure: end of time\n \n");
   $display("");
   $finish;
 end

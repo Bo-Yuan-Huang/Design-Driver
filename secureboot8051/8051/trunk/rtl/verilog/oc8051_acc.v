@@ -133,13 +133,12 @@ end
 
 `ifdef OC8051_SIMULATION
 
-//always @(data_out)
-//  if (data_out===8'hxx) begin
-//    $display("time ",$time, "   failure: invalid write to ACC (oc8051_acc)");
-//#22
-//    $finish;
-//
-//  end
+always @(data_out)
+  if (data_out===8'hxx) begin
+    $display("time ",$time, "   failure: invalid write to ACC (oc8051_acc)");
+    #22 $finish;
+
+end
 
 
 `endif
