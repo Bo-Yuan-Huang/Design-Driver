@@ -2715,13 +2715,13 @@ end
 
 `ifdef OC8051_SIMULATION
 
-always @(op_cur)
-  if (op_cur===8'hxx) begin
-    $display("time ",$time, "   faulire: invalid instruction (oc8051_decoder)");
-#22
-    $finish;
-
-  end
+//always @(op_cur)
+//  if (op_cur===8'hxx) begin
+//    $display("time ",$time, "   failure: invalid instruction (oc8051_decoder)");
+//#22
+//    $finish;
+//
+//  end
 
 
 `endif

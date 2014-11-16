@@ -1,4 +1,4 @@
-vcs -full64 						\
+vcs +vcs+dumpvars -full64 				\
 ../../../bench/verilog/oc8051_tb.v			\
 ../../../bench/verilog/oc8051_xram.v 			\
 ../../../bench/verilog/oc8051_uart_test.v 		\

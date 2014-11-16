@@ -896,7 +896,7 @@ assign ea = 1'b0;
 
 initial
 begin
-  $readmemh("../../../bench/in/oc8051_rom.in", buff);
+  $readmemh("../../../bench/in/fib.in", buff);
 end
 
 always @(posedge clk or posedge rst)
