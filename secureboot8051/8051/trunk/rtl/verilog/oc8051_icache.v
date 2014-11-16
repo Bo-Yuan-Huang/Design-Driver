@@ -197,13 +197,13 @@ oc8051_ram_64x32_dual_bist oc8051_cache_ram(
                            .clk     ( clk        ),
                            .rst     ( rst        ),
 			   .adr0    ( adr_i[ADR_WIDTH+1:2] ),
-			   .dat0_o  ( data0      ),
-			   .en0     ( 1'b1       ),
-			   .adr1    ( addr1      ),
-			   .dat1_o  ( data1_o    ),
-			   .dat1_i  ( data1_i    ),
-			   .en1     ( 1'b1       ),
-			   .wr1     ( wr1        )
+			   .dat0_o  ( data0         ),
+			   .en0     ( 1'b1          ),
+			   .adr1    ( addr1         ),
+			   .dat1_o  ( data1_o       ),
+			   .dat1_i  ( data1_i       ),
+			   .en1     ( 1'b1          ),
+			   .wr1     ( wr1           )
 `ifdef OC8051_BIST
          ,
          .scanb_rst(scanb_rst),

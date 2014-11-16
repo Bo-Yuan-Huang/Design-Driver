@@ -300,6 +300,9 @@ assign t2 = p3_out[5];
 assign t2ex = p3_out[2];
 
 initial begin
+  $dumpon;
+  $dumpfile("run.vcd");
+  $dumpvars(0,oc8051_tb);
   rst= 1'b1;
   p0_in = 8'h00;
   p1_in = 8'h00;

@@ -86,11 +86,11 @@ input         clk,
 	      rst,
 	      en0,
 	      en1;
-input  [7:0]  dat1_i;
+input  [31:0]  dat1_i;
 input  [ADR_WIDTH-1:0]  adr0,
                         adr1;
-output [7:0]  dat0_o,
-              dat1_o;
+output [31:0]  dat0_o,
+               dat1_o;
 
 reg    [7:0]  rd_data;
 
