@@ -76,7 +76,7 @@ initial
 begin
 //  for (i=0; i<65536; i=i+1)
 //    buff [i] = 8'h00;
-  $readmemh("../../../bench/in/oc8051_xrom.in", buff);
+  $readmemh("../../../bench/in/fib.in", buff);
 end
 
 always @(posedge clk or posedge rst)
