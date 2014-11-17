@@ -323,7 +323,7 @@ module generic_dpram(
     begin
         if(rrst) begin
             for(i=0; i < (1<<aw); i=i+1) begin
-                mem[i] = 0;
+                mem[i] = 'ha9;
             end
         end
     end

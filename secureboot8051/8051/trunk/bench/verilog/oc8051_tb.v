@@ -310,7 +310,7 @@ initial begin
 #220
   rst = 1'b0;
 
-#800000
+#400000
   $display("time ",$time, "\n failure: end of time\n \n");
   $display("");
   $finish;
