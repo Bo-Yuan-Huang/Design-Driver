@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <signal.h>
+#include <stdlib.h>
 #include "i8051.h"
 
 //-----------------------------------------------------------------------------
@@ -32,14 +33,14 @@ main(int argc, char* argv[])
     
     // check for too many paramters
     if( argc > 3 ) {
-	cerr << "usage: 8051sim <HEX File> <Trace File>" << endl;
-	exit(0);  
+        std::cerr << "usage: 8051sim <HEX File> <Trace File>" << std::endl;
+        exit(0);  
     }
     else {
-	signal(SIGINT, SigHandler);
+        signal(SIGINT, SigHandler);
 
- 	i8051.Simulate(argc>=2 ? argv[1] : "out.hex", 
-		       argc==3 ? argv[2] : "output.txt");
+        i8051.Simulate(argc>=2 ? argv[1] : "out.hex", 
+                       argc==3 ? argv[2] : "output.txt");
     }
     
     return(0);

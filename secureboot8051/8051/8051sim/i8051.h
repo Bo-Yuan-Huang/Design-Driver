@@ -102,7 +102,7 @@ class I8051
     unsigned char GetRegisterBank();
 
   private:
-    void PrintHex(unsigned char byte, ostream* os = &cout);
+    void PrintHex(unsigned char byte, std::ostream* os = &std::cout);
     void PrintPorts();
     
   private:
