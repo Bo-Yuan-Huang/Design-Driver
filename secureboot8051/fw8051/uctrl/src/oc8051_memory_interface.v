@@ -367,18 +367,6 @@ assign pc_wait    = rd && (ea_rom_sel || (!istb_t && iack_i));
 assign wr_dat     = des1;
 
 
-`ifdef OC8051_SIMULATION
-  always @(negedge rst) begin
-    #5
-    if (ea_rom_sel)
-      $display("   progran execution from external rom");
-    else
-      $display("   progran execution from internal rom");
-  end
-
-`endif
-
-
 /////////////////////////////
 //
 //  ram_select
@@ -1162,23 +1150,5 @@ always @(posedge clk or posedge rst)
   end else if (istb) begin
     inc_pc_r  <= #1 inc_pc;
   end
-
-`ifdef OC8051_SIMULATION
-
-initial
-begin
-  wait (!rst)
-  if (ea_rom_sel) begin
-    $display(" ");
-    $display("\t Program running from internal rom !");
-    $display(" ");
-  end else begin
-    $display(" ");
-    $display("\t Program running from external rom !");
-    $display(" ");
-  end
-end
-`endif
-  
 
 endmodule
