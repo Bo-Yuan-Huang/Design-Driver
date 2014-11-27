@@ -176,6 +176,64 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
 	 .ea_in(ea[0]));
 
 
+  // termination fsms
+    `ifdef OC8051_PORTS
+        wire done, done0, done1, done2, done3;
+        assign done = done0 && done1 && done2 && done3;
+        // port 0
+        `ifdef OC8051_PORT0
+            termination_fsm tfsm0(
+                .clk        (clk),
+                .rst        (rst),
+                .pout       (p0_out),
+                .finished   (done0)
+            );
+        `else
+            assign done0 = 0;
+        `endif
+        // port 1
+        `ifdef OC8051_PORT1
+            termination_fsm tfsm1(
+                .clk        (clk),
+                .rst        (rst),
+                .pout       (p1_out),
+                .finished   (done1)
+            );
+        `else
+            assign done1 = 0;
+        `endif
+        // port 2
+        `ifdef OC8051_PORT2
+            termination_fsm tfsm2(
+                .clk        (clk),
+                .rst        (rst),
+                .pout       (p2_out),
+                .finished   (done2)
+            );
+        `else
+            assign done2 = 0;
+        `endif
+        // port 3
+        `ifdef OC8051_PORT3
+            termination_fsm tfsm3(
+                .clk        (clk),
+                .rst        (rst),
+                .pout       (p3_out),
+                .finished   (done3)
+            );
+        `else
+            assign done3 = 0;
+        `endif
+    `else
+        wire done = 0;
+    `endif
+
+    always @(posedge done)
+    begin
+        $display("time ",$time, "   Read DONE signal on ports 0-3\n");
+        #500 $finish;
+    end
+
 //
 // external data ram
 //
@@ -272,4 +330,42 @@ begin
 end
 
 
+endmodule
+
+module termination_fsm(clk, rst, pout, finished);
+    input clk;
+    input rst;
+    input [7:0] pout;
+    output finished;
+
+    reg [1:0] state;
+    localparam STATE_INIT       = 2'd0;
+    localparam STATE_DE_FOUND   = 2'd1;
+    localparam STATE_AD_FOUND   = 2'd2;
+    localparam STATE_00_FOUND   = 2'd3;
+
+    assign finished = (state == STATE_00_FOUND);
+
+    wire [1:0] state_init_next = (pout == 8'hDE) ? STATE_DE_FOUND : STATE_INIT;
+    wire [1:0] state_de_next = (pout == 8'hDE) ? STATE_DE_FOUND :
+                               (pout == 8'hAD) ? STATE_AD_FOUND : STATE_INIT;
+    wire [1:0] state_ad_next = (pout == 8'hAD) ? STATE_AD_FOUND :
+                               (pout == 8'h00) ? STATE_00_FOUND : STATE_INIT;
+    wire [1:0] state_00_next = STATE_00_FOUND;
+
+    always @(posedge clk)
+    begin
+        if (rst) begin
+            state <= STATE_INIT;
+        end
+        else begin
+            case (state) 
+                STATE_INIT      : state <= state_init_next;
+                STATE_DE_FOUND  : state <= state_de_next;
+                STATE_AD_FOUND  : state <= state_ad_next;
+                STATE_00_FOUND  : state <= state_00_next;
+                default         : state <= STATE_INIT;
+            endcase
+        end
+    end
 endmodule
