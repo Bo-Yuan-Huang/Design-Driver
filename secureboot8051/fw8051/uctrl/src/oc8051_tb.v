@@ -297,7 +297,7 @@ initial begin
 #220
   rst = 1'b0;
 
-#400000
+#6400000
   $display("time ",$time, "\n failure: end of time\n \n");
   $display("");
   $finish;
@@ -311,6 +311,7 @@ begin
 end
 
 
+/*
 always @(ext_addr or write or stb_o or data_out)
 begin
   if ((ext_addr==16'h0010) & write & stb_o) begin
@@ -328,6 +329,7 @@ begin
     end
   end
 end
+*/
 
 
 endmodule
