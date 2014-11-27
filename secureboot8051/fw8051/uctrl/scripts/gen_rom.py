@@ -1,5 +1,6 @@
 #! /usr/bin/python2.7
 import sys
+import os
 
 def read_in(filename):
     data = []
@@ -74,6 +75,23 @@ def dump_assigns(data):
     print '  wire [7:0] data_o2 = (addr2 < %d) ? buff[addr2] : 8\'hx;' % N
     print '  wire [7:0] data_o3 = (addr3 < %d) ? buff[addr3] : 8\'hx;' % N
     print '  wire [31:0] data_out = {data_o3, data_o2, data_o1, data_o0};';
+
+def main(argv):
+    if len(argv) != 2:
+        print 'Syntax error. '
+        print 'Usage: %s <hex-or-in-file>' % argv[0]
+    else:
+        filename = argv[1]
+        if filename.endswith('.hex') or filename.endswith('.ihx'):
+            print '  // Interpreting %s as an Intel formal HEX file.' % os.path.basename(filename)
+            data = read_hex(filename)
+        elif filename.endswith('.in'):
+            print '  // Interpreting %s as a .in file.' % os.path.basename(filename)
+            data = read_in(filename)
+        dump_assigns(data)
+
+if __name__ == '__main__':
+    main(sys.argv)
 
 #data_hex = read_hex(sys.argv[1])
 #data_in = read_in(sys.argv[2])

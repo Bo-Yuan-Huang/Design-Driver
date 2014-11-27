@@ -77,14 +77,7 @@ module oc8051_rom (rst, clk, addr, ea_int, data_o);
 
     assign ea = 1'b0;
 
-`include "../bench/rom/gcd.v"
-    //reg [7:0] big_buff [0:65535]; //64kb
-    //initial
-    //begin
-    //  $readmemh("../bench/in/gcd.in", big_buff);
-    //end
-    //wire [31:0] data_out_big = {big_buff[addr+3], big_buff[addr+2], big_buff[addr+1], big_buff[addr]};
-    //wire all_good = data_out == data_out_big;
+`include "../bench/rom/fib_sdcc.v"
 
     always @(posedge clk or posedge rst)
       if (rst) ea_int <= #1 1'b1;
