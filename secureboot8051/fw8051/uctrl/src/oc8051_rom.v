@@ -77,7 +77,7 @@ module oc8051_rom (rst, clk, addr, ea_int, data_o);
 
     assign ea = 1'b0;
 
-`include "../bench/rom/xram_sdcc.v"
+`include "../bench/rom/aes_test.v"
 
     always @(posedge clk or posedge rst)
       if (rst) ea_int <= #1 1'b1;
