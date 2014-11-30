@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (Linux)
-; This file was generated Sun Nov 30 01:05:58 2014
+; This file was generated Sun Nov 30 12:25:27 2014
 ;--------------------------------------------------------
 	.module aes_test
 	.optsdcc -mmcs51 --model-small
@@ -392,7 +392,7 @@ _quit:
 ;	 function main
 ;	-----------------------------------------
 _main:
-;	aes_test.c:28: aes_reg_addr[0] = 0x12;
+;	aes_test.c:31: *aes_reg_addr = 0x1234;
 	mov	dptr,#_main_aes_reg_addr_1_2
 	clr	a
 	movc	a,@a+dptr
@@ -402,30 +402,28 @@ _main:
 	mov	r7,a
 	mov	dpl,r6
 	mov	dph,r7
-	mov	a,#0x12
-	movx	@dptr,a
-;	aes_test.c:29: aes_reg_addr[1] = 0x34;
-	mov	a,#0x01
-	add	a,r6
-	mov	r4,a
-	clr	a
-	addc	a,r7
-	mov	r5,a
-	mov	dpl,r4
-	mov	dph,r5
 	mov	a,#0x34
 	movx	@dptr,a
-;	aes_test.c:31: P0 = aes_reg_addr[0];
+	mov	a,#0x12
+	inc	dptr
+	movx	@dptr,a
+;	aes_test.c:33: P0 = (unsigned char) (*aes_reg_addr & 0xFF);
 	mov	dpl,r6
 	mov	dph,r7
 	movx	a,@dptr
-	mov	_P0,a
-;	aes_test.c:32: P0 = aes_reg_addr[1];
-	mov	dpl,r4
-	mov	dph,r5
+	mov	r4,a
+	inc	dptr
 	movx	a,@dptr
-	mov	_P0,a
-;	aes_test.c:34: quit();
+	mov	_P0,r4
+;	aes_test.c:34: P0 = (unsigned char) ((*aes_reg_addr >> 8) & 0xFF);
+	mov	dpl,r6
+	mov	dph,r7
+	movx	a,@dptr
+	inc	dptr
+	movx	a,@dptr
+	mov	r6,a
+	mov	_P0,r6
+;	aes_test.c:36: quit();
 	ljmp	_quit
 	.area CSEG    (CODE)
 	.area CONST   (CODE)
