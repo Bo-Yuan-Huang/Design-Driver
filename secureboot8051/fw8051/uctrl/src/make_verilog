@@ -36,4 +36,5 @@ aes_table.v                     \
 reg2byte.v                      \
 reg16byte.v                     \
 aes_top.v                       \
+oc8051_memarbiter.v             \
 oc8051_xiommu.v                 \

@@ -20,18 +20,43 @@ void quit() {
     while(1);
 }
 
+__xdata __at(0xFF02) unsigned int aes_reg_addr;
+__xdata __at(0xFF04) unsigned int aes_reg_len;
+__xdata __at(0xFF20) unsigned char aes_reg_key0[16];
+__xdata __at(0xE000) unsigned int data[8];
+
 /*---------------------------------------------------------------------------*/
 
 void main() {
     
-    // static volatile unsigned char __xdata * const aes_reg_addr = 0xFF02;
-    // aes_reg_addr[0] = 0x12;
-    // aes_reg_addr[1] = 0x34;
-    static volatile unsigned short int __xdata* const aes_reg_addr = 0xFF02;
-    *aes_reg_addr = 0x1234;
-    
-    P0 = (unsigned char) (*aes_reg_addr & 0xFF);
-    P0 = (unsigned char) ((*aes_reg_addr >> 8) & 0xFF);
+    int i;
 
+    // test writing to XRAM.
+    for(i=0; i < 8; i++) {
+        if(i > 0) { 
+            data[i] = i*i + data[i-1];
+        } else {
+            data[i] = 0;
+        }
+    }
+
+    // test writing to the address register.
+    aes_reg_addr = 0x1234;
+    P0 = (unsigned char) (aes_reg_addr & 0xFF);
+    P0 = (unsigned char) ((aes_reg_addr) >> 8);
+    aes_reg_len = 0x5678;
+    P0 = (unsigned char) (aes_reg_len & 0xFF);
+    P0 = (unsigned char) ((aes_reg_len) >> 8);
+
+    // test writing to the key register.
+    for(i=0; i < 16; i++) { aes_reg_key0[i] = i | (i << 4); }
+    for(i=0; i < 16; i++) { P0 = aes_reg_key0[i]; }
+
+    // test reading from XRAM.
+    for(i=0; i < 8; i++) {
+        P0 = data[i];
+    }
+
+    // finish.
     quit();
 }

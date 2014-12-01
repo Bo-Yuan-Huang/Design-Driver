@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (Linux)
-; This file was generated Sun Nov 30 12:25:27 2014
+; This file was generated Mon Dec  1 13:00:21 2014
 ;--------------------------------------------------------
 	.module aes_test
 	.optsdcc -mmcs51 --model-small
@@ -130,6 +130,10 @@
 	.globl _DPL
 	.globl _SP
 	.globl _P0
+	.globl _data
+	.globl _aes_reg_key0
+	.globl _aes_reg_len
+	.globl _aes_reg_addr
 ;--------------------------------------------------------
 ; special function registers
 ;--------------------------------------------------------
@@ -299,6 +303,10 @@ __start__stack:
 ; external ram data
 ;--------------------------------------------------------
 	.area XSEG    (XDATA)
+_aes_reg_addr	=	0xff02
+_aes_reg_len	=	0xff04
+_aes_reg_key0	=	0xff20
+_data	=	0xe000
 ;--------------------------------------------------------
 ; absolute external ram data
 ;--------------------------------------------------------
@@ -387,47 +395,262 @@ _quit:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
-;	aes_test.c:25: void main() {
+;i                         Allocated to registers r6 r7 
+;------------------------------------------------------------
+;	aes_test.c:30: void main() {
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-;	aes_test.c:31: *aes_reg_addr = 0x1234;
-	mov	dptr,#_main_aes_reg_addr_1_2
+;	aes_test.c:35: for(i=0; i < 8; i++) {
+	mov	r6,#0x00
+	mov	r7,#0x00
+00108$:
+;	aes_test.c:36: if(i > 0) { 
+	clr	c
 	clr	a
-	movc	a,@a+dptr
-	mov	r6,a
-	mov	a,#0x01
-	movc	a,@a+dptr
-	mov	r7,a
+	subb	a,r6
+	mov	a,#(0x00 ^ 0x80)
+	mov	b,r7
+	xrl	b,#0x80
+	subb	a,b
+	jnc	00102$
+;	aes_test.c:37: data[i] = i*i + data[i-1];
+	mov	ar4,r6
+	mov	a,r7
+	xch	a,r4
+	add	a,acc
+	xch	a,r4
+	rlc	a
+	add	a,#(_data >> 8)
+	mov	r5,a
+	mov	__mulint_PARM_2,r6
+	mov	(__mulint_PARM_2 + 1),r7
 	mov	dpl,r6
 	mov	dph,r7
+	push	ar7
+	push	ar6
+	push	ar5
+	push	ar4
+	lcall	__mulint
+	mov	r2,dpl
+	mov	r3,dph
+	pop	ar4
+	pop	ar5
+	pop	ar6
+	pop	ar7
+	mov	ar1,r6
+	mov	a,r1
+	dec	a
+	clr	F0
+	mov	b,#0x02
+	jnb	acc.7,00150$
+	cpl	F0
+	cpl	a
+	inc	a
+00150$:
+	mul	ab
+	jnb	F0,00151$
+	cpl	a
+	add	a,#0x01
+	xch	a,b
+	cpl	a
+	addc	a,#0x00
+	xch	a,b
+00151$:
+	add	a,#_data
+	mov	dpl,a
+	mov	a,#(_data >> 8)
+	addc	a,b
+	mov	dph,a
+	movx	a,@dptr
+	mov	r0,a
+	inc	dptr
+	movx	a,@dptr
+	mov	r1,a
+	mov	a,r0
+	add	a,r2
+	mov	r0,a
+	mov	a,r1
+	addc	a,r3
+	mov	r1,a
+	mov	dpl,r4
+	mov	dph,r5
+	mov	a,r0
+	movx	@dptr,a
+	mov	a,r1
+	inc	dptr
+	movx	@dptr,a
+	sjmp	00109$
+00102$:
+;	aes_test.c:39: data[i] = 0;
+	mov	ar4,r6
+	mov	a,r7
+	xch	a,r4
+	add	a,acc
+	xch	a,r4
+	rlc	a
+	mov	r5,a
+	mov	dpl,r4
+	mov	a,#(_data >> 8)
+	add	a,r5
+	mov	dph,a
+	clr	a
+	movx	@dptr,a
+	inc	dptr
+	movx	@dptr,a
+00109$:
+;	aes_test.c:35: for(i=0; i < 8; i++) {
+	inc	r6
+	cjne	r6,#0x00,00152$
+	inc	r7
+00152$:
+	clr	c
+	mov	a,r6
+	subb	a,#0x08
+	mov	a,r7
+	xrl	a,#0x80
+	subb	a,#0x80
+	jnc	00153$
+	ljmp	00108$
+00153$:
+;	aes_test.c:44: aes_reg_addr = 0x1234;
+	mov	dptr,#_aes_reg_addr
 	mov	a,#0x34
 	movx	@dptr,a
 	mov	a,#0x12
 	inc	dptr
 	movx	@dptr,a
-;	aes_test.c:33: P0 = (unsigned char) (*aes_reg_addr & 0xFF);
-	mov	dpl,r6
-	mov	dph,r7
+;	aes_test.c:45: P0 = (unsigned char) (aes_reg_addr & 0xFF);
+	mov	dptr,#_aes_reg_addr
+	movx	a,@dptr
+	mov	r6,a
+	inc	dptr
+	movx	a,@dptr
+	mov	_P0,r6
+;	aes_test.c:46: P0 = (unsigned char) ((aes_reg_addr) >> 8);
+	mov	dptr,#_aes_reg_addr
+	movx	a,@dptr
+	inc	dptr
+	movx	a,@dptr
+	mov	r7,a
+	mov	_P0,r7
+;	aes_test.c:47: aes_reg_len = 0x5678;
+	mov	dptr,#_aes_reg_len
+	mov	a,#0x78
+	movx	@dptr,a
+	mov	a,#0x56
+	inc	dptr
+	movx	@dptr,a
+;	aes_test.c:48: P0 = (unsigned char) (aes_reg_len & 0xFF);
+	mov	dptr,#_aes_reg_len
+	movx	a,@dptr
+	mov	r6,a
+	inc	dptr
+	movx	a,@dptr
+	mov	_P0,r6
+;	aes_test.c:49: P0 = (unsigned char) ((aes_reg_len) >> 8);
+	mov	dptr,#_aes_reg_len
+	movx	a,@dptr
+	inc	dptr
+	movx	a,@dptr
+	mov	r7,a
+	mov	_P0,r7
+;	aes_test.c:52: for(i=0; i < 16; i++) { aes_reg_key0[i] = i | (i << 4); }
+	mov	r6,#0x00
+	mov	r7,#0x00
+00110$:
+	mov	a,r6
+	add	a,#_aes_reg_key0
+	mov	dpl,a
+	mov	a,r7
+	addc	a,#(_aes_reg_key0 >> 8)
+	mov	dph,a
+	mov	ar5,r6
+	mov	a,r5
+	swap	a
+	anl	a,#0xF0
+	mov	r5,a
+	rlc	a
+	subb	a,acc
+	mov	r4,a
+	mov	a,r6
+	orl	ar5,a
+	mov	a,r7
+	orl	ar4,a
+	mov	a,r5
+	movx	@dptr,a
+	inc	r6
+	cjne	r6,#0x00,00154$
+	inc	r7
+00154$:
+	clr	c
+	mov	a,r6
+	subb	a,#0x10
+	mov	a,r7
+	xrl	a,#0x80
+	subb	a,#0x80
+	jc	00110$
+;	aes_test.c:53: for(i=0; i < 16; i++) { P0 = aes_reg_key0[i]; }
+	mov	r6,#0x00
+	mov	r7,#0x00
+00112$:
+	mov	a,r6
+	add	a,#_aes_reg_key0
+	mov	dpl,a
+	mov	a,r7
+	addc	a,#(_aes_reg_key0 >> 8)
+	mov	dph,a
+	movx	a,@dptr
+	mov	_P0,a
+	inc	r6
+	cjne	r6,#0x00,00156$
+	inc	r7
+00156$:
+	clr	c
+	mov	a,r6
+	subb	a,#0x10
+	mov	a,r7
+	xrl	a,#0x80
+	subb	a,#0x80
+	jc	00112$
+;	aes_test.c:56: for(i=0; i < 8; i++) {
+	mov	r6,#0x00
+	mov	r7,#0x00
+00114$:
+;	aes_test.c:57: P0 = data[i];
+	mov	ar4,r6
+	mov	a,r7
+	xch	a,r4
+	add	a,acc
+	xch	a,r4
+	rlc	a
+	mov	r5,a
+	mov	dpl,r4
+	mov	a,#(_data >> 8)
+	add	a,r5
+	mov	dph,a
 	movx	a,@dptr
 	mov	r4,a
 	inc	dptr
 	movx	a,@dptr
+	mov	r5,a
 	mov	_P0,r4
-;	aes_test.c:34: P0 = (unsigned char) ((*aes_reg_addr >> 8) & 0xFF);
-	mov	dpl,r6
-	mov	dph,r7
-	movx	a,@dptr
-	inc	dptr
-	movx	a,@dptr
-	mov	r6,a
-	mov	_P0,r6
-;	aes_test.c:36: quit();
+;	aes_test.c:56: for(i=0; i < 8; i++) {
+	inc	r6
+	cjne	r6,#0x00,00158$
+	inc	r7
+00158$:
+	clr	c
+	mov	a,r6
+	subb	a,#0x08
+	mov	a,r7
+	xrl	a,#0x80
+	subb	a,#0x80
+	jc	00114$
+;	aes_test.c:61: quit();
 	ljmp	_quit
 	.area CSEG    (CODE)
 	.area CONST   (CODE)
-_main_aes_reg_addr_1_2:
-	.byte #0x02,#0xFF
 	.area XINIT   (CODE)
 	.area CABS    (ABS,CODE)
