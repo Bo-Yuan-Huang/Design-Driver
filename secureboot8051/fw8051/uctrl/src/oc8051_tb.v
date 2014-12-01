@@ -238,7 +238,7 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
 // external data ram
 //
 // oc8051_xram oc8051_xram1 (.clk(clk), .rst(rst), .wr(write_xram), .addr(ext_addr), .data_in(data_out), .data_out(data_out_xram), .ack(ack_xram), .stb(stb_o));
-oc8051_xiommu oc8051_xiommu1 (.clk(clk), .rst(rst), .wr(write_xram), .addr(ext_addr), .data_in(data_out), .data_out(data_out_xram), .ack(ack_xram), .stb(stb_o));
+oc8051_xiommu oc8051_xiommu1 (.clk(clk), .rst(rst), .proc_wr(write_xram), .proc_addr(ext_addr), .proc_data_in(data_out), .proc_data_out(data_out_xram), .proc_ack(ack_xram), .proc_stb(stb_o));
 
 
 defparam oc8051_xiommu1.oc8051_xram_i.DELAY = 2;
