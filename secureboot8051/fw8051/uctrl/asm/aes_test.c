@@ -20,10 +20,12 @@ void quit() {
     while(1);
 }
 
+__xdata __at(0xFF00) unsigned char aes_reg_start;
+__xdata __at(0xFF01) unsigned char aes_reg_state;
 __xdata __at(0xFF02) unsigned int aes_reg_addr;
 __xdata __at(0xFF04) unsigned int aes_reg_len;
 __xdata __at(0xFF20) unsigned char aes_reg_key0[16];
-__xdata __at(0xE000) unsigned int data[8];
+__xdata __at(0xE000) unsigned char data[16];
 
 /*---------------------------------------------------------------------------*/
 
@@ -35,25 +37,23 @@ void main() {
     for(i=0; i < 8; i++) {
         if(i > 0) { 
             data[i] = i*i + data[i-1];
+            data[i+8] = ~data[i];
         } else {
             data[i] = 0;
+            data[i+8] = 0xff;
         }
     }
 
-    // test writing to the address register.
-    aes_reg_addr = 0x1234;
-    P0 = (unsigned char) (aes_reg_addr & 0xFF);
-    P0 = (unsigned char) ((aes_reg_addr) >> 8);
-    aes_reg_len = 0x5678;
-    P0 = (unsigned char) (aes_reg_len & 0xFF);
-    P0 = (unsigned char) ((aes_reg_len) >> 8);
-
-    // test writing to the key register.
+    // setup address, length and key.
+    aes_reg_addr = 0xE000;
+    aes_reg_len = 16;
     for(i=0; i < 16; i++) { aes_reg_key0[i] = i | (i << 4); }
-    for(i=0; i < 16; i++) { P0 = aes_reg_key0[i]; }
+
+    // now start encryption.
+    aes_reg_start = 1;
 
     // test reading from XRAM.
-    for(i=0; i < 8; i++) {
+    for(i=0; i < 16; i++) {
         P0 = data[i];
     }
 
