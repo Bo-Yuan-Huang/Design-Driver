@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (Linux)
-; This file was generated Mon Dec  1 17:56:44 2014
+; This file was generated Mon Dec  1 22:08:56 2014
 ;--------------------------------------------------------
 	.module aes_test
 	.optsdcc -mmcs51 --model-small
@@ -131,7 +131,9 @@
 	.globl _SP
 	.globl _P0
 	.globl _data
+	.globl _aes_reg_key1
 	.globl _aes_reg_key0
+	.globl _aes_reg_ctr
 	.globl _aes_reg_len
 	.globl _aes_reg_addr
 	.globl _aes_reg_state
@@ -309,7 +311,9 @@ _aes_reg_start	=	0xff00
 _aes_reg_state	=	0xff01
 _aes_reg_addr	=	0xff02
 _aes_reg_len	=	0xff04
+_aes_reg_ctr	=	0xff10
 _aes_reg_key0	=	0xff20
+_aes_reg_key1	=	0xff30
 _data	=	0xe000
 ;--------------------------------------------------------
 ; absolute external ram data
@@ -401,16 +405,16 @@ _quit:
 ;------------------------------------------------------------
 ;i                         Allocated to registers r6 r7 
 ;------------------------------------------------------------
-;	aes_test.c:32: void main() {
+;	aes_test.c:34: void main() {
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-;	aes_test.c:37: for(i=0; i < 8; i++) {
+;	aes_test.c:39: for(i=0; i < 8; i++) {
 	mov	r6,#0x00
 	mov	r7,#0x00
-00107$:
-;	aes_test.c:38: if(i > 0) { 
+00111$:
+;	aes_test.c:40: if(i > 0) { 
 	clr	c
 	clr	a
 	subb	a,r6
@@ -419,7 +423,7 @@ _main:
 	xrl	b,#0x80
 	subb	a,b
 	jnc	00102$
-;	aes_test.c:39: data[i] = i*i + data[i-1];
+;	aes_test.c:41: data[i] = i*i + data[i-1];
 	mov	ar4,r6
 	mov	a,#(_data >> 8)
 	add	a,r7
@@ -443,7 +447,7 @@ _main:
 	mov	dpl,r4
 	mov	dph,r5
 	movx	@dptr,a
-;	aes_test.c:40: data[i+8] = ~data[i];
+;	aes_test.c:42: data[i+8] = ~data[i];
 	mov	a,#0x08
 	add	a,r3
 	add	a,#_data
@@ -461,16 +465,16 @@ _main:
 	mov	dpl,r4
 	mov	dph,r5
 	movx	@dptr,a
-	sjmp	00108$
+	sjmp	00112$
 00102$:
-;	aes_test.c:42: data[i] = 0;
+;	aes_test.c:44: data[i] = 0;
 	mov	dpl,r6
 	mov	a,#(_data >> 8)
 	add	a,r7
 	mov	dph,a
 	clr	a
 	movx	@dptr,a
-;	aes_test.c:43: data[i+8] = 0xff;
+;	aes_test.c:45: data[i+8] = 0xff;
 	mov	ar5,r6
 	mov	a,#0x08
 	add	a,r5
@@ -481,37 +485,66 @@ _main:
 	mov	dph,a
 	mov	a,#0xFF
 	movx	@dptr,a
-00108$:
-;	aes_test.c:37: for(i=0; i < 8; i++) {
+00112$:
+;	aes_test.c:39: for(i=0; i < 8; i++) {
 	inc	r6
-	cjne	r6,#0x00,00140$
+	cjne	r6,#0x00,00159$
 	inc	r7
-00140$:
+00159$:
 	clr	c
 	mov	a,r6
 	subb	a,#0x08
 	mov	a,r7
 	xrl	a,#0x80
 	subb	a,#0x80
-	jc	00107$
-;	aes_test.c:48: aes_reg_addr = 0xE000;
+	jc	00111$
+;	aes_test.c:50: aes_reg_addr = 0xE000;
 	mov	dptr,#_aes_reg_addr
 	clr	a
 	movx	@dptr,a
 	mov	a,#0xE0
 	inc	dptr
 	movx	@dptr,a
-;	aes_test.c:49: aes_reg_len = 16;
+;	aes_test.c:51: aes_reg_len = 16;
 	mov	dptr,#_aes_reg_len
 	mov	a,#0x10
 	movx	@dptr,a
 	clr	a
 	inc	dptr
 	movx	@dptr,a
-;	aes_test.c:50: for(i=0; i < 16; i++) { aes_reg_key0[i] = i | (i << 4); }
+;	aes_test.c:52: for(i=0; i < 16; i++) { aes_reg_ctr[i] = i*i*i; }
 	mov	r6,#0x00
 	mov	r7,#0x00
-00109$:
+00113$:
+	mov	a,r6
+	add	a,#_aes_reg_ctr
+	mov	dpl,a
+	mov	a,r7
+	addc	a,#(_aes_reg_ctr >> 8)
+	mov	dph,a
+	mov	ar5,r6
+	mov	a,r5
+	mov	b,a
+	mul	ab
+	mov	b,r5
+	mul	ab
+	mov	r5,a
+	movx	@dptr,a
+	inc	r6
+	cjne	r6,#0x00,00161$
+	inc	r7
+00161$:
+	clr	c
+	mov	a,r6
+	subb	a,#0x10
+	mov	a,r7
+	xrl	a,#0x80
+	subb	a,#0x80
+	jc	00113$
+;	aes_test.c:53: for(i=0; i < 16; i++) { aes_reg_key0[i] = i | (i << 4); }
+	mov	r6,#0x00
+	mov	r7,#0x00
+00115$:
 	mov	a,r6
 	add	a,#_aes_reg_key0
 	mov	dpl,a
@@ -533,44 +566,50 @@ _main:
 	mov	a,r5
 	movx	@dptr,a
 	inc	r6
-	cjne	r6,#0x00,00142$
+	cjne	r6,#0x00,00163$
 	inc	r7
-00142$:
+00163$:
 	clr	c
 	mov	a,r6
 	subb	a,#0x10
 	mov	a,r7
 	xrl	a,#0x80
 	subb	a,#0x80
-	jc	00109$
-;	aes_test.c:53: aes_reg_start = 1;
+	jc	00115$
+;	aes_test.c:56: aes_reg_start = 1;
 	mov	dptr,#_aes_reg_start
 	mov	a,#0x01
 	movx	@dptr,a
-;	aes_test.c:56: for(i=0; i < 16; i++) {
-	mov	r6,#0x00
-	mov	r7,#0x00
-00111$:
-;	aes_test.c:57: P0 = data[i];
+;	aes_test.c:58: while(aes_reg_state != 0);
+00107$:
+	mov	dptr,#_aes_reg_state
+	movx	a,@dptr
+	mov	r7,a
+;	aes_test.c:61: for(i=0; i < 16; i++) {
+	jnz	00107$
+	mov	r6,a
+	mov	r7,a
+00117$:
+;	aes_test.c:62: P0 = data[i];
 	mov	dpl,r6
 	mov	a,#(_data >> 8)
 	add	a,r7
 	mov	dph,a
 	movx	a,@dptr
 	mov	_P0,a
-;	aes_test.c:56: for(i=0; i < 16; i++) {
+;	aes_test.c:61: for(i=0; i < 16; i++) {
 	inc	r6
-	cjne	r6,#0x00,00144$
+	cjne	r6,#0x00,00166$
 	inc	r7
-00144$:
+00166$:
 	clr	c
 	mov	a,r6
 	subb	a,#0x10
 	mov	a,r7
 	xrl	a,#0x80
 	subb	a,#0x80
-	jc	00111$
-;	aes_test.c:61: quit();
+	jc	00117$
+;	aes_test.c:66: quit();
 	ljmp	_quit
 	.area CSEG    (CODE)
 	.area CONST   (CODE)

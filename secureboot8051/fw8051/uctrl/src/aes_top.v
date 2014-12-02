@@ -62,8 +62,8 @@ localparam AES_REG_START   = 16'hff00; // 1 byte.
 localparam AES_REG_STATE   = 16'hff01; // 1 byte.
 localparam AES_REG_ADDR    = 16'hff02; // 2 bytes
 localparam AES_REG_LEN     = 16'hff04; // 2 bytes.
-
-// some empty space for more registers and keys
+// some empty space for more registers
+localparam AES_REG_CTR     = 16'hff10;
 localparam AES_REG_KEY0    = 16'hff20;
 localparam AES_REG_KEY1    = 16'hff30;
 
@@ -78,6 +78,7 @@ wire sel_reg_start = addr == AES_REG_START;
 wire sel_reg_state = addr == AES_REG_STATE;
 wire sel_reg_addr  = {addr[15:1], 1'b0} == AES_REG_ADDR;
 wire sel_reg_len   = {addr[15:1], 1'b0} == AES_REG_LEN;
+wire sel_reg_ctr   = {addr[15:4], 4'b0} == AES_REG_CTR;
 wire sel_reg_key0  = {addr[15:4], 4'b0} == AES_REG_KEY0;
 wire sel_reg_key1  = {addr[15:4], 4'b0} == AES_REG_KEY1;
 
@@ -86,8 +87,8 @@ wire start_op = sel_reg_start && data_in[0] && stb;
 // The current state of the AES module.
 localparam AES_STATE_IDLE       = 3'd0;
 localparam AES_STATE_READ_DATA  = 3'd1;
-localparam AES_STATE_OPERATE    = 3'd3;
-localparam AES_STATE_WRITE_DATA = 3'd4;
+localparam AES_STATE_OPERATE    = 3'd2;
+localparam AES_STATE_WRITE_DATA = 3'd3;
 
 // state register.
 reg [1:0]  aes_reg_state;
@@ -119,6 +120,19 @@ reg2byte aes_reg_oplen_i(
     .reg_out    (aes_reg_oplen)
 );
 
+// ctr register.
+wire [127:0] aes_reg_ctr;
+reg16byte aes_reg_ctr_i (
+    .clk        (clk),
+    .rst        (rst),
+    .en         (sel_reg_ctr),
+    .wr         (sel_reg_ctr && wr),
+    .addr       (addr[3:0]),
+    .data_in    (data_in),
+    .data_out   (data_out),
+    .reg_out    (aes_reg_ctr)
+);
+
 // key0 register.
 wire [127:0] aes_reg_key0;
 reg16byte aes_reg_key0_i(
@@ -146,39 +160,43 @@ reg16byte aes_reg_key1_i(
 );
 
 wire [1:0] aes_reg_state_next_idle = start_op ? AES_STATE_READ_DATA : AES_STATE_IDLE;
-wire start_next_block = 0; // TODO
+wire start_next_block_read  = 0; // TODO
 
 reg [15:0] block_counter;
-wire [15:0] block_counter_next = start_op           ? 0                     : 
-                                 start_next_block   ? (block_counter + 16)  :
+wire [15:0] block_counter_next = start_op              ? 0                    : 
+                                 start_next_block_read ? (block_counter + 16) :
                                  block_counter;
 
 // keep track of the current byte being read/written.
 reg [3:0] byte_counter;
-wire reset_byte_counter = start_op || start_next_block;
+wire reset_byte_counter = 
+    start_op || start_next_block_read;
 wire incr_byte_counter = xram_ack;
 wire [3:0] byte_counter_next = reset_byte_counter ? 0                :
                                incr_byte_counter  ? byte_counter + 1 :
                                byte_counter;
 
 wire [15:0] xram_addr = aes_reg_opaddr + block_counter + byte_counter;
-wire [7:0] xram_data_out = 16'hBE;
-wire xram_stb = aes_reg_state == AES_STATE_READ_DATA;
-wire xram_wr = 0;
+wire xram_stb = 
+    (aes_reg_state == AES_STATE_READ_DATA || aes_reg_state == AES_STATE_WRITE_DATA);
+wire xram_wr  = (aes_reg_state == AES_STATE_WRITE_DATA);
 
 wire [1:0] aes_reg_state_next_read_data = 
     ((byte_counter == 15) && xram_ack) ? AES_STATE_OPERATE : AES_STATE_READ_DATA;
 
 wire [1:0] aes_reg_state_next_read_pause = AES_STATE_READ_DATA;
 
-wire [1:0] aes_reg_state_next_operate =
-    AES_STATE_IDLE;
+wire [1:0] aes_reg_state_next_operate = AES_STATE_WRITE_DATA;
+// TODO: multiple blocks.
+wire [1:0] aes_reg_state_next_write_data = 
+    ((byte_counter == 15) && xram_ack) ? AES_STATE_IDLE : AES_STATE_WRITE_DATA;
 
 
 wire [1:0] aes_reg_state_next = 
         (aes_reg_state == AES_STATE_IDLE)       ? aes_reg_state_next_idle       : 
         (aes_reg_state == AES_STATE_READ_DATA)  ? aes_reg_state_next_read_data  : 
         (aes_reg_state == AES_STATE_OPERATE)    ? aes_reg_state_next_operate    : 
+        (aes_reg_state == AES_STATE_WRITE_DATA) ? aes_reg_state_next_write_data :
         AES_STATE_IDLE;
 
 // The data read so far.
@@ -202,16 +220,53 @@ assign mem_data_buf_next[111 : 104 ] =  ( xram_ack && byte_counter == 13 )  ? xr
 assign mem_data_buf_next[119 : 112 ] =  ( xram_ack && byte_counter == 14 )  ? xram_data_in : mem_data_buf[119 : 112 ];
 assign mem_data_buf_next[127 : 120 ] =  ( xram_ack && byte_counter == 15 )  ? xram_data_in : mem_data_buf[127 : 120 ];
 
+wire [127:0] aes_ctr = aes_reg_ctr + block_counter;
+wire [127:0] aes_out;
+wire [127:0] encrypted_data = aes_out ^ mem_data_buf;
+
+aes_128 aes_128_i (
+    .clk        (clk),
+    .state      (aes_ctr),
+    .key        (aes_reg_key0),
+    .out        (aes_out)
+);
+
+reg  [127:0] encrypted_data_buf;
+wire [127:0] encrypted_data_buf_next = 
+        (aes_reg_state == AES_STATE_OPERATE) ? encrypted_data
+                                             : encrypted_data_buf;
+wire [7:0] xram_data_out;
+assign xram_data_out = (byte_counter == 0)  ? encrypted_data_buf [7   :0  ]  :
+                       (byte_counter == 1)  ? encrypted_data_buf [15  : 8 ]  : 
+                       (byte_counter == 2)  ? encrypted_data_buf [23  : 16]  : 
+                       (byte_counter == 3)  ? encrypted_data_buf [31  : 24]  : 
+                       (byte_counter == 4)  ? encrypted_data_buf [39  : 32]  : 
+                       (byte_counter == 5)  ? encrypted_data_buf [47  : 40]  : 
+                       (byte_counter == 6)  ? encrypted_data_buf [55  : 48]  : 
+                       (byte_counter == 7)  ? encrypted_data_buf [63  : 56]  : 
+                       (byte_counter == 8)  ? encrypted_data_buf [71  : 64]  : 
+                       (byte_counter == 9)  ? encrypted_data_buf [79  : 72]  : 
+                       (byte_counter == 10) ? encrypted_data_buf [87  : 80]  : 
+                       (byte_counter == 11) ? encrypted_data_buf [95  : 88]  : 
+                       (byte_counter == 12) ? encrypted_data_buf [103 : 96]  : 
+                       (byte_counter == 13) ? encrypted_data_buf [111 : 104] : 
+                       (byte_counter == 14) ? encrypted_data_buf [119 : 112] : 
+                       (byte_counter == 15) ? encrypted_data_buf [127 : 120] : 
+                       8'dX;
+
 always @(posedge clk or posedge rst)
 begin
     if (rst) begin
         aes_reg_state   <= AES_STATE_IDLE;
+        block_counter   <= 0;
+        byte_counter    <= 0;
     end
     else begin
-        block_counter <= block_counter_next;
-        byte_counter  <= byte_counter_next;
-        aes_reg_state <= aes_reg_state_next;
-        mem_data_buf  <= mem_data_buf_next;
+        block_counter      <= block_counter_next;
+        byte_counter       <= byte_counter_next;
+        aes_reg_state      <= aes_reg_state_next;
+        mem_data_buf       <= mem_data_buf_next;
+        encrypted_data_buf <= encrypted_data_buf_next;
     end
 end
 

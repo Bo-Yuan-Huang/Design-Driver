@@ -24,7 +24,9 @@ __xdata __at(0xFF00) unsigned char aes_reg_start;
 __xdata __at(0xFF01) unsigned char aes_reg_state;
 __xdata __at(0xFF02) unsigned int aes_reg_addr;
 __xdata __at(0xFF04) unsigned int aes_reg_len;
+__xdata __at(0xFF10) unsigned char aes_reg_ctr[16];
 __xdata __at(0xFF20) unsigned char aes_reg_key0[16];
+__xdata __at(0xFF30) unsigned char aes_reg_key1[16];
 __xdata __at(0xE000) unsigned char data[16];
 
 /*---------------------------------------------------------------------------*/
@@ -44,15 +46,18 @@ void main() {
         }
     }
 
-    // setup address, length and key.
+    // setup address, length, counter and key.
     aes_reg_addr = 0xE000;
     aes_reg_len = 16;
+    for(i=0; i < 16; i++) { aes_reg_ctr[i] = i*i*i; }
     for(i=0; i < 16; i++) { aes_reg_key0[i] = i | (i << 4); }
 
     // now start encryption.
     aes_reg_start = 1;
+    // now wait for encryption to complete.
+    while(aes_reg_state != 0);
 
-    // test reading from XRAM.
+    // read encrypted data and dump it to P0.
     for(i=0; i < 16; i++) {
         P0 = data[i];
     }
