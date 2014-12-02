@@ -159,9 +159,8 @@ reg16byte aes_reg_key1_i(
     .reg_out    (aes_reg_key1)
 );
 
-wire [1:0] aes_reg_state_next_idle = start_op ? AES_STATE_READ_DATA : AES_STATE_IDLE;
-wire start_next_block_read  = 0; // TODO
-
+// keep track of the current block of data being processed.
+wire start_next_block_read = 0; // TODO
 reg [15:0] block_counter;
 wire [15:0] block_counter_next = start_op              ? 0                    : 
                                  start_next_block_read ? (block_counter + 16) :
@@ -176,33 +175,36 @@ wire [3:0] byte_counter_next = reset_byte_counter ? 0                :
                                incr_byte_counter  ? byte_counter + 1 :
                                byte_counter;
 
+// XRAM interface signals: all but xram_data_out which is calculated below.
 wire [15:0] xram_addr = aes_reg_opaddr + block_counter + byte_counter;
-wire xram_stb = 
-    (aes_reg_state == AES_STATE_READ_DATA || aes_reg_state == AES_STATE_WRITE_DATA);
-wire xram_wr  = (aes_reg_state == AES_STATE_WRITE_DATA);
+wire xram_stb = (aes_state_read_data || aes_state_write_data);
+wire xram_wr  = (aes_state_write_data);
 
+// state predicates.
+wire aes_state_idle = aes_reg_state == AES_STATE_IDLE;
+wire aes_state_read_data = aes_reg_state == AES_STATE_READ_DATA;
+wire aes_state_operate = aes_reg_state == AES_STATE_OPERATE;
+wire aes_state_write_data = aes_reg_state == AES_STATE_WRITE_DATA;
+
+// next state logic.
+wire [1:0] aes_reg_state_next_idle = start_op ? AES_STATE_READ_DATA : AES_STATE_IDLE;
 wire [1:0] aes_reg_state_next_read_data = 
     ((byte_counter == 15) && xram_ack) ? AES_STATE_OPERATE : AES_STATE_READ_DATA;
-
 wire [1:0] aes_reg_state_next_read_pause = AES_STATE_READ_DATA;
-
 wire [1:0] aes_reg_state_next_operate = AES_STATE_WRITE_DATA;
-// TODO: multiple blocks.
 wire [1:0] aes_reg_state_next_write_data = 
     ((byte_counter == 15) && xram_ack) ? AES_STATE_IDLE : AES_STATE_WRITE_DATA;
 
-
 wire [1:0] aes_reg_state_next = 
-        (aes_reg_state == AES_STATE_IDLE)       ? aes_reg_state_next_idle       : 
-        (aes_reg_state == AES_STATE_READ_DATA)  ? aes_reg_state_next_read_data  : 
-        (aes_reg_state == AES_STATE_OPERATE)    ? aes_reg_state_next_operate    : 
-        (aes_reg_state == AES_STATE_WRITE_DATA) ? aes_reg_state_next_write_data :
+        (aes_state_idle)       ? aes_reg_state_next_idle       : 
+        (aes_state_read_data)  ? aes_reg_state_next_read_data  : 
+        (aes_state_operate)    ? aes_reg_state_next_operate    : 
+        (aes_state_write_data) ? aes_reg_state_next_write_data :
         AES_STATE_IDLE;
 
-// The data read so far.
+// Data read from memory.
 reg [127:0] mem_data_buf;
 wire [127:0] mem_data_buf_next;
-
 assign mem_data_buf_next[7   : 0   ] =  ( xram_ack && byte_counter == 0  )  ? xram_data_in : mem_data_buf[7   : 0   ];
 assign mem_data_buf_next[15  : 8   ] =  ( xram_ack && byte_counter == 1  )  ? xram_data_in : mem_data_buf[15  : 8   ];
 assign mem_data_buf_next[23  : 16  ] =  ( xram_ack && byte_counter == 2  )  ? xram_data_in : mem_data_buf[23  : 16  ];
@@ -220,21 +222,21 @@ assign mem_data_buf_next[111 : 104 ] =  ( xram_ack && byte_counter == 13 )  ? xr
 assign mem_data_buf_next[119 : 112 ] =  ( xram_ack && byte_counter == 14 )  ? xram_data_in : mem_data_buf[119 : 112 ];
 assign mem_data_buf_next[127 : 120 ] =  ( xram_ack && byte_counter == 15 )  ? xram_data_in : mem_data_buf[127 : 120 ];
 
+// Actual encryption happens here.
 wire [127:0] aes_ctr = aes_reg_ctr + block_counter;
 wire [127:0] aes_out;
 wire [127:0] encrypted_data = aes_out ^ mem_data_buf;
-
 aes_128 aes_128_i (
     .clk        (clk),
     .state      (aes_ctr),
     .key        (aes_reg_key0),
     .out        (aes_out)
 );
-
+// Encrypted data buffer.
 reg  [127:0] encrypted_data_buf;
 wire [127:0] encrypted_data_buf_next = 
-        (aes_reg_state == AES_STATE_OPERATE) ? encrypted_data
-                                             : encrypted_data_buf;
+        (aes_state_operate) ? encrypted_data : encrypted_data_buf;
+// Output data to XRAM.
 wire [7:0] xram_data_out;
 assign xram_data_out = (byte_counter == 0)  ? encrypted_data_buf [7   :0  ]  :
                        (byte_counter == 1)  ? encrypted_data_buf [15  : 8 ]  : 
@@ -254,6 +256,7 @@ assign xram_data_out = (byte_counter == 0)  ? encrypted_data_buf [7   :0  ]  :
                        (byte_counter == 15) ? encrypted_data_buf [127 : 120] : 
                        8'dX;
 
+// Flip-flops instantiated here.
 always @(posedge clk or posedge rst)
 begin
     if (rst) begin
