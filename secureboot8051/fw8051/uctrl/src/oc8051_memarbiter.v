@@ -69,14 +69,11 @@ localparam PORT_B = 1'b1;
 
 wire selected_port;
 
-// Is the arbiter already held, or is it going to make a new choice, or is it
-// enforcing a pause cycle between back-to-back requests?
+// Is the arbiter already held, or is it going to make a new choice?
 reg [1:0] arbiter_state;      
 
 // arbitration muxes.
-wire stb        = arbiter_state == STATE_PAUSE ? 1'b0  :
-                  selected_port == PORT_A      ? stb_A : stb_B;
-
+wire stb        = selected_port == PORT_A ? stb_A : stb_B;
 wire wr         = selected_port == PORT_A ? wr_A       : wr_B;
 wire addr       = selected_port == PORT_A ? addr_A     : addr_B;
 wire data_in    = selected_port == PORT_A ? data_in_A  : data_in_B;
@@ -86,25 +83,19 @@ wire [7:0] data_out_A = data_out;
 wire [7:0] data_out_B = data_out;
 
 // selection logic.
-localparam STATE_PAUSE = 2'd2;
 localparam STATE_INUSE = 2'd1;
 localparam STATE_IDLE  = 2'd0;
 
 // The next state of the arbiter.
 // If currently in use, and we got an ack, then transition to idle.
-wire [1:0] arbiter_state_inuse_next = ack && (stb_A && stb_B) ? STATE_PAUSE :
-                                      ack                     ? STATE_IDLE  : 
-                                      STATE_INUSE;
+wire [1:0] arbiter_state_inuse_next = ack ? STATE_IDLE : STATE_INUSE;
 
 // If current idle and someone made a request, transition to inuse.
 wire [1:0] arbiter_state_idle_next  = ((stb_A || stb_B) && !ack) ? STATE_INUSE : STATE_IDLE;
-// If we are in the pause state, then the next state must be the idle state.
-wire [1:0] arbiter_state_pause_next = STATE_IDLE;
 // Next state of the arbiter.
 wire [1:0] arbiter_state_next = 
         (arbiter_state == STATE_IDLE)  ? arbiter_state_idle_next  :
-        (arbiter_state == STATE_INUSE) ? arbiter_state_inuse_next : 
-        (arbiter_state == STATE_PAUSE) ? arbiter_state_pause_next : 1'bX;
+        (arbiter_state == STATE_INUSE) ? arbiter_state_inuse_next : 2'bX;
 
 // Do we select a new winner for the arbitration? Answer is yes if we are
 // currently idle and won't be idle in the next cycle.

@@ -86,7 +86,6 @@ wire start_op = sel_reg_start && data_in[0] && stb;
 // The current state of the AES module.
 localparam AES_STATE_IDLE       = 3'd0;
 localparam AES_STATE_READ_DATA  = 3'd1;
-localparam AES_STATE_READ_PAUSE = 3'd2;
 localparam AES_STATE_OPERATE    = 3'd3;
 localparam AES_STATE_WRITE_DATA = 3'd4;
 
@@ -168,8 +167,7 @@ wire xram_stb = aes_reg_state == AES_STATE_READ_DATA;
 wire xram_wr = 0;
 
 wire [1:0] aes_reg_state_next_read_data = 
-    (byte_counter == 15) && xram_ack ? AES_STATE_OPERATE    :
-    xram_ack                         ? AES_STATE_READ_PAUSE : AES_STATE_READ_DATA;
+    ((byte_counter == 15) && xram_ack) ? AES_STATE_OPERATE : AES_STATE_READ_DATA;
 
 wire [1:0] aes_reg_state_next_read_pause = AES_STATE_READ_DATA;
 
@@ -180,7 +178,6 @@ wire [1:0] aes_reg_state_next_operate =
 wire [1:0] aes_reg_state_next = 
         (aes_reg_state == AES_STATE_IDLE)       ? aes_reg_state_next_idle       : 
         (aes_reg_state == AES_STATE_READ_DATA)  ? aes_reg_state_next_read_data  : 
-        (aes_reg_state == AES_STATE_READ_PAUSE) ? aes_reg_state_next_read_pause : 
         (aes_reg_state == AES_STATE_OPERATE)    ? aes_reg_state_next_operate    : 
         AES_STATE_IDLE;
 
