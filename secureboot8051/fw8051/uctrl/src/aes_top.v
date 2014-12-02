@@ -159,21 +159,30 @@ reg16byte aes_reg_key1_i(
     .reg_out    (aes_reg_key1)
 );
 
-// keep track of the current block of data being processed.
-wire start_next_block_read = 0; // TODO
+// keep track of the number of bytes operated upon.
+reg [15:0] operated_bytes_count;
+wire [15:0] operated_bytes_count_next = 
+    start_op                                ? 0                         : 
+    last_byte_acked && aes_state_write_data ? operated_bytes_count + 16 : 
+    operated_bytes_count;
+
+// keep track of the number of blocks of data being processed.
 reg [15:0] block_counter;
-wire [15:0] block_counter_next = start_op              ? 0                    : 
-                                 start_next_block_read ? (block_counter + 16) :
+wire [15:0] block_counter_next = start_op    ? 0                    : 
+                                 more_blocks ? (block_counter + 16) :
                                  block_counter;
 
 // keep track of the current byte being read/written.
 reg [3:0] byte_counter;
-wire reset_byte_counter = 
-    start_op || start_next_block_read;
+wire reset_byte_counter = start_op;
 wire incr_byte_counter = xram_ack;
 wire [3:0] byte_counter_next = reset_byte_counter ? 0                :
                                incr_byte_counter  ? byte_counter + 1 :
                                byte_counter;
+// is this the last byte in the block?
+wire last_byte_acked = byte_counter == 15 && xram_ack;
+// one-hot signal that denotes if there are there more blocks to go to.
+wire more_blocks = last_byte_acked && (operated_bytes_count_next < aes_reg_oplen);
 
 // XRAM interface signals: all but xram_data_out which is calculated below.
 wire [15:0] xram_addr = aes_reg_opaddr + block_counter + byte_counter;
@@ -188,12 +197,14 @@ wire aes_state_write_data = aes_reg_state == AES_STATE_WRITE_DATA;
 
 // next state logic.
 wire [1:0] aes_reg_state_next_idle = start_op ? AES_STATE_READ_DATA : AES_STATE_IDLE;
-wire [1:0] aes_reg_state_next_read_data = 
-    ((byte_counter == 15) && xram_ack) ? AES_STATE_OPERATE : AES_STATE_READ_DATA;
+wire [1:0] aes_reg_state_next_read_data = last_byte_acked ? AES_STATE_OPERATE : AES_STATE_READ_DATA;
 wire [1:0] aes_reg_state_next_read_pause = AES_STATE_READ_DATA;
 wire [1:0] aes_reg_state_next_operate = AES_STATE_WRITE_DATA;
 wire [1:0] aes_reg_state_next_write_data = 
-    ((byte_counter == 15) && xram_ack) ? AES_STATE_IDLE : AES_STATE_WRITE_DATA;
+        // more blocks? then go to the next block.
+        last_byte_acked && more_blocks ? AES_STATE_READ_DATA : 
+        last_byte_acked                ? AES_STATE_IDLE      : 
+        AES_STATE_WRITE_DATA;
 
 wire [1:0] aes_reg_state_next = 
         (aes_state_idle)       ? aes_reg_state_next_idle       : 
@@ -260,16 +271,18 @@ assign xram_data_out = (byte_counter == 0)  ? encrypted_data_buf [7   :0  ]  :
 always @(posedge clk or posedge rst)
 begin
     if (rst) begin
-        aes_reg_state   <= AES_STATE_IDLE;
-        block_counter   <= 0;
-        byte_counter    <= 0;
+        aes_reg_state        <= AES_STATE_IDLE;
+        block_counter        <= 0;
+        byte_counter         <= 0;
+        operated_bytes_count <= 0;
     end
     else begin
-        block_counter      <= block_counter_next;
-        byte_counter       <= byte_counter_next;
-        aes_reg_state      <= aes_reg_state_next;
-        mem_data_buf       <= mem_data_buf_next;
-        encrypted_data_buf <= encrypted_data_buf_next;
+        block_counter        <= block_counter_next;
+        byte_counter         <= byte_counter_next;
+        aes_reg_state        <= aes_reg_state_next;
+        mem_data_buf         <= mem_data_buf_next;
+        encrypted_data_buf   <= encrypted_data_buf_next;
+        operated_bytes_count <= operated_bytes_count_next;
     end
 end
 

@@ -38,17 +38,17 @@ void main() {
     // test writing to XRAM.
     for(i=0; i < 8; i++) {
         if(i > 0) { 
-            data[i] = i*i + data[i-1];
-            data[i+8] = ~data[i];
+            data[i] = data[i+16] = i*i + data[i-1];
+            data[i+8] = data[i+24] = ~data[i];
         } else {
-            data[i] = 0;
-            data[i+8] = 0xff;
+            data[i] = data[i+16] = 0;
+            data[i+8] = data[i+24] = 0xff;
         }
     }
 
     // setup address, length, counter and key.
     aes_reg_addr = 0xE000;
-    aes_reg_len = 16;
+    aes_reg_len = 32;
     for(i=0; i < 16; i++) { aes_reg_ctr[i] = i*i*i; }
     for(i=0; i < 16; i++) { aes_reg_key0[i] = i | (i << 4); }
 
@@ -58,7 +58,7 @@ void main() {
     while(aes_reg_state != 0);
 
     // read encrypted data and dump it to P0.
-    for(i=0; i < 16; i++) {
+    for(i=0; i < 32; i++) {
         P0 = data[i];
     }
 

@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (Linux)
-; This file was generated Mon Dec  1 22:08:56 2014
+; This file was generated Mon Dec  1 22:31:17 2014
 ;--------------------------------------------------------
 	.module aes_test
 	.optsdcc -mmcs51 --model-small
@@ -276,6 +276,8 @@ _TF2	=	0x00cf
 ; internal ram data
 ;--------------------------------------------------------
 	.area DSEG    (DATA)
+_main_i_1_2:
+	.ds 2
 ;--------------------------------------------------------
 ; overlayable items in internal ram 
 ;--------------------------------------------------------
@@ -403,7 +405,7 @@ _quit:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
-;i                         Allocated to registers r6 r7 
+;i                         Allocated with name '_main_i_1_2'
 ;------------------------------------------------------------
 ;	aes_test.c:34: void main() {
 ;	-----------------------------------------
@@ -411,28 +413,36 @@ _quit:
 ;	-----------------------------------------
 _main:
 ;	aes_test.c:39: for(i=0; i < 8; i++) {
-	mov	r6,#0x00
-	mov	r7,#0x00
+	clr	a
+	mov	_main_i_1_2,a
+	mov	(_main_i_1_2 + 1),a
 00111$:
 ;	aes_test.c:40: if(i > 0) { 
 	clr	c
 	clr	a
-	subb	a,r6
+	subb	a,_main_i_1_2
 	mov	a,#(0x00 ^ 0x80)
-	mov	b,r7
+	mov	b,(_main_i_1_2 + 1)
 	xrl	b,#0x80
 	subb	a,b
 	jnc	00102$
-;	aes_test.c:41: data[i] = i*i + data[i-1];
-	mov	ar4,r6
+;	aes_test.c:41: data[i] = data[i+16] = i*i + data[i-1];
+	mov	r4,_main_i_1_2
 	mov	a,#(_data >> 8)
-	add	a,r7
+	add	a,(_main_i_1_2 + 1)
 	mov	r5,a
-	mov	ar3,r6
+	mov	r3,_main_i_1_2
+	mov	a,#0x10
+	add	a,r3
+	add	a,#_data
+	mov	r1,a
+	clr	a
+	addc	a,#(_data >> 8)
+	mov	r2,a
 	mov	a,r3
 	mov	b,a
 	mul	ab
-	mov	r2,a
+	mov	r0,a
 	mov	a,r3
 	dec	a
 	add	a,#_data
@@ -441,23 +451,33 @@ _main:
 	addc	a,#(_data >> 8)
 	mov	dph,a
 	movx	a,@dptr
-	mov	r1,a
-	add	a,r2
-	mov	r2,a
+	add	a,r0
+	mov	r0,a
+	mov	dpl,r1
+	mov	dph,r2
+	movx	@dptr,a
 	mov	dpl,r4
 	mov	dph,r5
+	mov	a,r0
 	movx	@dptr,a
-;	aes_test.c:42: data[i+8] = ~data[i];
+;	aes_test.c:42: data[i+8] = data[i+24] = ~data[i];
 	mov	a,#0x08
+	add	a,r3
+	add	a,#_data
+	mov	r6,a
+	clr	a
+	addc	a,#(_data >> 8)
+	mov	r7,a
+	mov	a,#0x18
 	add	a,r3
 	add	a,#_data
 	mov	r4,a
 	clr	a
 	addc	a,#(_data >> 8)
 	mov	r5,a
-	mov	dpl,r6
+	mov	dpl,_main_i_1_2
 	mov	a,#(_data >> 8)
-	add	a,r7
+	add	a,(_main_i_1_2 + 1)
 	mov	dph,a
 	movx	a,@dptr
 	cpl	a
@@ -465,18 +485,39 @@ _main:
 	mov	dpl,r4
 	mov	dph,r5
 	movx	@dptr,a
+	mov	dpl,r6
+	mov	dph,r7
+	mov	a,r3
+	movx	@dptr,a
 	sjmp	00112$
 00102$:
-;	aes_test.c:44: data[i] = 0;
-	mov	dpl,r6
+;	aes_test.c:44: data[i] = data[i+16] = 0;
+	mov	r6,_main_i_1_2
 	mov	a,#(_data >> 8)
-	add	a,r7
+	add	a,(_main_i_1_2 + 1)
+	mov	r7,a
+	mov	r5,_main_i_1_2
+	mov	a,#0x10
+	add	a,r5
+	add	a,#_data
+	mov	dpl,a
+	clr	a
+	addc	a,#(_data >> 8)
 	mov	dph,a
 	clr	a
 	movx	@dptr,a
-;	aes_test.c:45: data[i+8] = 0xff;
-	mov	ar5,r6
+	mov	dpl,r6
+	mov	dph,r7
+	movx	@dptr,a
+;	aes_test.c:45: data[i+8] = data[i+24] = 0xff;
 	mov	a,#0x08
+	add	a,r5
+	add	a,#_data
+	mov	r6,a
+	clr	a
+	addc	a,#(_data >> 8)
+	mov	r7,a
+	mov	a,#0x18
 	add	a,r5
 	add	a,#_data
 	mov	dpl,a
@@ -485,19 +526,25 @@ _main:
 	mov	dph,a
 	mov	a,#0xFF
 	movx	@dptr,a
+	mov	dpl,r6
+	mov	dph,r7
+	movx	@dptr,a
 00112$:
 ;	aes_test.c:39: for(i=0; i < 8; i++) {
-	inc	r6
-	cjne	r6,#0x00,00159$
-	inc	r7
+	inc	_main_i_1_2
+	clr	a
+	cjne	a,_main_i_1_2,00159$
+	inc	(_main_i_1_2 + 1)
 00159$:
 	clr	c
-	mov	a,r6
+	mov	a,_main_i_1_2
 	subb	a,#0x08
-	mov	a,r7
+	mov	a,(_main_i_1_2 + 1)
 	xrl	a,#0x80
 	subb	a,#0x80
-	jc	00111$
+	jnc	00160$
+	ljmp	00111$
+00160$:
 ;	aes_test.c:50: aes_reg_addr = 0xE000;
 	mov	dptr,#_aes_reg_addr
 	clr	a
@@ -505,9 +552,9 @@ _main:
 	mov	a,#0xE0
 	inc	dptr
 	movx	@dptr,a
-;	aes_test.c:51: aes_reg_len = 16;
+;	aes_test.c:51: aes_reg_len = 32;
 	mov	dptr,#_aes_reg_len
-	mov	a,#0x10
+	mov	a,#0x20
 	movx	@dptr,a
 	clr	a
 	inc	dptr
@@ -585,7 +632,7 @@ _main:
 	mov	dptr,#_aes_reg_state
 	movx	a,@dptr
 	mov	r7,a
-;	aes_test.c:61: for(i=0; i < 16; i++) {
+;	aes_test.c:61: for(i=0; i < 32; i++) {
 	jnz	00107$
 	mov	r6,a
 	mov	r7,a
@@ -597,14 +644,14 @@ _main:
 	mov	dph,a
 	movx	a,@dptr
 	mov	_P0,a
-;	aes_test.c:61: for(i=0; i < 16; i++) {
+;	aes_test.c:61: for(i=0; i < 32; i++) {
 	inc	r6
 	cjne	r6,#0x00,00166$
 	inc	r7
 00166$:
 	clr	c
 	mov	a,r6
-	subb	a,#0x10
+	subb	a,#0x20
 	mov	a,r7
 	xrl	a,#0x80
 	subb	a,#0x80
