@@ -182,7 +182,8 @@ wire [3:0] byte_counter_next = reset_byte_counter ? 0                :
 // is this the last byte in the block?
 wire last_byte_acked = byte_counter == 15 && xram_ack;
 // one-hot signal that denotes if there are there more blocks to go to.
-wire more_blocks = last_byte_acked && (operated_bytes_count_next < aes_reg_oplen);
+wire more_blocks = last_byte_acked && aes_state_write_data &&
+                   (operated_bytes_count_next < aes_reg_oplen);
 
 // XRAM interface signals: all but xram_data_out which is calculated below.
 wire [15:0] xram_addr = aes_reg_opaddr + block_counter + byte_counter;

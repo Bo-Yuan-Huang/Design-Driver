@@ -34,16 +34,11 @@ __xdata __at(0xE000) unsigned char data[16];
 void main() {
     
     int i;
+    int good=1;
 
     // test writing to XRAM.
-    for(i=0; i < 8; i++) {
-        if(i > 0) { 
-            data[i] = data[i+16] = i*i + data[i-1];
-            data[i+8] = data[i+24] = ~data[i];
-        } else {
-            data[i] = data[i+16] = 0;
-            data[i+8] = data[i+24] = 0xff;
-        }
+    for(i=0; i < 32; i++) {
+        data[i]=i;
     }
 
     // setup address, length, counter and key.
@@ -62,6 +57,17 @@ void main() {
         P0 = data[i];
     }
 
+    // let us decrypt now.
+    aes_reg_start = 1;
+    while(aes_reg_state != 0);
+
+    for(i=0; i < 32; i++) {
+        if(data[i] != i) { 
+            good =0;
+            break;
+        }
+    }
+    P0 = good;
     // finish.
     quit();
 }
