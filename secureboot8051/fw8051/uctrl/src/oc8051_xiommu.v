@@ -71,42 +71,42 @@ aes_top aes_top_i (
 
 wire stb_out, ack_in, wr_out;
 wire [15:0] addr_out;
-wire [7:0] data_in_out;
-wire [7:0] data_out_out;
+wire [7:0] memarbiter_data_in;
+wire [7:0] memarbiter_data_out;
 
 oc8051_memarbiter oc8051_memarbiter_i (
-    .clk        ( clk               ),
-    .rst        ( rst               ),
+    .clk        ( clk                 ),
+    .rst        ( rst                 ),
    
-    .stb_A      ( stb_xram          ),
-    .ack_A      ( ack_xram          ),
-    .wr_A       ( write_xram        ),
-    .addr_A     ( proc_addr              ),
-    .data_in_A  ( proc_data_in      ),
-    .data_out_A ( data_out_xram     ),
+    .stb_A      ( stb_xram            ),
+    .ack_A      ( ack_xram            ),
+    .wr_A       ( write_xram          ),
+    .addr_A     ( proc_addr           ),
+    .data_in_A  ( proc_data_in        ),
+    .data_out_A ( data_out_xram       ),
 
-    .stb_B      ( aes_xram_stb      ),
-    .ack_B      ( aes_xram_ack      ),
-    .wr_B       ( aes_xram_wr       ),
-    .addr_B     ( aes_xram_addr     ),
-    .data_in_B  ( aes_xram_data_out ),
-    .data_out_B ( aes_xram_data_in  ),
+    .stb_B      ( aes_xram_stb        ),
+    .ack_B      ( aes_xram_ack        ),
+    .wr_B       ( aes_xram_wr         ),
+    .addr_B     ( aes_xram_addr       ),
+    .data_in_B  ( aes_xram_data_out   ),
+    .data_out_B ( aes_xram_data_in    ),
 
-    .stb        ( stb_out           ),
-    .ack        ( ack_in            ),
-    .wr         ( wr_out            ),
-    .addr       ( addr_out          ),
-    .data_in    ( data_in_out       ),
-    .data_out   ( data_out_out      )
+    .stb        ( stb_out             ),
+    .ack        ( ack_in              ),
+    .wr         ( wr_out              ),
+    .addr       ( addr_out            ),
+    .data_in    ( memarbiter_data_in  ),
+    .data_out   ( memarbiter_data_out ) 
 );
 
 oc8051_xram oc8051_xram_i (
-    .clk      ( clk           ),
-    .rst      ( rst           ),
-    .wr       ( wr_out        ),
-    .addr     ( addr_out      ),
-    .data_in  ( data_in_out   ),
-    .data_out ( data_out_out  ),
+    .clk      ( clk                 ),
+    .rst      ( rst                 ),
+    .wr       ( wr_out              ),
+    .addr     ( addr_out            ),
+    .data_in  ( memarbiter_data_in  ),
+    .data_out ( memarbiter_data_out ),
     .ack      ( ack_in        ),
     .stb      ( stb_out       ) 
 );
