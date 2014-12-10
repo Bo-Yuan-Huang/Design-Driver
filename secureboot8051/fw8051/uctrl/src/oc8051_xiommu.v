@@ -122,6 +122,13 @@ oc8051_memarbiter oc8051_memarbiter_i (
     .data_in_B  ( aes_xram_data_out   ),
     .data_out_B ( aes_xram_data_in    ),
 
+    .stb_C      ( sha_xram_stb        ),
+    .ack_C      ( sha_xram_ack        ),
+    .wr_C       ( sha_xram_wr         ),
+    .addr_C     ( sha_xram_addr       ),
+    .data_in_C  ( sha_xram_data_out   ),
+    .data_out_C ( sha_xram_data_in    ),
+
     .stb        ( stb_out             ),
     .ack        ( ack_in              ),
     .wr         ( wr_out              ),

@@ -54,6 +54,12 @@ input xram_ack;
 output xram_stb;
 output xram_wr;
 
+// disable XRAM interface.
+assign xram_addr = 16'b0;
+assign xram_data_out = 8'hff;
+assign xram_stb = 0;
+assign xram_wr = 0;
+
 // FIRST ADDRESS ALLOCATED TO THIS UNIT.
 localparam SHA_ADDR_START  = 16'hfe00;
 // see also SHA_ADDR_END.
@@ -129,4 +135,30 @@ reg2byte sha_reg_len_i(
     .reg_out    (sha_reg_len)
 );
 
+// Active low reset.
+wire sha_core_rst_n = !rst; 
+// Set to one to start hashing the first block of data.
+wire sha_core_init;
+// Set to one to start hashing the next blocks of data.
+wire sha_core_next;
+// Output from core signalling that it is ready for init/next to be set to 1.
+wire sha_core_ready;
+// Output from core signalling that the hash result is ready.
+wire sha_core_digest_valid;
+// Register which holds the data to be hashed.
+reg [511:0] sha_core_block;
+// Hash output.
+wire [159:0] sha_core_digest;
+
+// instantiate the SHA1 core.
+sha1_core sha1_core_i (
+    .clk(clk),
+    .reset_n(sha_core_rst_n),
+    .init(sha_core_init),
+    .next(sha_core_next),
+    .ready(sha_core_ready),
+    .digest_valid(sha_core_digest_valid),
+    .block(sha_core_block),
+    .digest(sha_core_digest)
+);
 endmodule

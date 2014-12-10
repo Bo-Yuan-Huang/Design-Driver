@@ -127,7 +127,8 @@ wire arbiter_state_next =
 // Do we select a new winner for the arbitration? Answer is yes if we are
 // currently idle and won't be idle in the next cycle.
 wire arbit_select_winner = (arbiter_state == STATE_IDLE) && (arbiter_state_next == STATE_INUSE);
-// Who is the new winner? It's B if A isn't asking and B is. Otherwise it's A.
+
+// Who is the new winner? C has the lowest priority, then B then A.
 wire arbit_winner = (!stb_A && !stb_B && stb_C) ? PORT_C :
                     (!stb_A && stb_B)           ? PORT_B : PORT_A;
 // Who is the current holder of the arbitration?
