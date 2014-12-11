@@ -107,6 +107,7 @@ wire ack_C      = selected_port == PORT_C ? ack : 1'b0;
 
 wire [7:0] data_out_A = data_out;
 wire [7:0] data_out_B = data_out;
+wire [7:0] data_out_C = data_out;
 
 // selection logic.
 localparam STATE_INUSE = 1'd1;
@@ -129,11 +130,11 @@ wire arbiter_state_next =
 wire arbit_select_winner = (arbiter_state == STATE_IDLE) && (arbiter_state_next == STATE_INUSE);
 
 // Who is the new winner? C has the lowest priority, then B then A.
-wire arbit_winner = (!stb_A && !stb_B && stb_C) ? PORT_C :
+wire [1:0] arbit_winner = (!stb_A && !stb_B && stb_C) ? PORT_C :
                     (!stb_A && stb_B)           ? PORT_B : PORT_A;
 // Who is the current holder of the arbitration?
-reg arbit_holder;       
-wire arbit_holder_next = arbit_select_winner ? arbit_winner : arbit_holder;
+reg [1:0] arbit_holder;       
+wire [1:0] arbit_holder_next = arbit_select_winner ? arbit_winner : arbit_holder;
 
 // The selected port is the current cycle winner if we are idle
 // and the current holder if we are in use.
