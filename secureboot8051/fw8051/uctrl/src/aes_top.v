@@ -1,6 +1,7 @@
 /*
- * This wrapper was written by Pramod Subramanyan.
+ * AES module that interfaces with the oc8051.
  *
+ * This wrapper was written by Pramod Subramanyan.
  * Email: pramod.subramanyan@gmail.com
  */ 
 
