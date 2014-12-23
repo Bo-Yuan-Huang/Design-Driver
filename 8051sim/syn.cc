@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
         std::cerr << "Syntax error. " << std::endl
                   << "  Usage: " << argv[0] << " [input-state-file]" << std::endl;
     } else {
-        std::cout << "hello, world!" << std::endl;
+        i8051.SynSim(argv[1]);
     }
     return 0;
 }

@@ -90,9 +90,11 @@ class I8051
     
   public:
     bool Simulate(const char* fileName, const char* outFile = "output.txt");
+    void SynSim(const char* filename);
     bool ProgramCompletion();
     void Stop();
     void Init8051();
+    void InitState(const char* filename);
     Opcode Decode(const unsigned char IR);
 
   private:
@@ -100,6 +102,9 @@ class I8051
     void ClearBit(char &thisByte, unsigned char thisBit);
     unsigned char GetBit(char thisByte, unsigned char thisBit);
     unsigned char GetRegisterBank();
+    static int ReadByte(std::istream& in);
+    static int ReadWord(std::istream& in);
+    void WriteState();
 
   private:
     void PrintHex(unsigned char byte, std::ostream* os = &std::cout);
