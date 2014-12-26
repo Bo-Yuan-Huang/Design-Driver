@@ -5122,7 +5122,7 @@ void
 I8051::WriteState() {
     std::cout << std::hex << std::setw(4) << PC << std::endl;
     for(unsigned i=0; i < RamSize; i++) {
-        std::cout << std::hex << std::setw(2) << (int) RAM[i] << " ";
+        std::cout << std::hex << std::setw(2) << (int) (unsigned char) RAM[i] << " ";
         if(i > 0 && (i+1) % 16 == 0) {
             std::cout << std::endl;
         }
