@@ -2514,6 +2514,8 @@ I8051::SynSim(const char* filename)
             
             // Return
         case RET:
+        case RETI:
+            // FIXME: RETI also messes the flags but we are ignoring that for now.
             
             ((unsigned char*)&PC)[1] = RAM[(unsigned char)RAM[SP]];
             RAM[SP] = (unsigned char)RAM[SP] - 1;
