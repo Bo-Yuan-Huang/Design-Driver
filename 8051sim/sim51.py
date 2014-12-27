@@ -18,7 +18,7 @@ def evalState(pc, opcode, regs):
 
         fileobject.flush()
 
-        # print subprocess.check_output(['cat', fileobject.name])
+        print subprocess.check_output(['cat', fileobject.name])
         # print subprocess.check_output(['./8051syn', fileobject.name])
         state = subprocess.check_output(['./8051syn', fileobject.name])
         words = state.split()
@@ -48,5 +48,8 @@ def testSim51():
         regs = [randint(0, 256) for i in xrange(384)]
 
         print '%4X %6X --> %4X' % (pc, opcode, evalPC(pc, opcode, regs))
+
+state = [0, 0xFF] + [0] * 382
+print evalState(0, 0x01A5, state)
 
     # print hex(evalPC(0xABCD, 0x34c1, [0xFF]*384))
