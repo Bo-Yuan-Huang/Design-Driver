@@ -834,7 +834,7 @@ I8051::SynSim(const char* filename)
         case ACALL:
           
             ((unsigned char*)&jumpAddr)[0] = ROM[PC++];
-            ((unsigned char*)&jumpAddr)[1] = (PC & 0xF800) | ((IR & 0xE0) >> 5);
+            ((unsigned char*)&jumpAddr)[1] = ((PC & 0xF800) >> 8) | ((IR & 0xE0) >> 5);
             
             //((unsigned char*)&jumpAddr)[1] = ((IR & 0xE0) >> 1);
             //((unsigned char*)&jumpAddr)[0] = ROM[PC++];
@@ -1481,7 +1481,7 @@ I8051::SynSim(const char* filename)
         case AJMP:
             
           ((unsigned char*)&jumpAddr)[0] = ROM[PC++];
-          ((unsigned char*)&jumpAddr)[1] = (PC & 0xF800) | ((IR & 0xE0) >> 5);
+          ((unsigned char*)&jumpAddr)[1] = ((PC & 0xF800) >> 8) | ((IR & 0xE0) >> 5);
             #ifdef DEBUG
                 os << "AJMP" << std::endl;
             #ifdef DETAIL
@@ -2515,7 +2515,7 @@ I8051::SynSim(const char* filename)
             // Return
         case RET:
         case RETI:
-            // FIXME: RETI also messes the flags but we are ignoring that for now.
+            // FIXME: RETI also messes with the flags but we are ignoring that for now.
             
             ((unsigned char*)&PC)[1] = RAM[(unsigned char)RAM[SP]];
             RAM[SP] = (unsigned char)RAM[SP] - 1;
@@ -3339,7 +3339,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                 case ACALL:
                   
                     ((unsigned char*)&jumpAddr)[0] = ROM[PC++];
-                    ((unsigned char*)&jumpAddr)[1] = (PC & 0xF800) | ((IR & 0xE0) >> 5);
+                    ((unsigned char*)&jumpAddr)[1] = ((PC & 0xF800) >> 8) | ((IR & 0xE0) >> 5);
                     
                     //((unsigned char*)&jumpAddr)[1] = ((IR & 0xE0) >> 1);
                     //((unsigned char*)&jumpAddr)[0] = ROM[PC++];
@@ -3986,7 +3986,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                 case AJMP:
                     
                   ((unsigned char*)&jumpAddr)[0] = ROM[PC++];
-                  ((unsigned char*)&jumpAddr)[1] = (PC & 0xF800) | ((IR & 0xE0) >> 5);
+                  ((unsigned char*)&jumpAddr)[1] = ((PC & 0xF800) >> 8) | ((IR & 0xE0) >> 5);
                     #ifdef DEBUG
                         os << "AJMP" << std::endl;
                     #ifdef DETAIL
