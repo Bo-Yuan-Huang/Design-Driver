@@ -115,9 +115,10 @@ class Syn51(object):
         roffset2 = If(Extract(7, 7, op2) == BitVecVal(1, 1), 
                        Concat(BitVecVal(255, 8), op2),
                        Concat(BitVecVal(0, 8), op2))
-        rpc1 = pc + roffset1
-        rpc2 = pc + roffset2
-        abs_pc = Concat(op1, op2)
+        rpc1 = pc_p2 + roffset1
+        rpc2 = pc_p3 + roffset2
+        sjmp_pc = rpc1
+        ljmp_pc = Concat(op1, op2)
 
         PSW   = regs[0x150]
         Rbank = Extract(5, 4, PSW)
@@ -132,44 +133,100 @@ class Syn51(object):
                 If(Rbank == BitVecVal(1, 2), regs[i+8],
                     If(Rbank == BitVecVal(2, 2), regs[i+16],
                         regs[i+24]))) for i in xrange(8)]
-
-
-        def reg_selector(index, R):
+        def reg_selector(index, R, sz):
             if index == 0:
                 return regs[0]
             else:
-                return If(R == BitVecVal(index, 8), 
+                return If(R == BitVecVal(index, sz), 
                             regs[index], 
-                            reg_selector(index-1, R))
+                            reg_selector(index-1, R, sz))
 
-        ret_pc = Concat(reg_selector(255, SP), reg_selector(255, SPm1))
+        ret_pc = Concat(reg_selector(255, SP, 8), reg_selector(255, SPm1, 8))
         jmp_pc = DPTR + Concat(BitVecVal(0, 8), ACC)
 
-        sel_jmp_pc, self.sel_jmp_bits   = CreateTCAM(op0, prefix+'_sel_jmp_pc', 1)
-        sel_ajmp_pc, self.sel_ajmp_bits = CreateTCAM(op0, prefix+'_sel_ajmp_pc', 1)
-        sel_abs_pc, self.sel_abs_bits   = CreateTCAM(op0, prefix+'_sel_abs_pc', 1)
-        sel_ret_pc, self.sel_ret_bits   = CreateTCAM(op0, prefix+'_sel_ret_pc', 1)
-        sel_pcp1, self.sel_pcp1_bits    = CreateTCAM(op0, prefix+'_sel_pcp1', 4)
-        sel_pcp2, self.sel_pcp2_bits    = CreateTCAM(op0, prefix+'_sel_pcp2', 4)
-        sel_pcp3, self.sel_pcp3_bits    = CreateTCAM(op0, prefix+'_sel_pcp3', 4)
+        # compute the bit being addressed.
+        bit_addr = op1
+        bit_addr_byte_num = Concat(BitVecVal(0, 5), Extract(6, 3, bit_addr))
+        bit_addr_bit_num = Extract(2, 0, bit_addr)
 
-        new_pc = If(sel_pcp1, pc_p1,
-                    If(sel_pcp2, pc_p2,
-                        If(sel_pcp3, pc_p3,
-                            If(sel_ajmp_pc, ajmp_pc,
-                                If(sel_abs_pc, abs_pc,
-                                    If(sel_ret_pc, ret_pc,
-                                        jmp_pc))))))
+        iram_bit_addr_byte_index =  BitVecVal(32, 9) + bit_addr_byte_num
+        sfr_bit_addr_byte_index  = BitVecVal(128, 9) + bit_addr_byte_num
+        bit_addr_byte_index = If((Extract(7, 7, bit_addr) == BitVecVal(1,1)), 
+                                sfr_bit_addr_byte_index, 
+                                iram_bit_addr_byte_index)
+        bit_addr_byte = reg_selector(255, bit_addr_byte_index, 9)
+        bit_addr_bit  = (If(bit_addr_bit_num == BitVecVal(0, 3), Extract(0, 0, bit_addr_byte),
+                            If(bit_addr_bit_num == BitVecVal(1, 3), Extract(1, 1, bit_addr_byte),
+                                If(bit_addr_bit_num == BitVecVal(2, 3), Extract(2, 2, bit_addr_byte),
+                                    If(bit_addr_bit_num == BitVecVal(3, 3), Extract(3, 3, bit_addr_byte),
+                                        If(bit_addr_bit_num == BitVecVal(4, 3), Extract(4, 4, bit_addr_byte),
+                                            If(bit_addr_bit_num == BitVecVal(5, 3), Extract(5, 5, bit_addr_byte),
+                                                If(bit_addr_bit_num == BitVecVal(6, 3), Extract(6, 6, bit_addr_byte),
+                                                    Extract(7, 7, bit_addr_byte))))))))) == BitVecVal(1, 1)
+
+
+        carry_bit = (Extract(7, 7, PSW) == BitVecVal(1, 1))
+        zero_bit  = (Extract(1, 1, PSW) == BitVecVal(1, 1))
+
+        jb, self.jb_bits = CreateTCAM(op0, prefix+'_jb', 2)
+        jc, self.jc_bits = CreateTCAM(op0, prefix+'_jc', 1)
+        jz, self.jz_bits = CreateTCAM(op0, prefix+'_jz', 1)
+        self.sel_jcond = Or(jb, jc, jz)
+        cond_bit = If(jb, bit_addr_bit, 
+                        If(jc, carry_bit, 
+                            zero_bit))
+        jcond_invert, self.jcond_invert_bits = CreateTCAM(op0, prefix+'_jb', 3)
+        jcondtaken = And(Xor(cond_bit, jcond_invert), self.sel_jcond) # conditional branch and match.
+        jb_pc = If(jcondtaken, rpc2, pc_p3)
+        jcz_pc = If(jcondtaken, rpc1, pc_p2)
+        jcond_pc = If(jb, jb_pc, jcz_pc)
+
+        self.sel_jmp_pc, self.sel_jmp_bits   = CreateTCAM(op0, prefix+'_sel_jmp_pc', 1)
+        self.sel_ajmp_pc, self.sel_ajmp_bits = CreateTCAM(op0, prefix+'_sel_ajmp_pc', 1)
+        self.sel_sjmp_pc, self.sel_sjmp_bits = CreateTCAM(op0, prefix+'_sel_sjmp_c', 1)
+        self.sel_ljmp_pc, self.sel_ljmp_bits = CreateTCAM(op0, prefix+'_sel_ljmp_pc', 1)
+        self.sel_ret_pc, self.sel_ret_bits   = CreateTCAM(op0, prefix+'_sel_ret_pc', 1)
+        self.sel_pcp1, self.sel_pcp1_bits    = CreateTCAM(op0, prefix+'_sel_pcp1', 4)
+        self.sel_pcp2, self.sel_pcp2_bits    = CreateTCAM(op0, prefix+'_sel_pcp2', 4)
+        self.sel_pcp3, self.sel_pcp3_bits    = CreateTCAM(op0, prefix+'_sel_pcp3', 4)
+
+        new_pc = If(self.sel_pcp1, pc_p1,
+                    If(self.sel_pcp2, pc_p2,
+                        If(self.sel_pcp3, pc_p3,
+                            If(self.sel_ajmp_pc, ajmp_pc,
+                                If(self.sel_sjmp_pc, sjmp_pc,
+                                    If(self.sel_ljmp_pc, ljmp_pc,
+                                        If(self.sel_ret_pc, ret_pc,
+                                            If(self.sel_jcond, jcond_pc,
+                                            jmp_pc))))))))
 
         return new_pc
 
+    def exclusive_sels(self):
+        sels = [
+            self.sel_jmp_pc, self.sel_ajmp_pc, self.sel_sjmp_pc, self.sel_ljmp_pc,
+            self.sel_ret_pc, self.sel_pcp1, self.sel_pcp2, self.sel_pcp3
+        ]
+        terms = []
+        for i in xrange(len(sels)):
+            s1 = sels[i]
+            for j in xrange(i):
+                s2 = sels[j]
+                terms.append(Not(And(s1, s2)))
+        return And(*terms)
+        
     def print_solution(self, m):
         printTCAM(m, 'pc_plus_1  ', self.sel_pcp1_bits)
         printTCAM(m, 'pc_plus_2  ', self.sel_pcp2_bits)
         printTCAM(m, 'pc_plus_3  ', self.sel_pcp3_bits)
         printTCAM(m, 'ajmp       ', self.sel_ajmp_bits)
-        printTCAM(m, 'ljmp       ', self.sel_abs_bits)
+        printTCAM(m, 'sjmp       ', self.sel_sjmp_bits)
+        printTCAM(m, 'ljmp       ', self.sel_ljmp_bits)
         printTCAM(m, 'ret        ', self.sel_ret_bits)
+        printTCAM(m, 'jb         ', self.jb_bits)
+        printTCAM(m, 'jc         ', self.jc_bits)
+        printTCAM(m, 'jz         ', self.jz_bits)
+        printTCAM(m, 'jcond_inv  ', self.jcond_invert_bits)
         printTCAM(m, 'jmp        ', self.sel_jmp_bits)
 
 def add_cnsts(S, pc, pc_val, opcode, opcode_val, regs, regs_val, new_pc, new_pc_val):
@@ -203,8 +260,7 @@ def synthesizePC():
     S.add(y == (new_pc1 != new_pc2))
 
     op0_lo = Extract(3, 0, opcode)
-    S.add(Or(op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
-    # S.add(op0_lo == BitVecVal(1, 4))
+    S.add(Or(op0_lo == BitVecVal(0, 4), op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
 
     citer = 0
     while S.check(y) == sat:
@@ -225,6 +281,7 @@ def synthesizePC():
         citer += 1
 
     print 'UNSAT after %d iterations.' % citer
+    # S.add(s51a.exclusive_sels())
     assert S.check(Not(y)) == sat
     s51a.print_solution(S.model())
 
