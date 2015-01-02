@@ -95,6 +95,21 @@ def printTCAM(m, label, tcam):
         ss.append(s)
     print label, ':', (' + '.join(ss))
 
+def evalTCAM(m, value, tcam):
+    "Evaluate whether value matches the model m for the TCAM."
+    for (ms, ds) in tcam:
+        match = True
+        for i in xrange(ms.size()):
+            if getBit(m, ds, i) == 0:
+                b_tcam = getBit(m, ms, i)
+                b_value = (value & ( 1 << i)) != 0
+                if b_value != b_tcam:
+                    match = False
+                    break
+        if match:
+            return True
+    return False
+
 class Syn51(object):
     def __init__(self):
         pass
@@ -229,6 +244,52 @@ class Syn51(object):
         printTCAM(m, 'jcond_inv  ', self.jcond_invert_bits)
         printTCAM(m, 'jmp        ', self.sel_jmp_bits)
 
+    def print_table(self, cols, m):
+        tcams = [
+            ('pc_plus_1  ', self.sel_pcp1_bits),
+            ('pc_plus_2  ', self.sel_pcp2_bits),
+            ('pc_plus_3  ', self.sel_pcp3_bits),
+            ('ajmp       ', self.sel_ajmp_bits),
+            ('sjmp       ', self.sel_sjmp_bits),
+            ('ljmp       ', self.sel_ljmp_bits),
+            ('ret        ', self.sel_ret_bits),
+            ('jb         ', self.jb_bits),
+            ('jc         ', self.jc_bits),
+            ('jz         ', self.jz_bits),
+            ('jcond_inv  ', self.jcond_invert_bits),
+            ('jmp        ', self.sel_jmp_bits),
+        ]
+        def opResult(opcode):
+            if evalTCAM(m, opcode, self.sel_pcp1_bits):
+                return 'PC+1'
+            if evalTCAM(m, opcode, self.sel_pcp2_bits):
+                return 'PC+2'
+            if evalTCAM(m, opcode, self.sel_pcp3_bits):
+                return 'PC+3'
+            if evalTCAM(m, opcode, self.sel_ajmp_bits):
+                return 'AJMP'
+            if evalTCAM(m, opcode, self.sel_sjmp_bits):
+                return 'SJMP'
+            if evalTCAM(m, opcode, self.sel_ljmp_bits):
+                return 'LJMP'
+            if evalTCAM(m, opcode, self.sel_ret_bits):
+                return 'RET' 
+
+            cond_invert = evalTCAM(m, opcode, self.jcond_invert_bits)
+            if evalTCAM(m, opcode, self.jb_bits):
+                return 'JNB' if cond_invert else 'JB'
+            if evalTCAM(m, opcode, self.jc_bits):
+                return 'JNC' if cond_invert else 'JC'
+            if evalTCAM(m, opcode, self.jz_bits):
+                return 'JNZ' if cond_invert else 'JZ'
+            return 'JMP'
+
+        for r in xrange(16):
+            for c in cols:
+                opcode = (r << 4) | c
+                print '%4s'% opResult(opcode), 
+            print
+
 def add_cnsts(S, pc, pc_val, opcode, opcode_val, regs, regs_val, new_pc, new_pc_val):
     subs = [
         (pc, BitVecVal(pc_val, 16)),
@@ -260,7 +321,10 @@ def synthesizePC():
     S.add(y == (new_pc1 != new_pc2))
 
     op0_lo = Extract(3, 0, opcode)
-    S.add(Or(op0_lo == BitVecVal(0, 4), op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
+    # S.add(Or(op0_lo == BitVecVal(0, 4), op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
+    S.add(Or(op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
+    nibbles = [1,2,3]
+    S.add(Or(*[op0_lo == BitVecVal(ni, 4) for ni in nibbles]))
 
     citer = 0
     while S.check(y) == sat:
@@ -284,6 +348,7 @@ def synthesizePC():
     # S.add(s51a.exclusive_sels())
     assert S.check(Not(y)) == sat
     s51a.print_solution(S.model())
+    s51a.print_table(nibbles, S.model())
 
 if __name__ == '__main__':
     synthesizePC()
