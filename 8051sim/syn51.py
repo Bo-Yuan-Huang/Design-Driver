@@ -161,15 +161,13 @@ class Syn51(object):
 
         # compute the bit being addressed.
         bit_addr = op1
-        bit_addr_byte_num = Concat(BitVecVal(0, 5), Extract(6, 3, bit_addr))
         bit_addr_bit_num = Extract(2, 0, bit_addr)
-
-        iram_bit_addr_byte_index =  BitVecVal(32, 9) + bit_addr_byte_num
-        sfr_bit_addr_byte_index  = BitVecVal(128, 9) + bit_addr_byte_num
+        iram_bit_addr_byte_index =  BitVecVal(32, 9) + Concat(BitVecVal(0, 5), Extract(6, 3, bit_addr))
+        sfr_bit_addr_byte_index  = BitVecVal(128, 9) + Concat(BitVecVal(0, 1), Extract(7, 3, bit_addr), BitVecVal(0, 3))
         bit_addr_byte_index = If((Extract(7, 7, bit_addr) == BitVecVal(1,1)), 
                                 sfr_bit_addr_byte_index, 
                                 iram_bit_addr_byte_index)
-        bit_addr_byte = reg_selector(255, bit_addr_byte_index, 9)
+        bit_addr_byte = reg_selector(383, bit_addr_byte_index, 9)
         bit_addr_bit  = (If(bit_addr_bit_num == BitVecVal(0, 3), Extract(0, 0, bit_addr_byte),
                             If(bit_addr_bit_num == BitVecVal(1, 3), Extract(1, 1, bit_addr_byte),
                                 If(bit_addr_bit_num == BitVecVal(2, 3), Extract(2, 2, bit_addr_byte),
@@ -181,7 +179,7 @@ class Syn51(object):
 
 
         carry_bit = (Extract(7, 7, PSW) == BitVecVal(1, 1))
-        zero_bit  = (Extract(1, 1, PSW) == BitVecVal(1, 1))
+        zero_bit  = (ACC == BitVecVal(0, 8))
 
         jb, self.jb_bits = CreateTCAM(op0, prefix+'_jb', 2)
         jc, self.jc_bits = CreateTCAM(op0, prefix+'_jc', 1)
@@ -190,7 +188,7 @@ class Syn51(object):
         cond_bit = If(jb, bit_addr_bit, 
                         If(jc, carry_bit, 
                             zero_bit))
-        jcond_invert, self.jcond_invert_bits = CreateTCAM(op0, prefix+'_jb', 3)
+        jcond_invert, self.jcond_invert_bits = CreateTCAM(op0, prefix+'_jcond_invert', 3)
         jcondtaken = And(Xor(cond_bit, jcond_invert), self.sel_jcond) # conditional branch and match.
         jb_pc = If(jcondtaken, rpc2, pc_p3)
         jcz_pc = If(jcondtaken, rpc1, pc_p2)
@@ -244,7 +242,7 @@ class Syn51(object):
         printTCAM(m, 'jcond_inv  ', self.jcond_invert_bits)
         printTCAM(m, 'jmp        ', self.sel_jmp_bits)
 
-    def print_table(self, cols, m):
+    def print_table(self, rows, cols, m):
         tcams = [
             ('pc_plus_1  ', self.sel_pcp1_bits),
             ('pc_plus_2  ', self.sel_pcp2_bits),
@@ -284,10 +282,10 @@ class Syn51(object):
                 return 'JNZ' if cond_invert else 'JZ'
             return 'JMP'
 
-        for r in xrange(16):
+        for r in rows:
             for c in cols:
                 opcode = (r << 4) | c
-                print '%4s'% opResult(opcode), 
+                print '%-4s'% opResult(opcode), 
             print
 
 def add_cnsts(S, pc, pc_val, opcode, opcode_val, regs, regs_val, new_pc, new_pc_val):
@@ -321,10 +319,13 @@ def synthesizePC():
     S.add(y == (new_pc1 != new_pc2))
 
     op0_lo = Extract(3, 0, opcode)
+    op0_hi = Extract(7, 4, opcode)
     # S.add(Or(op0_lo == BitVecVal(0, 4), op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
-    S.add(Or(op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
-    nibbles = [1,2,3]
-    S.add(Or(*[op0_lo == BitVecVal(ni, 4) for ni in nibbles]))
+    # S.add(Or(op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
+    cols = [0,1,2,3]
+    rows = xrange(16)
+    S.add(Or(*[op0_lo == BitVecVal(ni, 4) for ni in cols]))
+    S.add(Or(*[op0_hi == BitVecVal(ni, 4) for ni in rows]))
 
     citer = 0
     while S.check(y) == sat:
@@ -348,7 +349,7 @@ def synthesizePC():
     # S.add(s51a.exclusive_sels())
     assert S.check(Not(y)) == sat
     s51a.print_solution(S.model())
-    s51a.print_table(nibbles, S.model())
+    s51a.print_table(rows, cols, S.model())
 
 if __name__ == '__main__':
     synthesizePC()
