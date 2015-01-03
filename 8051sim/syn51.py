@@ -119,11 +119,14 @@ class Syn51(object):
         op1 = Extract(15, 8,  opcode)
         op2 = Extract(23, 16, opcode)
 
+        # PC + {1,2,3}
         pc_p1 = pc + BitVecVal(1, 16)
         pc_p2 = pc + BitVecVal(2, 16)
         pc_p3 = pc + BitVecVal(3, 16)
 
+        # absolute jump target.
         ajmp_pc = Concat(Extract(15, 11, pc_p2), Extract(7, 5, op0), op1)
+        # relative jump offsets (taken from either second or third byte of instruction.)
         roffset1 = If(Extract(7, 7, op1) == BitVecVal(1, 1), 
                        Concat(BitVecVal(255, 8), op1),
                        Concat(BitVecVal(0, 8), op1))
@@ -132,23 +135,30 @@ class Syn51(object):
                        Concat(BitVecVal(0, 8), op2))
         rpc1 = pc_p2 + roffset1
         rpc2 = pc_p3 + roffset2
+        # short jump target.
         sjmp_pc = rpc1
+        # long (full 16b) jmp target
         ljmp_pc = Concat(op1, op2)
 
+        # useful registers.
         PSW   = regs[0x150]
-        Rbank = Extract(5, 4, PSW)
+        Rbank = Extract(5, 4, PSW)  # Current register bank.
         ACC   = regs[0x160]
         SP    = regs[0x101]
         SPm1  = SP - BitVecVal(1, 8)
         DPL   = regs[0x102]
         DPH   = regs[0x103]
         DPTR  = Concat(DPH, DPL)
-
         Rx = [If(Rbank == BitVecVal(0, 2), regs[i],
                 If(Rbank == BitVecVal(1, 2), regs[i+8],
                     If(Rbank == BitVecVal(2, 2), regs[i+16],
                         regs[i+24]))) for i in xrange(8)]
+
         def reg_selector(index, R, sz):
+            # Helper function that reads a particular index from the IRAM.
+            # index : the higest index of the possible location range.
+            # R     : R is the address of the location to be read.
+            # sz    : sz is the number of bits in R. (usually 8 or 9).
             if index == 0:
                 return regs[0]
             else:
@@ -156,8 +166,40 @@ class Syn51(object):
                             regs[index], 
                             reg_selector(index-1, R, sz))
 
-        ret_pc = Concat(reg_selector(255, SP, 8), reg_selector(255, SPm1, 8))
-        jmp_pc = DPTR + Concat(BitVecVal(0, 8), ACC)
+        # cjne
+
+        # where is the first source of cjne from?
+        cjne_src1_a, self.cjne_src1_a_bits = CreateTCAM(op0, prefix+'_cjne_src1_a', 1)
+        cjne_src1_at_r0, self.cjne_src1_at_r0_bits = CreateTCAM(op0, prefix+'_cjne_src1_at_r0', 1)
+        cjne_src1_at_r1, self.cjne_src1_at_r1_bits = CreateTCAM(op0, prefix+'_cjne_src1_at_r1', 1)
+        cjne_src1_r0, self.cjne_src1_r0_bits = CreateTCAM(op0, prefix+'_cjne_src1_r0', 1)
+        cjne_src1_r1, self.cjne_src1_r1_bits = CreateTCAM(op0, prefix+'_cjne_src1_r1', 1)
+        cjne_src1_r2, self.cjne_src1_r2_bits = CreateTCAM(op0, prefix+'_cjne_src1_r2', 1)
+        cjne_src1_r3, self.cjne_src1_r3_bits = CreateTCAM(op0, prefix+'_cjne_src1_r3', 1)
+        cjne_src1_r4, self.cjne_src1_r4_bits = CreateTCAM(op0, prefix+'_cjne_src1_r4', 1)
+        cjne_src1_r5, self.cjne_src1_r5_bits = CreateTCAM(op0, prefix+'_cjne_src1_r5', 1)
+        cjne_src1_r6, self.cjne_src1_r6_bits = CreateTCAM(op0, prefix+'_cjne_src1_r6', 1)
+        # r7 not needed because it is the "default"
+
+        # actually get the src1 of cjne
+        cjne_src1 = If(cjne_src1_a, ACC, 
+                        If(cjne_src1_at_r0, reg_selector(255, Rx[0], 8),
+                            If(cjne_src1_at_r1, reg_selector(255, Rx[1], 8),
+                                If(cjne_src1_r0, Rx[0],
+                                    If(cjne_src1_r1, Rx[1],
+                                        If(cjne_src1_r2, Rx[2],
+                                            If(cjne_src1_r3, Rx[3],
+                                                If(cjne_src1_r4, Rx[4],
+                                                    If(cjne_src1_r5, Rx[5],
+                                                        If(cjne_src1_r6, Rx[6],
+                                                            Rx[7]))))))))))
+
+        # the second src of cjne is a lot simpler.
+        cjne_src2_iram, self.cjne_src2_iram_bits = CreateTCAM(op0, prefix+'_cjne_src2_iram', 3)
+        cjne_src2 = If(cjne_src2_iram, reg_selector(255, op1, 8), op1)
+        cjne_result = cjne_src1 != cjne_src2
+        cjne, self.cjne_bits = CreateTCAM(op0, prefix+'_cjne', 2)
+        cjne_pc = If(cjne_result, rpc2, pc_p3)
 
         # compute the bit being addressed.
         bit_addr = op1
@@ -167,6 +209,7 @@ class Syn51(object):
         bit_addr_byte_index = If((Extract(7, 7, bit_addr) == BitVecVal(1,1)), 
                                 sfr_bit_addr_byte_index, 
                                 iram_bit_addr_byte_index)
+        # finally read the byte.
         bit_addr_byte = reg_selector(383, bit_addr_byte_index, 9)
         bit_addr_bit  = (If(bit_addr_bit_num == BitVecVal(0, 3), Extract(0, 0, bit_addr_byte),
                             If(bit_addr_bit_num == BitVecVal(1, 3), Extract(1, 1, bit_addr_byte),
@@ -178,13 +221,15 @@ class Syn51(object):
                                                     Extract(7, 7, bit_addr_byte))))))))) == BitVecVal(1, 1)
 
 
+        # extract carry and zero flags (zero is not a real flat, need to comp ACC with 0.)
         carry_bit = (Extract(7, 7, PSW) == BitVecVal(1, 1))
         zero_bit  = (ACC == BitVecVal(0, 8))
 
+        # and finally compute the conditional jump targets.
         jb, self.jb_bits = CreateTCAM(op0, prefix+'_jb', 2)
         jc, self.jc_bits = CreateTCAM(op0, prefix+'_jc', 1)
         jz, self.jz_bits = CreateTCAM(op0, prefix+'_jz', 1)
-        self.sel_jcond = Or(jb, jc, jz)
+        self.sel_jcond = Or(jb, jc, jz, cjne)
         cond_bit = If(jb, bit_addr_bit, 
                         If(jc, carry_bit, 
                             zero_bit))
@@ -192,7 +237,13 @@ class Syn51(object):
         jcondtaken = And(Xor(cond_bit, jcond_invert), self.sel_jcond) # conditional branch and match.
         jb_pc = If(jcondtaken, rpc2, pc_p3)
         jcz_pc = If(jcondtaken, rpc1, pc_p2)
-        jcond_pc = If(jb, jb_pc, jcz_pc)
+        # conditional jump target.
+        jcond_pc = If(jb, jb_pc, If(cjne, cjne_pc, jcz_pc))
+
+        # return target.
+        ret_pc = Concat(reg_selector(255, SP, 8), reg_selector(255, SPm1, 8))
+        # jump target.
+        jmp_pc = DPTR + Concat(BitVecVal(0, 8), ACC)
 
         self.sel_jmp_pc, self.sel_jmp_bits   = CreateTCAM(op0, prefix+'_sel_jmp_pc', 1)
         self.sel_ajmp_pc, self.sel_ajmp_bits = CreateTCAM(op0, prefix+'_sel_ajmp_pc', 1)
@@ -243,20 +294,6 @@ class Syn51(object):
         printTCAM(m, 'jmp        ', self.sel_jmp_bits)
 
     def print_table(self, rows, cols, m):
-        tcams = [
-            ('pc_plus_1  ', self.sel_pcp1_bits),
-            ('pc_plus_2  ', self.sel_pcp2_bits),
-            ('pc_plus_3  ', self.sel_pcp3_bits),
-            ('ajmp       ', self.sel_ajmp_bits),
-            ('sjmp       ', self.sel_sjmp_bits),
-            ('ljmp       ', self.sel_ljmp_bits),
-            ('ret        ', self.sel_ret_bits),
-            ('jb         ', self.jb_bits),
-            ('jc         ', self.jc_bits),
-            ('jz         ', self.jz_bits),
-            ('jcond_inv  ', self.jcond_invert_bits),
-            ('jmp        ', self.sel_jmp_bits),
-        ]
         def opResult(opcode):
             if evalTCAM(m, opcode, self.sel_pcp1_bits):
                 return 'PC+1'
@@ -280,6 +317,8 @@ class Syn51(object):
                 return 'JNC' if cond_invert else 'JC'
             if evalTCAM(m, opcode, self.jz_bits):
                 return 'JNZ' if cond_invert else 'JZ'
+            if evalTCAM(m, opcode, self.cjne_bits):
+                return 'CJNE'
             return 'JMP'
 
         for r in rows:
@@ -322,7 +361,7 @@ def synthesizePC():
     op0_hi = Extract(7, 4, opcode)
     # S.add(Or(op0_lo == BitVecVal(0, 4), op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
     # S.add(Or(op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
-    cols = [0,1,2,3]
+    cols = [0,1,2,3,4]
     rows = xrange(16)
     S.add(Or(*[op0_lo == BitVecVal(ni, 4) for ni in cols]))
     S.add(Or(*[op0_hi == BitVecVal(ni, 4) for ni in rows]))
