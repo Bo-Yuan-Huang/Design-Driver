@@ -198,8 +198,8 @@ class Syn51(object):
         cjne_src2_iram, self.cjne_src2_iram_bits = CreateTCAM(op0, prefix+'_cjne_src2_iram', 3)
         cjne_src2 = If(cjne_src2_iram, reg_selector(255, op1, 8), op1)
         cjne_result = cjne_src1 != cjne_src2
-        cjne, self.cjne_bits = CreateTCAM(op0, prefix+'_cjne', 2)
         cjne_pc = If(cjne_result, rpc2, pc_p3)
+        cjne, self.cjne_bits = CreateTCAM(op0, prefix+'_cjne', 2)
 
         # compute the bit being addressed.
         bit_addr = op1
@@ -250,9 +250,9 @@ class Syn51(object):
         self.sel_sjmp_pc, self.sel_sjmp_bits = CreateTCAM(op0, prefix+'_sel_sjmp_c', 1)
         self.sel_ljmp_pc, self.sel_ljmp_bits = CreateTCAM(op0, prefix+'_sel_ljmp_pc', 1)
         self.sel_ret_pc, self.sel_ret_bits   = CreateTCAM(op0, prefix+'_sel_ret_pc', 1)
-        self.sel_pcp1, self.sel_pcp1_bits    = CreateTCAM(op0, prefix+'_sel_pcp1', 4)
-        self.sel_pcp2, self.sel_pcp2_bits    = CreateTCAM(op0, prefix+'_sel_pcp2', 4)
-        self.sel_pcp3, self.sel_pcp3_bits    = CreateTCAM(op0, prefix+'_sel_pcp3', 4)
+        self.sel_pcp1, self.sel_pcp1_bits    = CreateTCAM(op0, prefix+'_sel_pcp1', 6)
+        self.sel_pcp2, self.sel_pcp2_bits    = CreateTCAM(op0, prefix+'_sel_pcp2', 6)
+        self.sel_pcp3, self.sel_pcp3_bits    = CreateTCAM(op0, prefix+'_sel_pcp3', 6)
 
         new_pc = If(self.sel_pcp1, pc_p1,
                     If(self.sel_pcp2, pc_p2,
