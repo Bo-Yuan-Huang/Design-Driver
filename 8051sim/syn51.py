@@ -142,7 +142,7 @@ class Syn51(object):
 
         # useful registers.
         PSW   = regs[0x150]
-        Rbank = Extract(5, 4, PSW)  # Current register bank.
+        Rbank = Extract(4, 3, PSW)  # Current register bank.
         ACC   = regs[0x160]
         SP    = regs[0x101]
         SPm1  = SP - BitVecVal(1, 8)
@@ -194,12 +194,39 @@ class Syn51(object):
                                                         If(cjne_src1_r6, Rx[6],
                                                             Rx[7]))))))))))
 
+        # IRAM addr for both CJNE and DJNZ
+        cjne_djnz_iram_addr = Concat(BitVecVal(0,1), op1) + If(Extract(7,7,op1) == BitVecVal(1,1), BitVecVal(0x80, 9), BitVecVal(0, 9))
         # the second src of cjne is a lot simpler.
-        cjne_src2_iram, self.cjne_src2_iram_bits = CreateTCAM(op0, prefix+'_cjne_src2_iram', 3)
-        cjne_src2 = If(cjne_src2_iram, reg_selector(255, op1, 8), op1)
+        cjne_src2_iram, self.cjne_src2_iram_bits = CreateTCAM(op0, prefix+'_cjne_src2_iram', 1)
+        cjne_src2 = If(cjne_src2_iram, reg_selector(383, cjne_djnz_iram_addr, 9), op1)
         cjne_result = cjne_src1 != cjne_src2
         cjne_pc = If(cjne_result, rpc2, pc_p3)
         cjne, self.cjne_bits = CreateTCAM(op0, prefix+'_cjne', 2)
+
+        # compute the djnz src.
+        djnz_r0_src, self.djnz_r0_bits = CreateTCAM(op0, prefix+'_djnz_r0_src', 1)
+        djnz_r1_src, self.djnz_r1_bits = CreateTCAM(op0, prefix+'_djnz_r1_src', 1)
+        djnz_r2_src, self.djnz_r2_bits = CreateTCAM(op0, prefix+'_djnz_r2_src', 1)
+        djnz_r3_src, self.djnz_r3_bits = CreateTCAM(op0, prefix+'_djnz_r3_src', 1)
+        djnz_r4_src, self.djnz_r4_bits = CreateTCAM(op0, prefix+'_djnz_r4_src', 1)
+        djnz_r5_src, self.djnz_r5_bits = CreateTCAM(op0, prefix+'_djnz_r5_src', 1)
+        djnz_r6_src, self.djnz_r6_bits = CreateTCAM(op0, prefix+'_djnz_r6_src', 1)
+        djnz_r7_src, self.djnz_r7_bits = CreateTCAM(op0, prefix+'_djnz_r7_src', 1)
+        djnz_iram_sel = Not(Or(djnz_r0_src, djnz_r1_src, djnz_r2_src, djnz_r3_src, djnz_r4_src, djnz_r5_src, djnz_r6_src, djnz_r7_src))
+        djnz_src = If(djnz_r0_src, Rx[0],
+                        If(djnz_r1_src, Rx[1],
+                            If(djnz_r2_src, Rx[2],
+                                If(djnz_r3_src, Rx[3],
+                                    If(djnz_r4_src, Rx[4],
+                                        If(djnz_r5_src, Rx[5],
+                                            If(djnz_r6_src, Rx[6],
+                                                If(djnz_r7_src, Rx[7],
+                                                    reg_selector(383, cjne_djnz_iram_addr, 9)))))))))
+        djnz_result = djnz_src != BitVecVal(1, 8)
+        djnz_pc_iram = If(djnz_result, rpc2, pc_p3)
+        djnz_pc_reg  = If(djnz_result, rpc1, pc_p2)
+        djnz_pc = If(djnz_iram_sel, djnz_pc_iram, djnz_pc_reg)
+        djnz, self.djnz_bits = CreateTCAM(op0, prefix+'_djnz', 2)
 
         # compute the bit being addressed.
         bit_addr = op1
@@ -238,7 +265,7 @@ class Syn51(object):
         jb_pc = If(jcondtaken, rpc2, pc_p3)
         jcz_pc = If(jcondtaken, rpc1, pc_p2)
         # conditional jump target.
-        jcond_pc = If(jb, jb_pc, If(cjne, cjne_pc, jcz_pc))
+        jcond_pc = If(jb, jb_pc, If(cjne, cjne_pc, If(djnz, djnz_pc, jcz_pc)))
 
         # return target.
         ret_pc = Concat(reg_selector(255, SP, 8), reg_selector(255, SPm1, 8))
@@ -293,7 +320,7 @@ class Syn51(object):
         printTCAM(m, 'jcond_inv  ', self.jcond_invert_bits)
         printTCAM(m, 'jmp        ', self.sel_jmp_bits)
 
-    def print_table(self, rows, cols, m):
+    def get_table_entry(self, r, c, m):
         def opResult(opcode):
             if evalTCAM(m, opcode, self.sel_pcp1_bits):
                 return 'PC+1'
@@ -313,18 +340,24 @@ class Syn51(object):
             cond_invert = evalTCAM(m, opcode, self.jcond_invert_bits)
             if evalTCAM(m, opcode, self.jb_bits):
                 return 'JNB' if cond_invert else 'JB'
+            if evalTCAM(m, opcode, self.cjne_bits):
+                return 'CJNE'
+            if evalTCAM(m, opcode, self.djnz_bits):
+                return 'DJNZ'
             if evalTCAM(m, opcode, self.jc_bits):
                 return 'JNC' if cond_invert else 'JC'
             if evalTCAM(m, opcode, self.jz_bits):
                 return 'JNZ' if cond_invert else 'JZ'
-            if evalTCAM(m, opcode, self.cjne_bits):
-                return 'CJNE'
             return 'JMP'
 
+        
+        opcode = (r << 4) | c
+        return '%-4s'% opResult(opcode)
+
+    def print_table(self, rows, cols, m):
         for r in rows:
             for c in cols:
-                opcode = (r << 4) | c
-                print '%-4s'% opResult(opcode), 
+                print self.get_table_entry(r, c, m),
             print
 
 def add_cnsts(S, pc, pc_val, opcode, opcode_val, regs, regs_val, new_pc, new_pc_val):
@@ -340,7 +373,7 @@ def add_cnsts(S, pc, pc_val, opcode, opcode_val, regs, regs_val, new_pc, new_pc_
     new_pc_prime = substitute(new_pc, subs)
     S.add(new_pc_prime == BitVecVal(new_pc_val, 16)) 
 
-def synthesizePC():
+def synthesizePC(rows, cols):
     # create solver.
     S = Solver()
     # input variables.
@@ -361,8 +394,6 @@ def synthesizePC():
     op0_hi = Extract(7, 4, opcode)
     # S.add(Or(op0_lo == BitVecVal(0, 4), op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
     # S.add(Or(op0_lo == BitVecVal(1, 4), op0_lo == BitVecVal(2, 4), op0_lo == BitVecVal(3, 4)))
-    cols = [0,1,2,3,4]
-    rows = xrange(16)
     S.add(Or(*[op0_lo == BitVecVal(ni, 4) for ni in cols]))
     S.add(Or(*[op0_hi == BitVecVal(ni, 4) for ni in rows]))
 
@@ -383,12 +414,23 @@ def synthesizePC():
         add_cnsts(S, pc, pc_val, opcode, opcode_val, regs, regs_val, new_pc2, new_pc_val)
 
         citer += 1
-
     print 'UNSAT after %d iterations.' % citer
+
     # S.add(s51a.exclusive_sels())
     assert S.check(Not(y)) == sat
-    s51a.print_solution(S.model())
-    s51a.print_table(rows, cols, S.model())
+    #s51a.print_solution(S.model())
+    #s51a.print_table(rows, cols, S.model())
+    return s51a, S.model()
 
 if __name__ == '__main__':
-    synthesizePC()
+    rstrs = []
+    for r in xrange(16):
+        cs = xrange(16)
+        s, m = synthesizePC([r], cs)
+        rstrs.append([s.get_table_entry(r, ci, m) for ci in cs])
+
+    for r in rstrs:
+        print ' '.join(r)
+
+
+    # s.print_table(rs, cs, m)
