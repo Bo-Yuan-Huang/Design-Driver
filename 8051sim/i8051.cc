@@ -5104,9 +5104,9 @@ I8051::InitState(const char* filename) {
     int i=0;
     while(fin) {
         RAM[i++] = ReadByte(fin);
-        if(i == RamSize) break;
+        if(i == (int) RamSize) break;
     }
-    if(i != RamSize) {
+    if(i != (int) RamSize) {
         std::cerr << "Error! File did not have " << RamSize<< " bytes for the RAM. Number of bytes in file was " <<  
         i << "." << std::endl;
         exit(1);
