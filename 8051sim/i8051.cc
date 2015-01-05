@@ -5147,7 +5147,7 @@ I8051::ReadByte(std::istream& in)
 {
     int value;
     in >> std::hex >> value;
-    assert(value >=0 && value <= 256);
+    assert(value >=0 && value < 256);
     return value;
 }
 
@@ -5441,7 +5441,7 @@ I8051::Decode(const unsigned char IR)
 // Set single bit of the given byte at the given location.
 
 void 
-I8051::SetBit(char &thisByte, unsigned char thisBit) 
+I8051::SetBit(unsigned char &thisByte, unsigned char thisBit) 
 {    
     thisByte |= (0x01 << thisBit);
 }
@@ -5451,7 +5451,7 @@ I8051::SetBit(char &thisByte, unsigned char thisBit)
 // Clear single bit of the given byte at the given location.
 
 void 
-I8051::ClearBit(char &thisByte, unsigned char thisBit) 
+I8051::ClearBit(unsigned char &thisByte, unsigned char thisBit) 
 {
     thisByte &= ~(0x01 << thisBit);
 }
@@ -5461,7 +5461,7 @@ I8051::ClearBit(char &thisByte, unsigned char thisBit)
 // Return value of bit as 0 or 1.
 
 unsigned char
-I8051::GetBit(char thisByte, unsigned char thisBit) 
+I8051::GetBit(unsigned char thisByte, unsigned char thisBit) 
 {
     return( (thisByte & (0x01 << thisBit)) >> thisBit);
 }
