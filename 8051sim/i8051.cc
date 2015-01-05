@@ -78,13 +78,6 @@ I8051::SynSim(const char* filename)
     bool borrow6;
     bool borrow7;
 
-#ifdef PORTS
-    char lastP0 = 0xFF;
-    char lastP1 = 0xFF;
-    char lastP2 = 0xFF;
-    char lastP3 = 0xFF;
-#endif
-    
     // initialize 8051 internal RAM
     InitState(filename);
     
@@ -143,7 +136,7 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            RAM[ACC] &= RAM[RAM[GetRegisterBank()+regNum]];
+            RAM[ACC] &= RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
             cycleCount += 12;
             break;
             
@@ -296,7 +289,7 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            RAM[ACC] |= RAM[RAM[GetRegisterBank()+regNum]];
+            RAM[ACC] |= RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
             cycleCount += 12;
             break;
         
@@ -448,7 +441,7 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            RAM[ACC] ^= RAM[RAM[GetRegisterBank()+regNum]];
+            RAM[ACC] ^= RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
             cycleCount += 12;
             break;
         
@@ -788,8 +781,8 @@ I8051::SynSim(const char* filename)
             #endif
             regNum = IR & 0x01;
             temp = RAM[ACC];
-            RAM[ACC] = RAM[RAM[GetRegisterBank()+regNum]];
-            RAM[RAM[GetRegisterBank()+regNum]] = temp;
+            RAM[ACC] = RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
+            RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = temp;
             cycleCount += 12;
             break;
             
@@ -805,9 +798,9 @@ I8051::SynSim(const char* filename)
             regNum = IR & 0x01;
             temp = RAM[ACC] & 0x0F;
             RAM[ACC] = (RAM[ACC] & 0xF0) | 
-                (RAM[RAM[GetRegisterBank()+regNum]] & 0x0F);
-            RAM[RAM[GetRegisterBank()+regNum]] = 
-                (RAM[RAM[GetRegisterBank()+regNum]] & 0xF0 ) | temp;
+                (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x0F);
+            RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = 
+                (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0xF0 ) | temp;
             cycleCount += 12;
             break;
             
@@ -999,7 +992,7 @@ I8051::SynSim(const char* filename)
             regNum = IR & 0x01;
             IR = ROM[PC++];
             directAddr = IR;
-            if( RAM[RAM[GetRegisterBank()+regNum]] != (char)IR ) {
+            if( RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] != (char)IR ) {
                 IR = ROM[PC++];
                 PC += (char)IR;
             }
@@ -1007,7 +1000,7 @@ I8051::SynSim(const char* filename)
                 PC++;
             }
             
-            if( (unsigned char)RAM[RAM[GetRegisterBank()+regNum]] < 
+            if( (unsigned char)RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] < 
                 (unsigned char)directAddr ) {
                 SetBit(RAM[PSW], CY);
             }
@@ -1068,7 +1061,7 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            RAM[RAM[GetRegisterBank()+regNum]]--;
+            RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]]--;
             cycleCount += 12;
             break;
             
@@ -1146,7 +1139,7 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            RAM[RAM[GetRegisterBank()+regNum]]++;
+            RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]]++;
             cycleCount += 12;
             break;
             
@@ -1560,7 +1553,7 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            RAM[ACC] = RAM[RAM[GetRegisterBank()+regNum]];
+            RAM[ACC] = RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
             cycleCount += 12;
             break;
             
@@ -1689,7 +1682,7 @@ I8051::SynSim(const char* filename)
             regNum = IR & 0x01;
             IR = ROM[PC++];
             RAM[(IR <128) ? IR : (IR+128)] = 
-                RAM[RAM[GetRegisterBank()+regNum]];
+                RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
             cycleCount += 24;
             break;
             
@@ -1721,7 +1714,7 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            RAM[RAM[GetRegisterBank()+regNum]] = RAM[ACC];
+            RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = RAM[ACC];
             cycleCount += 12;
             break;
             
@@ -1737,7 +1730,7 @@ I8051::SynSim(const char* filename)
             #endif
             regNum = IR & 0x01;
             IR = ROM[PC++];
-            RAM[RAM[GetRegisterBank()+regNum]] = 
+            RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = 
                 RAM[(IR<128) ? IR : (IR+128)];
             cycleCount += 24;
             break;
@@ -1755,7 +1748,7 @@ I8051::SynSim(const char* filename)
             #endif
             regNum = IR & 0x01;
             IR = ROM[PC++];;
-            RAM[RAM[GetRegisterBank()+regNum]] = (char)IR;
+            RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = (char)IR;
             cycleCount += 12;
             break;
             
@@ -1863,7 +1856,7 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            RAM[ACC] = XRAM[RAM[GetRegisterBank()+regNum]];
+            RAM[ACC] = XRAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
             cycleCount += 24;
             break;
 
@@ -1890,7 +1883,7 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            XRAM[RAM[GetRegisterBank()+regNum]] = RAM[ACC];
+            XRAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = RAM[ACC];
             cycleCount += 24;
             break;
           
@@ -2029,18 +2022,18 @@ I8051::SynSim(const char* filename)
             #ifdef DEBUG
             #ifdef DETAIL
                 os << "\t" << "B = ";
-                PrintHex(RAM[RAM[GetRegisterBank()+regNum]], &os); 
+                PrintHex(RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]], &os); 
                 os << std::endl;
             #endif
             #endif
             tempAdd = (RAM[ACC] & 0x0F) + 
-                (RAM[RAM[GetRegisterBank()+regNum]] & 0x0F);
+                (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x0F);
             if( (tempAdd & 0x0010) == 0x0010 ) carry3 = true;
             tempAdd += ((RAM[ACC] & 0x70) + 
-                (RAM[RAM[GetRegisterBank()+regNum]] & 0x70));
+                (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x70));
             if( (tempAdd & 0x0080) == 0x0080 ) carry6 = true;
             tempAdd += ((RAM[ACC] & 0x80) + 
-                (RAM[RAM[GetRegisterBank()+regNum]] & 0x80));
+                (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x80));
             if( (tempAdd & 0x0100) == 0x0100 ) carry7 = true;
             RAM[ACC] = tempAdd;
             if( carry3 ) SetBit(RAM[PSW], AC);
@@ -2210,14 +2203,14 @@ I8051::SynSim(const char* filename)
             carry7 = false;
             regNum = IR & 0x01;
             tempAdd = (RAM[ACC] & 0x0F) + 
-                (RAM[RAM[GetRegisterBank()+regNum]] & 0x0F) + 
+                (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x0F) + 
                 (char)GetBit(RAM[PSW], CY);
             if( (tempAdd & 0x0010) == 0x0010 ) carry3 = true;
             tempAdd += (RAM[ACC] & 0x70) + 
-                (RAM[RAM[GetRegisterBank()+regNum]] & 0x70);
+                (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x70);
             if( (tempAdd & 0x0080) == 0x0080 ) carry6 = true;
             tempAdd += (RAM[ACC] & 0x80) + 
-                (RAM[RAM[GetRegisterBank()+regNum]] & 0x80);
+                (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x80);
             if( (tempAdd & 0x0100) == 0x0100 ) carry7 = true;
             RAM[ACC] = (unsigned char)(tempAdd & 0x00FF);
             if( carry3 ) SetBit(RAM[PSW], AC);
@@ -2411,7 +2404,7 @@ I8051::SynSim(const char* filename)
             #ifdef DEBUG
             #ifdef DETAIL
                 os << "\t" << "B = ";
-                PrintHex(RAM[RAM[GetRegisterBank()+regNum]], &os); 
+                PrintHex(RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]], &os); 
                 os << std::endl;
                 os << "\t" << "C = ";
                 PrintHex(GetBit(RAM[PSW], CY), &os);
@@ -2419,22 +2412,22 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             if( (unsigned char)(RAM[ACC] & 0x0F) <
-                (unsigned char)((RAM[RAM[GetRegisterBank()+regNum]] & 0x0F) + 
+                (unsigned char)((RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x0F) + 
                  (char)GetBit(RAM[PSW], CY)) ) {
                 borrow3 = true;
             }
             if( (unsigned char)(RAM[ACC] & 0x7F) <
-                (unsigned char)((RAM[RAM[GetRegisterBank()+regNum]] & 0x7F) + 
+                (unsigned char)((RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x7F) + 
                  (char)GetBit(RAM[PSW], CY)) ) {
                 borrow6 = true;
             }
             if( (unsigned short)(unsigned char)RAM[ACC] <
-                ((unsigned short)(unsigned char)RAM[RAM[GetRegisterBank()+regNum]] + 
+                ((unsigned short)(unsigned char)RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] + 
                  (unsigned short)GetBit(RAM[PSW], CY)) ) {
                 borrow7 = true;
             }
             RAM[ACC] = (unsigned short)(unsigned char)RAM[ACC] - 
-                ((unsigned short)(unsigned char)RAM[RAM[GetRegisterBank()+regNum]] + 
+                ((unsigned short)(unsigned char)RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] + 
                  (unsigned short)GetBit(RAM[PSW], CY));
             if( borrow3 ) SetBit(RAM[PSW], AC);
             else ClearBit(RAM[PSW], AC);
@@ -2648,7 +2641,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    RAM[ACC] &= RAM[RAM[GetRegisterBank()+regNum]];
+                    RAM[ACC] &= RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
                     cycleCount += 12;
                     break;
                     
@@ -2801,7 +2794,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    RAM[ACC] |= RAM[RAM[GetRegisterBank()+regNum]];
+                    RAM[ACC] |= RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
                     cycleCount += 12;
                     break;
                 
@@ -2953,7 +2946,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    RAM[ACC] ^= RAM[RAM[GetRegisterBank()+regNum]];
+                    RAM[ACC] ^= RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
                     cycleCount += 12;
                     break;
                 
@@ -3293,8 +3286,8 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     regNum = IR & 0x01;
                     temp = RAM[ACC];
-                    RAM[ACC] = RAM[RAM[GetRegisterBank()+regNum]];
-                    RAM[RAM[GetRegisterBank()+regNum]] = temp;
+                    RAM[ACC] = RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
+                    RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = temp;
                     cycleCount += 12;
                     break;
                     
@@ -3310,9 +3303,9 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     regNum = IR & 0x01;
                     temp = RAM[ACC] & 0x0F;
                     RAM[ACC] = (RAM[ACC] & 0xF0) | 
-                        (RAM[RAM[GetRegisterBank()+regNum]] & 0x0F);
-                    RAM[RAM[GetRegisterBank()+regNum]] = 
-                        (RAM[RAM[GetRegisterBank()+regNum]] & 0xF0 ) | temp;
+                        (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x0F);
+                    RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = 
+                        (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0xF0 ) | temp;
                     cycleCount += 12;
                     break;
                     
@@ -3504,7 +3497,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     regNum = IR & 0x01;
                     IR = ROM[PC++];
                     directAddr = IR;
-                    if( RAM[RAM[GetRegisterBank()+regNum]] != (char)IR ) {
+                    if( RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] != (char)IR ) {
                         IR = ROM[PC++];
                         PC += (char)IR;
                     }
@@ -3512,7 +3505,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                         PC++;
                     }
                     
-                    if( (unsigned char)RAM[RAM[GetRegisterBank()+regNum]] < 
+                    if( (unsigned char)RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] < 
                         (unsigned char)directAddr ) {
                         SetBit(RAM[PSW], CY);
                     }
@@ -3573,7 +3566,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    RAM[RAM[GetRegisterBank()+regNum]]--;
+                    RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]]--;
                     cycleCount += 12;
                     break;
                     
@@ -3651,7 +3644,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    RAM[RAM[GetRegisterBank()+regNum]]++;
+                    RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]]++;
                     cycleCount += 12;
                     break;
                     
@@ -4065,7 +4058,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    RAM[ACC] = RAM[RAM[GetRegisterBank()+regNum]];
+                    RAM[ACC] = RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
                     cycleCount += 12;
                     break;
                     
@@ -4194,7 +4187,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     regNum = IR & 0x01;
                     IR = ROM[PC++];
                     RAM[(IR <128) ? IR : (IR+128)] = 
-                        RAM[RAM[GetRegisterBank()+regNum]];
+                        RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
                     cycleCount += 24;
                     break;
                     
@@ -4226,7 +4219,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    RAM[RAM[GetRegisterBank()+regNum]] = RAM[ACC];
+                    RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = RAM[ACC];
                     cycleCount += 12;
                     break;
                     
@@ -4242,7 +4235,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     regNum = IR & 0x01;
                     IR = ROM[PC++];
-                    RAM[RAM[GetRegisterBank()+regNum]] = 
+                    RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = 
                         RAM[(IR<128) ? IR : (IR+128)];
                     cycleCount += 24;
                     break;
@@ -4260,7 +4253,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     regNum = IR & 0x01;
                     IR = ROM[PC++];;
-                    RAM[RAM[GetRegisterBank()+regNum]] = (char)IR;
+                    RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = (char)IR;
                     cycleCount += 12;
                     break;
                     
@@ -4368,7 +4361,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    RAM[ACC] = XRAM[RAM[GetRegisterBank()+regNum]];
+                    RAM[ACC] = XRAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
                     cycleCount += 24;
                     break;
 
@@ -4395,7 +4388,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    XRAM[RAM[GetRegisterBank()+regNum]] = RAM[ACC];
+                    XRAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = RAM[ACC];
                     cycleCount += 24;
                     break;
                   
@@ -4534,18 +4527,18 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #ifdef DEBUG
                     #ifdef DETAIL
                         os << "\t" << "B = ";
-                        PrintHex(RAM[RAM[GetRegisterBank()+regNum]], &os); 
+                        PrintHex(RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]], &os); 
                         os << std::endl;
                     #endif
                     #endif
                     tempAdd = (RAM[ACC] & 0x0F) + 
-                        (RAM[RAM[GetRegisterBank()+regNum]] & 0x0F);
+                        (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x0F);
                     if( (tempAdd & 0x0010) == 0x0010 ) carry3 = true;
                     tempAdd += ((RAM[ACC] & 0x70) + 
-                        (RAM[RAM[GetRegisterBank()+regNum]] & 0x70));
+                        (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x70));
                     if( (tempAdd & 0x0080) == 0x0080 ) carry6 = true;
                     tempAdd += ((RAM[ACC] & 0x80) + 
-                        (RAM[RAM[GetRegisterBank()+regNum]] & 0x80));
+                        (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x80));
                     if( (tempAdd & 0x0100) == 0x0100 ) carry7 = true;
                     RAM[ACC] = tempAdd;
                     if( carry3 ) SetBit(RAM[PSW], AC);
@@ -4715,14 +4708,14 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     carry7 = false;
                     regNum = IR & 0x01;
                     tempAdd = (RAM[ACC] & 0x0F) + 
-                        (RAM[RAM[GetRegisterBank()+regNum]] & 0x0F) + 
+                        (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x0F) + 
                         (char)GetBit(RAM[PSW], CY);
                     if( (tempAdd & 0x0010) == 0x0010 ) carry3 = true;
                     tempAdd += (RAM[ACC] & 0x70) + 
-                        (RAM[RAM[GetRegisterBank()+regNum]] & 0x70);
+                        (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x70);
                     if( (tempAdd & 0x0080) == 0x0080 ) carry6 = true;
                     tempAdd += (RAM[ACC] & 0x80) + 
-                        (RAM[RAM[GetRegisterBank()+regNum]] & 0x80);
+                        (RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x80);
                     if( (tempAdd & 0x0100) == 0x0100 ) carry7 = true;
                     RAM[ACC] = (unsigned char)(tempAdd & 0x00FF);
                     if( carry3 ) SetBit(RAM[PSW], AC);
@@ -4916,7 +4909,7 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #ifdef DEBUG
                     #ifdef DETAIL
                         os << "\t" << "B = ";
-                        PrintHex(RAM[RAM[GetRegisterBank()+regNum]], &os); 
+                        PrintHex(RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]], &os); 
                         os << std::endl;
                         os << "\t" << "C = ";
                         PrintHex(GetBit(RAM[PSW], CY), &os);
@@ -4924,22 +4917,22 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     if( (unsigned char)(RAM[ACC] & 0x0F) <
-                        (unsigned char)((RAM[RAM[GetRegisterBank()+regNum]] & 0x0F) + 
+                        (unsigned char)((RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x0F) + 
                          (char)GetBit(RAM[PSW], CY)) ) {
                         borrow3 = true;
                     }
                     if( (unsigned char)(RAM[ACC] & 0x7F) <
-                        (unsigned char)((RAM[RAM[GetRegisterBank()+regNum]] & 0x7F) + 
+                        (unsigned char)((RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] & 0x7F) + 
                          (char)GetBit(RAM[PSW], CY)) ) {
                         borrow6 = true;
                     }
                     if( (unsigned short)(unsigned char)RAM[ACC] <
-                        ((unsigned short)(unsigned char)RAM[RAM[GetRegisterBank()+regNum]] + 
+                        ((unsigned short)(unsigned char)RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] + 
                          (unsigned short)GetBit(RAM[PSW], CY)) ) {
                         borrow7 = true;
                     }
                     RAM[ACC] = (unsigned short)(unsigned char)RAM[ACC] - 
-                        ((unsigned short)(unsigned char)RAM[RAM[GetRegisterBank()+regNum]] + 
+                        ((unsigned short)(unsigned char)RAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] + 
                          (unsigned short)GetBit(RAM[PSW], CY));
                     if( borrow3 ) SetBit(RAM[PSW], AC);
                     else ClearBit(RAM[PSW], AC);
@@ -5441,7 +5434,7 @@ I8051::Decode(const unsigned char IR)
 // Set single bit of the given byte at the given location.
 
 void 
-I8051::SetBit(unsigned char &thisByte, unsigned char thisBit) 
+I8051::SetBit(char &thisByte, unsigned char thisBit) 
 {    
     thisByte |= (0x01 << thisBit);
 }
@@ -5451,7 +5444,7 @@ I8051::SetBit(unsigned char &thisByte, unsigned char thisBit)
 // Clear single bit of the given byte at the given location.
 
 void 
-I8051::ClearBit(unsigned char &thisByte, unsigned char thisBit) 
+I8051::ClearBit(char &thisByte, unsigned char thisBit) 
 {
     thisByte &= ~(0x01 << thisBit);
 }
@@ -5461,7 +5454,7 @@ I8051::ClearBit(unsigned char &thisByte, unsigned char thisBit)
 // Return value of bit as 0 or 1.
 
 unsigned char
-I8051::GetBit(unsigned char thisByte, unsigned char thisBit) 
+I8051::GetBit(char thisByte, unsigned char thisBit) 
 {
     return( (thisByte & (0x01 << thisBit)) >> thisBit);
 }

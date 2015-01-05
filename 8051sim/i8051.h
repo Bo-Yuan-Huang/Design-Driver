@@ -74,9 +74,9 @@ class I8051
     const unsigned short DPH;
 
   private:
-    unsigned char ROM[RomSize];
-    unsigned char RAM[RamSize];
-    unsigned char XRAM[XRamSize];
+    char ROM[RomSize];
+    char RAM[RamSize];
+    char XRAM[XRamSize];
     unsigned short PC;
     unsigned long instrCount;
     unsigned long cycleCount;
@@ -98,9 +98,9 @@ class I8051
     Opcode Decode(const unsigned char IR);
 
   private:
-    void SetBit(unsigned char &thisByte, unsigned char thisBit);
-    void ClearBit(unsigned char &thisByte, unsigned char thisBit);
-    unsigned char GetBit(unsigned char thisByte, unsigned char thisBit);
+    void SetBit(char &thisByte, unsigned char thisBit);
+    void ClearBit(char &thisByte, unsigned char thisBit);
+    unsigned char GetBit(char thisByte, unsigned char thisBit);
     unsigned char GetRegisterBank();
     static int ReadByte(std::istream& in);
     static int ReadWord(std::istream& in);
