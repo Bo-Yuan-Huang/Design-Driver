@@ -1,7 +1,6 @@
 import itertools
 from z3 import *
 from sim51 import evalPC
-
 # Notes on the PC
 # 
 # Instructions that affect the PC.
@@ -201,7 +200,7 @@ class Syn51(object):
         cjne_src2 = If(cjne_src2_iram, reg_selector(383, cjne_djnz_iram_addr, 9), op1)
         cjne_result = cjne_src1 != cjne_src2
         cjne_pc = If(cjne_result, rpc2, pc_p3)
-        cjne, self.cjne_bits = CreateTCAM(op0, prefix+'_cjne', 2)
+        cjne, self.cjne_bits = CreateTCAM(op0, prefix+'_cjne', 4)
 
         # compute the djnz src.
         djnz_r0_src, self.djnz_r0_bits = CreateTCAM(op0, prefix+'_djnz_r0_src', 1)
@@ -277,9 +276,9 @@ class Syn51(object):
         self.sel_sjmp_pc, self.sel_sjmp_bits = CreateTCAM(op0, prefix+'_sel_sjmp_c', 1)
         self.sel_ljmp_pc, self.sel_ljmp_bits = CreateTCAM(op0, prefix+'_sel_ljmp_pc', 1)
         self.sel_ret_pc, self.sel_ret_bits   = CreateTCAM(op0, prefix+'_sel_ret_pc', 1)
-        self.sel_pcp1, self.sel_pcp1_bits    = CreateTCAM(op0, prefix+'_sel_pcp1', 6)
-        self.sel_pcp2, self.sel_pcp2_bits    = CreateTCAM(op0, prefix+'_sel_pcp2', 6)
-        self.sel_pcp3, self.sel_pcp3_bits    = CreateTCAM(op0, prefix+'_sel_pcp3', 6)
+        self.sel_pcp1, self.sel_pcp1_bits    = CreateTCAM(op0, prefix+'_sel_pcp1', 8)
+        self.sel_pcp2, self.sel_pcp2_bits    = CreateTCAM(op0, prefix+'_sel_pcp2', 8)
+        self.sel_pcp3, self.sel_pcp3_bits    = CreateTCAM(op0, prefix+'_sel_pcp3', 8)
 
         new_pc = If(self.sel_pcp1, pc_p1,
                     If(self.sel_pcp2, pc_p2,
@@ -373,21 +372,26 @@ def add_cnsts(S, pc, pc_val, opcode, opcode_val, regs, regs_val, new_pc, new_pc_
     new_pc_prime = substitute(new_pc, subs)
     S.add(new_pc_prime == BitVecVal(new_pc_val, 16)) 
 
+synthesizePCNumCalls = 0
 def synthesizePC(rows, cols):
+    global synthesizePCNumCalls 
+    synthesizePCNumCalls += 1
+    prefix = 'synthPC_'+str(synthesizePCNumCalls)+'_'
+
     # create solver.
     S = Solver()
     # input variables.
-    pc = BitVec('pc', 16)
-    opcode = BitVec('opcode', 24)
-    regs = [BitVec('r%d' % i, 8) for i in xrange(384)]
+    pc = BitVec(prefix+'pc', 16)
+    opcode = BitVec(prefix+'opcode', 24)
+    regs = [BitVec(prefix+'r%d' % i, 8) for i in xrange(384)]
 
     # synthesis formulas and variables.
     s51a = Syn51()
     s51b = Syn51()
-    new_pc1 = s51a.encodePC(pc, opcode, regs, 'p1')
-    new_pc2 = s51b.encodePC(pc, opcode, regs, 'p2')
+    new_pc1 = s51a.encodePC(pc, opcode, regs, prefix+'p1')
+    new_pc2 = s51b.encodePC(pc, opcode, regs, prefix+'p2')
 
-    y = Bool('different')
+    y = Bool(prefix+'different')
     S.add(y == (new_pc1 != new_pc2))
 
     op0_lo = Extract(3, 0, opcode)
@@ -424,7 +428,9 @@ def synthesizePC(rows, cols):
 
 if __name__ == '__main__':
     rstrs = []
-    for r in xrange(16):
+    for r in xrange(16): # [0xB]: # 
+        z3._main_ctx = None
+
         cs = xrange(16)
         s, m = synthesizePC([r], cs)
         rstrs.append([s.get_table_entry(r, ci, m) for ci in cs])

@@ -2,6 +2,16 @@ import subprocess
 import tempfile
 from random import randint
 
+def dumpState(fileobject, pc, opcode, regs):
+    print >> fileobject, '%x' % (pc)
+    print >> fileobject, '%x %x %x' % ((opcode & 0xFF), (opcode & 0xFF00) >> 8, (opcode & 0xFF0000) >> 16)
+    for i in xrange(0, 384, 32):
+        for j in xrange(i, i+32):
+                print >> fileobject, '%x' % (regs[j]),
+        print >> fileobject
+
+    fileobject.flush()
+
 def evalState(pc, opcode, regs):
     "Create a temporary file with the input state, run 8051syn, collect the output and return."
     assert opcode >= 0 and opcode <= (1 << 24), opcode
@@ -9,14 +19,7 @@ def evalState(pc, opcode, regs):
         assert regs[i] >= 0 and regs[i] <= (1 << 8), regs[i]
 
     with tempfile.NamedTemporaryFile() as fileobject:
-        print >> fileobject, '%x' % (pc)
-        print >> fileobject, '%x %x %x' % ((opcode & 0xFF), (opcode & 0xFF00) >> 8, (opcode & 0xFF0000) >> 16)
-        for i in xrange(0, 384, 32):
-            for j in xrange(i, i+32):
-                    print >> fileobject, '%x' % (regs[j]),
-            print >> fileobject
-
-        fileobject.flush()
+        dumpState(fileobject, pc, opcode, regs)
 
         # print subprocess.check_output(['cat', fileobject.name])
         # print subprocess.check_output(['wc', fileobject.name])
