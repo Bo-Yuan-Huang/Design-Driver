@@ -76,7 +76,7 @@
 //
 // oc8051 simulation defines
 //
-`define OC8051_SIMULATION
+//`define OC8051_SIMULATION
 //`define OC8051_SERIAL
 
 //
