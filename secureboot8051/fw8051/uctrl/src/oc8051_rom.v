@@ -62,12 +62,13 @@
 //
 `include "oc8051_defines.v"
 
-module oc8051_rom (rst, clk, addr, ea_int, data_o);
+module oc8051_rom (rst, clk, ea_int, data_o, cxrom_data_out);
 
     input rst, clk;
-    input [15:0] addr;
+    input [31:0] cxrom_data_out;
     output ea_int;
     output [31:0] data_o;
+    
 
     reg [31:0] data_o;
     wire ea;
@@ -77,15 +78,13 @@ module oc8051_rom (rst, clk, addr, ea_int, data_o);
 
     assign ea = 1'b0;
 
-`include "../bench/rom/sha_test.v"
-
     always @(posedge clk or posedge rst)
       if (rst) ea_int <= #1 1'b1;
       else ea_int <= #1 !ea;
 
     always @(posedge clk)
     begin
-      data_o <= #1 data_out;
+      data_o <= #1 cxrom_data_out;
     end
 
 endmodule

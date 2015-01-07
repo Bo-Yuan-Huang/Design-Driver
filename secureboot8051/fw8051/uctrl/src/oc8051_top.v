@@ -131,6 +131,10 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 wbd_cyc_o, 
                 wbd_err_i,
 
+// cxrom interface
+                cxrom_addr,
+                cxrom_data_out,
+
 // interrupt interface
                 int0_i, 
                 int1_i,
@@ -210,6 +214,9 @@ output [7:0]  wbd_dat_o;        // data output
 
 output [15:0] wbd_adr_o,        // data address
               wbi_adr_o;        // instruction address
+
+output [15:0] cxrom_addr;       // code xrom.
+input  [31:0] cxrom_data_out;   // data and addr.
 
 `ifdef OC8051_PORTS
 
@@ -475,11 +482,12 @@ oc8051_comp oc8051_comp1(.sel(comp_sel),
 
 //
 //program rom
+wire [15:0] cxrom_addr = iadr_o;
 `ifdef OC8051_ROM
   oc8051_rom oc8051_rom1(.rst(wb_rst_i),
                        .clk(wb_clk_i),
                        .ea_int(ea_int),
-                       .addr(iadr_o),
+                       .cxrom_data_out(cxrom_data_out),
                        .data_o(idat_onchip)
                        );
 `else
