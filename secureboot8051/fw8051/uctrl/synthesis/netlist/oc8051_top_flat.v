@@ -6122,43 +6122,37 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
          oc8051_ram_top1_oc8051_idata_buff_2__4_,
          oc8051_ram_top1_oc8051_idata_buff_2__5_,
          oc8051_ram_top1_oc8051_idata_buff_2__6_,
-         oc8051_ram_top1_oc8051_idata_buff_2__7_, oc8051_alu_src_sel1_n64,
-         oc8051_alu_src_sel1_n63, oc8051_alu_src_sel1_n62,
-         oc8051_alu_src_sel1_n61, oc8051_alu_src_sel1_n60,
-         oc8051_alu_src_sel1_n59, oc8051_alu_src_sel1_n58,
-         oc8051_alu_src_sel1_n57, oc8051_alu_src_sel1_n56,
-         oc8051_alu_src_sel1_n55, oc8051_alu_src_sel1_n54,
-         oc8051_alu_src_sel1_n53, oc8051_alu_src_sel1_n52,
-         oc8051_alu_src_sel1_n51, oc8051_alu_src_sel1_n50,
-         oc8051_alu_src_sel1_n49, oc8051_alu_src_sel1_n48,
-         oc8051_alu_src_sel1_n47, oc8051_alu_src_sel1_n46,
-         oc8051_alu_src_sel1_n45, oc8051_alu_src_sel1_n44,
-         oc8051_alu_src_sel1_n43, oc8051_alu_src_sel1_n42,
-         oc8051_alu_src_sel1_n41, oc8051_alu_src_sel1_n40,
-         oc8051_alu_src_sel1_n39, oc8051_alu_src_sel1_n38,
-         oc8051_alu_src_sel1_n37, oc8051_alu_src_sel1_n36,
-         oc8051_alu_src_sel1_n35, oc8051_alu_src_sel1_n34,
-         oc8051_alu_src_sel1_n33, oc8051_alu_src_sel1_n32,
-         oc8051_alu_src_sel1_n31, oc8051_alu_src_sel1_n30,
-         oc8051_alu_src_sel1_n29, oc8051_alu_src_sel1_n28,
-         oc8051_alu_src_sel1_n27, oc8051_alu_src_sel1_n26,
-         oc8051_alu_src_sel1_n25, oc8051_alu_src_sel1_n24,
-         oc8051_alu_src_sel1_n23, oc8051_alu_src_sel1_n22,
-         oc8051_alu_src_sel1_n21, oc8051_alu_src_sel1_n20,
-         oc8051_alu_src_sel1_n19, oc8051_alu_src_sel1_n18,
-         oc8051_alu_src_sel1_n17, oc8051_alu_src_sel1_n16,
-         oc8051_alu_src_sel1_n15, oc8051_alu_src_sel1_n14,
-         oc8051_alu_src_sel1_n13, oc8051_alu_src_sel1_n12,
-         oc8051_alu_src_sel1_n11, oc8051_alu_src_sel1_n10,
-         oc8051_alu_src_sel1_n9, oc8051_alu_src_sel1_n8,
-         oc8051_alu_src_sel1_n7, oc8051_alu_src_sel1_n6,
-         oc8051_alu_src_sel1_n5, oc8051_alu_src_sel1_n4,
-         oc8051_alu_src_sel1_n3, oc8051_alu_src_sel1_n2,
-         oc8051_alu_src_sel1_n1, oc8051_alu_src_sel1_n410,
-         oc8051_alu_src_sel1_n400, oc8051_alu_src_sel1_n390,
-         oc8051_alu_src_sel1_n380, oc8051_alu_src_sel1_n370,
-         oc8051_alu_src_sel1_n360, oc8051_alu_src_sel1_n350,
-         oc8051_alu_src_sel1_n340, oc8051_alu_src_sel1_n330,
+         oc8051_ram_top1_oc8051_idata_buff_2__7_, oc8051_alu_src_sel1_n61,
+         oc8051_alu_src_sel1_n60, oc8051_alu_src_sel1_n59,
+         oc8051_alu_src_sel1_n58, oc8051_alu_src_sel1_n57,
+         oc8051_alu_src_sel1_n56, oc8051_alu_src_sel1_n55,
+         oc8051_alu_src_sel1_n54, oc8051_alu_src_sel1_n53,
+         oc8051_alu_src_sel1_n52, oc8051_alu_src_sel1_n51,
+         oc8051_alu_src_sel1_n50, oc8051_alu_src_sel1_n49,
+         oc8051_alu_src_sel1_n48, oc8051_alu_src_sel1_n47,
+         oc8051_alu_src_sel1_n46, oc8051_alu_src_sel1_n45,
+         oc8051_alu_src_sel1_n44, oc8051_alu_src_sel1_n43,
+         oc8051_alu_src_sel1_n42, oc8051_alu_src_sel1_n41,
+         oc8051_alu_src_sel1_n40, oc8051_alu_src_sel1_n39,
+         oc8051_alu_src_sel1_n38, oc8051_alu_src_sel1_n37,
+         oc8051_alu_src_sel1_n36, oc8051_alu_src_sel1_n35,
+         oc8051_alu_src_sel1_n34, oc8051_alu_src_sel1_n33,
+         oc8051_alu_src_sel1_n32, oc8051_alu_src_sel1_n31,
+         oc8051_alu_src_sel1_n30, oc8051_alu_src_sel1_n29,
+         oc8051_alu_src_sel1_n28, oc8051_alu_src_sel1_n27,
+         oc8051_alu_src_sel1_n26, oc8051_alu_src_sel1_n25,
+         oc8051_alu_src_sel1_n24, oc8051_alu_src_sel1_n23,
+         oc8051_alu_src_sel1_n22, oc8051_alu_src_sel1_n21,
+         oc8051_alu_src_sel1_n20, oc8051_alu_src_sel1_n19,
+         oc8051_alu_src_sel1_n18, oc8051_alu_src_sel1_n17,
+         oc8051_alu_src_sel1_n16, oc8051_alu_src_sel1_n15,
+         oc8051_alu_src_sel1_n14, oc8051_alu_src_sel1_n13,
+         oc8051_alu_src_sel1_n12, oc8051_alu_src_sel1_n11,
+         oc8051_alu_src_sel1_n10, oc8051_alu_src_sel1_n9,
+         oc8051_alu_src_sel1_n8, oc8051_alu_src_sel1_n7,
+         oc8051_alu_src_sel1_n6, oc8051_alu_src_sel1_n5,
+         oc8051_alu_src_sel1_n4, oc8051_alu_src_sel1_n3,
+         oc8051_alu_src_sel1_n2, oc8051_alu_src_sel1_n1,
          oc8051_alu_src_sel1_op2_r_0_, oc8051_alu_src_sel1_op2_r_1_,
          oc8051_alu_src_sel1_op2_r_2_, oc8051_alu_src_sel1_op2_r_3_,
          oc8051_alu_src_sel1_op2_r_4_, oc8051_alu_src_sel1_op2_r_5_,
@@ -6236,15 +6230,22 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
          oc8051_indi_addr1_buff_0__2_, oc8051_indi_addr1_buff_0__3_,
          oc8051_indi_addr1_buff_0__4_, oc8051_indi_addr1_buff_0__5_,
          oc8051_indi_addr1_buff_0__6_, oc8051_indi_addr1_buff_0__7_,
+         oc8051_memory_interface1_n792, oc8051_memory_interface1_n791,
+         oc8051_memory_interface1_n790, oc8051_memory_interface1_n789,
+         oc8051_memory_interface1_n788, oc8051_memory_interface1_n787,
+         oc8051_memory_interface1_n786, oc8051_memory_interface1_n785,
+         oc8051_memory_interface1_n784, oc8051_memory_interface1_n783,
+         oc8051_memory_interface1_n782, oc8051_memory_interface1_n781,
+         oc8051_memory_interface1_n780, oc8051_memory_interface1_n779,
          oc8051_memory_interface1_n778, oc8051_memory_interface1_n777,
-         oc8051_memory_interface1_n776, oc8051_memory_interface1_n775,
-         oc8051_memory_interface1_n774, oc8051_memory_interface1_n773,
-         oc8051_memory_interface1_n772, oc8051_memory_interface1_n771,
-         oc8051_memory_interface1_n770, oc8051_memory_interface1_n769,
-         oc8051_memory_interface1_n768, oc8051_memory_interface1_n767,
-         oc8051_memory_interface1_n766, oc8051_memory_interface1_n765,
-         oc8051_memory_interface1_n764, oc8051_memory_interface1_n763,
-         oc8051_memory_interface1_n762, oc8051_memory_interface1_n745,
+         oc8051_memory_interface1_n776, oc8051_memory_interface1_n759,
+         oc8051_memory_interface1_n758, oc8051_memory_interface1_n757,
+         oc8051_memory_interface1_n756, oc8051_memory_interface1_n755,
+         oc8051_memory_interface1_n754, oc8051_memory_interface1_n753,
+         oc8051_memory_interface1_n752, oc8051_memory_interface1_n751,
+         oc8051_memory_interface1_n750, oc8051_memory_interface1_n749,
+         oc8051_memory_interface1_n748, oc8051_memory_interface1_n747,
+         oc8051_memory_interface1_n746, oc8051_memory_interface1_n745,
          oc8051_memory_interface1_n744, oc8051_memory_interface1_n743,
          oc8051_memory_interface1_n742, oc8051_memory_interface1_n741,
          oc8051_memory_interface1_n740, oc8051_memory_interface1_n739,
@@ -6340,29 +6341,27 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
          oc8051_memory_interface1_n560, oc8051_memory_interface1_n559,
          oc8051_memory_interface1_n558, oc8051_memory_interface1_n557,
          oc8051_memory_interface1_n556, oc8051_memory_interface1_n555,
-         oc8051_memory_interface1_n554, oc8051_memory_interface1_n553,
-         oc8051_memory_interface1_n552, oc8051_memory_interface1_n551,
-         oc8051_memory_interface1_n550, oc8051_memory_interface1_n549,
-         oc8051_memory_interface1_n548, oc8051_memory_interface1_n547,
-         oc8051_memory_interface1_n546, oc8051_memory_interface1_n545,
-         oc8051_memory_interface1_n544, oc8051_memory_interface1_n523,
-         oc8051_memory_interface1_n511, oc8051_memory_interface1_n509,
-         oc8051_memory_interface1_n507, oc8051_memory_interface1_n505,
-         oc8051_memory_interface1_n503, oc8051_memory_interface1_n501,
-         oc8051_memory_interface1_n499, oc8051_memory_interface1_n497,
-         oc8051_memory_interface1_n413, oc8051_memory_interface1_n412,
+         oc8051_memory_interface1_n554, oc8051_memory_interface1_n533,
+         oc8051_memory_interface1_n521, oc8051_memory_interface1_n519,
+         oc8051_memory_interface1_n517, oc8051_memory_interface1_n515,
+         oc8051_memory_interface1_n513, oc8051_memory_interface1_n511,
+         oc8051_memory_interface1_n509, oc8051_memory_interface1_n507,
+         oc8051_memory_interface1_n419, oc8051_memory_interface1_n418,
+         oc8051_memory_interface1_n400, oc8051_memory_interface1_n399,
+         oc8051_memory_interface1_n398, oc8051_memory_interface1_n397,
+         oc8051_memory_interface1_n396, oc8051_memory_interface1_n395,
          oc8051_memory_interface1_n394, oc8051_memory_interface1_n393,
-         oc8051_memory_interface1_n392, oc8051_memory_interface1_n391,
-         oc8051_memory_interface1_n390, oc8051_memory_interface1_n389,
-         oc8051_memory_interface1_n388, oc8051_memory_interface1_n387,
+         oc8051_memory_interface1_n376, oc8051_memory_interface1_n375,
+         oc8051_memory_interface1_n374, oc8051_memory_interface1_n373,
+         oc8051_memory_interface1_n372, oc8051_memory_interface1_n371,
          oc8051_memory_interface1_n370, oc8051_memory_interface1_n369,
          oc8051_memory_interface1_n368, oc8051_memory_interface1_n367,
          oc8051_memory_interface1_n366, oc8051_memory_interface1_n365,
          oc8051_memory_interface1_n364, oc8051_memory_interface1_n363,
          oc8051_memory_interface1_n362, oc8051_memory_interface1_n361,
-         oc8051_memory_interface1_n360, oc8051_memory_interface1_n359,
-         oc8051_memory_interface1_n358, oc8051_memory_interface1_n357,
-         oc8051_memory_interface1_n356, oc8051_memory_interface1_n355,
+         oc8051_memory_interface1_n351, oc8051_memory_interface1_n350,
+         oc8051_memory_interface1_n349, oc8051_memory_interface1_n348,
+         oc8051_memory_interface1_n347, oc8051_memory_interface1_n346,
          oc8051_memory_interface1_n345, oc8051_memory_interface1_n344,
          oc8051_memory_interface1_n343, oc8051_memory_interface1_n342,
          oc8051_memory_interface1_n341, oc8051_memory_interface1_n340,
@@ -6535,26 +6534,31 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
          oc8051_memory_interface1_n7, oc8051_memory_interface1_n6,
          oc8051_memory_interface1_n5, oc8051_memory_interface1_n4,
          oc8051_memory_interface1_n3, oc8051_memory_interface1_n2,
-         oc8051_memory_interface1_n1, oc8051_memory_interface1_n543,
+         oc8051_memory_interface1_n1, oc8051_memory_interface1_n553,
+         oc8051_memory_interface1_n552, oc8051_memory_interface1_n551,
+         oc8051_memory_interface1_n550, oc8051_memory_interface1_n549,
+         oc8051_memory_interface1_n548, oc8051_memory_interface1_n547,
+         oc8051_memory_interface1_n546, oc8051_memory_interface1_n545,
+         oc8051_memory_interface1_n544, oc8051_memory_interface1_n543,
          oc8051_memory_interface1_n542, oc8051_memory_interface1_n541,
          oc8051_memory_interface1_n540, oc8051_memory_interface1_n539,
          oc8051_memory_interface1_n538, oc8051_memory_interface1_n537,
          oc8051_memory_interface1_n536, oc8051_memory_interface1_n535,
-         oc8051_memory_interface1_n534, oc8051_memory_interface1_n533,
-         oc8051_memory_interface1_n532, oc8051_memory_interface1_n531,
-         oc8051_memory_interface1_n530, oc8051_memory_interface1_n529,
-         oc8051_memory_interface1_n528, oc8051_memory_interface1_n527,
-         oc8051_memory_interface1_n526, oc8051_memory_interface1_n525,
-         oc8051_memory_interface1_n524, oc8051_memory_interface1_n522,
-         oc8051_memory_interface1_n521, oc8051_memory_interface1_n520,
-         oc8051_memory_interface1_n519, oc8051_memory_interface1_n518,
-         oc8051_memory_interface1_n517, oc8051_memory_interface1_n516,
-         oc8051_memory_interface1_n515, oc8051_memory_interface1_n514,
-         oc8051_memory_interface1_n513, oc8051_memory_interface1_n512,
-         oc8051_memory_interface1_n510, oc8051_memory_interface1_n508,
-         oc8051_memory_interface1_n506, oc8051_memory_interface1_n504,
-         oc8051_memory_interface1_n502, oc8051_memory_interface1_n500,
-         oc8051_memory_interface1_n498, oc8051_memory_interface1_n496,
+         oc8051_memory_interface1_n534, oc8051_memory_interface1_n532,
+         oc8051_memory_interface1_n531, oc8051_memory_interface1_n530,
+         oc8051_memory_interface1_n529, oc8051_memory_interface1_n528,
+         oc8051_memory_interface1_n527, oc8051_memory_interface1_n526,
+         oc8051_memory_interface1_n525, oc8051_memory_interface1_n524,
+         oc8051_memory_interface1_n523, oc8051_memory_interface1_n522,
+         oc8051_memory_interface1_n520, oc8051_memory_interface1_n518,
+         oc8051_memory_interface1_n516, oc8051_memory_interface1_n514,
+         oc8051_memory_interface1_n512, oc8051_memory_interface1_n510,
+         oc8051_memory_interface1_n508, oc8051_memory_interface1_n506,
+         oc8051_memory_interface1_n505, oc8051_memory_interface1_n504,
+         oc8051_memory_interface1_n503, oc8051_memory_interface1_n502,
+         oc8051_memory_interface1_n501, oc8051_memory_interface1_n500,
+         oc8051_memory_interface1_n499, oc8051_memory_interface1_n498,
+         oc8051_memory_interface1_n497, oc8051_memory_interface1_n496,
          oc8051_memory_interface1_n495, oc8051_memory_interface1_n494,
          oc8051_memory_interface1_n493, oc8051_memory_interface1_n492,
          oc8051_memory_interface1_n491, oc8051_memory_interface1_n490,
@@ -6593,31 +6597,28 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
          oc8051_memory_interface1_n425, oc8051_memory_interface1_n424,
          oc8051_memory_interface1_n423, oc8051_memory_interface1_n422,
          oc8051_memory_interface1_n421, oc8051_memory_interface1_n420,
-         oc8051_memory_interface1_n419, oc8051_memory_interface1_n418,
          oc8051_memory_interface1_n417, oc8051_memory_interface1_n416,
          oc8051_memory_interface1_n415, oc8051_memory_interface1_n414,
+         oc8051_memory_interface1_n413, oc8051_memory_interface1_n412,
          oc8051_memory_interface1_n411, oc8051_memory_interface1_n410,
          oc8051_memory_interface1_n409, oc8051_memory_interface1_n408,
          oc8051_memory_interface1_n407, oc8051_memory_interface1_n406,
          oc8051_memory_interface1_n405, oc8051_memory_interface1_n404,
          oc8051_memory_interface1_n403, oc8051_memory_interface1_n402,
-         oc8051_memory_interface1_n401, oc8051_memory_interface1_n400,
-         oc8051_memory_interface1_n399, oc8051_memory_interface1_n398,
-         oc8051_memory_interface1_n397, oc8051_memory_interface1_n396,
-         oc8051_memory_interface1_n395, oc8051_memory_interface1_n386,
+         oc8051_memory_interface1_n401, oc8051_memory_interface1_n392,
+         oc8051_memory_interface1_n391, oc8051_memory_interface1_n390,
+         oc8051_memory_interface1_n389, oc8051_memory_interface1_n388,
+         oc8051_memory_interface1_n387, oc8051_memory_interface1_n386,
          oc8051_memory_interface1_n385, oc8051_memory_interface1_n384,
          oc8051_memory_interface1_n383, oc8051_memory_interface1_n382,
          oc8051_memory_interface1_n381, oc8051_memory_interface1_n380,
          oc8051_memory_interface1_n379, oc8051_memory_interface1_n378,
-         oc8051_memory_interface1_n377, oc8051_memory_interface1_n376,
-         oc8051_memory_interface1_n375, oc8051_memory_interface1_n374,
-         oc8051_memory_interface1_n373, oc8051_memory_interface1_n372,
-         oc8051_memory_interface1_n371, oc8051_memory_interface1_n354,
+         oc8051_memory_interface1_n377, oc8051_memory_interface1_n360,
+         oc8051_memory_interface1_n359, oc8051_memory_interface1_n358,
+         oc8051_memory_interface1_n357, oc8051_memory_interface1_n356,
+         oc8051_memory_interface1_n355, oc8051_memory_interface1_n354,
          oc8051_memory_interface1_n353, oc8051_memory_interface1_n352,
-         oc8051_memory_interface1_n351, oc8051_memory_interface1_n350,
-         oc8051_memory_interface1_n349, oc8051_memory_interface1_n348,
-         oc8051_memory_interface1_n347, oc8051_memory_interface1_n346,
-         oc8051_memory_interface1_n5540, oc8051_memory_interface1_pc_wr_r,
+         oc8051_memory_interface1_n5470, oc8051_memory_interface1_pc_wr_r,
          oc8051_memory_interface1_pc_buf_2_,
          oc8051_memory_interface1_pc_buf_3_,
          oc8051_memory_interface1_pc_buf_4_,
@@ -6631,8 +6632,8 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
          oc8051_memory_interface1_pc_buf_12_,
          oc8051_memory_interface1_pc_buf_13_,
          oc8051_memory_interface1_pc_buf_14_,
-         oc8051_memory_interface1_pc_buf_15_, oc8051_memory_interface1_n3880,
-         oc8051_memory_interface1_int_ack_buff, oc8051_memory_interface1_n2160,
+         oc8051_memory_interface1_pc_buf_15_, oc8051_memory_interface1_n3810,
+         oc8051_memory_interface1_int_ack_buff, oc8051_memory_interface1_n2090,
          oc8051_memory_interface1_int_vec_buff_0_,
          oc8051_memory_interface1_int_vec_buff_1_,
          oc8051_memory_interface1_int_vec_buff_2_,
@@ -6743,12 +6744,8 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
          oc8051_memory_interface1_iadr_t_12_,
          oc8051_memory_interface1_iadr_t_13_,
          oc8051_memory_interface1_iadr_t_14_,
-         oc8051_memory_interface1_iadr_t_15_, oc8051_memory_interface1_n980,
-         oc8051_memory_interface1_n970, oc8051_memory_interface1_n960,
-         oc8051_memory_interface1_n950, oc8051_memory_interface1_n940,
-         oc8051_memory_interface1_n930, oc8051_memory_interface1_n920,
-         oc8051_memory_interface1_n910, oc8051_memory_interface1_n900,
-         oc8051_memory_interface1_n890, oc8051_memory_interface1_rd_addr_r,
+         oc8051_memory_interface1_iadr_t_15_, oc8051_memory_interface1_n910,
+         oc8051_memory_interface1_rn_r_4_, oc8051_memory_interface1_rd_addr_r,
          oc8051_memory_interface1_istb_t, oc8051_memory_interface1_pc_wr_r2,
          oc8051_memory_interface1_imem_wait,
          oc8051_memory_interface1_dmem_wait, oc8051_memory_interface1_istb_o,
@@ -7680,7 +7677,6 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   wire   [7:0] oc8051_memory_interface1_imm2_r;
   wire   [7:0] oc8051_memory_interface1_imm_r;
   wire   [7:0] oc8051_memory_interface1_ri_r;
-  wire   [4:0] oc8051_memory_interface1_rn_r;
   wire   [7:0] oc8051_sfr1_rcap2h;
   wire   [7:0] oc8051_sfr1_rcap2l;
   wire   [7:0] oc8051_sfr1_th2;
@@ -8949,14 +8945,14 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         .CK(wb_clk_i), .R(wb_rst_i), .QN(oc8051_decoder1_n422) );
   DFFRPQ_X1M_A12TS oc8051_decoder1_src_sel3_reg ( .D(oc8051_decoder1_n412), 
         .CK(wb_clk_i), .R(wb_rst_i), .Q(src_sel3) );
-  DFFRPQ_X1M_A12TS oc8051_decoder1_src_sel1_reg_0_ ( .D(oc8051_decoder1_n433), 
-        .CK(wb_clk_i), .R(wb_rst_i), .Q(src_sel1[0]) );
   DFFRPQ_X1M_A12TS oc8051_decoder1_src_sel1_reg_1_ ( .D(oc8051_decoder1_n432), 
         .CK(wb_clk_i), .R(wb_rst_i), .Q(src_sel1[1]) );
   DFFRPQ_X1M_A12TS oc8051_decoder1_src_sel1_reg_2_ ( .D(oc8051_decoder1_n431), 
         .CK(wb_clk_i), .R(wb_rst_i), .Q(src_sel1[2]) );
   DFFRPQ_X1M_A12TS oc8051_decoder1_psw_set_reg_0_ ( .D(oc8051_decoder1_n407), 
         .CK(wb_clk_i), .R(wb_rst_i), .Q(psw_set[0]) );
+  DFFRPQ_X1M_A12TS oc8051_decoder1_src_sel1_reg_0_ ( .D(oc8051_decoder1_n433), 
+        .CK(wb_clk_i), .R(wb_rst_i), .Q(src_sel1[0]) );
   DFFRPQ_X1M_A12TS oc8051_decoder1_psw_set_reg_1_ ( .D(oc8051_decoder1_n436), 
         .CK(wb_clk_i), .R(wb_rst_i), .Q(psw_set[1]) );
   DFFRPQ_X1M_A12TS oc8051_decoder1_src_sel2_reg_1_ ( .D(oc8051_decoder1_n410), 
@@ -9927,28 +9923,28 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_alu1_oc8051_mul1_tmp_mul_reg_1_ ( .D(
         oc8051_alu1_mulsrc2[1]), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_alu1_oc8051_mul1_tmp_mul_1_) );
-  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u47 ( .A(src1[2]), .Y(
-        oc8051_alu1_oc8051_mul1_mult_90_n29) );
-  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u46 ( .A(src1[5]), .Y(
-        oc8051_alu1_oc8051_mul1_mult_90_n26) );
-  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u45 ( .A(src1[6]), .Y(
-        oc8051_alu1_oc8051_mul1_mult_90_n25) );
-  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u44 ( .A(src1[1]), .Y(
-        oc8051_alu1_oc8051_mul1_mult_90_n30) );
-  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u43 ( .A(src1[4]), .Y(
-        oc8051_alu1_oc8051_mul1_mult_90_n27) );
-  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u42 ( .A(src1[7]), .Y(
-        oc8051_alu1_oc8051_mul1_mult_90_n24) );
-  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u41 ( .A(src1[3]), .Y(
-        oc8051_alu1_oc8051_mul1_mult_90_n28) );
-  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u40 ( .A(src1[0]), .Y(
-        oc8051_alu1_oc8051_mul1_mult_90_n31) );
-  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u39 ( .A(
+  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u47 ( .A(
         oc8051_alu1_oc8051_mul1_n80), .Y(oc8051_alu1_oc8051_mul1_mult_90_n32)
          );
-  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u38 ( .A(
+  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u46 ( .A(
         oc8051_alu1_oc8051_mul1_n70), .Y(oc8051_alu1_oc8051_mul1_mult_90_n33)
          );
+  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u45 ( .A(src1[2]), .Y(
+        oc8051_alu1_oc8051_mul1_mult_90_n29) );
+  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u44 ( .A(src1[5]), .Y(
+        oc8051_alu1_oc8051_mul1_mult_90_n26) );
+  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u43 ( .A(src1[6]), .Y(
+        oc8051_alu1_oc8051_mul1_mult_90_n25) );
+  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u42 ( .A(src1[1]), .Y(
+        oc8051_alu1_oc8051_mul1_mult_90_n30) );
+  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u41 ( .A(src1[4]), .Y(
+        oc8051_alu1_oc8051_mul1_mult_90_n27) );
+  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u40 ( .A(src1[7]), .Y(
+        oc8051_alu1_oc8051_mul1_mult_90_n24) );
+  INV_X1B_A12TS oc8051_alu1_oc8051_mul1_mult_90_u39 ( .A(src1[3]), .Y(
+        oc8051_alu1_oc8051_mul1_mult_90_n28) );
+  INV_X0P7M_A12TS oc8051_alu1_oc8051_mul1_mult_90_u38 ( .A(src1[0]), .Y(
+        oc8051_alu1_oc8051_mul1_mult_90_n31) );
   NOR2_X1A_A12TS oc8051_alu1_oc8051_mul1_mult_90_u25 ( .A(
         oc8051_alu1_oc8051_mul1_mult_90_n33), .B(
         oc8051_alu1_oc8051_mul1_mult_90_n31), .Y(oc8051_alu1_mulsrc2[0]) );
@@ -10344,16 +10340,16 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_alu1_oc8051_div1_sub0[7]) );
   INV_X1B_A12TS oc8051_alu1_oc8051_div1_sub_94_u10 ( .A(
         oc8051_alu1_oc8051_div1_cmp1_7_), .Y(oc8051_alu1_oc8051_div1_sub_94_n3) );
-  INV_X1B_A12TS oc8051_alu1_oc8051_div1_sub_94_u9 ( .A(
-        oc8051_alu1_oc8051_div1_cmp1_6_), .Y(oc8051_alu1_oc8051_div1_sub_94_n4) );
+  OR2_X1M_A12TS oc8051_alu1_oc8051_div1_sub_94_u9 ( .A(
+        oc8051_alu1_oc8051_div1_rem2_1_), .B(oc8051_alu1_oc8051_div1_sub_94_n9), .Y(oc8051_alu1_oc8051_div1_sub_94_n1) );
   INV_X1B_A12TS oc8051_alu1_oc8051_div1_sub_94_u8 ( .A(
         oc8051_alu1_oc8051_div1_cmp1_5_), .Y(oc8051_alu1_oc8051_div1_sub_94_n5) );
   INV_X1B_A12TS oc8051_alu1_oc8051_div1_sub_94_u7 ( .A(
-        oc8051_alu1_oc8051_div1_cmp1_4_), .Y(oc8051_alu1_oc8051_div1_sub_94_n6) );
+        oc8051_alu1_oc8051_div1_cmp1_6_), .Y(oc8051_alu1_oc8051_div1_sub_94_n4) );
   INV_X1B_A12TS oc8051_alu1_oc8051_div1_sub_94_u6 ( .A(
+        oc8051_alu1_oc8051_div1_cmp1_4_), .Y(oc8051_alu1_oc8051_div1_sub_94_n6) );
+  INV_X1B_A12TS oc8051_alu1_oc8051_div1_sub_94_u5 ( .A(
         oc8051_alu1_oc8051_div1_cmp1_3_), .Y(oc8051_alu1_oc8051_div1_sub_94_n7) );
-  OR2_X1M_A12TS oc8051_alu1_oc8051_div1_sub_94_u5 ( .A(
-        oc8051_alu1_oc8051_div1_rem2_1_), .B(oc8051_alu1_oc8051_div1_sub_94_n9), .Y(oc8051_alu1_oc8051_div1_sub_94_n1) );
   XNOR2_X1M_A12TS oc8051_alu1_oc8051_div1_sub_94_u4 ( .A(
         oc8051_alu1_oc8051_div1_sub_94_n9), .B(oc8051_alu1_oc8051_div1_rem2_1_), .Y(oc8051_alu1_oc8051_div1_sub1[1]) );
   INV_X1B_A12TS oc8051_alu1_oc8051_div1_sub_94_u3 ( .A(
@@ -10387,70 +10383,89 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_alu1_oc8051_div1_rem2_7_), .B(oc8051_alu1_oc8051_div1_sub_94_n3), .CI(oc8051_alu1_oc8051_div1_sub_94_carry[7]), .CO(
         oc8051_alu1_oc8051_div1_sub_94_carry[8]), .S(
         oc8051_alu1_oc8051_div1_sub1[7]) );
-  OR2_X1M_A12TS oc8051_alu1_sub_195_u30 ( .A(oc8051_alu1_sub_195_n7), .B(
-        src1[2]), .Y(oc8051_alu1_sub_195_n13) );
+  XNOR2_X0P5M_A12TS oc8051_alu1_sub_195_u30 ( .A(src1[3]), .B(
+        oc8051_alu1_sub_195_n7), .Y(oc8051_alu1_dec[3]) );
   OR2_X1M_A12TS oc8051_alu1_sub_195_u29 ( .A(oc8051_alu1_sub_195_n10), .B(
-        src1[5]), .Y(oc8051_alu1_sub_195_n12) );
-  OR2_X1M_A12TS oc8051_alu1_sub_195_u28 ( .A(oc8051_alu1_sub_195_n12), .B(
-        src1[6]), .Y(oc8051_alu1_sub_195_n11) );
+        src2[5]), .Y(oc8051_alu1_sub_195_n13) );
+  OR2_X1M_A12TS oc8051_alu1_sub_195_u28 ( .A(oc8051_alu1_sub_195_n9), .B(
+        src2[1]), .Y(oc8051_alu1_sub_195_n12) );
   OR2_X1M_A12TS oc8051_alu1_sub_195_u27 ( .A(oc8051_alu1_sub_195_n8), .B(
-        src1[4]), .Y(oc8051_alu1_sub_195_n10) );
+        src2[3]), .Y(oc8051_alu1_sub_195_n11) );
   OR2_X1M_A12TS oc8051_alu1_sub_195_u26 ( .A(oc8051_alu1_sub_195_n11), .B(
-        src1[7]), .Y(oc8051_alu1_sub_195_n9) );
-  OR2_X1M_A12TS oc8051_alu1_sub_195_u25 ( .A(oc8051_alu1_sub_195_n13), .B(
-        src1[3]), .Y(oc8051_alu1_sub_195_n8) );
-  OR2_X1M_A12TS oc8051_alu1_sub_195_u24 ( .A(src1[0]), .B(src1[1]), .Y(
-        oc8051_alu1_sub_195_n7) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u23 ( .A(src1[3]), .B(
-        oc8051_alu1_sub_195_n13), .Y(oc8051_alu1_dec[3]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u22 ( .A(src1[7]), .B(
-        oc8051_alu1_sub_195_n11), .Y(oc8051_alu1_dec[7]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u21 ( .A(src1[4]), .B(
-        oc8051_alu1_sub_195_n8), .Y(oc8051_alu1_dec[4]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u20 ( .A(src1[6]), .B(
-        oc8051_alu1_sub_195_n12), .Y(oc8051_alu1_dec[6]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u19 ( .A(src1[2]), .B(
-        oc8051_alu1_sub_195_n7), .Y(oc8051_alu1_dec[2]) );
-  INV_X1B_A12TS oc8051_alu1_sub_195_u18 ( .A(src1[0]), .Y(oc8051_alu1_dec[0])
-         );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u17 ( .A(src1[5]), .B(
-        oc8051_alu1_sub_195_n10), .Y(oc8051_alu1_dec[5]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u16 ( .A(src1[1]), .B(src1[0]), .Y(
-        oc8051_alu1_dec[1]) );
-  OR2_X1M_A12TS oc8051_alu1_sub_195_u15 ( .A(oc8051_alu1_sub_195_n3), .B(
-        src2[5]), .Y(oc8051_alu1_sub_195_n6) );
-  OR2_X1M_A12TS oc8051_alu1_sub_195_u14 ( .A(oc8051_alu1_sub_195_n2), .B(
-        src2[1]), .Y(oc8051_alu1_sub_195_n5) );
-  OR2_X1M_A12TS oc8051_alu1_sub_195_u13 ( .A(oc8051_alu1_sub_195_n1), .B(
-        src2[3]), .Y(oc8051_alu1_sub_195_n4) );
-  OR2_X1M_A12TS oc8051_alu1_sub_195_u12 ( .A(oc8051_alu1_sub_195_n4), .B(
-        src2[4]), .Y(oc8051_alu1_sub_195_n3) );
-  OR2_X1M_A12TS oc8051_alu1_sub_195_u11 ( .A(oc8051_alu1_sub_195_n9), .B(
-        src2[0]), .Y(oc8051_alu1_sub_195_n2) );
-  OR2_X1M_A12TS oc8051_alu1_sub_195_u10 ( .A(oc8051_alu1_sub_195_n5), .B(
-        src2[2]), .Y(oc8051_alu1_sub_195_n1) );
-  NOR2_X1A_A12TS oc8051_alu1_sub_195_u9 ( .A(oc8051_alu1_sub_195_n6), .B(
+        src2[4]), .Y(oc8051_alu1_sub_195_n10) );
+  OR2_X1M_A12TS oc8051_alu1_sub_195_u25 ( .A(oc8051_alu1_sub_195_n3), .B(
+        src2[0]), .Y(oc8051_alu1_sub_195_n9) );
+  OR2_X1M_A12TS oc8051_alu1_sub_195_u24 ( .A(oc8051_alu1_sub_195_n12), .B(
+        src2[2]), .Y(oc8051_alu1_sub_195_n8) );
+  OR2_X1M_A12TS oc8051_alu1_sub_195_u23 ( .A(oc8051_alu1_sub_195_n1), .B(
+        src1[2]), .Y(oc8051_alu1_sub_195_n7) );
+  OR2_X1M_A12TS oc8051_alu1_sub_195_u22 ( .A(oc8051_alu1_sub_195_n4), .B(
+        src1[5]), .Y(oc8051_alu1_sub_195_n6) );
+  OR2_X1M_A12TS oc8051_alu1_sub_195_u21 ( .A(oc8051_alu1_sub_195_n6), .B(
+        src1[6]), .Y(oc8051_alu1_sub_195_n5) );
+  OR2_X1M_A12TS oc8051_alu1_sub_195_u20 ( .A(oc8051_alu1_sub_195_n2), .B(
+        src1[4]), .Y(oc8051_alu1_sub_195_n4) );
+  OR2_X1M_A12TS oc8051_alu1_sub_195_u19 ( .A(oc8051_alu1_sub_195_n5), .B(
+        src1[7]), .Y(oc8051_alu1_sub_195_n3) );
+  OR2_X1M_A12TS oc8051_alu1_sub_195_u18 ( .A(oc8051_alu1_sub_195_n7), .B(
+        src1[3]), .Y(oc8051_alu1_sub_195_n2) );
+  XNOR2_X0P7M_A12TS oc8051_alu1_sub_195_u17 ( .A(src1[6]), .B(
+        oc8051_alu1_sub_195_n6), .Y(oc8051_alu1_dec[6]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u16 ( .A(src1[2]), .B(
+        oc8051_alu1_sub_195_n1), .Y(oc8051_alu1_dec[2]) );
+  INV_X0P5M_A12TS oc8051_alu1_sub_195_u15 ( .A(src1[0]), .Y(oc8051_alu1_dec[0]) );
+  OR2_X1M_A12TS oc8051_alu1_sub_195_u14 ( .A(src1[0]), .B(src1[1]), .Y(
+        oc8051_alu1_sub_195_n1) );
+  XNOR2_X0P5M_A12TS oc8051_alu1_sub_195_u13 ( .A(src1[7]), .B(
+        oc8051_alu1_sub_195_n5), .Y(oc8051_alu1_dec[7]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u12 ( .A(src1[5]), .B(
+        oc8051_alu1_sub_195_n4), .Y(oc8051_alu1_dec[5]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u11 ( .A(src2[1]), .B(
+        oc8051_alu1_sub_195_n9), .Y(oc8051_alu1_dec[9]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u10 ( .A(src2[3]), .B(
+        oc8051_alu1_sub_195_n8), .Y(oc8051_alu1_dec[11]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u9 ( .A(src2[0]), .B(
+        oc8051_alu1_sub_195_n3), .Y(oc8051_alu1_dec[8]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u8 ( .A(src2[2]), .B(
+        oc8051_alu1_sub_195_n12), .Y(oc8051_alu1_dec[10]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u7 ( .A(src1[4]), .B(
+        oc8051_alu1_sub_195_n2), .Y(oc8051_alu1_dec[4]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u6 ( .A(src2[6]), .B(
+        oc8051_alu1_sub_195_n13), .Y(oc8051_alu1_dec[14]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u5 ( .A(src2[5]), .B(
+        oc8051_alu1_sub_195_n10), .Y(oc8051_alu1_dec[13]) );
+  NOR2_X1A_A12TS oc8051_alu1_sub_195_u4 ( .A(oc8051_alu1_sub_195_n13), .B(
         src2[6]), .Y(oc8051_alu1_sub_195_n14) );
-  XOR2_X1M_A12TS oc8051_alu1_sub_195_u8 ( .A(src2[7]), .B(
+  XOR2_X1M_A12TS oc8051_alu1_sub_195_u3 ( .A(src2[7]), .B(
         oc8051_alu1_sub_195_n14), .Y(oc8051_alu1_dec[15]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u7 ( .A(src2[5]), .B(
-        oc8051_alu1_sub_195_n3), .Y(oc8051_alu1_dec[13]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u6 ( .A(src2[1]), .B(
-        oc8051_alu1_sub_195_n2), .Y(oc8051_alu1_dec[9]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u5 ( .A(src2[6]), .B(
-        oc8051_alu1_sub_195_n6), .Y(oc8051_alu1_dec[14]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u4 ( .A(src2[3]), .B(
-        oc8051_alu1_sub_195_n1), .Y(oc8051_alu1_dec[11]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u3 ( .A(src2[4]), .B(
-        oc8051_alu1_sub_195_n4), .Y(oc8051_alu1_dec[12]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u2 ( .A(src2[0]), .B(
-        oc8051_alu1_sub_195_n9), .Y(oc8051_alu1_dec[8]) );
-  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u1 ( .A(src2[2]), .B(
-        oc8051_alu1_sub_195_n5), .Y(oc8051_alu1_dec[10]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u2 ( .A(src2[4]), .B(
+        oc8051_alu1_sub_195_n11), .Y(oc8051_alu1_dec[12]) );
+  XNOR2_X1M_A12TS oc8051_alu1_sub_195_u1 ( .A(src1[1]), .B(src1[0]), .Y(
+        oc8051_alu1_dec[1]) );
   XOR2_X0P5M_A12TS oc8051_alu1_add_194_u2 ( .A(oc8051_alu1_add_194_carry[15]), 
         .B(src2[7]), .Y(oc8051_alu1_inc[15]) );
   INV_X1B_A12TS oc8051_alu1_add_194_u1 ( .A(src1[0]), .Y(oc8051_alu1_inc[0])
          );
+  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_1 ( .A(src1[1]), .B(src1[0]), .CO(
+        oc8051_alu1_add_194_carry[2]), .S(oc8051_alu1_inc[1]) );
+  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_3 ( .A(src1[3]), .B(
+        oc8051_alu1_add_194_carry[3]), .CO(oc8051_alu1_add_194_carry[4]), .S(
+        oc8051_alu1_inc[3]) );
+  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_7 ( .A(src1[7]), .B(
+        oc8051_alu1_add_194_carry[7]), .CO(oc8051_alu1_add_194_carry[8]), .S(
+        oc8051_alu1_inc[7]) );
+  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_4 ( .A(src1[4]), .B(
+        oc8051_alu1_add_194_carry[4]), .CO(oc8051_alu1_add_194_carry[5]), .S(
+        oc8051_alu1_inc[4]) );
+  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_6 ( .A(src1[6]), .B(
+        oc8051_alu1_add_194_carry[6]), .CO(oc8051_alu1_add_194_carry[7]), .S(
+        oc8051_alu1_inc[6]) );
+  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_5 ( .A(src1[5]), .B(
+        oc8051_alu1_add_194_carry[5]), .CO(oc8051_alu1_add_194_carry[6]), .S(
+        oc8051_alu1_inc[5]) );
+  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_2 ( .A(src1[2]), .B(
+        oc8051_alu1_add_194_carry[2]), .CO(oc8051_alu1_add_194_carry[3]), .S(
+        oc8051_alu1_inc[2]) );
   ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_10 ( .A(src2[2]), .B(
         oc8051_alu1_add_194_carry[10]), .CO(oc8051_alu1_add_194_carry[11]), 
         .S(oc8051_alu1_inc[10]) );
@@ -10472,26 +10487,6 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_14 ( .A(src2[6]), .B(
         oc8051_alu1_add_194_carry[14]), .CO(oc8051_alu1_add_194_carry[15]), 
         .S(oc8051_alu1_inc[14]) );
-  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_1 ( .A(src1[1]), .B(src1[0]), .CO(
-        oc8051_alu1_add_194_carry[2]), .S(oc8051_alu1_inc[1]) );
-  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_3 ( .A(src1[3]), .B(
-        oc8051_alu1_add_194_carry[3]), .CO(oc8051_alu1_add_194_carry[4]), .S(
-        oc8051_alu1_inc[3]) );
-  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_7 ( .A(src1[7]), .B(
-        oc8051_alu1_add_194_carry[7]), .CO(oc8051_alu1_add_194_carry[8]), .S(
-        oc8051_alu1_inc[7]) );
-  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_4 ( .A(src1[4]), .B(
-        oc8051_alu1_add_194_carry[4]), .CO(oc8051_alu1_add_194_carry[5]), .S(
-        oc8051_alu1_inc[4]) );
-  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_6 ( .A(src1[6]), .B(
-        oc8051_alu1_add_194_carry[6]), .CO(oc8051_alu1_add_194_carry[7]), .S(
-        oc8051_alu1_inc[6]) );
-  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_5 ( .A(src1[5]), .B(
-        oc8051_alu1_add_194_carry[5]), .CO(oc8051_alu1_add_194_carry[6]), .S(
-        oc8051_alu1_inc[5]) );
-  ADDH_X1M_A12TS oc8051_alu1_add_194_u1_1_2 ( .A(src1[2]), .B(
-        oc8051_alu1_add_194_carry[2]), .CO(oc8051_alu1_add_194_carry[3]), .S(
-        oc8051_alu1_inc[2]) );
   MXIT2_X0P5M_A12TS oc8051_ram_top1_u110 ( .A(oc8051_ram_top1_rd_data_m[2]), 
         .B(oc8051_ram_top1_wr_data_r[2]), .S0(oc8051_ram_top1_rd_en_r), .Y(
         oc8051_ram_top1_n56) );
@@ -10709,12 +10704,12 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_ram_top1_n10), .B0(oc8051_ram_top1_n11), .C0(
         oc8051_ram_top1_n12), .Y(oc8051_ram_top1_wr_data_m[7]) );
   TIEHI_X1M_A12TS oc8051_ram_top1_u17 ( .Y(oc8051_ram_top1__logic1_) );
-  BUFH_X1M_A12TS oc8051_ram_top1_u16 ( .A(oc8051_ram_top1_wr_data_m[6]), .Y(
-        oc8051_ram_top1_n7) );
-  BUFH_X1M_A12TS oc8051_ram_top1_u15 ( .A(oc8051_ram_top1_wr_data_m[0]), .Y(
+  BUFH_X1M_A12TS oc8051_ram_top1_u16 ( .A(oc8051_ram_top1_wr_data_m[0]), .Y(
         oc8051_ram_top1_n1) );
-  BUFH_X1M_A12TS oc8051_ram_top1_u14 ( .A(oc8051_ram_top1_wr_data_m[1]), .Y(
+  BUFH_X1M_A12TS oc8051_ram_top1_u15 ( .A(oc8051_ram_top1_wr_data_m[1]), .Y(
         oc8051_ram_top1_n2) );
+  BUFH_X1M_A12TS oc8051_ram_top1_u14 ( .A(oc8051_ram_top1_wr_data_m[6]), .Y(
+        oc8051_ram_top1_n7) );
   BUFH_X1M_A12TS oc8051_ram_top1_u13 ( .A(oc8051_ram_top1_wr_data_m[4]), .Y(
         oc8051_ram_top1_n5) );
   BUFH_X1M_A12TS oc8051_ram_top1_u12 ( .A(oc8051_ram_top1_wr_data_m[5]), .Y(
@@ -37838,127 +37833,117 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFQ_X1M_A12TS oc8051_ram_top1_oc8051_idata_buff_reg_48__7_ ( .D(
         oc8051_ram_top1_oc8051_idata_n4146), .CK(wb_clk_i), .Q(
         oc8051_ram_top1_oc8051_idata_buff_48__7_) );
-  NOR3_X0P5A_A12TS oc8051_alu_src_sel1_u91 ( .A(src_sel1[1]), .B(src_sel1[2]), 
-        .C(src_sel1[0]), .Y(oc8051_alu_src_sel1_n37) );
-  NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u90 ( .A(src_sel1[0]), .B(src_sel1[2]), 
-        .C(src_sel1[1]), .Y(oc8051_alu_src_sel1_n60) );
-  INV_X0P5B_A12TS oc8051_alu_src_sel1_u89 ( .A(src_sel1[2]), .Y(
-        oc8051_alu_src_sel1_n64) );
-  NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u88 ( .A(src_sel1[0]), .B(
-        oc8051_alu_src_sel1_n64), .C(src_sel1[1]), .Y(oc8051_alu_src_sel1_n59)
+  NOR3_X0P5A_A12TS oc8051_alu_src_sel1_u87 ( .A(src_sel1[1]), .B(src_sel1[2]), 
+        .C(src_sel1[0]), .Y(oc8051_alu_src_sel1_n36) );
+  INV_X0P5B_A12TS oc8051_alu_src_sel1_u86 ( .A(src_sel1[2]), .Y(
+        oc8051_alu_src_sel1_n60) );
+  NOR3_X0P5A_A12TS oc8051_alu_src_sel1_u85 ( .A(src_sel1[0]), .B(src_sel1[1]), 
+        .C(oc8051_alu_src_sel1_n60), .Y(oc8051_alu_src_sel1_n37) );
+  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u84 ( .A0(oc8051_alu_src_sel1_n36), 
+        .A1(ram_out[0]), .B0(oc8051_alu_src_sel1_n37), .B1(pc[8]), .Y(
+        oc8051_alu_src_sel1_n56) );
+  INV_X0P5B_A12TS oc8051_alu_src_sel1_u83 ( .A(src_sel1[0]), .Y(
+        oc8051_alu_src_sel1_n59) );
+  INV_X0P5B_A12TS oc8051_alu_src_sel1_u82 ( .A(src_sel1[1]), .Y(
+        oc8051_alu_src_sel1_n61) );
+  NOR3_X0P5A_A12TS oc8051_alu_src_sel1_u81 ( .A(oc8051_alu_src_sel1_n59), .B(
+        src_sel1[2]), .C(oc8051_alu_src_sel1_n61), .Y(oc8051_alu_src_sel1_n34)
          );
-  INV_X0P5B_A12TS oc8051_alu_src_sel1_u87 ( .A(src_sel1[1]), .Y(
-        oc8051_alu_src_sel1_n63) );
-  NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u86 ( .A(oc8051_alu_src_sel1_n63), .B(
-        oc8051_alu_src_sel1_n64), .C(src_sel1[0]), .Y(oc8051_alu_src_sel1_n61)
-         );
-  NAND4B_X0P5M_A12TS oc8051_alu_src_sel1_u85 ( .AN(oc8051_alu_src_sel1_n37), 
-        .B(oc8051_alu_src_sel1_n60), .C(oc8051_alu_src_sel1_n59), .D(
-        oc8051_alu_src_sel1_n61), .Y(oc8051_alu_src_sel1_n62) );
-  NOR3_X0P5A_A12TS oc8051_alu_src_sel1_u84 ( .A(src_sel1[0]), .B(src_sel1[2]), 
-        .C(oc8051_alu_src_sel1_n63), .Y(oc8051_alu_src_sel1_n36) );
-  NOR3_X0P5A_A12TS oc8051_alu_src_sel1_u83 ( .A(src_sel1[0]), .B(src_sel1[1]), 
-        .C(oc8051_alu_src_sel1_n64), .Y(oc8051_alu_src_sel1_n34) );
-  AND3_X0P5M_A12TS oc8051_alu_src_sel1_u82 ( .A(src_sel1[2]), .B(
-        oc8051_alu_src_sel1_n63), .C(src_sel1[0]), .Y(oc8051_alu_src_sel1_n35)
-         );
-  OR4_X0P5M_A12TS oc8051_alu_src_sel1_u81 ( .A(oc8051_alu_src_sel1_n62), .B(
-        oc8051_alu_src_sel1_n36), .C(oc8051_alu_src_sel1_n34), .D(
-        oc8051_alu_src_sel1_n35), .Y(oc8051_alu_src_sel1_n330) );
-  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u80 ( .A0(oc8051_alu_src_sel1_op3_r[0]), .A1(oc8051_alu_src_sel1_n36), .B0(oc8051_alu_src_sel1_n37), .B1(ram_out[0]), 
-        .Y(oc8051_alu_src_sel1_n56) );
+  NOR3_X0P5A_A12TS oc8051_alu_src_sel1_u80 ( .A(oc8051_alu_src_sel1_n61), .B(
+        oc8051_alu_src_sel1_n59), .C(oc8051_alu_src_sel1_n60), .Y(
+        oc8051_alu_src_sel1_n35) );
   AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u79 ( .A0(oc8051_alu_src_sel1_n34), 
-        .A1(pc[8]), .B0(pc[0]), .B1(oc8051_alu_src_sel1_n35), .Y(
-        oc8051_alu_src_sel1_n57) );
-  INV_X0P5B_A12TS oc8051_alu_src_sel1_u78 ( .A(oc8051_alu_src_sel1_n61), .Y(
-        oc8051_alu_src_sel1_n31) );
-  INV_X0P5B_A12TS oc8051_alu_src_sel1_u77 ( .A(oc8051_alu_src_sel1_n60), .Y(
-        oc8051_alu_src_sel1_n32) );
-  INV_X0P5B_A12TS oc8051_alu_src_sel1_u76 ( .A(oc8051_alu_src_sel1_n59), .Y(
-        oc8051_alu_src_sel1_n33) );
-  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u75 ( .A0(oc8051_alu_src_sel1_n31), 
-        .A1(oc8051_alu_src_sel1_op2_r_0_), .B0(oc8051_alu_src_sel1_op1_r[0]), 
-        .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(acc[0]), .Y(oc8051_alu_src_sel1_n58) );
+        .A1(acc[0]), .B0(oc8051_alu_src_sel1_op1_r[0]), .B1(
+        oc8051_alu_src_sel1_n35), .Y(oc8051_alu_src_sel1_n57) );
+  NOR3_X0P5A_A12TS oc8051_alu_src_sel1_u78 ( .A(src_sel1[0]), .B(src_sel1[2]), 
+        .C(oc8051_alu_src_sel1_n61), .Y(oc8051_alu_src_sel1_n31) );
+  NOR3_X0P5A_A12TS oc8051_alu_src_sel1_u77 ( .A(oc8051_alu_src_sel1_n59), .B(
+        src_sel1[1]), .C(oc8051_alu_src_sel1_n60), .Y(oc8051_alu_src_sel1_n32)
+         );
+  NOR3_X0P5A_A12TS oc8051_alu_src_sel1_u76 ( .A(src_sel1[1]), .B(src_sel1[2]), 
+        .C(oc8051_alu_src_sel1_n59), .Y(oc8051_alu_src_sel1_n33) );
+  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u75 ( .A0(
+        oc8051_alu_src_sel1_op3_r[0]), .A1(oc8051_alu_src_sel1_n31), .B0(pc[0]), .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(
+        oc8051_alu_src_sel1_op2_r_0_), .Y(oc8051_alu_src_sel1_n58) );
   NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u74 ( .A(oc8051_alu_src_sel1_n56), .B(
-        oc8051_alu_src_sel1_n57), .C(oc8051_alu_src_sel1_n58), .Y(
-        oc8051_alu_src_sel1_n340) );
-  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u73 ( .A0(oc8051_alu_src_sel1_op3_r[1]), .A1(oc8051_alu_src_sel1_n36), .B0(oc8051_alu_src_sel1_n37), .B1(ram_out[1]), 
-        .Y(oc8051_alu_src_sel1_n53) );
+        oc8051_alu_src_sel1_n57), .C(oc8051_alu_src_sel1_n58), .Y(src1[0]) );
+  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u73 ( .A0(oc8051_alu_src_sel1_n36), 
+        .A1(ram_out[1]), .B0(oc8051_alu_src_sel1_n37), .B1(pc[9]), .Y(
+        oc8051_alu_src_sel1_n53) );
   AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u72 ( .A0(oc8051_alu_src_sel1_n34), 
-        .A1(pc[9]), .B0(pc[1]), .B1(oc8051_alu_src_sel1_n35), .Y(
-        oc8051_alu_src_sel1_n54) );
-  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u71 ( .A0(oc8051_alu_src_sel1_n31), 
-        .A1(oc8051_alu_src_sel1_op2_r_1_), .B0(oc8051_alu_src_sel1_op1_r[1]), 
-        .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(acc[1]), .Y(oc8051_alu_src_sel1_n55) );
+        .A1(acc[1]), .B0(oc8051_alu_src_sel1_op1_r[1]), .B1(
+        oc8051_alu_src_sel1_n35), .Y(oc8051_alu_src_sel1_n54) );
+  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u71 ( .A0(
+        oc8051_alu_src_sel1_op3_r[1]), .A1(oc8051_alu_src_sel1_n31), .B0(pc[1]), .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(
+        oc8051_alu_src_sel1_op2_r_1_), .Y(oc8051_alu_src_sel1_n55) );
   NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u70 ( .A(oc8051_alu_src_sel1_n53), .B(
-        oc8051_alu_src_sel1_n54), .C(oc8051_alu_src_sel1_n55), .Y(
-        oc8051_alu_src_sel1_n350) );
-  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u69 ( .A0(oc8051_alu_src_sel1_op3_r[2]), .A1(oc8051_alu_src_sel1_n36), .B0(oc8051_alu_src_sel1_n37), .B1(ram_out[2]), 
-        .Y(oc8051_alu_src_sel1_n50) );
+        oc8051_alu_src_sel1_n54), .C(oc8051_alu_src_sel1_n55), .Y(src1[1]) );
+  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u69 ( .A0(oc8051_alu_src_sel1_n36), 
+        .A1(ram_out[2]), .B0(oc8051_alu_src_sel1_n37), .B1(pc[10]), .Y(
+        oc8051_alu_src_sel1_n50) );
   AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u68 ( .A0(oc8051_alu_src_sel1_n34), 
-        .A1(pc[10]), .B0(pc[2]), .B1(oc8051_alu_src_sel1_n35), .Y(
-        oc8051_alu_src_sel1_n51) );
-  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u67 ( .A0(oc8051_alu_src_sel1_n31), 
-        .A1(oc8051_alu_src_sel1_op2_r_2_), .B0(oc8051_alu_src_sel1_op1_r[2]), 
-        .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(acc[2]), .Y(oc8051_alu_src_sel1_n52) );
+        .A1(acc[2]), .B0(oc8051_alu_src_sel1_op1_r[2]), .B1(
+        oc8051_alu_src_sel1_n35), .Y(oc8051_alu_src_sel1_n51) );
+  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u67 ( .A0(
+        oc8051_alu_src_sel1_op3_r[2]), .A1(oc8051_alu_src_sel1_n31), .B0(pc[2]), .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(
+        oc8051_alu_src_sel1_op2_r_2_), .Y(oc8051_alu_src_sel1_n52) );
   NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u66 ( .A(oc8051_alu_src_sel1_n50), .B(
-        oc8051_alu_src_sel1_n51), .C(oc8051_alu_src_sel1_n52), .Y(
-        oc8051_alu_src_sel1_n360) );
-  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u65 ( .A0(oc8051_alu_src_sel1_op3_r[3]), .A1(oc8051_alu_src_sel1_n36), .B0(oc8051_alu_src_sel1_n37), .B1(ram_out[3]), 
-        .Y(oc8051_alu_src_sel1_n47) );
+        oc8051_alu_src_sel1_n51), .C(oc8051_alu_src_sel1_n52), .Y(src1[2]) );
+  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u65 ( .A0(oc8051_alu_src_sel1_n36), 
+        .A1(ram_out[3]), .B0(oc8051_alu_src_sel1_n37), .B1(pc[11]), .Y(
+        oc8051_alu_src_sel1_n47) );
   AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u64 ( .A0(oc8051_alu_src_sel1_n34), 
-        .A1(pc[11]), .B0(pc[3]), .B1(oc8051_alu_src_sel1_n35), .Y(
-        oc8051_alu_src_sel1_n48) );
-  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u63 ( .A0(oc8051_alu_src_sel1_n31), 
-        .A1(oc8051_alu_src_sel1_op2_r_3_), .B0(oc8051_alu_src_sel1_op1_r[3]), 
-        .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(acc[3]), .Y(oc8051_alu_src_sel1_n49) );
+        .A1(acc[3]), .B0(oc8051_alu_src_sel1_op1_r[3]), .B1(
+        oc8051_alu_src_sel1_n35), .Y(oc8051_alu_src_sel1_n48) );
+  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u63 ( .A0(
+        oc8051_alu_src_sel1_op3_r[3]), .A1(oc8051_alu_src_sel1_n31), .B0(pc[3]), .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(
+        oc8051_alu_src_sel1_op2_r_3_), .Y(oc8051_alu_src_sel1_n49) );
   NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u62 ( .A(oc8051_alu_src_sel1_n47), .B(
-        oc8051_alu_src_sel1_n48), .C(oc8051_alu_src_sel1_n49), .Y(
-        oc8051_alu_src_sel1_n370) );
-  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u61 ( .A0(oc8051_alu_src_sel1_op3_r[4]), .A1(oc8051_alu_src_sel1_n36), .B0(oc8051_alu_src_sel1_n37), .B1(ram_out[4]), 
-        .Y(oc8051_alu_src_sel1_n44) );
+        oc8051_alu_src_sel1_n48), .C(oc8051_alu_src_sel1_n49), .Y(src1[3]) );
+  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u61 ( .A0(oc8051_alu_src_sel1_n36), 
+        .A1(ram_out[4]), .B0(oc8051_alu_src_sel1_n37), .B1(pc[12]), .Y(
+        oc8051_alu_src_sel1_n44) );
   AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u60 ( .A0(oc8051_alu_src_sel1_n34), 
-        .A1(pc[12]), .B0(pc[4]), .B1(oc8051_alu_src_sel1_n35), .Y(
-        oc8051_alu_src_sel1_n45) );
-  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u59 ( .A0(oc8051_alu_src_sel1_n31), 
-        .A1(oc8051_alu_src_sel1_op2_r_4_), .B0(oc8051_alu_src_sel1_op1_r[4]), 
-        .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(acc[4]), .Y(oc8051_alu_src_sel1_n46) );
+        .A1(acc[4]), .B0(oc8051_alu_src_sel1_op1_r[4]), .B1(
+        oc8051_alu_src_sel1_n35), .Y(oc8051_alu_src_sel1_n45) );
+  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u59 ( .A0(
+        oc8051_alu_src_sel1_op3_r[4]), .A1(oc8051_alu_src_sel1_n31), .B0(pc[4]), .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(
+        oc8051_alu_src_sel1_op2_r_4_), .Y(oc8051_alu_src_sel1_n46) );
   NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u58 ( .A(oc8051_alu_src_sel1_n44), .B(
-        oc8051_alu_src_sel1_n45), .C(oc8051_alu_src_sel1_n46), .Y(
-        oc8051_alu_src_sel1_n380) );
-  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u57 ( .A0(oc8051_alu_src_sel1_op3_r[5]), .A1(oc8051_alu_src_sel1_n36), .B0(oc8051_alu_src_sel1_n37), .B1(ram_out[5]), 
-        .Y(oc8051_alu_src_sel1_n41) );
+        oc8051_alu_src_sel1_n45), .C(oc8051_alu_src_sel1_n46), .Y(src1[4]) );
+  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u57 ( .A0(oc8051_alu_src_sel1_n36), 
+        .A1(ram_out[5]), .B0(oc8051_alu_src_sel1_n37), .B1(pc[13]), .Y(
+        oc8051_alu_src_sel1_n41) );
   AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u56 ( .A0(oc8051_alu_src_sel1_n34), 
-        .A1(pc[13]), .B0(pc[5]), .B1(oc8051_alu_src_sel1_n35), .Y(
-        oc8051_alu_src_sel1_n42) );
-  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u55 ( .A0(oc8051_alu_src_sel1_n31), 
-        .A1(oc8051_alu_src_sel1_op2_r_5_), .B0(oc8051_alu_src_sel1_op1_r[5]), 
-        .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(acc[5]), .Y(oc8051_alu_src_sel1_n43) );
+        .A1(acc[5]), .B0(oc8051_alu_src_sel1_op1_r[5]), .B1(
+        oc8051_alu_src_sel1_n35), .Y(oc8051_alu_src_sel1_n42) );
+  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u55 ( .A0(
+        oc8051_alu_src_sel1_op3_r[5]), .A1(oc8051_alu_src_sel1_n31), .B0(pc[5]), .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(
+        oc8051_alu_src_sel1_op2_r_5_), .Y(oc8051_alu_src_sel1_n43) );
   NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u54 ( .A(oc8051_alu_src_sel1_n41), .B(
-        oc8051_alu_src_sel1_n42), .C(oc8051_alu_src_sel1_n43), .Y(
-        oc8051_alu_src_sel1_n390) );
-  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u53 ( .A0(oc8051_alu_src_sel1_op3_r[6]), .A1(oc8051_alu_src_sel1_n36), .B0(oc8051_alu_src_sel1_n37), .B1(ram_out[6]), 
-        .Y(oc8051_alu_src_sel1_n38) );
+        oc8051_alu_src_sel1_n42), .C(oc8051_alu_src_sel1_n43), .Y(src1[5]) );
+  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u53 ( .A0(oc8051_alu_src_sel1_n36), 
+        .A1(ram_out[6]), .B0(oc8051_alu_src_sel1_n37), .B1(pc[14]), .Y(
+        oc8051_alu_src_sel1_n38) );
   AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u52 ( .A0(oc8051_alu_src_sel1_n34), 
-        .A1(pc[14]), .B0(pc[6]), .B1(oc8051_alu_src_sel1_n35), .Y(
-        oc8051_alu_src_sel1_n39) );
-  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u51 ( .A0(oc8051_alu_src_sel1_n31), 
-        .A1(oc8051_alu_src_sel1_op2_r_6_), .B0(oc8051_alu_src_sel1_op1_r[6]), 
-        .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(acc[6]), .Y(oc8051_alu_src_sel1_n40) );
+        .A1(acc[6]), .B0(oc8051_alu_src_sel1_op1_r[6]), .B1(
+        oc8051_alu_src_sel1_n35), .Y(oc8051_alu_src_sel1_n39) );
+  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u51 ( .A0(
+        oc8051_alu_src_sel1_op3_r[6]), .A1(oc8051_alu_src_sel1_n31), .B0(pc[6]), .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(
+        oc8051_alu_src_sel1_op2_r_6_), .Y(oc8051_alu_src_sel1_n40) );
   NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u50 ( .A(oc8051_alu_src_sel1_n38), .B(
-        oc8051_alu_src_sel1_n39), .C(oc8051_alu_src_sel1_n40), .Y(
-        oc8051_alu_src_sel1_n400) );
-  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u49 ( .A0(oc8051_alu_src_sel1_op3_r[7]), .A1(oc8051_alu_src_sel1_n36), .B0(oc8051_alu_src_sel1_n37), .B1(ram_out[7]), 
-        .Y(oc8051_alu_src_sel1_n28) );
+        oc8051_alu_src_sel1_n39), .C(oc8051_alu_src_sel1_n40), .Y(src1[6]) );
+  AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u49 ( .A0(oc8051_alu_src_sel1_n36), 
+        .A1(ram_out[7]), .B0(oc8051_alu_src_sel1_n37), .B1(pc[15]), .Y(
+        oc8051_alu_src_sel1_n28) );
   AOI22_X0P5M_A12TS oc8051_alu_src_sel1_u48 ( .A0(oc8051_alu_src_sel1_n34), 
-        .A1(pc[15]), .B0(pc[7]), .B1(oc8051_alu_src_sel1_n35), .Y(
-        oc8051_alu_src_sel1_n29) );
-  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u47 ( .A0(oc8051_alu_src_sel1_n31), 
-        .A1(oc8051_alu_src_sel1_op2_r_7_), .B0(oc8051_alu_src_sel1_op1_r[7]), 
-        .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(acc[7]), .Y(oc8051_alu_src_sel1_n30) );
+        .A1(acc[7]), .B0(oc8051_alu_src_sel1_op1_r[7]), .B1(
+        oc8051_alu_src_sel1_n35), .Y(oc8051_alu_src_sel1_n29) );
+  AOI222_X0P5M_A12TS oc8051_alu_src_sel1_u47 ( .A0(
+        oc8051_alu_src_sel1_op3_r[7]), .A1(oc8051_alu_src_sel1_n31), .B0(pc[7]), .B1(oc8051_alu_src_sel1_n32), .C0(oc8051_alu_src_sel1_n33), .C1(
+        oc8051_alu_src_sel1_op2_r_7_), .Y(oc8051_alu_src_sel1_n30) );
   NAND3_X0P5A_A12TS oc8051_alu_src_sel1_u46 ( .A(oc8051_alu_src_sel1_n28), .B(
-        oc8051_alu_src_sel1_n29), .C(oc8051_alu_src_sel1_n30), .Y(
-        oc8051_alu_src_sel1_n410) );
+        oc8051_alu_src_sel1_n29), .C(oc8051_alu_src_sel1_n30), .Y(src1[7]) );
   NAND2_X0P5A_A12TS oc8051_alu_src_sel1_u45 ( .A(src_sel2[1]), .B(src_sel2[0]), 
         .Y(oc8051_alu_src_sel1_n1) );
   INV_X0P5B_A12TS oc8051_alu_src_sel1_u44 ( .A(oc8051_alu_src_sel1_op2_r_0_), 
@@ -38109,14 +38094,6 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_alu_src_sel1_op1_r[6]) );
   DFFRPQ_X1M_A12TS oc8051_alu_src_sel1_op1_r_reg_7_ ( .D(op1_n[7]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_alu_src_sel1_op1_r[7]) );
-  LATQ_X1M_A12TS oc8051_alu_src_sel1_src1_reg_0_ ( .G(oc8051_alu_src_sel1_n330), .D(oc8051_alu_src_sel1_n340), .Q(src1[0]) );
-  LATQ_X1M_A12TS oc8051_alu_src_sel1_src1_reg_1_ ( .G(oc8051_alu_src_sel1_n330), .D(oc8051_alu_src_sel1_n350), .Q(src1[1]) );
-  LATQ_X1M_A12TS oc8051_alu_src_sel1_src1_reg_2_ ( .G(oc8051_alu_src_sel1_n330), .D(oc8051_alu_src_sel1_n360), .Q(src1[2]) );
-  LATQ_X1M_A12TS oc8051_alu_src_sel1_src1_reg_3_ ( .G(oc8051_alu_src_sel1_n330), .D(oc8051_alu_src_sel1_n370), .Q(src1[3]) );
-  LATQ_X1M_A12TS oc8051_alu_src_sel1_src1_reg_4_ ( .G(oc8051_alu_src_sel1_n330), .D(oc8051_alu_src_sel1_n380), .Q(src1[4]) );
-  LATQ_X1M_A12TS oc8051_alu_src_sel1_src1_reg_5_ ( .G(oc8051_alu_src_sel1_n330), .D(oc8051_alu_src_sel1_n390), .Q(src1[5]) );
-  LATQ_X1M_A12TS oc8051_alu_src_sel1_src1_reg_6_ ( .G(oc8051_alu_src_sel1_n330), .D(oc8051_alu_src_sel1_n400), .Q(src1[6]) );
-  LATQ_X1M_A12TS oc8051_alu_src_sel1_src1_reg_7_ ( .G(oc8051_alu_src_sel1_n330), .D(oc8051_alu_src_sel1_n410), .Q(src1[7]) );
   NOR2_X0P5A_A12TS oc8051_comp1_u11 ( .A(acc[1]), .B(acc[0]), .Y(
         oc8051_comp1_n7) );
   NOR2_X0P5A_A12TS oc8051_comp1_u10 ( .A(acc[3]), .B(acc[2]), .Y(
@@ -38209,345 +38186,345 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         cy_sel[1]), .Y(oc8051_cy_select1_n1) );
   AO1B2_X0P5M_A12TS oc8051_cy_select1_u3 ( .B0(cy_sel[0]), .B1(cy), .A0N(
         oc8051_cy_select1_n1), .Y(alu_cy) );
-  INV_X0P5B_A12TS oc8051_indi_addr1_u118 ( .A(wr_addr[0]), .Y(
-        oc8051_indi_addr1_n25) );
-  INV_X0P5B_A12TS oc8051_indi_addr1_u117 ( .A(wr_addr[3]), .Y(
+  INV_X0P5B_A12TS oc8051_indi_addr1_u118 ( .A(wr_addr[3]), .Y(
         oc8051_indi_addr1_n27) );
-  NOR2_X0P5A_A12TS oc8051_indi_addr1_u116 ( .A(wr_addr[2]), .B(wr_addr[1]), 
-        .Y(oc8051_indi_addr1_n98) );
-  NOR2_X0P5A_A12TS oc8051_indi_addr1_u115 ( .A(wr_addr[6]), .B(wr_addr[5]), 
+  NOR2_X0P5A_A12TS oc8051_indi_addr1_u117 ( .A(wr_addr[6]), .B(wr_addr[5]), 
         .Y(oc8051_indi_addr1_n99) );
-  NOR2_X0P5A_A12TS oc8051_indi_addr1_u114 ( .A(oc8051_indi_addr1_wr_bit_r), 
+  NOR2_X0P5A_A12TS oc8051_indi_addr1_u116 ( .A(oc8051_indi_addr1_wr_bit_r), 
         .B(wr_addr[7]), .Y(oc8051_indi_addr1_n100) );
-  AND4_X0P5M_A12TS oc8051_indi_addr1_u113 ( .A(oc8051_indi_addr1_n98), .B(wr_o), .C(oc8051_indi_addr1_n99), .D(oc8051_indi_addr1_n100), .Y(
+  AND4_X0P5M_A12TS oc8051_indi_addr1_u115 ( .A(oc8051_indi_addr1_n98), .B(wr_o), .C(oc8051_indi_addr1_n99), .D(oc8051_indi_addr1_n100), .Y(
         oc8051_indi_addr1_n21) );
-  NOR2B_X0P5M_A12TS oc8051_indi_addr1_u112 ( .AN(oc8051_indi_addr1_n21), .B(
+  NOR2B_X0P5M_A12TS oc8051_indi_addr1_u114 ( .AN(oc8051_indi_addr1_n21), .B(
         wr_addr[4]), .Y(oc8051_indi_addr1_n94) );
-  AND3_X0P5M_A12TS oc8051_indi_addr1_u111 ( .A(oc8051_indi_addr1_n25), .B(
+  AND3_X0P5M_A12TS oc8051_indi_addr1_u113 ( .A(oc8051_indi_addr1_n25), .B(
         oc8051_indi_addr1_n27), .C(oc8051_indi_addr1_n94), .Y(
         oc8051_indi_addr1_n97) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u110 ( .A(oc8051_indi_addr1_buff_0__7_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u112 ( .A(oc8051_indi_addr1_buff_0__7_), 
         .B(wr_dat[7]), .S0(oc8051_indi_addr1_n97), .Y(oc8051_indi_addr1_n28)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u109 ( .A(oc8051_indi_addr1_buff_0__6_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u111 ( .A(oc8051_indi_addr1_buff_0__6_), 
         .B(wr_dat[6]), .S0(oc8051_indi_addr1_n97), .Y(oc8051_indi_addr1_n29)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u108 ( .A(oc8051_indi_addr1_buff_0__5_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u110 ( .A(oc8051_indi_addr1_buff_0__5_), 
         .B(wr_dat[5]), .S0(oc8051_indi_addr1_n97), .Y(oc8051_indi_addr1_n30)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u107 ( .A(oc8051_indi_addr1_buff_0__4_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u109 ( .A(oc8051_indi_addr1_buff_0__4_), 
         .B(wr_dat[4]), .S0(oc8051_indi_addr1_n97), .Y(oc8051_indi_addr1_n31)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u106 ( .A(oc8051_indi_addr1_buff_0__3_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u108 ( .A(oc8051_indi_addr1_buff_0__3_), 
         .B(wr_dat[3]), .S0(oc8051_indi_addr1_n97), .Y(oc8051_indi_addr1_n32)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u105 ( .A(oc8051_indi_addr1_buff_0__2_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u107 ( .A(oc8051_indi_addr1_buff_0__2_), 
         .B(wr_dat[2]), .S0(oc8051_indi_addr1_n97), .Y(oc8051_indi_addr1_n33)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u104 ( .A(oc8051_indi_addr1_buff_0__1_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u106 ( .A(oc8051_indi_addr1_buff_0__1_), 
         .B(wr_dat[1]), .S0(oc8051_indi_addr1_n97), .Y(oc8051_indi_addr1_n34)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u103 ( .A(oc8051_indi_addr1_buff_0__0_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u105 ( .A(oc8051_indi_addr1_buff_0__0_), 
         .B(wr_dat[0]), .S0(oc8051_indi_addr1_n97), .Y(oc8051_indi_addr1_n35)
          );
-  AND3_X0P5M_A12TS oc8051_indi_addr1_u102 ( .A(wr_addr[0]), .B(
-        oc8051_indi_addr1_n27), .C(oc8051_indi_addr1_n94), .Y(
-        oc8051_indi_addr1_n96) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u101 ( .A(oc8051_indi_addr1_buff_1__7_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u104 ( .A(oc8051_indi_addr1_buff_1__7_), 
         .B(wr_dat[7]), .S0(oc8051_indi_addr1_n96), .Y(oc8051_indi_addr1_n36)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u100 ( .A(oc8051_indi_addr1_buff_1__6_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u103 ( .A(oc8051_indi_addr1_buff_1__6_), 
         .B(wr_dat[6]), .S0(oc8051_indi_addr1_n96), .Y(oc8051_indi_addr1_n37)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u99 ( .A(oc8051_indi_addr1_buff_1__5_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u102 ( .A(oc8051_indi_addr1_buff_1__5_), 
         .B(wr_dat[5]), .S0(oc8051_indi_addr1_n96), .Y(oc8051_indi_addr1_n38)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u98 ( .A(oc8051_indi_addr1_buff_1__4_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u101 ( .A(oc8051_indi_addr1_buff_1__4_), 
         .B(wr_dat[4]), .S0(oc8051_indi_addr1_n96), .Y(oc8051_indi_addr1_n39)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u97 ( .A(oc8051_indi_addr1_buff_1__3_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u100 ( .A(oc8051_indi_addr1_buff_1__3_), 
         .B(wr_dat[3]), .S0(oc8051_indi_addr1_n96), .Y(oc8051_indi_addr1_n40)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u96 ( .A(oc8051_indi_addr1_buff_1__2_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u99 ( .A(oc8051_indi_addr1_buff_1__2_), 
         .B(wr_dat[2]), .S0(oc8051_indi_addr1_n96), .Y(oc8051_indi_addr1_n41)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u95 ( .A(oc8051_indi_addr1_buff_1__1_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u98 ( .A(oc8051_indi_addr1_buff_1__1_), 
         .B(wr_dat[1]), .S0(oc8051_indi_addr1_n96), .Y(oc8051_indi_addr1_n42)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u94 ( .A(oc8051_indi_addr1_buff_1__0_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u97 ( .A(oc8051_indi_addr1_buff_1__0_), 
         .B(wr_dat[0]), .S0(oc8051_indi_addr1_n96), .Y(oc8051_indi_addr1_n43)
          );
-  AND3_X0P5M_A12TS oc8051_indi_addr1_u93 ( .A(wr_addr[3]), .B(
+  AND3_X0P5M_A12TS oc8051_indi_addr1_u96 ( .A(wr_addr[3]), .B(
         oc8051_indi_addr1_n25), .C(oc8051_indi_addr1_n94), .Y(
         oc8051_indi_addr1_n95) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u92 ( .A(oc8051_indi_addr1_buff_2__7_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u95 ( .A(oc8051_indi_addr1_buff_2__7_), 
         .B(wr_dat[7]), .S0(oc8051_indi_addr1_n95), .Y(oc8051_indi_addr1_n44)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u91 ( .A(oc8051_indi_addr1_buff_2__6_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u94 ( .A(oc8051_indi_addr1_buff_2__6_), 
         .B(wr_dat[6]), .S0(oc8051_indi_addr1_n95), .Y(oc8051_indi_addr1_n45)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u90 ( .A(oc8051_indi_addr1_buff_2__5_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u93 ( .A(oc8051_indi_addr1_buff_2__5_), 
         .B(wr_dat[5]), .S0(oc8051_indi_addr1_n95), .Y(oc8051_indi_addr1_n46)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u89 ( .A(oc8051_indi_addr1_buff_2__4_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u92 ( .A(oc8051_indi_addr1_buff_2__4_), 
         .B(wr_dat[4]), .S0(oc8051_indi_addr1_n95), .Y(oc8051_indi_addr1_n47)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u88 ( .A(oc8051_indi_addr1_buff_2__3_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u91 ( .A(oc8051_indi_addr1_buff_2__3_), 
         .B(wr_dat[3]), .S0(oc8051_indi_addr1_n95), .Y(oc8051_indi_addr1_n48)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u87 ( .A(oc8051_indi_addr1_buff_2__2_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u90 ( .A(oc8051_indi_addr1_buff_2__2_), 
         .B(wr_dat[2]), .S0(oc8051_indi_addr1_n95), .Y(oc8051_indi_addr1_n49)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u86 ( .A(oc8051_indi_addr1_buff_2__1_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u89 ( .A(oc8051_indi_addr1_buff_2__1_), 
         .B(wr_dat[1]), .S0(oc8051_indi_addr1_n95), .Y(oc8051_indi_addr1_n50)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u85 ( .A(oc8051_indi_addr1_buff_2__0_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u88 ( .A(oc8051_indi_addr1_buff_2__0_), 
         .B(wr_dat[0]), .S0(oc8051_indi_addr1_n95), .Y(oc8051_indi_addr1_n51)
          );
-  AND3_X0P5M_A12TS oc8051_indi_addr1_u84 ( .A(wr_addr[3]), .B(wr_addr[0]), .C(
-        oc8051_indi_addr1_n94), .Y(oc8051_indi_addr1_n93) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u83 ( .A(oc8051_indi_addr1_buff_3__7_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u87 ( .A(oc8051_indi_addr1_buff_3__7_), 
         .B(wr_dat[7]), .S0(oc8051_indi_addr1_n93), .Y(oc8051_indi_addr1_n52)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u82 ( .A(oc8051_indi_addr1_buff_3__6_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u86 ( .A(oc8051_indi_addr1_buff_3__6_), 
         .B(wr_dat[6]), .S0(oc8051_indi_addr1_n93), .Y(oc8051_indi_addr1_n53)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u81 ( .A(oc8051_indi_addr1_buff_3__5_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u85 ( .A(oc8051_indi_addr1_buff_3__5_), 
         .B(wr_dat[5]), .S0(oc8051_indi_addr1_n93), .Y(oc8051_indi_addr1_n54)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u80 ( .A(oc8051_indi_addr1_buff_3__4_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u84 ( .A(oc8051_indi_addr1_buff_3__4_), 
         .B(wr_dat[4]), .S0(oc8051_indi_addr1_n93), .Y(oc8051_indi_addr1_n55)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u79 ( .A(oc8051_indi_addr1_buff_3__3_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u83 ( .A(oc8051_indi_addr1_buff_3__3_), 
         .B(wr_dat[3]), .S0(oc8051_indi_addr1_n93), .Y(oc8051_indi_addr1_n56)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u78 ( .A(oc8051_indi_addr1_buff_3__2_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u82 ( .A(oc8051_indi_addr1_buff_3__2_), 
         .B(wr_dat[2]), .S0(oc8051_indi_addr1_n93), .Y(oc8051_indi_addr1_n57)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u77 ( .A(oc8051_indi_addr1_buff_3__1_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u81 ( .A(oc8051_indi_addr1_buff_3__1_), 
         .B(wr_dat[1]), .S0(oc8051_indi_addr1_n93), .Y(oc8051_indi_addr1_n58)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u76 ( .A(oc8051_indi_addr1_buff_3__0_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u80 ( .A(oc8051_indi_addr1_buff_3__0_), 
         .B(wr_dat[0]), .S0(oc8051_indi_addr1_n93), .Y(oc8051_indi_addr1_n59)
          );
-  AND2_X0P5M_A12TS oc8051_indi_addr1_u75 ( .A(oc8051_indi_addr1_n21), .B(
+  AND2_X0P5M_A12TS oc8051_indi_addr1_u79 ( .A(oc8051_indi_addr1_n21), .B(
         wr_addr[4]), .Y(oc8051_indi_addr1_n23) );
-  AND3_X0P5M_A12TS oc8051_indi_addr1_u74 ( .A(oc8051_indi_addr1_n25), .B(
+  AND3_X0P5M_A12TS oc8051_indi_addr1_u78 ( .A(oc8051_indi_addr1_n25), .B(
         oc8051_indi_addr1_n27), .C(oc8051_indi_addr1_n23), .Y(
         oc8051_indi_addr1_n92) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u73 ( .A(oc8051_indi_addr1_buff_4__7_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u77 ( .A(oc8051_indi_addr1_buff_4__7_), 
         .B(wr_dat[7]), .S0(oc8051_indi_addr1_n92), .Y(oc8051_indi_addr1_n60)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u72 ( .A(oc8051_indi_addr1_buff_4__6_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u76 ( .A(oc8051_indi_addr1_buff_4__6_), 
         .B(wr_dat[6]), .S0(oc8051_indi_addr1_n92), .Y(oc8051_indi_addr1_n61)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u71 ( .A(oc8051_indi_addr1_buff_4__5_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u75 ( .A(oc8051_indi_addr1_buff_4__5_), 
         .B(wr_dat[5]), .S0(oc8051_indi_addr1_n92), .Y(oc8051_indi_addr1_n62)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u70 ( .A(oc8051_indi_addr1_buff_4__4_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u74 ( .A(oc8051_indi_addr1_buff_4__4_), 
         .B(wr_dat[4]), .S0(oc8051_indi_addr1_n92), .Y(oc8051_indi_addr1_n63)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u69 ( .A(oc8051_indi_addr1_buff_4__3_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u73 ( .A(oc8051_indi_addr1_buff_4__3_), 
         .B(wr_dat[3]), .S0(oc8051_indi_addr1_n92), .Y(oc8051_indi_addr1_n64)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u68 ( .A(oc8051_indi_addr1_buff_4__2_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u72 ( .A(oc8051_indi_addr1_buff_4__2_), 
         .B(wr_dat[2]), .S0(oc8051_indi_addr1_n92), .Y(oc8051_indi_addr1_n65)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u67 ( .A(oc8051_indi_addr1_buff_4__1_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u71 ( .A(oc8051_indi_addr1_buff_4__1_), 
         .B(wr_dat[1]), .S0(oc8051_indi_addr1_n92), .Y(oc8051_indi_addr1_n66)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u66 ( .A(oc8051_indi_addr1_buff_4__0_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u70 ( .A(oc8051_indi_addr1_buff_4__0_), 
         .B(wr_dat[0]), .S0(oc8051_indi_addr1_n92), .Y(oc8051_indi_addr1_n67)
          );
-  AND3_X0P5M_A12TS oc8051_indi_addr1_u65 ( .A(wr_addr[0]), .B(
-        oc8051_indi_addr1_n27), .C(oc8051_indi_addr1_n23), .Y(
-        oc8051_indi_addr1_n26) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u64 ( .A(oc8051_indi_addr1_buff_5__7_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u69 ( .A(oc8051_indi_addr1_buff_5__7_), 
         .B(wr_dat[7]), .S0(oc8051_indi_addr1_n26), .Y(oc8051_indi_addr1_n68)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u63 ( .A(oc8051_indi_addr1_buff_5__6_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u68 ( .A(oc8051_indi_addr1_buff_5__6_), 
         .B(wr_dat[6]), .S0(oc8051_indi_addr1_n26), .Y(oc8051_indi_addr1_n69)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u62 ( .A(oc8051_indi_addr1_buff_5__5_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u67 ( .A(oc8051_indi_addr1_buff_5__5_), 
         .B(wr_dat[5]), .S0(oc8051_indi_addr1_n26), .Y(oc8051_indi_addr1_n70)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u61 ( .A(oc8051_indi_addr1_buff_5__4_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u66 ( .A(oc8051_indi_addr1_buff_5__4_), 
         .B(wr_dat[4]), .S0(oc8051_indi_addr1_n26), .Y(oc8051_indi_addr1_n71)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u60 ( .A(oc8051_indi_addr1_buff_5__3_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u65 ( .A(oc8051_indi_addr1_buff_5__3_), 
         .B(wr_dat[3]), .S0(oc8051_indi_addr1_n26), .Y(oc8051_indi_addr1_n72)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u59 ( .A(oc8051_indi_addr1_buff_5__2_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u64 ( .A(oc8051_indi_addr1_buff_5__2_), 
         .B(wr_dat[2]), .S0(oc8051_indi_addr1_n26), .Y(oc8051_indi_addr1_n73)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u58 ( .A(oc8051_indi_addr1_buff_5__1_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u63 ( .A(oc8051_indi_addr1_buff_5__1_), 
         .B(wr_dat[1]), .S0(oc8051_indi_addr1_n26), .Y(oc8051_indi_addr1_n74)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u57 ( .A(oc8051_indi_addr1_buff_5__0_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u62 ( .A(oc8051_indi_addr1_buff_5__0_), 
         .B(wr_dat[0]), .S0(oc8051_indi_addr1_n26), .Y(oc8051_indi_addr1_n75)
          );
-  AND3_X0P5M_A12TS oc8051_indi_addr1_u56 ( .A(wr_addr[3]), .B(
+  AND3_X0P5M_A12TS oc8051_indi_addr1_u61 ( .A(wr_addr[3]), .B(
         oc8051_indi_addr1_n25), .C(oc8051_indi_addr1_n23), .Y(
         oc8051_indi_addr1_n24) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u55 ( .A(oc8051_indi_addr1_buff_6__7_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u60 ( .A(oc8051_indi_addr1_buff_6__7_), 
         .B(wr_dat[7]), .S0(oc8051_indi_addr1_n24), .Y(oc8051_indi_addr1_n76)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u54 ( .A(oc8051_indi_addr1_buff_6__6_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u59 ( .A(oc8051_indi_addr1_buff_6__6_), 
         .B(wr_dat[6]), .S0(oc8051_indi_addr1_n24), .Y(oc8051_indi_addr1_n77)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u53 ( .A(oc8051_indi_addr1_buff_6__5_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u58 ( .A(oc8051_indi_addr1_buff_6__5_), 
         .B(wr_dat[5]), .S0(oc8051_indi_addr1_n24), .Y(oc8051_indi_addr1_n78)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u52 ( .A(oc8051_indi_addr1_buff_6__4_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u57 ( .A(oc8051_indi_addr1_buff_6__4_), 
         .B(wr_dat[4]), .S0(oc8051_indi_addr1_n24), .Y(oc8051_indi_addr1_n79)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u51 ( .A(oc8051_indi_addr1_buff_6__3_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u56 ( .A(oc8051_indi_addr1_buff_6__3_), 
         .B(wr_dat[3]), .S0(oc8051_indi_addr1_n24), .Y(oc8051_indi_addr1_n80)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u50 ( .A(oc8051_indi_addr1_buff_6__2_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u55 ( .A(oc8051_indi_addr1_buff_6__2_), 
         .B(wr_dat[2]), .S0(oc8051_indi_addr1_n24), .Y(oc8051_indi_addr1_n81)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u49 ( .A(oc8051_indi_addr1_buff_6__1_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u54 ( .A(oc8051_indi_addr1_buff_6__1_), 
         .B(wr_dat[1]), .S0(oc8051_indi_addr1_n24), .Y(oc8051_indi_addr1_n82)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u48 ( .A(oc8051_indi_addr1_buff_6__0_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u53 ( .A(oc8051_indi_addr1_buff_6__0_), 
         .B(wr_dat[0]), .S0(oc8051_indi_addr1_n24), .Y(oc8051_indi_addr1_n83)
          );
-  AND3_X0P5M_A12TS oc8051_indi_addr1_u47 ( .A(wr_addr[3]), .B(wr_addr[0]), .C(
-        oc8051_indi_addr1_n23), .Y(oc8051_indi_addr1_n22) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u46 ( .A(oc8051_indi_addr1_buff_7__7_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u52 ( .A(oc8051_indi_addr1_buff_7__7_), 
         .B(wr_dat[7]), .S0(oc8051_indi_addr1_n22), .Y(oc8051_indi_addr1_n84)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u45 ( .A(oc8051_indi_addr1_buff_7__6_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u51 ( .A(oc8051_indi_addr1_buff_7__6_), 
         .B(wr_dat[6]), .S0(oc8051_indi_addr1_n22), .Y(oc8051_indi_addr1_n85)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u44 ( .A(oc8051_indi_addr1_buff_7__5_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u50 ( .A(oc8051_indi_addr1_buff_7__5_), 
         .B(wr_dat[5]), .S0(oc8051_indi_addr1_n22), .Y(oc8051_indi_addr1_n86)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u43 ( .A(oc8051_indi_addr1_buff_7__4_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u49 ( .A(oc8051_indi_addr1_buff_7__4_), 
         .B(wr_dat[4]), .S0(oc8051_indi_addr1_n22), .Y(oc8051_indi_addr1_n87)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u42 ( .A(oc8051_indi_addr1_buff_7__3_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u48 ( .A(oc8051_indi_addr1_buff_7__3_), 
         .B(wr_dat[3]), .S0(oc8051_indi_addr1_n22), .Y(oc8051_indi_addr1_n88)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u41 ( .A(oc8051_indi_addr1_buff_7__2_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u47 ( .A(oc8051_indi_addr1_buff_7__2_), 
         .B(wr_dat[2]), .S0(oc8051_indi_addr1_n22), .Y(oc8051_indi_addr1_n89)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u40 ( .A(oc8051_indi_addr1_buff_7__1_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u46 ( .A(oc8051_indi_addr1_buff_7__1_), 
         .B(wr_dat[1]), .S0(oc8051_indi_addr1_n22), .Y(oc8051_indi_addr1_n90)
          );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u39 ( .A(oc8051_indi_addr1_buff_7__0_), 
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u45 ( .A(oc8051_indi_addr1_buff_7__0_), 
         .B(wr_dat[0]), .S0(oc8051_indi_addr1_n22), .Y(oc8051_indi_addr1_n91)
          );
-  XNOR2_X0P5M_A12TS oc8051_indi_addr1_u38 ( .A(wr_addr[4]), .B(bank_sel[1]), 
+  XNOR2_X0P5M_A12TS oc8051_indi_addr1_u44 ( .A(wr_addr[4]), .B(bank_sel[1]), 
         .Y(oc8051_indi_addr1_n18) );
-  XNOR2_X0P5M_A12TS oc8051_indi_addr1_u37 ( .A(wr_addr[3]), .B(bank_sel[0]), 
+  XNOR2_X0P5M_A12TS oc8051_indi_addr1_u43 ( .A(wr_addr[3]), .B(bank_sel[0]), 
         .Y(oc8051_indi_addr1_n19) );
-  XNOR2_X0P5M_A12TS oc8051_indi_addr1_u36 ( .A(wr_addr[0]), .B(op1_cur[0]), 
+  XNOR2_X0P5M_A12TS oc8051_indi_addr1_u42 ( .A(wr_addr[0]), .B(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n20) );
-  AND4_X0P5M_A12TS oc8051_indi_addr1_u35 ( .A(oc8051_indi_addr1_n18), .B(
+  AND4_X0P5M_A12TS oc8051_indi_addr1_u41 ( .A(oc8051_indi_addr1_n18), .B(
         oc8051_indi_addr1_n19), .C(oc8051_indi_addr1_n20), .D(
         oc8051_indi_addr1_n21), .Y(oc8051_indi_addr1_n17) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u34 ( .A(oc8051_indi_addr1_n670), .B(
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u40 ( .A(oc8051_indi_addr1_n670), .B(
         wr_dat[0]), .S0(oc8051_indi_addr1_n17), .Y(ri[0]) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u33 ( .A(oc8051_indi_addr1_n660), .B(
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u39 ( .A(oc8051_indi_addr1_n660), .B(
         wr_dat[1]), .S0(oc8051_indi_addr1_n17), .Y(ri[1]) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u32 ( .A(oc8051_indi_addr1_n650), .B(
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u38 ( .A(oc8051_indi_addr1_n650), .B(
         wr_dat[2]), .S0(oc8051_indi_addr1_n17), .Y(ri[2]) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u31 ( .A(oc8051_indi_addr1_n640), .B(
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u37 ( .A(oc8051_indi_addr1_n640), .B(
         wr_dat[3]), .S0(oc8051_indi_addr1_n17), .Y(ri[3]) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u30 ( .A(oc8051_indi_addr1_n630), .B(
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u36 ( .A(oc8051_indi_addr1_n630), .B(
         wr_dat[4]), .S0(oc8051_indi_addr1_n17), .Y(ri[4]) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u29 ( .A(oc8051_indi_addr1_n620), .B(
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u35 ( .A(oc8051_indi_addr1_n620), .B(
         wr_dat[5]), .S0(oc8051_indi_addr1_n17), .Y(ri[5]) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u28 ( .A(oc8051_indi_addr1_n610), .B(
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u34 ( .A(oc8051_indi_addr1_n610), .B(
         wr_dat[6]), .S0(oc8051_indi_addr1_n17), .Y(ri[6]) );
-  MXT2_X0P5M_A12TS oc8051_indi_addr1_u27 ( .A(oc8051_indi_addr1_n600), .B(
+  MXT2_X0P5M_A12TS oc8051_indi_addr1_u33 ( .A(oc8051_indi_addr1_n600), .B(
         wr_dat[7]), .S0(oc8051_indi_addr1_n17), .Y(ri[7]) );
-  MXT2_X1M_A12TS oc8051_indi_addr1_u26 ( .A(oc8051_indi_addr1_n15), .B(
+  MXT2_X1M_A12TS oc8051_indi_addr1_u32 ( .A(oc8051_indi_addr1_n15), .B(
         oc8051_indi_addr1_n16), .S0(bank_sel[1]), .Y(oc8051_indi_addr1_n610)
          );
-  MXT2_X1M_A12TS oc8051_indi_addr1_u25 ( .A(oc8051_indi_addr1_n13), .B(
+  MXT2_X1M_A12TS oc8051_indi_addr1_u31 ( .A(oc8051_indi_addr1_n13), .B(
         oc8051_indi_addr1_n14), .S0(bank_sel[1]), .Y(oc8051_indi_addr1_n670)
          );
-  MXT2_X1M_A12TS oc8051_indi_addr1_u24 ( .A(oc8051_indi_addr1_n11), .B(
+  MXT2_X1M_A12TS oc8051_indi_addr1_u30 ( .A(oc8051_indi_addr1_n11), .B(
         oc8051_indi_addr1_n12), .S0(bank_sel[1]), .Y(oc8051_indi_addr1_n660)
          );
-  MXT2_X1M_A12TS oc8051_indi_addr1_u23 ( .A(oc8051_indi_addr1_n9), .B(
+  MXT2_X1M_A12TS oc8051_indi_addr1_u29 ( .A(oc8051_indi_addr1_n9), .B(
         oc8051_indi_addr1_n10), .S0(bank_sel[1]), .Y(oc8051_indi_addr1_n600)
          );
-  MXT2_X1M_A12TS oc8051_indi_addr1_u22 ( .A(oc8051_indi_addr1_n7), .B(
+  MXT2_X1M_A12TS oc8051_indi_addr1_u28 ( .A(oc8051_indi_addr1_n7), .B(
         oc8051_indi_addr1_n8), .S0(bank_sel[1]), .Y(oc8051_indi_addr1_n630) );
-  MXT2_X1M_A12TS oc8051_indi_addr1_u21 ( .A(oc8051_indi_addr1_n5), .B(
+  MXT2_X1M_A12TS oc8051_indi_addr1_u27 ( .A(oc8051_indi_addr1_n5), .B(
         oc8051_indi_addr1_n6), .S0(bank_sel[1]), .Y(oc8051_indi_addr1_n620) );
-  MXT2_X1M_A12TS oc8051_indi_addr1_u20 ( .A(oc8051_indi_addr1_n3), .B(
+  MXT2_X1M_A12TS oc8051_indi_addr1_u26 ( .A(oc8051_indi_addr1_n3), .B(
         oc8051_indi_addr1_n4), .S0(bank_sel[1]), .Y(oc8051_indi_addr1_n650) );
-  MXT2_X1M_A12TS oc8051_indi_addr1_u19 ( .A(oc8051_indi_addr1_n1), .B(
+  MXT2_X1M_A12TS oc8051_indi_addr1_u25 ( .A(oc8051_indi_addr1_n1), .B(
         oc8051_indi_addr1_n2), .S0(bank_sel[1]), .Y(oc8051_indi_addr1_n640) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u18 ( .A(oc8051_indi_addr1_buff_0__6_), 
+  NOR2_X0P5M_A12TS oc8051_indi_addr1_u24 ( .A(wr_addr[2]), .B(wr_addr[1]), .Y(
+        oc8051_indi_addr1_n98) );
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u23 ( .A(oc8051_indi_addr1_buff_0__6_), 
         .B(oc8051_indi_addr1_buff_2__6_), .C(oc8051_indi_addr1_buff_1__6_), 
         .D(oc8051_indi_addr1_buff_3__6_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n15) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u17 ( .A(oc8051_indi_addr1_buff_4__6_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u22 ( .A(oc8051_indi_addr1_buff_4__6_), 
         .B(oc8051_indi_addr1_buff_6__6_), .C(oc8051_indi_addr1_buff_5__6_), 
         .D(oc8051_indi_addr1_buff_7__6_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n16) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u16 ( .A(oc8051_indi_addr1_buff_0__0_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u21 ( .A(oc8051_indi_addr1_buff_0__0_), 
         .B(oc8051_indi_addr1_buff_2__0_), .C(oc8051_indi_addr1_buff_1__0_), 
         .D(oc8051_indi_addr1_buff_3__0_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n13) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u15 ( .A(oc8051_indi_addr1_buff_4__0_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u20 ( .A(oc8051_indi_addr1_buff_4__0_), 
         .B(oc8051_indi_addr1_buff_6__0_), .C(oc8051_indi_addr1_buff_5__0_), 
         .D(oc8051_indi_addr1_buff_7__0_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n14) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u14 ( .A(oc8051_indi_addr1_buff_0__1_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u19 ( .A(oc8051_indi_addr1_buff_0__1_), 
         .B(oc8051_indi_addr1_buff_2__1_), .C(oc8051_indi_addr1_buff_1__1_), 
         .D(oc8051_indi_addr1_buff_3__1_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n11) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u13 ( .A(oc8051_indi_addr1_buff_4__1_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u18 ( .A(oc8051_indi_addr1_buff_4__1_), 
         .B(oc8051_indi_addr1_buff_6__1_), .C(oc8051_indi_addr1_buff_5__1_), 
         .D(oc8051_indi_addr1_buff_7__1_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n12) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u12 ( .A(oc8051_indi_addr1_buff_0__7_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u17 ( .A(oc8051_indi_addr1_buff_0__7_), 
         .B(oc8051_indi_addr1_buff_2__7_), .C(oc8051_indi_addr1_buff_1__7_), 
         .D(oc8051_indi_addr1_buff_3__7_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n9) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u11 ( .A(oc8051_indi_addr1_buff_4__7_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u16 ( .A(oc8051_indi_addr1_buff_4__7_), 
         .B(oc8051_indi_addr1_buff_6__7_), .C(oc8051_indi_addr1_buff_5__7_), 
         .D(oc8051_indi_addr1_buff_7__7_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n10) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u10 ( .A(oc8051_indi_addr1_buff_0__4_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u15 ( .A(oc8051_indi_addr1_buff_0__4_), 
         .B(oc8051_indi_addr1_buff_2__4_), .C(oc8051_indi_addr1_buff_1__4_), 
         .D(oc8051_indi_addr1_buff_3__4_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n7) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u9 ( .A(oc8051_indi_addr1_buff_4__4_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u14 ( .A(oc8051_indi_addr1_buff_4__4_), 
         .B(oc8051_indi_addr1_buff_6__4_), .C(oc8051_indi_addr1_buff_5__4_), 
         .D(oc8051_indi_addr1_buff_7__4_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n8) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u8 ( .A(oc8051_indi_addr1_buff_0__5_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u13 ( .A(oc8051_indi_addr1_buff_0__5_), 
         .B(oc8051_indi_addr1_buff_2__5_), .C(oc8051_indi_addr1_buff_1__5_), 
         .D(oc8051_indi_addr1_buff_3__5_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n5) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u7 ( .A(oc8051_indi_addr1_buff_4__5_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u12 ( .A(oc8051_indi_addr1_buff_4__5_), 
         .B(oc8051_indi_addr1_buff_6__5_), .C(oc8051_indi_addr1_buff_5__5_), 
         .D(oc8051_indi_addr1_buff_7__5_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n6) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u6 ( .A(oc8051_indi_addr1_buff_0__2_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u11 ( .A(oc8051_indi_addr1_buff_0__2_), 
         .B(oc8051_indi_addr1_buff_2__2_), .C(oc8051_indi_addr1_buff_1__2_), 
         .D(oc8051_indi_addr1_buff_3__2_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n3) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u5 ( .A(oc8051_indi_addr1_buff_4__2_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u10 ( .A(oc8051_indi_addr1_buff_4__2_), 
         .B(oc8051_indi_addr1_buff_6__2_), .C(oc8051_indi_addr1_buff_5__2_), 
         .D(oc8051_indi_addr1_buff_7__2_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n4) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u4 ( .A(oc8051_indi_addr1_buff_0__3_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u9 ( .A(oc8051_indi_addr1_buff_0__3_), 
         .B(oc8051_indi_addr1_buff_2__3_), .C(oc8051_indi_addr1_buff_1__3_), 
         .D(oc8051_indi_addr1_buff_3__3_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n1) );
-  MXT4_X0P5M_A12TS oc8051_indi_addr1_u3 ( .A(oc8051_indi_addr1_buff_4__3_), 
+  MXT4_X0P5M_A12TS oc8051_indi_addr1_u8 ( .A(oc8051_indi_addr1_buff_4__3_), 
         .B(oc8051_indi_addr1_buff_6__3_), .C(oc8051_indi_addr1_buff_5__3_), 
         .D(oc8051_indi_addr1_buff_7__3_), .S0(bank_sel[0]), .S1(op1_cur[0]), 
         .Y(oc8051_indi_addr1_n2) );
+  AND3_X0P7M_A12TS oc8051_indi_addr1_u7 ( .A(wr_addr[3]), .B(wr_addr[0]), .C(
+        oc8051_indi_addr1_n94), .Y(oc8051_indi_addr1_n93) );
+  AND3_X0P7M_A12TS oc8051_indi_addr1_u6 ( .A(wr_addr[3]), .B(wr_addr[0]), .C(
+        oc8051_indi_addr1_n23), .Y(oc8051_indi_addr1_n22) );
+  AND3_X0P7M_A12TS oc8051_indi_addr1_u5 ( .A(wr_addr[0]), .B(
+        oc8051_indi_addr1_n27), .C(oc8051_indi_addr1_n94), .Y(
+        oc8051_indi_addr1_n96) );
+  AND3_X0P7M_A12TS oc8051_indi_addr1_u4 ( .A(wr_addr[0]), .B(
+        oc8051_indi_addr1_n27), .C(oc8051_indi_addr1_n23), .Y(
+        oc8051_indi_addr1_n26) );
+  INV_X0P5M_A12TS oc8051_indi_addr1_u3 ( .A(wr_addr[0]), .Y(
+        oc8051_indi_addr1_n25) );
   DFFRPQ_X1M_A12TS oc8051_indi_addr1_buff_reg_6__0_ ( .D(oc8051_indi_addr1_n83), .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_indi_addr1_buff_6__0_) );
   DFFRPQ_X1M_A12TS oc8051_indi_addr1_buff_reg_6__1_ ( .D(oc8051_indi_addr1_n82), .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_indi_addr1_buff_6__1_) );
   DFFRPQ_X1M_A12TS oc8051_indi_addr1_buff_reg_6__2_ ( .D(oc8051_indi_addr1_n81), .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_indi_addr1_buff_6__2_) );
@@ -38614,2647 +38591,2661 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_indi_addr1_buff_reg_3__7_ ( .D(oc8051_indi_addr1_n52), .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_indi_addr1_buff_3__7_) );
   DFFRPQ_X1M_A12TS oc8051_indi_addr1_wr_bit_r_reg ( .D(bit_addr_o), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_indi_addr1_wr_bit_r) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u861 ( .A(
-        oc8051_memory_interface1_op1_5_), .Y(oc8051_memory_interface1_n745) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u860 ( .A(
-        oc8051_memory_interface1_imem_wait), .Y(oc8051_memory_interface1_n135)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u870 ( .A(
+        oc8051_memory_interface1_op1_5_), .Y(oc8051_memory_interface1_n759) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u869 ( .A(
+        oc8051_memory_interface1_imem_wait), .Y(oc8051_memory_interface1_n173)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u859 ( .A(
-        oc8051_memory_interface1_pc_wr_r2), .Y(oc8051_memory_interface1_n162)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u868 ( .A(
+        oc8051_memory_interface1_pc_wr_r2), .Y(oc8051_memory_interface1_n200)
          );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u867 ( .A(
+        oc8051_memory_interface1_dmem_wait), .Y(oc8051_memory_interface1_n175)
+         );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u866 ( .A(
+        oc8051_memory_interface1_n173), .B(oc8051_memory_interface1_n200), .C(
+        oc8051_memory_interface1_n175), .Y(mem_wait) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u865 ( .A(rd), .Y(
+        oc8051_memory_interface1_n190) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u864 ( .A(
+        oc8051_memory_interface1_int_ack_t), .Y(oc8051_memory_interface1_n189)
+         );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u863 ( .A(ea_int), .B(ea_in), .Y(
+        oc8051_memory_interface1_n167) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u862 ( .A(
+        oc8051_memory_interface1_n167), .Y(oc8051_memory_interface1_n230) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u861 ( .A(
+        oc8051_memory_interface1_n230), .B(iack_i), .Y(
+        oc8051_memory_interface1_n171) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u860 ( .A(
+        oc8051_memory_interface1_n189), .B(oc8051_memory_interface1_n171), .Y(
+        oc8051_memory_interface1_n556) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u859 ( .A(
+        oc8051_memory_interface1_n190), .B(oc8051_memory_interface1_n556), .Y(
+        oc8051_memory_interface1_n723) );
   INV_X0P5B_A12TS oc8051_memory_interface1_u858 ( .A(
-        oc8051_memory_interface1_dmem_wait), .Y(oc8051_memory_interface1_n137)
-         );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u857 ( .A(
-        oc8051_memory_interface1_n135), .B(oc8051_memory_interface1_n162), .C(
-        oc8051_memory_interface1_n137), .Y(mem_wait) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u856 ( .A(rd), .Y(
-        oc8051_memory_interface1_n152) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u855 ( .A(
-        oc8051_memory_interface1_int_ack_t), .Y(oc8051_memory_interface1_n151)
-         );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u854 ( .A(ea_int), .B(ea_in), .Y(
-        oc8051_memory_interface1_n129) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u853 ( .A(
-        oc8051_memory_interface1_n129), .Y(oc8051_memory_interface1_n192) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u852 ( .A(
-        oc8051_memory_interface1_n192), .B(iack_i), .Y(
-        oc8051_memory_interface1_n133) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u851 ( .A(
-        oc8051_memory_interface1_n151), .B(oc8051_memory_interface1_n133), .Y(
-        oc8051_memory_interface1_n360) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u850 ( .A(
-        oc8051_memory_interface1_n152), .B(oc8051_memory_interface1_n360), .Y(
-        oc8051_memory_interface1_n681) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u849 ( .A(
-        oc8051_memory_interface1_n681), .Y(oc8051_memory_interface1_n679) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u848 ( .A(
-        oc8051_memory_interface1_n745), .B(mem_wait), .C(
-        oc8051_memory_interface1_n679), .Y(oc8051_memory_interface1_n742) );
-  OR3_X0P5M_A12TS oc8051_memory_interface1_u847 ( .A(
+        oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n721) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u857 ( .A(
+        oc8051_memory_interface1_n759), .B(mem_wait), .C(
+        oc8051_memory_interface1_n721), .Y(oc8051_memory_interface1_n756) );
+  OR3_X0P5M_A12TS oc8051_memory_interface1_u856 ( .A(
         oc8051_memory_interface1_op1_6_), .B(oc8051_memory_interface1_op1_7_), 
-        .C(oc8051_memory_interface1_op1_3_), .Y(oc8051_memory_interface1_n744)
+        .C(oc8051_memory_interface1_op1_3_), .Y(oc8051_memory_interface1_n758)
          );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u846 ( .A(
-        oc8051_memory_interface1_n744), .B(oc8051_memory_interface1_op1_2_), 
-        .C(oc8051_memory_interface1_op1_0_), .Y(oc8051_memory_interface1_n743)
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u855 ( .A(
+        oc8051_memory_interface1_n758), .B(oc8051_memory_interface1_op1_2_), 
+        .C(oc8051_memory_interface1_op1_0_), .Y(oc8051_memory_interface1_n757)
          );
-  AND4_X0P5M_A12TS oc8051_memory_interface1_u845 ( .A(
+  AND4_X0P5M_A12TS oc8051_memory_interface1_u854 ( .A(
         oc8051_memory_interface1_op1_4_), .B(oc8051_memory_interface1_op1_1_), 
-        .C(oc8051_memory_interface1_n742), .D(oc8051_memory_interface1_n743), 
-        .Y(oc8051_memory_interface1_n2160) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u844 ( .AN(
+        .C(oc8051_memory_interface1_n756), .D(oc8051_memory_interface1_n757), 
+        .Y(oc8051_memory_interface1_n2090) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u853 ( .AN(
         oc8051_memory_interface1_int_ack_buff), .B(
-        oc8051_memory_interface1_int_ack_t), .Y(oc8051_memory_interface1_n3880) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u843 ( .A(pc_wr_sel[1]), .Y(
-        oc8051_memory_interface1_n664) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u842 ( .A(pc_wr_sel[2]), .Y(
-        oc8051_memory_interface1_n584) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u841 ( .A(
-        oc8051_memory_interface1_n664), .B(oc8051_memory_interface1_n584), .C(
-        pc_wr_sel[0]), .Y(oc8051_memory_interface1_n601) );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u840 ( .A(
-        oc8051_memory_interface1_n601), .B(n_3_net_), .Y(
-        oc8051_memory_interface1_n5540) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u839 ( .A(ram_wr_sel[0]), .Y(
-        oc8051_memory_interface1_n739) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u838 ( .A(ram_wr_sel[1]), .B(
-        ram_wr_sel[2]), .C(oc8051_memory_interface1_n739), .Y(
-        oc8051_memory_interface1_n720) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u837 ( .A(ram_wr_sel[1]), .Y(
-        oc8051_memory_interface1_n741) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u836 ( .A(
-        oc8051_memory_interface1_n741), .B(ram_wr_sel[2]), .Y(wr_ind) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u835 ( .A(wr_ind), .B(
-        ram_wr_sel[0]), .Y(oc8051_memory_interface1_n736) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u834 ( .A(wr_ind), .B(
-        oc8051_memory_interface1_n739), .Y(oc8051_memory_interface1_n737) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u833 ( .A(ram_wr_sel[2]), .Y(
-        oc8051_memory_interface1_n740) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u832 ( .A(
-        oc8051_memory_interface1_n739), .B(oc8051_memory_interface1_n741), .C(
-        oc8051_memory_interface1_n740), .Y(oc8051_memory_interface1_n718) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u831 ( .A(ram_wr_sel[1]), .B(
-        ram_wr_sel[2]), .C(ram_wr_sel[0]), .Y(oc8051_memory_interface1_n727)
-         );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u830 ( .A(
-        oc8051_memory_interface1_n739), .B(ram_wr_sel[1]), .C(
-        oc8051_memory_interface1_n740), .Y(oc8051_memory_interface1_n716) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u829 ( .A(
-        oc8051_memory_interface1_n718), .B(oc8051_memory_interface1_n727), .C(
-        oc8051_memory_interface1_n716), .Y(oc8051_memory_interface1_n738) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u828 ( .A0(
-        oc8051_memory_interface1_imm_r[0]), .A1(oc8051_memory_interface1_n720), 
-        .B0(oc8051_memory_interface1_rn_r[0]), .B1(
-        oc8051_memory_interface1_n727), .Y(oc8051_memory_interface1_n734) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u827 ( .A(
-        oc8051_memory_interface1_n737), .Y(oc8051_memory_interface1_n719) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u826 ( .A(
-        oc8051_memory_interface1_n736), .Y(oc8051_memory_interface1_n717) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u825 ( .A0(
-        oc8051_memory_interface1_ri_r[0]), .A1(oc8051_memory_interface1_n719), 
-        .B0(sp_w[0]), .B1(oc8051_memory_interface1_n717), .C0(
-        oc8051_memory_interface1_imm2_r[0]), .C1(oc8051_memory_interface1_n716), .Y(oc8051_memory_interface1_n735) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u824 ( .A(
-        oc8051_memory_interface1_n734), .B(oc8051_memory_interface1_n735), .Y(
-        oc8051_memory_interface1_n900) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u823 ( .A0(
-        oc8051_memory_interface1_imm_r[1]), .A1(oc8051_memory_interface1_n720), 
-        .B0(oc8051_memory_interface1_rn_r[1]), .B1(
-        oc8051_memory_interface1_n727), .Y(oc8051_memory_interface1_n732) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u822 ( .A0(
-        oc8051_memory_interface1_ri_r[1]), .A1(oc8051_memory_interface1_n719), 
-        .B0(sp_w[1]), .B1(oc8051_memory_interface1_n717), .C0(
-        oc8051_memory_interface1_imm2_r[1]), .C1(oc8051_memory_interface1_n716), .Y(oc8051_memory_interface1_n733) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u821 ( .A(
-        oc8051_memory_interface1_n732), .B(oc8051_memory_interface1_n733), .Y(
+        oc8051_memory_interface1_int_ack_t), .Y(oc8051_memory_interface1_n3810) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u852 ( .A(pc_wr_sel[1]), .Y(
+        oc8051_memory_interface1_n706) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u851 ( .A(pc_wr_sel[2]), .Y(
+        oc8051_memory_interface1_n626) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u850 ( .A(
+        oc8051_memory_interface1_n706), .B(oc8051_memory_interface1_n626), .C(
+        pc_wr_sel[0]), .Y(oc8051_memory_interface1_n643) );
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u849 ( .A(
+        oc8051_memory_interface1_n643), .B(n_3_net_), .Y(
+        oc8051_memory_interface1_n5470) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u848 ( .A(ram_rd_sel[0]), .Y(
+        oc8051_memory_interface1_n127) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u847 ( .A(
+        oc8051_memory_interface1_n127), .B(ram_rd_sel[2]), .Y(
         oc8051_memory_interface1_n910) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u820 ( .A0(
-        oc8051_memory_interface1_imm_r[2]), .A1(oc8051_memory_interface1_n720), 
-        .B0(oc8051_memory_interface1_rn_r[2]), .B1(
-        oc8051_memory_interface1_n727), .Y(oc8051_memory_interface1_n730) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u819 ( .A0(
-        oc8051_memory_interface1_ri_r[2]), .A1(oc8051_memory_interface1_n719), 
-        .B0(sp_w[2]), .B1(oc8051_memory_interface1_n717), .C0(
-        oc8051_memory_interface1_imm2_r[2]), .C1(oc8051_memory_interface1_n716), .Y(oc8051_memory_interface1_n731) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u818 ( .A(
-        oc8051_memory_interface1_n730), .B(oc8051_memory_interface1_n731), .Y(
-        oc8051_memory_interface1_n920) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u817 ( .A0(
-        oc8051_memory_interface1_imm_r[3]), .A1(oc8051_memory_interface1_n720), 
-        .B0(oc8051_memory_interface1_rn_r[3]), .B1(
-        oc8051_memory_interface1_n727), .Y(oc8051_memory_interface1_n728) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u816 ( .A0(
-        oc8051_memory_interface1_ri_r[3]), .A1(oc8051_memory_interface1_n719), 
-        .B0(sp_w[3]), .B1(oc8051_memory_interface1_n717), .C0(
-        oc8051_memory_interface1_imm2_r[3]), .C1(oc8051_memory_interface1_n716), .Y(oc8051_memory_interface1_n729) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u815 ( .A(
-        oc8051_memory_interface1_n728), .B(oc8051_memory_interface1_n729), .Y(
-        oc8051_memory_interface1_n930) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u814 ( .A0(
-        oc8051_memory_interface1_rn_r[4]), .A1(oc8051_memory_interface1_n727), 
-        .B0(oc8051_memory_interface1_ri_r[4]), .B1(
-        oc8051_memory_interface1_n719), .C0(oc8051_memory_interface1_imm_r[4]), 
-        .C1(oc8051_memory_interface1_n720), .Y(oc8051_memory_interface1_n725)
-         );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u813 ( .A0(
-        oc8051_memory_interface1_imm2_r[4]), .A1(oc8051_memory_interface1_n716), .B0(sp_w[4]), .B1(oc8051_memory_interface1_n717), .C0(
-        oc8051_memory_interface1_n718), .Y(oc8051_memory_interface1_n726) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u812 ( .A(
-        oc8051_memory_interface1_n725), .B(oc8051_memory_interface1_n726), .Y(
-        oc8051_memory_interface1_n940) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u811 ( .A0(
-        oc8051_memory_interface1_ri_r[5]), .A1(oc8051_memory_interface1_n719), 
-        .B0(oc8051_memory_interface1_imm_r[5]), .B1(
-        oc8051_memory_interface1_n720), .Y(oc8051_memory_interface1_n723) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u810 ( .A0(
-        oc8051_memory_interface1_imm2_r[5]), .A1(oc8051_memory_interface1_n716), .B0(sp_w[5]), .B1(oc8051_memory_interface1_n717), .C0(
-        oc8051_memory_interface1_n718), .Y(oc8051_memory_interface1_n724) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u809 ( .A(
-        oc8051_memory_interface1_n723), .B(oc8051_memory_interface1_n724), .Y(
-        oc8051_memory_interface1_n950) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u808 ( .A0(
-        oc8051_memory_interface1_ri_r[6]), .A1(oc8051_memory_interface1_n719), 
-        .B0(oc8051_memory_interface1_imm_r[6]), .B1(
-        oc8051_memory_interface1_n720), .Y(oc8051_memory_interface1_n721) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u807 ( .A0(
-        oc8051_memory_interface1_imm2_r[6]), .A1(oc8051_memory_interface1_n716), .B0(sp_w[6]), .B1(oc8051_memory_interface1_n717), .C0(
-        oc8051_memory_interface1_n718), .Y(oc8051_memory_interface1_n722) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u806 ( .A(
-        oc8051_memory_interface1_n721), .B(oc8051_memory_interface1_n722), .Y(
-        oc8051_memory_interface1_n960) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u805 ( .A0(
-        oc8051_memory_interface1_ri_r[7]), .A1(oc8051_memory_interface1_n719), 
-        .B0(oc8051_memory_interface1_imm_r[7]), .B1(
-        oc8051_memory_interface1_n720), .Y(oc8051_memory_interface1_n714) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u804 ( .A0(
-        oc8051_memory_interface1_imm2_r[7]), .A1(oc8051_memory_interface1_n716), .B0(sp_w[7]), .B1(oc8051_memory_interface1_n717), .C0(
-        oc8051_memory_interface1_n718), .Y(oc8051_memory_interface1_n715) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u803 ( .A(
-        oc8051_memory_interface1_n714), .B(oc8051_memory_interface1_n715), .Y(
-        oc8051_memory_interface1_n970) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u802 ( .A(ram_rd_sel[0]), .Y(
-        oc8051_memory_interface1_n89) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u801 ( .A(
-        oc8051_memory_interface1_n89), .B(ram_rd_sel[2]), .Y(
-        oc8051_memory_interface1_n980) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u800 ( .AN(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u846 ( .A(ram_wr_sel[1]), .Y(
+        oc8051_memory_interface1_n87) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u845 ( .A(
+        oc8051_memory_interface1_n87), .B(ram_wr_sel[2]), .Y(wr_ind) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u844 ( .AN(
         oc8051_memory_interface1_rd_addr_r), .B(
-        oc8051_memory_interface1_rd_ind), .Y(oc8051_memory_interface1_n697) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u799 ( .A(bit_data), .B(sfr_bit), 
-        .S0(oc8051_memory_interface1_n697), .Y(bit_out) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u798 ( .A(
-        oc8051_memory_interface1_pc_out_0_), .Y(oc8051_memory_interface1_n203)
+        oc8051_memory_interface1_rd_ind), .Y(oc8051_memory_interface1_n739) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u843 ( .A(bit_data), .B(sfr_bit), 
+        .S0(oc8051_memory_interface1_n739), .Y(bit_out) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u842 ( .A(
+        oc8051_memory_interface1_pc_out_0_), .Y(oc8051_memory_interface1_n241)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u797 ( .A(
-        oc8051_memory_interface1_iadr_t_0_), .Y(oc8051_memory_interface1_n694)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u841 ( .A(
+        oc8051_memory_interface1_iadr_t_0_), .Y(oc8051_memory_interface1_n736)
          );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u796 ( .A(
-        oc8051_memory_interface1_n203), .B(oc8051_memory_interface1_n694), 
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u840 ( .A(
+        oc8051_memory_interface1_n241), .B(oc8051_memory_interface1_n736), 
         .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[0]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u795 ( .A(
-        oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n256) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u794 ( .A(
-        oc8051_memory_interface1_pc_buf_9_), .Y(oc8051_memory_interface1_n251)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u839 ( .A(
+        oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n294) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u838 ( .A(
+        oc8051_memory_interface1_pc_buf_9_), .Y(oc8051_memory_interface1_n289)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u793 ( .A(
-        oc8051_memory_interface1_pc_buf_8_), .Y(oc8051_memory_interface1_n246)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u837 ( .A(
+        oc8051_memory_interface1_pc_buf_8_), .Y(oc8051_memory_interface1_n284)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u792 ( .A(
-        oc8051_memory_interface1_pc_buf_2_), .Y(oc8051_memory_interface1_n213)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u836 ( .A(
+        oc8051_memory_interface1_pc_buf_2_), .Y(oc8051_memory_interface1_n251)
          );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u791 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u835 ( .A0(
         oc8051_memory_interface1_op_pos_1_), .A1(
         oc8051_memory_interface1_op_pos_0_), .B0(
         oc8051_memory_interface1_op_pos_2_), .C0(rd), .Y(
-        oc8051_memory_interface1_n713) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u790 ( .A(
-        oc8051_memory_interface1_n162), .B(oc8051_memory_interface1_n713), .Y(
-        oc8051_memory_interface1_n159) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u789 ( .A(
-        oc8051_memory_interface1_n159), .Y(oc8051_memory_interface1_n165) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u788 ( .A(
-        oc8051_memory_interface1_pc_buf_3_), .Y(oc8051_memory_interface1_n218)
+        oc8051_memory_interface1_n755) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u834 ( .A(
+        oc8051_memory_interface1_n200), .B(oc8051_memory_interface1_n755), .Y(
+        oc8051_memory_interface1_n197) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u833 ( .A(
+        oc8051_memory_interface1_n197), .Y(oc8051_memory_interface1_n203) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u832 ( .A(
+        oc8051_memory_interface1_pc_buf_3_), .Y(oc8051_memory_interface1_n256)
          );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u787 ( .A(
-        oc8051_memory_interface1_n213), .B(oc8051_memory_interface1_n165), .C(
-        oc8051_memory_interface1_n218), .Y(oc8051_memory_interface1_n703) );
-  AND3_X0P5M_A12TS oc8051_memory_interface1_u786 ( .A(
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u831 ( .A(
+        oc8051_memory_interface1_n251), .B(oc8051_memory_interface1_n203), .C(
+        oc8051_memory_interface1_n256), .Y(oc8051_memory_interface1_n745) );
+  AND3_X0P5M_A12TS oc8051_memory_interface1_u830 ( .A(
         oc8051_memory_interface1_pc_buf_5_), .B(
-        oc8051_memory_interface1_pc_buf_4_), .C(oc8051_memory_interface1_n703), 
-        .Y(oc8051_memory_interface1_n701) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u785 ( .A(
+        oc8051_memory_interface1_pc_buf_4_), .C(oc8051_memory_interface1_n745), 
+        .Y(oc8051_memory_interface1_n743) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u829 ( .A(
         oc8051_memory_interface1_pc_buf_7_), .B(
-        oc8051_memory_interface1_pc_buf_6_), .C(oc8051_memory_interface1_n701), 
-        .Y(oc8051_memory_interface1_n699) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u784 ( .A(
-        oc8051_memory_interface1_n251), .B(oc8051_memory_interface1_n246), .C(
-        oc8051_memory_interface1_n699), .Y(oc8051_memory_interface1_n710) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u783 ( .A(
-        oc8051_memory_interface1_n256), .B(oc8051_memory_interface1_n710), .Y(
-        oc8051_memory_interface1_n616) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u782 ( .A(
-        oc8051_memory_interface1_istb_t), .Y(oc8051_memory_interface1_n121) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u781 ( .A(
-        oc8051_memory_interface1_iadr_t_10_), .B(oc8051_memory_interface1_n616), .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[10]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u780 ( .A(
-        oc8051_memory_interface1_n710), .B(oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n712) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u779 ( .A(
-        oc8051_memory_interface1_n712), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n626) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u778 ( .A(
-        oc8051_memory_interface1_iadr_t_11_), .Y(oc8051_memory_interface1_n711) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u777 ( .A(
-        oc8051_memory_interface1_n626), .B(oc8051_memory_interface1_n711), 
-        .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[11]) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u776 ( .A(
-        oc8051_memory_interface1_pc_buf_11_), .B(
-        oc8051_memory_interface1_pc_buf_10_), .C(oc8051_memory_interface1_n710), .Y(oc8051_memory_interface1_n707) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u775 ( .A(
-        oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n266) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u774 ( .A(
-        oc8051_memory_interface1_n707), .B(oc8051_memory_interface1_n266), .Y(
-        oc8051_memory_interface1_n643) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u773 ( .A(
-        oc8051_memory_interface1_iadr_t_12_), .B(oc8051_memory_interface1_n643), .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[12]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u772 ( .A(
-        oc8051_memory_interface1_pc_buf_13_), .Y(oc8051_memory_interface1_n271) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u771 ( .A(
-        oc8051_memory_interface1_n266), .B(oc8051_memory_interface1_n707), .Y(
-        oc8051_memory_interface1_n709) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u770 ( .A(
-        oc8051_memory_interface1_n271), .B(oc8051_memory_interface1_n709), .Y(
-        oc8051_memory_interface1_n644) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u769 ( .A(
-        oc8051_memory_interface1_iadr_t_13_), .Y(oc8051_memory_interface1_n708) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u768 ( .A(
-        oc8051_memory_interface1_n644), .B(oc8051_memory_interface1_n708), 
-        .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[13]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u767 ( .A(
-        oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n277) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u766 ( .A(
-        oc8051_memory_interface1_n271), .B(oc8051_memory_interface1_n266), .C(
-        oc8051_memory_interface1_n707), .Y(oc8051_memory_interface1_n706) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u765 ( .A(
-        oc8051_memory_interface1_n277), .B(oc8051_memory_interface1_n706), .Y(
-        oc8051_memory_interface1_n659) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u764 ( .A(
-        oc8051_memory_interface1_iadr_t_14_), .B(oc8051_memory_interface1_n659), .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[14]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u763 ( .A(
-        oc8051_memory_interface1_n706), .B(oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n705) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u762 ( .A(
-        oc8051_memory_interface1_n705), .B(oc8051_memory_interface1_pc_buf_15_), .Y(oc8051_memory_interface1_n672) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u761 ( .A(
-        oc8051_memory_interface1_iadr_t_15_), .B(oc8051_memory_interface1_n672), .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[15]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u760 ( .A(
-        oc8051_memory_interface1_pc_out_1_), .Y(oc8051_memory_interface1_n207)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u759 ( .A(
-        oc8051_memory_interface1_iadr_t_1_), .Y(oc8051_memory_interface1_n693)
-         );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u758 ( .A(
-        oc8051_memory_interface1_n207), .B(oc8051_memory_interface1_n693), 
-        .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[1]) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u757 ( .A(
-        oc8051_memory_interface1_n159), .B(oc8051_memory_interface1_pc_buf_2_), 
-        .Y(oc8051_memory_interface1_n505) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u756 ( .A(
-        oc8051_memory_interface1_iadr_t_2_), .B(oc8051_memory_interface1_n505), 
-        .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[2]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u755 ( .A(
-        oc8051_memory_interface1_pc_buf_2_), .B(oc8051_memory_interface1_n159), 
-        .Y(oc8051_memory_interface1_n704) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u754 ( .A(
-        oc8051_memory_interface1_n704), .B(oc8051_memory_interface1_pc_buf_3_), 
-        .Y(oc8051_memory_interface1_n546) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u753 ( .A(
-        oc8051_memory_interface1_iadr_t_3_), .B(oc8051_memory_interface1_n546), 
-        .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[3]) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u752 ( .A(
-        oc8051_memory_interface1_n703), .B(oc8051_memory_interface1_pc_buf_4_), 
-        .Y(oc8051_memory_interface1_n552) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u751 ( .A(
-        oc8051_memory_interface1_iadr_t_4_), .B(oc8051_memory_interface1_n552), 
-        .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[4]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u750 ( .A(
-        oc8051_memory_interface1_n703), .B(oc8051_memory_interface1_pc_buf_4_), 
-        .Y(oc8051_memory_interface1_n702) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u749 ( .A(
-        oc8051_memory_interface1_n702), .B(oc8051_memory_interface1_pc_buf_5_), 
-        .Y(oc8051_memory_interface1_n559) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u748 ( .A(
-        oc8051_memory_interface1_iadr_t_5_), .B(oc8051_memory_interface1_n559), 
-        .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[5]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u747 ( .A(
-        oc8051_memory_interface1_pc_buf_6_), .Y(oc8051_memory_interface1_n235)
-         );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u746 ( .A(
-        oc8051_memory_interface1_n235), .B(oc8051_memory_interface1_n701), .Y(
-        oc8051_memory_interface1_n565) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u745 ( .A(
-        oc8051_memory_interface1_iadr_t_6_), .B(oc8051_memory_interface1_n565), 
-        .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[6]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u744 ( .A(
-        oc8051_memory_interface1_n701), .B(oc8051_memory_interface1_pc_buf_6_), 
-        .Y(oc8051_memory_interface1_n700) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u743 ( .A(
-        oc8051_memory_interface1_n700), .B(oc8051_memory_interface1_pc_buf_7_), 
-        .Y(oc8051_memory_interface1_n572) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u742 ( .A(
-        oc8051_memory_interface1_iadr_t_7_), .B(oc8051_memory_interface1_n572), 
-        .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[7]) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u741 ( .A(
-        oc8051_memory_interface1_n699), .B(oc8051_memory_interface1_n246), .Y(
-        oc8051_memory_interface1_n596) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u740 ( .A(
-        oc8051_memory_interface1_iadr_t_8_), .B(oc8051_memory_interface1_n596), 
-        .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[8]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u739 ( .A(
-        oc8051_memory_interface1_n246), .B(oc8051_memory_interface1_n699), .Y(
-        oc8051_memory_interface1_n698) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u738 ( .A(
-        oc8051_memory_interface1_n251), .B(oc8051_memory_interface1_n698), .Y(
-        oc8051_memory_interface1_n603) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u737 ( .A(
-        oc8051_memory_interface1_iadr_t_9_), .B(oc8051_memory_interface1_n603), 
-        .S0(oc8051_memory_interface1_n121), .Y(cxrom_addr[9]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u736 ( .A(ram_data[0]), .B(
-        sfr_out[0]), .S0(oc8051_memory_interface1_n697), .Y(ram_out[0]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u735 ( .A(ram_data[1]), .B(
-        sfr_out[1]), .S0(oc8051_memory_interface1_n697), .Y(ram_out[1]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u734 ( .A(ram_data[2]), .B(
-        sfr_out[2]), .S0(oc8051_memory_interface1_n697), .Y(ram_out[2]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u733 ( .A(ram_data[3]), .B(
-        sfr_out[3]), .S0(oc8051_memory_interface1_n697), .Y(ram_out[3]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u732 ( .A(ram_data[4]), .B(
-        sfr_out[4]), .S0(oc8051_memory_interface1_n697), .Y(ram_out[4]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u731 ( .A(ram_data[5]), .B(
-        sfr_out[5]), .S0(oc8051_memory_interface1_n697), .Y(ram_out[5]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u730 ( .A(ram_data[6]), .B(
-        sfr_out[6]), .S0(oc8051_memory_interface1_n697), .Y(ram_out[6]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u729 ( .A(ram_data[7]), .B(
-        sfr_out[7]), .S0(oc8051_memory_interface1_n697), .Y(ram_out[7]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u728 ( .A(
-        oc8051_memory_interface1_n121), .B(oc8051_memory_interface1_n192), .Y(
-        oc8051_memory_interface1_n120) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u727 ( .A(
-        oc8051_memory_interface1_n120), .Y(oc8051_memory_interface1_n695) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u726 ( .A(istb), .B(
-        oc8051_memory_interface1_n129), .Y(oc8051_memory_interface1_n696) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u725 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n695), .B0(oc8051_memory_interface1_n696), 
-        .C0(wbd_cyc_o), .Y(oc8051_memory_interface1_istb_o) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u724 ( .AN(
-        oc8051_memory_interface1_going_out_of_rst), .B(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n346) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u723 ( .A(
-        oc8051_memory_interface1_ddat_ir_0_), .B(wbd_dat_i[0]), .S0(wbd_ack_i), 
-        .Y(oc8051_memory_interface1_n371) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u722 ( .A(
-        oc8051_memory_interface1_ddat_ir_1_), .B(wbd_dat_i[1]), .S0(wbd_ack_i), 
-        .Y(oc8051_memory_interface1_n372) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u721 ( .A(
-        oc8051_memory_interface1_ddat_ir_2_), .B(wbd_dat_i[2]), .S0(wbd_ack_i), 
-        .Y(oc8051_memory_interface1_n373) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u720 ( .A(
-        oc8051_memory_interface1_ddat_ir_3_), .B(wbd_dat_i[3]), .S0(wbd_ack_i), 
-        .Y(oc8051_memory_interface1_n374) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u719 ( .A(
-        oc8051_memory_interface1_ddat_ir_4_), .B(wbd_dat_i[4]), .S0(wbd_ack_i), 
-        .Y(oc8051_memory_interface1_n375) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u718 ( .A(
-        oc8051_memory_interface1_ddat_ir_5_), .B(wbd_dat_i[5]), .S0(wbd_ack_i), 
-        .Y(oc8051_memory_interface1_n376) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u717 ( .A(
-        oc8051_memory_interface1_ddat_ir_6_), .B(wbd_dat_i[6]), .S0(wbd_ack_i), 
-        .Y(oc8051_memory_interface1_n377) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u716 ( .A(
-        oc8051_memory_interface1_ddat_ir_7_), .B(wbd_dat_i[7]), .S0(wbd_ack_i), 
-        .Y(oc8051_memory_interface1_n378) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u715 ( .A(
-        oc8051_memory_interface1_int_vec_buff_0_), .B(int_src[0]), .S0(intr), 
-        .Y(oc8051_memory_interface1_n379) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u714 ( .A(
-        oc8051_memory_interface1_int_vec_buff_1_), .B(int_src[1]), .S0(intr), 
-        .Y(oc8051_memory_interface1_n380) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u713 ( .A(
-        oc8051_memory_interface1_int_vec_buff_2_), .B(iack_i), .S0(intr), .Y(
-        oc8051_memory_interface1_n381) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u712 ( .A(
-        oc8051_memory_interface1_int_vec_buff_3_), .B(int_src[3]), .S0(intr), 
-        .Y(oc8051_memory_interface1_n382) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u711 ( .A(
-        oc8051_memory_interface1_int_vec_buff_4_), .B(int_src[4]), .S0(intr), 
-        .Y(oc8051_memory_interface1_n383) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u710 ( .A(
-        oc8051_memory_interface1_int_vec_buff_5_), .B(int_src[5]), .S0(intr), 
-        .Y(oc8051_memory_interface1_n384) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u709 ( .A(
-        oc8051_memory_interface1_int_vec_buff_6_), .B(iack_i), .S0(intr), .Y(
-        oc8051_memory_interface1_n385) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u708 ( .A(
-        oc8051_memory_interface1_int_vec_buff_7_), .B(iack_i), .S0(intr), .Y(
-        oc8051_memory_interface1_n386) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u707 ( .A(des_acc[0]), .Y(
-        oc8051_memory_interface1_n600) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u706 ( .A(mem_act[0]), .Y(
-        oc8051_memory_interface1_n149) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u705 ( .A(mem_act[1]), .Y(
-        oc8051_memory_interface1_n148) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u704 ( .A(
-        oc8051_memory_interface1_n600), .B(oc8051_memory_interface1_n694), 
-        .S0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n396)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u703 ( .A(des_acc[1]), .Y(
-        oc8051_memory_interface1_n606) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u702 ( .A(
-        oc8051_memory_interface1_n606), .B(oc8051_memory_interface1_n693), 
-        .S0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n397)
-         );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u701 ( .A(des_acc[2]), .B(
-        oc8051_memory_interface1_iadr_t_2_), .S0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n398) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u700 ( .A(des_acc[3]), .B(
-        oc8051_memory_interface1_iadr_t_3_), .S0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n399) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u699 ( .A(des_acc[4]), .B(
-        oc8051_memory_interface1_iadr_t_4_), .S0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n400) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u698 ( .A(des_acc[5]), .B(
-        oc8051_memory_interface1_iadr_t_5_), .S0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n401) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u697 ( .A(des_acc[6]), .B(
-        oc8051_memory_interface1_iadr_t_6_), .S0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n402) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u696 ( .A(des_acc[7]), .B(
-        oc8051_memory_interface1_iadr_t_7_), .S0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n403) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u695 ( .A(des2[0]), .B(
-        oc8051_memory_interface1_iadr_t_8_), .S0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n404) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u694 ( .A(des2[1]), .B(
-        oc8051_memory_interface1_iadr_t_9_), .S0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n405) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u693 ( .A(des2[2]), .B(
-        oc8051_memory_interface1_iadr_t_10_), .S0(
-        oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n406) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u692 ( .A(des2[3]), .B(
-        oc8051_memory_interface1_iadr_t_11_), .S0(
-        oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n407) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u691 ( .A(des2[4]), .B(
-        oc8051_memory_interface1_iadr_t_12_), .S0(
-        oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n408) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u690 ( .A(des2[5]), .B(
-        oc8051_memory_interface1_iadr_t_13_), .S0(
-        oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n409) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u689 ( .A(des2[6]), .B(
-        oc8051_memory_interface1_iadr_t_14_), .S0(
-        oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n410) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u688 ( .A(des2[7]), .B(
-        oc8051_memory_interface1_iadr_t_15_), .S0(
-        oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n411) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u687 ( .A(n_3_net_), .Y(
-        oc8051_memory_interface1_n394) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u686 ( .A(pc_wr_sel[1]), .B(
-        oc8051_memory_interface1_n584), .Y(oc8051_memory_interface1_n569) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u685 ( .A0(
-        oc8051_memory_interface1_op2_buff[7]), .A1(
-        oc8051_memory_interface1_n152), .B0(oc8051_memory_interface1_op2[7]), 
-        .B1(oc8051_memory_interface1_n681), .Y(op2_n[7]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u684 ( .A(
-        oc8051_memory_interface1_n360), .B(rd), .Y(
-        oc8051_memory_interface1_n680) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u683 ( .A0(
-        oc8051_memory_interface1_op3[7]), .A1(oc8051_memory_interface1_n679), 
-        .B0(oc8051_memory_interface1_int_vec_buff_7_), .B1(
-        oc8051_memory_interface1_n680), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[7]), .Y(
-        oc8051_memory_interface1_n692) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u682 ( .A(
-        oc8051_memory_interface1_n692), .Y(op3_n[7]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u681 ( .A(op2_n[7]), .B(op3_n[7]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n676) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u680 ( .A(
-        oc8051_memory_interface1_n569), .B(oc8051_memory_interface1_n676), .Y(
-        oc8051_memory_interface1_n611) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u679 ( .A(
-        oc8051_memory_interface1_n611), .B(n_3_net_), .Y(
-        oc8051_memory_interface1_n592) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u678 ( .A(
-        oc8051_memory_interface1_n353), .Y(pc[14]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u677 ( .A(
-        oc8051_memory_interface1_n352), .Y(pc[8]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u676 ( .A(
-        oc8051_memory_interface1_n676), .B(pc[8]), .Y(
-        oc8051_memory_interface1_n673) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u675 ( .A0(
-        oc8051_memory_interface1_op2_buff[1]), .A1(
-        oc8051_memory_interface1_n152), .B0(oc8051_memory_interface1_op2[1]), 
-        .B1(oc8051_memory_interface1_n681), .Y(oc8051_memory_interface1_n391)
-         );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u674 ( .A0(
-        oc8051_memory_interface1_op3[1]), .A1(oc8051_memory_interface1_n679), 
-        .B0(oc8051_memory_interface1_int_vec_buff_1_), .B1(
-        oc8051_memory_interface1_n680), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[1]), .Y(
-        oc8051_memory_interface1_n106) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u673 ( .A(
-        oc8051_memory_interface1_n391), .B(oc8051_memory_interface1_n106), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n393) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u672 ( .A0(
-        oc8051_memory_interface1_op2_buff[0]), .A1(
-        oc8051_memory_interface1_n152), .B0(oc8051_memory_interface1_op2[0]), 
-        .B1(oc8051_memory_interface1_n681), .Y(oc8051_memory_interface1_n103)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u671 ( .A(
-        oc8051_memory_interface1_n103), .Y(op2_n[0]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u670 ( .A0(
-        oc8051_memory_interface1_op3[0]), .A1(oc8051_memory_interface1_n679), 
-        .B0(oc8051_memory_interface1_int_vec_buff_0_), .B1(
-        oc8051_memory_interface1_n680), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[0]), .Y(
-        oc8051_memory_interface1_n365) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u669 ( .A(
-        oc8051_memory_interface1_n365), .Y(op3_n[0]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u668 ( .A(op2_n[0]), .B(op3_n[0]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n388) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u667 ( .A(pc[0]), .Y(
-        oc8051_memory_interface1_n200) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u666 ( .A(
-        oc8051_memory_interface1_n388), .B(oc8051_memory_interface1_n200), .Y(
-        oc8051_memory_interface1_n392) );
-  CGENI_X1M_A12TS oc8051_memory_interface1_u665 ( .A(
-        oc8051_memory_interface1_n393), .B(pc[1]), .CI(
-        oc8051_memory_interface1_n392), .CON(oc8051_memory_interface1_n507) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u664 ( .A0(
-        oc8051_memory_interface1_op2_buff[2]), .A1(
-        oc8051_memory_interface1_n152), .B0(oc8051_memory_interface1_op2[2]), 
-        .B1(oc8051_memory_interface1_n681), .Y(oc8051_memory_interface1_n97)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u663 ( .A(
-        oc8051_memory_interface1_n97), .Y(op2_n[2]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u662 ( .A0(
-        oc8051_memory_interface1_op3[2]), .A1(oc8051_memory_interface1_n679), 
-        .B0(oc8051_memory_interface1_int_vec_buff_2_), .B1(
-        oc8051_memory_interface1_n680), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[2]), .Y(
-        oc8051_memory_interface1_n691) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u661 ( .A(
-        oc8051_memory_interface1_n691), .Y(op3_n[2]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u660 ( .A(op2_n[2]), .B(op3_n[2]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n511) );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u659 ( .A(
-        oc8051_memory_interface1_n507), .B(oc8051_memory_interface1_n511), .Y(
-        oc8051_memory_interface1_n690) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u658 ( .A(pc[2]), .Y(
-        oc8051_memory_interface1_n211) );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u657 ( .A0(
-        oc8051_memory_interface1_n507), .A1(oc8051_memory_interface1_n511), 
-        .B0(oc8051_memory_interface1_n690), .B1(oc8051_memory_interface1_n211), 
-        .Y(oc8051_memory_interface1_n547) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u656 ( .A0(
-        oc8051_memory_interface1_op2_buff[3]), .A1(
-        oc8051_memory_interface1_n152), .B0(oc8051_memory_interface1_op2[3]), 
-        .B1(oc8051_memory_interface1_n681), .Y(oc8051_memory_interface1_n94)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u655 ( .A(
-        oc8051_memory_interface1_n94), .Y(op2_n[3]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u654 ( .A0(
-        oc8051_memory_interface1_op3[3]), .A1(oc8051_memory_interface1_n679), 
-        .B0(oc8051_memory_interface1_int_vec_buff_3_), .B1(
-        oc8051_memory_interface1_n680), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[3]), .Y(
-        oc8051_memory_interface1_n689) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u653 ( .A(
-        oc8051_memory_interface1_n689), .Y(op3_n[3]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u652 ( .A(op2_n[3]), .B(op3_n[3]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n688) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u651 ( .A(
-        oc8051_memory_interface1_n688), .Y(oc8051_memory_interface1_n548) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u650 ( .AN(
-        oc8051_memory_interface1_n547), .B(oc8051_memory_interface1_n688), .Y(
-        oc8051_memory_interface1_n687) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u649 ( .A0(
-        oc8051_memory_interface1_n547), .A1(oc8051_memory_interface1_n548), 
-        .B0(oc8051_memory_interface1_n687), .B1(pc[3]), .Y(
-        oc8051_memory_interface1_n553) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u648 ( .A0(
-        oc8051_memory_interface1_op2_buff[4]), .A1(
-        oc8051_memory_interface1_n152), .B0(oc8051_memory_interface1_op2[4]), 
-        .B1(oc8051_memory_interface1_n681), .Y(oc8051_memory_interface1_n90)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u647 ( .A(
-        oc8051_memory_interface1_n90), .Y(op2_n[4]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u646 ( .A0(
-        oc8051_memory_interface1_op3[4]), .A1(oc8051_memory_interface1_n679), 
-        .B0(oc8051_memory_interface1_int_vec_buff_4_), .B1(
-        oc8051_memory_interface1_n680), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[4]), .Y(
-        oc8051_memory_interface1_n686) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u645 ( .A(
-        oc8051_memory_interface1_n686), .Y(op3_n[4]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u644 ( .A(op2_n[4]), .B(op3_n[4]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n555) );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u643 ( .A(
-        oc8051_memory_interface1_n553), .B(oc8051_memory_interface1_n555), .Y(
-        oc8051_memory_interface1_n685) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u642 ( .A(pc[4]), .Y(
-        oc8051_memory_interface1_n221) );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u641 ( .A0(
-        oc8051_memory_interface1_n553), .A1(oc8051_memory_interface1_n555), 
-        .B0(oc8051_memory_interface1_n685), .B1(oc8051_memory_interface1_n221), 
-        .Y(oc8051_memory_interface1_n560) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u640 ( .A0(
-        oc8051_memory_interface1_op2_buff[5]), .A1(
-        oc8051_memory_interface1_n152), .B0(oc8051_memory_interface1_op2[5]), 
-        .B1(oc8051_memory_interface1_n681), .Y(oc8051_memory_interface1_n85)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u639 ( .A(
-        oc8051_memory_interface1_n85), .Y(op2_n[5]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u638 ( .A0(
-        oc8051_memory_interface1_op3[5]), .A1(oc8051_memory_interface1_n679), 
-        .B0(oc8051_memory_interface1_int_vec_buff_5_), .B1(
-        oc8051_memory_interface1_n680), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[5]), .Y(
-        oc8051_memory_interface1_n684) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u637 ( .A(
-        oc8051_memory_interface1_n684), .Y(op3_n[5]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u636 ( .A(op2_n[5]), .B(op3_n[5]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n683) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u635 ( .A(
-        oc8051_memory_interface1_n683), .Y(oc8051_memory_interface1_n561) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u634 ( .AN(
-        oc8051_memory_interface1_n560), .B(oc8051_memory_interface1_n683), .Y(
-        oc8051_memory_interface1_n682) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u633 ( .A0(
-        oc8051_memory_interface1_n560), .A1(oc8051_memory_interface1_n561), 
-        .B0(oc8051_memory_interface1_n682), .B1(pc[5]), .Y(
-        oc8051_memory_interface1_n567) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u632 ( .A0(
-        oc8051_memory_interface1_op2_buff[6]), .A1(
-        oc8051_memory_interface1_n152), .B0(oc8051_memory_interface1_op2[6]), 
-        .B1(oc8051_memory_interface1_n681), .Y(oc8051_memory_interface1_n79)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u631 ( .A(
-        oc8051_memory_interface1_n79), .Y(op2_n[6]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u630 ( .A0(
-        oc8051_memory_interface1_op3[6]), .A1(oc8051_memory_interface1_n679), 
-        .B0(oc8051_memory_interface1_int_vec_buff_6_), .B1(
-        oc8051_memory_interface1_n680), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[6]), .Y(
-        oc8051_memory_interface1_n678) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u629 ( .A(
-        oc8051_memory_interface1_n678), .Y(op3_n[6]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u628 ( .A(op2_n[6]), .B(op3_n[6]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n579) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u627 ( .A(
-        oc8051_memory_interface1_n567), .Y(oc8051_memory_interface1_n577) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u626 ( .A(
-        oc8051_memory_interface1_n579), .Y(oc8051_memory_interface1_n568) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u625 ( .A(
-        oc8051_memory_interface1_n577), .B(oc8051_memory_interface1_n568), .Y(
-        oc8051_memory_interface1_n677) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u624 ( .A(pc[6]), .Y(
-        oc8051_memory_interface1_n234) );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u623 ( .A0(
-        oc8051_memory_interface1_n567), .A1(oc8051_memory_interface1_n579), 
-        .B0(oc8051_memory_interface1_n677), .B1(oc8051_memory_interface1_n234), 
-        .Y(oc8051_memory_interface1_n674) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u622 ( .A(
-        oc8051_memory_interface1_n676), .Y(oc8051_memory_interface1_n671) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u621 ( .AN(
-        oc8051_memory_interface1_n674), .B(oc8051_memory_interface1_n676), .Y(
-        oc8051_memory_interface1_n675) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u620 ( .A0(
-        oc8051_memory_interface1_n674), .A1(oc8051_memory_interface1_n671), 
-        .B0(oc8051_memory_interface1_n675), .B1(pc[7]), .Y(
-        oc8051_memory_interface1_n670) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u619 ( .A(
-        oc8051_memory_interface1_n673), .B(oc8051_memory_interface1_n670), .Y(
-        oc8051_memory_interface1_n594) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u618 ( .AN(
-        oc8051_memory_interface1_n594), .B(pc[8]), .Y(
-        oc8051_memory_interface1_n589) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u617 ( .A(
-        oc8051_memory_interface1_n589), .B(oc8051_memory_interface1_n351), .Y(
-        oc8051_memory_interface1_n613) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u616 ( .A(
-        oc8051_memory_interface1_n350), .Y(pc[10]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u615 ( .A(
-        oc8051_memory_interface1_n613), .B(pc[10]), .Y(
-        oc8051_memory_interface1_n623) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u614 ( .A(
-        oc8051_memory_interface1_n623), .B(oc8051_memory_interface1_n349), .Y(
-        oc8051_memory_interface1_n632) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u613 ( .A(
-        oc8051_memory_interface1_n348), .Y(pc[12]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u612 ( .A(
-        oc8051_memory_interface1_n632), .B(pc[12]), .Y(
-        oc8051_memory_interface1_n641) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u611 ( .A(
-        oc8051_memory_interface1_n641), .B(oc8051_memory_interface1_n347), .Y(
-        oc8051_memory_interface1_n650) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u610 ( .A(
-        oc8051_memory_interface1_n592), .B(pc[14]), .C(
-        oc8051_memory_interface1_n650), .Y(oc8051_memory_interface1_n656) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u609 ( .A0(
-        oc8051_memory_interface1_n672), .A1(oc8051_memory_interface1_n394), 
-        .B0(oc8051_memory_interface1_n656), .B1(oc8051_memory_interface1_n354), 
-        .Y(oc8051_memory_interface1_n660) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u608 ( .A(
-        oc8051_memory_interface1_n650), .Y(oc8051_memory_interface1_n668) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u607 ( .A(
-        oc8051_memory_interface1_n671), .B(oc8051_memory_interface1_n569), .Y(
-        oc8051_memory_interface1_n609) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u606 ( .A(
-        oc8051_memory_interface1_n609), .B(n_3_net_), .Y(
-        oc8051_memory_interface1_n593) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u605 ( .A(
-        oc8051_memory_interface1_n593), .Y(oc8051_memory_interface1_n574) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u604 ( .A(
-        oc8051_memory_interface1_n670), .B(oc8051_memory_interface1_n352), .Y(
-        oc8051_memory_interface1_n614) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u603 ( .A(
-        oc8051_memory_interface1_n351), .Y(pc[9]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u602 ( .A(
-        oc8051_memory_interface1_n614), .B(pc[9]), .Y(
-        oc8051_memory_interface1_n624) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u601 ( .A(
-        oc8051_memory_interface1_n624), .B(oc8051_memory_interface1_n350), .Y(
-        oc8051_memory_interface1_n635) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u600 ( .A(
-        oc8051_memory_interface1_n349), .Y(pc[11]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u599 ( .A(
-        oc8051_memory_interface1_n635), .B(pc[11]), .Y(
-        oc8051_memory_interface1_n642) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u598 ( .A(
-        oc8051_memory_interface1_n642), .B(oc8051_memory_interface1_n348), .Y(
-        oc8051_memory_interface1_n651) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u597 ( .A(
-        oc8051_memory_interface1_n347), .Y(pc[13]) );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u596 ( .A(
-        oc8051_memory_interface1_n651), .B(pc[13]), .Y(
+        oc8051_memory_interface1_pc_buf_6_), .C(oc8051_memory_interface1_n743), 
+        .Y(oc8051_memory_interface1_n741) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u828 ( .A(
+        oc8051_memory_interface1_n289), .B(oc8051_memory_interface1_n284), .C(
+        oc8051_memory_interface1_n741), .Y(oc8051_memory_interface1_n752) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u827 ( .A(
+        oc8051_memory_interface1_n294), .B(oc8051_memory_interface1_n752), .Y(
         oc8051_memory_interface1_n658) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u595 ( .A(
-        oc8051_memory_interface1_n658), .B(pc[14]), .Y(
-        oc8051_memory_interface1_n667) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u594 ( .A(
-        oc8051_memory_interface1_n574), .B(oc8051_memory_interface1_n667), .Y(
-        oc8051_memory_interface1_n669) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u593 ( .A0(
-        oc8051_memory_interface1_n668), .A1(oc8051_memory_interface1_n353), 
-        .B0(oc8051_memory_interface1_n592), .C0(oc8051_memory_interface1_n669), 
-        .Y(oc8051_memory_interface1_n665) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u592 ( .A(
-        oc8051_memory_interface1_n593), .B(oc8051_memory_interface1_n667), .Y(
-        oc8051_memory_interface1_n666) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u591 ( .A(
-        oc8051_memory_interface1_n665), .B(oc8051_memory_interface1_n666), 
-        .S0(oc8051_memory_interface1_n354), .Y(oc8051_memory_interface1_n661)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u826 ( .A(
+        oc8051_memory_interface1_istb_t), .Y(oc8051_memory_interface1_n159) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u825 ( .A(
+        oc8051_memory_interface1_iadr_t_10_), .B(oc8051_memory_interface1_n658), .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[10]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u824 ( .A(
+        oc8051_memory_interface1_n752), .B(oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n754) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u823 ( .A(
+        oc8051_memory_interface1_n754), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n668) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u822 ( .A(
+        oc8051_memory_interface1_iadr_t_11_), .Y(oc8051_memory_interface1_n753) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u821 ( .A(
+        oc8051_memory_interface1_n668), .B(oc8051_memory_interface1_n753), 
+        .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[11]) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u820 ( .A(
+        oc8051_memory_interface1_pc_buf_11_), .B(
+        oc8051_memory_interface1_pc_buf_10_), .C(oc8051_memory_interface1_n752), .Y(oc8051_memory_interface1_n749) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u819 ( .A(
+        oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n304) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u818 ( .A(
+        oc8051_memory_interface1_n749), .B(oc8051_memory_interface1_n304), .Y(
+        oc8051_memory_interface1_n685) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u817 ( .A(
+        oc8051_memory_interface1_iadr_t_12_), .B(oc8051_memory_interface1_n685), .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[12]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u816 ( .A(
+        oc8051_memory_interface1_pc_buf_13_), .Y(oc8051_memory_interface1_n309) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u815 ( .A(
+        oc8051_memory_interface1_n304), .B(oc8051_memory_interface1_n749), .Y(
+        oc8051_memory_interface1_n751) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u814 ( .A(
+        oc8051_memory_interface1_n309), .B(oc8051_memory_interface1_n751), .Y(
+        oc8051_memory_interface1_n686) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u813 ( .A(
+        oc8051_memory_interface1_iadr_t_13_), .Y(oc8051_memory_interface1_n750) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u812 ( .A(
+        oc8051_memory_interface1_n686), .B(oc8051_memory_interface1_n750), 
+        .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[13]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u811 ( .A(
+        oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n315) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u810 ( .A(
+        oc8051_memory_interface1_n309), .B(oc8051_memory_interface1_n304), .C(
+        oc8051_memory_interface1_n749), .Y(oc8051_memory_interface1_n748) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u809 ( .A(
+        oc8051_memory_interface1_n315), .B(oc8051_memory_interface1_n748), .Y(
+        oc8051_memory_interface1_n701) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u808 ( .A(
+        oc8051_memory_interface1_iadr_t_14_), .B(oc8051_memory_interface1_n701), .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[14]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u807 ( .A(
+        oc8051_memory_interface1_n748), .B(oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n747) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u806 ( .A(
+        oc8051_memory_interface1_n747), .B(oc8051_memory_interface1_pc_buf_15_), .Y(oc8051_memory_interface1_n714) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u805 ( .A(
+        oc8051_memory_interface1_iadr_t_15_), .B(oc8051_memory_interface1_n714), .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[15]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u804 ( .A(
+        oc8051_memory_interface1_pc_out_1_), .Y(oc8051_memory_interface1_n245)
          );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u590 ( .A(
-        oc8051_memory_interface1_n664), .B(pc_wr_sel[0]), .C(
-        oc8051_memory_interface1_n584), .Y(oc8051_memory_interface1_n586) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u589 ( .A(
-        oc8051_memory_interface1_n586), .Y(oc8051_memory_interface1_n598) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u588 ( .A(pc_wr_sel[0]), .B(
-        oc8051_memory_interface1_n664), .C(pc_wr_sel[2]), .Y(
-        oc8051_memory_interface1_n583) );
-  AND4_X0P5M_A12TS oc8051_memory_interface1_u587 ( .A(
-        oc8051_memory_interface1_n5540), .B(oc8051_memory_interface1_n598), 
-        .C(oc8051_memory_interface1_n569), .D(oc8051_memory_interface1_n583), 
-        .Y(oc8051_memory_interface1_n625) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u586 ( .A(
-        oc8051_memory_interface1_n583), .B(oc8051_memory_interface1_n394), .Y(
-        oc8051_memory_interface1_n503) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u585 ( .A0(
-        oc8051_memory_interface1_n625), .A1(
-        oc8051_memory_interface1_pc_buf_15_), .B0(
-        oc8051_memory_interface1_n503), .B1(op2_n[7]), .Y(
-        oc8051_memory_interface1_n662) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u584 ( .A(
-        oc8051_memory_interface1_n598), .B(oc8051_memory_interface1_n394), .Y(
-        oc8051_memory_interface1_n634) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u583 ( .A(
-        oc8051_memory_interface1_n601), .B(oc8051_memory_interface1_n394), .Y(
-        oc8051_memory_interface1_n633) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u582 ( .A0(des2[7]), .A1(
-        oc8051_memory_interface1_n634), .B0(oc8051_memory_interface1_n633), 
-        .B1(des_acc[7]), .Y(oc8051_memory_interface1_n663) );
-  NAND4_X0P5A_A12TS oc8051_memory_interface1_u581 ( .A(
-        oc8051_memory_interface1_n660), .B(oc8051_memory_interface1_n661), .C(
-        oc8051_memory_interface1_n662), .D(oc8051_memory_interface1_n663), .Y(
-        oc8051_memory_interface1_n414) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u580 ( .A0(
-        oc8051_memory_interface1_n625), .A1(
-        oc8051_memory_interface1_pc_buf_14_), .B0(
-        oc8051_memory_interface1_n503), .B1(op2_n[6]), .Y(
-        oc8051_memory_interface1_n652) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u579 ( .A0(
-        oc8051_memory_interface1_n633), .A1(des_acc[6]), .B0(
-        oc8051_memory_interface1_n659), .B1(oc8051_memory_interface1_n394), 
-        .Y(oc8051_memory_interface1_n653) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u578 ( .A(
-        oc8051_memory_interface1_n658), .B(pc[14]), .Y(
-        oc8051_memory_interface1_n657) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u577 ( .A0(
-        oc8051_memory_interface1_n574), .A1(oc8051_memory_interface1_n657), 
-        .B0(des2[6]), .B1(oc8051_memory_interface1_n634), .Y(
-        oc8051_memory_interface1_n654) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u576 ( .A(
-        oc8051_memory_interface1_n592), .Y(oc8051_memory_interface1_n575) );
-  AOI31_X0P5M_A12TS oc8051_memory_interface1_u575 ( .A0(
-        oc8051_memory_interface1_n650), .A1(pc[14]), .A2(
-        oc8051_memory_interface1_n575), .B0(oc8051_memory_interface1_n656), 
-        .Y(oc8051_memory_interface1_n655) );
-  NAND4_X0P5A_A12TS oc8051_memory_interface1_u574 ( .A(
-        oc8051_memory_interface1_n652), .B(oc8051_memory_interface1_n653), .C(
-        oc8051_memory_interface1_n654), .D(oc8051_memory_interface1_n655), .Y(
-        oc8051_memory_interface1_n415) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u573 ( .A0(
-        oc8051_memory_interface1_n625), .A1(
-        oc8051_memory_interface1_pc_buf_13_), .B0(
-        oc8051_memory_interface1_n503), .B1(op2_n[5]), .Y(
-        oc8051_memory_interface1_n645) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u572 ( .A(
-        oc8051_memory_interface1_n651), .B(pc[13]), .Y(
-        oc8051_memory_interface1_n647) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u571 ( .A0(des_acc[5]), .A1(
-        oc8051_memory_interface1_n633), .B0(oc8051_memory_interface1_n634), 
-        .B1(des2[5]), .Y(oc8051_memory_interface1_n648) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u570 ( .A0(
-        oc8051_memory_interface1_n347), .A1(oc8051_memory_interface1_n641), 
-        .B0(oc8051_memory_interface1_n650), .C0(oc8051_memory_interface1_n592), 
-        .Y(oc8051_memory_interface1_n649) );
-  AOI211_X0P5M_A12TS oc8051_memory_interface1_u569 ( .A0(
-        oc8051_memory_interface1_n574), .A1(oc8051_memory_interface1_n647), 
-        .B0(oc8051_memory_interface1_n648), .C0(oc8051_memory_interface1_n649), 
-        .Y(oc8051_memory_interface1_n646) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u568 ( .A0(n_3_net_), .A1(
-        oc8051_memory_interface1_n644), .B0(oc8051_memory_interface1_n645), 
-        .C0(oc8051_memory_interface1_n646), .Y(oc8051_memory_interface1_n416)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u803 ( .A(
+        oc8051_memory_interface1_iadr_t_1_), .Y(oc8051_memory_interface1_n735)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u567 ( .A(
-        oc8051_memory_interface1_n503), .Y(oc8051_memory_interface1_n366) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u566 ( .A0(
-        oc8051_memory_interface1_n643), .A1(oc8051_memory_interface1_n394), 
-        .B0(oc8051_memory_interface1_n625), .B1(
-        oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n636) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u565 ( .A(
-        oc8051_memory_interface1_n642), .B(pc[12]), .Y(
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u802 ( .A(
+        oc8051_memory_interface1_n245), .B(oc8051_memory_interface1_n735), 
+        .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[1]) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u801 ( .A(
+        oc8051_memory_interface1_n197), .B(oc8051_memory_interface1_pc_buf_2_), 
+        .Y(oc8051_memory_interface1_n581) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u800 ( .A(
+        oc8051_memory_interface1_iadr_t_2_), .B(oc8051_memory_interface1_n581), 
+        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[2]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u799 ( .A(
+        oc8051_memory_interface1_pc_buf_2_), .B(oc8051_memory_interface1_n197), 
+        .Y(oc8051_memory_interface1_n746) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u798 ( .A(
+        oc8051_memory_interface1_n746), .B(oc8051_memory_interface1_pc_buf_3_), 
+        .Y(oc8051_memory_interface1_n588) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u797 ( .A(
+        oc8051_memory_interface1_iadr_t_3_), .B(oc8051_memory_interface1_n588), 
+        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[3]) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u796 ( .A(
+        oc8051_memory_interface1_n745), .B(oc8051_memory_interface1_pc_buf_4_), 
+        .Y(oc8051_memory_interface1_n594) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u795 ( .A(
+        oc8051_memory_interface1_iadr_t_4_), .B(oc8051_memory_interface1_n594), 
+        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[4]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u794 ( .A(
+        oc8051_memory_interface1_n745), .B(oc8051_memory_interface1_pc_buf_4_), 
+        .Y(oc8051_memory_interface1_n744) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u793 ( .A(
+        oc8051_memory_interface1_n744), .B(oc8051_memory_interface1_pc_buf_5_), 
+        .Y(oc8051_memory_interface1_n601) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u792 ( .A(
+        oc8051_memory_interface1_iadr_t_5_), .B(oc8051_memory_interface1_n601), 
+        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[5]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u791 ( .A(
+        oc8051_memory_interface1_pc_buf_6_), .Y(oc8051_memory_interface1_n273)
+         );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u790 ( .A(
+        oc8051_memory_interface1_n273), .B(oc8051_memory_interface1_n743), .Y(
+        oc8051_memory_interface1_n607) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u789 ( .A(
+        oc8051_memory_interface1_iadr_t_6_), .B(oc8051_memory_interface1_n607), 
+        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[6]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u788 ( .A(
+        oc8051_memory_interface1_n743), .B(oc8051_memory_interface1_pc_buf_6_), 
+        .Y(oc8051_memory_interface1_n742) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u787 ( .A(
+        oc8051_memory_interface1_n742), .B(oc8051_memory_interface1_pc_buf_7_), 
+        .Y(oc8051_memory_interface1_n614) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u786 ( .A(
+        oc8051_memory_interface1_iadr_t_7_), .B(oc8051_memory_interface1_n614), 
+        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[7]) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u785 ( .A(
+        oc8051_memory_interface1_n741), .B(oc8051_memory_interface1_n284), .Y(
         oc8051_memory_interface1_n638) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u564 ( .A0(des_acc[4]), .A1(
-        oc8051_memory_interface1_n633), .B0(oc8051_memory_interface1_n634), 
-        .B1(des2[4]), .Y(oc8051_memory_interface1_n639) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u563 ( .A0(pc[12]), .A1(
-        oc8051_memory_interface1_n632), .B0(oc8051_memory_interface1_n641), 
-        .C0(oc8051_memory_interface1_n575), .Y(oc8051_memory_interface1_n640)
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u784 ( .A(
+        oc8051_memory_interface1_iadr_t_8_), .B(oc8051_memory_interface1_n638), 
+        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[8]) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u783 ( .A(
+        oc8051_memory_interface1_n284), .B(oc8051_memory_interface1_n741), .Y(
+        oc8051_memory_interface1_n740) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u782 ( .A(
+        oc8051_memory_interface1_n289), .B(oc8051_memory_interface1_n740), .Y(
+        oc8051_memory_interface1_n645) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u781 ( .A(
+        oc8051_memory_interface1_iadr_t_9_), .B(oc8051_memory_interface1_n645), 
+        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[9]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u780 ( .A(ram_data[0]), .B(
+        sfr_out[0]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[0]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u779 ( .A(ram_data[1]), .B(
+        sfr_out[1]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[1]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u778 ( .A(ram_data[2]), .B(
+        sfr_out[2]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[2]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u777 ( .A(ram_data[3]), .B(
+        sfr_out[3]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[3]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u776 ( .A(ram_data[4]), .B(
+        sfr_out[4]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[4]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u775 ( .A(ram_data[5]), .B(
+        sfr_out[5]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[5]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u774 ( .A(ram_data[6]), .B(
+        sfr_out[6]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[6]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u773 ( .A(ram_data[7]), .B(
+        sfr_out[7]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[7]) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u772 ( .A(
+        oc8051_memory_interface1_n159), .B(oc8051_memory_interface1_n230), .Y(
+        oc8051_memory_interface1_n158) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u771 ( .A(
+        oc8051_memory_interface1_n158), .Y(oc8051_memory_interface1_n737) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u770 ( .A(istb), .B(
+        oc8051_memory_interface1_n167), .Y(oc8051_memory_interface1_n738) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u769 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n737), .B0(oc8051_memory_interface1_n738), 
+        .C0(wbd_cyc_o), .Y(oc8051_memory_interface1_istb_o) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u768 ( .AN(
+        oc8051_memory_interface1_going_out_of_rst), .B(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n352) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u767 ( .A(
+        oc8051_memory_interface1_ddat_ir_0_), .B(wbd_dat_i[0]), .S0(wbd_ack_i), 
+        .Y(oc8051_memory_interface1_n377) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u766 ( .A(
+        oc8051_memory_interface1_ddat_ir_1_), .B(wbd_dat_i[1]), .S0(wbd_ack_i), 
+        .Y(oc8051_memory_interface1_n378) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u765 ( .A(
+        oc8051_memory_interface1_ddat_ir_2_), .B(wbd_dat_i[2]), .S0(wbd_ack_i), 
+        .Y(oc8051_memory_interface1_n379) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u764 ( .A(
+        oc8051_memory_interface1_ddat_ir_3_), .B(wbd_dat_i[3]), .S0(wbd_ack_i), 
+        .Y(oc8051_memory_interface1_n380) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u763 ( .A(
+        oc8051_memory_interface1_ddat_ir_4_), .B(wbd_dat_i[4]), .S0(wbd_ack_i), 
+        .Y(oc8051_memory_interface1_n381) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u762 ( .A(
+        oc8051_memory_interface1_ddat_ir_5_), .B(wbd_dat_i[5]), .S0(wbd_ack_i), 
+        .Y(oc8051_memory_interface1_n382) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u761 ( .A(
+        oc8051_memory_interface1_ddat_ir_6_), .B(wbd_dat_i[6]), .S0(wbd_ack_i), 
+        .Y(oc8051_memory_interface1_n383) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u760 ( .A(
+        oc8051_memory_interface1_ddat_ir_7_), .B(wbd_dat_i[7]), .S0(wbd_ack_i), 
+        .Y(oc8051_memory_interface1_n384) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u759 ( .A(
+        oc8051_memory_interface1_int_vec_buff_0_), .B(int_src[0]), .S0(intr), 
+        .Y(oc8051_memory_interface1_n385) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u758 ( .A(
+        oc8051_memory_interface1_int_vec_buff_1_), .B(int_src[1]), .S0(intr), 
+        .Y(oc8051_memory_interface1_n386) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u757 ( .A(
+        oc8051_memory_interface1_int_vec_buff_2_), .B(iack_i), .S0(intr), .Y(
+        oc8051_memory_interface1_n387) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u756 ( .A(
+        oc8051_memory_interface1_int_vec_buff_3_), .B(int_src[3]), .S0(intr), 
+        .Y(oc8051_memory_interface1_n388) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u755 ( .A(
+        oc8051_memory_interface1_int_vec_buff_4_), .B(int_src[4]), .S0(intr), 
+        .Y(oc8051_memory_interface1_n389) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u754 ( .A(
+        oc8051_memory_interface1_int_vec_buff_5_), .B(int_src[5]), .S0(intr), 
+        .Y(oc8051_memory_interface1_n390) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u753 ( .A(
+        oc8051_memory_interface1_int_vec_buff_6_), .B(iack_i), .S0(intr), .Y(
+        oc8051_memory_interface1_n391) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u752 ( .A(
+        oc8051_memory_interface1_int_vec_buff_7_), .B(iack_i), .S0(intr), .Y(
+        oc8051_memory_interface1_n392) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u751 ( .A(des_acc[0]), .Y(
+        oc8051_memory_interface1_n642) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u750 ( .A(mem_act[0]), .Y(
+        oc8051_memory_interface1_n187) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u749 ( .A(mem_act[1]), .Y(
+        oc8051_memory_interface1_n186) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u748 ( .A(
+        oc8051_memory_interface1_n642), .B(oc8051_memory_interface1_n736), 
+        .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n402)
          );
-  OA211_X0P5M_A12TS oc8051_memory_interface1_u562 ( .A0(
-        oc8051_memory_interface1_n593), .A1(oc8051_memory_interface1_n638), 
-        .B0(oc8051_memory_interface1_n639), .C0(oc8051_memory_interface1_n640), 
-        .Y(oc8051_memory_interface1_n637) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u561 ( .A0(
-        oc8051_memory_interface1_n90), .A1(oc8051_memory_interface1_n366), 
-        .B0(oc8051_memory_interface1_n636), .C0(oc8051_memory_interface1_n637), 
-        .Y(oc8051_memory_interface1_n417) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u560 ( .A0(
-        oc8051_memory_interface1_n625), .A1(
-        oc8051_memory_interface1_pc_buf_11_), .B0(
-        oc8051_memory_interface1_n503), .B1(op2_n[3]), .Y(
-        oc8051_memory_interface1_n627) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u559 ( .A(
-        oc8051_memory_interface1_n635), .B(pc[11]), .Y(
-        oc8051_memory_interface1_n629) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u558 ( .A0(des_acc[3]), .A1(
-        oc8051_memory_interface1_n633), .B0(oc8051_memory_interface1_n634), 
-        .B1(des2[3]), .Y(oc8051_memory_interface1_n630) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u557 ( .A0(
-        oc8051_memory_interface1_n349), .A1(oc8051_memory_interface1_n623), 
-        .B0(oc8051_memory_interface1_n632), .C0(oc8051_memory_interface1_n592), 
-        .Y(oc8051_memory_interface1_n631) );
-  AOI211_X0P5M_A12TS oc8051_memory_interface1_u556 ( .A0(
-        oc8051_memory_interface1_n574), .A1(oc8051_memory_interface1_n629), 
-        .B0(oc8051_memory_interface1_n630), .C0(oc8051_memory_interface1_n631), 
-        .Y(oc8051_memory_interface1_n628) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u555 ( .A0(n_3_net_), .A1(
-        oc8051_memory_interface1_n626), .B0(oc8051_memory_interface1_n627), 
-        .C0(oc8051_memory_interface1_n628), .Y(oc8051_memory_interface1_n418)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u747 ( .A(des_acc[1]), .Y(
+        oc8051_memory_interface1_n648) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u746 ( .A(
+        oc8051_memory_interface1_n648), .B(oc8051_memory_interface1_n735), 
+        .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n403)
          );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u554 ( .A(pc_wr_sel[1]), .B(
-        pc_wr_sel[0]), .Y(oc8051_memory_interface1_n585) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u553 ( .A(
-        oc8051_memory_interface1_n585), .B(pc_wr_sel[2]), .Y(
-        oc8051_memory_interface1_n580) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u552 ( .A(
-        oc8051_memory_interface1_n625), .B(oc8051_memory_interface1_n580), .Y(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u745 ( .A(des_acc[2]), .B(
+        oc8051_memory_interface1_iadr_t_2_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n404) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u744 ( .A(des_acc[3]), .B(
+        oc8051_memory_interface1_iadr_t_3_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n405) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u743 ( .A(des_acc[4]), .B(
+        oc8051_memory_interface1_iadr_t_4_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n406) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u742 ( .A(des_acc[5]), .B(
+        oc8051_memory_interface1_iadr_t_5_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n407) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u741 ( .A(des_acc[6]), .B(
+        oc8051_memory_interface1_iadr_t_6_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n408) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u740 ( .A(des_acc[7]), .B(
+        oc8051_memory_interface1_iadr_t_7_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n409) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u739 ( .A(des2[0]), .B(
+        oc8051_memory_interface1_iadr_t_8_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n410) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u738 ( .A(des2[1]), .B(
+        oc8051_memory_interface1_iadr_t_9_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n411) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u737 ( .A(des2[2]), .B(
+        oc8051_memory_interface1_iadr_t_10_), .S0(
+        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n412) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u736 ( .A(des2[3]), .B(
+        oc8051_memory_interface1_iadr_t_11_), .S0(
+        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n413) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u735 ( .A(des2[4]), .B(
+        oc8051_memory_interface1_iadr_t_12_), .S0(
+        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n414) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u734 ( .A(des2[5]), .B(
+        oc8051_memory_interface1_iadr_t_13_), .S0(
+        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n415) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u733 ( .A(des2[6]), .B(
+        oc8051_memory_interface1_iadr_t_14_), .S0(
+        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n416) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u732 ( .A(des2[7]), .B(
+        oc8051_memory_interface1_iadr_t_15_), .S0(
+        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n417) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u731 ( .A(n_3_net_), .Y(
+        oc8051_memory_interface1_n574) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u730 ( .A(pc_wr_sel[1]), .B(
+        oc8051_memory_interface1_n626), .Y(oc8051_memory_interface1_n611) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u729 ( .A0(
+        oc8051_memory_interface1_op2_buff[7]), .A1(
+        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[7]), 
+        .B1(oc8051_memory_interface1_n723), .Y(op2_n[7]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u728 ( .A(
+        oc8051_memory_interface1_n556), .B(rd), .Y(
+        oc8051_memory_interface1_n722) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u727 ( .A0(
+        oc8051_memory_interface1_op3[7]), .A1(oc8051_memory_interface1_n721), 
+        .B0(oc8051_memory_interface1_int_vec_buff_7_), .B1(
+        oc8051_memory_interface1_n722), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[7]), .Y(
+        oc8051_memory_interface1_n734) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u726 ( .A(
+        oc8051_memory_interface1_n734), .Y(op3_n[7]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u725 ( .A(op2_n[7]), .B(op3_n[7]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n718) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u724 ( .A(
+        oc8051_memory_interface1_n611), .B(oc8051_memory_interface1_n718), .Y(
+        oc8051_memory_interface1_n653) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u723 ( .A(
+        oc8051_memory_interface1_n653), .B(n_3_net_), .Y(
+        oc8051_memory_interface1_n634) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u722 ( .A(
+        oc8051_memory_interface1_n359), .Y(pc[14]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u721 ( .A(
+        oc8051_memory_interface1_n358), .Y(pc[8]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u720 ( .A(
+        oc8051_memory_interface1_n718), .B(pc[8]), .Y(
+        oc8051_memory_interface1_n715) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u719 ( .A0(
+        oc8051_memory_interface1_op2_buff[1]), .A1(
+        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[1]), 
+        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n571)
+         );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u718 ( .A0(
+        oc8051_memory_interface1_op3[1]), .A1(oc8051_memory_interface1_n721), 
+        .B0(oc8051_memory_interface1_int_vec_buff_1_), .B1(
+        oc8051_memory_interface1_n722), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[1]), .Y(
+        oc8051_memory_interface1_n144) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u717 ( .A(
+        oc8051_memory_interface1_n571), .B(oc8051_memory_interface1_n144), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n573) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u716 ( .A0(
+        oc8051_memory_interface1_op2_buff[0]), .A1(
+        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[0]), 
+        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n141)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u715 ( .A(
+        oc8051_memory_interface1_n141), .Y(op2_n[0]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u714 ( .A0(
+        oc8051_memory_interface1_op3[0]), .A1(oc8051_memory_interface1_n721), 
+        .B0(oc8051_memory_interface1_int_vec_buff_0_), .B1(
+        oc8051_memory_interface1_n722), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[0]), .Y(
+        oc8051_memory_interface1_n561) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u713 ( .A(
+        oc8051_memory_interface1_n561), .Y(op3_n[0]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u712 ( .A(op2_n[0]), .B(op3_n[0]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n568) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u711 ( .A(pc[0]), .Y(
+        oc8051_memory_interface1_n238) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u710 ( .A(
+        oc8051_memory_interface1_n568), .B(oc8051_memory_interface1_n238), .Y(
+        oc8051_memory_interface1_n572) );
+  CGENI_X1M_A12TS oc8051_memory_interface1_u709 ( .A(
+        oc8051_memory_interface1_n573), .B(pc[1]), .CI(
+        oc8051_memory_interface1_n572), .CON(oc8051_memory_interface1_n582) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u708 ( .A0(
+        oc8051_memory_interface1_op2_buff[2]), .A1(
+        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[2]), 
+        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n135)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u707 ( .A(
+        oc8051_memory_interface1_n135), .Y(op2_n[2]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u706 ( .A0(
+        oc8051_memory_interface1_op3[2]), .A1(oc8051_memory_interface1_n721), 
+        .B0(oc8051_memory_interface1_int_vec_buff_2_), .B1(
+        oc8051_memory_interface1_n722), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[2]), .Y(
+        oc8051_memory_interface1_n733) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u705 ( .A(
+        oc8051_memory_interface1_n733), .Y(op3_n[2]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u704 ( .A(op2_n[2]), .B(op3_n[2]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n584) );
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u703 ( .A(
+        oc8051_memory_interface1_n582), .B(oc8051_memory_interface1_n584), .Y(
+        oc8051_memory_interface1_n732) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u702 ( .A(pc[2]), .Y(
+        oc8051_memory_interface1_n249) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u701 ( .A0(
+        oc8051_memory_interface1_n582), .A1(oc8051_memory_interface1_n584), 
+        .B0(oc8051_memory_interface1_n732), .B1(oc8051_memory_interface1_n249), 
+        .Y(oc8051_memory_interface1_n589) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u700 ( .A0(
+        oc8051_memory_interface1_op2_buff[3]), .A1(
+        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[3]), 
+        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n132)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u699 ( .A(
+        oc8051_memory_interface1_n132), .Y(op2_n[3]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u698 ( .A0(
+        oc8051_memory_interface1_op3[3]), .A1(oc8051_memory_interface1_n721), 
+        .B0(oc8051_memory_interface1_int_vec_buff_3_), .B1(
+        oc8051_memory_interface1_n722), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[3]), .Y(
+        oc8051_memory_interface1_n731) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u697 ( .A(
+        oc8051_memory_interface1_n731), .Y(op3_n[3]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u696 ( .A(op2_n[3]), .B(op3_n[3]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n730) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u695 ( .A(
+        oc8051_memory_interface1_n730), .Y(oc8051_memory_interface1_n590) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u694 ( .AN(
+        oc8051_memory_interface1_n589), .B(oc8051_memory_interface1_n730), .Y(
+        oc8051_memory_interface1_n729) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u693 ( .A0(
+        oc8051_memory_interface1_n589), .A1(oc8051_memory_interface1_n590), 
+        .B0(oc8051_memory_interface1_n729), .B1(pc[3]), .Y(
         oc8051_memory_interface1_n595) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u551 ( .A(des2[2]), .Y(
-        oc8051_memory_interface1_n618) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u550 ( .A(des_acc[2]), .Y(
-        oc8051_memory_interface1_n619) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u549 ( .A(
-        oc8051_memory_interface1_n580), .Y(oc8051_memory_interface1_n608) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u548 ( .A(
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u692 ( .A0(
+        oc8051_memory_interface1_op2_buff[4]), .A1(
+        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[4]), 
+        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n128)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u691 ( .A(
+        oc8051_memory_interface1_n128), .Y(op2_n[4]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u690 ( .A0(
+        oc8051_memory_interface1_op3[4]), .A1(oc8051_memory_interface1_n721), 
+        .B0(oc8051_memory_interface1_int_vec_buff_4_), .B1(
+        oc8051_memory_interface1_n722), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[4]), .Y(
+        oc8051_memory_interface1_n728) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u689 ( .A(
+        oc8051_memory_interface1_n728), .Y(op3_n[4]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u688 ( .A(op2_n[4]), .B(op3_n[4]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n597) );
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u687 ( .A(
+        oc8051_memory_interface1_n595), .B(oc8051_memory_interface1_n597), .Y(
+        oc8051_memory_interface1_n727) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u686 ( .A(pc[4]), .Y(
+        oc8051_memory_interface1_n259) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u685 ( .A0(
+        oc8051_memory_interface1_n595), .A1(oc8051_memory_interface1_n597), 
+        .B0(oc8051_memory_interface1_n727), .B1(oc8051_memory_interface1_n259), 
+        .Y(oc8051_memory_interface1_n602) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u684 ( .A0(
+        oc8051_memory_interface1_op2_buff[5]), .A1(
+        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[5]), 
+        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n123)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u683 ( .A(
+        oc8051_memory_interface1_n123), .Y(op2_n[5]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u682 ( .A0(
+        oc8051_memory_interface1_op3[5]), .A1(oc8051_memory_interface1_n721), 
+        .B0(oc8051_memory_interface1_int_vec_buff_5_), .B1(
+        oc8051_memory_interface1_n722), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[5]), .Y(
+        oc8051_memory_interface1_n726) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u681 ( .A(
+        oc8051_memory_interface1_n726), .Y(op3_n[5]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u680 ( .A(op2_n[5]), .B(op3_n[5]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n725) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u679 ( .A(
+        oc8051_memory_interface1_n725), .Y(oc8051_memory_interface1_n603) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u678 ( .AN(
+        oc8051_memory_interface1_n602), .B(oc8051_memory_interface1_n725), .Y(
+        oc8051_memory_interface1_n724) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u677 ( .A0(
+        oc8051_memory_interface1_n602), .A1(oc8051_memory_interface1_n603), 
+        .B0(oc8051_memory_interface1_n724), .B1(pc[5]), .Y(
+        oc8051_memory_interface1_n609) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u676 ( .A0(
+        oc8051_memory_interface1_op2_buff[6]), .A1(
+        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[6]), 
+        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n117)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u675 ( .A(
+        oc8051_memory_interface1_n117), .Y(op2_n[6]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u674 ( .A0(
+        oc8051_memory_interface1_op3[6]), .A1(oc8051_memory_interface1_n721), 
+        .B0(oc8051_memory_interface1_int_vec_buff_6_), .B1(
+        oc8051_memory_interface1_n722), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[6]), .Y(
+        oc8051_memory_interface1_n720) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u673 ( .A(
+        oc8051_memory_interface1_n720), .Y(op3_n[6]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u672 ( .A(op2_n[6]), .B(op3_n[6]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n621) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u671 ( .A(
+        oc8051_memory_interface1_n609), .Y(oc8051_memory_interface1_n619) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u670 ( .A(
+        oc8051_memory_interface1_n621), .Y(oc8051_memory_interface1_n610) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u669 ( .A(
+        oc8051_memory_interface1_n619), .B(oc8051_memory_interface1_n610), .Y(
+        oc8051_memory_interface1_n719) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u668 ( .A(pc[6]), .Y(
+        oc8051_memory_interface1_n272) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u667 ( .A0(
+        oc8051_memory_interface1_n609), .A1(oc8051_memory_interface1_n621), 
+        .B0(oc8051_memory_interface1_n719), .B1(oc8051_memory_interface1_n272), 
+        .Y(oc8051_memory_interface1_n716) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u666 ( .A(
+        oc8051_memory_interface1_n718), .Y(oc8051_memory_interface1_n713) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u665 ( .AN(
+        oc8051_memory_interface1_n716), .B(oc8051_memory_interface1_n718), .Y(
+        oc8051_memory_interface1_n717) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u664 ( .A0(
+        oc8051_memory_interface1_n716), .A1(oc8051_memory_interface1_n713), 
+        .B0(oc8051_memory_interface1_n717), .B1(pc[7]), .Y(
+        oc8051_memory_interface1_n712) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u663 ( .A(
+        oc8051_memory_interface1_n715), .B(oc8051_memory_interface1_n712), .Y(
+        oc8051_memory_interface1_n636) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u662 ( .AN(
+        oc8051_memory_interface1_n636), .B(pc[8]), .Y(
+        oc8051_memory_interface1_n631) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u661 ( .A(
+        oc8051_memory_interface1_n631), .B(oc8051_memory_interface1_n357), .Y(
+        oc8051_memory_interface1_n655) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u660 ( .A(
+        oc8051_memory_interface1_n356), .Y(pc[10]) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u659 ( .A(
+        oc8051_memory_interface1_n655), .B(pc[10]), .Y(
+        oc8051_memory_interface1_n665) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u658 ( .A(
+        oc8051_memory_interface1_n665), .B(oc8051_memory_interface1_n355), .Y(
+        oc8051_memory_interface1_n674) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u657 ( .A(
+        oc8051_memory_interface1_n354), .Y(pc[12]) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u656 ( .A(
+        oc8051_memory_interface1_n674), .B(pc[12]), .Y(
+        oc8051_memory_interface1_n683) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u655 ( .A(
+        oc8051_memory_interface1_n683), .B(oc8051_memory_interface1_n353), .Y(
+        oc8051_memory_interface1_n692) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u654 ( .A(
+        oc8051_memory_interface1_n634), .B(pc[14]), .C(
+        oc8051_memory_interface1_n692), .Y(oc8051_memory_interface1_n698) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u653 ( .A0(
+        oc8051_memory_interface1_n714), .A1(oc8051_memory_interface1_n574), 
+        .B0(oc8051_memory_interface1_n698), .B1(oc8051_memory_interface1_n360), 
+        .Y(oc8051_memory_interface1_n702) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u652 ( .A(
+        oc8051_memory_interface1_n692), .Y(oc8051_memory_interface1_n710) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u651 ( .A(
+        oc8051_memory_interface1_n713), .B(oc8051_memory_interface1_n611), .Y(
+        oc8051_memory_interface1_n651) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u650 ( .A(
+        oc8051_memory_interface1_n651), .B(n_3_net_), .Y(
+        oc8051_memory_interface1_n635) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u649 ( .A(
+        oc8051_memory_interface1_n635), .Y(oc8051_memory_interface1_n616) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u648 ( .A(
+        oc8051_memory_interface1_n712), .B(oc8051_memory_interface1_n358), .Y(
+        oc8051_memory_interface1_n656) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u647 ( .A(
+        oc8051_memory_interface1_n357), .Y(pc[9]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u646 ( .A(
+        oc8051_memory_interface1_n656), .B(pc[9]), .Y(
+        oc8051_memory_interface1_n666) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u645 ( .A(
+        oc8051_memory_interface1_n666), .B(oc8051_memory_interface1_n356), .Y(
+        oc8051_memory_interface1_n677) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u644 ( .A(
+        oc8051_memory_interface1_n355), .Y(pc[11]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u643 ( .A(
+        oc8051_memory_interface1_n677), .B(pc[11]), .Y(
+        oc8051_memory_interface1_n684) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u642 ( .A(
+        oc8051_memory_interface1_n684), .B(oc8051_memory_interface1_n354), .Y(
+        oc8051_memory_interface1_n693) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u641 ( .A(
+        oc8051_memory_interface1_n353), .Y(pc[13]) );
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u640 ( .A(
+        oc8051_memory_interface1_n693), .B(pc[13]), .Y(
+        oc8051_memory_interface1_n700) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u639 ( .A(
+        oc8051_memory_interface1_n700), .B(pc[14]), .Y(
+        oc8051_memory_interface1_n709) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u638 ( .A(
+        oc8051_memory_interface1_n616), .B(oc8051_memory_interface1_n709), .Y(
+        oc8051_memory_interface1_n711) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u637 ( .A0(
+        oc8051_memory_interface1_n710), .A1(oc8051_memory_interface1_n359), 
+        .B0(oc8051_memory_interface1_n634), .C0(oc8051_memory_interface1_n711), 
+        .Y(oc8051_memory_interface1_n707) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u636 ( .A(
+        oc8051_memory_interface1_n635), .B(oc8051_memory_interface1_n709), .Y(
+        oc8051_memory_interface1_n708) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u635 ( .A(
+        oc8051_memory_interface1_n707), .B(oc8051_memory_interface1_n708), 
+        .S0(oc8051_memory_interface1_n360), .Y(oc8051_memory_interface1_n703)
+         );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u634 ( .A(
+        oc8051_memory_interface1_n706), .B(pc_wr_sel[0]), .C(
+        oc8051_memory_interface1_n626), .Y(oc8051_memory_interface1_n628) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u633 ( .A(
+        oc8051_memory_interface1_n628), .Y(oc8051_memory_interface1_n640) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u632 ( .A(pc_wr_sel[0]), .B(
+        oc8051_memory_interface1_n706), .C(pc_wr_sel[2]), .Y(
+        oc8051_memory_interface1_n625) );
+  AND4_X0P5M_A12TS oc8051_memory_interface1_u631 ( .A(
+        oc8051_memory_interface1_n5470), .B(oc8051_memory_interface1_n640), 
+        .C(oc8051_memory_interface1_n611), .D(oc8051_memory_interface1_n625), 
+        .Y(oc8051_memory_interface1_n667) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u630 ( .A(
+        oc8051_memory_interface1_n625), .B(oc8051_memory_interface1_n574), .Y(
+        oc8051_memory_interface1_n580) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u629 ( .A0(
+        oc8051_memory_interface1_n667), .A1(
+        oc8051_memory_interface1_pc_buf_15_), .B0(
+        oc8051_memory_interface1_n580), .B1(op2_n[7]), .Y(
+        oc8051_memory_interface1_n704) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u628 ( .A(
+        oc8051_memory_interface1_n640), .B(oc8051_memory_interface1_n574), .Y(
+        oc8051_memory_interface1_n676) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u627 ( .A(
+        oc8051_memory_interface1_n643), .B(oc8051_memory_interface1_n574), .Y(
+        oc8051_memory_interface1_n675) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u626 ( .A0(des2[7]), .A1(
+        oc8051_memory_interface1_n676), .B0(oc8051_memory_interface1_n675), 
+        .B1(des_acc[7]), .Y(oc8051_memory_interface1_n705) );
+  NAND4_X0P5A_A12TS oc8051_memory_interface1_u625 ( .A(
+        oc8051_memory_interface1_n702), .B(oc8051_memory_interface1_n703), .C(
+        oc8051_memory_interface1_n704), .D(oc8051_memory_interface1_n705), .Y(
+        oc8051_memory_interface1_n424) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u624 ( .A0(
+        oc8051_memory_interface1_n667), .A1(
+        oc8051_memory_interface1_pc_buf_14_), .B0(
+        oc8051_memory_interface1_n580), .B1(op2_n[6]), .Y(
+        oc8051_memory_interface1_n694) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u623 ( .A0(
+        oc8051_memory_interface1_n675), .A1(des_acc[6]), .B0(
+        oc8051_memory_interface1_n701), .B1(oc8051_memory_interface1_n574), 
+        .Y(oc8051_memory_interface1_n695) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u622 ( .A(
+        oc8051_memory_interface1_n700), .B(pc[14]), .Y(
+        oc8051_memory_interface1_n699) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u621 ( .A0(
+        oc8051_memory_interface1_n616), .A1(oc8051_memory_interface1_n699), 
+        .B0(des2[6]), .B1(oc8051_memory_interface1_n676), .Y(
+        oc8051_memory_interface1_n696) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u620 ( .A(
+        oc8051_memory_interface1_n634), .Y(oc8051_memory_interface1_n617) );
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u619 ( .A0(
+        oc8051_memory_interface1_n692), .A1(pc[14]), .A2(
+        oc8051_memory_interface1_n617), .B0(oc8051_memory_interface1_n698), 
+        .Y(oc8051_memory_interface1_n697) );
+  NAND4_X0P5A_A12TS oc8051_memory_interface1_u618 ( .A(
+        oc8051_memory_interface1_n694), .B(oc8051_memory_interface1_n695), .C(
+        oc8051_memory_interface1_n696), .D(oc8051_memory_interface1_n697), .Y(
+        oc8051_memory_interface1_n425) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u617 ( .A0(
+        oc8051_memory_interface1_n667), .A1(
+        oc8051_memory_interface1_pc_buf_13_), .B0(
+        oc8051_memory_interface1_n580), .B1(op2_n[5]), .Y(
+        oc8051_memory_interface1_n687) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u616 ( .A(
+        oc8051_memory_interface1_n693), .B(pc[13]), .Y(
+        oc8051_memory_interface1_n689) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u615 ( .A0(des_acc[5]), .A1(
+        oc8051_memory_interface1_n675), .B0(oc8051_memory_interface1_n676), 
+        .B1(des2[5]), .Y(oc8051_memory_interface1_n690) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u614 ( .A0(
+        oc8051_memory_interface1_n353), .A1(oc8051_memory_interface1_n683), 
+        .B0(oc8051_memory_interface1_n692), .C0(oc8051_memory_interface1_n634), 
+        .Y(oc8051_memory_interface1_n691) );
+  AOI211_X0P5M_A12TS oc8051_memory_interface1_u613 ( .A0(
+        oc8051_memory_interface1_n616), .A1(oc8051_memory_interface1_n689), 
+        .B0(oc8051_memory_interface1_n690), .C0(oc8051_memory_interface1_n691), 
+        .Y(oc8051_memory_interface1_n688) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u612 ( .A0(n_3_net_), .A1(
+        oc8051_memory_interface1_n686), .B0(oc8051_memory_interface1_n687), 
+        .C0(oc8051_memory_interface1_n688), .Y(oc8051_memory_interface1_n426)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u611 ( .A(
+        oc8051_memory_interface1_n580), .Y(oc8051_memory_interface1_n562) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u610 ( .A0(
+        oc8051_memory_interface1_n685), .A1(oc8051_memory_interface1_n574), 
+        .B0(oc8051_memory_interface1_n667), .B1(
+        oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n678) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u609 ( .A(
+        oc8051_memory_interface1_n684), .B(pc[12]), .Y(
+        oc8051_memory_interface1_n680) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u608 ( .A0(des_acc[4]), .A1(
+        oc8051_memory_interface1_n675), .B0(oc8051_memory_interface1_n676), 
+        .B1(des2[4]), .Y(oc8051_memory_interface1_n681) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u607 ( .A0(pc[12]), .A1(
+        oc8051_memory_interface1_n674), .B0(oc8051_memory_interface1_n683), 
+        .C0(oc8051_memory_interface1_n617), .Y(oc8051_memory_interface1_n682)
+         );
+  OA211_X0P5M_A12TS oc8051_memory_interface1_u606 ( .A0(
+        oc8051_memory_interface1_n635), .A1(oc8051_memory_interface1_n680), 
+        .B0(oc8051_memory_interface1_n681), .C0(oc8051_memory_interface1_n682), 
+        .Y(oc8051_memory_interface1_n679) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u605 ( .A0(
+        oc8051_memory_interface1_n128), .A1(oc8051_memory_interface1_n562), 
+        .B0(oc8051_memory_interface1_n678), .C0(oc8051_memory_interface1_n679), 
+        .Y(oc8051_memory_interface1_n427) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u604 ( .A0(
+        oc8051_memory_interface1_n667), .A1(
+        oc8051_memory_interface1_pc_buf_11_), .B0(
+        oc8051_memory_interface1_n580), .B1(op2_n[3]), .Y(
+        oc8051_memory_interface1_n669) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u603 ( .A(
+        oc8051_memory_interface1_n677), .B(pc[11]), .Y(
+        oc8051_memory_interface1_n671) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u602 ( .A0(des_acc[3]), .A1(
+        oc8051_memory_interface1_n675), .B0(oc8051_memory_interface1_n676), 
+        .B1(des2[3]), .Y(oc8051_memory_interface1_n672) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u601 ( .A0(
+        oc8051_memory_interface1_n355), .A1(oc8051_memory_interface1_n665), 
+        .B0(oc8051_memory_interface1_n674), .C0(oc8051_memory_interface1_n634), 
+        .Y(oc8051_memory_interface1_n673) );
+  AOI211_X0P5M_A12TS oc8051_memory_interface1_u600 ( .A0(
+        oc8051_memory_interface1_n616), .A1(oc8051_memory_interface1_n671), 
+        .B0(oc8051_memory_interface1_n672), .C0(oc8051_memory_interface1_n673), 
+        .Y(oc8051_memory_interface1_n670) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u599 ( .A0(n_3_net_), .A1(
+        oc8051_memory_interface1_n668), .B0(oc8051_memory_interface1_n669), 
+        .C0(oc8051_memory_interface1_n670), .Y(oc8051_memory_interface1_n428)
+         );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u598 ( .A(pc_wr_sel[1]), .B(
+        pc_wr_sel[0]), .Y(oc8051_memory_interface1_n627) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u597 ( .A(
+        oc8051_memory_interface1_n627), .B(pc_wr_sel[2]), .Y(
+        oc8051_memory_interface1_n622) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u596 ( .A(
+        oc8051_memory_interface1_n667), .B(oc8051_memory_interface1_n622), .Y(
+        oc8051_memory_interface1_n637) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u595 ( .A(des2[2]), .Y(
+        oc8051_memory_interface1_n660) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u594 ( .A(des_acc[2]), .Y(
+        oc8051_memory_interface1_n661) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u593 ( .A(
+        oc8051_memory_interface1_n622), .Y(oc8051_memory_interface1_n650) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u592 ( .A(
         oc8051_memory_interface1_cdone), .B(oc8051_memory_interface1_dack_ir), 
-        .Y(oc8051_memory_interface1_n361) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u547 ( .AN(
-        oc8051_memory_interface1_n361), .B(oc8051_memory_interface1_n360), .Y(
-        oc8051_memory_interface1_n356) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u546 ( .AN(
+        .Y(oc8051_memory_interface1_n557) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u591 ( .AN(
+        oc8051_memory_interface1_n557), .B(oc8051_memory_interface1_n556), .Y(
+        oc8051_memory_interface1_n521) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u590 ( .AN(
         oc8051_memory_interface1_cdone), .B(oc8051_memory_interface1_dack_ir), 
-        .Y(oc8051_memory_interface1_n357) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u545 ( .A0(
+        .Y(oc8051_memory_interface1_n533) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u589 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_7_), .B0(
-        oc8051_memory_interface1_n356), .B1(oc8051_memory_interface1_op1_7_), 
+        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_7_), 
         .C0(oc8051_memory_interface1_cdata_7_), .C1(
-        oc8051_memory_interface1_n357), .Y(oc8051_memory_interface1_n317) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u544 ( .A(
-        oc8051_memory_interface1_n317), .Y(op1_n[7]) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u543 ( .A(
-        oc8051_memory_interface1_n624), .B(oc8051_memory_interface1_n350), .Y(
-        oc8051_memory_interface1_n621) );
-  AO21_X0P5M_A12TS oc8051_memory_interface1_u542 ( .A0(pc[10]), .A1(
-        oc8051_memory_interface1_n613), .B0(oc8051_memory_interface1_n623), 
-        .Y(oc8051_memory_interface1_n622) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u541 ( .A0(
-        oc8051_memory_interface1_n608), .A1(op1_n[7]), .B0(
-        oc8051_memory_interface1_n609), .B1(oc8051_memory_interface1_n621), 
-        .C0(oc8051_memory_interface1_n611), .C1(oc8051_memory_interface1_n622), 
-        .Y(oc8051_memory_interface1_n620) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u540 ( .A0(
-        oc8051_memory_interface1_n598), .A1(oc8051_memory_interface1_n618), 
-        .B0(oc8051_memory_interface1_n619), .B1(oc8051_memory_interface1_n601), 
-        .C0(oc8051_memory_interface1_n620), .Y(oc8051_memory_interface1_n617)
+        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n364) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u588 ( .A(
+        oc8051_memory_interface1_n364), .Y(op1_n[7]) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u587 ( .A(
+        oc8051_memory_interface1_n666), .B(oc8051_memory_interface1_n356), .Y(
+        oc8051_memory_interface1_n663) );
+  AO21_X0P5M_A12TS oc8051_memory_interface1_u586 ( .A0(pc[10]), .A1(
+        oc8051_memory_interface1_n655), .B0(oc8051_memory_interface1_n665), 
+        .Y(oc8051_memory_interface1_n664) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u585 ( .A0(
+        oc8051_memory_interface1_n650), .A1(op1_n[7]), .B0(
+        oc8051_memory_interface1_n651), .B1(oc8051_memory_interface1_n663), 
+        .C0(oc8051_memory_interface1_n653), .C1(oc8051_memory_interface1_n664), 
+        .Y(oc8051_memory_interface1_n662) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u584 ( .A0(
+        oc8051_memory_interface1_n640), .A1(oc8051_memory_interface1_n660), 
+        .B0(oc8051_memory_interface1_n661), .B1(oc8051_memory_interface1_n643), 
+        .C0(oc8051_memory_interface1_n662), .Y(oc8051_memory_interface1_n659)
          );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u539 ( .A(
-        oc8051_memory_interface1_n616), .B(oc8051_memory_interface1_n617), 
-        .S0(n_3_net_), .Y(oc8051_memory_interface1_n615) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u538 ( .A0(
-        oc8051_memory_interface1_n256), .A1(oc8051_memory_interface1_n595), 
-        .B0(oc8051_memory_interface1_n97), .B1(oc8051_memory_interface1_n366), 
-        .C0(oc8051_memory_interface1_n615), .Y(oc8051_memory_interface1_n419)
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u583 ( .A(
+        oc8051_memory_interface1_n658), .B(oc8051_memory_interface1_n659), 
+        .S0(n_3_net_), .Y(oc8051_memory_interface1_n657) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u582 ( .A0(
+        oc8051_memory_interface1_n294), .A1(oc8051_memory_interface1_n637), 
+        .B0(oc8051_memory_interface1_n135), .B1(oc8051_memory_interface1_n562), 
+        .C0(oc8051_memory_interface1_n657), .Y(oc8051_memory_interface1_n429)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u537 ( .A(des2[1]), .Y(
-        oc8051_memory_interface1_n605) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u536 ( .A0(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u581 ( .A(des2[1]), .Y(
+        oc8051_memory_interface1_n647) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u580 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_6_), .B0(
-        oc8051_memory_interface1_n356), .B1(oc8051_memory_interface1_op1_6_), 
+        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_6_), 
         .C0(oc8051_memory_interface1_cdata_6_), .C1(
-        oc8051_memory_interface1_n357), .Y(oc8051_memory_interface1_n305) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u535 ( .A(
-        oc8051_memory_interface1_n305), .Y(op1_n[6]) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u534 ( .A(
-        oc8051_memory_interface1_n614), .B(pc[9]), .Y(
-        oc8051_memory_interface1_n610) );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u533 ( .A0(
-        oc8051_memory_interface1_n351), .A1(oc8051_memory_interface1_n589), 
-        .B0(oc8051_memory_interface1_n613), .Y(oc8051_memory_interface1_n612)
+        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n343) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u579 ( .A(
+        oc8051_memory_interface1_n343), .Y(op1_n[6]) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u578 ( .A(
+        oc8051_memory_interface1_n656), .B(pc[9]), .Y(
+        oc8051_memory_interface1_n652) );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u577 ( .A0(
+        oc8051_memory_interface1_n357), .A1(oc8051_memory_interface1_n631), 
+        .B0(oc8051_memory_interface1_n655), .Y(oc8051_memory_interface1_n654)
          );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u532 ( .A0(
-        oc8051_memory_interface1_n608), .A1(op1_n[6]), .B0(
-        oc8051_memory_interface1_n609), .B1(oc8051_memory_interface1_n610), 
-        .C0(oc8051_memory_interface1_n611), .C1(oc8051_memory_interface1_n612), 
-        .Y(oc8051_memory_interface1_n607) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u531 ( .A0(
-        oc8051_memory_interface1_n598), .A1(oc8051_memory_interface1_n605), 
-        .B0(oc8051_memory_interface1_n606), .B1(oc8051_memory_interface1_n601), 
-        .C0(oc8051_memory_interface1_n607), .Y(oc8051_memory_interface1_n604)
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u576 ( .A0(
+        oc8051_memory_interface1_n650), .A1(op1_n[6]), .B0(
+        oc8051_memory_interface1_n651), .B1(oc8051_memory_interface1_n652), 
+        .C0(oc8051_memory_interface1_n653), .C1(oc8051_memory_interface1_n654), 
+        .Y(oc8051_memory_interface1_n649) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u575 ( .A0(
+        oc8051_memory_interface1_n640), .A1(oc8051_memory_interface1_n647), 
+        .B0(oc8051_memory_interface1_n648), .B1(oc8051_memory_interface1_n643), 
+        .C0(oc8051_memory_interface1_n649), .Y(oc8051_memory_interface1_n646)
          );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u530 ( .A(
-        oc8051_memory_interface1_n603), .B(oc8051_memory_interface1_n604), 
-        .S0(n_3_net_), .Y(oc8051_memory_interface1_n602) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u529 ( .A0(
-        oc8051_memory_interface1_n251), .A1(oc8051_memory_interface1_n595), 
-        .B0(oc8051_memory_interface1_n391), .B1(oc8051_memory_interface1_n366), 
-        .C0(oc8051_memory_interface1_n602), .Y(oc8051_memory_interface1_n420)
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u574 ( .A(
+        oc8051_memory_interface1_n645), .B(oc8051_memory_interface1_n646), 
+        .S0(n_3_net_), .Y(oc8051_memory_interface1_n644) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u573 ( .A0(
+        oc8051_memory_interface1_n289), .A1(oc8051_memory_interface1_n637), 
+        .B0(oc8051_memory_interface1_n571), .B1(oc8051_memory_interface1_n562), 
+        .C0(oc8051_memory_interface1_n644), .Y(oc8051_memory_interface1_n430)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u528 ( .A(des2[0]), .Y(
-        oc8051_memory_interface1_n599) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u527 ( .A0(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u572 ( .A(des2[0]), .Y(
+        oc8051_memory_interface1_n641) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u571 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_5_), .B0(
-        oc8051_memory_interface1_n356), .B1(oc8051_memory_interface1_op1_5_), 
+        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_5_), 
         .C0(oc8051_memory_interface1_cdata_5_), .C1(
-        oc8051_memory_interface1_n357), .Y(oc8051_memory_interface1_n313) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u526 ( .A0(
-        oc8051_memory_interface1_n598), .A1(oc8051_memory_interface1_n599), 
-        .B0(oc8051_memory_interface1_n313), .B1(oc8051_memory_interface1_n580), 
-        .C0(oc8051_memory_interface1_n600), .C1(oc8051_memory_interface1_n601), 
-        .Y(oc8051_memory_interface1_n597) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u525 ( .A(
-        oc8051_memory_interface1_n596), .B(oc8051_memory_interface1_n597), 
-        .S0(n_3_net_), .Y(oc8051_memory_interface1_n587) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u524 ( .A(
-        oc8051_memory_interface1_n595), .Y(oc8051_memory_interface1_n590) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u523 ( .A0(
-        oc8051_memory_interface1_n352), .A1(oc8051_memory_interface1_n592), 
-        .B0(oc8051_memory_interface1_n593), .C0(oc8051_memory_interface1_n594), 
-        .Y(oc8051_memory_interface1_n591) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u522 ( .A0(
-        oc8051_memory_interface1_n589), .A1(oc8051_memory_interface1_n575), 
-        .B0(oc8051_memory_interface1_n590), .B1(
-        oc8051_memory_interface1_pc_buf_8_), .C0(oc8051_memory_interface1_n591), .Y(oc8051_memory_interface1_n588) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u521 ( .A0(
-        oc8051_memory_interface1_n103), .A1(oc8051_memory_interface1_n366), 
-        .B0(oc8051_memory_interface1_n587), .C0(oc8051_memory_interface1_n588), 
-        .Y(oc8051_memory_interface1_n421) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u520 ( .A(
-        oc8051_memory_interface1_pc_buf_7_), .Y(oc8051_memory_interface1_n241)
+        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n351) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u570 ( .A0(
+        oc8051_memory_interface1_n640), .A1(oc8051_memory_interface1_n641), 
+        .B0(oc8051_memory_interface1_n351), .B1(oc8051_memory_interface1_n622), 
+        .C0(oc8051_memory_interface1_n642), .C1(oc8051_memory_interface1_n643), 
+        .Y(oc8051_memory_interface1_n639) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u569 ( .A(
+        oc8051_memory_interface1_n638), .B(oc8051_memory_interface1_n639), 
+        .S0(n_3_net_), .Y(oc8051_memory_interface1_n629) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u568 ( .A(
+        oc8051_memory_interface1_n637), .Y(oc8051_memory_interface1_n632) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u567 ( .A0(
+        oc8051_memory_interface1_n358), .A1(oc8051_memory_interface1_n634), 
+        .B0(oc8051_memory_interface1_n635), .C0(oc8051_memory_interface1_n636), 
+        .Y(oc8051_memory_interface1_n633) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u566 ( .A0(
+        oc8051_memory_interface1_n631), .A1(oc8051_memory_interface1_n617), 
+        .B0(oc8051_memory_interface1_n632), .B1(
+        oc8051_memory_interface1_pc_buf_8_), .C0(oc8051_memory_interface1_n633), .Y(oc8051_memory_interface1_n630) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u565 ( .A0(
+        oc8051_memory_interface1_n141), .A1(oc8051_memory_interface1_n562), 
+        .B0(oc8051_memory_interface1_n629), .C0(oc8051_memory_interface1_n630), 
+        .Y(oc8051_memory_interface1_n431) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u564 ( .A(
+        oc8051_memory_interface1_pc_buf_7_), .Y(oc8051_memory_interface1_n279)
          );
-  AOI21_X0P5M_A12TS oc8051_memory_interface1_u519 ( .A0(
-        oc8051_memory_interface1_n584), .A1(oc8051_memory_interface1_n585), 
-        .B0(oc8051_memory_interface1_n586), .Y(oc8051_memory_interface1_n581)
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u563 ( .A0(
+        oc8051_memory_interface1_n626), .A1(oc8051_memory_interface1_n627), 
+        .B0(oc8051_memory_interface1_n628), .Y(oc8051_memory_interface1_n623)
          );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u518 ( .A(
-        oc8051_memory_interface1_n583), .B(oc8051_memory_interface1_n569), .Y(
-        oc8051_memory_interface1_n582) );
-  NAND4_X0P5A_A12TS oc8051_memory_interface1_u517 ( .A(
-        oc8051_memory_interface1_n581), .B(n_3_net_), .C(
-        oc8051_memory_interface1_n582), .D(oc8051_memory_interface1_n580), .Y(
-        oc8051_memory_interface1_n566) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u516 ( .A(
-        oc8051_memory_interface1_n394), .B(oc8051_memory_interface1_n581), .Y(
-        oc8051_memory_interface1_n387) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u515 ( .A(
-        oc8051_memory_interface1_n580), .B(oc8051_memory_interface1_n394), .Y(
-        oc8051_memory_interface1_n368) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u514 ( .A0(des_acc[7]), .A1(
-        oc8051_memory_interface1_n387), .B0(oc8051_memory_interface1_n368), 
-        .B1(op2_n[7]), .Y(oc8051_memory_interface1_n570) );
-  AOI21_X0P5M_A12TS oc8051_memory_interface1_u513 ( .A0(
-        oc8051_memory_interface1_n579), .A1(oc8051_memory_interface1_n567), 
-        .B0(oc8051_memory_interface1_n234), .Y(oc8051_memory_interface1_n578)
-         );
-  AOI21_X0P5M_A12TS oc8051_memory_interface1_u512 ( .A0(
-        oc8051_memory_interface1_n568), .A1(oc8051_memory_interface1_n577), 
-        .B0(oc8051_memory_interface1_n578), .Y(oc8051_memory_interface1_n576)
-         );
-  MXT4_X0P5M_A12TS oc8051_memory_interface1_u511 ( .A(
-        oc8051_memory_interface1_n574), .B(oc8051_memory_interface1_n575), .C(
-        oc8051_memory_interface1_n575), .D(oc8051_memory_interface1_n574), 
-        .S0(pc[7]), .S1(oc8051_memory_interface1_n576), .Y(
-        oc8051_memory_interface1_n573) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u510 ( .A0(op3_n[7]), .A1(
-        oc8051_memory_interface1_n503), .B0(oc8051_memory_interface1_n572), 
-        .B1(oc8051_memory_interface1_n394), .C0(oc8051_memory_interface1_n573), 
-        .Y(oc8051_memory_interface1_n571) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u509 ( .A0(
-        oc8051_memory_interface1_n241), .A1(oc8051_memory_interface1_n566), 
-        .B0(oc8051_memory_interface1_n570), .C0(oc8051_memory_interface1_n571), 
-        .Y(oc8051_memory_interface1_n422) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u508 ( .A(
-        oc8051_memory_interface1_n394), .B(oc8051_memory_interface1_n569), .Y(
-        oc8051_memory_interface1_n369) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u507 ( .A(
-        oc8051_memory_interface1_n369), .Y(oc8051_memory_interface1_n413) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u506 ( .A(
-        oc8051_memory_interface1_n567), .B(oc8051_memory_interface1_n568), .C(
-        oc8051_memory_interface1_n234), .Y(oc8051_memory_interface1_n562) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u505 ( .A0(des_acc[6]), .A1(
-        oc8051_memory_interface1_n387), .B0(oc8051_memory_interface1_n368), 
-        .B1(op2_n[6]), .Y(oc8051_memory_interface1_n563) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u504 ( .A(
-        oc8051_memory_interface1_n566), .Y(oc8051_memory_interface1_n412) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u503 ( .A0(op3_n[6]), .A1(
-        oc8051_memory_interface1_n503), .B0(oc8051_memory_interface1_n565), 
-        .B1(oc8051_memory_interface1_n394), .C0(oc8051_memory_interface1_n412), 
-        .C1(oc8051_memory_interface1_pc_buf_6_), .Y(
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u562 ( .A(
+        oc8051_memory_interface1_n625), .B(oc8051_memory_interface1_n611), .Y(
+        oc8051_memory_interface1_n624) );
+  NAND4_X0P5A_A12TS oc8051_memory_interface1_u561 ( .A(
+        oc8051_memory_interface1_n623), .B(n_3_net_), .C(
+        oc8051_memory_interface1_n624), .D(oc8051_memory_interface1_n622), .Y(
+        oc8051_memory_interface1_n608) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u560 ( .A(
+        oc8051_memory_interface1_n574), .B(oc8051_memory_interface1_n623), .Y(
+        oc8051_memory_interface1_n567) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u559 ( .A(
+        oc8051_memory_interface1_n622), .B(oc8051_memory_interface1_n574), .Y(
         oc8051_memory_interface1_n564) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u502 ( .A0(
-        oc8051_memory_interface1_n413), .A1(oc8051_memory_interface1_n562), 
-        .B0(oc8051_memory_interface1_n563), .C0(oc8051_memory_interface1_n564), 
-        .Y(oc8051_memory_interface1_n423) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u501 ( .A(
-        oc8051_memory_interface1_n560), .B(oc8051_memory_interface1_n561), .C(
-        pc[5]), .Y(oc8051_memory_interface1_n556) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u500 ( .A0(des_acc[5]), .A1(
-        oc8051_memory_interface1_n387), .B0(oc8051_memory_interface1_n368), 
-        .B1(op2_n[5]), .Y(oc8051_memory_interface1_n557) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u499 ( .A0(
-        oc8051_memory_interface1_n559), .A1(oc8051_memory_interface1_n394), 
-        .B0(oc8051_memory_interface1_n412), .B1(
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u558 ( .A0(des_acc[7]), .A1(
+        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
+        .B1(op2_n[7]), .Y(oc8051_memory_interface1_n612) );
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u557 ( .A0(
+        oc8051_memory_interface1_n621), .A1(oc8051_memory_interface1_n609), 
+        .B0(oc8051_memory_interface1_n272), .Y(oc8051_memory_interface1_n620)
+         );
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u556 ( .A0(
+        oc8051_memory_interface1_n610), .A1(oc8051_memory_interface1_n619), 
+        .B0(oc8051_memory_interface1_n620), .Y(oc8051_memory_interface1_n618)
+         );
+  MXT4_X0P5M_A12TS oc8051_memory_interface1_u555 ( .A(
+        oc8051_memory_interface1_n616), .B(oc8051_memory_interface1_n617), .C(
+        oc8051_memory_interface1_n617), .D(oc8051_memory_interface1_n616), 
+        .S0(pc[7]), .S1(oc8051_memory_interface1_n618), .Y(
+        oc8051_memory_interface1_n615) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u554 ( .A0(op3_n[7]), .A1(
+        oc8051_memory_interface1_n580), .B0(oc8051_memory_interface1_n614), 
+        .B1(oc8051_memory_interface1_n574), .C0(oc8051_memory_interface1_n615), 
+        .Y(oc8051_memory_interface1_n613) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u553 ( .A0(
+        oc8051_memory_interface1_n279), .A1(oc8051_memory_interface1_n608), 
+        .B0(oc8051_memory_interface1_n612), .C0(oc8051_memory_interface1_n613), 
+        .Y(oc8051_memory_interface1_n432) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u552 ( .A(
+        oc8051_memory_interface1_n574), .B(oc8051_memory_interface1_n611), .Y(
+        oc8051_memory_interface1_n565) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u551 ( .A(
+        oc8051_memory_interface1_n565), .Y(oc8051_memory_interface1_n576) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u550 ( .A(
+        oc8051_memory_interface1_n609), .B(oc8051_memory_interface1_n610), .C(
+        oc8051_memory_interface1_n272), .Y(oc8051_memory_interface1_n604) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u549 ( .A0(des_acc[6]), .A1(
+        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
+        .B1(op2_n[6]), .Y(oc8051_memory_interface1_n605) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u548 ( .A(
+        oc8051_memory_interface1_n608), .Y(oc8051_memory_interface1_n575) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u547 ( .A0(op3_n[6]), .A1(
+        oc8051_memory_interface1_n580), .B0(oc8051_memory_interface1_n607), 
+        .B1(oc8051_memory_interface1_n574), .C0(oc8051_memory_interface1_n575), 
+        .C1(oc8051_memory_interface1_pc_buf_6_), .Y(
+        oc8051_memory_interface1_n606) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u546 ( .A0(
+        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n604), 
+        .B0(oc8051_memory_interface1_n605), .C0(oc8051_memory_interface1_n606), 
+        .Y(oc8051_memory_interface1_n433) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u545 ( .A(
+        oc8051_memory_interface1_n602), .B(oc8051_memory_interface1_n603), .C(
+        pc[5]), .Y(oc8051_memory_interface1_n598) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u544 ( .A0(des_acc[5]), .A1(
+        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
+        .B1(op2_n[5]), .Y(oc8051_memory_interface1_n599) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u543 ( .A0(
+        oc8051_memory_interface1_n601), .A1(oc8051_memory_interface1_n574), 
+        .B0(oc8051_memory_interface1_n575), .B1(
         oc8051_memory_interface1_pc_buf_5_), .C0(op3_n[5]), .C1(
-        oc8051_memory_interface1_n503), .Y(oc8051_memory_interface1_n558) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u498 ( .A0(
-        oc8051_memory_interface1_n413), .A1(oc8051_memory_interface1_n556), 
-        .B0(oc8051_memory_interface1_n557), .C0(oc8051_memory_interface1_n558), 
-        .Y(oc8051_memory_interface1_n424) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u497 ( .A(
-        oc8051_memory_interface1_n555), .Y(oc8051_memory_interface1_n554) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u496 ( .A(
-        oc8051_memory_interface1_n553), .B(oc8051_memory_interface1_n554), .C(
-        oc8051_memory_interface1_n221), .Y(oc8051_memory_interface1_n549) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u495 ( .A0(des_acc[4]), .A1(
-        oc8051_memory_interface1_n387), .B0(oc8051_memory_interface1_n368), 
-        .B1(op2_n[4]), .Y(oc8051_memory_interface1_n550) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u494 ( .A0(op3_n[4]), .A1(
-        oc8051_memory_interface1_n503), .B0(oc8051_memory_interface1_n552), 
-        .B1(oc8051_memory_interface1_n394), .C0(oc8051_memory_interface1_n412), 
+        oc8051_memory_interface1_n580), .Y(oc8051_memory_interface1_n600) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u542 ( .A0(
+        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n598), 
+        .B0(oc8051_memory_interface1_n599), .C0(oc8051_memory_interface1_n600), 
+        .Y(oc8051_memory_interface1_n434) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u541 ( .A(
+        oc8051_memory_interface1_n597), .Y(oc8051_memory_interface1_n596) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u540 ( .A(
+        oc8051_memory_interface1_n595), .B(oc8051_memory_interface1_n596), .C(
+        oc8051_memory_interface1_n259), .Y(oc8051_memory_interface1_n591) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u539 ( .A0(des_acc[4]), .A1(
+        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
+        .B1(op2_n[4]), .Y(oc8051_memory_interface1_n592) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u538 ( .A0(op3_n[4]), .A1(
+        oc8051_memory_interface1_n580), .B0(oc8051_memory_interface1_n594), 
+        .B1(oc8051_memory_interface1_n574), .C0(oc8051_memory_interface1_n575), 
         .C1(oc8051_memory_interface1_pc_buf_4_), .Y(
-        oc8051_memory_interface1_n551) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u493 ( .A0(
-        oc8051_memory_interface1_n413), .A1(oc8051_memory_interface1_n549), 
-        .B0(oc8051_memory_interface1_n550), .C0(oc8051_memory_interface1_n551), 
-        .Y(oc8051_memory_interface1_n425) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u492 ( .A(
-        oc8051_memory_interface1_n547), .B(oc8051_memory_interface1_n548), .C(
-        pc[3]), .Y(oc8051_memory_interface1_n523) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u491 ( .A0(des_acc[3]), .A1(
-        oc8051_memory_interface1_n387), .B0(oc8051_memory_interface1_n368), 
-        .B1(op2_n[3]), .Y(oc8051_memory_interface1_n544) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u490 ( .A0(
-        oc8051_memory_interface1_n546), .A1(oc8051_memory_interface1_n394), 
-        .B0(oc8051_memory_interface1_n412), .B1(
+        oc8051_memory_interface1_n593) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u537 ( .A0(
+        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n591), 
+        .B0(oc8051_memory_interface1_n592), .C0(oc8051_memory_interface1_n593), 
+        .Y(oc8051_memory_interface1_n435) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u536 ( .A(
+        oc8051_memory_interface1_n589), .B(oc8051_memory_interface1_n590), .C(
+        pc[3]), .Y(oc8051_memory_interface1_n585) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u535 ( .A0(des_acc[3]), .A1(
+        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
+        .B1(op2_n[3]), .Y(oc8051_memory_interface1_n586) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u534 ( .A0(
+        oc8051_memory_interface1_n588), .A1(oc8051_memory_interface1_n574), 
+        .B0(oc8051_memory_interface1_n575), .B1(
         oc8051_memory_interface1_pc_buf_3_), .C0(op3_n[3]), .C1(
-        oc8051_memory_interface1_n503), .Y(oc8051_memory_interface1_n545) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u489 ( .A0(
-        oc8051_memory_interface1_n413), .A1(oc8051_memory_interface1_n523), 
-        .B0(oc8051_memory_interface1_n544), .C0(oc8051_memory_interface1_n545), 
-        .Y(oc8051_memory_interface1_n426) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u488 ( .A(
-        oc8051_memory_interface1_n511), .Y(oc8051_memory_interface1_n509) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u487 ( .A(
-        oc8051_memory_interface1_n507), .B(oc8051_memory_interface1_n509), .C(
-        oc8051_memory_interface1_n211), .Y(oc8051_memory_interface1_n497) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u486 ( .A0(des_acc[2]), .A1(
-        oc8051_memory_interface1_n387), .B0(oc8051_memory_interface1_n368), 
-        .B1(op2_n[2]), .Y(oc8051_memory_interface1_n499) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u485 ( .A0(op3_n[2]), .A1(
-        oc8051_memory_interface1_n503), .B0(oc8051_memory_interface1_n505), 
-        .B1(oc8051_memory_interface1_n394), .C0(oc8051_memory_interface1_n412), 
+        oc8051_memory_interface1_n580), .Y(oc8051_memory_interface1_n587) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u533 ( .A0(
+        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n585), 
+        .B0(oc8051_memory_interface1_n586), .C0(oc8051_memory_interface1_n587), 
+        .Y(oc8051_memory_interface1_n436) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u532 ( .A(
+        oc8051_memory_interface1_n584), .Y(oc8051_memory_interface1_n583) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u531 ( .A(
+        oc8051_memory_interface1_n582), .B(oc8051_memory_interface1_n583), .C(
+        oc8051_memory_interface1_n249), .Y(oc8051_memory_interface1_n577) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u530 ( .A0(des_acc[2]), .A1(
+        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
+        .B1(op2_n[2]), .Y(oc8051_memory_interface1_n578) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u529 ( .A0(op3_n[2]), .A1(
+        oc8051_memory_interface1_n580), .B0(oc8051_memory_interface1_n581), 
+        .B1(oc8051_memory_interface1_n574), .C0(oc8051_memory_interface1_n575), 
         .C1(oc8051_memory_interface1_pc_buf_2_), .Y(
-        oc8051_memory_interface1_n501) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u484 ( .A0(
-        oc8051_memory_interface1_n413), .A1(oc8051_memory_interface1_n497), 
-        .B0(oc8051_memory_interface1_n499), .C0(oc8051_memory_interface1_n501), 
-        .Y(oc8051_memory_interface1_n427) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u483 ( .A(
-        oc8051_memory_interface1_n394), .B(oc8051_memory_interface1_n412), .Y(
-        oc8051_memory_interface1_n364) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u482 ( .A(pc[1]), .Y(
-        oc8051_memory_interface1_n205) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u481 ( .A(
-        oc8051_memory_interface1_n392), .B(oc8051_memory_interface1_n393), .C(
-        oc8051_memory_interface1_n205), .Y(oc8051_memory_interface1_n390) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u480 ( .A(
-        oc8051_memory_interface1_n391), .Y(op2_n[1]) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u479 ( .A0(
-        oc8051_memory_interface1_n369), .A1(oc8051_memory_interface1_n390), 
-        .B0(des_acc[1]), .B1(oc8051_memory_interface1_n387), .C0(
-        oc8051_memory_interface1_n368), .C1(op2_n[1]), .Y(
-        oc8051_memory_interface1_n389) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u478 ( .A0(
-        oc8051_memory_interface1_n364), .A1(oc8051_memory_interface1_n207), 
-        .B0(oc8051_memory_interface1_n366), .B1(oc8051_memory_interface1_n106), 
-        .C0(oc8051_memory_interface1_n389), .Y(oc8051_memory_interface1_n428)
+        oc8051_memory_interface1_n579) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u528 ( .A0(
+        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n577), 
+        .B0(oc8051_memory_interface1_n578), .C0(oc8051_memory_interface1_n579), 
+        .Y(oc8051_memory_interface1_n437) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u527 ( .A(
+        oc8051_memory_interface1_n574), .B(oc8051_memory_interface1_n575), .Y(
+        oc8051_memory_interface1_n560) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u526 ( .A(pc[1]), .Y(
+        oc8051_memory_interface1_n243) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u525 ( .A(
+        oc8051_memory_interface1_n572), .B(oc8051_memory_interface1_n573), .C(
+        oc8051_memory_interface1_n243), .Y(oc8051_memory_interface1_n570) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u524 ( .A(
+        oc8051_memory_interface1_n571), .Y(op2_n[1]) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u523 ( .A0(
+        oc8051_memory_interface1_n565), .A1(oc8051_memory_interface1_n570), 
+        .B0(des_acc[1]), .B1(oc8051_memory_interface1_n567), .C0(
+        oc8051_memory_interface1_n564), .C1(op2_n[1]), .Y(
+        oc8051_memory_interface1_n569) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u522 ( .A0(
+        oc8051_memory_interface1_n560), .A1(oc8051_memory_interface1_n245), 
+        .B0(oc8051_memory_interface1_n562), .B1(oc8051_memory_interface1_n144), 
+        .C0(oc8051_memory_interface1_n569), .Y(oc8051_memory_interface1_n438)
          );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u477 ( .A(
-        oc8051_memory_interface1_n200), .B(oc8051_memory_interface1_n388), .Y(
-        oc8051_memory_interface1_n370) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u476 ( .A0(
-        oc8051_memory_interface1_n368), .A1(op2_n[0]), .B0(
-        oc8051_memory_interface1_n369), .B1(oc8051_memory_interface1_n370), 
-        .C0(des_acc[0]), .C1(oc8051_memory_interface1_n387), .Y(
-        oc8051_memory_interface1_n367) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u475 ( .A0(
-        oc8051_memory_interface1_n364), .A1(oc8051_memory_interface1_n203), 
-        .B0(oc8051_memory_interface1_n365), .B1(oc8051_memory_interface1_n366), 
-        .C0(oc8051_memory_interface1_n367), .Y(oc8051_memory_interface1_n429)
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u521 ( .A(
+        oc8051_memory_interface1_n238), .B(oc8051_memory_interface1_n568), .Y(
+        oc8051_memory_interface1_n566) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u520 ( .A0(
+        oc8051_memory_interface1_n564), .A1(op2_n[0]), .B0(
+        oc8051_memory_interface1_n565), .B1(oc8051_memory_interface1_n566), 
+        .C0(des_acc[0]), .C1(oc8051_memory_interface1_n567), .Y(
+        oc8051_memory_interface1_n563) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u519 ( .A0(
+        oc8051_memory_interface1_n560), .A1(oc8051_memory_interface1_n241), 
+        .B0(oc8051_memory_interface1_n561), .B1(oc8051_memory_interface1_n562), 
+        .C0(oc8051_memory_interface1_n563), .Y(oc8051_memory_interface1_n439)
          );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u474 ( .A(
-        oc8051_memory_interface1_n151), .B(oc8051_memory_interface1_n162), .C(
-        rd), .Y(oc8051_memory_interface1_n201) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u473 ( .A(
-        oc8051_memory_interface1_n201), .B(oc8051_memory_interface1_n162), .Y(
-        oc8051_memory_interface1_n199) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u472 ( .A0(
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u518 ( .A(
+        oc8051_memory_interface1_n189), .B(oc8051_memory_interface1_n200), .C(
+        rd), .Y(oc8051_memory_interface1_n239) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u517 ( .A(
+        oc8051_memory_interface1_n239), .B(oc8051_memory_interface1_n200), .Y(
+        oc8051_memory_interface1_n237) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u516 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_3_), .B0(
-        oc8051_memory_interface1_n356), .B1(oc8051_memory_interface1_op1_3_), 
+        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_3_), 
         .C0(oc8051_memory_interface1_cdata_3_), .C1(
-        oc8051_memory_interface1_n357), .Y(oc8051_memory_interface1_n308) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u471 ( .A0(
+        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n346) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u515 ( .A0(
         oc8051_memory_interface1_ddat_ir_1_), .A1(
-        oc8051_memory_interface1_dack_ir), .B0(oc8051_memory_interface1_n357), 
+        oc8051_memory_interface1_dack_ir), .B0(oc8051_memory_interface1_n533), 
         .B1(oc8051_memory_interface1_cdata_1_), .Y(
-        oc8051_memory_interface1_n363) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u470 ( .A0(
-        oc8051_memory_interface1_n360), .A1(oc8051_memory_interface1_op1_1_), 
-        .B0(oc8051_memory_interface1_n361), .C0(oc8051_memory_interface1_n363), 
-        .Y(oc8051_memory_interface1_n311) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u469 ( .A0(
+        oc8051_memory_interface1_n559) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u514 ( .A0(
+        oc8051_memory_interface1_n556), .A1(oc8051_memory_interface1_op1_1_), 
+        .B0(oc8051_memory_interface1_n557), .C0(oc8051_memory_interface1_n559), 
+        .Y(oc8051_memory_interface1_n349) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u513 ( .A0(
         oc8051_memory_interface1_ddat_ir_4_), .A1(
-        oc8051_memory_interface1_dack_ir), .B0(oc8051_memory_interface1_n357), 
+        oc8051_memory_interface1_dack_ir), .B0(oc8051_memory_interface1_n533), 
         .B1(oc8051_memory_interface1_cdata_4_), .Y(
-        oc8051_memory_interface1_n362) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u468 ( .A0(
-        oc8051_memory_interface1_n360), .A1(oc8051_memory_interface1_op1_4_), 
-        .B0(oc8051_memory_interface1_n361), .C0(oc8051_memory_interface1_n362), 
-        .Y(oc8051_memory_interface1_n309) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u467 ( .A(op1_n[7]), .B(
-        oc8051_memory_interface1_n305), .Y(oc8051_memory_interface1_n345) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u466 ( .A(
-        oc8051_memory_interface1_n313), .Y(op1_n[5]) );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u465 ( .A0(op1_n[6]), .A1(
-        op1_n[5]), .B0(oc8051_memory_interface1_n317), .Y(
-        oc8051_memory_interface1_n358) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u464 ( .A0(
+        oc8051_memory_interface1_n558) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u512 ( .A0(
+        oc8051_memory_interface1_n556), .A1(oc8051_memory_interface1_op1_4_), 
+        .B0(oc8051_memory_interface1_n557), .C0(oc8051_memory_interface1_n558), 
+        .Y(oc8051_memory_interface1_n347) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u511 ( .A(op1_n[7]), .B(
+        oc8051_memory_interface1_n343), .Y(oc8051_memory_interface1_n517) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u510 ( .A(
+        oc8051_memory_interface1_n351), .Y(op1_n[5]) );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u509 ( .A0(op1_n[6]), .A1(
+        op1_n[5]), .B0(oc8051_memory_interface1_n364), .Y(
+        oc8051_memory_interface1_n554) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u508 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_0_), .B0(
-        oc8051_memory_interface1_n356), .B1(oc8051_memory_interface1_op1_0_), 
+        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_0_), 
         .C0(oc8051_memory_interface1_cdata_0_), .C1(
-        oc8051_memory_interface1_n357), .Y(oc8051_memory_interface1_n323) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u463 ( .A(
-        oc8051_memory_interface1_n323), .Y(op1_n[0]) );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u462 ( .A0(op1_n[6]), .A1(
-        oc8051_memory_interface1_n313), .B0(op1_n[0]), .Y(
-        oc8051_memory_interface1_n359) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u461 ( .A0(
-        oc8051_memory_interface1_n309), .A1(oc8051_memory_interface1_n345), 
-        .B0(oc8051_memory_interface1_n358), .C0(oc8051_memory_interface1_n359), 
-        .Y(oc8051_memory_interface1_n341) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u460 ( .A0(
+        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n370) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u507 ( .A(
+        oc8051_memory_interface1_n370), .Y(op1_n[0]) );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u506 ( .A0(op1_n[6]), .A1(
+        oc8051_memory_interface1_n351), .B0(op1_n[0]), .Y(
+        oc8051_memory_interface1_n555) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u505 ( .A0(
+        oc8051_memory_interface1_n347), .A1(oc8051_memory_interface1_n517), 
+        .B0(oc8051_memory_interface1_n554), .C0(oc8051_memory_interface1_n555), 
+        .Y(oc8051_memory_interface1_n509) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u504 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_2_), .B0(
-        oc8051_memory_interface1_n356), .B1(oc8051_memory_interface1_op1_2_), 
+        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_2_), 
         .C0(oc8051_memory_interface1_cdata_2_), .C1(
-        oc8051_memory_interface1_n357), .Y(oc8051_memory_interface1_n310) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u459 ( .A(
-        oc8051_memory_interface1_n310), .Y(op1_n[2]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u458 ( .A(
-        oc8051_memory_interface1_n308), .Y(op1_n[3]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u457 ( .A(op1_n[2]), .B(op1_n[3]), 
-        .Y(oc8051_memory_interface1_n319) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u456 ( .A(
-        oc8051_memory_interface1_n311), .Y(op1_n[1]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u455 ( .A(
-        oc8051_memory_interface1_n309), .Y(op1_n[4]) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u454 ( .A(op1_n[6]), .B(op1_n[1]), 
-        .C(op1_n[4]), .Y(oc8051_memory_interface1_n332) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u453 ( .A(
-        oc8051_memory_interface1_n323), .B(oc8051_memory_interface1_n313), .Y(
-        oc8051_memory_interface1_n306) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u452 ( .A(op1_n[4]), .B(op1_n[5]), 
-        .C(op1_n[0]), .Y(oc8051_memory_interface1_n355) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u451 ( .A(op1_n[6]), .B(
-        oc8051_memory_interface1_n317), .C(oc8051_memory_interface1_n355), .Y(
-        oc8051_memory_interface1_n343) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u450 ( .A(
-        oc8051_memory_interface1_n345), .Y(oc8051_memory_interface1_n336) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u449 ( .A(
-        oc8051_memory_interface1_n311), .B(oc8051_memory_interface1_n336), 
-        .S0(oc8051_memory_interface1_n323), .Y(oc8051_memory_interface1_n344)
+        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n348) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u503 ( .A(
+        oc8051_memory_interface1_n348), .Y(op1_n[2]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u502 ( .A(
+        oc8051_memory_interface1_n346), .Y(op1_n[3]) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u501 ( .A(op1_n[2]), .B(op1_n[3]), 
+        .Y(oc8051_memory_interface1_n366) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u500 ( .A(
+        oc8051_memory_interface1_n349), .Y(op1_n[1]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u499 ( .A(
+        oc8051_memory_interface1_n347), .Y(op1_n[4]) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u498 ( .A(op1_n[6]), .B(op1_n[1]), 
+        .C(op1_n[4]), .Y(oc8051_memory_interface1_n395) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u497 ( .A(
+        oc8051_memory_interface1_n370), .B(oc8051_memory_interface1_n351), .Y(
+        oc8051_memory_interface1_n344) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u496 ( .A(op1_n[4]), .B(op1_n[5]), 
+        .C(op1_n[0]), .Y(oc8051_memory_interface1_n519) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u495 ( .A(op1_n[6]), .B(
+        oc8051_memory_interface1_n364), .C(oc8051_memory_interface1_n519), .Y(
+        oc8051_memory_interface1_n513) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u494 ( .A(
+        oc8051_memory_interface1_n517), .Y(oc8051_memory_interface1_n399) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u493 ( .A(
+        oc8051_memory_interface1_n349), .B(oc8051_memory_interface1_n399), 
+        .S0(oc8051_memory_interface1_n370), .Y(oc8051_memory_interface1_n515)
          );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u448 ( .A0(
-        oc8051_memory_interface1_n332), .A1(oc8051_memory_interface1_n306), 
-        .B0(oc8051_memory_interface1_n343), .C0(oc8051_memory_interface1_n344), 
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u492 ( .A0(
+        oc8051_memory_interface1_n395), .A1(oc8051_memory_interface1_n344), 
+        .B0(oc8051_memory_interface1_n513), .C0(oc8051_memory_interface1_n515), 
+        .Y(oc8051_memory_interface1_n511) );
+  AOI32_X0P5M_A12TS oc8051_memory_interface1_u491 ( .A0(
+        oc8051_memory_interface1_n346), .A1(oc8051_memory_interface1_n349), 
+        .A2(oc8051_memory_interface1_n509), .B0(oc8051_memory_interface1_n366), 
+        .B1(oc8051_memory_interface1_n511), .Y(oc8051_memory_interface1_n397)
+         );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u490 ( .A0(
+        oc8051_memory_interface1_n349), .A1(oc8051_memory_interface1_n348), 
+        .B0(oc8051_memory_interface1_n346), .Y(oc8051_memory_interface1_n373)
+         );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u489 ( .A(op1_n[4]), .B(
+        oc8051_memory_interface1_n351), .Y(oc8051_memory_interface1_n396) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u488 ( .A(
+        oc8051_memory_interface1_n343), .B(oc8051_memory_interface1_n347), .Y(
+        oc8051_memory_interface1_n400) );
+  OR2_X0P5M_A12TS oc8051_memory_interface1_u487 ( .A(
+        oc8051_memory_interface1_n366), .B(op1_n[7]), .Y(
+        oc8051_memory_interface1_n419) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u486 ( .A(op1_n[3]), .B(op1_n[7]), 
+        .Y(oc8051_memory_interface1_n507) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u485 ( .A(
+        oc8051_memory_interface1_n419), .B(oc8051_memory_interface1_n507), 
+        .S0(oc8051_memory_interface1_n351), .Y(oc8051_memory_interface1_n418)
+         );
+  AOI32_X0P5M_A12TS oc8051_memory_interface1_u484 ( .A0(
+        oc8051_memory_interface1_n373), .A1(oc8051_memory_interface1_n396), 
+        .A2(oc8051_memory_interface1_n399), .B0(oc8051_memory_interface1_n400), 
+        .B1(oc8051_memory_interface1_n418), .Y(oc8051_memory_interface1_n398)
+         );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u483 ( .A(
+        oc8051_memory_interface1_n397), .B(oc8051_memory_interface1_n398), .Y(
+        oc8051_memory_interface1_n247) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u482 ( .A(
+        oc8051_memory_interface1_n247), .Y(oc8051_memory_interface1_n198) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u481 ( .A(
+        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n191)
+         );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u480 ( .A(
+        oc8051_memory_interface1_n241), .B(oc8051_memory_interface1_n191), .Y(
+        oc8051_memory_interface1_n242) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u479 ( .A(
+        oc8051_memory_interface1_n396), .Y(oc8051_memory_interface1_n394) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u478 ( .A0(op1_n[4]), .A1(
+        op1_n[1]), .B0(oc8051_memory_interface1_n394), .B1(op1_n[6]), .C0(
+        oc8051_memory_interface1_n395), .Y(oc8051_memory_interface1_n374) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u477 ( .A(
+        oc8051_memory_interface1_n351), .B(op1_n[6]), .Y(
+        oc8051_memory_interface1_n376) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u476 ( .A(
+        oc8051_memory_interface1_n343), .B(op1_n[0]), .Y(
+        oc8051_memory_interface1_n393) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u475 ( .A(
+        oc8051_memory_interface1_n376), .B(oc8051_memory_interface1_n393), 
+        .S0(oc8051_memory_interface1_n347), .Y(oc8051_memory_interface1_n375)
+         );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u474 ( .A0(op1_n[3]), .A1(
+        oc8051_memory_interface1_n374), .B0(oc8051_memory_interface1_n375), 
+        .C0(oc8051_memory_interface1_n348), .Y(oc8051_memory_interface1_n367)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u473 ( .A(
+        oc8051_memory_interface1_n373), .Y(oc8051_memory_interface1_n350) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u472 ( .A(
+        oc8051_memory_interface1_n346), .B(oc8051_memory_interface1_n349), .Y(
+        oc8051_memory_interface1_n371) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u471 ( .A(
+        oc8051_memory_interface1_n344), .Y(oc8051_memory_interface1_n372) );
+  AOI211_X0P5M_A12TS oc8051_memory_interface1_u470 ( .A0(
+        oc8051_memory_interface1_n348), .A1(oc8051_memory_interface1_n370), 
+        .B0(oc8051_memory_interface1_n371), .C0(oc8051_memory_interface1_n372), 
+        .Y(oc8051_memory_interface1_n369) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u469 ( .A0(op1_n[5]), .A1(
+        oc8051_memory_interface1_n350), .B0(op1_n[6]), .B1(
+        oc8051_memory_interface1_n369), .Y(oc8051_memory_interface1_n368) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u468 ( .A(
+        oc8051_memory_interface1_n367), .B(oc8051_memory_interface1_n368), 
+        .S0(oc8051_memory_interface1_n364), .Y(oc8051_memory_interface1_n338)
+         );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u467 ( .A(op1_n[0]), .B(op1_n[1]), 
+        .C(oc8051_memory_interface1_n366), .Y(oc8051_memory_interface1_n339)
+         );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u466 ( .A(op1_n[0]), .B(
+        oc8051_memory_interface1_n346), .Y(oc8051_memory_interface1_n362) );
+  NAND4B_X0P5M_A12TS oc8051_memory_interface1_u465 ( .AN(
+        oc8051_memory_interface1_n362), .B(op1_n[2]), .C(op1_n[4]), .D(
+        oc8051_memory_interface1_n349), .Y(oc8051_memory_interface1_n365) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u464 ( .A(
+        oc8051_memory_interface1_n365), .Y(oc8051_memory_interface1_n363) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u463 ( .A(
+        oc8051_memory_interface1_n362), .B(oc8051_memory_interface1_n363), 
+        .S0(oc8051_memory_interface1_n364), .Y(oc8051_memory_interface1_n361)
+         );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u462 ( .A0(op1_n[4]), .A1(
+        oc8051_memory_interface1_n350), .B0(oc8051_memory_interface1_n351), 
+        .B1(oc8051_memory_interface1_n361), .Y(oc8051_memory_interface1_n341)
+         );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u461 ( .A(
+        oc8051_memory_interface1_n348), .B(oc8051_memory_interface1_n349), .Y(
+        oc8051_memory_interface1_n345) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u460 ( .A0(
+        oc8051_memory_interface1_n344), .A1(oc8051_memory_interface1_n345), 
+        .B0(oc8051_memory_interface1_n346), .C0(oc8051_memory_interface1_n347), 
         .Y(oc8051_memory_interface1_n342) );
-  AOI32_X0P5M_A12TS oc8051_memory_interface1_u447 ( .A0(
-        oc8051_memory_interface1_n308), .A1(oc8051_memory_interface1_n311), 
-        .A2(oc8051_memory_interface1_n341), .B0(oc8051_memory_interface1_n319), 
-        .B1(oc8051_memory_interface1_n342), .Y(oc8051_memory_interface1_n334)
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u459 ( .A(
+        oc8051_memory_interface1_n341), .B(oc8051_memory_interface1_n342), 
+        .S0(oc8051_memory_interface1_n343), .Y(oc8051_memory_interface1_n340)
          );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u446 ( .A0(
-        oc8051_memory_interface1_n311), .A1(oc8051_memory_interface1_n310), 
-        .B0(oc8051_memory_interface1_n308), .Y(oc8051_memory_interface1_n326)
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u458 ( .A(
+        oc8051_memory_interface1_n338), .B(oc8051_memory_interface1_n339), .C(
+        oc8051_memory_interface1_n340), .Y(oc8051_memory_interface1_n236) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u457 ( .A(
+        oc8051_memory_interface1_n242), .B(oc8051_memory_interface1_n236), .Y(
+        oc8051_memory_interface1_n246) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u456 ( .AN(
+        oc8051_memory_interface1_n246), .B(oc8051_memory_interface1_n247), .Y(
+        oc8051_memory_interface1_n336) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u455 ( .A(
+        oc8051_memory_interface1_op_pos_1_), .Y(oc8051_memory_interface1_n199)
          );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u445 ( .A(op1_n[4]), .B(
-        oc8051_memory_interface1_n313), .Y(oc8051_memory_interface1_n333) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u444 ( .A(
-        oc8051_memory_interface1_n305), .B(oc8051_memory_interface1_n309), .Y(
-        oc8051_memory_interface1_n337) );
-  OR2_X0P5M_A12TS oc8051_memory_interface1_u443 ( .A(
-        oc8051_memory_interface1_n319), .B(op1_n[7]), .Y(
-        oc8051_memory_interface1_n339) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u442 ( .A(op1_n[3]), .B(op1_n[7]), 
-        .Y(oc8051_memory_interface1_n340) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u441 ( .A(
-        oc8051_memory_interface1_n339), .B(oc8051_memory_interface1_n340), 
-        .S0(oc8051_memory_interface1_n313), .Y(oc8051_memory_interface1_n338)
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u454 ( .A(
+        oc8051_memory_interface1_pc_out_0_), .B(
+        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n337)
          );
-  AOI32_X0P5M_A12TS oc8051_memory_interface1_u440 ( .A0(
-        oc8051_memory_interface1_n326), .A1(oc8051_memory_interface1_n333), 
-        .A2(oc8051_memory_interface1_n336), .B0(oc8051_memory_interface1_n337), 
-        .B1(oc8051_memory_interface1_n338), .Y(oc8051_memory_interface1_n335)
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u453 ( .A(
+        oc8051_memory_interface1_pc_out_1_), .B(oc8051_memory_interface1_n199), 
+        .C(oc8051_memory_interface1_n337), .Y(oc8051_memory_interface1_n248)
          );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u439 ( .A(
-        oc8051_memory_interface1_n334), .B(oc8051_memory_interface1_n335), .Y(
-        oc8051_memory_interface1_n209) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u438 ( .A(
-        oc8051_memory_interface1_n209), .Y(oc8051_memory_interface1_n160) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u452 ( .A0(
+        oc8051_memory_interface1_n198), .A1(oc8051_memory_interface1_n246), 
+        .B0(oc8051_memory_interface1_n336), .B1(oc8051_memory_interface1_n248), 
+        .Y(oc8051_memory_interface1_n252) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u451 ( .A(
+        oc8051_memory_interface1_n191), .B(oc8051_memory_interface1_n241), .Y(
+        oc8051_memory_interface1_n335) );
+  CGENI_X1M_A12TS oc8051_memory_interface1_u450 ( .A(
+        oc8051_memory_interface1_op_pos_1_), .B(
+        oc8051_memory_interface1_pc_out_1_), .CI(oc8051_memory_interface1_n335), .CON(oc8051_memory_interface1_n333) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u449 ( .A(
+        oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n205)
+         );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u448 ( .A(
+        oc8051_memory_interface1_n333), .B(oc8051_memory_interface1_n251), .C(
+        oc8051_memory_interface1_n205), .Y(oc8051_memory_interface1_n253) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u447 ( .AN(
+        oc8051_memory_interface1_n333), .B(oc8051_memory_interface1_op_pos_2_), 
+        .Y(oc8051_memory_interface1_n334) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u446 ( .A0(
+        oc8051_memory_interface1_n333), .A1(oc8051_memory_interface1_n205), 
+        .B0(oc8051_memory_interface1_n334), .B1(oc8051_memory_interface1_n251), 
+        .Y(oc8051_memory_interface1_n331) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u445 ( .A(
+        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n331), 
+        .Y(oc8051_memory_interface1_n257) );
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u444 ( .A0(
+        oc8051_memory_interface1_n252), .A1(oc8051_memory_interface1_n253), 
+        .B0(oc8051_memory_interface1_n257), .Y(oc8051_memory_interface1_n258)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u443 ( .A(
+        oc8051_memory_interface1_n258), .Y(oc8051_memory_interface1_n263) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u442 ( .A(
+        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n331), 
+        .Y(oc8051_memory_interface1_n332) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u441 ( .A(
+        oc8051_memory_interface1_n332), .B(oc8051_memory_interface1_pc_buf_4_), 
+        .Y(oc8051_memory_interface1_n262) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u440 ( .A(
+        oc8051_memory_interface1_n263), .B(oc8051_memory_interface1_n262), .Y(
+        oc8051_memory_interface1_n264) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u439 ( .A(
+        oc8051_memory_interface1_n264), .Y(oc8051_memory_interface1_n270) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u438 ( .A(
+        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n331), 
+        .C(oc8051_memory_interface1_pc_buf_4_), .Y(
+        oc8051_memory_interface1_n329) );
   INV_X0P5B_A12TS oc8051_memory_interface1_u437 ( .A(
-        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n153)
+        oc8051_memory_interface1_pc_buf_5_), .Y(oc8051_memory_interface1_n267)
          );
   XOR2_X0P5M_A12TS oc8051_memory_interface1_u436 ( .A(
-        oc8051_memory_interface1_n203), .B(oc8051_memory_interface1_n153), .Y(
-        oc8051_memory_interface1_n204) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u435 ( .A(
-        oc8051_memory_interface1_n333), .Y(oc8051_memory_interface1_n331) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u434 ( .A0(op1_n[4]), .A1(
-        op1_n[1]), .B0(oc8051_memory_interface1_n331), .B1(op1_n[6]), .C0(
-        oc8051_memory_interface1_n332), .Y(oc8051_memory_interface1_n327) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u433 ( .A(
-        oc8051_memory_interface1_n313), .B(op1_n[6]), .Y(
-        oc8051_memory_interface1_n329) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u432 ( .A(
-        oc8051_memory_interface1_n305), .B(op1_n[0]), .Y(
-        oc8051_memory_interface1_n330) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u431 ( .A(
-        oc8051_memory_interface1_n329), .B(oc8051_memory_interface1_n330), 
-        .S0(oc8051_memory_interface1_n309), .Y(oc8051_memory_interface1_n328)
-         );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u430 ( .A0(op1_n[3]), .A1(
-        oc8051_memory_interface1_n327), .B0(oc8051_memory_interface1_n328), 
-        .C0(oc8051_memory_interface1_n310), .Y(oc8051_memory_interface1_n320)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u429 ( .A(
-        oc8051_memory_interface1_n326), .Y(oc8051_memory_interface1_n312) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u428 ( .A(
-        oc8051_memory_interface1_n308), .B(oc8051_memory_interface1_n311), .Y(
-        oc8051_memory_interface1_n324) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u427 ( .A(
-        oc8051_memory_interface1_n306), .Y(oc8051_memory_interface1_n325) );
-  AOI211_X0P5M_A12TS oc8051_memory_interface1_u426 ( .A0(
-        oc8051_memory_interface1_n310), .A1(oc8051_memory_interface1_n323), 
-        .B0(oc8051_memory_interface1_n324), .C0(oc8051_memory_interface1_n325), 
-        .Y(oc8051_memory_interface1_n322) );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u425 ( .A0(op1_n[5]), .A1(
-        oc8051_memory_interface1_n312), .B0(op1_n[6]), .B1(
-        oc8051_memory_interface1_n322), .Y(oc8051_memory_interface1_n321) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u424 ( .A(
-        oc8051_memory_interface1_n320), .B(oc8051_memory_interface1_n321), 
-        .S0(oc8051_memory_interface1_n317), .Y(oc8051_memory_interface1_n300)
-         );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u423 ( .A(op1_n[0]), .B(op1_n[1]), 
-        .C(oc8051_memory_interface1_n319), .Y(oc8051_memory_interface1_n301)
-         );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u422 ( .A(op1_n[0]), .B(
-        oc8051_memory_interface1_n308), .Y(oc8051_memory_interface1_n315) );
-  NAND4B_X0P5M_A12TS oc8051_memory_interface1_u421 ( .AN(
-        oc8051_memory_interface1_n315), .B(op1_n[2]), .C(op1_n[4]), .D(
-        oc8051_memory_interface1_n311), .Y(oc8051_memory_interface1_n318) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u420 ( .A(
-        oc8051_memory_interface1_n318), .Y(oc8051_memory_interface1_n316) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u419 ( .A(
-        oc8051_memory_interface1_n315), .B(oc8051_memory_interface1_n316), 
-        .S0(oc8051_memory_interface1_n317), .Y(oc8051_memory_interface1_n314)
-         );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u418 ( .A0(op1_n[4]), .A1(
-        oc8051_memory_interface1_n312), .B0(oc8051_memory_interface1_n313), 
-        .B1(oc8051_memory_interface1_n314), .Y(oc8051_memory_interface1_n303)
-         );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u417 ( .A(
-        oc8051_memory_interface1_n310), .B(oc8051_memory_interface1_n311), .Y(
-        oc8051_memory_interface1_n307) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u416 ( .A0(
-        oc8051_memory_interface1_n306), .A1(oc8051_memory_interface1_n307), 
-        .B0(oc8051_memory_interface1_n308), .C0(oc8051_memory_interface1_n309), 
-        .Y(oc8051_memory_interface1_n304) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u415 ( .A(
-        oc8051_memory_interface1_n303), .B(oc8051_memory_interface1_n304), 
-        .S0(oc8051_memory_interface1_n305), .Y(oc8051_memory_interface1_n302)
-         );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u414 ( .A(
-        oc8051_memory_interface1_n300), .B(oc8051_memory_interface1_n301), .C(
-        oc8051_memory_interface1_n302), .Y(oc8051_memory_interface1_n198) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u413 ( .A(
-        oc8051_memory_interface1_n204), .B(oc8051_memory_interface1_n198), .Y(
-        oc8051_memory_interface1_n208) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u412 ( .AN(
-        oc8051_memory_interface1_n208), .B(oc8051_memory_interface1_n209), .Y(
-        oc8051_memory_interface1_n298) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u411 ( .A(
-        oc8051_memory_interface1_op_pos_1_), .Y(oc8051_memory_interface1_n161)
-         );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u410 ( .A(
-        oc8051_memory_interface1_pc_out_0_), .B(
-        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n299)
-         );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u409 ( .A(
-        oc8051_memory_interface1_pc_out_1_), .B(oc8051_memory_interface1_n161), 
-        .C(oc8051_memory_interface1_n299), .Y(oc8051_memory_interface1_n210)
-         );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u408 ( .A0(
-        oc8051_memory_interface1_n160), .A1(oc8051_memory_interface1_n208), 
-        .B0(oc8051_memory_interface1_n298), .B1(oc8051_memory_interface1_n210), 
-        .Y(oc8051_memory_interface1_n214) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u407 ( .A(
-        oc8051_memory_interface1_n153), .B(oc8051_memory_interface1_n203), .Y(
-        oc8051_memory_interface1_n297) );
-  CGENI_X1M_A12TS oc8051_memory_interface1_u406 ( .A(
-        oc8051_memory_interface1_op_pos_1_), .B(
-        oc8051_memory_interface1_pc_out_1_), .CI(oc8051_memory_interface1_n297), .CON(oc8051_memory_interface1_n295) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u405 ( .A(
-        oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n167)
-         );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u404 ( .A(
-        oc8051_memory_interface1_n295), .B(oc8051_memory_interface1_n213), .C(
-        oc8051_memory_interface1_n167), .Y(oc8051_memory_interface1_n215) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u403 ( .AN(
-        oc8051_memory_interface1_n295), .B(oc8051_memory_interface1_op_pos_2_), 
-        .Y(oc8051_memory_interface1_n296) );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u402 ( .A0(
-        oc8051_memory_interface1_n295), .A1(oc8051_memory_interface1_n167), 
-        .B0(oc8051_memory_interface1_n296), .B1(oc8051_memory_interface1_n213), 
-        .Y(oc8051_memory_interface1_n293) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u401 ( .A(
-        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n293), 
-        .Y(oc8051_memory_interface1_n219) );
-  AOI21_X0P5M_A12TS oc8051_memory_interface1_u400 ( .A0(
-        oc8051_memory_interface1_n214), .A1(oc8051_memory_interface1_n215), 
-        .B0(oc8051_memory_interface1_n219), .Y(oc8051_memory_interface1_n220)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u399 ( .A(
-        oc8051_memory_interface1_n220), .Y(oc8051_memory_interface1_n225) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u398 ( .A(
-        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n293), 
-        .Y(oc8051_memory_interface1_n294) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u397 ( .A(
-        oc8051_memory_interface1_n294), .B(oc8051_memory_interface1_pc_buf_4_), 
-        .Y(oc8051_memory_interface1_n224) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u396 ( .A(
-        oc8051_memory_interface1_n225), .B(oc8051_memory_interface1_n224), .Y(
-        oc8051_memory_interface1_n226) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u395 ( .A(
-        oc8051_memory_interface1_n226), .Y(oc8051_memory_interface1_n232) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u394 ( .A(
-        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n293), 
-        .C(oc8051_memory_interface1_pc_buf_4_), .Y(
-        oc8051_memory_interface1_n291) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u393 ( .A(
-        oc8051_memory_interface1_pc_buf_5_), .Y(oc8051_memory_interface1_n229)
-         );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u392 ( .A(
-        oc8051_memory_interface1_n291), .B(oc8051_memory_interface1_n229), .Y(
-        oc8051_memory_interface1_n231) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u391 ( .A(
-        oc8051_memory_interface1_n232), .B(oc8051_memory_interface1_n231), .Y(
-        oc8051_memory_interface1_n233) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u390 ( .A(
-        oc8051_memory_interface1_n233), .Y(oc8051_memory_interface1_n238) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u389 ( .AN(
-        oc8051_memory_interface1_n291), .B(oc8051_memory_interface1_pc_buf_5_), 
-        .Y(oc8051_memory_interface1_n292) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u388 ( .A(
-        oc8051_memory_interface1_n292), .B(oc8051_memory_interface1_pc_buf_6_), 
-        .Y(oc8051_memory_interface1_n237) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u387 ( .A(
-        oc8051_memory_interface1_n238), .B(oc8051_memory_interface1_n237), .Y(
-        oc8051_memory_interface1_n239) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u386 ( .A(
-        oc8051_memory_interface1_n239), .Y(oc8051_memory_interface1_n244) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u385 ( .A(
-        oc8051_memory_interface1_n291), .B(oc8051_memory_interface1_n229), .C(
-        oc8051_memory_interface1_n235), .Y(oc8051_memory_interface1_n289) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u384 ( .A(
-        oc8051_memory_interface1_n289), .B(oc8051_memory_interface1_pc_buf_7_), 
-        .Y(oc8051_memory_interface1_n243) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u383 ( .A(
-        oc8051_memory_interface1_n244), .B(oc8051_memory_interface1_n243), .Y(
-        oc8051_memory_interface1_n245) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u382 ( .A(
-        oc8051_memory_interface1_n245), .Y(oc8051_memory_interface1_n249) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u381 ( .A(
-        oc8051_memory_interface1_n289), .B(oc8051_memory_interface1_pc_buf_7_), 
-        .Y(oc8051_memory_interface1_n290) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u380 ( .A(
-        oc8051_memory_interface1_n290), .B(oc8051_memory_interface1_pc_buf_8_), 
-        .Y(oc8051_memory_interface1_n248) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u379 ( .A(
-        oc8051_memory_interface1_n249), .B(oc8051_memory_interface1_n248), .Y(
-        oc8051_memory_interface1_n250) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u378 ( .A(
-        oc8051_memory_interface1_n250), .Y(oc8051_memory_interface1_n254) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u377 ( .A(
-        oc8051_memory_interface1_n289), .B(oc8051_memory_interface1_pc_buf_7_), 
-        .C(oc8051_memory_interface1_pc_buf_8_), .Y(
-        oc8051_memory_interface1_n287) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u376 ( .A(
-        oc8051_memory_interface1_n287), .B(oc8051_memory_interface1_n251), .Y(
-        oc8051_memory_interface1_n253) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u375 ( .A(
-        oc8051_memory_interface1_n254), .B(oc8051_memory_interface1_n253), .Y(
-        oc8051_memory_interface1_n255) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u374 ( .A(
-        oc8051_memory_interface1_n255), .Y(oc8051_memory_interface1_n259) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u373 ( .AN(
-        oc8051_memory_interface1_n287), .B(oc8051_memory_interface1_pc_buf_9_), 
-        .Y(oc8051_memory_interface1_n288) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u372 ( .A(
-        oc8051_memory_interface1_n288), .B(oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n258) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u371 ( .A(
-        oc8051_memory_interface1_n259), .B(oc8051_memory_interface1_n258), .Y(
-        oc8051_memory_interface1_n260) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u370 ( .A(
-        oc8051_memory_interface1_n260), .Y(oc8051_memory_interface1_n264) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u369 ( .A(
-        oc8051_memory_interface1_n287), .B(oc8051_memory_interface1_n251), .C(
-        oc8051_memory_interface1_n256), .Y(oc8051_memory_interface1_n285) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u368 ( .A(
-        oc8051_memory_interface1_n285), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n263) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u367 ( .A(
-        oc8051_memory_interface1_n264), .B(oc8051_memory_interface1_n263), .Y(
-        oc8051_memory_interface1_n265) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u366 ( .A(
-        oc8051_memory_interface1_n265), .Y(oc8051_memory_interface1_n269) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u365 ( .A(
-        oc8051_memory_interface1_n285), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n286) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u364 ( .A(
-        oc8051_memory_interface1_n286), .B(oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n268) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u363 ( .A(
-        oc8051_memory_interface1_n269), .B(oc8051_memory_interface1_n268), .Y(
-        oc8051_memory_interface1_n270) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u362 ( .A(
-        oc8051_memory_interface1_n270), .Y(oc8051_memory_interface1_n274) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u361 ( .A(
-        oc8051_memory_interface1_n285), .B(oc8051_memory_interface1_pc_buf_11_), .C(oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n284)
-         );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u360 ( .A(
-        oc8051_memory_interface1_n284), .B(oc8051_memory_interface1_n271), .Y(
-        oc8051_memory_interface1_n273) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u359 ( .A(
-        oc8051_memory_interface1_n274), .B(oc8051_memory_interface1_n273), .Y(
-        oc8051_memory_interface1_n275) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u358 ( .A(
-        oc8051_memory_interface1_n284), .B(oc8051_memory_interface1_n271), .Y(
+        oc8051_memory_interface1_n329), .B(oc8051_memory_interface1_n267), .Y(
+        oc8051_memory_interface1_n269) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u435 ( .A(
+        oc8051_memory_interface1_n270), .B(oc8051_memory_interface1_n269), .Y(
+        oc8051_memory_interface1_n271) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u434 ( .A(
+        oc8051_memory_interface1_n271), .Y(oc8051_memory_interface1_n276) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u433 ( .AN(
+        oc8051_memory_interface1_n329), .B(oc8051_memory_interface1_pc_buf_5_), 
+        .Y(oc8051_memory_interface1_n330) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u432 ( .A(
+        oc8051_memory_interface1_n330), .B(oc8051_memory_interface1_pc_buf_6_), 
+        .Y(oc8051_memory_interface1_n275) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u431 ( .A(
+        oc8051_memory_interface1_n276), .B(oc8051_memory_interface1_n275), .Y(
+        oc8051_memory_interface1_n277) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u430 ( .A(
+        oc8051_memory_interface1_n277), .Y(oc8051_memory_interface1_n282) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u429 ( .A(
+        oc8051_memory_interface1_n329), .B(oc8051_memory_interface1_n267), .C(
+        oc8051_memory_interface1_n273), .Y(oc8051_memory_interface1_n327) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u428 ( .A(
+        oc8051_memory_interface1_n327), .B(oc8051_memory_interface1_pc_buf_7_), 
+        .Y(oc8051_memory_interface1_n281) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u427 ( .A(
+        oc8051_memory_interface1_n282), .B(oc8051_memory_interface1_n281), .Y(
         oc8051_memory_interface1_n283) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u357 ( .A(
-        oc8051_memory_interface1_n283), .B(oc8051_memory_interface1_n277), .Y(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u426 ( .A(
+        oc8051_memory_interface1_n283), .Y(oc8051_memory_interface1_n287) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u425 ( .A(
+        oc8051_memory_interface1_n327), .B(oc8051_memory_interface1_pc_buf_7_), 
+        .Y(oc8051_memory_interface1_n328) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u424 ( .A(
+        oc8051_memory_interface1_n328), .B(oc8051_memory_interface1_pc_buf_8_), 
+        .Y(oc8051_memory_interface1_n286) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u423 ( .A(
+        oc8051_memory_interface1_n287), .B(oc8051_memory_interface1_n286), .Y(
+        oc8051_memory_interface1_n288) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u422 ( .A(
+        oc8051_memory_interface1_n288), .Y(oc8051_memory_interface1_n292) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u421 ( .A(
+        oc8051_memory_interface1_n327), .B(oc8051_memory_interface1_pc_buf_7_), 
+        .C(oc8051_memory_interface1_pc_buf_8_), .Y(
+        oc8051_memory_interface1_n325) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u420 ( .A(
+        oc8051_memory_interface1_n325), .B(oc8051_memory_interface1_n289), .Y(
+        oc8051_memory_interface1_n291) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u419 ( .A(
+        oc8051_memory_interface1_n292), .B(oc8051_memory_interface1_n291), .Y(
+        oc8051_memory_interface1_n293) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u418 ( .A(
+        oc8051_memory_interface1_n293), .Y(oc8051_memory_interface1_n297) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u417 ( .AN(
+        oc8051_memory_interface1_n325), .B(oc8051_memory_interface1_pc_buf_9_), 
+        .Y(oc8051_memory_interface1_n326) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u416 ( .A(
+        oc8051_memory_interface1_n326), .B(oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n296) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u415 ( .A(
+        oc8051_memory_interface1_n297), .B(oc8051_memory_interface1_n296), .Y(
+        oc8051_memory_interface1_n298) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u414 ( .A(
+        oc8051_memory_interface1_n298), .Y(oc8051_memory_interface1_n302) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u413 ( .A(
+        oc8051_memory_interface1_n325), .B(oc8051_memory_interface1_n289), .C(
+        oc8051_memory_interface1_n294), .Y(oc8051_memory_interface1_n323) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u412 ( .A(
+        oc8051_memory_interface1_n323), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n301) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u411 ( .A(
+        oc8051_memory_interface1_n302), .B(oc8051_memory_interface1_n301), .Y(
+        oc8051_memory_interface1_n303) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u410 ( .A(
+        oc8051_memory_interface1_n303), .Y(oc8051_memory_interface1_n307) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u409 ( .A(
+        oc8051_memory_interface1_n323), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n324) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u408 ( .A(
+        oc8051_memory_interface1_n324), .B(oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n306) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u407 ( .A(
+        oc8051_memory_interface1_n307), .B(oc8051_memory_interface1_n306), .Y(
+        oc8051_memory_interface1_n308) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u406 ( .A(
+        oc8051_memory_interface1_n308), .Y(oc8051_memory_interface1_n312) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u405 ( .A(
+        oc8051_memory_interface1_n323), .B(oc8051_memory_interface1_pc_buf_11_), .C(oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n322)
+         );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u404 ( .A(
+        oc8051_memory_interface1_n322), .B(oc8051_memory_interface1_n309), .Y(
+        oc8051_memory_interface1_n311) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u403 ( .A(
+        oc8051_memory_interface1_n312), .B(oc8051_memory_interface1_n311), .Y(
+        oc8051_memory_interface1_n313) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u402 ( .A(
+        oc8051_memory_interface1_n322), .B(oc8051_memory_interface1_n309), .Y(
+        oc8051_memory_interface1_n321) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u401 ( .A(
+        oc8051_memory_interface1_n321), .B(oc8051_memory_interface1_n315), .Y(
+        oc8051_memory_interface1_n316) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u400 ( .AN(
+        oc8051_memory_interface1_n313), .B(oc8051_memory_interface1_n316), .Y(
+        oc8051_memory_interface1_n319) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u399 ( .A(
+        oc8051_memory_interface1_pc_buf_15_), .Y(oc8051_memory_interface1_n318) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u398 ( .A(
+        oc8051_memory_interface1_n321), .B(oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n320) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u397 ( .A(
+        oc8051_memory_interface1_n319), .B(oc8051_memory_interface1_n318), .C(
+        oc8051_memory_interface1_n320), .Y(oc8051_memory_interface1_n317) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u396 ( .A0(
+        oc8051_memory_interface1_n360), .A1(oc8051_memory_interface1_n237), 
+        .B0(oc8051_memory_interface1_n317), .B1(oc8051_memory_interface1_n239), 
+        .C0(oc8051_memory_interface1_n200), .C1(oc8051_memory_interface1_n318), 
+        .Y(oc8051_memory_interface1_n440) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u395 ( .A(
+        oc8051_memory_interface1_n313), .B(oc8051_memory_interface1_n316), .Y(
+        oc8051_memory_interface1_n314) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u394 ( .A0(
+        oc8051_memory_interface1_n359), .A1(oc8051_memory_interface1_n237), 
+        .B0(oc8051_memory_interface1_n314), .B1(oc8051_memory_interface1_n239), 
+        .C0(oc8051_memory_interface1_n200), .C1(oc8051_memory_interface1_n315), 
+        .Y(oc8051_memory_interface1_n441) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u393 ( .A(
+        oc8051_memory_interface1_n239), .Y(oc8051_memory_interface1_n265) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u392 ( .A0(
+        oc8051_memory_interface1_n311), .A1(oc8051_memory_interface1_n312), 
+        .B0(oc8051_memory_interface1_n313), .C0(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n310) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u391 ( .A0(
+        oc8051_memory_interface1_n353), .A1(oc8051_memory_interface1_n237), 
+        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n309), 
+        .C0(oc8051_memory_interface1_n310), .Y(oc8051_memory_interface1_n442)
+         );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u390 ( .A0(
+        oc8051_memory_interface1_n306), .A1(oc8051_memory_interface1_n307), 
+        .B0(oc8051_memory_interface1_n308), .C0(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n305) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u389 ( .A0(
+        oc8051_memory_interface1_n354), .A1(oc8051_memory_interface1_n237), 
+        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n304), 
+        .C0(oc8051_memory_interface1_n305), .Y(oc8051_memory_interface1_n443)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u388 ( .A(
+        oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n299) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u387 ( .A0(
+        oc8051_memory_interface1_n301), .A1(oc8051_memory_interface1_n302), 
+        .B0(oc8051_memory_interface1_n303), .C0(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n300) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u386 ( .A0(
+        oc8051_memory_interface1_n355), .A1(oc8051_memory_interface1_n237), 
+        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n299), 
+        .C0(oc8051_memory_interface1_n300), .Y(oc8051_memory_interface1_n444)
+         );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u385 ( .A0(
+        oc8051_memory_interface1_n296), .A1(oc8051_memory_interface1_n297), 
+        .B0(oc8051_memory_interface1_n298), .C0(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n295) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u384 ( .A0(
+        oc8051_memory_interface1_n356), .A1(oc8051_memory_interface1_n237), 
+        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n294), 
+        .C0(oc8051_memory_interface1_n295), .Y(oc8051_memory_interface1_n445)
+         );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u383 ( .A0(
+        oc8051_memory_interface1_n291), .A1(oc8051_memory_interface1_n292), 
+        .B0(oc8051_memory_interface1_n293), .C0(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n290) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u382 ( .A0(
+        oc8051_memory_interface1_n357), .A1(oc8051_memory_interface1_n237), 
+        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n289), 
+        .C0(oc8051_memory_interface1_n290), .Y(oc8051_memory_interface1_n446)
+         );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u381 ( .A0(
+        oc8051_memory_interface1_n286), .A1(oc8051_memory_interface1_n287), 
+        .B0(oc8051_memory_interface1_n288), .C0(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n285) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u380 ( .A0(
+        oc8051_memory_interface1_n358), .A1(oc8051_memory_interface1_n237), 
+        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n284), 
+        .C0(oc8051_memory_interface1_n285), .Y(oc8051_memory_interface1_n447)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u379 ( .A(pc[7]), .Y(
         oc8051_memory_interface1_n278) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u356 ( .AN(
-        oc8051_memory_interface1_n275), .B(oc8051_memory_interface1_n278), .Y(
-        oc8051_memory_interface1_n281) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u355 ( .A(
-        oc8051_memory_interface1_pc_buf_15_), .Y(oc8051_memory_interface1_n280) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u354 ( .A(
-        oc8051_memory_interface1_n283), .B(oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n282) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u353 ( .A(
-        oc8051_memory_interface1_n281), .B(oc8051_memory_interface1_n280), .C(
-        oc8051_memory_interface1_n282), .Y(oc8051_memory_interface1_n279) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u352 ( .A0(
-        oc8051_memory_interface1_n354), .A1(oc8051_memory_interface1_n199), 
-        .B0(oc8051_memory_interface1_n279), .B1(oc8051_memory_interface1_n201), 
-        .C0(oc8051_memory_interface1_n162), .C1(oc8051_memory_interface1_n280), 
-        .Y(oc8051_memory_interface1_n430) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u351 ( .A(
-        oc8051_memory_interface1_n275), .B(oc8051_memory_interface1_n278), .Y(
-        oc8051_memory_interface1_n276) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u350 ( .A0(
-        oc8051_memory_interface1_n353), .A1(oc8051_memory_interface1_n199), 
-        .B0(oc8051_memory_interface1_n276), .B1(oc8051_memory_interface1_n201), 
-        .C0(oc8051_memory_interface1_n162), .C1(oc8051_memory_interface1_n277), 
-        .Y(oc8051_memory_interface1_n431) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u349 ( .A(
-        oc8051_memory_interface1_n201), .Y(oc8051_memory_interface1_n227) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u348 ( .A0(
-        oc8051_memory_interface1_n273), .A1(oc8051_memory_interface1_n274), 
-        .B0(oc8051_memory_interface1_n275), .C0(oc8051_memory_interface1_n227), 
-        .Y(oc8051_memory_interface1_n272) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u347 ( .A0(
-        oc8051_memory_interface1_n347), .A1(oc8051_memory_interface1_n199), 
-        .B0(oc8051_memory_interface1_n162), .B1(oc8051_memory_interface1_n271), 
-        .C0(oc8051_memory_interface1_n272), .Y(oc8051_memory_interface1_n432)
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u378 ( .A0(
+        oc8051_memory_interface1_n281), .A1(oc8051_memory_interface1_n282), 
+        .B0(oc8051_memory_interface1_n283), .C0(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n280) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u377 ( .A0(
+        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n278), 
+        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n279), 
+        .C0(oc8051_memory_interface1_n280), .Y(oc8051_memory_interface1_n448)
          );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u346 ( .A0(
-        oc8051_memory_interface1_n268), .A1(oc8051_memory_interface1_n269), 
-        .B0(oc8051_memory_interface1_n270), .C0(oc8051_memory_interface1_n227), 
-        .Y(oc8051_memory_interface1_n267) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u345 ( .A0(
-        oc8051_memory_interface1_n348), .A1(oc8051_memory_interface1_n199), 
-        .B0(oc8051_memory_interface1_n162), .B1(oc8051_memory_interface1_n266), 
-        .C0(oc8051_memory_interface1_n267), .Y(oc8051_memory_interface1_n433)
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u376 ( .A0(
+        oc8051_memory_interface1_n275), .A1(oc8051_memory_interface1_n276), 
+        .B0(oc8051_memory_interface1_n277), .C0(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n274) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u375 ( .A0(
+        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n272), 
+        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n273), 
+        .C0(oc8051_memory_interface1_n274), .Y(oc8051_memory_interface1_n449)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u344 ( .A(
-        oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n261) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u343 ( .A0(
-        oc8051_memory_interface1_n263), .A1(oc8051_memory_interface1_n264), 
-        .B0(oc8051_memory_interface1_n265), .C0(oc8051_memory_interface1_n227), 
-        .Y(oc8051_memory_interface1_n262) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u342 ( .A0(
-        oc8051_memory_interface1_n349), .A1(oc8051_memory_interface1_n199), 
-        .B0(oc8051_memory_interface1_n162), .B1(oc8051_memory_interface1_n261), 
-        .C0(oc8051_memory_interface1_n262), .Y(oc8051_memory_interface1_n434)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u374 ( .A(pc[5]), .Y(
+        oc8051_memory_interface1_n266) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u373 ( .A0(
+        oc8051_memory_interface1_n269), .A1(oc8051_memory_interface1_n270), 
+        .B0(oc8051_memory_interface1_n271), .C0(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n268) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u372 ( .A0(
+        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n266), 
+        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n267), 
+        .C0(oc8051_memory_interface1_n268), .Y(oc8051_memory_interface1_n450)
          );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u341 ( .A0(
-        oc8051_memory_interface1_n258), .A1(oc8051_memory_interface1_n259), 
-        .B0(oc8051_memory_interface1_n260), .C0(oc8051_memory_interface1_n227), 
-        .Y(oc8051_memory_interface1_n257) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u340 ( .A0(
-        oc8051_memory_interface1_n350), .A1(oc8051_memory_interface1_n199), 
-        .B0(oc8051_memory_interface1_n162), .B1(oc8051_memory_interface1_n256), 
-        .C0(oc8051_memory_interface1_n257), .Y(oc8051_memory_interface1_n435)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u371 ( .A(
+        oc8051_memory_interface1_pc_buf_4_), .Y(oc8051_memory_interface1_n260)
          );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u339 ( .A0(
-        oc8051_memory_interface1_n253), .A1(oc8051_memory_interface1_n254), 
-        .B0(oc8051_memory_interface1_n255), .C0(oc8051_memory_interface1_n227), 
-        .Y(oc8051_memory_interface1_n252) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u338 ( .A0(
-        oc8051_memory_interface1_n351), .A1(oc8051_memory_interface1_n199), 
-        .B0(oc8051_memory_interface1_n162), .B1(oc8051_memory_interface1_n251), 
-        .C0(oc8051_memory_interface1_n252), .Y(oc8051_memory_interface1_n436)
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u370 ( .A0(
+        oc8051_memory_interface1_n262), .A1(oc8051_memory_interface1_n263), 
+        .B0(oc8051_memory_interface1_n264), .C0(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n261) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u369 ( .A0(
+        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n259), 
+        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n260), 
+        .C0(oc8051_memory_interface1_n261), .Y(oc8051_memory_interface1_n451)
          );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u337 ( .A0(
-        oc8051_memory_interface1_n248), .A1(oc8051_memory_interface1_n249), 
-        .B0(oc8051_memory_interface1_n250), .C0(oc8051_memory_interface1_n227), 
-        .Y(oc8051_memory_interface1_n247) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u336 ( .A0(
-        oc8051_memory_interface1_n352), .A1(oc8051_memory_interface1_n199), 
-        .B0(oc8051_memory_interface1_n162), .B1(oc8051_memory_interface1_n246), 
-        .C0(oc8051_memory_interface1_n247), .Y(oc8051_memory_interface1_n437)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u335 ( .A(pc[7]), .Y(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u368 ( .A(pc[3]), .Y(
+        oc8051_memory_interface1_n254) );
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u367 ( .A0(
+        oc8051_memory_interface1_n253), .A1(oc8051_memory_interface1_n252), 
+        .A2(oc8051_memory_interface1_n257), .B0(oc8051_memory_interface1_n258), 
+        .Y(oc8051_memory_interface1_n255) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u366 ( .A0(
+        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n254), 
+        .B0(oc8051_memory_interface1_n255), .B1(oc8051_memory_interface1_n239), 
+        .C0(oc8051_memory_interface1_n200), .C1(oc8051_memory_interface1_n256), 
+        .Y(oc8051_memory_interface1_n452) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u365 ( .A(
+        oc8051_memory_interface1_n252), .B(oc8051_memory_interface1_n253), .Y(
+        oc8051_memory_interface1_n250) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u364 ( .A0(
+        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n249), 
+        .B0(oc8051_memory_interface1_n250), .B1(oc8051_memory_interface1_n239), 
+        .C0(oc8051_memory_interface1_n200), .C1(oc8051_memory_interface1_n251), 
+        .Y(oc8051_memory_interface1_n453) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u363 ( .A(
+        oc8051_memory_interface1_n246), .B(oc8051_memory_interface1_n247), .C(
+        oc8051_memory_interface1_n248), .Y(oc8051_memory_interface1_n244) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u362 ( .A0(
+        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n243), 
+        .B0(oc8051_memory_interface1_n239), .B1(oc8051_memory_interface1_n244), 
+        .C0(oc8051_memory_interface1_n200), .C1(oc8051_memory_interface1_n245), 
+        .Y(oc8051_memory_interface1_n454) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u361 ( .A(
+        oc8051_memory_interface1_n236), .Y(oc8051_memory_interface1_n192) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u360 ( .A(
+        oc8051_memory_interface1_n192), .B(oc8051_memory_interface1_n242), .Y(
         oc8051_memory_interface1_n240) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u334 ( .A0(
-        oc8051_memory_interface1_n243), .A1(oc8051_memory_interface1_n244), 
-        .B0(oc8051_memory_interface1_n245), .C0(oc8051_memory_interface1_n227), 
-        .Y(oc8051_memory_interface1_n242) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u333 ( .A0(
-        oc8051_memory_interface1_n199), .A1(oc8051_memory_interface1_n240), 
-        .B0(oc8051_memory_interface1_n162), .B1(oc8051_memory_interface1_n241), 
-        .C0(oc8051_memory_interface1_n242), .Y(oc8051_memory_interface1_n438)
-         );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u332 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u359 ( .A0(
         oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n238), 
-        .B0(oc8051_memory_interface1_n239), .C0(oc8051_memory_interface1_n227), 
-        .Y(oc8051_memory_interface1_n236) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u331 ( .A0(
-        oc8051_memory_interface1_n199), .A1(oc8051_memory_interface1_n234), 
-        .B0(oc8051_memory_interface1_n162), .B1(oc8051_memory_interface1_n235), 
-        .C0(oc8051_memory_interface1_n236), .Y(oc8051_memory_interface1_n439)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u330 ( .A(pc[5]), .Y(
-        oc8051_memory_interface1_n228) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u329 ( .A0(
-        oc8051_memory_interface1_n231), .A1(oc8051_memory_interface1_n232), 
-        .B0(oc8051_memory_interface1_n233), .C0(oc8051_memory_interface1_n227), 
-        .Y(oc8051_memory_interface1_n230) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u328 ( .A0(
-        oc8051_memory_interface1_n199), .A1(oc8051_memory_interface1_n228), 
-        .B0(oc8051_memory_interface1_n162), .B1(oc8051_memory_interface1_n229), 
-        .C0(oc8051_memory_interface1_n230), .Y(oc8051_memory_interface1_n440)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u327 ( .A(
-        oc8051_memory_interface1_pc_buf_4_), .Y(oc8051_memory_interface1_n222)
-         );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u326 ( .A0(
-        oc8051_memory_interface1_n224), .A1(oc8051_memory_interface1_n225), 
-        .B0(oc8051_memory_interface1_n226), .C0(oc8051_memory_interface1_n227), 
-        .Y(oc8051_memory_interface1_n223) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u325 ( .A0(
-        oc8051_memory_interface1_n199), .A1(oc8051_memory_interface1_n221), 
-        .B0(oc8051_memory_interface1_n162), .B1(oc8051_memory_interface1_n222), 
-        .C0(oc8051_memory_interface1_n223), .Y(oc8051_memory_interface1_n441)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u324 ( .A(pc[3]), .Y(
-        oc8051_memory_interface1_n216) );
-  AOI31_X0P5M_A12TS oc8051_memory_interface1_u323 ( .A0(
-        oc8051_memory_interface1_n215), .A1(oc8051_memory_interface1_n214), 
-        .A2(oc8051_memory_interface1_n219), .B0(oc8051_memory_interface1_n220), 
-        .Y(oc8051_memory_interface1_n217) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u322 ( .A0(
-        oc8051_memory_interface1_n199), .A1(oc8051_memory_interface1_n216), 
-        .B0(oc8051_memory_interface1_n217), .B1(oc8051_memory_interface1_n201), 
-        .C0(oc8051_memory_interface1_n162), .C1(oc8051_memory_interface1_n218), 
-        .Y(oc8051_memory_interface1_n442) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u321 ( .A(
-        oc8051_memory_interface1_n214), .B(oc8051_memory_interface1_n215), .Y(
-        oc8051_memory_interface1_n212) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u320 ( .A0(
-        oc8051_memory_interface1_n199), .A1(oc8051_memory_interface1_n211), 
-        .B0(oc8051_memory_interface1_n212), .B1(oc8051_memory_interface1_n201), 
-        .C0(oc8051_memory_interface1_n162), .C1(oc8051_memory_interface1_n213), 
-        .Y(oc8051_memory_interface1_n443) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u319 ( .A(
-        oc8051_memory_interface1_n208), .B(oc8051_memory_interface1_n209), .C(
-        oc8051_memory_interface1_n210), .Y(oc8051_memory_interface1_n206) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u318 ( .A0(
-        oc8051_memory_interface1_n199), .A1(oc8051_memory_interface1_n205), 
-        .B0(oc8051_memory_interface1_n201), .B1(oc8051_memory_interface1_n206), 
-        .C0(oc8051_memory_interface1_n162), .C1(oc8051_memory_interface1_n207), 
-        .Y(oc8051_memory_interface1_n444) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u317 ( .A(
-        oc8051_memory_interface1_n198), .Y(oc8051_memory_interface1_n154) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u316 ( .A(
-        oc8051_memory_interface1_n154), .B(oc8051_memory_interface1_n204), .Y(
+        .B0(oc8051_memory_interface1_n239), .B1(oc8051_memory_interface1_n240), 
+        .C0(oc8051_memory_interface1_n241), .C1(oc8051_memory_interface1_n200), 
+        .Y(oc8051_memory_interface1_n455) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u358 ( .A(
+        oc8051_memory_interface1_op_pos_0_), .B(oc8051_memory_interface1_n236), 
+        .Y(oc8051_memory_interface1_n235) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u357 ( .A(
+        oc8051_memory_interface1_n198), .B(oc8051_memory_interface1_n199), .Y(
+        oc8051_memory_interface1_n201) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u356 ( .A(
+        oc8051_memory_interface1_n235), .B(oc8051_memory_interface1_n201), .Y(
+        oc8051_memory_interface1_n234) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u355 ( .A(
+        oc8051_memory_interface1_n234), .B(oc8051_memory_interface1_n200), .Y(
+        oc8051_memory_interface1_n233) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u354 ( .A(
+        oc8051_memory_interface1_n190), .B(oc8051_memory_interface1_n200), .Y(
         oc8051_memory_interface1_n202) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u315 ( .A0(
-        oc8051_memory_interface1_n199), .A1(oc8051_memory_interface1_n200), 
-        .B0(oc8051_memory_interface1_n201), .B1(oc8051_memory_interface1_n202), 
-        .C0(oc8051_memory_interface1_n203), .C1(oc8051_memory_interface1_n162), 
-        .Y(oc8051_memory_interface1_n445) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u314 ( .A(
-        oc8051_memory_interface1_op_pos_0_), .B(oc8051_memory_interface1_n198), 
-        .Y(oc8051_memory_interface1_n197) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u313 ( .A(
-        oc8051_memory_interface1_n160), .B(oc8051_memory_interface1_n161), .Y(
-        oc8051_memory_interface1_n163) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u312 ( .A(
-        oc8051_memory_interface1_n197), .B(oc8051_memory_interface1_n163), .Y(
-        oc8051_memory_interface1_n196) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u311 ( .A(
-        oc8051_memory_interface1_n196), .B(oc8051_memory_interface1_n162), .Y(
-        oc8051_memory_interface1_n195) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u310 ( .A(
-        oc8051_memory_interface1_n152), .B(oc8051_memory_interface1_n162), .Y(
-        oc8051_memory_interface1_n164) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u309 ( .A(
-        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n158) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u308 ( .A(
-        oc8051_memory_interface1_n195), .B(oc8051_memory_interface1_n161), 
-        .S0(oc8051_memory_interface1_n158), .Y(oc8051_memory_interface1_n446)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u353 ( .A(
+        oc8051_memory_interface1_n202), .Y(oc8051_memory_interface1_n196) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u352 ( .A(
+        oc8051_memory_interface1_n233), .B(oc8051_memory_interface1_n199), 
+        .S0(oc8051_memory_interface1_n196), .Y(oc8051_memory_interface1_n456)
          );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u307 ( .A(
-        oc8051_memory_interface1_op_pos_0_), .B(oc8051_memory_interface1_n158), 
-        .Y(oc8051_memory_interface1_n194) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u306 ( .A(
-        oc8051_memory_interface1_n194), .B(oc8051_memory_interface1_op_pos_0_), 
-        .S0(oc8051_memory_interface1_n154), .Y(oc8051_memory_interface1_n193)
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u351 ( .A(
+        oc8051_memory_interface1_op_pos_0_), .B(oc8051_memory_interface1_n196), 
+        .Y(oc8051_memory_interface1_n232) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u350 ( .A(
+        oc8051_memory_interface1_n232), .B(oc8051_memory_interface1_op_pos_0_), 
+        .S0(oc8051_memory_interface1_n192), .Y(oc8051_memory_interface1_n231)
          );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u305 ( .A0(
-        oc8051_memory_interface1_n153), .A1(oc8051_memory_interface1_n164), 
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u349 ( .A0(
+        oc8051_memory_interface1_n191), .A1(oc8051_memory_interface1_n202), 
         .B0(oc8051_memory_interface1_pc_wr_r2), .B1(
-        oc8051_memory_interface1_n193), .Y(oc8051_memory_interface1_n447) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u304 ( .A(
+        oc8051_memory_interface1_n231), .Y(oc8051_memory_interface1_n457) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u348 ( .A(
         oc8051_memory_interface1_idat_cur_31_), .B(
         oc8051_memory_interface1_idat_old_31_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n448) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u303 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[31]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n191) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u302 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n458) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u347 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[31]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n229) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u346 ( .A(
         oc8051_memory_interface1_idat_cur_30_), .B(
         oc8051_memory_interface1_idat_old_30_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n450) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u301 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[30]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n190) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u300 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n460) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u345 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[30]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n228) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u344 ( .A(
         oc8051_memory_interface1_idat_cur_29_), .B(
         oc8051_memory_interface1_idat_old_29_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n452) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u299 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[29]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n189) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u298 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n462) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u343 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[29]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n227) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u342 ( .A(
         oc8051_memory_interface1_idat_cur_28_), .B(
         oc8051_memory_interface1_idat_old_28_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n454) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u297 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[28]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n188) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u296 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n464) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u341 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[28]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n226) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u340 ( .A(
         oc8051_memory_interface1_idat_cur_27_), .B(
         oc8051_memory_interface1_idat_old_27_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n456) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u295 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[27]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n187) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u294 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n466) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u339 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[27]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n225) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u338 ( .A(
         oc8051_memory_interface1_idat_cur_26_), .B(
         oc8051_memory_interface1_idat_old_26_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n458) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u293 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[26]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n186) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u292 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n468) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u337 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[26]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n224) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u336 ( .A(
         oc8051_memory_interface1_idat_cur_25_), .B(
         oc8051_memory_interface1_idat_old_25_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n460) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u291 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[25]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n185) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u290 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n470) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u335 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[25]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n223) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u334 ( .A(
         oc8051_memory_interface1_idat_cur_24_), .B(
         oc8051_memory_interface1_idat_old_24_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n462) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u289 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[24]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n184) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u288 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n472) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u333 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[24]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n222) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u332 ( .A(
         oc8051_memory_interface1_idat_cur_23_), .B(
         oc8051_memory_interface1_idat_old_23_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n464) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u287 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[23]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n183) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u286 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n474) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u331 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[23]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n221) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u330 ( .A(
         oc8051_memory_interface1_idat_cur_22_), .B(
         oc8051_memory_interface1_idat_old_22_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n466) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u285 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[22]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n182) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u284 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n476) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u329 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[22]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n220) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u328 ( .A(
         oc8051_memory_interface1_idat_cur_21_), .B(
         oc8051_memory_interface1_idat_old_21_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n468) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u283 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[21]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n181) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u282 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n478) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u327 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[21]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n219) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u326 ( .A(
         oc8051_memory_interface1_idat_cur_20_), .B(
         oc8051_memory_interface1_idat_old_20_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n470) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u281 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[20]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n180) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u280 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n480) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u325 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[20]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n218) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u324 ( .A(
         oc8051_memory_interface1_idat_cur_19_), .B(
         oc8051_memory_interface1_idat_old_19_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n472) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u279 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[19]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n179) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u278 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n482) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u323 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[19]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n217) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u322 ( .A(
         oc8051_memory_interface1_idat_cur_18_), .B(
         oc8051_memory_interface1_idat_old_18_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n474) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u277 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[18]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n178) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u276 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n484) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u321 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[18]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n216) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u320 ( .A(
         oc8051_memory_interface1_idat_cur_17_), .B(
         oc8051_memory_interface1_idat_old_17_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n476) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u275 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[17]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n177) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u274 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n486) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u319 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[17]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n215) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u318 ( .A(
         oc8051_memory_interface1_idat_cur_16_), .B(
         oc8051_memory_interface1_idat_old_16_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n478) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u273 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[16]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n176) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u272 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n488) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u317 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[16]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n214) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u316 ( .A(
         oc8051_memory_interface1_idat_cur_15_), .B(
         oc8051_memory_interface1_idat_old_15_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n480) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u271 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[15]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n175) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u270 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n490) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u315 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[15]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n213) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u314 ( .A(
         oc8051_memory_interface1_idat_cur_14_), .B(
         oc8051_memory_interface1_idat_old_14_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n482) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u269 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[14]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n174) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u268 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n492) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u313 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[14]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n212) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u312 ( .A(
         oc8051_memory_interface1_idat_cur_13_), .B(
         oc8051_memory_interface1_idat_old_13_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n484) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u267 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[13]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n173) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u266 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n494) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u311 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[13]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n211) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u310 ( .A(
         oc8051_memory_interface1_idat_cur_12_), .B(
         oc8051_memory_interface1_idat_old_12_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n486) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u265 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[12]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n172) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u264 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n496) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u309 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[12]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n210) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u308 ( .A(
         oc8051_memory_interface1_idat_cur_11_), .B(
         oc8051_memory_interface1_idat_old_11_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n488) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u263 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[11]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n171) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u262 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n498) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u307 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[11]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n209) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u306 ( .A(
         oc8051_memory_interface1_idat_cur_10_), .B(
         oc8051_memory_interface1_idat_old_10_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n490) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u261 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[10]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n170) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u260 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n500) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u305 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[10]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n208) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u304 ( .A(
         oc8051_memory_interface1_idat_cur_9_), .B(
         oc8051_memory_interface1_idat_old_9_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n492) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u259 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[9]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n169) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u258 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n502) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u303 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[9]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n207) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u302 ( .A(
         oc8051_memory_interface1_idat_cur_8_), .B(
         oc8051_memory_interface1_idat_old_8_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n494) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u257 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n109), .B0(idat_onchip[8]), .B1(
-        oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n168) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u256 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n504) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u301 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n147), .B0(idat_onchip[8]), .B1(
+        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n206) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u300 ( .A(
         oc8051_memory_interface1_idat_cur_7_), .B(
         oc8051_memory_interface1_idat_old_7_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n496) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u255 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n506) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u299 ( .A(
         oc8051_memory_interface1_idat_cur_6_), .B(
         oc8051_memory_interface1_idat_old_6_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n498) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u254 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n508) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u298 ( .A(
         oc8051_memory_interface1_idat_cur_5_), .B(
         oc8051_memory_interface1_idat_old_5_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n500) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u253 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n510) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u297 ( .A(
         oc8051_memory_interface1_idat_cur_4_), .B(
         oc8051_memory_interface1_idat_old_4_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n502) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u252 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n512) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u296 ( .A(
         oc8051_memory_interface1_idat_cur_3_), .B(
         oc8051_memory_interface1_idat_old_3_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n504) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u251 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n514) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u295 ( .A(
         oc8051_memory_interface1_idat_cur_2_), .B(
         oc8051_memory_interface1_idat_old_2_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n506) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u250 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n516) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u294 ( .A(
         oc8051_memory_interface1_idat_cur_1_), .B(
         oc8051_memory_interface1_idat_old_1_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n508) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u249 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n518) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u293 ( .A(
         oc8051_memory_interface1_idat_cur_0_), .B(
         oc8051_memory_interface1_idat_old_0_), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n510) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u248 ( .A(
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n520) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u292 ( .A(
         oc8051_memory_interface1_going_out_of_rst), .B(irom_out_of_rst), .S0(
-        oc8051_memory_interface1_n110), .Y(oc8051_memory_interface1_n512) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u247 ( .A(
-        oc8051_memory_interface1_n167), .B(oc8051_memory_interface1_op_pos_1_), 
-        .C(oc8051_memory_interface1_n160), .Y(oc8051_memory_interface1_n166)
+        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n522) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u291 ( .A(
+        oc8051_memory_interface1_n205), .B(oc8051_memory_interface1_op_pos_1_), 
+        .C(oc8051_memory_interface1_n198), .Y(oc8051_memory_interface1_n204)
          );
-  AOI31_X0P5M_A12TS oc8051_memory_interface1_u246 ( .A0(
-        oc8051_memory_interface1_n163), .A1(oc8051_memory_interface1_n164), 
-        .A2(oc8051_memory_interface1_n165), .B0(oc8051_memory_interface1_n166), 
-        .Y(oc8051_memory_interface1_n155) );
-  OAI31_X0P5M_A12TS oc8051_memory_interface1_u245 ( .A0(
-        oc8051_memory_interface1_n159), .A1(oc8051_memory_interface1_n160), 
-        .A2(oc8051_memory_interface1_n161), .B0(oc8051_memory_interface1_n162), 
-        .Y(oc8051_memory_interface1_n157) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u244 ( .A(
-        oc8051_memory_interface1_n157), .B(oc8051_memory_interface1_op_pos_2_), 
-        .S0(oc8051_memory_interface1_n158), .Y(oc8051_memory_interface1_n156)
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u290 ( .A0(
+        oc8051_memory_interface1_n201), .A1(oc8051_memory_interface1_n202), 
+        .A2(oc8051_memory_interface1_n203), .B0(oc8051_memory_interface1_n204), 
+        .Y(oc8051_memory_interface1_n193) );
+  OAI31_X0P5M_A12TS oc8051_memory_interface1_u289 ( .A0(
+        oc8051_memory_interface1_n197), .A1(oc8051_memory_interface1_n198), 
+        .A2(oc8051_memory_interface1_n199), .B0(oc8051_memory_interface1_n200), 
+        .Y(oc8051_memory_interface1_n195) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u288 ( .A(
+        oc8051_memory_interface1_n195), .B(oc8051_memory_interface1_op_pos_2_), 
+        .S0(oc8051_memory_interface1_n196), .Y(oc8051_memory_interface1_n194)
          );
-  OAI31_X0P5M_A12TS oc8051_memory_interface1_u243 ( .A0(
-        oc8051_memory_interface1_n153), .A1(oc8051_memory_interface1_n154), 
-        .A2(oc8051_memory_interface1_n155), .B0(oc8051_memory_interface1_n156), 
-        .Y(oc8051_memory_interface1_n513) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u242 ( .A(
-        oc8051_memory_interface1_n152), .B(oc8051_memory_interface1_pc_wr_r2), 
-        .C(oc8051_memory_interface1_n133), .Y(oc8051_memory_interface1_n150)
+  OAI31_X0P5M_A12TS oc8051_memory_interface1_u287 ( .A0(
+        oc8051_memory_interface1_n191), .A1(oc8051_memory_interface1_n192), 
+        .A2(oc8051_memory_interface1_n193), .B0(oc8051_memory_interface1_n194), 
+        .Y(oc8051_memory_interface1_n523) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u286 ( .A(
+        oc8051_memory_interface1_n190), .B(oc8051_memory_interface1_pc_wr_r2), 
+        .C(oc8051_memory_interface1_n171), .Y(oc8051_memory_interface1_n188)
          );
-  OAI21B_X0P5M_A12TS oc8051_memory_interface1_u241 ( .A0(
-        oc8051_memory_interface1_n150), .A1(oc8051_memory_interface1_n151), 
-        .B0N(intr), .Y(oc8051_memory_interface1_n514) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u240 ( .A(wbd_ack_i), .Y(
-        oc8051_memory_interface1_n131) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u239 ( .AN(mem_act[2]), .B(
-        oc8051_memory_interface1_n131), .Y(oc8051_memory_interface1_n136) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u238 ( .A(
-        oc8051_memory_interface1_n149), .B(oc8051_memory_interface1_n136), .Y(
-        oc8051_memory_interface1_n132) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u237 ( .A0(wbd_dat_o[0]), .A1(
-        oc8051_memory_interface1_n136), .B0(acc[0]), .B1(
-        oc8051_memory_interface1_n132), .Y(oc8051_memory_interface1_n515) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u236 ( .A0(wbd_dat_o[1]), .A1(
-        oc8051_memory_interface1_n136), .B0(acc[1]), .B1(
-        oc8051_memory_interface1_n132), .Y(oc8051_memory_interface1_n516) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u235 ( .A0(wbd_dat_o[2]), .A1(
-        oc8051_memory_interface1_n136), .B0(acc[2]), .B1(
-        oc8051_memory_interface1_n132), .Y(oc8051_memory_interface1_n517) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u234 ( .A0(wbd_dat_o[3]), .A1(
-        oc8051_memory_interface1_n136), .B0(acc[3]), .B1(
-        oc8051_memory_interface1_n132), .Y(oc8051_memory_interface1_n518) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u233 ( .A0(wbd_dat_o[4]), .A1(
-        oc8051_memory_interface1_n136), .B0(acc[4]), .B1(
-        oc8051_memory_interface1_n132), .Y(oc8051_memory_interface1_n519) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u232 ( .A0(wbd_dat_o[5]), .A1(
-        oc8051_memory_interface1_n136), .B0(acc[5]), .B1(
-        oc8051_memory_interface1_n132), .Y(oc8051_memory_interface1_n520) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u231 ( .A0(wbd_dat_o[6]), .A1(
-        oc8051_memory_interface1_n136), .B0(acc[6]), .B1(
-        oc8051_memory_interface1_n132), .Y(oc8051_memory_interface1_n521) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u230 ( .A0(wbd_dat_o[7]), .A1(
-        oc8051_memory_interface1_n136), .B0(acc[7]), .B1(
-        oc8051_memory_interface1_n132), .Y(oc8051_memory_interface1_n522) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u229 ( .A(
-        oc8051_memory_interface1_n136), .B(mem_act[1]), .Y(
-        oc8051_memory_interface1_n138) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u228 ( .A(
-        oc8051_memory_interface1_n148), .B(oc8051_memory_interface1_n136), .Y(
-        oc8051_memory_interface1_n140) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u227 ( .A0(dptr_lo[0]), .A1(
-        oc8051_memory_interface1_n138), .B0(oc8051_memory_interface1_n140), 
-        .B1(ri[0]), .Y(oc8051_memory_interface1_n147) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u226 ( .B0(wbd_adr_o[0]), .B1(
-        oc8051_memory_interface1_n136), .A0N(oc8051_memory_interface1_n147), 
-        .Y(oc8051_memory_interface1_n524) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u225 ( .A0(dptr_lo[1]), .A1(
-        oc8051_memory_interface1_n138), .B0(oc8051_memory_interface1_n140), 
-        .B1(ri[1]), .Y(oc8051_memory_interface1_n146) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u224 ( .B0(wbd_adr_o[1]), .B1(
-        oc8051_memory_interface1_n136), .A0N(oc8051_memory_interface1_n146), 
-        .Y(oc8051_memory_interface1_n525) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u223 ( .A0(dptr_lo[2]), .A1(
-        oc8051_memory_interface1_n138), .B0(oc8051_memory_interface1_n140), 
-        .B1(ri[2]), .Y(oc8051_memory_interface1_n145) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u222 ( .B0(wbd_adr_o[2]), .B1(
-        oc8051_memory_interface1_n136), .A0N(oc8051_memory_interface1_n145), 
-        .Y(oc8051_memory_interface1_n526) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u221 ( .A0(dptr_lo[3]), .A1(
-        oc8051_memory_interface1_n138), .B0(oc8051_memory_interface1_n140), 
-        .B1(ri[3]), .Y(oc8051_memory_interface1_n144) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u220 ( .B0(wbd_adr_o[3]), .B1(
-        oc8051_memory_interface1_n136), .A0N(oc8051_memory_interface1_n144), 
-        .Y(oc8051_memory_interface1_n527) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u219 ( .A0(dptr_lo[4]), .A1(
-        oc8051_memory_interface1_n138), .B0(oc8051_memory_interface1_n140), 
-        .B1(ri[4]), .Y(oc8051_memory_interface1_n143) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u218 ( .B0(wbd_adr_o[4]), .B1(
-        oc8051_memory_interface1_n136), .A0N(oc8051_memory_interface1_n143), 
-        .Y(oc8051_memory_interface1_n528) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u217 ( .A0(dptr_lo[5]), .A1(
-        oc8051_memory_interface1_n138), .B0(oc8051_memory_interface1_n140), 
-        .B1(ri[5]), .Y(oc8051_memory_interface1_n142) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u216 ( .B0(wbd_adr_o[5]), .B1(
-        oc8051_memory_interface1_n136), .A0N(oc8051_memory_interface1_n142), 
-        .Y(oc8051_memory_interface1_n529) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u215 ( .A0(dptr_lo[6]), .A1(
-        oc8051_memory_interface1_n138), .B0(oc8051_memory_interface1_n140), 
-        .B1(ri[6]), .Y(oc8051_memory_interface1_n141) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u214 ( .B0(wbd_adr_o[6]), .B1(
-        oc8051_memory_interface1_n136), .A0N(oc8051_memory_interface1_n141), 
-        .Y(oc8051_memory_interface1_n530) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u213 ( .A0(dptr_lo[7]), .A1(
-        oc8051_memory_interface1_n138), .B0(oc8051_memory_interface1_n140), 
-        .B1(ri[7]), .Y(oc8051_memory_interface1_n139) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u212 ( .B0(wbd_adr_o[7]), .B1(
-        oc8051_memory_interface1_n136), .A0N(oc8051_memory_interface1_n139), 
-        .Y(oc8051_memory_interface1_n531) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u211 ( .A0(wbd_adr_o[8]), .A1(
-        oc8051_memory_interface1_n136), .B0(dptr_hi[0]), .B1(
-        oc8051_memory_interface1_n138), .Y(oc8051_memory_interface1_n532) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u210 ( .A0(wbd_adr_o[9]), .A1(
-        oc8051_memory_interface1_n136), .B0(dptr_hi[1]), .B1(
-        oc8051_memory_interface1_n138), .Y(oc8051_memory_interface1_n533) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u209 ( .A0(wbd_adr_o[10]), .A1(
-        oc8051_memory_interface1_n136), .B0(dptr_hi[2]), .B1(
-        oc8051_memory_interface1_n138), .Y(oc8051_memory_interface1_n534) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u208 ( .A0(wbd_adr_o[11]), .A1(
-        oc8051_memory_interface1_n136), .B0(dptr_hi[3]), .B1(
-        oc8051_memory_interface1_n138), .Y(oc8051_memory_interface1_n535) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u207 ( .A0(wbd_adr_o[12]), .A1(
-        oc8051_memory_interface1_n136), .B0(dptr_hi[4]), .B1(
-        oc8051_memory_interface1_n138), .Y(oc8051_memory_interface1_n536) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u206 ( .A0(wbd_adr_o[13]), .A1(
-        oc8051_memory_interface1_n136), .B0(dptr_hi[5]), .B1(
-        oc8051_memory_interface1_n138), .Y(oc8051_memory_interface1_n537) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u205 ( .A0(wbd_adr_o[14]), .A1(
-        oc8051_memory_interface1_n136), .B0(dptr_hi[6]), .B1(
-        oc8051_memory_interface1_n138), .Y(oc8051_memory_interface1_n538) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u204 ( .A0(wbd_adr_o[15]), .A1(
-        oc8051_memory_interface1_n136), .B0(dptr_hi[7]), .B1(
-        oc8051_memory_interface1_n138), .Y(oc8051_memory_interface1_n539) );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u203 ( .A0(wbd_ack_i), .A1(
-        oc8051_memory_interface1_n137), .B0(oc8051_memory_interface1_n136), 
+  OAI21B_X0P5M_A12TS oc8051_memory_interface1_u285 ( .A0(
+        oc8051_memory_interface1_n188), .A1(oc8051_memory_interface1_n189), 
+        .B0N(intr), .Y(oc8051_memory_interface1_n524) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u284 ( .A(wbd_ack_i), .Y(
+        oc8051_memory_interface1_n169) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u283 ( .AN(mem_act[2]), .B(
+        oc8051_memory_interface1_n169), .Y(oc8051_memory_interface1_n174) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u282 ( .A(
+        oc8051_memory_interface1_n187), .B(oc8051_memory_interface1_n174), .Y(
+        oc8051_memory_interface1_n170) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u281 ( .A0(wbd_dat_o[0]), .A1(
+        oc8051_memory_interface1_n174), .B0(acc[0]), .B1(
+        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n525) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u280 ( .A0(wbd_dat_o[1]), .A1(
+        oc8051_memory_interface1_n174), .B0(acc[1]), .B1(
+        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n526) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u279 ( .A0(wbd_dat_o[2]), .A1(
+        oc8051_memory_interface1_n174), .B0(acc[2]), .B1(
+        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n527) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u278 ( .A0(wbd_dat_o[3]), .A1(
+        oc8051_memory_interface1_n174), .B0(acc[3]), .B1(
+        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n528) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u277 ( .A0(wbd_dat_o[4]), .A1(
+        oc8051_memory_interface1_n174), .B0(acc[4]), .B1(
+        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n529) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u276 ( .A0(wbd_dat_o[5]), .A1(
+        oc8051_memory_interface1_n174), .B0(acc[5]), .B1(
+        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n530) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u275 ( .A0(wbd_dat_o[6]), .A1(
+        oc8051_memory_interface1_n174), .B0(acc[6]), .B1(
+        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n531) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u274 ( .A0(wbd_dat_o[7]), .A1(
+        oc8051_memory_interface1_n174), .B0(acc[7]), .B1(
+        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n532) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u273 ( .A(
+        oc8051_memory_interface1_n174), .B(mem_act[1]), .Y(
+        oc8051_memory_interface1_n176) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u272 ( .A(
+        oc8051_memory_interface1_n186), .B(oc8051_memory_interface1_n174), .Y(
+        oc8051_memory_interface1_n178) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u271 ( .A0(dptr_lo[0]), .A1(
+        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
+        .B1(ri[0]), .Y(oc8051_memory_interface1_n185) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u270 ( .B0(wbd_adr_o[0]), .B1(
+        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n185), 
+        .Y(oc8051_memory_interface1_n534) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u269 ( .A0(dptr_lo[1]), .A1(
+        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
+        .B1(ri[1]), .Y(oc8051_memory_interface1_n184) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u268 ( .B0(wbd_adr_o[1]), .B1(
+        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n184), 
+        .Y(oc8051_memory_interface1_n535) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u267 ( .A0(dptr_lo[2]), .A1(
+        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
+        .B1(ri[2]), .Y(oc8051_memory_interface1_n183) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u266 ( .B0(wbd_adr_o[2]), .B1(
+        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n183), 
+        .Y(oc8051_memory_interface1_n536) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u265 ( .A0(dptr_lo[3]), .A1(
+        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
+        .B1(ri[3]), .Y(oc8051_memory_interface1_n182) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u264 ( .B0(wbd_adr_o[3]), .B1(
+        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n182), 
+        .Y(oc8051_memory_interface1_n537) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u263 ( .A0(dptr_lo[4]), .A1(
+        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
+        .B1(ri[4]), .Y(oc8051_memory_interface1_n181) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u262 ( .B0(wbd_adr_o[4]), .B1(
+        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n181), 
+        .Y(oc8051_memory_interface1_n538) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u261 ( .A0(dptr_lo[5]), .A1(
+        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
+        .B1(ri[5]), .Y(oc8051_memory_interface1_n180) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u260 ( .B0(wbd_adr_o[5]), .B1(
+        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n180), 
+        .Y(oc8051_memory_interface1_n539) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u259 ( .A0(dptr_lo[6]), .A1(
+        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
+        .B1(ri[6]), .Y(oc8051_memory_interface1_n179) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u258 ( .B0(wbd_adr_o[6]), .B1(
+        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n179), 
         .Y(oc8051_memory_interface1_n540) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u202 ( .B0(
-        oc8051_memory_interface1_n131), .B1(wbd_cyc_o), .A0N(
-        oc8051_memory_interface1_n136), .Y(oc8051_memory_interface1_n541) );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u201 ( .A0(
-        oc8051_memory_interface1_n121), .A1(oc8051_memory_interface1_n135), 
-        .B0(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n542)
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u257 ( .A0(dptr_lo[7]), .A1(
+        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
+        .B1(ri[7]), .Y(oc8051_memory_interface1_n177) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u256 ( .B0(wbd_adr_o[7]), .B1(
+        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n177), 
+        .Y(oc8051_memory_interface1_n541) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u255 ( .A0(wbd_adr_o[8]), .A1(
+        oc8051_memory_interface1_n174), .B0(dptr_hi[0]), .B1(
+        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n542) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u254 ( .A0(wbd_adr_o[9]), .A1(
+        oc8051_memory_interface1_n174), .B0(dptr_hi[1]), .B1(
+        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n543) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u253 ( .A0(wbd_adr_o[10]), .A1(
+        oc8051_memory_interface1_n174), .B0(dptr_hi[2]), .B1(
+        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n544) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u252 ( .A0(wbd_adr_o[11]), .A1(
+        oc8051_memory_interface1_n174), .B0(dptr_hi[3]), .B1(
+        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n545) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u251 ( .A0(wbd_adr_o[12]), .A1(
+        oc8051_memory_interface1_n174), .B0(dptr_hi[4]), .B1(
+        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n546) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u250 ( .A0(wbd_adr_o[13]), .A1(
+        oc8051_memory_interface1_n174), .B0(dptr_hi[5]), .B1(
+        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n547) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u249 ( .A0(wbd_adr_o[14]), .A1(
+        oc8051_memory_interface1_n174), .B0(dptr_hi[6]), .B1(
+        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n548) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u248 ( .A0(wbd_adr_o[15]), .A1(
+        oc8051_memory_interface1_n174), .B0(dptr_hi[7]), .B1(
+        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n549) );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u247 ( .A0(wbd_ack_i), .A1(
+        oc8051_memory_interface1_n175), .B0(oc8051_memory_interface1_n174), 
+        .Y(oc8051_memory_interface1_n550) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u246 ( .B0(
+        oc8051_memory_interface1_n169), .B1(wbd_cyc_o), .A0N(
+        oc8051_memory_interface1_n174), .Y(oc8051_memory_interface1_n551) );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u245 ( .A0(
+        oc8051_memory_interface1_n159), .A1(oc8051_memory_interface1_n173), 
+        .B0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n552)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u200 ( .A(
-        oc8051_memory_interface1_n395), .Y(wbd_we_o) );
-  AOI31_X0P5M_A12TS oc8051_memory_interface1_u199 ( .A0(mem_act[2]), .A1(
-        wbd_we_o), .A2(oc8051_memory_interface1_n131), .B0(
-        oc8051_memory_interface1_n132), .Y(oc8051_memory_interface1_n130) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u198 ( .A(
-        oc8051_memory_interface1_n130), .Y(oc8051_memory_interface1_n778) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u197 ( .A(
-        oc8051_memory_interface1_n121), .B(oc8051_memory_interface1_n129), .Y(
-        oc8051_memory_interface1_n119) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u196 ( .A0(idat_onchip[7]), .A1(
-        oc8051_memory_interface1_n119), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n120), .C0(oc8051_memory_interface1_n121), 
+  INV_X0P5B_A12TS oc8051_memory_interface1_u244 ( .A(
+        oc8051_memory_interface1_n401), .Y(wbd_we_o) );
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u243 ( .A0(mem_act[2]), .A1(
+        wbd_we_o), .A2(oc8051_memory_interface1_n169), .B0(
+        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n168) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u242 ( .A(
+        oc8051_memory_interface1_n168), .Y(oc8051_memory_interface1_n792) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u241 ( .A(
+        oc8051_memory_interface1_n159), .B(oc8051_memory_interface1_n167), .Y(
+        oc8051_memory_interface1_n157) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u240 ( .A0(idat_onchip[7]), .A1(
+        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
         .C1(oc8051_memory_interface1_cdata_7_), .Y(
-        oc8051_memory_interface1_n128) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u195 ( .A(
-        oc8051_memory_interface1_n128), .Y(oc8051_memory_interface1_n777) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u194 ( .A0(idat_onchip[6]), .A1(
-        oc8051_memory_interface1_n119), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n120), .C0(oc8051_memory_interface1_n121), 
+        oc8051_memory_interface1_n166) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u239 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n791) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u238 ( .A0(idat_onchip[6]), .A1(
+        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
         .C1(oc8051_memory_interface1_cdata_6_), .Y(
-        oc8051_memory_interface1_n127) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u193 ( .A(
-        oc8051_memory_interface1_n127), .Y(oc8051_memory_interface1_n776) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u192 ( .A0(idat_onchip[5]), .A1(
-        oc8051_memory_interface1_n119), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n120), .C0(oc8051_memory_interface1_n121), 
+        oc8051_memory_interface1_n165) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u237 ( .A(
+        oc8051_memory_interface1_n165), .Y(oc8051_memory_interface1_n790) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u236 ( .A0(idat_onchip[5]), .A1(
+        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
         .C1(oc8051_memory_interface1_cdata_5_), .Y(
-        oc8051_memory_interface1_n126) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u191 ( .A(
-        oc8051_memory_interface1_n126), .Y(oc8051_memory_interface1_n775) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u190 ( .A0(idat_onchip[4]), .A1(
-        oc8051_memory_interface1_n119), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n120), .C0(oc8051_memory_interface1_n121), 
+        oc8051_memory_interface1_n164) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u235 ( .A(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n789) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u234 ( .A0(idat_onchip[4]), .A1(
+        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
         .C1(oc8051_memory_interface1_cdata_4_), .Y(
-        oc8051_memory_interface1_n125) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u189 ( .A(
-        oc8051_memory_interface1_n125), .Y(oc8051_memory_interface1_n774) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u188 ( .A0(idat_onchip[3]), .A1(
-        oc8051_memory_interface1_n119), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n120), .C0(oc8051_memory_interface1_n121), 
+        oc8051_memory_interface1_n163) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u233 ( .A(
+        oc8051_memory_interface1_n163), .Y(oc8051_memory_interface1_n788) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u232 ( .A0(idat_onchip[3]), .A1(
+        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
         .C1(oc8051_memory_interface1_cdata_3_), .Y(
-        oc8051_memory_interface1_n124) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u187 ( .A(
-        oc8051_memory_interface1_n124), .Y(oc8051_memory_interface1_n773) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u186 ( .A0(idat_onchip[2]), .A1(
-        oc8051_memory_interface1_n119), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n120), .C0(oc8051_memory_interface1_n121), 
+        oc8051_memory_interface1_n162) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u231 ( .A(
+        oc8051_memory_interface1_n162), .Y(oc8051_memory_interface1_n787) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u230 ( .A0(idat_onchip[2]), .A1(
+        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
         .C1(oc8051_memory_interface1_cdata_2_), .Y(
-        oc8051_memory_interface1_n123) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u185 ( .A(
-        oc8051_memory_interface1_n123), .Y(oc8051_memory_interface1_n772) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u184 ( .A0(idat_onchip[1]), .A1(
-        oc8051_memory_interface1_n119), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n120), .C0(oc8051_memory_interface1_n121), 
+        oc8051_memory_interface1_n161) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u229 ( .A(
+        oc8051_memory_interface1_n161), .Y(oc8051_memory_interface1_n786) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u228 ( .A0(idat_onchip[1]), .A1(
+        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
         .C1(oc8051_memory_interface1_cdata_1_), .Y(
-        oc8051_memory_interface1_n122) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u183 ( .A(
-        oc8051_memory_interface1_n122), .Y(oc8051_memory_interface1_n771) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u182 ( .A0(idat_onchip[0]), .A1(
-        oc8051_memory_interface1_n119), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n120), .C0(oc8051_memory_interface1_n121), 
+        oc8051_memory_interface1_n160) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u227 ( .A(
+        oc8051_memory_interface1_n160), .Y(oc8051_memory_interface1_n785) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u226 ( .A0(idat_onchip[0]), .A1(
+        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
         .C1(oc8051_memory_interface1_cdata_0_), .Y(
-        oc8051_memory_interface1_n118) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u181 ( .A(
-        oc8051_memory_interface1_n118), .Y(oc8051_memory_interface1_n770) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u180 ( .A0(
-        oc8051_memory_interface1_n108), .A1(idat_onchip[7]), .B0(
-        oc8051_memory_interface1_n109), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n110), .C1(
+        oc8051_memory_interface1_n156) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u225 ( .A(
+        oc8051_memory_interface1_n156), .Y(oc8051_memory_interface1_n784) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u224 ( .A0(
+        oc8051_memory_interface1_n146), .A1(idat_onchip[7]), .B0(
+        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n148), .C1(
         oc8051_memory_interface1_idat_cur_7_), .Y(
-        oc8051_memory_interface1_n117) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u179 ( .A(
-        oc8051_memory_interface1_n117), .Y(oc8051_memory_interface1_n769) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u178 ( .A0(
-        oc8051_memory_interface1_n108), .A1(idat_onchip[6]), .B0(
-        oc8051_memory_interface1_n109), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n110), .C1(
+        oc8051_memory_interface1_n155) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u223 ( .A(
+        oc8051_memory_interface1_n155), .Y(oc8051_memory_interface1_n783) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u222 ( .A0(
+        oc8051_memory_interface1_n146), .A1(idat_onchip[6]), .B0(
+        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n148), .C1(
         oc8051_memory_interface1_idat_cur_6_), .Y(
-        oc8051_memory_interface1_n116) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u177 ( .A(
-        oc8051_memory_interface1_n116), .Y(oc8051_memory_interface1_n768) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u176 ( .A0(
-        oc8051_memory_interface1_n108), .A1(idat_onchip[5]), .B0(
-        oc8051_memory_interface1_n109), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n110), .C1(
+        oc8051_memory_interface1_n154) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u221 ( .A(
+        oc8051_memory_interface1_n154), .Y(oc8051_memory_interface1_n782) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u220 ( .A0(
+        oc8051_memory_interface1_n146), .A1(idat_onchip[5]), .B0(
+        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n148), .C1(
         oc8051_memory_interface1_idat_cur_5_), .Y(
-        oc8051_memory_interface1_n115) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u175 ( .A(
-        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n767) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u174 ( .A0(
-        oc8051_memory_interface1_n108), .A1(idat_onchip[4]), .B0(
-        oc8051_memory_interface1_n109), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n110), .C1(
+        oc8051_memory_interface1_n153) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u219 ( .A(
+        oc8051_memory_interface1_n153), .Y(oc8051_memory_interface1_n781) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u218 ( .A0(
+        oc8051_memory_interface1_n146), .A1(idat_onchip[4]), .B0(
+        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n148), .C1(
         oc8051_memory_interface1_idat_cur_4_), .Y(
-        oc8051_memory_interface1_n114) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u173 ( .A(
-        oc8051_memory_interface1_n114), .Y(oc8051_memory_interface1_n766) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u172 ( .A0(
-        oc8051_memory_interface1_n108), .A1(idat_onchip[3]), .B0(
-        oc8051_memory_interface1_n109), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n110), .C1(
+        oc8051_memory_interface1_n152) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u217 ( .A(
+        oc8051_memory_interface1_n152), .Y(oc8051_memory_interface1_n780) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u216 ( .A0(
+        oc8051_memory_interface1_n146), .A1(idat_onchip[3]), .B0(
+        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n148), .C1(
         oc8051_memory_interface1_idat_cur_3_), .Y(
-        oc8051_memory_interface1_n113) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u171 ( .A(
-        oc8051_memory_interface1_n113), .Y(oc8051_memory_interface1_n765) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u170 ( .A0(
-        oc8051_memory_interface1_n108), .A1(idat_onchip[2]), .B0(
-        oc8051_memory_interface1_n109), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n110), .C1(
+        oc8051_memory_interface1_n151) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u215 ( .A(
+        oc8051_memory_interface1_n151), .Y(oc8051_memory_interface1_n779) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u214 ( .A0(
+        oc8051_memory_interface1_n146), .A1(idat_onchip[2]), .B0(
+        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n148), .C1(
         oc8051_memory_interface1_idat_cur_2_), .Y(
-        oc8051_memory_interface1_n112) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u169 ( .A(
-        oc8051_memory_interface1_n112), .Y(oc8051_memory_interface1_n764) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u168 ( .A0(
-        oc8051_memory_interface1_n108), .A1(idat_onchip[1]), .B0(
-        oc8051_memory_interface1_n109), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n110), .C1(
+        oc8051_memory_interface1_n150) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u213 ( .A(
+        oc8051_memory_interface1_n150), .Y(oc8051_memory_interface1_n778) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u212 ( .A0(
+        oc8051_memory_interface1_n146), .A1(idat_onchip[1]), .B0(
+        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n148), .C1(
         oc8051_memory_interface1_idat_cur_1_), .Y(
-        oc8051_memory_interface1_n111) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u167 ( .A(
-        oc8051_memory_interface1_n111), .Y(oc8051_memory_interface1_n763) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u166 ( .A0(
-        oc8051_memory_interface1_n108), .A1(idat_onchip[0]), .B0(
-        oc8051_memory_interface1_n109), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n110), .C1(
+        oc8051_memory_interface1_n149) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u211 ( .A(
+        oc8051_memory_interface1_n149), .Y(oc8051_memory_interface1_n777) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u210 ( .A0(
+        oc8051_memory_interface1_n146), .A1(idat_onchip[0]), .B0(
+        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n148), .C1(
         oc8051_memory_interface1_idat_cur_0_), .Y(
-        oc8051_memory_interface1_n107) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u165 ( .A(
-        oc8051_memory_interface1_n107), .Y(oc8051_memory_interface1_n762) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u164 ( .A(
-        oc8051_memory_interface1_n106), .Y(op3_n[1]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u163 ( .A(ram_rd_sel[2]), .Y(
-        oc8051_memory_interface1_n75) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u162 ( .A(
-        oc8051_memory_interface1_n89), .B(oc8051_memory_interface1_n75), .C(
-        ram_rd_sel[1]), .Y(oc8051_memory_interface1_n80) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u161 ( .A(ram_rd_sel[1]), .Y(
-        oc8051_memory_interface1_n81) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u160 ( .AN(
-        oc8051_memory_interface1_n980), .B(oc8051_memory_interface1_n81), .Y(
-        oc8051_memory_interface1_n77) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u159 ( .A(
-        oc8051_memory_interface1_n980), .B(oc8051_memory_interface1_n81), .Y(
-        oc8051_memory_interface1_n73) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u158 ( .A(
-        oc8051_memory_interface1_n73), .Y(oc8051_memory_interface1_n83) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u157 ( .A(ram_rd_sel[1]), .B(
-        ram_rd_sel[2]), .C(ram_rd_sel[0]), .Y(oc8051_memory_interface1_n93) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u156 ( .A0(ri[0]), .A1(
-        oc8051_memory_interface1_n83), .B0(op1_cur[0]), .B1(
-        oc8051_memory_interface1_n93), .Y(oc8051_memory_interface1_n105) );
-  AOI32_X0P5M_A12TS oc8051_memory_interface1_u155 ( .A0(ram_rd_sel[0]), .A1(
-        oc8051_memory_interface1_n81), .A2(ram_rd_sel[2]), .B0(ri[1]), .B1(
-        oc8051_memory_interface1_n83), .Y(oc8051_memory_interface1_n100) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u154 ( .A(op1_cur[1]), .B(
-        oc8051_memory_interface1_n93), .Y(oc8051_memory_interface1_n101) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u153 ( .A(
-        oc8051_memory_interface1_n80), .Y(oc8051_memory_interface1_n78) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u152 ( .A(sp[2]), .B(
-        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n98) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u151 ( .A0(ri[2]), .A1(
-        oc8051_memory_interface1_n83), .B0(op1_cur[2]), .B1(
-        oc8051_memory_interface1_n93), .Y(oc8051_memory_interface1_n99) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u150 ( .A(sp[3]), .B(
-        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n95) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u149 ( .A0(ri[3]), .A1(
-        oc8051_memory_interface1_n83), .B0(bank_sel[0]), .B1(
-        oc8051_memory_interface1_n93), .Y(oc8051_memory_interface1_n96) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u148 ( .A0(
-        oc8051_memory_interface1_n94), .A1(oc8051_memory_interface1_n80), .B0(
-        oc8051_memory_interface1_n95), .C0(oc8051_memory_interface1_n96), .Y(
-        rd_addr[3]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u147 ( .A(sp[4]), .B(
-        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n91) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u146 ( .A(
-        oc8051_memory_interface1_n75), .B(ram_rd_sel[0]), .Y(
-        oc8051_memory_interface1_n84) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u145 ( .A0(bank_sel[1]), .A1(
-        oc8051_memory_interface1_n93), .B0(ri[4]), .B1(
-        oc8051_memory_interface1_n83), .C0(oc8051_memory_interface1_n84), .Y(
-        oc8051_memory_interface1_n92) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u144 ( .A0(
-        oc8051_memory_interface1_n90), .A1(oc8051_memory_interface1_n80), .B0(
-        oc8051_memory_interface1_n91), .C0(oc8051_memory_interface1_n92), .Y(
-        rd_addr[4]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u143 ( .A(
-        oc8051_memory_interface1_n89), .B(oc8051_memory_interface1_n75), .Y(
+        oc8051_memory_interface1_n145) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u209 ( .A(
+        oc8051_memory_interface1_n145), .Y(oc8051_memory_interface1_n776) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u208 ( .A(
+        oc8051_memory_interface1_n144), .Y(op3_n[1]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u207 ( .A(ram_rd_sel[2]), .Y(
+        oc8051_memory_interface1_n113) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u206 ( .A(
+        oc8051_memory_interface1_n127), .B(oc8051_memory_interface1_n113), .C(
+        ram_rd_sel[1]), .Y(oc8051_memory_interface1_n118) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u205 ( .A(ram_rd_sel[1]), .Y(
+        oc8051_memory_interface1_n119) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u204 ( .AN(
+        oc8051_memory_interface1_n910), .B(oc8051_memory_interface1_n119), .Y(
+        oc8051_memory_interface1_n115) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u203 ( .A(
+        oc8051_memory_interface1_n910), .B(oc8051_memory_interface1_n119), .Y(
+        oc8051_memory_interface1_n111) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u202 ( .A(
+        oc8051_memory_interface1_n111), .Y(oc8051_memory_interface1_n121) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u201 ( .A(ram_rd_sel[1]), .B(
+        ram_rd_sel[2]), .C(ram_rd_sel[0]), .Y(oc8051_memory_interface1_n131)
+         );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u200 ( .A0(ri[0]), .A1(
+        oc8051_memory_interface1_n121), .B0(op1_cur[0]), .B1(
+        oc8051_memory_interface1_n131), .Y(oc8051_memory_interface1_n143) );
+  AOI32_X0P5M_A12TS oc8051_memory_interface1_u199 ( .A0(ram_rd_sel[0]), .A1(
+        oc8051_memory_interface1_n119), .A2(ram_rd_sel[2]), .B0(ri[1]), .B1(
+        oc8051_memory_interface1_n121), .Y(oc8051_memory_interface1_n138) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u198 ( .A(op1_cur[1]), .B(
+        oc8051_memory_interface1_n131), .Y(oc8051_memory_interface1_n139) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u197 ( .A(
+        oc8051_memory_interface1_n118), .Y(oc8051_memory_interface1_n116) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u196 ( .A(sp[2]), .B(
+        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n136) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u195 ( .A0(ri[2]), .A1(
+        oc8051_memory_interface1_n121), .B0(op1_cur[2]), .B1(
+        oc8051_memory_interface1_n131), .Y(oc8051_memory_interface1_n137) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u194 ( .A(sp[3]), .B(
+        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n133) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u193 ( .A0(ri[3]), .A1(
+        oc8051_memory_interface1_n121), .B0(bank_sel[0]), .B1(
+        oc8051_memory_interface1_n131), .Y(oc8051_memory_interface1_n134) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u192 ( .A0(
+        oc8051_memory_interface1_n132), .A1(oc8051_memory_interface1_n118), 
+        .B0(oc8051_memory_interface1_n133), .C0(oc8051_memory_interface1_n134), 
+        .Y(rd_addr[3]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u191 ( .A(sp[4]), .B(
+        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n129) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u190 ( .A(
+        oc8051_memory_interface1_n113), .B(ram_rd_sel[0]), .Y(
+        oc8051_memory_interface1_n122) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u189 ( .A0(bank_sel[1]), .A1(
+        oc8051_memory_interface1_n131), .B0(ri[4]), .B1(
+        oc8051_memory_interface1_n121), .C0(oc8051_memory_interface1_n122), 
+        .Y(oc8051_memory_interface1_n130) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u188 ( .A0(
+        oc8051_memory_interface1_n128), .A1(oc8051_memory_interface1_n118), 
+        .B0(oc8051_memory_interface1_n129), .C0(oc8051_memory_interface1_n130), 
+        .Y(rd_addr[4]) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u187 ( .A(
+        oc8051_memory_interface1_n127), .B(oc8051_memory_interface1_n113), .Y(
+        oc8051_memory_interface1_n126) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u186 ( .A(
+        oc8051_memory_interface1_n122), .B(oc8051_memory_interface1_n126), 
+        .S0(ram_rd_sel[1]), .Y(oc8051_memory_interface1_n124) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u185 ( .A0(ri[5]), .A1(
+        oc8051_memory_interface1_n121), .B0(sp[5]), .B1(
+        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n125) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u184 ( .A0(
+        oc8051_memory_interface1_n123), .A1(oc8051_memory_interface1_n118), 
+        .B0(oc8051_memory_interface1_n124), .C0(oc8051_memory_interface1_n125), 
+        .Y(rd_addr[5]) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u183 ( .A0(sp[6]), .A1(
+        oc8051_memory_interface1_n115), .B0(ri[6]), .B1(
+        oc8051_memory_interface1_n121), .C0(oc8051_memory_interface1_n122), 
+        .Y(oc8051_memory_interface1_n120) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u182 ( .A0(
+        oc8051_memory_interface1_n117), .A1(oc8051_memory_interface1_n118), 
+        .B0(oc8051_memory_interface1_n119), .B1(oc8051_memory_interface1_n113), 
+        .C0(oc8051_memory_interface1_n120), .Y(rd_addr[6]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u181 ( .A(ri[7]), .Y(
+        oc8051_memory_interface1_n112) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u180 ( .A0(sp[7]), .A1(
+        oc8051_memory_interface1_n115), .B0(oc8051_memory_interface1_n116), 
+        .B1(op2_n[7]), .Y(oc8051_memory_interface1_n114) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u179 ( .A0(
+        oc8051_memory_interface1_n111), .A1(oc8051_memory_interface1_n112), 
+        .B0(oc8051_memory_interface1_n113), .C0(oc8051_memory_interface1_n114), 
+        .Y(rd_addr[7]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u178 ( .A(
+        oc8051_memory_interface1_n360), .Y(pc[15]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u177 ( .A(ram_wr_sel[0]), .Y(
         oc8051_memory_interface1_n88) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u142 ( .A(
-        oc8051_memory_interface1_n84), .B(oc8051_memory_interface1_n88), .S0(
-        ram_rd_sel[1]), .Y(oc8051_memory_interface1_n86) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u141 ( .A0(ri[5]), .A1(
-        oc8051_memory_interface1_n83), .B0(sp[5]), .B1(
-        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n87) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u140 ( .A0(
-        oc8051_memory_interface1_n85), .A1(oc8051_memory_interface1_n80), .B0(
-        oc8051_memory_interface1_n86), .C0(oc8051_memory_interface1_n87), .Y(
-        rd_addr[5]) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u139 ( .A0(sp[6]), .A1(
-        oc8051_memory_interface1_n77), .B0(ri[6]), .B1(
-        oc8051_memory_interface1_n83), .C0(oc8051_memory_interface1_n84), .Y(
-        oc8051_memory_interface1_n82) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u138 ( .A0(
-        oc8051_memory_interface1_n79), .A1(oc8051_memory_interface1_n80), .B0(
-        oc8051_memory_interface1_n81), .B1(oc8051_memory_interface1_n75), .C0(
-        oc8051_memory_interface1_n82), .Y(rd_addr[6]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u137 ( .A(ri[7]), .Y(
-        oc8051_memory_interface1_n74) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u136 ( .A0(sp[7]), .A1(
-        oc8051_memory_interface1_n77), .B0(oc8051_memory_interface1_n78), .B1(
-        op2_n[7]), .Y(oc8051_memory_interface1_n76) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u135 ( .A0(
-        oc8051_memory_interface1_n73), .A1(oc8051_memory_interface1_n74), .B0(
-        oc8051_memory_interface1_n75), .C0(oc8051_memory_interface1_n76), .Y(
-        rd_addr[7]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u134 ( .A(
-        oc8051_memory_interface1_n354), .Y(pc[15]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u133 ( .A(
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u176 ( .A(
+        oc8051_memory_interface1_n88), .B(oc8051_memory_interface1_n87), .Y(
+        oc8051_memory_interface1_n100) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u175 ( .AN(wr_ind), .B(
+        oc8051_memory_interface1_n88), .Y(oc8051_memory_interface1_n93) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u174 ( .A(sp_w[0]), .B(
+        oc8051_memory_interface1_n93), .Y(oc8051_memory_interface1_n106) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u173 ( .A(ram_wr_sel[1]), .B(
+        ram_wr_sel[2]), .C(oc8051_memory_interface1_n88), .Y(
+        oc8051_memory_interface1_n79) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u172 ( .A(
+        oc8051_memory_interface1_imm2_r[0]), .B(ram_wr_sel[2]), .Y(
+        oc8051_memory_interface1_n109) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u171 ( .A(
+        oc8051_memory_interface1_ri_r[0]), .B(oc8051_memory_interface1_n88), 
+        .Y(oc8051_memory_interface1_n110) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u170 ( .A(
+        oc8051_memory_interface1_n109), .B(oc8051_memory_interface1_n110), 
+        .S0(ram_wr_sel[1]), .Y(oc8051_memory_interface1_n108) );
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u169 ( .A0(
+        oc8051_memory_interface1_imm_r[0]), .A1(oc8051_memory_interface1_n79), 
+        .B0(oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n107)
+         );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u168 ( .A(sp_w[1]), .B(
+        oc8051_memory_interface1_n93), .Y(oc8051_memory_interface1_n101) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u167 ( .A(
+        oc8051_memory_interface1_imm2_r[1]), .B(ram_wr_sel[2]), .Y(
+        oc8051_memory_interface1_n104) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u166 ( .A(
+        oc8051_memory_interface1_ri_r[1]), .B(oc8051_memory_interface1_n88), 
+        .Y(oc8051_memory_interface1_n105) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u165 ( .A(
+        oc8051_memory_interface1_n104), .B(oc8051_memory_interface1_n105), 
+        .S0(ram_wr_sel[1]), .Y(oc8051_memory_interface1_n103) );
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u164 ( .A0(
+        oc8051_memory_interface1_imm_r[1]), .A1(oc8051_memory_interface1_n79), 
+        .B0(oc8051_memory_interface1_n103), .Y(oc8051_memory_interface1_n102)
+         );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u163 ( .A(wr_ind), .B(
+        oc8051_memory_interface1_n88), .Y(oc8051_memory_interface1_n89) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u162 ( .A(
+        oc8051_memory_interface1_ri_r[2]), .Y(oc8051_memory_interface1_n96) );
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u161 ( .A(ram_wr_sel[2]), .B(
+        ram_wr_sel[0]), .Y(oc8051_memory_interface1_n75) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u160 ( .A(
+        oc8051_memory_interface1_n100), .B(ram_wr_sel[2]), .Y(
+        oc8051_memory_interface1_n86) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u159 ( .A(
+        oc8051_memory_interface1_n86), .Y(oc8051_memory_interface1_n95) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u158 ( .A(
+        oc8051_memory_interface1_n421), .B(oc8051_memory_interface1_n95), .Y(
+        oc8051_memory_interface1_n99) );
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u157 ( .A0(
+        oc8051_memory_interface1_n75), .A1(oc8051_memory_interface1_n87), .A2(
+        oc8051_memory_interface1_imm2_r[2]), .B0(oc8051_memory_interface1_n99), 
+        .Y(oc8051_memory_interface1_n97) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u156 ( .A0(sp_w[2]), .A1(
+        oc8051_memory_interface1_n93), .B0(oc8051_memory_interface1_imm_r[2]), 
+        .B1(oc8051_memory_interface1_n79), .Y(oc8051_memory_interface1_n98) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u155 ( .A(
+        oc8051_memory_interface1_ri_r[3]), .Y(oc8051_memory_interface1_n90) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u154 ( .A(
+        oc8051_memory_interface1_n420), .B(oc8051_memory_interface1_n95), .Y(
+        oc8051_memory_interface1_n94) );
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u153 ( .A0(
+        oc8051_memory_interface1_n75), .A1(oc8051_memory_interface1_n87), .A2(
+        oc8051_memory_interface1_imm2_r[3]), .B0(oc8051_memory_interface1_n94), 
+        .Y(oc8051_memory_interface1_n91) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u152 ( .A0(sp_w[3]), .A1(
+        oc8051_memory_interface1_n93), .B0(oc8051_memory_interface1_imm_r[3]), 
+        .B1(oc8051_memory_interface1_n79), .Y(oc8051_memory_interface1_n92) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u151 ( .A(
+        oc8051_memory_interface1_n89), .Y(oc8051_memory_interface1_n78) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u150 ( .A0(
+        oc8051_memory_interface1_imm_r[4]), .A1(oc8051_memory_interface1_n79), 
+        .B0(oc8051_memory_interface1_imm2_r[4]), .B1(
+        oc8051_memory_interface1_n75), .C0(oc8051_memory_interface1_ri_r[4]), 
+        .C1(oc8051_memory_interface1_n78), .Y(oc8051_memory_interface1_n84) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u149 ( .A(
+        oc8051_memory_interface1_n87), .B(oc8051_memory_interface1_n88), .Y(
+        oc8051_memory_interface1_n76) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u148 ( .AN(
+        oc8051_memory_interface1_n75), .B(oc8051_memory_interface1_n87), .Y(
+        oc8051_memory_interface1_n77) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u147 ( .A0(
+        oc8051_memory_interface1_rn_r_4_), .A1(oc8051_memory_interface1_n86), 
+        .B0(sp_w[4]), .B1(oc8051_memory_interface1_n76), .C0(
+        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n85) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u146 ( .A(
+        oc8051_memory_interface1_n84), .B(oc8051_memory_interface1_n85), .Y(
+        wr_addr[4]) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u145 ( .A0(
+        oc8051_memory_interface1_ri_r[5]), .A1(oc8051_memory_interface1_n78), 
+        .B0(oc8051_memory_interface1_imm_r[5]), .B1(
+        oc8051_memory_interface1_n79), .Y(oc8051_memory_interface1_n82) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u144 ( .A0(
+        oc8051_memory_interface1_imm2_r[5]), .A1(oc8051_memory_interface1_n75), 
+        .B0(sp_w[5]), .B1(oc8051_memory_interface1_n76), .C0(
+        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n83) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u143 ( .A(
+        oc8051_memory_interface1_n82), .B(oc8051_memory_interface1_n83), .Y(
+        wr_addr[5]) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u142 ( .A0(
+        oc8051_memory_interface1_ri_r[6]), .A1(oc8051_memory_interface1_n78), 
+        .B0(oc8051_memory_interface1_imm_r[6]), .B1(
+        oc8051_memory_interface1_n79), .Y(oc8051_memory_interface1_n80) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u141 ( .A0(
+        oc8051_memory_interface1_imm2_r[6]), .A1(oc8051_memory_interface1_n75), 
+        .B0(sp_w[6]), .B1(oc8051_memory_interface1_n76), .C0(
+        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n81) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u140 ( .A(
+        oc8051_memory_interface1_n80), .B(oc8051_memory_interface1_n81), .Y(
+        wr_addr[6]) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u139 ( .A0(
+        oc8051_memory_interface1_ri_r[7]), .A1(oc8051_memory_interface1_n78), 
+        .B0(oc8051_memory_interface1_imm_r[7]), .B1(
+        oc8051_memory_interface1_n79), .Y(oc8051_memory_interface1_n73) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u138 ( .A0(
+        oc8051_memory_interface1_imm2_r[7]), .A1(oc8051_memory_interface1_n75), 
+        .B0(sp_w[7]), .B1(oc8051_memory_interface1_n76), .C0(
+        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n74) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u137 ( .A(
+        oc8051_memory_interface1_n73), .B(oc8051_memory_interface1_n74), .Y(
+        wr_addr[7]) );
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u136 ( .A(
         oc8051_memory_interface1_idat_old_4_), .B(
         oc8051_memory_interface1_idat_old_12_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n53)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u132 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u135 ( .A(
         oc8051_memory_interface1_idat_cur_12_), .Y(
         oc8051_memory_interface1_n61) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u131 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u134 ( .A(
         oc8051_memory_interface1_n53), .B(oc8051_memory_interface1_n13), .C(
         oc8051_memory_interface1_n14), .D(oc8051_memory_interface1_n61), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op1_4_) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u130 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u133 ( .A(
         oc8051_memory_interface1_idat_old_1_), .B(
         oc8051_memory_interface1_idat_old_9_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n50)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u129 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u132 ( .A(
         oc8051_memory_interface1_idat_cur_9_), .Y(oc8051_memory_interface1_n58) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u128 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u131 ( .A(
         oc8051_memory_interface1_n50), .B(oc8051_memory_interface1_n4), .C(
         oc8051_memory_interface1_n5), .D(oc8051_memory_interface1_n58), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op1_1_) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u127 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u130 ( .A(
         oc8051_memory_interface1_idat_old_0_), .B(
         oc8051_memory_interface1_idat_old_8_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n49)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u126 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u129 ( .A(
         oc8051_memory_interface1_idat_cur_8_), .Y(oc8051_memory_interface1_n57) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u125 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u128 ( .A(
         oc8051_memory_interface1_n49), .B(oc8051_memory_interface1_n1), .C(
         oc8051_memory_interface1_n2), .D(oc8051_memory_interface1_n57), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op1_0_) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u124 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u127 ( .A(
         oc8051_memory_interface1_idat_old_2_), .B(
         oc8051_memory_interface1_idat_old_10_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n51)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u123 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u126 ( .A(
         oc8051_memory_interface1_idat_cur_10_), .Y(
         oc8051_memory_interface1_n59) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u122 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u125 ( .A(
         oc8051_memory_interface1_n51), .B(oc8051_memory_interface1_n7), .C(
         oc8051_memory_interface1_n8), .D(oc8051_memory_interface1_n59), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op1_2_) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u121 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u124 ( .A(
         oc8051_memory_interface1_idat_old_5_), .B(
         oc8051_memory_interface1_idat_old_13_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n54)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u120 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u123 ( .A(
         oc8051_memory_interface1_idat_cur_13_), .Y(
         oc8051_memory_interface1_n62) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u119 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u122 ( .A(
         oc8051_memory_interface1_n54), .B(oc8051_memory_interface1_n16), .C(
         oc8051_memory_interface1_n17), .D(oc8051_memory_interface1_n62), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op1_5_) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u118 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u121 ( .A(
         oc8051_memory_interface1_idat_old_7_), .B(
         oc8051_memory_interface1_idat_old_15_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n56)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u117 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u120 ( .A(
         oc8051_memory_interface1_idat_cur_15_), .Y(
         oc8051_memory_interface1_n64) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u116 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u119 ( .A(
         oc8051_memory_interface1_n56), .B(oc8051_memory_interface1_n22), .C(
         oc8051_memory_interface1_n23), .D(oc8051_memory_interface1_n64), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op1_7_) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u115 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u118 ( .A(
         oc8051_memory_interface1_idat_old_6_), .B(
         oc8051_memory_interface1_idat_old_14_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n55)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u114 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u117 ( .A(
         oc8051_memory_interface1_idat_cur_14_), .Y(
         oc8051_memory_interface1_n63) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u113 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u116 ( .A(
         oc8051_memory_interface1_n55), .B(oc8051_memory_interface1_n19), .C(
         oc8051_memory_interface1_n20), .D(oc8051_memory_interface1_n63), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op1_6_) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u112 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u115 ( .A(
         oc8051_memory_interface1_idat_old_3_), .B(
         oc8051_memory_interface1_idat_old_11_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n52)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u111 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u114 ( .A(
         oc8051_memory_interface1_idat_cur_11_), .Y(
         oc8051_memory_interface1_n60) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u110 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u113 ( .A(
         oc8051_memory_interface1_n52), .B(oc8051_memory_interface1_n10), .C(
         oc8051_memory_interface1_n11), .D(oc8051_memory_interface1_n60), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op1_3_) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u109 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u112 ( .A(
         oc8051_memory_interface1_idat_cur_23_), .B(
         oc8051_memory_interface1_idat_cur_31_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n24)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u108 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u111 ( .A(
         oc8051_memory_interface1_idat_cur_22_), .B(
         oc8051_memory_interface1_idat_cur_30_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n21)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u107 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u110 ( .A(
         oc8051_memory_interface1_idat_cur_21_), .B(
         oc8051_memory_interface1_idat_cur_29_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n18)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u106 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u109 ( .A(
         oc8051_memory_interface1_idat_cur_20_), .B(
         oc8051_memory_interface1_idat_cur_28_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n15)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u105 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u108 ( .A(
         oc8051_memory_interface1_idat_cur_19_), .B(
         oc8051_memory_interface1_idat_cur_27_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n12)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u104 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u107 ( .A(
         oc8051_memory_interface1_idat_cur_18_), .B(
         oc8051_memory_interface1_idat_cur_26_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n9)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u103 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u106 ( .A(
         oc8051_memory_interface1_idat_cur_7_), .B(
         oc8051_memory_interface1_idat_cur_15_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n23)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u102 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u105 ( .A(
         oc8051_memory_interface1_idat_cur_6_), .B(
         oc8051_memory_interface1_idat_cur_14_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n20)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u101 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u104 ( .A(
         oc8051_memory_interface1_idat_cur_5_), .B(
         oc8051_memory_interface1_idat_cur_13_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n17)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u100 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u103 ( .A(
         oc8051_memory_interface1_idat_cur_4_), .B(
         oc8051_memory_interface1_idat_cur_12_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n14)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u99 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u102 ( .A(
         oc8051_memory_interface1_idat_cur_3_), .B(
         oc8051_memory_interface1_idat_cur_11_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n11)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u98 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u101 ( .A(
         oc8051_memory_interface1_idat_cur_2_), .B(
         oc8051_memory_interface1_idat_cur_10_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n8)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u97 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u100 ( .A(
         oc8051_memory_interface1_idat_cur_0_), .B(
         oc8051_memory_interface1_idat_cur_8_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n2)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u96 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u99 ( .A(
         oc8051_memory_interface1_idat_cur_1_), .B(
         oc8051_memory_interface1_idat_cur_9_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n5)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u95 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u98 ( .A(
         oc8051_memory_interface1_idat_old_23_), .B(
         oc8051_memory_interface1_idat_old_31_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n22)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u94 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u97 ( .A(
         oc8051_memory_interface1_idat_old_22_), .B(
         oc8051_memory_interface1_idat_old_30_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n19)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u93 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u96 ( .A(
         oc8051_memory_interface1_idat_old_21_), .B(
         oc8051_memory_interface1_idat_old_29_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n16)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u92 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u95 ( .A(
         oc8051_memory_interface1_idat_old_20_), .B(
         oc8051_memory_interface1_idat_old_28_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n13)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u91 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u94 ( .A(
         oc8051_memory_interface1_idat_old_19_), .B(
         oc8051_memory_interface1_idat_old_27_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n10)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u90 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u93 ( .A(
         oc8051_memory_interface1_idat_old_18_), .B(
         oc8051_memory_interface1_idat_old_26_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n7)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u89 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u92 ( .A(
         oc8051_memory_interface1_idat_old_16_), .B(
         oc8051_memory_interface1_idat_old_24_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n1)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u88 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u91 ( .A(
         oc8051_memory_interface1_idat_old_17_), .B(
         oc8051_memory_interface1_idat_old_25_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n4)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u87 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u90 ( .A(
         oc8051_memory_interface1_idat_cur_30_), .Y(
         oc8051_memory_interface1_n71) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u86 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u89 ( .A(
         oc8051_memory_interface1_n19), .B(oc8051_memory_interface1_n20), .C(
         oc8051_memory_interface1_n21), .D(oc8051_memory_interface1_n71), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[6]) );
-  INV_X1B_A12TS oc8051_memory_interface1_u85 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u88 ( .A(
         oc8051_memory_interface1_idat_cur_28_), .Y(
         oc8051_memory_interface1_n69) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u84 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u87 ( .A(
         oc8051_memory_interface1_n13), .B(oc8051_memory_interface1_n14), .C(
         oc8051_memory_interface1_n15), .D(oc8051_memory_interface1_n69), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[4]) );
-  INV_X1B_A12TS oc8051_memory_interface1_u83 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u86 ( .A(
         oc8051_memory_interface1_idat_cur_26_), .Y(
         oc8051_memory_interface1_n67) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u82 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u85 ( .A(
         oc8051_memory_interface1_n7), .B(oc8051_memory_interface1_n8), .C(
         oc8051_memory_interface1_n9), .D(oc8051_memory_interface1_n67), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[2]) );
-  INV_X1B_A12TS oc8051_memory_interface1_u81 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u84 ( .A(
         oc8051_memory_interface1_idat_cur_31_), .Y(
         oc8051_memory_interface1_n72) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u80 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u83 ( .A(
         oc8051_memory_interface1_n22), .B(oc8051_memory_interface1_n23), .C(
         oc8051_memory_interface1_n24), .D(oc8051_memory_interface1_n72), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[7]) );
-  INV_X1B_A12TS oc8051_memory_interface1_u79 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u82 ( .A(
         oc8051_memory_interface1_idat_cur_29_), .Y(
         oc8051_memory_interface1_n70) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u78 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u81 ( .A(
         oc8051_memory_interface1_n16), .B(oc8051_memory_interface1_n17), .C(
         oc8051_memory_interface1_n18), .D(oc8051_memory_interface1_n70), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[5]) );
-  INV_X1B_A12TS oc8051_memory_interface1_u77 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u80 ( .A(
         oc8051_memory_interface1_idat_cur_27_), .Y(
         oc8051_memory_interface1_n68) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u76 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u79 ( .A(
         oc8051_memory_interface1_n10), .B(oc8051_memory_interface1_n11), .C(
         oc8051_memory_interface1_n12), .D(oc8051_memory_interface1_n68), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[3]) );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u75 ( .A(
+  MXT2_X1M_A12TS oc8051_memory_interface1_u78 ( .A(
         oc8051_memory_interface1_idat_old_31_), .B(
         oc8051_memory_interface1_idat_cur_7_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n46)
          );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u74 ( .A(
+  MXT2_X1M_A12TS oc8051_memory_interface1_u77 ( .A(
         oc8051_memory_interface1_idat_old_26_), .B(
         oc8051_memory_interface1_idat_cur_2_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n31)
          );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u73 ( .A(
+  MXT2_X1M_A12TS oc8051_memory_interface1_u76 ( .A(
         oc8051_memory_interface1_idat_old_24_), .B(
         oc8051_memory_interface1_idat_cur_0_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n25)
          );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u72 ( .A(
+  MXT2_X1M_A12TS oc8051_memory_interface1_u75 ( .A(
         oc8051_memory_interface1_idat_old_28_), .B(
         oc8051_memory_interface1_idat_cur_4_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n37)
          );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u71 ( .A(
+  MXT2_X1M_A12TS oc8051_memory_interface1_u74 ( .A(
         oc8051_memory_interface1_idat_old_25_), .B(
         oc8051_memory_interface1_idat_cur_1_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n28)
          );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u70 ( .A(
+  MXT2_X1M_A12TS oc8051_memory_interface1_u73 ( .A(
         oc8051_memory_interface1_idat_old_29_), .B(
         oc8051_memory_interface1_idat_cur_5_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n40)
          );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u69 ( .A(
+  MXT2_X1M_A12TS oc8051_memory_interface1_u72 ( .A(
         oc8051_memory_interface1_idat_old_27_), .B(
         oc8051_memory_interface1_idat_cur_3_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n34)
          );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u68 ( .A(
+  MXT2_X1M_A12TS oc8051_memory_interface1_u71 ( .A(
         oc8051_memory_interface1_idat_old_30_), .B(
         oc8051_memory_interface1_idat_cur_6_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n43)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u67 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u70 ( .A(
         oc8051_memory_interface1_n46), .B(
         oc8051_memory_interface1_idat_cur_23_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n48)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u66 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u69 ( .A(
         oc8051_memory_interface1_idat_old_15_), .B(
         oc8051_memory_interface1_idat_cur_15_), .C(
         oc8051_memory_interface1_idat_old_23_), .D(
@@ -41262,16 +41253,16 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n47)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u65 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u68 ( .A(
         oc8051_memory_interface1_n47), .B(oc8051_memory_interface1_n48), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[7]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u64 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u67 ( .A(
         oc8051_memory_interface1_n40), .B(
         oc8051_memory_interface1_idat_cur_21_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n42)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u63 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u66 ( .A(
         oc8051_memory_interface1_idat_old_13_), .B(
         oc8051_memory_interface1_idat_cur_13_), .C(
         oc8051_memory_interface1_idat_old_21_), .D(
@@ -41279,16 +41270,16 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n41)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u62 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u65 ( .A(
         oc8051_memory_interface1_n41), .B(oc8051_memory_interface1_n42), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[5]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u61 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u64 ( .A(
         oc8051_memory_interface1_n34), .B(
         oc8051_memory_interface1_idat_cur_19_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n36)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u60 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u63 ( .A(
         oc8051_memory_interface1_idat_old_11_), .B(
         oc8051_memory_interface1_idat_cur_11_), .C(
         oc8051_memory_interface1_idat_old_19_), .D(
@@ -41296,16 +41287,16 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n35)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u59 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u62 ( .A(
         oc8051_memory_interface1_n35), .B(oc8051_memory_interface1_n36), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[3]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u58 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u61 ( .A(
         oc8051_memory_interface1_n43), .B(
         oc8051_memory_interface1_idat_cur_22_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n45)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u57 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u60 ( .A(
         oc8051_memory_interface1_idat_old_14_), .B(
         oc8051_memory_interface1_idat_cur_14_), .C(
         oc8051_memory_interface1_idat_old_22_), .D(
@@ -41313,16 +41304,16 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n44)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u56 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u59 ( .A(
         oc8051_memory_interface1_n44), .B(oc8051_memory_interface1_n45), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[6]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u55 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u58 ( .A(
         oc8051_memory_interface1_n25), .B(
         oc8051_memory_interface1_idat_cur_16_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n27)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u54 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u57 ( .A(
         oc8051_memory_interface1_idat_old_8_), .B(
         oc8051_memory_interface1_idat_cur_8_), .C(
         oc8051_memory_interface1_idat_old_16_), .D(
@@ -41330,16 +41321,16 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n26)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u53 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u56 ( .A(
         oc8051_memory_interface1_n26), .B(oc8051_memory_interface1_n27), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[0]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u52 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u55 ( .A(
         oc8051_memory_interface1_n37), .B(
         oc8051_memory_interface1_idat_cur_20_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n39)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u51 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u54 ( .A(
         oc8051_memory_interface1_idat_old_12_), .B(
         oc8051_memory_interface1_idat_cur_12_), .C(
         oc8051_memory_interface1_idat_old_20_), .D(
@@ -41347,16 +41338,16 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n38)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u50 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u53 ( .A(
         oc8051_memory_interface1_n38), .B(oc8051_memory_interface1_n39), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[4]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u49 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u52 ( .A(
         oc8051_memory_interface1_n31), .B(
         oc8051_memory_interface1_idat_cur_18_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n33)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u48 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u51 ( .A(
         oc8051_memory_interface1_idat_old_10_), .B(
         oc8051_memory_interface1_idat_cur_10_), .C(
         oc8051_memory_interface1_idat_old_18_), .D(
@@ -41364,16 +41355,16 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n32)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u47 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u50 ( .A(
         oc8051_memory_interface1_n32), .B(oc8051_memory_interface1_n33), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[2]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u46 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u49 ( .A(
         oc8051_memory_interface1_n28), .B(
         oc8051_memory_interface1_idat_cur_17_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n30)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u45 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u48 ( .A(
         oc8051_memory_interface1_idat_old_9_), .B(
         oc8051_memory_interface1_idat_cur_9_), .C(
         oc8051_memory_interface1_idat_old_17_), .D(
@@ -41381,631 +41372,630 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n29)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u44 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u47 ( .A(
         oc8051_memory_interface1_n29), .B(oc8051_memory_interface1_n30), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[1]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u43 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u46 ( .A(
         oc8051_memory_interface1_idat_cur_16_), .B(
         oc8051_memory_interface1_idat_cur_24_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n3)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u42 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u45 ( .A(
         oc8051_memory_interface1_idat_cur_24_), .Y(
         oc8051_memory_interface1_n65) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u41 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u44 ( .A(
         oc8051_memory_interface1_n1), .B(oc8051_memory_interface1_n2), .C(
         oc8051_memory_interface1_n3), .D(oc8051_memory_interface1_n65), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[0]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u40 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u43 ( .A(
         oc8051_memory_interface1_idat_cur_17_), .B(
         oc8051_memory_interface1_idat_cur_25_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n6)
          );
-  INV_X1B_A12TS oc8051_memory_interface1_u39 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u42 ( .A(
         oc8051_memory_interface1_idat_cur_25_), .Y(
         oc8051_memory_interface1_n66) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u38 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u41 ( .A(
         oc8051_memory_interface1_n4), .B(oc8051_memory_interface1_n5), .C(
         oc8051_memory_interface1_n6), .D(oc8051_memory_interface1_n66), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[1]) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u37 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u40 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_31_), .B0N(
-        oc8051_memory_interface1_n191), .Y(oc8051_memory_interface1_n449) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u36 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n229), .Y(oc8051_memory_interface1_n459) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u39 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_30_), .B0N(
-        oc8051_memory_interface1_n190), .Y(oc8051_memory_interface1_n451) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u35 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n228), .Y(oc8051_memory_interface1_n461) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u38 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_29_), .B0N(
-        oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n453) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u34 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n227), .Y(oc8051_memory_interface1_n463) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u37 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_28_), .B0N(
-        oc8051_memory_interface1_n188), .Y(oc8051_memory_interface1_n455) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u33 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n226), .Y(oc8051_memory_interface1_n465) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u36 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_27_), .B0N(
-        oc8051_memory_interface1_n187), .Y(oc8051_memory_interface1_n457) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u32 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n225), .Y(oc8051_memory_interface1_n467) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u35 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_26_), .B0N(
-        oc8051_memory_interface1_n186), .Y(oc8051_memory_interface1_n459) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u31 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n224), .Y(oc8051_memory_interface1_n469) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u34 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_25_), .B0N(
-        oc8051_memory_interface1_n185), .Y(oc8051_memory_interface1_n461) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u30 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n223), .Y(oc8051_memory_interface1_n471) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u33 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_24_), .B0N(
-        oc8051_memory_interface1_n184), .Y(oc8051_memory_interface1_n463) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u29 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n222), .Y(oc8051_memory_interface1_n473) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u32 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_23_), .B0N(
-        oc8051_memory_interface1_n183), .Y(oc8051_memory_interface1_n465) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u28 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n221), .Y(oc8051_memory_interface1_n475) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u31 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_22_), .B0N(
-        oc8051_memory_interface1_n182), .Y(oc8051_memory_interface1_n467) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u27 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n220), .Y(oc8051_memory_interface1_n477) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u30 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_21_), .B0N(
-        oc8051_memory_interface1_n181), .Y(oc8051_memory_interface1_n469) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u26 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n219), .Y(oc8051_memory_interface1_n479) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u29 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_20_), .B0N(
-        oc8051_memory_interface1_n180), .Y(oc8051_memory_interface1_n471) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u25 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n218), .Y(oc8051_memory_interface1_n481) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u28 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_19_), .B0N(
-        oc8051_memory_interface1_n179), .Y(oc8051_memory_interface1_n473) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u24 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n217), .Y(oc8051_memory_interface1_n483) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u27 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_18_), .B0N(
-        oc8051_memory_interface1_n178), .Y(oc8051_memory_interface1_n475) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u23 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n216), .Y(oc8051_memory_interface1_n485) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u26 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_17_), .B0N(
-        oc8051_memory_interface1_n177), .Y(oc8051_memory_interface1_n477) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u22 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n215), .Y(oc8051_memory_interface1_n487) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u25 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_16_), .B0N(
-        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n479) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u21 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n214), .Y(oc8051_memory_interface1_n489) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u24 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_15_), .B0N(
-        oc8051_memory_interface1_n175), .Y(oc8051_memory_interface1_n481) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u20 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n213), .Y(oc8051_memory_interface1_n491) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u23 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_14_), .B0N(
-        oc8051_memory_interface1_n174), .Y(oc8051_memory_interface1_n483) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u19 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n212), .Y(oc8051_memory_interface1_n493) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u22 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_13_), .B0N(
-        oc8051_memory_interface1_n173), .Y(oc8051_memory_interface1_n485) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u18 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n211), .Y(oc8051_memory_interface1_n495) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u21 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_12_), .B0N(
-        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n487) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u17 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n210), .Y(oc8051_memory_interface1_n497) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u20 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_11_), .B0N(
-        oc8051_memory_interface1_n171), .Y(oc8051_memory_interface1_n489) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u16 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n209), .Y(oc8051_memory_interface1_n499) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u19 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_10_), .B0N(
-        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n491) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u15 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n208), .Y(oc8051_memory_interface1_n501) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u18 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_9_), .B0N(
-        oc8051_memory_interface1_n169), .Y(oc8051_memory_interface1_n493) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u14 ( .A0(
-        oc8051_memory_interface1_n110), .A1(
+        oc8051_memory_interface1_n207), .Y(oc8051_memory_interface1_n503) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u17 ( .A0(
+        oc8051_memory_interface1_n148), .A1(
         oc8051_memory_interface1_idat_cur_8_), .B0N(
-        oc8051_memory_interface1_n168), .Y(oc8051_memory_interface1_n495) );
-  AO21B_X0P5M_A12TS oc8051_memory_interface1_u13 ( .A0(
-        oc8051_memory_interface1_n133), .A1(oc8051_memory_interface1_imem_wait), .B0N(oc8051_memory_interface1_n134), .Y(oc8051_memory_interface1_n543) );
-  NAND3_X1M_A12TS oc8051_memory_interface1_u12 ( .A(
-        oc8051_memory_interface1_n149), .B(oc8051_memory_interface1_n148), .C(
-        mem_act[2]), .Y(oc8051_memory_interface1_n134) );
-  OAI211_X1M_A12TS oc8051_memory_interface1_u11 ( .A0(
-        oc8051_memory_interface1_n97), .A1(oc8051_memory_interface1_n80), .B0(
-        oc8051_memory_interface1_n98), .C0(oc8051_memory_interface1_n99), .Y(
-        rd_addr[2]) );
-  NAND4XXXB_X1M_A12TS oc8051_memory_interface1_u10 ( .DN(
-        oc8051_memory_interface1_n720), .A(oc8051_memory_interface1_n736), .B(
-        oc8051_memory_interface1_n737), .C(oc8051_memory_interface1_n738), .Y(
-        oc8051_memory_interface1_n890) );
-  NOR2_X0P5M_A12TS oc8051_memory_interface1_u9 ( .A(
-        oc8051_memory_interface1_n110), .B(oc8051_memory_interface1_n192), .Y(
-        oc8051_memory_interface1_n109) );
-  AOI22_X1M_A12TS oc8051_memory_interface1_u8 ( .A0(sp[1]), .A1(
-        oc8051_memory_interface1_n77), .B0(oc8051_memory_interface1_n78), .B1(
-        op2_n[1]), .Y(oc8051_memory_interface1_n102) );
-  NAND3_X2M_A12TS oc8051_memory_interface1_u7 ( .A(
-        oc8051_memory_interface1_n100), .B(oc8051_memory_interface1_n101), .C(
-        oc8051_memory_interface1_n102), .Y(rd_addr[1]) );
+        oc8051_memory_interface1_n206), .Y(oc8051_memory_interface1_n505) );
+  AO21B_X0P5M_A12TS oc8051_memory_interface1_u16 ( .A0(
+        oc8051_memory_interface1_n171), .A1(oc8051_memory_interface1_imem_wait), .B0N(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n553) );
+  NAND3_X1M_A12TS oc8051_memory_interface1_u15 ( .A(
+        oc8051_memory_interface1_n187), .B(oc8051_memory_interface1_n186), .C(
+        mem_act[2]), .Y(oc8051_memory_interface1_n172) );
+  OAI211_X1M_A12TS oc8051_memory_interface1_u14 ( .A0(
+        oc8051_memory_interface1_n89), .A1(oc8051_memory_interface1_n90), .B0(
+        oc8051_memory_interface1_n91), .C0(oc8051_memory_interface1_n92), .Y(
+        wr_addr[3]) );
+  OAI211_X1M_A12TS oc8051_memory_interface1_u13 ( .A0(
+        oc8051_memory_interface1_n89), .A1(oc8051_memory_interface1_n96), .B0(
+        oc8051_memory_interface1_n97), .C0(oc8051_memory_interface1_n98), .Y(
+        wr_addr[2]) );
+  OAI211_X1M_A12TS oc8051_memory_interface1_u12 ( .A0(
+        oc8051_memory_interface1_n135), .A1(oc8051_memory_interface1_n118), 
+        .B0(oc8051_memory_interface1_n136), .C0(oc8051_memory_interface1_n137), 
+        .Y(rd_addr[2]) );
+  NOR2_X0P5M_A12TS oc8051_memory_interface1_u11 ( .A(
+        oc8051_memory_interface1_n148), .B(oc8051_memory_interface1_n230), .Y(
+        oc8051_memory_interface1_n147) );
+  OAI211_X2M_A12TS oc8051_memory_interface1_u10 ( .A0(
+        oc8051_memory_interface1_n423), .A1(oc8051_memory_interface1_n100), 
+        .B0(oc8051_memory_interface1_n106), .C0(oc8051_memory_interface1_n107), 
+        .Y(wr_addr[0]) );
+  AOI22_X1M_A12TS oc8051_memory_interface1_u9 ( .A0(sp[1]), .A1(
+        oc8051_memory_interface1_n115), .B0(oc8051_memory_interface1_n116), 
+        .B1(op2_n[1]), .Y(oc8051_memory_interface1_n140) );
+  NAND3_X2M_A12TS oc8051_memory_interface1_u8 ( .A(
+        oc8051_memory_interface1_n138), .B(oc8051_memory_interface1_n139), .C(
+        oc8051_memory_interface1_n140), .Y(rd_addr[1]) );
+  OAI211_X2M_A12TS oc8051_memory_interface1_u7 ( .A0(
+        oc8051_memory_interface1_n422), .A1(oc8051_memory_interface1_n100), 
+        .B0(oc8051_memory_interface1_n101), .C0(oc8051_memory_interface1_n102), 
+        .Y(wr_addr[1]) );
   NAND2_X1M_A12TS oc8051_memory_interface1_u6 ( .A(sp[0]), .B(
-        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n104) );
+        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n142) );
   OAI211_X2M_A12TS oc8051_memory_interface1_u5 ( .A0(
-        oc8051_memory_interface1_n103), .A1(oc8051_memory_interface1_n80), 
-        .B0(oc8051_memory_interface1_n104), .C0(oc8051_memory_interface1_n105), 
+        oc8051_memory_interface1_n141), .A1(oc8051_memory_interface1_n118), 
+        .B0(oc8051_memory_interface1_n142), .C0(oc8051_memory_interface1_n143), 
         .Y(rd_addr[0]) );
   NAND2B_X2M_A12TS oc8051_memory_interface1_u4 ( .AN(
-        oc8051_memory_interface1_n133), .B(oc8051_memory_interface1_n159), .Y(
-        oc8051_memory_interface1_n110) );
+        oc8051_memory_interface1_n171), .B(oc8051_memory_interface1_n197), .Y(
+        oc8051_memory_interface1_n148) );
   NOR2_X1A_A12TS oc8051_memory_interface1_u3 ( .A(
-        oc8051_memory_interface1_n129), .B(oc8051_memory_interface1_n110), .Y(
-        oc8051_memory_interface1_n108) );
-  LATQ_X0P5M_A12TS oc8051_memory_interface1_wr_addr_reg_1_ ( .G(
-        oc8051_memory_interface1_n890), .D(oc8051_memory_interface1_n910), .Q(
-        wr_addr[1]) );
-  LATQ_X0P5M_A12TS oc8051_memory_interface1_wr_addr_reg_2_ ( .G(
-        oc8051_memory_interface1_n890), .D(oc8051_memory_interface1_n920), .Q(
-        wr_addr[2]) );
-  LATQ_X0P5M_A12TS oc8051_memory_interface1_wr_addr_reg_3_ ( .G(
-        oc8051_memory_interface1_n890), .D(oc8051_memory_interface1_n930), .Q(
-        wr_addr[3]) );
-  LATQ_X0P5M_A12TS oc8051_memory_interface1_wr_addr_reg_4_ ( .G(
-        oc8051_memory_interface1_n890), .D(oc8051_memory_interface1_n940), .Q(
-        wr_addr[4]) );
-  LATQ_X0P5M_A12TS oc8051_memory_interface1_wr_addr_reg_7_ ( .G(
-        oc8051_memory_interface1_n890), .D(oc8051_memory_interface1_n970), .Q(
-        wr_addr[7]) );
-  LATQ_X0P5M_A12TS oc8051_memory_interface1_wr_addr_reg_5_ ( .G(
-        oc8051_memory_interface1_n890), .D(oc8051_memory_interface1_n950), .Q(
-        wr_addr[5]) );
-  LATQ_X0P5M_A12TS oc8051_memory_interface1_wr_addr_reg_6_ ( .G(
-        oc8051_memory_interface1_n890), .D(oc8051_memory_interface1_n960), .Q(
-        wr_addr[6]) );
+        oc8051_memory_interface1_n167), .B(oc8051_memory_interface1_n148), .Y(
+        oc8051_memory_interface1_n146) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_wr_r_reg ( .D(
-        oc8051_memory_interface1_n5540), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n5470), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_wr_r) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_op_pos_reg_0_ ( .D(
-        oc8051_memory_interface1_n447), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n457), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_op_pos_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_op_pos_reg_2_ ( .D(
-        oc8051_memory_interface1_n513), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n523), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_op_pos_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_op_pos_reg_1_ ( .D(
-        oc8051_memory_interface1_n446), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n456), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_op_pos_1_) );
   DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_15_ ( .D(
-        oc8051_memory_interface1_n430), .CK(wb_clk_i), .R(wb_rst_i), .QN(
-        oc8051_memory_interface1_n354) );
+        oc8051_memory_interface1_n440), .CK(wb_clk_i), .R(wb_rst_i), .QN(
+        oc8051_memory_interface1_n360) );
   DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_10_ ( .D(
-        oc8051_memory_interface1_n435), .CK(wb_clk_i), .R(wb_rst_i), .QN(
-        oc8051_memory_interface1_n350) );
+        oc8051_memory_interface1_n445), .CK(wb_clk_i), .R(wb_rst_i), .QN(
+        oc8051_memory_interface1_n356) );
   DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_9_ ( .D(
-        oc8051_memory_interface1_n436), .CK(wb_clk_i), .R(wb_rst_i), .QN(
-        oc8051_memory_interface1_n351) );
+        oc8051_memory_interface1_n446), .CK(wb_clk_i), .R(wb_rst_i), .QN(
+        oc8051_memory_interface1_n357) );
   DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_13_ ( .D(
-        oc8051_memory_interface1_n432), .CK(wb_clk_i), .R(wb_rst_i), .QN(
-        oc8051_memory_interface1_n347) );
-  DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_11_ ( .D(
-        oc8051_memory_interface1_n434), .CK(wb_clk_i), .R(wb_rst_i), .QN(
-        oc8051_memory_interface1_n349) );
-  DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_8_ ( .D(
-        oc8051_memory_interface1_n437), .CK(wb_clk_i), .R(wb_rst_i), .QN(
-        oc8051_memory_interface1_n352) );
-  DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_14_ ( .D(
-        oc8051_memory_interface1_n431), .CK(wb_clk_i), .R(wb_rst_i), .QN(
+        oc8051_memory_interface1_n442), .CK(wb_clk_i), .R(wb_rst_i), .QN(
         oc8051_memory_interface1_n353) );
+  DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_11_ ( .D(
+        oc8051_memory_interface1_n444), .CK(wb_clk_i), .R(wb_rst_i), .QN(
+        oc8051_memory_interface1_n355) );
+  DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_8_ ( .D(
+        oc8051_memory_interface1_n447), .CK(wb_clk_i), .R(wb_rst_i), .QN(
+        oc8051_memory_interface1_n358) );
+  DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_14_ ( .D(
+        oc8051_memory_interface1_n441), .CK(wb_clk_i), .R(wb_rst_i), .QN(
+        oc8051_memory_interface1_n359) );
   DFFRPQN_X1M_A12TS oc8051_memory_interface1_pc_reg_12_ ( .D(
-        oc8051_memory_interface1_n433), .CK(wb_clk_i), .R(wb_rst_i), .QN(
-        oc8051_memory_interface1_n348) );
+        oc8051_memory_interface1_n443), .CK(wb_clk_i), .R(wb_rst_i), .QN(
+        oc8051_memory_interface1_n354) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_16_ ( .D(
-        oc8051_memory_interface1_n479), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n489), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_16_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_17_ ( .D(
-        oc8051_memory_interface1_n477), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n487), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_17_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_18_ ( .D(
-        oc8051_memory_interface1_n475), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n485), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_18_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_19_ ( .D(
-        oc8051_memory_interface1_n473), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n483), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_19_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_20_ ( .D(
-        oc8051_memory_interface1_n471), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n481), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_20_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_21_ ( .D(
-        oc8051_memory_interface1_n469), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n479), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_21_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_22_ ( .D(
-        oc8051_memory_interface1_n467), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n477), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_22_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_23_ ( .D(
-        oc8051_memory_interface1_n465), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n475), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_23_) );
+  DFFRPQN_X1M_A12TS oc8051_memory_interface1_rn_r_reg_2_ ( .D(op1_cur[2]), 
+        .CK(wb_clk_i), .R(wb_rst_i), .QN(oc8051_memory_interface1_n421) );
+  DFFRPQN_X1M_A12TS oc8051_memory_interface1_rn_r_reg_3_ ( .D(bank_sel[0]), 
+        .CK(wb_clk_i), .R(wb_rst_i), .QN(oc8051_memory_interface1_n420) );
+  DFFRPQN_X1M_A12TS oc8051_memory_interface1_rn_r_reg_0_ ( .D(op1_cur[0]), 
+        .CK(wb_clk_i), .R(wb_rst_i), .QN(oc8051_memory_interface1_n423) );
+  DFFRPQN_X1M_A12TS oc8051_memory_interface1_rn_r_reg_1_ ( .D(op1_cur[1]), 
+        .CK(wb_clk_i), .R(wb_rst_i), .QN(oc8051_memory_interface1_n422) );
   DFFRPQN_X1M_A12TS oc8051_memory_interface1_dwe_o_reg ( .D(
-        oc8051_memory_interface1_n778), .CK(wb_clk_i), .R(wb_rst_i), .QN(
-        oc8051_memory_interface1_n395) );
+        oc8051_memory_interface1_n792), .CK(wb_clk_i), .R(wb_rst_i), .QN(
+        oc8051_memory_interface1_n401) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_8_ ( .D(
-        oc8051_memory_interface1_n495), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n505), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_8_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_9_ ( .D(
-        oc8051_memory_interface1_n493), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n503), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_9_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_10_ ( .D(
-        oc8051_memory_interface1_n491), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n501), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_10_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_11_ ( .D(
-        oc8051_memory_interface1_n489), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n499), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_11_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_12_ ( .D(
-        oc8051_memory_interface1_n487), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n497), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_12_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_13_ ( .D(
-        oc8051_memory_interface1_n485), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n495), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_13_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_14_ ( .D(
-        oc8051_memory_interface1_n483), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n493), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_14_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_15_ ( .D(
-        oc8051_memory_interface1_n481), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n491), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_15_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dack_ir_reg ( .D(wbd_ack_i), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_dack_ir) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_0_ ( .D(
-        oc8051_memory_interface1_n762), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n776), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_1_ ( .D(
-        oc8051_memory_interface1_n763), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n777), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_1_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_2_ ( .D(
-        oc8051_memory_interface1_n764), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n778), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_3_ ( .D(
-        oc8051_memory_interface1_n765), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n779), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_3_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_4_ ( .D(
-        oc8051_memory_interface1_n766), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n780), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_5_ ( .D(
-        oc8051_memory_interface1_n767), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n781), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_5_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_6_ ( .D(
-        oc8051_memory_interface1_n768), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n782), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_6_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_7_ ( .D(
-        oc8051_memory_interface1_n769), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n783), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_24_ ( .D(
-        oc8051_memory_interface1_n463), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n473), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_24_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_25_ ( .D(
-        oc8051_memory_interface1_n461), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n471), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_25_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_26_ ( .D(
-        oc8051_memory_interface1_n459), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n469), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_26_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_27_ ( .D(
-        oc8051_memory_interface1_n457), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n467), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_27_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_28_ ( .D(
-        oc8051_memory_interface1_n455), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n465), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_28_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_29_ ( .D(
-        oc8051_memory_interface1_n453), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n463), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_29_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_30_ ( .D(
-        oc8051_memory_interface1_n451), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n461), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_30_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_31_ ( .D(
-        oc8051_memory_interface1_n449), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n459), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_31_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_istb_t_reg ( .D(
-        oc8051_memory_interface1_n542), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n552), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_istb_t) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_24_ ( .D(
-        oc8051_memory_interface1_n462), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n472), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_24_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_25_ ( .D(
-        oc8051_memory_interface1_n460), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n470), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_25_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_26_ ( .D(
-        oc8051_memory_interface1_n458), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n468), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_26_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_27_ ( .D(
-        oc8051_memory_interface1_n456), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n466), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_27_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_28_ ( .D(
-        oc8051_memory_interface1_n454), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n464), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_28_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_29_ ( .D(
-        oc8051_memory_interface1_n452), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n462), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_29_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_30_ ( .D(
-        oc8051_memory_interface1_n450), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n460), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_30_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_31_ ( .D(
-        oc8051_memory_interface1_n448), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n458), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_31_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_11_ ( .D(
-        oc8051_memory_interface1_n418), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n428), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_11_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_4_ ( .D(
-        oc8051_memory_interface1_n425), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n435), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_3_ ( .D(
-        oc8051_memory_interface1_n426), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n436), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_3_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_8_ ( .D(
-        oc8051_memory_interface1_n494), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n504), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_8_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_9_ ( .D(
-        oc8051_memory_interface1_n492), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n502), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_9_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_10_ ( .D(
-        oc8051_memory_interface1_n490), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n500), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_10_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_11_ ( .D(
-        oc8051_memory_interface1_n488), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n498), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_11_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_12_ ( .D(
-        oc8051_memory_interface1_n486), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n496), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_12_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_13_ ( .D(
-        oc8051_memory_interface1_n484), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n494), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_13_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_14_ ( .D(
-        oc8051_memory_interface1_n482), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n492), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_14_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_15_ ( .D(
-        oc8051_memory_interface1_n480), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n490), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_15_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_16_ ( .D(
-        oc8051_memory_interface1_n478), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n488), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_16_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_17_ ( .D(
-        oc8051_memory_interface1_n476), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n486), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_17_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_18_ ( .D(
-        oc8051_memory_interface1_n474), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n484), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_18_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_19_ ( .D(
-        oc8051_memory_interface1_n472), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n482), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_19_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_20_ ( .D(
-        oc8051_memory_interface1_n470), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n480), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_20_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_21_ ( .D(
-        oc8051_memory_interface1_n468), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n478), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_21_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_22_ ( .D(
-        oc8051_memory_interface1_n466), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n476), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_22_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_23_ ( .D(
-        oc8051_memory_interface1_n464), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n474), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_23_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_7_ ( .D(
-        oc8051_memory_interface1_n422), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n432), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_0_ ( .D(
-        oc8051_memory_interface1_n510), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n520), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_1_ ( .D(
-        oc8051_memory_interface1_n508), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n518), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_1_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_2_ ( .D(
-        oc8051_memory_interface1_n506), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n516), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_3_ ( .D(
-        oc8051_memory_interface1_n504), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n514), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_3_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_4_ ( .D(
-        oc8051_memory_interface1_n502), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n512), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_5_ ( .D(
-        oc8051_memory_interface1_n500), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n510), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_5_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_6_ ( .D(
-        oc8051_memory_interface1_n498), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n508), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_6_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_7_ ( .D(
-        oc8051_memory_interface1_n496), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n506), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_1_ ( .D(
-        oc8051_memory_interface1_n428), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n438), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_out_1_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_7_ ( .D(
-        oc8051_memory_interface1_n438), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[7])
+        oc8051_memory_interface1_n448), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[7])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_6_ ( .D(
-        oc8051_memory_interface1_n423), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n433), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_6_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_5_ ( .D(
-        oc8051_memory_interface1_n424), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n434), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_5_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_1_ ( .D(
-        oc8051_memory_interface1_n444), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[1])
+        oc8051_memory_interface1_n454), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[1])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_10_ ( .D(
-        oc8051_memory_interface1_n419), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n429), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_10_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_12_ ( .D(
-        oc8051_memory_interface1_n417), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n427), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_12_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_8_ ( .D(
-        oc8051_memory_interface1_n421), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n431), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_8_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_2_ ( .D(
-        oc8051_memory_interface1_n427), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n437), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_14_ ( .D(
-        oc8051_memory_interface1_n415), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n425), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_14_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_5_ ( .D(
-        oc8051_memory_interface1_n440), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[5])
+        oc8051_memory_interface1_n450), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[5])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_3_ ( .D(
-        oc8051_memory_interface1_n442), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[3])
+        oc8051_memory_interface1_n452), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[3])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_15_ ( .D(
-        oc8051_memory_interface1_n414), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n424), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_15_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_ack_t_reg ( .D(
-        oc8051_memory_interface1_n514), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n524), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_int_ack_t) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_wr_r2_reg ( .D(
         oc8051_memory_interface1_pc_wr_r), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_wr_r2) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_0_ ( .D(
-        oc8051_memory_interface1_n429), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n439), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_out_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_13_ ( .D(
-        oc8051_memory_interface1_n416), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n426), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_13_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_9_ ( .D(
-        oc8051_memory_interface1_n420), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n430), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_9_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_6_ ( .D(
-        oc8051_memory_interface1_n439), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[6])
+        oc8051_memory_interface1_n449), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[6])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_4_ ( .D(
-        oc8051_memory_interface1_n441), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[4])
+        oc8051_memory_interface1_n451), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[4])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_2_ ( .D(
-        oc8051_memory_interface1_n443), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[2])
+        oc8051_memory_interface1_n453), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[2])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_0_ ( .D(
-        oc8051_memory_interface1_n445), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[0])
+        oc8051_memory_interface1_n455), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[0])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_11_ ( .D(
-        oc8051_memory_interface1_n407), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n413), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_11_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_13_ ( .D(
-        oc8051_memory_interface1_n409), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n415), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_13_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_0_ ( .D(
-        oc8051_memory_interface1_n770), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n784), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_2_ ( .D(
-        oc8051_memory_interface1_n772), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n786), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_3_ ( .D(
-        oc8051_memory_interface1_n773), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n787), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_3_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_5_ ( .D(
-        oc8051_memory_interface1_n775), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n789), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_5_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_6_ ( .D(
-        oc8051_memory_interface1_n776), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n790), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_6_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_7_ ( .D(
-        oc8051_memory_interface1_n777), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n791), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_ir_reg_0_ ( .D(
-        oc8051_memory_interface1_n371), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n377), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_ddat_ir_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_ir_reg_2_ ( .D(
-        oc8051_memory_interface1_n373), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n379), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_ddat_ir_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_ir_reg_3_ ( .D(
-        oc8051_memory_interface1_n374), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n380), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_ddat_ir_3_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_ir_reg_5_ ( .D(
-        oc8051_memory_interface1_n376), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n382), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_ddat_ir_5_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_ir_reg_6_ ( .D(
-        oc8051_memory_interface1_n377), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n383), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_ddat_ir_6_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_ir_reg_7_ ( .D(
-        oc8051_memory_interface1_n378), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n384), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_ddat_ir_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_2_ ( .D(
-        oc8051_memory_interface1_n398), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n404), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_3_ ( .D(
-        oc8051_memory_interface1_n399), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n405), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_3_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_4_ ( .D(
-        oc8051_memory_interface1_n400), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n406), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_5_ ( .D(
-        oc8051_memory_interface1_n401), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n407), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_5_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_6_ ( .D(
-        oc8051_memory_interface1_n402), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n408), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_6_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_7_ ( .D(
-        oc8051_memory_interface1_n403), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n409), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_8_ ( .D(
-        oc8051_memory_interface1_n404), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n410), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_8_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_9_ ( .D(
-        oc8051_memory_interface1_n405), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n411), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_9_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_10_ ( .D(
-        oc8051_memory_interface1_n406), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n412), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_10_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_12_ ( .D(
-        oc8051_memory_interface1_n408), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n414), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_12_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_14_ ( .D(
-        oc8051_memory_interface1_n410), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n416), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_14_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_15_ ( .D(
-        oc8051_memory_interface1_n411), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n417), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_15_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_vec_buff_reg_0_ ( .D(
-        oc8051_memory_interface1_n379), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n385), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_int_vec_buff_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_vec_buff_reg_1_ ( .D(
-        oc8051_memory_interface1_n380), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n386), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_int_vec_buff_1_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_vec_buff_reg_2_ ( .D(
-        oc8051_memory_interface1_n381), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n387), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_int_vec_buff_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_vec_buff_reg_3_ ( .D(
-        oc8051_memory_interface1_n382), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n388), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_int_vec_buff_3_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_vec_buff_reg_4_ ( .D(
-        oc8051_memory_interface1_n383), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n389), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_int_vec_buff_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_vec_buff_reg_5_ ( .D(
-        oc8051_memory_interface1_n384), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n390), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_int_vec_buff_5_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_vec_buff_reg_6_ ( .D(
-        oc8051_memory_interface1_n385), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n391), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_int_vec_buff_6_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_vec_buff_reg_7_ ( .D(
-        oc8051_memory_interface1_n386), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n392), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_int_vec_buff_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_imem_wait_reg ( .D(
-        oc8051_memory_interface1_n543), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n553), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_imem_wait) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdone_reg ( .D(
         oc8051_memory_interface1_istb_t), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdone) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_out_of_rst_reg ( .D(
-        oc8051_memory_interface1_n512), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n522), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         irom_out_of_rst) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dstb_o_reg ( .D(
-        oc8051_memory_interface1_n541), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n551), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_cyc_o) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_1_ ( .D(
-        oc8051_memory_interface1_n771), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n785), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_1_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_4_ ( .D(
-        oc8051_memory_interface1_n774), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n788), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_going_out_of_rst_reg ( .D(
-        oc8051_memory_interface1_n346), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n352), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_going_out_of_rst) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_ir_reg_1_ ( .D(
-        oc8051_memory_interface1_n372), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n378), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_ddat_ir_1_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_ir_reg_4_ ( .D(
-        oc8051_memory_interface1_n375), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n381), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_ddat_ir_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_op3_buff_reg_7_ ( .D(op3_n[7]), 
         .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_op3_buff[7])
@@ -42031,25 +42021,29 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_op3_buff_reg_6_ ( .D(op3_n[6]), 
         .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_op3_buff[6])
          );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_0_ ( .D(op3_n[0]), .CK(
+        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[0]) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_1_ ( .D(op3_n[1]), .CK(
+        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[1]) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_ri_r_reg_0_ ( .D(ri[0]), .CK(
+        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_ri_r[0]) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_ri_r_reg_1_ ( .D(ri[1]), .CK(
+        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_ri_r[1]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_reti_reg ( .D(
-        oc8051_memory_interface1_n2160), .CK(wb_clk_i), .R(wb_rst_i), .Q(reti)
+        oc8051_memory_interface1_n2090), .CK(wb_clk_i), .R(wb_rst_i), .Q(reti)
          );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_4_ ( .D(op3_n[4]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[4]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_5_ ( .D(op3_n[5]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[5]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_6_ ( .D(op3_n[6]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[6]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_7_ ( .D(op3_n[7]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[7]) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_rn_r_reg_4_ ( .D(bank_sel[1]), 
+        .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_rn_r_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_0_ ( .D(op2_n[0]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[0]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_1_ ( .D(op2_n[1]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[1]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_2_ ( .D(op2_n[2]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[2]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_3_ ( .D(op2_n[3]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[3]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ri_r_reg_5_ ( .D(ri[5]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_ri_r[5]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ri_r_reg_6_ ( .D(ri[6]), .CK(
@@ -42078,56 +42072,44 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_op2_buff[6])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_rd_ind_reg ( .D(
-        oc8051_memory_interface1_n980), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n910), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_rd_ind) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_ack_reg ( .D(
-        oc8051_memory_interface1_n3880), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        int_ack) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_dmem_wait_reg ( .D(
-        oc8051_memory_interface1_n540), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_dmem_wait) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_0_ ( .D(
-        oc8051_memory_interface1_n396), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_iadr_t_0_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_1_ ( .D(
-        oc8051_memory_interface1_n397), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_iadr_t_1_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_ri_r_reg_0_ ( .D(ri[0]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_ri_r[0]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_ri_r_reg_1_ ( .D(ri[1]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_ri_r[1]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ri_r_reg_2_ ( .D(ri[2]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_ri_r[2]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ri_r_reg_3_ ( .D(ri[3]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_ri_r[3]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_rn_r_reg_4_ ( .D(bank_sel[1]), 
-        .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_rn_r[4]) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_ack_reg ( .D(
+        oc8051_memory_interface1_n3810), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        int_ack) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_dmem_wait_reg ( .D(
+        oc8051_memory_interface1_n550), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_dmem_wait) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_0_ ( .D(
+        oc8051_memory_interface1_n402), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_iadr_t_0_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_1_ ( .D(
+        oc8051_memory_interface1_n403), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_iadr_t_1_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_4_ ( .D(op2_n[4]), .CK(
+        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[4]) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_2_ ( .D(op3_n[2]), .CK(
+        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[2]) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_3_ ( .D(op3_n[3]), .CK(
+        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[3]) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_2_ ( .D(op2_n[2]), .CK(
+        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[2]) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_3_ ( .D(op2_n[3]), .CK(
+        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[3]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_5_ ( .D(op2_n[5]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[5]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_6_ ( .D(op2_n[6]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[6]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_7_ ( .D(op2_n[7]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[7]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_rn_r_reg_0_ ( .D(op1_cur[0]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_rn_r[0]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_rn_r_reg_1_ ( .D(op1_cur[1]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_rn_r[1]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_rn_r_reg_2_ ( .D(op1_cur[2]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_rn_r[2]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_rn_r_reg_3_ ( .D(bank_sel[0]), 
-        .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_rn_r[3]) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_4_ ( .D(op3_n[4]), .CK(
+        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[4]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ri_r_reg_4_ ( .D(ri[4]), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_ri_r[4]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_0_ ( .D(op3_n[0]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[0]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_1_ ( .D(op3_n[1]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[1]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_2_ ( .D(op3_n[2]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[2]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm2_r_reg_3_ ( .D(op3_n[3]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm2_r[3]) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_imm_r_reg_4_ ( .D(op2_n[4]), .CK(
-        wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_imm_r[4]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_rd_addr_r_reg ( .D(rd_addr[7]), 
         .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_rd_addr_r) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_ack_buff_reg ( .D(
@@ -42137,80 +42119,77 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_op2_buff[7])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_o_reg_0_ ( .D(
-        oc8051_memory_interface1_n515), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n525), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_dat_o[0]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_o_reg_1_ ( .D(
-        oc8051_memory_interface1_n516), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n526), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_dat_o[1]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_o_reg_2_ ( .D(
-        oc8051_memory_interface1_n517), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n527), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_dat_o[2]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_o_reg_3_ ( .D(
-        oc8051_memory_interface1_n518), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n528), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_dat_o[3]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_o_reg_4_ ( .D(
-        oc8051_memory_interface1_n519), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n529), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_dat_o[4]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_o_reg_5_ ( .D(
-        oc8051_memory_interface1_n520), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n530), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_dat_o[5]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_o_reg_6_ ( .D(
-        oc8051_memory_interface1_n521), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n531), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_dat_o[6]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_o_reg_7_ ( .D(
-        oc8051_memory_interface1_n522), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n532), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_dat_o[7]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_8_ ( .D(
-        oc8051_memory_interface1_n532), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n542), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[8]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_9_ ( .D(
-        oc8051_memory_interface1_n533), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n543), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[9]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_10_ ( .D(
-        oc8051_memory_interface1_n534), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n544), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[10]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_11_ ( .D(
-        oc8051_memory_interface1_n535), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n545), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[11]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_12_ ( .D(
-        oc8051_memory_interface1_n536), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n546), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[12]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_13_ ( .D(
-        oc8051_memory_interface1_n537), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n547), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[13]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_14_ ( .D(
-        oc8051_memory_interface1_n538), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n548), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[14]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_15_ ( .D(
-        oc8051_memory_interface1_n539), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n549), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[15]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_0_ ( .D(
-        oc8051_memory_interface1_n524), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n534), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[0]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_1_ ( .D(
-        oc8051_memory_interface1_n525), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n535), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[1]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_2_ ( .D(
-        oc8051_memory_interface1_n526), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n536), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[2]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_3_ ( .D(
-        oc8051_memory_interface1_n527), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n537), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[3]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_4_ ( .D(
-        oc8051_memory_interface1_n528), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n538), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[4]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_5_ ( .D(
-        oc8051_memory_interface1_n529), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n539), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[5]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_6_ ( .D(
-        oc8051_memory_interface1_n530), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n540), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[6]) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dadr_ot_reg_7_ ( .D(
-        oc8051_memory_interface1_n531), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n541), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_adr_o[7]) );
-  LATQ_X1M_A12TS oc8051_memory_interface1_wr_addr_reg_0_ ( .G(
-        oc8051_memory_interface1_n890), .D(oc8051_memory_interface1_n900), .Q(
-        wr_addr[0]) );
   XNOR2_X0P5M_A12TS oc8051_sfr1_u318 ( .A(wr_addr[3]), .B(rd_addr[3]), .Y(
         oc8051_sfr1_n282) );
   INV_X0P5B_A12TS oc8051_sfr1_u317 ( .A(rd_addr[6]), .Y(oc8051_sfr1_n248) );
@@ -42316,647 +42295,647 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         wr_addr[4]), .Y(oc8051_sfr1_n265) );
   AND3_X0P5M_A12TS oc8051_sfr1_u263 ( .A(oc8051_sfr1_n265), .B(wr_addr[6]), 
         .C(n_5_net_), .Y(oc8051_sfr1_n257) );
-  OR3_X0P5M_A12TS oc8051_sfr1_u262 ( .A(wr_addr[0]), .B(wr_addr[1]), .C(
-        wr_addr[2]), .Y(oc8051_sfr1_n263) );
-  INV_X0P5B_A12TS oc8051_sfr1_u261 ( .A(oc8051_sfr1_wr_bit_r), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_u262 ( .A(oc8051_sfr1_wr_bit_r), .Y(
         oc8051_sfr1_n49) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_u260 ( .A0(comp_sel[1]), .A1(wr_addr[5]), .B0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_u261 ( .A0(comp_sel[1]), .A1(wr_addr[5]), .B0(
         wr_addr[7]), .Y(oc8051_sfr1_n264) );
-  AOI211_X0P5M_A12TS oc8051_sfr1_u259 ( .A0(oc8051_sfr1_n263), .A1(
+  AOI211_X0P5M_A12TS oc8051_sfr1_u260 ( .A0(oc8051_sfr1_n263), .A1(
         oc8051_sfr1_n49), .B0(oc8051_sfr1_n264), .C0(wr_addr[3]), .Y(
         oc8051_sfr1_n258) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_u258 ( .A0(wr_sfr[1]), .A1(oc8051_sfr1_n262), 
+  AOI21_X0P5M_A12TS oc8051_sfr1_u259 ( .A0(wr_sfr[1]), .A1(oc8051_sfr1_n262), 
         .B0(oc8051_sfr1_n52), .Y(oc8051_sfr1_n260) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u257 ( .A(oc8051_sfr1_n260), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u258 ( .A(oc8051_sfr1_n260), .B(
         oc8051_sfr1_n261), .S0(comp_sel[1]), .Y(oc8051_sfr1_n259) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_u256 ( .A0(oc8051_sfr1_n257), .A1(
+  AOI21_X0P5M_A12TS oc8051_sfr1_u257 ( .A0(oc8051_sfr1_n257), .A1(
         oc8051_sfr1_n258), .B0(oc8051_sfr1_n259), .Y(oc8051_sfr1_n253) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_u255 ( .A0(wr_addr[1]), .A1(wr_addr[0]), .A2(
+  AOI31_X0P5M_A12TS oc8051_sfr1_u256 ( .A0(wr_addr[1]), .A1(wr_addr[0]), .A2(
         wr_addr[2]), .B0(oc8051_sfr1_wr_bit_r), .Y(oc8051_sfr1_n256) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u254 ( .A(n_5_net_), .B(oc8051_sfr1_n255), .C(
+  AND3_X0P5M_A12TS oc8051_sfr1_u255 ( .A(n_5_net_), .B(oc8051_sfr1_n255), .C(
         oc8051_sfr1_n256), .Y(oc8051_sfr1_n53) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_u253 ( .A(comp_sel[1]), .B(oc8051_sfr1_n53), 
+  NAND2_X0P5A_A12TS oc8051_sfr1_u254 ( .A(comp_sel[1]), .B(oc8051_sfr1_n53), 
         .Y(oc8051_sfr1_n254) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u252 ( .A(oc8051_sfr1_n253), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u253 ( .A(oc8051_sfr1_n253), .B(
         oc8051_sfr1_n254), .S0(comp_sel[0]), .Y(oc8051_sfr1_n252) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_u251 ( .A(oc8051_sfr1_n251), .B(
+  NOR2_X0P5A_A12TS oc8051_sfr1_u252 ( .A(oc8051_sfr1_n251), .B(
         oc8051_sfr1_n252), .Y(comp_wait) );
-  INV_X0P5B_A12TS oc8051_sfr1_u250 ( .A(rd_addr[7]), .Y(oc8051_sfr1_n38) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_u249 ( .A(rd_addr[3]), .B(oc8051_sfr1_n242), 
+  INV_X0P5B_A12TS oc8051_sfr1_u251 ( .A(rd_addr[7]), .Y(oc8051_sfr1_n38) );
+  NAND2_X0P5A_A12TS oc8051_sfr1_u250 ( .A(rd_addr[3]), .B(oc8051_sfr1_n242), 
         .Y(oc8051_sfr1_n234) );
-  INV_X0P5B_A12TS oc8051_sfr1_u248 ( .A(oc8051_sfr1_n234), .Y(oc8051_sfr1_n44)
+  INV_X0P5B_A12TS oc8051_sfr1_u249 ( .A(oc8051_sfr1_n234), .Y(oc8051_sfr1_n44)
          );
-  AND3_X0P5M_A12TS oc8051_sfr1_u247 ( .A(oc8051_sfr1_n239), .B(oc8051_sfr1_n44), .C(oc8051_sfr1_n232), .Y(oc8051_sfr1_n85) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_u246 ( .AN(oc8051_sfr1_n250), .B(
+  AND3_X0P5M_A12TS oc8051_sfr1_u248 ( .A(oc8051_sfr1_n239), .B(oc8051_sfr1_n44), .C(oc8051_sfr1_n232), .Y(oc8051_sfr1_n85) );
+  NOR2B_X0P5M_A12TS oc8051_sfr1_u247 ( .AN(oc8051_sfr1_n250), .B(
         oc8051_sfr1_n236), .Y(oc8051_sfr1_n84) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_u245 ( .A(oc8051_sfr1_n250), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_u246 ( .A(oc8051_sfr1_n250), .B(
         oc8051_sfr1_n236), .Y(oc8051_sfr1_n208) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_u244 ( .A(oc8051_sfr1_n233), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_u245 ( .A(oc8051_sfr1_n233), .B(
         oc8051_sfr1_n40), .Y(oc8051_sfr1_n218) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_u243 ( .A(rd_addr[5]), .B(oc8051_sfr1_n248), 
+  NAND2_X0P5A_A12TS oc8051_sfr1_u244 ( .A(rd_addr[5]), .B(oc8051_sfr1_n248), 
         .Y(oc8051_sfr1_n35) );
-  INV_X0P5B_A12TS oc8051_sfr1_u242 ( .A(oc8051_sfr1_n35), .Y(oc8051_sfr1_n64)
+  INV_X0P5B_A12TS oc8051_sfr1_u243 ( .A(oc8051_sfr1_n35), .Y(oc8051_sfr1_n64)
          );
-  NAND2_X0P5A_A12TS oc8051_sfr1_u241 ( .A(oc8051_sfr1_n246), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_u242 ( .A(oc8051_sfr1_n246), .B(
         oc8051_sfr1_n64), .Y(oc8051_sfr1_n220) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_u240 ( .A(oc8051_sfr1_n64), .B(oc8051_sfr1_n40), .C(oc8051_sfr1_n232), .Y(oc8051_sfr1_n222) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u239 ( .A(oc8051_sfr1_n208), .B(
+  NAND3_X0P5A_A12TS oc8051_sfr1_u241 ( .A(oc8051_sfr1_n64), .B(oc8051_sfr1_n40), .C(oc8051_sfr1_n232), .Y(oc8051_sfr1_n222) );
+  NAND4_X0P5A_A12TS oc8051_sfr1_u240 ( .A(oc8051_sfr1_n208), .B(
         oc8051_sfr1_n218), .C(oc8051_sfr1_n220), .D(oc8051_sfr1_n222), .Y(
         oc8051_sfr1_n243) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_u238 ( .A(oc8051_sfr1_n246), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_u239 ( .A(oc8051_sfr1_n246), .B(
         oc8051_sfr1_n239), .Y(oc8051_sfr1_n219) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_u237 ( .A(oc8051_sfr1_n221), .B(
+  NAND3_X0P5A_A12TS oc8051_sfr1_u238 ( .A(oc8051_sfr1_n221), .B(
         oc8051_sfr1_n223), .C(oc8051_sfr1_n219), .Y(oc8051_sfr1_n244) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_u236 ( .A(oc8051_sfr1_n247), .B(
+  NOR2_X0P5A_A12TS oc8051_sfr1_u237 ( .A(oc8051_sfr1_n247), .B(
         oc8051_sfr1_n236), .Y(oc8051_sfr1_n102) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u235 ( .A(oc8051_sfr1_n239), .B(oc8051_sfr1_n40), .C(oc8051_sfr1_n232), .Y(oc8051_sfr1_n100) );
-  AND2_X0P5M_A12TS oc8051_sfr1_u234 ( .A(oc8051_sfr1_n246), .B(oc8051_sfr1_n58), .Y(oc8051_sfr1_n101) );
-  OR3_X0P5M_A12TS oc8051_sfr1_u233 ( .A(oc8051_sfr1_n102), .B(oc8051_sfr1_n100), .C(oc8051_sfr1_n101), .Y(oc8051_sfr1_n245) );
-  OR6_X0P5M_A12TS oc8051_sfr1_u232 ( .A(oc8051_sfr1_n85), .B(oc8051_sfr1_n84), 
+  AND3_X0P5M_A12TS oc8051_sfr1_u236 ( .A(oc8051_sfr1_n239), .B(oc8051_sfr1_n40), .C(oc8051_sfr1_n232), .Y(oc8051_sfr1_n100) );
+  AND2_X0P5M_A12TS oc8051_sfr1_u235 ( .A(oc8051_sfr1_n246), .B(oc8051_sfr1_n58), .Y(oc8051_sfr1_n101) );
+  OR3_X0P5M_A12TS oc8051_sfr1_u234 ( .A(oc8051_sfr1_n102), .B(oc8051_sfr1_n100), .C(oc8051_sfr1_n101), .Y(oc8051_sfr1_n245) );
+  OR6_X0P5M_A12TS oc8051_sfr1_u233 ( .A(oc8051_sfr1_n85), .B(oc8051_sfr1_n84), 
         .C(oc8051_sfr1_n98), .D(oc8051_sfr1_n243), .E(oc8051_sfr1_n244), .F(
         oc8051_sfr1_n245), .Y(oc8051_sfr1_n228) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_u231 ( .A(oc8051_sfr1_n241), .B(rd_addr[0]), 
+  NAND2_X0P5A_A12TS oc8051_sfr1_u232 ( .A(oc8051_sfr1_n241), .B(rd_addr[0]), 
         .Y(oc8051_sfr1_n201) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_u230 ( .A(oc8051_sfr1_n239), .B(
+  NAND3_X0P5A_A12TS oc8051_sfr1_u231 ( .A(oc8051_sfr1_n239), .B(
         oc8051_sfr1_n40), .C(oc8051_sfr1_n235), .Y(oc8051_sfr1_n217) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_u229 ( .AN(rd_addr[3]), .B(oc8051_sfr1_n242), 
+  NOR2B_X0P5M_A12TS oc8051_sfr1_u230 ( .AN(rd_addr[3]), .B(oc8051_sfr1_n242), 
         .Y(oc8051_sfr1_n65) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_u228 ( .A(oc8051_sfr1_n239), .B(
+  NAND3_X0P5A_A12TS oc8051_sfr1_u229 ( .A(oc8051_sfr1_n239), .B(
         oc8051_sfr1_n65), .C(oc8051_sfr1_n232), .Y(oc8051_sfr1_n216) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_u227 ( .A(oc8051_sfr1_n233), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_u228 ( .A(oc8051_sfr1_n233), .B(
         oc8051_sfr1_n65), .Y(oc8051_sfr1_n215) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u226 ( .A(oc8051_sfr1_n201), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_u227 ( .A(oc8051_sfr1_n201), .B(
         oc8051_sfr1_n217), .C(oc8051_sfr1_n216), .D(oc8051_sfr1_n215), .Y(
         oc8051_sfr1_n238) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_u225 ( .A(oc8051_sfr1_n241), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_u226 ( .A(oc8051_sfr1_n241), .B(
         oc8051_sfr1_n236), .Y(oc8051_sfr1_n199) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_u224 ( .A(oc8051_sfr1_n240), .B(rd_addr[1]), 
+  NOR3_X0P5A_A12TS oc8051_sfr1_u225 ( .A(oc8051_sfr1_n240), .B(rd_addr[1]), 
         .C(oc8051_sfr1_n234), .Y(oc8051_sfr1_n237) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_u223 ( .A(oc8051_sfr1_n239), .B(
+  NAND3_X0P5A_A12TS oc8051_sfr1_u224 ( .A(oc8051_sfr1_n239), .B(
         oc8051_sfr1_n236), .C(oc8051_sfr1_n237), .Y(oc8051_sfr1_n209) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_u222 ( .AN(oc8051_sfr1_n238), .B(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_u223 ( .AN(oc8051_sfr1_n238), .B(
         oc8051_sfr1_n199), .C(oc8051_sfr1_n209), .D(oc8051_sfr1_n200), .Y(
         oc8051_sfr1_n229) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_u221 ( .A(oc8051_sfr1_n41), .B(
+  NAND3_X0P5A_A12TS oc8051_sfr1_u222 ( .A(oc8051_sfr1_n41), .B(
         oc8051_sfr1_n236), .C(oc8051_sfr1_n237), .Y(oc8051_sfr1_n205) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_u220 ( .A(oc8051_sfr1_n41), .B(oc8051_sfr1_n44), .C(oc8051_sfr1_n232), .Y(oc8051_sfr1_n207) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u219 ( .A(oc8051_sfr1_n64), .B(oc8051_sfr1_n39), 
+  NAND3_X0P5A_A12TS oc8051_sfr1_u221 ( .A(oc8051_sfr1_n41), .B(oc8051_sfr1_n44), .C(oc8051_sfr1_n232), .Y(oc8051_sfr1_n207) );
+  AND3_X0P5M_A12TS oc8051_sfr1_u220 ( .A(oc8051_sfr1_n64), .B(oc8051_sfr1_n39), 
         .C(oc8051_sfr1_n235), .Y(oc8051_sfr1_n81) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_u218 ( .AN(oc8051_sfr1_n233), .B(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_u219 ( .AN(oc8051_sfr1_n233), .B(
         oc8051_sfr1_n234), .Y(oc8051_sfr1_n90) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u217 ( .A(oc8051_sfr1_n64), .B(oc8051_sfr1_n44), 
+  AND3_X0P5M_A12TS oc8051_sfr1_u218 ( .A(oc8051_sfr1_n64), .B(oc8051_sfr1_n44), 
         .C(oc8051_sfr1_n232), .Y(oc8051_sfr1_n89) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_u216 ( .A(oc8051_sfr1_n81), .B(oc8051_sfr1_n90), 
+  NOR3_X0P5A_A12TS oc8051_sfr1_u217 ( .A(oc8051_sfr1_n81), .B(oc8051_sfr1_n90), 
         .C(oc8051_sfr1_n89), .Y(oc8051_sfr1_n231) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u215 ( .A(oc8051_sfr1_n206), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_u216 ( .A(oc8051_sfr1_n206), .B(
         oc8051_sfr1_n205), .C(oc8051_sfr1_n207), .D(oc8051_sfr1_n231), .Y(
         oc8051_sfr1_n230) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_u214 ( .A(oc8051_sfr1_n228), .B(
+  NOR3_X0P5A_A12TS oc8051_sfr1_u215 ( .A(oc8051_sfr1_n228), .B(
         oc8051_sfr1_n229), .C(oc8051_sfr1_n230), .Y(oc8051_sfr1_n226) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_u213 ( .A0(oc8051_sfr1_n38), .A1(
+  OAI31_X0P5M_A12TS oc8051_sfr1_u214 ( .A0(oc8051_sfr1_n38), .A1(
         oc8051_sfr1_n225), .A2(oc8051_sfr1_n226), .B0(oc8051_sfr1_n227), .Y(
         oc8051_sfr1_n224) );
-  INV_X0P5B_A12TS oc8051_sfr1_u212 ( .A(oc8051_sfr1_n224), .Y(oc8051_sfr1_n70)
+  INV_X0P5B_A12TS oc8051_sfr1_u213 ( .A(oc8051_sfr1_n224), .Y(oc8051_sfr1_n70)
          );
-  NOR2_X0P5A_A12TS oc8051_sfr1_u211 ( .A(oc8051_sfr1_n66), .B(oc8051_sfr1_n70), 
+  NOR2_X0P5A_A12TS oc8051_sfr1_u212 ( .A(oc8051_sfr1_n66), .B(oc8051_sfr1_n70), 
         .Y(oc8051_sfr1_n68) );
-  INV_X0P5B_A12TS oc8051_sfr1_u210 ( .A(oc8051_sfr1_n223), .Y(oc8051_sfr1_n106) );
-  INV_X0P5B_A12TS oc8051_sfr1_u209 ( .A(oc8051_sfr1_n222), .Y(oc8051_sfr1_n107) );
-  INV_X0P5B_A12TS oc8051_sfr1_u208 ( .A(oc8051_sfr1_n221), .Y(oc8051_sfr1_n108) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u207 ( .A0(acc[7]), .A1(oc8051_sfr1_n106), 
+  INV_X0P5B_A12TS oc8051_sfr1_u211 ( .A(oc8051_sfr1_n223), .Y(oc8051_sfr1_n106) );
+  INV_X0P5B_A12TS oc8051_sfr1_u210 ( .A(oc8051_sfr1_n222), .Y(oc8051_sfr1_n107) );
+  INV_X0P5B_A12TS oc8051_sfr1_u209 ( .A(oc8051_sfr1_n221), .Y(oc8051_sfr1_n108) );
+  AOI222_X0P5M_A12TS oc8051_sfr1_u208 ( .A0(acc[7]), .A1(oc8051_sfr1_n106), 
         .B0(oc8051_sfr1_p2_data_7_), .B1(oc8051_sfr1_n107), .C0(cy), .C1(
         oc8051_sfr1_n108), .Y(oc8051_sfr1_n210) );
-  INV_X0P5B_A12TS oc8051_sfr1_u206 ( .A(oc8051_sfr1_n220), .Y(oc8051_sfr1_n103) );
-  INV_X0P5B_A12TS oc8051_sfr1_u205 ( .A(oc8051_sfr1_n219), .Y(oc8051_sfr1_n104) );
-  INV_X0P5B_A12TS oc8051_sfr1_u204 ( .A(oc8051_sfr1_n218), .Y(oc8051_sfr1_n105) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u203 ( .A0(oc8051_sfr1_p3_data_7_), .A1(
+  INV_X0P5B_A12TS oc8051_sfr1_u207 ( .A(oc8051_sfr1_n220), .Y(oc8051_sfr1_n103) );
+  INV_X0P5B_A12TS oc8051_sfr1_u206 ( .A(oc8051_sfr1_n219), .Y(oc8051_sfr1_n104) );
+  INV_X0P5B_A12TS oc8051_sfr1_u205 ( .A(oc8051_sfr1_n218), .Y(oc8051_sfr1_n105) );
+  AOI222_X0P5M_A12TS oc8051_sfr1_u204 ( .A0(oc8051_sfr1_p3_data_7_), .A1(
         oc8051_sfr1_n103), .B0(oc8051_sfr1_p1_data_7_), .B1(oc8051_sfr1_n104), 
         .C0(sp[7]), .C1(oc8051_sfr1_n105), .Y(oc8051_sfr1_n211) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u202 ( .A0(oc8051_sfr1_p0_data_7_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u203 ( .A0(oc8051_sfr1_p0_data_7_), .A1(
         oc8051_sfr1_n100), .B0(oc8051_sfr1_b_reg_7_), .B1(oc8051_sfr1_n101), 
         .C0(dptr_hi[7]), .C1(oc8051_sfr1_n102), .Y(oc8051_sfr1_n212) );
-  INV_X0P5B_A12TS oc8051_sfr1_u201 ( .A(oc8051_sfr1_n217), .Y(oc8051_sfr1_n95)
+  INV_X0P5B_A12TS oc8051_sfr1_u202 ( .A(oc8051_sfr1_n217), .Y(oc8051_sfr1_n95)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_u200 ( .A(oc8051_sfr1_n216), .Y(oc8051_sfr1_n96)
+  INV_X0P5B_A12TS oc8051_sfr1_u201 ( .A(oc8051_sfr1_n216), .Y(oc8051_sfr1_n96)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_u199 ( .A(oc8051_sfr1_n215), .Y(oc8051_sfr1_n99)
+  INV_X0P5B_A12TS oc8051_sfr1_u200 ( .A(oc8051_sfr1_n215), .Y(oc8051_sfr1_n99)
          );
-  AO22_X0P5M_A12TS oc8051_sfr1_u198 ( .A0(dptr_lo[7]), .A1(oc8051_sfr1_n98), 
+  AO22_X0P5M_A12TS oc8051_sfr1_u199 ( .A0(dptr_lo[7]), .A1(oc8051_sfr1_n98), 
         .B0(oc8051_sfr1_sbuf[7]), .B1(oc8051_sfr1_n99), .Y(oc8051_sfr1_n214)
          );
-  AOI221_X0P5M_A12TS oc8051_sfr1_u197 ( .A0(oc8051_sfr1_pcon[7]), .A1(
+  AOI221_X0P5M_A12TS oc8051_sfr1_u198 ( .A0(oc8051_sfr1_pcon[7]), .A1(
         oc8051_sfr1_n95), .B0(oc8051_sfr1_scon_7_), .B1(oc8051_sfr1_n96), .C0(
         oc8051_sfr1_n214), .Y(oc8051_sfr1_n213) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u196 ( .A(oc8051_sfr1_n210), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_u197 ( .A(oc8051_sfr1_n210), .B(
         oc8051_sfr1_n211), .C(oc8051_sfr1_n212), .D(oc8051_sfr1_n213), .Y(
         oc8051_sfr1_n195) );
-  INV_X0P5B_A12TS oc8051_sfr1_u195 ( .A(oc8051_sfr1_n209), .Y(oc8051_sfr1_n88)
+  INV_X0P5B_A12TS oc8051_sfr1_u196 ( .A(oc8051_sfr1_n209), .Y(oc8051_sfr1_n88)
          );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u194 ( .A0(oc8051_sfr1_th0[7]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u195 ( .A0(oc8051_sfr1_th0[7]), .A1(
         oc8051_sfr1_n88), .B0(oc8051_sfr1_ie_7_), .B1(oc8051_sfr1_n89), .C0(
         oc8051_sfr1_tmod[7]), .C1(oc8051_sfr1_n90), .Y(oc8051_sfr1_n196) );
-  INV_X0P5B_A12TS oc8051_sfr1_u193 ( .A(oc8051_sfr1_n208), .Y(oc8051_sfr1_n86)
+  INV_X0P5B_A12TS oc8051_sfr1_u194 ( .A(oc8051_sfr1_n208), .Y(oc8051_sfr1_n86)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_u192 ( .A(oc8051_sfr1_n207), .Y(oc8051_sfr1_n87)
+  INV_X0P5B_A12TS oc8051_sfr1_u193 ( .A(oc8051_sfr1_n207), .Y(oc8051_sfr1_n87)
          );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u191 ( .A0(oc8051_sfr1_rcap2l[7]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u192 ( .A0(oc8051_sfr1_rcap2l[7]), .A1(
         oc8051_sfr1_n86), .B0(oc8051_sfr1_t2con_7_), .B1(oc8051_sfr1_n87), .Y(
         oc8051_sfr1_n202) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u190 ( .A0(oc8051_sfr1_rcap2h[7]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u191 ( .A0(oc8051_sfr1_rcap2h[7]), .A1(
         oc8051_sfr1_n84), .B0(oc8051_sfr1_tcon_7_), .B1(oc8051_sfr1_n85), .Y(
         oc8051_sfr1_n203) );
-  INV_X0P5B_A12TS oc8051_sfr1_u189 ( .A(oc8051_sfr1_n206), .Y(oc8051_sfr1_n82)
+  INV_X0P5B_A12TS oc8051_sfr1_u190 ( .A(oc8051_sfr1_n206), .Y(oc8051_sfr1_n82)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_u188 ( .A(oc8051_sfr1_n205), .Y(oc8051_sfr1_n83)
+  INV_X0P5B_A12TS oc8051_sfr1_u189 ( .A(oc8051_sfr1_n205), .Y(oc8051_sfr1_n83)
          );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u187 ( .A0(oc8051_sfr1_ip_7_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u188 ( .A0(oc8051_sfr1_ip_7_), .A1(
         oc8051_sfr1_n81), .B0(oc8051_sfr1_th2[7]), .B1(oc8051_sfr1_n82), .C0(
         oc8051_sfr1_tl2[7]), .C1(oc8051_sfr1_n83), .Y(oc8051_sfr1_n204) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u186 ( .A(oc8051_sfr1_n202), .B(
+  AND3_X0P5M_A12TS oc8051_sfr1_u187 ( .A(oc8051_sfr1_n202), .B(
         oc8051_sfr1_n203), .C(oc8051_sfr1_n204), .Y(oc8051_sfr1_n197) );
-  INV_X0P5B_A12TS oc8051_sfr1_u185 ( .A(oc8051_sfr1_n201), .Y(oc8051_sfr1_n75)
+  INV_X0P5B_A12TS oc8051_sfr1_u186 ( .A(oc8051_sfr1_n201), .Y(oc8051_sfr1_n75)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_u184 ( .A(oc8051_sfr1_n200), .Y(oc8051_sfr1_n76)
+  INV_X0P5B_A12TS oc8051_sfr1_u185 ( .A(oc8051_sfr1_n200), .Y(oc8051_sfr1_n76)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_u183 ( .A(oc8051_sfr1_n199), .Y(oc8051_sfr1_n77)
+  INV_X0P5B_A12TS oc8051_sfr1_u184 ( .A(oc8051_sfr1_n199), .Y(oc8051_sfr1_n77)
          );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u182 ( .A0(oc8051_sfr1_tl1[7]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u183 ( .A0(oc8051_sfr1_tl1[7]), .A1(
         oc8051_sfr1_n75), .B0(oc8051_sfr1_th1[7]), .B1(oc8051_sfr1_n76), .C0(
         oc8051_sfr1_tl0[7]), .C1(oc8051_sfr1_n77), .Y(oc8051_sfr1_n198) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_u181 ( .AN(oc8051_sfr1_n195), .B(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_u182 ( .AN(oc8051_sfr1_n195), .B(
         oc8051_sfr1_n196), .C(oc8051_sfr1_n197), .D(oc8051_sfr1_n198), .Y(
         oc8051_sfr1_n194) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u180 ( .A0(oc8051_sfr1_n68), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u181 ( .A0(oc8051_sfr1_n68), .A1(
         oc8051_sfr1_n194), .B0(sfr_out[7]), .B1(oc8051_sfr1_n70), .Y(
         oc8051_sfr1_n193) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_u179 ( .B0(des_acc[7]), .B1(oc8051_sfr1_n66), 
+  AO1B2_X0P5M_A12TS oc8051_sfr1_u180 ( .B0(des_acc[7]), .B1(oc8051_sfr1_n66), 
         .A0N(oc8051_sfr1_n193), .Y(oc8051_sfr1_n287) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u178 ( .A0(acc[6]), .A1(oc8051_sfr1_n106), 
+  AOI222_X0P5M_A12TS oc8051_sfr1_u179 ( .A0(acc[6]), .A1(oc8051_sfr1_n106), 
         .B0(oc8051_sfr1_p2_data_6_), .B1(oc8051_sfr1_n107), .C0(srcac), .C1(
         oc8051_sfr1_n108), .Y(oc8051_sfr1_n188) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u177 ( .A0(oc8051_sfr1_p3_data_6_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u178 ( .A0(oc8051_sfr1_p3_data_6_), .A1(
         oc8051_sfr1_n103), .B0(oc8051_sfr1_p1_data_6_), .B1(oc8051_sfr1_n104), 
         .C0(sp[6]), .C1(oc8051_sfr1_n105), .Y(oc8051_sfr1_n189) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u176 ( .A0(oc8051_sfr1_p0_data_6_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u177 ( .A0(oc8051_sfr1_p0_data_6_), .A1(
         oc8051_sfr1_n100), .B0(oc8051_sfr1_b_reg_6_), .B1(oc8051_sfr1_n101), 
         .C0(dptr_hi[6]), .C1(oc8051_sfr1_n102), .Y(oc8051_sfr1_n190) );
-  AO22_X0P5M_A12TS oc8051_sfr1_u175 ( .A0(dptr_lo[6]), .A1(oc8051_sfr1_n98), 
+  AO22_X0P5M_A12TS oc8051_sfr1_u176 ( .A0(dptr_lo[6]), .A1(oc8051_sfr1_n98), 
         .B0(oc8051_sfr1_sbuf[6]), .B1(oc8051_sfr1_n99), .Y(oc8051_sfr1_n192)
          );
-  AOI221_X0P5M_A12TS oc8051_sfr1_u174 ( .A0(oc8051_sfr1_pcon[6]), .A1(
+  AOI221_X0P5M_A12TS oc8051_sfr1_u175 ( .A0(oc8051_sfr1_pcon[6]), .A1(
         oc8051_sfr1_n95), .B0(oc8051_sfr1_scon_6_), .B1(oc8051_sfr1_n96), .C0(
         oc8051_sfr1_n192), .Y(oc8051_sfr1_n191) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u173 ( .A(oc8051_sfr1_n188), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_u174 ( .A(oc8051_sfr1_n188), .B(
         oc8051_sfr1_n189), .C(oc8051_sfr1_n190), .D(oc8051_sfr1_n191), .Y(
         oc8051_sfr1_n181) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u172 ( .A0(oc8051_sfr1_th0[6]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u173 ( .A0(oc8051_sfr1_th0[6]), .A1(
         oc8051_sfr1_n88), .B0(oc8051_sfr1_ie_6_), .B1(oc8051_sfr1_n89), .C0(
         oc8051_sfr1_tmod[6]), .C1(oc8051_sfr1_n90), .Y(oc8051_sfr1_n182) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u171 ( .A0(oc8051_sfr1_rcap2l[6]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u172 ( .A0(oc8051_sfr1_rcap2l[6]), .A1(
         oc8051_sfr1_n86), .B0(oc8051_sfr1_t2con_6_), .B1(oc8051_sfr1_n87), .Y(
         oc8051_sfr1_n185) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u170 ( .A0(oc8051_sfr1_rcap2h[6]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u171 ( .A0(oc8051_sfr1_rcap2h[6]), .A1(
         oc8051_sfr1_n84), .B0(oc8051_sfr1_tr1), .B1(oc8051_sfr1_n85), .Y(
         oc8051_sfr1_n186) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u169 ( .A0(oc8051_sfr1_ip_6_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u170 ( .A0(oc8051_sfr1_ip_6_), .A1(
         oc8051_sfr1_n81), .B0(oc8051_sfr1_th2[6]), .B1(oc8051_sfr1_n82), .C0(
         oc8051_sfr1_tl2[6]), .C1(oc8051_sfr1_n83), .Y(oc8051_sfr1_n187) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u168 ( .A(oc8051_sfr1_n185), .B(
+  AND3_X0P5M_A12TS oc8051_sfr1_u169 ( .A(oc8051_sfr1_n185), .B(
         oc8051_sfr1_n186), .C(oc8051_sfr1_n187), .Y(oc8051_sfr1_n183) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u167 ( .A0(oc8051_sfr1_tl1[6]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u168 ( .A0(oc8051_sfr1_tl1[6]), .A1(
         oc8051_sfr1_n75), .B0(oc8051_sfr1_th1[6]), .B1(oc8051_sfr1_n76), .C0(
         oc8051_sfr1_tl0[6]), .C1(oc8051_sfr1_n77), .Y(oc8051_sfr1_n184) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_u166 ( .AN(oc8051_sfr1_n181), .B(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_u167 ( .AN(oc8051_sfr1_n181), .B(
         oc8051_sfr1_n182), .C(oc8051_sfr1_n183), .D(oc8051_sfr1_n184), .Y(
         oc8051_sfr1_n180) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u165 ( .A0(oc8051_sfr1_n68), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u166 ( .A0(oc8051_sfr1_n68), .A1(
         oc8051_sfr1_n180), .B0(sfr_out[6]), .B1(oc8051_sfr1_n70), .Y(
         oc8051_sfr1_n179) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_u164 ( .B0(des_acc[6]), .B1(oc8051_sfr1_n66), 
+  AO1B2_X0P5M_A12TS oc8051_sfr1_u165 ( .B0(des_acc[6]), .B1(oc8051_sfr1_n66), 
         .A0N(oc8051_sfr1_n179), .Y(oc8051_sfr1_n288) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u163 ( .A0(acc[5]), .A1(oc8051_sfr1_n106), 
+  AOI222_X0P5M_A12TS oc8051_sfr1_u164 ( .A0(acc[5]), .A1(oc8051_sfr1_n106), 
         .B0(oc8051_sfr1_p2_data_5_), .B1(oc8051_sfr1_n107), .C0(
         oc8051_sfr1_psw_5_), .C1(oc8051_sfr1_n108), .Y(oc8051_sfr1_n174) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u162 ( .A0(oc8051_sfr1_p3_data_5_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u163 ( .A0(oc8051_sfr1_p3_data_5_), .A1(
         oc8051_sfr1_n103), .B0(oc8051_sfr1_p1_data_5_), .B1(oc8051_sfr1_n104), 
         .C0(sp[5]), .C1(oc8051_sfr1_n105), .Y(oc8051_sfr1_n175) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u161 ( .A0(oc8051_sfr1_p0_data_5_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u162 ( .A0(oc8051_sfr1_p0_data_5_), .A1(
         oc8051_sfr1_n100), .B0(oc8051_sfr1_b_reg_5_), .B1(oc8051_sfr1_n101), 
         .C0(dptr_hi[5]), .C1(oc8051_sfr1_n102), .Y(oc8051_sfr1_n176) );
-  AO22_X0P5M_A12TS oc8051_sfr1_u160 ( .A0(dptr_lo[5]), .A1(oc8051_sfr1_n98), 
+  AO22_X0P5M_A12TS oc8051_sfr1_u161 ( .A0(dptr_lo[5]), .A1(oc8051_sfr1_n98), 
         .B0(oc8051_sfr1_sbuf[5]), .B1(oc8051_sfr1_n99), .Y(oc8051_sfr1_n178)
          );
-  AOI221_X0P5M_A12TS oc8051_sfr1_u159 ( .A0(oc8051_sfr1_pcon[5]), .A1(
+  AOI221_X0P5M_A12TS oc8051_sfr1_u160 ( .A0(oc8051_sfr1_pcon[5]), .A1(
         oc8051_sfr1_n95), .B0(oc8051_sfr1_scon_5_), .B1(oc8051_sfr1_n96), .C0(
         oc8051_sfr1_n178), .Y(oc8051_sfr1_n177) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u158 ( .A(oc8051_sfr1_n174), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_u159 ( .A(oc8051_sfr1_n174), .B(
         oc8051_sfr1_n175), .C(oc8051_sfr1_n176), .D(oc8051_sfr1_n177), .Y(
         oc8051_sfr1_n167) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u157 ( .A0(oc8051_sfr1_th0[5]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u158 ( .A0(oc8051_sfr1_th0[5]), .A1(
         oc8051_sfr1_n88), .B0(oc8051_sfr1_ie_5_), .B1(oc8051_sfr1_n89), .C0(
         oc8051_sfr1_tmod[5]), .C1(oc8051_sfr1_n90), .Y(oc8051_sfr1_n168) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u156 ( .A0(oc8051_sfr1_rcap2l[5]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u157 ( .A0(oc8051_sfr1_rcap2l[5]), .A1(
         oc8051_sfr1_n86), .B0(oc8051_sfr1_rclk), .B1(oc8051_sfr1_n87), .Y(
         oc8051_sfr1_n171) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u155 ( .A0(oc8051_sfr1_rcap2h[5]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u156 ( .A0(oc8051_sfr1_rcap2h[5]), .A1(
         oc8051_sfr1_n84), .B0(oc8051_sfr1_tcon_5_), .B1(oc8051_sfr1_n85), .Y(
         oc8051_sfr1_n172) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u154 ( .A0(oc8051_sfr1_ip_5_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u155 ( .A0(oc8051_sfr1_ip_5_), .A1(
         oc8051_sfr1_n81), .B0(oc8051_sfr1_th2[5]), .B1(oc8051_sfr1_n82), .C0(
         oc8051_sfr1_tl2[5]), .C1(oc8051_sfr1_n83), .Y(oc8051_sfr1_n173) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u153 ( .A(oc8051_sfr1_n171), .B(
+  AND3_X0P5M_A12TS oc8051_sfr1_u154 ( .A(oc8051_sfr1_n171), .B(
         oc8051_sfr1_n172), .C(oc8051_sfr1_n173), .Y(oc8051_sfr1_n169) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u152 ( .A0(oc8051_sfr1_tl1[5]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u153 ( .A0(oc8051_sfr1_tl1[5]), .A1(
         oc8051_sfr1_n75), .B0(oc8051_sfr1_th1[5]), .B1(oc8051_sfr1_n76), .C0(
         oc8051_sfr1_tl0[5]), .C1(oc8051_sfr1_n77), .Y(oc8051_sfr1_n170) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_u151 ( .AN(oc8051_sfr1_n167), .B(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_u152 ( .AN(oc8051_sfr1_n167), .B(
         oc8051_sfr1_n168), .C(oc8051_sfr1_n169), .D(oc8051_sfr1_n170), .Y(
         oc8051_sfr1_n166) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u150 ( .A0(oc8051_sfr1_n68), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u151 ( .A0(oc8051_sfr1_n68), .A1(
         oc8051_sfr1_n166), .B0(sfr_out[5]), .B1(oc8051_sfr1_n70), .Y(
         oc8051_sfr1_n165) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_u149 ( .B0(des_acc[5]), .B1(oc8051_sfr1_n66), 
+  AO1B2_X0P5M_A12TS oc8051_sfr1_u150 ( .B0(des_acc[5]), .B1(oc8051_sfr1_n66), 
         .A0N(oc8051_sfr1_n165), .Y(oc8051_sfr1_n289) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u148 ( .A0(acc[4]), .A1(oc8051_sfr1_n106), 
+  AOI222_X0P5M_A12TS oc8051_sfr1_u149 ( .A0(acc[4]), .A1(oc8051_sfr1_n106), 
         .B0(oc8051_sfr1_p2_data_4_), .B1(oc8051_sfr1_n107), .C0(
         oc8051_sfr1_psw_4_), .C1(oc8051_sfr1_n108), .Y(oc8051_sfr1_n160) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u147 ( .A0(oc8051_sfr1_p3_data_4_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u148 ( .A0(oc8051_sfr1_p3_data_4_), .A1(
         oc8051_sfr1_n103), .B0(oc8051_sfr1_p1_data_4_), .B1(oc8051_sfr1_n104), 
         .C0(sp[4]), .C1(oc8051_sfr1_n105), .Y(oc8051_sfr1_n161) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u146 ( .A0(oc8051_sfr1_p0_data_4_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u147 ( .A0(oc8051_sfr1_p0_data_4_), .A1(
         oc8051_sfr1_n100), .B0(oc8051_sfr1_b_reg_4_), .B1(oc8051_sfr1_n101), 
         .C0(dptr_hi[4]), .C1(oc8051_sfr1_n102), .Y(oc8051_sfr1_n162) );
-  AO22_X0P5M_A12TS oc8051_sfr1_u145 ( .A0(dptr_lo[4]), .A1(oc8051_sfr1_n98), 
+  AO22_X0P5M_A12TS oc8051_sfr1_u146 ( .A0(dptr_lo[4]), .A1(oc8051_sfr1_n98), 
         .B0(oc8051_sfr1_sbuf[4]), .B1(oc8051_sfr1_n99), .Y(oc8051_sfr1_n164)
          );
-  AOI221_X0P5M_A12TS oc8051_sfr1_u144 ( .A0(oc8051_sfr1_pcon[4]), .A1(
+  AOI221_X0P5M_A12TS oc8051_sfr1_u145 ( .A0(oc8051_sfr1_pcon[4]), .A1(
         oc8051_sfr1_n95), .B0(oc8051_sfr1_scon_4_), .B1(oc8051_sfr1_n96), .C0(
         oc8051_sfr1_n164), .Y(oc8051_sfr1_n163) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u143 ( .A(oc8051_sfr1_n160), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_u144 ( .A(oc8051_sfr1_n160), .B(
         oc8051_sfr1_n161), .C(oc8051_sfr1_n162), .D(oc8051_sfr1_n163), .Y(
         oc8051_sfr1_n153) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u142 ( .A0(oc8051_sfr1_th0[4]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u143 ( .A0(oc8051_sfr1_th0[4]), .A1(
         oc8051_sfr1_n88), .B0(oc8051_sfr1_ie_4_), .B1(oc8051_sfr1_n89), .C0(
         oc8051_sfr1_tmod[4]), .C1(oc8051_sfr1_n90), .Y(oc8051_sfr1_n154) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u141 ( .A0(oc8051_sfr1_rcap2l[4]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u142 ( .A0(oc8051_sfr1_rcap2l[4]), .A1(
         oc8051_sfr1_n86), .B0(oc8051_sfr1_tclk), .B1(oc8051_sfr1_n87), .Y(
         oc8051_sfr1_n157) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u140 ( .A0(oc8051_sfr1_rcap2h[4]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u141 ( .A0(oc8051_sfr1_rcap2h[4]), .A1(
         oc8051_sfr1_n84), .B0(oc8051_sfr1_tr0), .B1(oc8051_sfr1_n85), .Y(
         oc8051_sfr1_n158) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u139 ( .A0(oc8051_sfr1_ip_4_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u140 ( .A0(oc8051_sfr1_ip_4_), .A1(
         oc8051_sfr1_n81), .B0(oc8051_sfr1_th2[4]), .B1(oc8051_sfr1_n82), .C0(
         oc8051_sfr1_tl2[4]), .C1(oc8051_sfr1_n83), .Y(oc8051_sfr1_n159) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u138 ( .A(oc8051_sfr1_n157), .B(
+  AND3_X0P5M_A12TS oc8051_sfr1_u139 ( .A(oc8051_sfr1_n157), .B(
         oc8051_sfr1_n158), .C(oc8051_sfr1_n159), .Y(oc8051_sfr1_n155) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u137 ( .A0(oc8051_sfr1_tl1[4]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u138 ( .A0(oc8051_sfr1_tl1[4]), .A1(
         oc8051_sfr1_n75), .B0(oc8051_sfr1_th1[4]), .B1(oc8051_sfr1_n76), .C0(
         oc8051_sfr1_tl0[4]), .C1(oc8051_sfr1_n77), .Y(oc8051_sfr1_n156) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_u136 ( .AN(oc8051_sfr1_n153), .B(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_u137 ( .AN(oc8051_sfr1_n153), .B(
         oc8051_sfr1_n154), .C(oc8051_sfr1_n155), .D(oc8051_sfr1_n156), .Y(
         oc8051_sfr1_n152) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u135 ( .A0(oc8051_sfr1_n68), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u136 ( .A0(oc8051_sfr1_n68), .A1(
         oc8051_sfr1_n152), .B0(sfr_out[4]), .B1(oc8051_sfr1_n70), .Y(
         oc8051_sfr1_n151) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_u134 ( .B0(des_acc[4]), .B1(oc8051_sfr1_n66), 
+  AO1B2_X0P5M_A12TS oc8051_sfr1_u135 ( .B0(des_acc[4]), .B1(oc8051_sfr1_n66), 
         .A0N(oc8051_sfr1_n151), .Y(oc8051_sfr1_n290) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u133 ( .A0(acc[3]), .A1(oc8051_sfr1_n106), 
+  AOI222_X0P5M_A12TS oc8051_sfr1_u134 ( .A0(acc[3]), .A1(oc8051_sfr1_n106), 
         .B0(oc8051_sfr1_p2_data_3_), .B1(oc8051_sfr1_n107), .C0(
         oc8051_sfr1_psw_3_), .C1(oc8051_sfr1_n108), .Y(oc8051_sfr1_n146) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u132 ( .A0(oc8051_sfr1_p3_data_3_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u133 ( .A0(oc8051_sfr1_p3_data_3_), .A1(
         oc8051_sfr1_n103), .B0(oc8051_sfr1_p1_data_3_), .B1(oc8051_sfr1_n104), 
         .C0(sp[3]), .C1(oc8051_sfr1_n105), .Y(oc8051_sfr1_n147) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u131 ( .A0(oc8051_sfr1_p0_data_3_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u132 ( .A0(oc8051_sfr1_p0_data_3_), .A1(
         oc8051_sfr1_n100), .B0(oc8051_sfr1_b_reg_3_), .B1(oc8051_sfr1_n101), 
         .C0(dptr_hi[3]), .C1(oc8051_sfr1_n102), .Y(oc8051_sfr1_n148) );
-  AO22_X0P5M_A12TS oc8051_sfr1_u130 ( .A0(dptr_lo[3]), .A1(oc8051_sfr1_n98), 
+  AO22_X0P5M_A12TS oc8051_sfr1_u131 ( .A0(dptr_lo[3]), .A1(oc8051_sfr1_n98), 
         .B0(oc8051_sfr1_sbuf[3]), .B1(oc8051_sfr1_n99), .Y(oc8051_sfr1_n150)
          );
-  AOI221_X0P5M_A12TS oc8051_sfr1_u129 ( .A0(oc8051_sfr1_pcon[3]), .A1(
+  AOI221_X0P5M_A12TS oc8051_sfr1_u130 ( .A0(oc8051_sfr1_pcon[3]), .A1(
         oc8051_sfr1_n95), .B0(oc8051_sfr1_scon_3_), .B1(oc8051_sfr1_n96), .C0(
         oc8051_sfr1_n150), .Y(oc8051_sfr1_n149) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u128 ( .A(oc8051_sfr1_n146), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_u129 ( .A(oc8051_sfr1_n146), .B(
         oc8051_sfr1_n147), .C(oc8051_sfr1_n148), .D(oc8051_sfr1_n149), .Y(
         oc8051_sfr1_n139) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u127 ( .A0(oc8051_sfr1_th0[3]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u128 ( .A0(oc8051_sfr1_th0[3]), .A1(
         oc8051_sfr1_n88), .B0(oc8051_sfr1_ie_3_), .B1(oc8051_sfr1_n89), .C0(
         oc8051_sfr1_tmod[3]), .C1(oc8051_sfr1_n90), .Y(oc8051_sfr1_n140) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u126 ( .A0(oc8051_sfr1_rcap2l[3]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u127 ( .A0(oc8051_sfr1_rcap2l[3]), .A1(
         oc8051_sfr1_n86), .B0(oc8051_sfr1_t2con_3_), .B1(oc8051_sfr1_n87), .Y(
         oc8051_sfr1_n143) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u125 ( .A0(oc8051_sfr1_rcap2h[3]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u126 ( .A0(oc8051_sfr1_rcap2h[3]), .A1(
         oc8051_sfr1_n84), .B0(oc8051_sfr1_tcon_3_), .B1(oc8051_sfr1_n85), .Y(
         oc8051_sfr1_n144) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u124 ( .A0(oc8051_sfr1_ip_3_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u125 ( .A0(oc8051_sfr1_ip_3_), .A1(
         oc8051_sfr1_n81), .B0(oc8051_sfr1_th2[3]), .B1(oc8051_sfr1_n82), .C0(
         oc8051_sfr1_tl2[3]), .C1(oc8051_sfr1_n83), .Y(oc8051_sfr1_n145) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u123 ( .A(oc8051_sfr1_n143), .B(
+  AND3_X0P5M_A12TS oc8051_sfr1_u124 ( .A(oc8051_sfr1_n143), .B(
         oc8051_sfr1_n144), .C(oc8051_sfr1_n145), .Y(oc8051_sfr1_n141) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u122 ( .A0(oc8051_sfr1_tl1[3]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u123 ( .A0(oc8051_sfr1_tl1[3]), .A1(
         oc8051_sfr1_n75), .B0(oc8051_sfr1_th1[3]), .B1(oc8051_sfr1_n76), .C0(
         oc8051_sfr1_tl0[3]), .C1(oc8051_sfr1_n77), .Y(oc8051_sfr1_n142) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_u121 ( .AN(oc8051_sfr1_n139), .B(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_u122 ( .AN(oc8051_sfr1_n139), .B(
         oc8051_sfr1_n140), .C(oc8051_sfr1_n141), .D(oc8051_sfr1_n142), .Y(
         oc8051_sfr1_n138) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u120 ( .A0(oc8051_sfr1_n68), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u121 ( .A0(oc8051_sfr1_n68), .A1(
         oc8051_sfr1_n138), .B0(sfr_out[3]), .B1(oc8051_sfr1_n70), .Y(
         oc8051_sfr1_n137) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_u119 ( .B0(des_acc[3]), .B1(oc8051_sfr1_n66), 
+  AO1B2_X0P5M_A12TS oc8051_sfr1_u120 ( .B0(des_acc[3]), .B1(oc8051_sfr1_n66), 
         .A0N(oc8051_sfr1_n137), .Y(oc8051_sfr1_n291) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u118 ( .A0(acc[2]), .A1(oc8051_sfr1_n106), 
+  AOI222_X0P5M_A12TS oc8051_sfr1_u119 ( .A0(acc[2]), .A1(oc8051_sfr1_n106), 
         .B0(oc8051_sfr1_p2_data_2_), .B1(oc8051_sfr1_n107), .C0(
         oc8051_sfr1_psw_2_), .C1(oc8051_sfr1_n108), .Y(oc8051_sfr1_n132) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u117 ( .A0(oc8051_sfr1_p3_data_2_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u118 ( .A0(oc8051_sfr1_p3_data_2_), .A1(
         oc8051_sfr1_n103), .B0(oc8051_sfr1_p1_data_2_), .B1(oc8051_sfr1_n104), 
         .C0(sp[2]), .C1(oc8051_sfr1_n105), .Y(oc8051_sfr1_n133) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u116 ( .A0(oc8051_sfr1_p0_data_2_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u117 ( .A0(oc8051_sfr1_p0_data_2_), .A1(
         oc8051_sfr1_n100), .B0(oc8051_sfr1_b_reg_2_), .B1(oc8051_sfr1_n101), 
         .C0(dptr_hi[2]), .C1(oc8051_sfr1_n102), .Y(oc8051_sfr1_n134) );
-  AO22_X0P5M_A12TS oc8051_sfr1_u115 ( .A0(dptr_lo[2]), .A1(oc8051_sfr1_n98), 
+  AO22_X0P5M_A12TS oc8051_sfr1_u116 ( .A0(dptr_lo[2]), .A1(oc8051_sfr1_n98), 
         .B0(oc8051_sfr1_sbuf[2]), .B1(oc8051_sfr1_n99), .Y(oc8051_sfr1_n136)
          );
-  AOI221_X0P5M_A12TS oc8051_sfr1_u114 ( .A0(oc8051_sfr1_pcon[2]), .A1(
+  AOI221_X0P5M_A12TS oc8051_sfr1_u115 ( .A0(oc8051_sfr1_pcon[2]), .A1(
         oc8051_sfr1_n95), .B0(oc8051_sfr1_scon_2_), .B1(oc8051_sfr1_n96), .C0(
         oc8051_sfr1_n136), .Y(oc8051_sfr1_n135) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u113 ( .A(oc8051_sfr1_n132), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_u114 ( .A(oc8051_sfr1_n132), .B(
         oc8051_sfr1_n133), .C(oc8051_sfr1_n134), .D(oc8051_sfr1_n135), .Y(
         oc8051_sfr1_n125) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u112 ( .A0(oc8051_sfr1_th0[2]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u113 ( .A0(oc8051_sfr1_th0[2]), .A1(
         oc8051_sfr1_n88), .B0(oc8051_sfr1_ie_2_), .B1(oc8051_sfr1_n89), .C0(
         oc8051_sfr1_tmod[2]), .C1(oc8051_sfr1_n90), .Y(oc8051_sfr1_n126) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u111 ( .A0(oc8051_sfr1_rcap2l[2]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u112 ( .A0(oc8051_sfr1_rcap2l[2]), .A1(
         oc8051_sfr1_n86), .B0(oc8051_sfr1_t2con_2_), .B1(oc8051_sfr1_n87), .Y(
         oc8051_sfr1_n129) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u110 ( .A0(oc8051_sfr1_rcap2h[2]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u111 ( .A0(oc8051_sfr1_rcap2h[2]), .A1(
         oc8051_sfr1_n84), .B0(oc8051_sfr1_tcon_2_), .B1(oc8051_sfr1_n85), .Y(
         oc8051_sfr1_n130) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u109 ( .A0(oc8051_sfr1_ip_2_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u110 ( .A0(oc8051_sfr1_ip_2_), .A1(
         oc8051_sfr1_n81), .B0(oc8051_sfr1_th2[2]), .B1(oc8051_sfr1_n82), .C0(
         oc8051_sfr1_tl2[2]), .C1(oc8051_sfr1_n83), .Y(oc8051_sfr1_n131) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u108 ( .A(oc8051_sfr1_n129), .B(
+  AND3_X0P5M_A12TS oc8051_sfr1_u109 ( .A(oc8051_sfr1_n129), .B(
         oc8051_sfr1_n130), .C(oc8051_sfr1_n131), .Y(oc8051_sfr1_n127) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u107 ( .A0(oc8051_sfr1_tl1[2]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u108 ( .A0(oc8051_sfr1_tl1[2]), .A1(
         oc8051_sfr1_n75), .B0(oc8051_sfr1_th1[2]), .B1(oc8051_sfr1_n76), .C0(
         oc8051_sfr1_tl0[2]), .C1(oc8051_sfr1_n77), .Y(oc8051_sfr1_n128) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_u106 ( .AN(oc8051_sfr1_n125), .B(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_u107 ( .AN(oc8051_sfr1_n125), .B(
         oc8051_sfr1_n126), .C(oc8051_sfr1_n127), .D(oc8051_sfr1_n128), .Y(
         oc8051_sfr1_n124) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u105 ( .A0(oc8051_sfr1_n68), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u106 ( .A0(oc8051_sfr1_n68), .A1(
         oc8051_sfr1_n124), .B0(sfr_out[2]), .B1(oc8051_sfr1_n70), .Y(
         oc8051_sfr1_n123) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_u104 ( .B0(des_acc[2]), .B1(oc8051_sfr1_n66), 
+  AO1B2_X0P5M_A12TS oc8051_sfr1_u105 ( .B0(des_acc[2]), .B1(oc8051_sfr1_n66), 
         .A0N(oc8051_sfr1_n123), .Y(oc8051_sfr1_n292) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u103 ( .A0(acc[1]), .A1(oc8051_sfr1_n106), 
+  AOI222_X0P5M_A12TS oc8051_sfr1_u104 ( .A0(acc[1]), .A1(oc8051_sfr1_n106), 
         .B0(oc8051_sfr1_p2_data_1_), .B1(oc8051_sfr1_n107), .C0(
         oc8051_sfr1_psw_1_), .C1(oc8051_sfr1_n108), .Y(oc8051_sfr1_n118) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u102 ( .A0(oc8051_sfr1_p3_data_1_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u103 ( .A0(oc8051_sfr1_p3_data_1_), .A1(
         oc8051_sfr1_n103), .B0(oc8051_sfr1_p1_data_1_), .B1(oc8051_sfr1_n104), 
         .C0(sp[1]), .C1(oc8051_sfr1_n105), .Y(oc8051_sfr1_n119) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u101 ( .A0(oc8051_sfr1_p0_data_1_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u102 ( .A0(oc8051_sfr1_p0_data_1_), .A1(
         oc8051_sfr1_n100), .B0(oc8051_sfr1_b_reg_1_), .B1(oc8051_sfr1_n101), 
         .C0(dptr_hi[1]), .C1(oc8051_sfr1_n102), .Y(oc8051_sfr1_n120) );
-  AO22_X0P5M_A12TS oc8051_sfr1_u100 ( .A0(dptr_lo[1]), .A1(oc8051_sfr1_n98), 
+  AO22_X0P5M_A12TS oc8051_sfr1_u101 ( .A0(dptr_lo[1]), .A1(oc8051_sfr1_n98), 
         .B0(oc8051_sfr1_sbuf[1]), .B1(oc8051_sfr1_n99), .Y(oc8051_sfr1_n122)
          );
-  AOI221_X0P5M_A12TS oc8051_sfr1_u99 ( .A0(oc8051_sfr1_pcon[1]), .A1(
+  AOI221_X0P5M_A12TS oc8051_sfr1_u100 ( .A0(oc8051_sfr1_pcon[1]), .A1(
         oc8051_sfr1_n95), .B0(oc8051_sfr1_scon_1_), .B1(oc8051_sfr1_n96), .C0(
         oc8051_sfr1_n122), .Y(oc8051_sfr1_n121) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u98 ( .A(oc8051_sfr1_n118), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_u99 ( .A(oc8051_sfr1_n118), .B(
         oc8051_sfr1_n119), .C(oc8051_sfr1_n120), .D(oc8051_sfr1_n121), .Y(
         oc8051_sfr1_n111) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u97 ( .A0(oc8051_sfr1_th0[1]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u98 ( .A0(oc8051_sfr1_th0[1]), .A1(
         oc8051_sfr1_n88), .B0(oc8051_sfr1_ie_1_), .B1(oc8051_sfr1_n89), .C0(
         oc8051_sfr1_tmod[1]), .C1(oc8051_sfr1_n90), .Y(oc8051_sfr1_n112) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u96 ( .A0(oc8051_sfr1_rcap2l[1]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u97 ( .A0(oc8051_sfr1_rcap2l[1]), .A1(
         oc8051_sfr1_n86), .B0(oc8051_sfr1_t2con_1_), .B1(oc8051_sfr1_n87), .Y(
         oc8051_sfr1_n115) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u95 ( .A0(oc8051_sfr1_rcap2h[1]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u96 ( .A0(oc8051_sfr1_rcap2h[1]), .A1(
         oc8051_sfr1_n84), .B0(oc8051_sfr1_tcon_1_), .B1(oc8051_sfr1_n85), .Y(
         oc8051_sfr1_n116) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u94 ( .A0(oc8051_sfr1_ip_1_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u95 ( .A0(oc8051_sfr1_ip_1_), .A1(
         oc8051_sfr1_n81), .B0(oc8051_sfr1_th2[1]), .B1(oc8051_sfr1_n82), .C0(
         oc8051_sfr1_tl2[1]), .C1(oc8051_sfr1_n83), .Y(oc8051_sfr1_n117) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u93 ( .A(oc8051_sfr1_n115), .B(oc8051_sfr1_n116), .C(oc8051_sfr1_n117), .Y(oc8051_sfr1_n113) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u92 ( .A0(oc8051_sfr1_tl1[1]), .A1(
+  AND3_X0P5M_A12TS oc8051_sfr1_u94 ( .A(oc8051_sfr1_n115), .B(oc8051_sfr1_n116), .C(oc8051_sfr1_n117), .Y(oc8051_sfr1_n113) );
+  AOI222_X0P5M_A12TS oc8051_sfr1_u93 ( .A0(oc8051_sfr1_tl1[1]), .A1(
         oc8051_sfr1_n75), .B0(oc8051_sfr1_th1[1]), .B1(oc8051_sfr1_n76), .C0(
         oc8051_sfr1_tl0[1]), .C1(oc8051_sfr1_n77), .Y(oc8051_sfr1_n114) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_u91 ( .AN(oc8051_sfr1_n111), .B(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_u92 ( .AN(oc8051_sfr1_n111), .B(
         oc8051_sfr1_n112), .C(oc8051_sfr1_n113), .D(oc8051_sfr1_n114), .Y(
         oc8051_sfr1_n110) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u90 ( .A0(oc8051_sfr1_n68), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u91 ( .A0(oc8051_sfr1_n68), .A1(
         oc8051_sfr1_n110), .B0(sfr_out[1]), .B1(oc8051_sfr1_n70), .Y(
         oc8051_sfr1_n109) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_u89 ( .B0(des_acc[1]), .B1(oc8051_sfr1_n66), 
+  AO1B2_X0P5M_A12TS oc8051_sfr1_u90 ( .B0(des_acc[1]), .B1(oc8051_sfr1_n66), 
         .A0N(oc8051_sfr1_n109), .Y(oc8051_sfr1_n293) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u88 ( .A0(acc[0]), .A1(oc8051_sfr1_n106), 
+  AOI222_X0P5M_A12TS oc8051_sfr1_u89 ( .A0(acc[0]), .A1(oc8051_sfr1_n106), 
         .B0(oc8051_sfr1_p2_data_0_), .B1(oc8051_sfr1_n107), .C0(
         oc8051_sfr1_psw_0_), .C1(oc8051_sfr1_n108), .Y(oc8051_sfr1_n91) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u87 ( .A0(oc8051_sfr1_p3_data_0_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u88 ( .A0(oc8051_sfr1_p3_data_0_), .A1(
         oc8051_sfr1_n103), .B0(oc8051_sfr1_p1_data_0_), .B1(oc8051_sfr1_n104), 
         .C0(sp[0]), .C1(oc8051_sfr1_n105), .Y(oc8051_sfr1_n92) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u86 ( .A0(oc8051_sfr1_p0_data_0_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u87 ( .A0(oc8051_sfr1_p0_data_0_), .A1(
         oc8051_sfr1_n100), .B0(oc8051_sfr1_b_reg_0_), .B1(oc8051_sfr1_n101), 
         .C0(dptr_hi[0]), .C1(oc8051_sfr1_n102), .Y(oc8051_sfr1_n93) );
-  AO22_X0P5M_A12TS oc8051_sfr1_u85 ( .A0(dptr_lo[0]), .A1(oc8051_sfr1_n98), 
+  AO22_X0P5M_A12TS oc8051_sfr1_u86 ( .A0(dptr_lo[0]), .A1(oc8051_sfr1_n98), 
         .B0(oc8051_sfr1_sbuf[0]), .B1(oc8051_sfr1_n99), .Y(oc8051_sfr1_n97) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_u84 ( .A0(oc8051_sfr1_pcon[0]), .A1(
+  AOI221_X0P5M_A12TS oc8051_sfr1_u85 ( .A0(oc8051_sfr1_pcon[0]), .A1(
         oc8051_sfr1_n95), .B0(oc8051_sfr1_scon_0_), .B1(oc8051_sfr1_n96), .C0(
         oc8051_sfr1_n97), .Y(oc8051_sfr1_n94) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_u83 ( .A(oc8051_sfr1_n91), .B(oc8051_sfr1_n92), 
+  NAND4_X0P5A_A12TS oc8051_sfr1_u84 ( .A(oc8051_sfr1_n91), .B(oc8051_sfr1_n92), 
         .C(oc8051_sfr1_n93), .D(oc8051_sfr1_n94), .Y(oc8051_sfr1_n71) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u82 ( .A0(oc8051_sfr1_th0[0]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u83 ( .A0(oc8051_sfr1_th0[0]), .A1(
         oc8051_sfr1_n88), .B0(oc8051_sfr1_ie_0_), .B1(oc8051_sfr1_n89), .C0(
         oc8051_sfr1_tmod[0]), .C1(oc8051_sfr1_n90), .Y(oc8051_sfr1_n72) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u81 ( .A0(oc8051_sfr1_rcap2l[0]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u82 ( .A0(oc8051_sfr1_rcap2l[0]), .A1(
         oc8051_sfr1_n86), .B0(oc8051_sfr1_t2con_0_), .B1(oc8051_sfr1_n87), .Y(
         oc8051_sfr1_n78) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u80 ( .A0(oc8051_sfr1_rcap2h[0]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u81 ( .A0(oc8051_sfr1_rcap2h[0]), .A1(
         oc8051_sfr1_n84), .B0(oc8051_sfr1_tcon_0_), .B1(oc8051_sfr1_n85), .Y(
         oc8051_sfr1_n79) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u79 ( .A0(oc8051_sfr1_ip_0_), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u80 ( .A0(oc8051_sfr1_ip_0_), .A1(
         oc8051_sfr1_n81), .B0(oc8051_sfr1_th2[0]), .B1(oc8051_sfr1_n82), .C0(
         oc8051_sfr1_tl2[0]), .C1(oc8051_sfr1_n83), .Y(oc8051_sfr1_n80) );
-  AND3_X0P5M_A12TS oc8051_sfr1_u78 ( .A(oc8051_sfr1_n78), .B(oc8051_sfr1_n79), 
+  AND3_X0P5M_A12TS oc8051_sfr1_u79 ( .A(oc8051_sfr1_n78), .B(oc8051_sfr1_n79), 
         .C(oc8051_sfr1_n80), .Y(oc8051_sfr1_n73) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_u77 ( .A0(oc8051_sfr1_tl1[0]), .A1(
+  AOI222_X0P5M_A12TS oc8051_sfr1_u78 ( .A0(oc8051_sfr1_tl1[0]), .A1(
         oc8051_sfr1_n75), .B0(oc8051_sfr1_th1[0]), .B1(oc8051_sfr1_n76), .C0(
         oc8051_sfr1_tl0[0]), .C1(oc8051_sfr1_n77), .Y(oc8051_sfr1_n74) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_u76 ( .AN(oc8051_sfr1_n71), .B(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_u77 ( .AN(oc8051_sfr1_n71), .B(
         oc8051_sfr1_n72), .C(oc8051_sfr1_n73), .D(oc8051_sfr1_n74), .Y(
         oc8051_sfr1_n69) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u75 ( .A0(oc8051_sfr1_n68), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u76 ( .A0(oc8051_sfr1_n68), .A1(
         oc8051_sfr1_n69), .B0(sfr_out[0]), .B1(oc8051_sfr1_n70), .Y(
         oc8051_sfr1_n67) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_u74 ( .B0(des_acc[0]), .B1(oc8051_sfr1_n66), 
+  AO1B2_X0P5M_A12TS oc8051_sfr1_u75 ( .B0(des_acc[0]), .B1(oc8051_sfr1_n66), 
         .A0N(oc8051_sfr1_n67), .Y(oc8051_sfr1_n294) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u73 ( .A0(oc8051_sfr1_n1980), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u74 ( .A0(oc8051_sfr1_n1980), .A1(
         oc8051_sfr1_n39), .B0(oc8051_sfr1_n1970), .B1(oc8051_sfr1_n40), .Y(
         oc8051_sfr1_n59) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u72 ( .A0(oc8051_sfr1_n2050), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u73 ( .A0(oc8051_sfr1_n2050), .A1(
         oc8051_sfr1_n65), .B0(oc8051_sfr1_n2040), .B1(oc8051_sfr1_n44), .Y(
         oc8051_sfr1_n60) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u71 ( .A0(oc8051_sfr1_n2000), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u72 ( .A0(oc8051_sfr1_n2000), .A1(
         oc8051_sfr1_n39), .B0(oc8051_sfr1_n1990), .B1(oc8051_sfr1_n40), .Y(
         oc8051_sfr1_n62) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u70 ( .A0(oc8051_sfr1_n2020), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u71 ( .A0(oc8051_sfr1_n2020), .A1(
         oc8051_sfr1_n65), .B0(oc8051_sfr1_n2030), .B1(oc8051_sfr1_n44), .Y(
         oc8051_sfr1_n63) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_u69 ( .B0(oc8051_sfr1_n62), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_u70 ( .B0(oc8051_sfr1_n62), .B1(
         oc8051_sfr1_n63), .A0N(oc8051_sfr1_n64), .Y(oc8051_sfr1_n61) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_u68 ( .A0(oc8051_sfr1_n59), .A1(
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_u69 ( .A0(oc8051_sfr1_n59), .A1(
         oc8051_sfr1_n60), .B0(oc8051_sfr1_n36), .C0(oc8051_sfr1_n61), .Y(
         oc8051_sfr1_n54) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_u67 ( .A0(oc8051_sfr1_n2060), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_u68 ( .A0(oc8051_sfr1_n2060), .A1(
         oc8051_sfr1_n44), .B0(oc8051_sfr1_n1960), .B1(oc8051_sfr1_n39), .Y(
         oc8051_sfr1_n56) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_u66 ( .A(oc8051_sfr1_n39), .B(oc8051_sfr1_n58), 
+  NAND3_X0P5A_A12TS oc8051_sfr1_u67 ( .A(oc8051_sfr1_n39), .B(oc8051_sfr1_n58), 
         .C(oc8051_sfr1_n2010), .Y(oc8051_sfr1_n57) );
-  OAI2XB1_X0P5M_A12TS oc8051_sfr1_u65 ( .A1N(oc8051_sfr1_n41), .A0(
+  OAI2XB1_X0P5M_A12TS oc8051_sfr1_u66 ( .A1N(oc8051_sfr1_n41), .A0(
         oc8051_sfr1_n56), .B0(oc8051_sfr1_n57), .Y(oc8051_sfr1_n55) );
-  AOI211_X0P5M_A12TS oc8051_sfr1_u64 ( .A0(oc8051_sfr1_n1950), .A1(
+  AOI211_X0P5M_A12TS oc8051_sfr1_u65 ( .A0(oc8051_sfr1_n1950), .A1(
         oc8051_sfr1_n43), .B0(oc8051_sfr1_n54), .C0(oc8051_sfr1_n55), .Y(
         oc8051_sfr1_n45) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_u63 ( .A0(rd_addr[7]), .A1(oc8051_sfr1_n43), 
+  AOI31_X0P5M_A12TS oc8051_sfr1_u64 ( .A0(rd_addr[7]), .A1(oc8051_sfr1_n43), 
         .A2(oc8051_sfr1_n52), .B0(oc8051_sfr1_n53), .Y(oc8051_sfr1_n48) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_u62 ( .A0(oc8051_sfr1_n50), .A1(
+  OAI21_X0P5M_A12TS oc8051_sfr1_u63 ( .A0(oc8051_sfr1_n50), .A1(
         oc8051_sfr1_n49), .B0(oc8051_sfr1_n48), .Y(oc8051_sfr1_n34) );
-  INV_X0P5B_A12TS oc8051_sfr1_u61 ( .A(descy), .Y(oc8051_sfr1_n51) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_u60 ( .A(oc8051_sfr1_n49), .B(oc8051_sfr1_n50), 
+  INV_X0P5B_A12TS oc8051_sfr1_u62 ( .A(descy), .Y(oc8051_sfr1_n51) );
+  NOR3_X0P5A_A12TS oc8051_sfr1_u61 ( .A(oc8051_sfr1_n49), .B(oc8051_sfr1_n50), 
         .C(oc8051_sfr1_n51), .Y(oc8051_sfr1_n47) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u59 ( .A(oc8051_sfr1_n1600), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u60 ( .A(oc8051_sfr1_n1600), .B(
         oc8051_sfr1_n47), .S0(oc8051_sfr1_n48), .Y(oc8051_sfr1_n46) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_u58 ( .A0(oc8051_sfr1_n45), .A1(
+  OAI21_X0P5M_A12TS oc8051_sfr1_u59 ( .A0(oc8051_sfr1_n45), .A1(
         oc8051_sfr1_n34), .B0(oc8051_sfr1_n46), .Y(oc8051_sfr1_n31) );
-  OR3_X0P5M_A12TS oc8051_sfr1_u57 ( .A(oc8051_sfr1_n39), .B(oc8051_sfr1_n43), 
+  OR3_X0P5M_A12TS oc8051_sfr1_u58 ( .A(oc8051_sfr1_n39), .B(oc8051_sfr1_n43), 
         .C(oc8051_sfr1_n44), .Y(oc8051_sfr1_n42) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_u56 ( .A0(oc8051_sfr1_n39), .A1(
+  OAI31_X0P5M_A12TS oc8051_sfr1_u57 ( .A0(oc8051_sfr1_n39), .A1(
         oc8051_sfr1_n40), .A2(oc8051_sfr1_n41), .B0(oc8051_sfr1_n42), .Y(
         oc8051_sfr1_n37) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_u55 ( .A0(oc8051_sfr1_n35), .A1(
+  AOI31_X0P5M_A12TS oc8051_sfr1_u56 ( .A0(oc8051_sfr1_n35), .A1(
         oc8051_sfr1_n36), .A2(oc8051_sfr1_n37), .B0(oc8051_sfr1_n38), .Y(
         oc8051_sfr1_n33) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_u54 ( .A(oc8051_sfr1_n33), .B(oc8051_sfr1_n34), 
+  NOR2_X0P5A_A12TS oc8051_sfr1_u55 ( .A(oc8051_sfr1_n33), .B(oc8051_sfr1_n34), 
         .Y(oc8051_sfr1_n32) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_u53 ( .A(oc8051_sfr1_n31), .B(sfr_bit), .S0(
+  MXT2_X0P5M_A12TS oc8051_sfr1_u54 ( .A(oc8051_sfr1_n31), .B(sfr_bit), .S0(
         oc8051_sfr1_n32), .Y(oc8051_sfr1_n295) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_u52 ( .A(oc8051_sfr1_n29), .B(
+  NOR3_X0P5A_A12TS oc8051_sfr1_u53 ( .A(oc8051_sfr1_n29), .B(
         oc8051_sfr1_prescaler_2_), .C(oc8051_sfr1_n30), .Y(oc8051_sfr1_n299)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_u51 ( .A(oc8051_sfr1_prescaler_0_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_u52 ( .A(oc8051_sfr1_prescaler_0_), .Y(
         oc8051_sfr1_n298) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u50 ( .A(acc[0]), .B(acc[2]), .C(acc[1]), .D(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u51 ( .A(acc[0]), .B(acc[2]), .C(acc[1]), .D(
         acc[3]), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n25) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u49 ( .A(oc8051_sfr1_psw_0_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u50 ( .A(oc8051_sfr1_psw_0_), .B(
         oc8051_sfr1_psw_2_), .C(oc8051_sfr1_psw_1_), .D(oc8051_sfr1_psw_3_), 
         .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n23) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u48 ( .A(oc8051_sfr1_tcon_0_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u49 ( .A(oc8051_sfr1_tcon_0_), .B(
         oc8051_sfr1_tcon_2_), .C(oc8051_sfr1_tcon_1_), .D(oc8051_sfr1_tcon_3_), 
         .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n14) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u47 ( .A(acc[4]), .B(acc[6]), .C(acc[5]), .D(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u48 ( .A(acc[4]), .B(acc[6]), .C(acc[5]), .D(
         acc[7]), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n26) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u46 ( .A(oc8051_sfr1_psw_4_), .B(srcac), .C(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u47 ( .A(oc8051_sfr1_psw_4_), .B(srcac), .C(
         oc8051_sfr1_psw_5_), .D(cy), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n24) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u45 ( .A(oc8051_sfr1_scon_4_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u46 ( .A(oc8051_sfr1_scon_4_), .B(
         oc8051_sfr1_scon_6_), .C(oc8051_sfr1_scon_5_), .D(oc8051_sfr1_scon_7_), 
         .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n13) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u44 ( .A(oc8051_sfr1_tr0), .B(oc8051_sfr1_tr1), 
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u45 ( .A(oc8051_sfr1_tr0), .B(oc8051_sfr1_tr1), 
         .C(oc8051_sfr1_tcon_5_), .D(oc8051_sfr1_tcon_7_), .S0(rd_addr[1]), 
         .S1(rd_addr[0]), .Y(oc8051_sfr1_n15) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u43 ( .A(oc8051_sfr1_t2con_0_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u44 ( .A(oc8051_sfr1_t2con_0_), .B(
         oc8051_sfr1_t2con_2_), .C(oc8051_sfr1_t2con_1_), .D(
         oc8051_sfr1_t2con_3_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n10) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u42 ( .A(oc8051_sfr1_n23), .B(oc8051_sfr1_n24), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u43 ( .A(oc8051_sfr1_n23), .B(oc8051_sfr1_n24), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n1960) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u41 ( .A(oc8051_sfr1_n10), .B(oc8051_sfr1_n11), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u42 ( .A(oc8051_sfr1_n10), .B(oc8051_sfr1_n11), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n2060) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u40 ( .A(oc8051_sfr1_scon_0_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u41 ( .A(oc8051_sfr1_scon_0_), .B(
         oc8051_sfr1_scon_2_), .C(oc8051_sfr1_scon_1_), .D(oc8051_sfr1_scon_3_), 
         .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n12) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u39 ( .A(oc8051_sfr1_n14), .B(oc8051_sfr1_n15), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u40 ( .A(oc8051_sfr1_n14), .B(oc8051_sfr1_n15), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n2040) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u38 ( .A(oc8051_sfr1_n12), .B(oc8051_sfr1_n13), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u39 ( .A(oc8051_sfr1_n12), .B(oc8051_sfr1_n13), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n2050) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u37 ( .A(oc8051_sfr1_n16), .B(oc8051_sfr1_n18), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u38 ( .A(oc8051_sfr1_n16), .B(oc8051_sfr1_n18), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n2000) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u36 ( .A(oc8051_sfr1_p0_data_0_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u37 ( .A(oc8051_sfr1_p0_data_0_), .B(
         oc8051_sfr1_p0_data_2_), .C(oc8051_sfr1_p0_data_1_), .D(
         oc8051_sfr1_p0_data_3_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n21) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u35 ( .A(oc8051_sfr1_p3_data_0_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u36 ( .A(oc8051_sfr1_p3_data_0_), .B(
         oc8051_sfr1_p3_data_2_), .C(oc8051_sfr1_p3_data_1_), .D(
         oc8051_sfr1_p3_data_3_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n16) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u34 ( .A(oc8051_sfr1_tclk), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u35 ( .A(oc8051_sfr1_tclk), .B(
         oc8051_sfr1_t2con_6_), .C(oc8051_sfr1_rclk), .D(oc8051_sfr1_t2con_7_), 
         .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n11) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u33 ( .A(oc8051_sfr1_p1_data_4_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u34 ( .A(oc8051_sfr1_p1_data_4_), .B(
         oc8051_sfr1_p1_data_6_), .C(oc8051_sfr1_p1_data_5_), .D(
         oc8051_sfr1_p1_data_7_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n20) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u32 ( .A(oc8051_sfr1_p0_data_4_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u33 ( .A(oc8051_sfr1_p0_data_4_), .B(
         oc8051_sfr1_p0_data_6_), .C(oc8051_sfr1_p0_data_5_), .D(
         oc8051_sfr1_p0_data_7_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n22) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u31 ( .A(oc8051_sfr1_p3_data_4_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u32 ( .A(oc8051_sfr1_p3_data_4_), .B(
         oc8051_sfr1_p3_data_6_), .C(oc8051_sfr1_p3_data_5_), .D(
         oc8051_sfr1_p3_data_7_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n18) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u30 ( .A(oc8051_sfr1_n27), .B(oc8051_sfr1_n28), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u31 ( .A(oc8051_sfr1_n27), .B(oc8051_sfr1_n28), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n1600) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u29 ( .A(oc8051_sfr1_p1_data_0_), .B(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u30 ( .A(oc8051_sfr1_p1_data_0_), .B(
         oc8051_sfr1_p1_data_2_), .C(oc8051_sfr1_p1_data_1_), .D(
         oc8051_sfr1_p1_data_3_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n19) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u28 ( .A(oc8051_sfr1_n21), .B(oc8051_sfr1_n22), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u29 ( .A(oc8051_sfr1_n21), .B(oc8051_sfr1_n22), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n1970) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u27 ( .A(oc8051_sfr1_n19), .B(oc8051_sfr1_n20), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u28 ( .A(oc8051_sfr1_n19), .B(oc8051_sfr1_n20), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n1980) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_u26 ( .A(oc8051_sfr1_n25), .B(oc8051_sfr1_n26), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_u27 ( .A(oc8051_sfr1_n25), .B(oc8051_sfr1_n26), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n1950) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u25 ( .A(wr_dat[0]), .B(wr_dat[2]), .C(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u26 ( .A(wr_dat[0]), .B(wr_dat[2]), .C(
         wr_dat[1]), .D(wr_dat[3]), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n27) );
-  MXIT4_X0P5M_A12TS oc8051_sfr1_u24 ( .A(wr_dat[4]), .B(wr_dat[6]), .C(
+  MXIT4_X0P5M_A12TS oc8051_sfr1_u25 ( .A(wr_dat[4]), .B(wr_dat[6]), .C(
         wr_dat[5]), .D(wr_dat[7]), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n28) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_u23 ( .A(oc8051_sfr1_ie_4_), .B(
+  MXT4_X0P5M_A12TS oc8051_sfr1_u24 ( .A(oc8051_sfr1_ie_4_), .B(
         oc8051_sfr1_ie_6_), .C(oc8051_sfr1_ie_5_), .D(oc8051_sfr1_ie_7_), .S0(
         rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n5) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_u22 ( .A(oc8051_sfr1_ie_0_), .B(
+  MXT4_X0P5M_A12TS oc8051_sfr1_u23 ( .A(oc8051_sfr1_ie_0_), .B(
         oc8051_sfr1_ie_2_), .C(oc8051_sfr1_ie_1_), .D(oc8051_sfr1_ie_3_), .S0(
         rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n4) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_u21 ( .A(oc8051_sfr1_n4), .B(oc8051_sfr1_n5), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_u22 ( .A(oc8051_sfr1_n4), .B(oc8051_sfr1_n5), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n2030) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_u20 ( .A(oc8051_sfr1_ip_4_), .B(
+  MXT4_X0P5M_A12TS oc8051_sfr1_u21 ( .A(oc8051_sfr1_ip_4_), .B(
         oc8051_sfr1_ip_6_), .C(oc8051_sfr1_ip_5_), .D(oc8051_sfr1_ip_7_), .S0(
         rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n7) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_u19 ( .A(oc8051_sfr1_ip_0_), .B(
+  MXT4_X0P5M_A12TS oc8051_sfr1_u20 ( .A(oc8051_sfr1_ip_0_), .B(
         oc8051_sfr1_ip_2_), .C(oc8051_sfr1_ip_1_), .D(oc8051_sfr1_ip_3_), .S0(
         rd_addr[1]), .S1(rd_addr[0]), .Y(oc8051_sfr1_n6) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_u18 ( .A(oc8051_sfr1_n6), .B(oc8051_sfr1_n7), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_u19 ( .A(oc8051_sfr1_n6), .B(oc8051_sfr1_n7), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n2020) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_u17 ( .A(oc8051_sfr1_b_reg_0_), .B(
+  MXT4_X0P5M_A12TS oc8051_sfr1_u18 ( .A(oc8051_sfr1_b_reg_0_), .B(
         oc8051_sfr1_b_reg_2_), .C(oc8051_sfr1_b_reg_1_), .D(
         oc8051_sfr1_b_reg_3_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n8) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_u16 ( .A(oc8051_sfr1_n8), .B(oc8051_sfr1_n9), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_u17 ( .A(oc8051_sfr1_n8), .B(oc8051_sfr1_n9), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n2010) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_u15 ( .A(oc8051_sfr1_b_reg_4_), .B(
+  MXT4_X0P5M_A12TS oc8051_sfr1_u16 ( .A(oc8051_sfr1_b_reg_4_), .B(
         oc8051_sfr1_b_reg_6_), .C(oc8051_sfr1_b_reg_5_), .D(
         oc8051_sfr1_b_reg_7_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n9) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_u14 ( .A(oc8051_sfr1_p2_data_4_), .B(
+  MXT4_X0P5M_A12TS oc8051_sfr1_u15 ( .A(oc8051_sfr1_p2_data_4_), .B(
         oc8051_sfr1_p2_data_6_), .C(oc8051_sfr1_p2_data_5_), .D(
         oc8051_sfr1_p2_data_7_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n3) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_u13 ( .A(oc8051_sfr1_p2_data_0_), .B(
+  MXT4_X0P5M_A12TS oc8051_sfr1_u14 ( .A(oc8051_sfr1_p2_data_0_), .B(
         oc8051_sfr1_p2_data_2_), .C(oc8051_sfr1_p2_data_1_), .D(
         oc8051_sfr1_p2_data_3_), .S0(rd_addr[1]), .S1(rd_addr[0]), .Y(
         oc8051_sfr1_n2) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_u12 ( .A(oc8051_sfr1_n2), .B(oc8051_sfr1_n3), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_u13 ( .A(oc8051_sfr1_n2), .B(oc8051_sfr1_n3), 
         .S0(rd_addr[2]), .Y(oc8051_sfr1_n1990) );
+  OR3_X0P7M_A12TS oc8051_sfr1_u12 ( .A(wr_addr[0]), .B(wr_addr[1]), .C(
+        wr_addr[2]), .Y(oc8051_sfr1_n263) );
   AND4_X0P7M_A12TS oc8051_sfr1_u11 ( .A(oc8051_sfr1_n41), .B(oc8051_sfr1_n44), 
         .C(rd_addr[1]), .D(oc8051_sfr1_n240), .Y(oc8051_sfr1_n250) );
   AND4_X0P7M_A12TS oc8051_sfr1_u10 ( .A(oc8051_sfr1_n239), .B(rd_addr[0]), .C(
@@ -43004,213 +42983,213 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         wb_clk_i), .R(wb_rst_i), .Q(sfr_bit) );
   DFFRPQ_X1M_A12TS oc8051_sfr1_prescaler_reg_3_ ( .D(oc8051_sfr1_n2230), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_sfr1_prescaler_3_) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u77 ( .A(wr_addr[1]), .Y(
-        oc8051_sfr1_oc8051_acc1_n61) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u76 ( .A(wr_addr[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u77 ( .A(wr_addr[2]), .Y(
         oc8051_sfr1_oc8051_acc1_n60) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u75 ( .A(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_acc1_n11) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u74 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u76 ( .A(
         oc8051_sfr1_oc8051_acc1_n61), .B(oc8051_sfr1_oc8051_acc1_n60), .C(
         oc8051_sfr1_oc8051_acc1_n11), .Y(oc8051_sfr1_oc8051_acc1_n62) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u73 ( .A(n_5_net_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u75 ( .A(n_5_net_), .Y(
         oc8051_sfr1_oc8051_acc1_n66) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u72 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u74 ( .A(
         oc8051_sfr1_oc8051_acc1_n66), .B(wr_addr[4]), .C(wr_addr[3]), .Y(
         oc8051_sfr1_oc8051_acc1_n65) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u71 ( .A(wr_addr[6]), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u73 ( .A(wr_addr[6]), .B(
         wr_addr[5]), .C(wr_addr[7]), .D(oc8051_sfr1_oc8051_acc1_n65), .Y(
         oc8051_sfr1_oc8051_acc1_n63) );
-  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u70 ( .AN(wr_sfr[1]), .B(
+  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u72 ( .AN(wr_sfr[1]), .B(
         wr_sfr[0]), .Y(oc8051_sfr1_oc8051_acc1_n64) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u69 ( .A0(
+  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u71 ( .A0(
         oc8051_sfr1_oc8051_acc1_n62), .A1(oc8051_sfr1_wr_bit_r), .A2(
         oc8051_sfr1_oc8051_acc1_n63), .B0(oc8051_sfr1_oc8051_acc1_n64), .Y(
         oc8051_sfr1_oc8051_acc1_n57) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u68 ( .AN(wr_sfr[1]), .B(wr_sfr[0]), .Y(oc8051_sfr1_oc8051_acc1_n9) );
-  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u67 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u70 ( .AN(wr_sfr[1]), .B(wr_sfr[0]), .Y(oc8051_sfr1_oc8051_acc1_n9) );
+  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u69 ( .AN(
         oc8051_sfr1_oc8051_acc1_n63), .B(oc8051_sfr1_wr_bit_r), .Y(
         oc8051_sfr1_oc8051_acc1_n59) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u66 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u68 ( .A(
         oc8051_sfr1_oc8051_acc1_n57), .B(oc8051_sfr1_oc8051_acc1_n9), .C(
         oc8051_sfr1_oc8051_acc1_n59), .Y(oc8051_sfr1_oc8051_acc1_n33) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u65 ( .A(descy), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u67 ( .A(descy), .B(
         oc8051_sfr1_oc8051_acc1_n33), .Y(oc8051_sfr1_oc8051_acc1_n19) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u64 ( .A(oc8051_sfr1_oc8051_acc1_n19), .Y(oc8051_sfr1_oc8051_acc1_n32) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u63 ( .A(oc8051_sfr1_oc8051_acc1_n62), .Y(oc8051_sfr1_oc8051_acc1_n53) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u62 ( .A0(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u66 ( .A(oc8051_sfr1_oc8051_acc1_n19), .Y(oc8051_sfr1_oc8051_acc1_n32) );
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u65 ( .A(oc8051_sfr1_oc8051_acc1_n62), .Y(oc8051_sfr1_oc8051_acc1_n53) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u64 ( .A0(
         oc8051_sfr1_oc8051_acc1_n32), .A1(oc8051_sfr1_oc8051_acc1_n53), .B0(
         des2[0]), .B1(oc8051_sfr1_oc8051_acc1_n9), .Y(
         oc8051_sfr1_oc8051_acc1_n54) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u61 ( .A(wr_addr[1]), .B(
-        oc8051_sfr1_oc8051_acc1_n60), .C(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_acc1_n49) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u60 ( .A(
-        oc8051_sfr1_oc8051_acc1_n11), .B(oc8051_sfr1_oc8051_acc1_n60), .C(
-        wr_addr[1]), .Y(oc8051_sfr1_oc8051_acc1_n45) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u59 ( .A(
-        oc8051_sfr1_oc8051_acc1_n61), .B(oc8051_sfr1_oc8051_acc1_n60), .C(
-        wr_addr[0]), .Y(oc8051_sfr1_oc8051_acc1_n47) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u58 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u63 ( .A(
         oc8051_sfr1_oc8051_acc1_n49), .B(oc8051_sfr1_oc8051_acc1_n45), .C(
         oc8051_sfr1_oc8051_acc1_n47), .Y(oc8051_sfr1_oc8051_acc1_n34) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u57 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u62 ( .A(
         oc8051_sfr1_oc8051_acc1_n11), .B(oc8051_sfr1_oc8051_acc1_n61), .C(
         wr_addr[2]), .Y(oc8051_sfr1_oc8051_acc1_n46) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u56 ( .A(oc8051_sfr1_oc8051_acc1_n46), .Y(oc8051_sfr1_oc8051_acc1_n31) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u55 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u61 ( .A(oc8051_sfr1_oc8051_acc1_n46), .Y(oc8051_sfr1_oc8051_acc1_n31) );
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u60 ( .A(
         oc8051_sfr1_oc8051_acc1_n34), .B(oc8051_sfr1_oc8051_acc1_n31), .Y(
         oc8051_sfr1_oc8051_acc1_n24) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u54 ( .A(oc8051_sfr1_oc8051_acc1_n33), .Y(oc8051_sfr1_oc8051_acc1_n25) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u53 ( .A(wr_addr[1]), .B(
-        oc8051_sfr1_oc8051_acc1_n33), .C(wr_addr[2]), .Y(
-        oc8051_sfr1_oc8051_acc1_n23) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u52 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u59 ( .A(oc8051_sfr1_oc8051_acc1_n33), .Y(oc8051_sfr1_oc8051_acc1_n25) );
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u58 ( .A(
         oc8051_sfr1_oc8051_acc1_n60), .B(wr_addr[1]), .C(
         oc8051_sfr1_oc8051_acc1_n11), .Y(oc8051_sfr1_oc8051_acc1_n27) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u51 ( .A(oc8051_sfr1_oc8051_acc1_n59), .Y(oc8051_sfr1_oc8051_acc1_n58) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u50 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u57 ( .A(oc8051_sfr1_oc8051_acc1_n59), .Y(oc8051_sfr1_oc8051_acc1_n58) );
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u56 ( .A(
         oc8051_sfr1_oc8051_acc1_n58), .B(oc8051_sfr1_oc8051_acc1_n9), .C(
         oc8051_sfr1_oc8051_acc1_n57), .Y(oc8051_sfr1_oc8051_acc1_n22) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u49 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u55 ( .A0(
         oc8051_sfr1_oc8051_acc1_n33), .A1(oc8051_sfr1_oc8051_acc1_n27), .B0(
         oc8051_sfr1_oc8051_acc1_n22), .Y(oc8051_sfr1_oc8051_acc1_n17) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u48 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u54 ( .A0(
         oc8051_sfr1_oc8051_acc1_n24), .A1(oc8051_sfr1_oc8051_acc1_n25), .B0(
         oc8051_sfr1_oc8051_acc1_n23), .C0(oc8051_sfr1_oc8051_acc1_n17), .Y(
         oc8051_sfr1_oc8051_acc1_n56) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u47 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u53 ( .AN(
         oc8051_sfr1_oc8051_acc1_n57), .B(oc8051_sfr1_oc8051_acc1_n9), .Y(
         oc8051_sfr1_oc8051_acc1_n8) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u46 ( .A0(acc[0]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u52 ( .A0(acc[0]), .A1(
         oc8051_sfr1_oc8051_acc1_n56), .B0(des_acc[0]), .B1(
         oc8051_sfr1_oc8051_acc1_n8), .Y(oc8051_sfr1_oc8051_acc1_n55) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u45 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u51 ( .A(
         oc8051_sfr1_oc8051_acc1_n54), .B(oc8051_sfr1_oc8051_acc1_n55), .Y(
         oc8051_sfr1_oc8051_acc1_acc_0_) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u44 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u50 ( .A(
         oc8051_sfr1_oc8051_acc1_n49), .B(oc8051_sfr1_oc8051_acc1_n45), .C(
         oc8051_sfr1_oc8051_acc1_n46), .Y(oc8051_sfr1_oc8051_acc1_n52) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u43 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u49 ( .A(
         oc8051_sfr1_oc8051_acc1_n33), .B(oc8051_sfr1_oc8051_acc1_n53), .Y(
         oc8051_sfr1_oc8051_acc1_n26) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u42 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u48 ( .A(
         oc8051_sfr1_oc8051_acc1_n26), .B(oc8051_sfr1_oc8051_acc1_n23), .C(
         oc8051_sfr1_oc8051_acc1_n17), .Y(oc8051_sfr1_oc8051_acc1_n35) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u41 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u47 ( .A0(
         oc8051_sfr1_oc8051_acc1_n33), .A1(oc8051_sfr1_oc8051_acc1_n52), .B0(
         oc8051_sfr1_oc8051_acc1_n35), .C0(acc[1]), .Y(
         oc8051_sfr1_oc8051_acc1_n50) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u40 ( .A0(des_acc[1]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u46 ( .A0(des_acc[1]), .A1(
         oc8051_sfr1_oc8051_acc1_n8), .B0(des2[1]), .B1(
         oc8051_sfr1_oc8051_acc1_n9), .Y(oc8051_sfr1_oc8051_acc1_n51) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u39 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u45 ( .A0(
         oc8051_sfr1_oc8051_acc1_n19), .A1(oc8051_sfr1_oc8051_acc1_n47), .B0(
         oc8051_sfr1_oc8051_acc1_n50), .C0(oc8051_sfr1_oc8051_acc1_n51), .Y(
         oc8051_sfr1_oc8051_acc1_acc_1_) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u38 ( .A(des_acc[2]), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u44 ( .A(des_acc[2]), .B(
         oc8051_sfr1_oc8051_acc1_n8), .Y(oc8051_sfr1_oc8051_acc1_n42) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u37 ( .A(oc8051_sfr1_oc8051_acc1_n49), .Y(oc8051_sfr1_oc8051_acc1_n39) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u36 ( .A(oc8051_sfr1_oc8051_acc1_n35), .Y(oc8051_sfr1_oc8051_acc1_n48) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u35 ( .A0(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u43 ( .A(oc8051_sfr1_oc8051_acc1_n49), .Y(oc8051_sfr1_oc8051_acc1_n39) );
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u42 ( .A(oc8051_sfr1_oc8051_acc1_n35), .Y(oc8051_sfr1_oc8051_acc1_n48) );
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u41 ( .A0(
         oc8051_sfr1_oc8051_acc1_n46), .A1(oc8051_sfr1_oc8051_acc1_n47), .B0(
         oc8051_sfr1_oc8051_acc1_n25), .C0(oc8051_sfr1_oc8051_acc1_n48), .Y(
         oc8051_sfr1_oc8051_acc1_n41) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u34 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u40 ( .A0(
         oc8051_sfr1_oc8051_acc1_n39), .A1(oc8051_sfr1_oc8051_acc1_n33), .B0(
         oc8051_sfr1_oc8051_acc1_n41), .C0(acc[2]), .Y(
         oc8051_sfr1_oc8051_acc1_n43) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u33 ( .A(oc8051_sfr1_oc8051_acc1_n45), .Y(oc8051_sfr1_oc8051_acc1_n40) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u32 ( .A0(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u39 ( .A(oc8051_sfr1_oc8051_acc1_n45), .Y(oc8051_sfr1_oc8051_acc1_n40) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u38 ( .A0(
         oc8051_sfr1_oc8051_acc1_n32), .A1(oc8051_sfr1_oc8051_acc1_n40), .B0(
         des2[2]), .B1(oc8051_sfr1_oc8051_acc1_n9), .Y(
         oc8051_sfr1_oc8051_acc1_n44) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u31 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u37 ( .A(
         oc8051_sfr1_oc8051_acc1_n42), .B(oc8051_sfr1_oc8051_acc1_n43), .C(
         oc8051_sfr1_oc8051_acc1_n44), .Y(oc8051_sfr1_oc8051_acc1_acc_2_) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u30 ( .A(des_acc[3]), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u36 ( .A(des_acc[3]), .B(
         oc8051_sfr1_oc8051_acc1_n8), .Y(oc8051_sfr1_oc8051_acc1_n36) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u29 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u35 ( .A0(
         oc8051_sfr1_oc8051_acc1_n40), .A1(oc8051_sfr1_oc8051_acc1_n33), .B0(
         oc8051_sfr1_oc8051_acc1_n41), .C0(acc[3]), .Y(
         oc8051_sfr1_oc8051_acc1_n37) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u28 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u34 ( .A0(
         oc8051_sfr1_oc8051_acc1_n39), .A1(oc8051_sfr1_oc8051_acc1_n32), .B0(
         des2[3]), .B1(oc8051_sfr1_oc8051_acc1_n9), .Y(
         oc8051_sfr1_oc8051_acc1_n38) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u27 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u33 ( .A(
         oc8051_sfr1_oc8051_acc1_n36), .B(oc8051_sfr1_oc8051_acc1_n37), .C(
         oc8051_sfr1_oc8051_acc1_n38), .Y(oc8051_sfr1_oc8051_acc1_acc_3_) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u26 ( .A(des_acc[4]), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u32 ( .A(des_acc[4]), .B(
         oc8051_sfr1_oc8051_acc1_n8), .Y(oc8051_sfr1_oc8051_acc1_n28) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u25 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u31 ( .A0(
         oc8051_sfr1_oc8051_acc1_n33), .A1(oc8051_sfr1_oc8051_acc1_n34), .B0(
         oc8051_sfr1_oc8051_acc1_n35), .C0(acc[4]), .Y(
         oc8051_sfr1_oc8051_acc1_n29) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u24 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u30 ( .A0(
         oc8051_sfr1_oc8051_acc1_n31), .A1(oc8051_sfr1_oc8051_acc1_n32), .B0(
         des2[4]), .B1(oc8051_sfr1_oc8051_acc1_n9), .Y(
         oc8051_sfr1_oc8051_acc1_n30) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u23 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u29 ( .A(
         oc8051_sfr1_oc8051_acc1_n28), .B(oc8051_sfr1_oc8051_acc1_n29), .C(
         oc8051_sfr1_oc8051_acc1_n30), .Y(oc8051_sfr1_oc8051_acc1_acc_4_) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u22 ( .A(oc8051_sfr1_oc8051_acc1_n27), .Y(oc8051_sfr1_oc8051_acc1_n18) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u21 ( .A0(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u28 ( .A(oc8051_sfr1_oc8051_acc1_n27), .Y(oc8051_sfr1_oc8051_acc1_n18) );
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u27 ( .A0(
         oc8051_sfr1_oc8051_acc1_n24), .A1(oc8051_sfr1_oc8051_acc1_n25), .B0(
         oc8051_sfr1_oc8051_acc1_n26), .Y(oc8051_sfr1_oc8051_acc1_n16) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u20 ( .A(oc8051_sfr1_oc8051_acc1_n23), .Y(oc8051_sfr1_oc8051_acc1_n10) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u19 ( .A0(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_acc1_u26 ( .A(oc8051_sfr1_oc8051_acc1_n23), .Y(oc8051_sfr1_oc8051_acc1_n10) );
+  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u25 ( .A0(
         oc8051_sfr1_oc8051_acc1_n16), .A1(oc8051_sfr1_oc8051_acc1_n10), .A2(
         oc8051_sfr1_oc8051_acc1_n22), .B0(acc[5]), .Y(
         oc8051_sfr1_oc8051_acc1_n20) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u18 ( .A0(des_acc[5]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u24 ( .A0(des_acc[5]), .A1(
         oc8051_sfr1_oc8051_acc1_n8), .B0(des2[5]), .B1(
         oc8051_sfr1_oc8051_acc1_n9), .Y(oc8051_sfr1_oc8051_acc1_n21) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u17 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u23 ( .A0(
         oc8051_sfr1_oc8051_acc1_n18), .A1(oc8051_sfr1_oc8051_acc1_n19), .B0(
         oc8051_sfr1_oc8051_acc1_n20), .C0(oc8051_sfr1_oc8051_acc1_n21), .Y(
         oc8051_sfr1_oc8051_acc1_acc_5_) );
-  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u16 ( .AN(
+  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u22 ( .AN(
         oc8051_sfr1_oc8051_acc1_n16), .B(oc8051_sfr1_oc8051_acc1_n17), .Y(
         oc8051_sfr1_oc8051_acc1_n12) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u15 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u21 ( .A0(
         oc8051_sfr1_oc8051_acc1_n10), .A1(wr_addr[0]), .B0(
         oc8051_sfr1_oc8051_acc1_n12), .C0(acc[6]), .Y(
         oc8051_sfr1_oc8051_acc1_n13) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u14 ( .A(descy), .B(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u20 ( .A(descy), .B(
         oc8051_sfr1_oc8051_acc1_n11), .C(oc8051_sfr1_oc8051_acc1_n10), .Y(
         oc8051_sfr1_oc8051_acc1_n14) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u13 ( .A0(des_acc[6]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u19 ( .A0(des_acc[6]), .A1(
         oc8051_sfr1_oc8051_acc1_n8), .B0(des2[6]), .B1(
         oc8051_sfr1_oc8051_acc1_n9), .Y(oc8051_sfr1_oc8051_acc1_n15) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u12 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u18 ( .A(
         oc8051_sfr1_oc8051_acc1_n13), .B(oc8051_sfr1_oc8051_acc1_n14), .C(
         oc8051_sfr1_oc8051_acc1_n15), .Y(oc8051_sfr1_oc8051_acc1_acc_6_) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u11 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u17 ( .A0(
         oc8051_sfr1_oc8051_acc1_n10), .A1(oc8051_sfr1_oc8051_acc1_n11), .B0(
         oc8051_sfr1_oc8051_acc1_n12), .C0(acc[7]), .Y(
         oc8051_sfr1_oc8051_acc1_n5) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u10 ( .A(descy), .B(wr_addr[0]), 
-        .C(oc8051_sfr1_oc8051_acc1_n10), .Y(oc8051_sfr1_oc8051_acc1_n6) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u9 ( .A0(des_acc[7]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u16 ( .A0(des_acc[7]), .A1(
         oc8051_sfr1_oc8051_acc1_n8), .B0(des2[7]), .B1(
         oc8051_sfr1_oc8051_acc1_n9), .Y(oc8051_sfr1_oc8051_acc1_n7) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u8 ( .A(oc8051_sfr1_oc8051_acc1_n5), .B(oc8051_sfr1_oc8051_acc1_n6), .C(oc8051_sfr1_oc8051_acc1_n7), .Y(
-        oc8051_sfr1_oc8051_acc1_acc_7_) );
-  XNOR2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u7 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_acc1_u15 ( .A(
+        oc8051_sfr1_oc8051_acc1_n5), .B(oc8051_sfr1_oc8051_acc1_n6), .C(
+        oc8051_sfr1_oc8051_acc1_n7), .Y(oc8051_sfr1_oc8051_acc1_acc_7_) );
+  XNOR2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u14 ( .A(
         oc8051_sfr1_oc8051_acc1_acc_1_), .B(oc8051_sfr1_oc8051_acc1_acc_0_), 
         .Y(oc8051_sfr1_oc8051_acc1_n4) );
-  XNOR3_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u6 ( .A(
+  XNOR3_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u13 ( .A(
         oc8051_sfr1_oc8051_acc1_acc_2_), .B(oc8051_sfr1_oc8051_acc1_acc_3_), 
         .C(oc8051_sfr1_oc8051_acc1_n4), .Y(oc8051_sfr1_oc8051_acc1_n1) );
-  XOR2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u5 ( .A(
+  XOR2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u12 ( .A(
         oc8051_sfr1_oc8051_acc1_acc_5_), .B(oc8051_sfr1_oc8051_acc1_acc_4_), 
         .Y(oc8051_sfr1_oc8051_acc1_n3) );
-  XOR3_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u4 ( .A(
+  XOR3_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u11 ( .A(
         oc8051_sfr1_oc8051_acc1_acc_7_), .B(oc8051_sfr1_oc8051_acc1_n3), .C(
         oc8051_sfr1_oc8051_acc1_acc_6_), .Y(oc8051_sfr1_oc8051_acc1_n2) );
-  XOR2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u3 ( .A(oc8051_sfr1_oc8051_acc1_n1), 
-        .B(oc8051_sfr1_oc8051_acc1_n2), .Y(oc8051_sfr1_psw_0_) );
+  XOR2_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u10 ( .A(oc8051_sfr1_oc8051_acc1_n1), .B(oc8051_sfr1_oc8051_acc1_n2), .Y(oc8051_sfr1_psw_0_) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u9 ( .A(descy), .B(wr_addr[0]), 
+        .C(oc8051_sfr1_oc8051_acc1_n10), .Y(oc8051_sfr1_oc8051_acc1_n6) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u8 ( .A(wr_addr[1]), .Y(
+        oc8051_sfr1_oc8051_acc1_n61) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u7 ( .A(wr_addr[1]), .B(
+        oc8051_sfr1_oc8051_acc1_n33), .C(wr_addr[2]), .Y(
+        oc8051_sfr1_oc8051_acc1_n23) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u6 ( .A(
+        oc8051_sfr1_oc8051_acc1_n61), .B(oc8051_sfr1_oc8051_acc1_n60), .C(
+        wr_addr[0]), .Y(oc8051_sfr1_oc8051_acc1_n47) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u5 ( .A(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_acc1_n11) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u4 ( .A(
+        oc8051_sfr1_oc8051_acc1_n11), .B(oc8051_sfr1_oc8051_acc1_n60), .C(
+        wr_addr[1]), .Y(oc8051_sfr1_oc8051_acc1_n45) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_acc1_u3 ( .A(wr_addr[1]), .B(
+        oc8051_sfr1_oc8051_acc1_n60), .C(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_acc1_n49) );
   DFFRPQ_X1M_A12TS oc8051_sfr1_oc8051_acc1_data_out_reg_0_ ( .D(
         oc8051_sfr1_oc8051_acc1_acc_0_), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         acc[0]) );
@@ -43252,123 +43231,123 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_sfr1_oc8051_b_register_n5), .A0N(
         oc8051_sfr1_oc8051_b_register_n6), .Y(
         oc8051_sfr1_oc8051_b_register_n23) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_b_register_u31 ( .A(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_b_register_n9) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_b_register_u30 ( .A(wr_addr[1]), .Y(
-        oc8051_sfr1_oc8051_b_register_n12) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u29 ( .A(n_5_net_), .B(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u31 ( .A(n_5_net_), .B(
         oc8051_sfr1_oc8051_b_register_n27), .Y(
         oc8051_sfr1_oc8051_b_register_n15) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u28 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u30 ( .AN(
         oc8051_sfr1_oc8051_b_register_n15), .B(wr_addr[2]), .Y(
         oc8051_sfr1_oc8051_b_register_n18) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_b_register_u27 ( .A(wr_addr[1]), .B(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_b_register_u29 ( .A(wr_addr[1]), .B(
         oc8051_sfr1_wr_bit_r), .C(wr_addr[2]), .Y(
         oc8051_sfr1_oc8051_b_register_n26) );
-  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u26 ( .A(
+  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u28 ( .A(
         oc8051_sfr1_oc8051_b_register_n25), .B(
         oc8051_sfr1_oc8051_b_register_n9), .C(n_5_net_), .D(
         oc8051_sfr1_oc8051_b_register_n26), .Y(
         oc8051_sfr1_oc8051_b_register_n4) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u25 ( .A0(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u27 ( .A0(
         oc8051_sfr1_oc8051_b_register_n9), .A1(
         oc8051_sfr1_oc8051_b_register_n12), .A2(
         oc8051_sfr1_oc8051_b_register_n18), .B0(
         oc8051_sfr1_oc8051_b_register_n4), .Y(
         oc8051_sfr1_oc8051_b_register_n24) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u24 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u26 ( .A(
         oc8051_sfr1_oc8051_b_register_n23), .B(oc8051_sfr1_b_reg_0_), .S0(
         oc8051_sfr1_oc8051_b_register_n24), .Y(
         oc8051_sfr1_oc8051_b_register_n32) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u23 ( .B0(des_acc[1]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u25 ( .B0(des_acc[1]), .B1(
         oc8051_sfr1_oc8051_b_register_n5), .A0N(
         oc8051_sfr1_oc8051_b_register_n6), .Y(
         oc8051_sfr1_oc8051_b_register_n21) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u22 ( .A0(wr_addr[0]), .A1(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u24 ( .A0(wr_addr[0]), .A1(
         oc8051_sfr1_oc8051_b_register_n12), .A2(
         oc8051_sfr1_oc8051_b_register_n18), .B0(
         oc8051_sfr1_oc8051_b_register_n4), .Y(
         oc8051_sfr1_oc8051_b_register_n22) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u21 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u23 ( .A(
         oc8051_sfr1_oc8051_b_register_n21), .B(oc8051_sfr1_b_reg_1_), .S0(
         oc8051_sfr1_oc8051_b_register_n22), .Y(
         oc8051_sfr1_oc8051_b_register_n33) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u20 ( .B0(des_acc[2]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u22 ( .B0(des_acc[2]), .B1(
         oc8051_sfr1_oc8051_b_register_n5), .A0N(
         oc8051_sfr1_oc8051_b_register_n6), .Y(
         oc8051_sfr1_oc8051_b_register_n19) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u19 ( .A0(wr_addr[1]), .A1(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u21 ( .A0(wr_addr[1]), .A1(
         oc8051_sfr1_oc8051_b_register_n9), .A2(
         oc8051_sfr1_oc8051_b_register_n18), .B0(
         oc8051_sfr1_oc8051_b_register_n4), .Y(
         oc8051_sfr1_oc8051_b_register_n20) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u18 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u20 ( .A(
         oc8051_sfr1_oc8051_b_register_n19), .B(oc8051_sfr1_b_reg_2_), .S0(
         oc8051_sfr1_oc8051_b_register_n20), .Y(
         oc8051_sfr1_oc8051_b_register_n34) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u17 ( .B0(des_acc[3]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u19 ( .B0(des_acc[3]), .B1(
         oc8051_sfr1_oc8051_b_register_n5), .A0N(
         oc8051_sfr1_oc8051_b_register_n6), .Y(
         oc8051_sfr1_oc8051_b_register_n16) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u16 ( .A0(wr_addr[1]), .A1(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u18 ( .A0(wr_addr[1]), .A1(
         wr_addr[0]), .A2(oc8051_sfr1_oc8051_b_register_n18), .B0(
         oc8051_sfr1_oc8051_b_register_n4), .Y(
         oc8051_sfr1_oc8051_b_register_n17) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u15 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u17 ( .A(
         oc8051_sfr1_oc8051_b_register_n16), .B(oc8051_sfr1_b_reg_3_), .S0(
         oc8051_sfr1_oc8051_b_register_n17), .Y(
         oc8051_sfr1_oc8051_b_register_n35) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u14 ( .B0(des_acc[4]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u16 ( .B0(des_acc[4]), .B1(
         oc8051_sfr1_oc8051_b_register_n5), .A0N(
         oc8051_sfr1_oc8051_b_register_n6), .Y(
         oc8051_sfr1_oc8051_b_register_n13) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u13 ( .A(wr_addr[2]), .B(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u15 ( .A(wr_addr[2]), .B(
         oc8051_sfr1_oc8051_b_register_n15), .Y(
         oc8051_sfr1_oc8051_b_register_n3) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u12 ( .A0(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u14 ( .A0(
         oc8051_sfr1_oc8051_b_register_n9), .A1(
         oc8051_sfr1_oc8051_b_register_n12), .A2(
         oc8051_sfr1_oc8051_b_register_n3), .B0(
         oc8051_sfr1_oc8051_b_register_n4), .Y(
         oc8051_sfr1_oc8051_b_register_n14) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u11 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u13 ( .A(
         oc8051_sfr1_oc8051_b_register_n13), .B(oc8051_sfr1_b_reg_4_), .S0(
         oc8051_sfr1_oc8051_b_register_n14), .Y(
         oc8051_sfr1_oc8051_b_register_n36) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u10 ( .B0(des_acc[5]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u12 ( .B0(des_acc[5]), .B1(
         oc8051_sfr1_oc8051_b_register_n5), .A0N(
         oc8051_sfr1_oc8051_b_register_n6), .Y(
         oc8051_sfr1_oc8051_b_register_n10) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u9 ( .A0(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u11 ( .A0(
         oc8051_sfr1_oc8051_b_register_n3), .A1(
         oc8051_sfr1_oc8051_b_register_n12), .A2(wr_addr[0]), .B0(
         oc8051_sfr1_oc8051_b_register_n4), .Y(
         oc8051_sfr1_oc8051_b_register_n11) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u8 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u10 ( .A(
         oc8051_sfr1_oc8051_b_register_n10), .B(oc8051_sfr1_b_reg_5_), .S0(
         oc8051_sfr1_oc8051_b_register_n11), .Y(
         oc8051_sfr1_oc8051_b_register_n37) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u7 ( .B0(des_acc[6]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u9 ( .B0(des_acc[6]), .B1(
         oc8051_sfr1_oc8051_b_register_n5), .A0N(
         oc8051_sfr1_oc8051_b_register_n6), .Y(oc8051_sfr1_oc8051_b_register_n7) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u6 ( .A0(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u8 ( .A0(
         oc8051_sfr1_oc8051_b_register_n3), .A1(
         oc8051_sfr1_oc8051_b_register_n9), .A2(wr_addr[1]), .B0(
         oc8051_sfr1_oc8051_b_register_n4), .Y(oc8051_sfr1_oc8051_b_register_n8) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u5 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u7 ( .A(
         oc8051_sfr1_oc8051_b_register_n7), .B(oc8051_sfr1_b_reg_6_), .S0(
         oc8051_sfr1_oc8051_b_register_n8), .Y(
         oc8051_sfr1_oc8051_b_register_n38) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u4 ( .B0(des_acc[7]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u6 ( .B0(des_acc[7]), .B1(
         oc8051_sfr1_oc8051_b_register_n5), .A0N(
         oc8051_sfr1_oc8051_b_register_n6), .Y(oc8051_sfr1_oc8051_b_register_n1) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u3 ( .A0(wr_addr[0]), .A1(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u5 ( .A0(wr_addr[0]), .A1(
         oc8051_sfr1_oc8051_b_register_n3), .A2(wr_addr[1]), .B0(
         oc8051_sfr1_oc8051_b_register_n4), .Y(oc8051_sfr1_oc8051_b_register_n2) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u2 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u4 ( .A(
         oc8051_sfr1_oc8051_b_register_n1), .B(oc8051_sfr1_b_reg_7_), .S0(
         oc8051_sfr1_oc8051_b_register_n2), .Y(
         oc8051_sfr1_oc8051_b_register_n39) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u3 ( .A(wr_addr[1]), .Y(
+        oc8051_sfr1_oc8051_b_register_n12) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_b_register_u2 ( .A(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_b_register_n9) );
   DFFRPQ_X1M_A12TS oc8051_sfr1_oc8051_b_register_data_out_reg_2_ ( .D(
         oc8051_sfr1_oc8051_b_register_n34), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_sfr1_b_reg_2_) );
@@ -43399,143 +43378,144 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         ram_rd_sel[0]), .C(ram_rd_sel[1]), .Y(oc8051_sfr1_oc8051_sp1_n35) );
   INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u53 ( .A(oc8051_sfr1_oc8051_sp1_n35), 
         .Y(oc8051_sfr1_oc8051_sp1_n36) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_sp1_u52 ( .A(wr_addr[2]), .B(wr_addr[1]), 
-        .Y(oc8051_sfr1_oc8051_sp1_n34) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_sp1_u51 ( .A(wr_addr[7]), .B(wr_addr[0]), .C(oc8051_sfr1_oc8051_sp1_n34), .D(n_5_net_), .Y(oc8051_sfr1_oc8051_sp1_n33)
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_sp1_u52 ( .A(wr_addr[7]), .B(wr_addr[0]), .C(oc8051_sfr1_oc8051_sp1_n34), .D(n_5_net_), .Y(oc8051_sfr1_oc8051_sp1_n33)
          );
-  OR6_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u50 ( .A(oc8051_sfr1_wr_bit_r), .B(
-        wr_addr[6]), .C(wr_addr[5]), .D(wr_addr[4]), .E(wr_addr[3]), .F(
-        oc8051_sfr1_oc8051_sp1_n33), .Y(oc8051_sfr1_oc8051_sp1_n32) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u49 ( .A(oc8051_sfr1_oc8051_sp1_n32), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u51 ( .A(oc8051_sfr1_oc8051_sp1_n32), 
         .Y(oc8051_sfr1_oc8051_sp1_n2) );
-  NAND3B_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u48 ( .AN(ram_wr_sel[2]), .B(
+  NAND3B_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u50 ( .AN(ram_wr_sel[2]), .B(
         ram_wr_sel[0]), .C(ram_wr_sel[1]), .Y(oc8051_sfr1_oc8051_sp1_n8) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u47 ( .A(oc8051_sfr1_oc8051_sp1_n8), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u49 ( .A(oc8051_sfr1_oc8051_sp1_n8), 
         .Y(oc8051_sfr1_oc8051_sp1_n1) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_sp1_u46 ( .A(oc8051_sfr1_oc8051_sp1_n2), 
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_sp1_u48 ( .A(oc8051_sfr1_oc8051_sp1_n2), 
         .B(oc8051_sfr1_oc8051_sp1_n1), .Y(oc8051_sfr1_oc8051_sp1_n5) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_sp1_u45 ( .A(oc8051_sfr1_oc8051_sp1_n8), 
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_sp1_u47 ( .A(oc8051_sfr1_oc8051_sp1_n8), 
         .B(oc8051_sfr1_oc8051_sp1_n2), .Y(oc8051_sfr1_oc8051_sp1_n4) );
-  AO21_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u44 ( .A0(oc8051_sfr1_oc8051_sp1_n5), 
+  AO21_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u46 ( .A0(oc8051_sfr1_oc8051_sp1_n5), 
         .A1(oc8051_sfr1_oc8051_sp1_pop), .B0(oc8051_sfr1_oc8051_sp1_n4), .Y(
         oc8051_sfr1_oc8051_sp1_n30) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u43 ( .AN(oc8051_sfr1_oc8051_sp1_n5), .B(oc8051_sfr1_oc8051_sp1_pop), .Y(oc8051_sfr1_oc8051_sp1_n31) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u42 ( .A(oc8051_sfr1_oc8051_sp1_n30), .B(oc8051_sfr1_oc8051_sp1_n31), .S0(oc8051_sfr1_oc8051_sp1_sp_0_), .Y(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u45 ( .AN(oc8051_sfr1_oc8051_sp1_n5), .B(oc8051_sfr1_oc8051_sp1_pop), .Y(oc8051_sfr1_oc8051_sp1_n31) );
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u44 ( .A(oc8051_sfr1_oc8051_sp1_n30), .B(oc8051_sfr1_oc8051_sp1_n31), .S0(oc8051_sfr1_oc8051_sp1_sp_0_), .Y(
         oc8051_sfr1_oc8051_sp1_n29) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u41 ( .B0(wr_dat[0]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u43 ( .B0(wr_dat[0]), .B1(
         oc8051_sfr1_oc8051_sp1_n2), .A0N(oc8051_sfr1_oc8051_sp1_n29), .Y(sp[0]) );
-  AOI2XB1_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u40 ( .A1N(
+  AOI2XB1_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u42 ( .A1N(
         oc8051_sfr1_oc8051_sp1_pop), .A0(oc8051_sfr1_oc8051_sp1_n8), .B0(
         oc8051_sfr1_oc8051_sp1_sp_0_), .Y(oc8051_sfr1_oc8051_sp1_n25) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u39 ( .A(oc8051_sfr1_oc8051_sp1_n4), 
+  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u41 ( .A(oc8051_sfr1_oc8051_sp1_n4), 
         .B(oc8051_sfr1_oc8051_sp1_n5), .C(oc8051_sfr1_oc8051_sp1_n5), .D(
         oc8051_sfr1_oc8051_sp1_n4), .S0(oc8051_sfr1_oc8051_sp1_n25), .S1(
         oc8051_sfr1_oc8051_sp1_sp_1_), .Y(oc8051_sfr1_oc8051_sp1_n28) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u38 ( .A(oc8051_sfr1_oc8051_sp1_sp_1_), .Y(oc8051_sfr1_oc8051_sp1_n26) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u37 ( .AN(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u40 ( .A(oc8051_sfr1_oc8051_sp1_sp_1_), .Y(oc8051_sfr1_oc8051_sp1_n26) );
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u39 ( .AN(
         oc8051_sfr1_oc8051_sp1_n25), .B(oc8051_sfr1_oc8051_sp1_sp_1_), .Y(
         oc8051_sfr1_oc8051_sp1_n27) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u36 ( .A0(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u38 ( .A0(
         oc8051_sfr1_oc8051_sp1_n25), .A1(oc8051_sfr1_oc8051_sp1_n26), .B0(
         oc8051_sfr1_oc8051_sp1_n1), .B1(oc8051_sfr1_oc8051_sp1_n27), .Y(
         oc8051_sfr1_oc8051_sp1_n22) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u35 ( .A(oc8051_sfr1_oc8051_sp1_n5), 
+  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u37 ( .A(oc8051_sfr1_oc8051_sp1_n5), 
         .B(oc8051_sfr1_oc8051_sp1_n4), .C(oc8051_sfr1_oc8051_sp1_n4), .D(
         oc8051_sfr1_oc8051_sp1_n5), .S0(oc8051_sfr1_oc8051_sp1_n22), .S1(
         oc8051_sfr1_oc8051_sp1_sp_2_), .Y(oc8051_sfr1_oc8051_sp1_n24) );
-  OR2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u34 ( .A(oc8051_sfr1_oc8051_sp1_sp_2_), .B(oc8051_sfr1_oc8051_sp1_n22), .Y(oc8051_sfr1_oc8051_sp1_n23) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u33 ( .A0(
+  OR2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u36 ( .A(oc8051_sfr1_oc8051_sp1_sp_2_), .B(oc8051_sfr1_oc8051_sp1_n22), .Y(oc8051_sfr1_oc8051_sp1_n23) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u35 ( .A0(
         oc8051_sfr1_oc8051_sp1_n22), .A1(oc8051_sfr1_oc8051_sp1_sp_2_), .B0(
         oc8051_sfr1_oc8051_sp1_n8), .B1(oc8051_sfr1_oc8051_sp1_n23), .Y(
         oc8051_sfr1_oc8051_sp1_n18) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u32 ( .A(oc8051_sfr1_oc8051_sp1_n4), 
+  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u34 ( .A(oc8051_sfr1_oc8051_sp1_n4), 
         .B(oc8051_sfr1_oc8051_sp1_n5), .C(oc8051_sfr1_oc8051_sp1_n5), .D(
         oc8051_sfr1_oc8051_sp1_n4), .S0(oc8051_sfr1_oc8051_sp1_sp_3_), .S1(
         oc8051_sfr1_oc8051_sp1_n18), .Y(oc8051_sfr1_oc8051_sp1_n21) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u31 ( .A(oc8051_sfr1_oc8051_sp1_sp_3_), .Y(oc8051_sfr1_oc8051_sp1_n19) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u30 ( .AN(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u33 ( .A(oc8051_sfr1_oc8051_sp1_sp_3_), .Y(oc8051_sfr1_oc8051_sp1_n19) );
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u32 ( .AN(
         oc8051_sfr1_oc8051_sp1_n18), .B(oc8051_sfr1_oc8051_sp1_sp_3_), .Y(
         oc8051_sfr1_oc8051_sp1_n20) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u29 ( .A0(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u31 ( .A0(
         oc8051_sfr1_oc8051_sp1_n18), .A1(oc8051_sfr1_oc8051_sp1_n19), .B0(
         oc8051_sfr1_oc8051_sp1_n1), .B1(oc8051_sfr1_oc8051_sp1_n20), .Y(
         oc8051_sfr1_oc8051_sp1_n15) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u28 ( .A(oc8051_sfr1_oc8051_sp1_n5), 
+  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u30 ( .A(oc8051_sfr1_oc8051_sp1_n5), 
         .B(oc8051_sfr1_oc8051_sp1_n4), .C(oc8051_sfr1_oc8051_sp1_n4), .D(
         oc8051_sfr1_oc8051_sp1_n5), .S0(oc8051_sfr1_oc8051_sp1_sp_4_), .S1(
         oc8051_sfr1_oc8051_sp1_n15), .Y(oc8051_sfr1_oc8051_sp1_n17) );
-  OR2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u27 ( .A(oc8051_sfr1_oc8051_sp1_sp_4_), .B(oc8051_sfr1_oc8051_sp1_n15), .Y(oc8051_sfr1_oc8051_sp1_n16) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u26 ( .A0(
+  OR2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u29 ( .A(oc8051_sfr1_oc8051_sp1_sp_4_), .B(oc8051_sfr1_oc8051_sp1_n15), .Y(oc8051_sfr1_oc8051_sp1_n16) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u28 ( .A0(
         oc8051_sfr1_oc8051_sp1_n15), .A1(oc8051_sfr1_oc8051_sp1_sp_4_), .B0(
         oc8051_sfr1_oc8051_sp1_n8), .B1(oc8051_sfr1_oc8051_sp1_n16), .Y(
         oc8051_sfr1_oc8051_sp1_n11) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u25 ( .A(oc8051_sfr1_oc8051_sp1_n4), 
+  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u27 ( .A(oc8051_sfr1_oc8051_sp1_n4), 
         .B(oc8051_sfr1_oc8051_sp1_n5), .C(oc8051_sfr1_oc8051_sp1_n5), .D(
         oc8051_sfr1_oc8051_sp1_n4), .S0(oc8051_sfr1_oc8051_sp1_sp_5_), .S1(
         oc8051_sfr1_oc8051_sp1_n11), .Y(oc8051_sfr1_oc8051_sp1_n14) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u24 ( .A(oc8051_sfr1_oc8051_sp1_sp_5_), .Y(oc8051_sfr1_oc8051_sp1_n12) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u23 ( .AN(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_sp1_u26 ( .A(oc8051_sfr1_oc8051_sp1_sp_5_), .Y(oc8051_sfr1_oc8051_sp1_n12) );
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u25 ( .AN(
         oc8051_sfr1_oc8051_sp1_n11), .B(oc8051_sfr1_oc8051_sp1_sp_5_), .Y(
         oc8051_sfr1_oc8051_sp1_n13) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u22 ( .A0(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u24 ( .A0(
         oc8051_sfr1_oc8051_sp1_n11), .A1(oc8051_sfr1_oc8051_sp1_n12), .B0(
         oc8051_sfr1_oc8051_sp1_n1), .B1(oc8051_sfr1_oc8051_sp1_n13), .Y(
         oc8051_sfr1_oc8051_sp1_n9) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u21 ( .A(oc8051_sfr1_oc8051_sp1_n5), 
+  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u23 ( .A(oc8051_sfr1_oc8051_sp1_n5), 
         .B(oc8051_sfr1_oc8051_sp1_n4), .C(oc8051_sfr1_oc8051_sp1_n4), .D(
         oc8051_sfr1_oc8051_sp1_n5), .S0(oc8051_sfr1_oc8051_sp1_sp_6_), .S1(
         oc8051_sfr1_oc8051_sp1_n9), .Y(oc8051_sfr1_oc8051_sp1_n10) );
-  AO21_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u20 ( .A0(wr_dat[6]), .A1(
+  AO21_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u22 ( .A0(wr_dat[6]), .A1(
         oc8051_sfr1_oc8051_sp1_n2), .B0(oc8051_sfr1_oc8051_sp1_n10), .Y(sp[6])
          );
-  OR2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u19 ( .A(oc8051_sfr1_oc8051_sp1_sp_6_), .B(oc8051_sfr1_oc8051_sp1_n9), .Y(oc8051_sfr1_oc8051_sp1_n7) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u18 ( .A0(oc8051_sfr1_oc8051_sp1_n7), .A1(oc8051_sfr1_oc8051_sp1_n8), .B0(oc8051_sfr1_oc8051_sp1_sp_6_), .B1(
+  OR2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u21 ( .A(oc8051_sfr1_oc8051_sp1_sp_6_), .B(oc8051_sfr1_oc8051_sp1_n9), .Y(oc8051_sfr1_oc8051_sp1_n7) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u20 ( .A0(oc8051_sfr1_oc8051_sp1_n7), .A1(oc8051_sfr1_oc8051_sp1_n8), .B0(oc8051_sfr1_oc8051_sp1_sp_6_), .B1(
         oc8051_sfr1_oc8051_sp1_n9), .Y(oc8051_sfr1_oc8051_sp1_n6) );
-  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u17 ( .A(oc8051_sfr1_oc8051_sp1_n4), 
+  MXT4_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u19 ( .A(oc8051_sfr1_oc8051_sp1_n4), 
         .B(oc8051_sfr1_oc8051_sp1_n5), .C(oc8051_sfr1_oc8051_sp1_n5), .D(
         oc8051_sfr1_oc8051_sp1_n4), .S0(oc8051_sfr1_oc8051_sp1_sp_7_), .S1(
         oc8051_sfr1_oc8051_sp1_n6), .Y(oc8051_sfr1_oc8051_sp1_n3) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u16 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u18 ( .A(
         oc8051_sfr1_oc8051_sp1_sp_0_), .B(oc8051_sfr1_oc8051_sp1_n130), .S0(
         oc8051_sfr1_oc8051_sp1_n1), .Y(sp_w[0]) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u15 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u17 ( .A(
         oc8051_sfr1_oc8051_sp1_sp_1_), .B(oc8051_sfr1_oc8051_sp1_n140), .S0(
         oc8051_sfr1_oc8051_sp1_n1), .Y(sp_w[1]) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u14 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u16 ( .A(
         oc8051_sfr1_oc8051_sp1_sp_2_), .B(oc8051_sfr1_oc8051_sp1_n150), .S0(
         oc8051_sfr1_oc8051_sp1_n1), .Y(sp_w[2]) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u13 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u15 ( .A(
         oc8051_sfr1_oc8051_sp1_sp_3_), .B(oc8051_sfr1_oc8051_sp1_n160), .S0(
         oc8051_sfr1_oc8051_sp1_n1), .Y(sp_w[3]) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u12 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u14 ( .A(
         oc8051_sfr1_oc8051_sp1_sp_4_), .B(oc8051_sfr1_oc8051_sp1_n170), .S0(
         oc8051_sfr1_oc8051_sp1_n1), .Y(sp_w[4]) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u11 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u13 ( .A(
         oc8051_sfr1_oc8051_sp1_sp_5_), .B(oc8051_sfr1_oc8051_sp1_n180), .S0(
         oc8051_sfr1_oc8051_sp1_n1), .Y(sp_w[5]) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u10 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u12 ( .A(
         oc8051_sfr1_oc8051_sp1_sp_6_), .B(oc8051_sfr1_oc8051_sp1_n190), .S0(
         oc8051_sfr1_oc8051_sp1_n1), .Y(sp_w[6]) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u9 ( .A(oc8051_sfr1_oc8051_sp1_sp_7_), .B(oc8051_sfr1_oc8051_sp1_n200), .S0(oc8051_sfr1_oc8051_sp1_n1), .Y(sp_w[7])
-         );
-  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u8 ( .A0(wr_dat[1]), .A1(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u11 ( .A(
+        oc8051_sfr1_oc8051_sp1_sp_7_), .B(oc8051_sfr1_oc8051_sp1_n200), .S0(
+        oc8051_sfr1_oc8051_sp1_n1), .Y(sp_w[7]) );
+  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u10 ( .A0(wr_dat[1]), .A1(
         oc8051_sfr1_oc8051_sp1_n2), .B0(oc8051_sfr1_oc8051_sp1_n28), .Y(sp[1])
          );
-  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u7 ( .A0(wr_dat[7]), .A1(
+  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u9 ( .A0(wr_dat[7]), .A1(
         oc8051_sfr1_oc8051_sp1_n2), .B0(oc8051_sfr1_oc8051_sp1_n3), .Y(sp[7])
          );
-  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u6 ( .A0(wr_dat[5]), .A1(
+  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u8 ( .A0(wr_dat[5]), .A1(
         oc8051_sfr1_oc8051_sp1_n2), .B0(oc8051_sfr1_oc8051_sp1_n14), .Y(sp[5])
          );
-  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u5 ( .A0(wr_dat[4]), .A1(
+  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u7 ( .A0(wr_dat[4]), .A1(
         oc8051_sfr1_oc8051_sp1_n2), .B0(oc8051_sfr1_oc8051_sp1_n17), .Y(sp[4])
          );
-  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u4 ( .A0(wr_dat[2]), .A1(
+  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u6 ( .A0(wr_dat[2]), .A1(
         oc8051_sfr1_oc8051_sp1_n2), .B0(oc8051_sfr1_oc8051_sp1_n24), .Y(sp[2])
          );
-  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u3 ( .A0(wr_dat[3]), .A1(
+  AO21_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u5 ( .A0(wr_dat[3]), .A1(
         oc8051_sfr1_oc8051_sp1_n2), .B0(oc8051_sfr1_oc8051_sp1_n21), .Y(sp[3])
          );
+  NOR2_X0P5M_A12TS oc8051_sfr1_oc8051_sp1_u4 ( .A(wr_addr[2]), .B(wr_addr[1]), 
+        .Y(oc8051_sfr1_oc8051_sp1_n34) );
+  OR6_X0P7M_A12TS oc8051_sfr1_oc8051_sp1_u3 ( .A(oc8051_sfr1_wr_bit_r), .B(
+        wr_addr[6]), .C(wr_addr[5]), .D(wr_addr[4]), .E(wr_addr[3]), .F(
+        oc8051_sfr1_oc8051_sp1_n33), .Y(oc8051_sfr1_oc8051_sp1_n32) );
   DFFRPQ_X1M_A12TS oc8051_sfr1_oc8051_sp1_sp_reg_5_ ( .D(sp[5]), .CK(wb_clk_i), 
         .R(wb_rst_i), .Q(oc8051_sfr1_oc8051_sp1_sp_5_) );
   DFFRPQ_X1M_A12TS oc8051_sfr1_oc8051_sp1_sp_reg_3_ ( .D(sp[3]), .CK(wb_clk_i), 
@@ -43560,16 +43540,16 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_sfr1_oc8051_sp1_sp_7_), .Y(oc8051_sfr1_oc8051_sp1_n200) );
   INV_X1B_A12TS oc8051_sfr1_oc8051_sp1_add_102_s2_u1 ( .A(
         oc8051_sfr1_oc8051_sp1_sp_0_), .Y(oc8051_sfr1_oc8051_sp1_n130) );
-  ADDH_X1M_A12TS oc8051_sfr1_oc8051_sp1_add_102_s2_u1_1_3 ( .A(
-        oc8051_sfr1_oc8051_sp1_sp_3_), .B(
-        oc8051_sfr1_oc8051_sp1_add_102_s2_carry[3]), .CO(
-        oc8051_sfr1_oc8051_sp1_add_102_s2_carry[4]), .S(
-        oc8051_sfr1_oc8051_sp1_n160) );
   ADDH_X1M_A12TS oc8051_sfr1_oc8051_sp1_add_102_s2_u1_1_5 ( .A(
         oc8051_sfr1_oc8051_sp1_sp_5_), .B(
         oc8051_sfr1_oc8051_sp1_add_102_s2_carry[5]), .CO(
         oc8051_sfr1_oc8051_sp1_add_102_s2_carry[6]), .S(
         oc8051_sfr1_oc8051_sp1_n180) );
+  ADDH_X1M_A12TS oc8051_sfr1_oc8051_sp1_add_102_s2_u1_1_3 ( .A(
+        oc8051_sfr1_oc8051_sp1_sp_3_), .B(
+        oc8051_sfr1_oc8051_sp1_add_102_s2_carry[3]), .CO(
+        oc8051_sfr1_oc8051_sp1_add_102_s2_carry[4]), .S(
+        oc8051_sfr1_oc8051_sp1_n160) );
   ADDH_X1M_A12TS oc8051_sfr1_oc8051_sp1_add_102_s2_u1_1_4 ( .A(
         oc8051_sfr1_oc8051_sp1_sp_4_), .B(
         oc8051_sfr1_oc8051_sp1_add_102_s2_carry[4]), .CO(
@@ -43594,76 +43574,80 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u31 ( .AN(wr_addr[2]), .B(
         wr_addr[1]), .C(n_5_net_), .D(wr_addr[7]), .Y(
         oc8051_sfr1_oc8051_dptr1_n15) );
-  OR6_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u30 ( .A(oc8051_sfr1_wr_bit_r), .B(
-        wr_addr[6]), .C(wr_addr[5]), .D(wr_addr[4]), .E(wr_addr[3]), .F(
-        oc8051_sfr1_oc8051_dptr1_n15), .Y(oc8051_sfr1_oc8051_dptr1_n2) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_dptr1_u29 ( .A(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_dptr1_n3) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_dptr1_u28 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_dptr1_u30 ( .A(
         oc8051_sfr1_oc8051_dptr1_n2), .B(oc8051_sfr1_oc8051_dptr1_n4), .C(
         oc8051_sfr1_oc8051_dptr1_n3), .Y(oc8051_sfr1_oc8051_dptr1_n7) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_dptr1_u27 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_dptr1_u29 ( .A(
         oc8051_sfr1_oc8051_dptr1_n4), .B(oc8051_sfr1_oc8051_dptr1_n7), .Y(
         oc8051_sfr1_oc8051_dptr1_n6) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u26 ( .A0(dptr_hi[0]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u28 ( .A0(dptr_hi[0]), .A1(
         oc8051_sfr1_oc8051_dptr1_n6), .B0(oc8051_sfr1_oc8051_dptr1_n7), .B1(
         des_acc[0]), .Y(oc8051_sfr1_oc8051_dptr1_n14) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u25 ( .B0(des2[0]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u27 ( .B0(des2[0]), .B1(
         oc8051_sfr1_oc8051_dptr1_n4), .A0N(oc8051_sfr1_oc8051_dptr1_n14), .Y(
         oc8051_sfr1_oc8051_dptr1_n18) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u24 ( .A0(dptr_hi[1]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u26 ( .A0(dptr_hi[1]), .A1(
         oc8051_sfr1_oc8051_dptr1_n6), .B0(oc8051_sfr1_oc8051_dptr1_n7), .B1(
         des_acc[1]), .Y(oc8051_sfr1_oc8051_dptr1_n13) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u23 ( .B0(des2[1]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u25 ( .B0(des2[1]), .B1(
         oc8051_sfr1_oc8051_dptr1_n4), .A0N(oc8051_sfr1_oc8051_dptr1_n13), .Y(
         oc8051_sfr1_oc8051_dptr1_n19) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u22 ( .A0(dptr_hi[2]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u24 ( .A0(dptr_hi[2]), .A1(
         oc8051_sfr1_oc8051_dptr1_n6), .B0(oc8051_sfr1_oc8051_dptr1_n7), .B1(
         des_acc[2]), .Y(oc8051_sfr1_oc8051_dptr1_n12) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u21 ( .B0(des2[2]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u23 ( .B0(des2[2]), .B1(
         oc8051_sfr1_oc8051_dptr1_n4), .A0N(oc8051_sfr1_oc8051_dptr1_n12), .Y(
         oc8051_sfr1_oc8051_dptr1_n20) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u20 ( .A0(dptr_hi[3]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u22 ( .A0(dptr_hi[3]), .A1(
         oc8051_sfr1_oc8051_dptr1_n6), .B0(oc8051_sfr1_oc8051_dptr1_n7), .B1(
         des_acc[3]), .Y(oc8051_sfr1_oc8051_dptr1_n11) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u19 ( .B0(des2[3]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u21 ( .B0(des2[3]), .B1(
         oc8051_sfr1_oc8051_dptr1_n4), .A0N(oc8051_sfr1_oc8051_dptr1_n11), .Y(
         oc8051_sfr1_oc8051_dptr1_n21) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u18 ( .A0(dptr_hi[4]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u20 ( .A0(dptr_hi[4]), .A1(
         oc8051_sfr1_oc8051_dptr1_n6), .B0(oc8051_sfr1_oc8051_dptr1_n7), .B1(
         des_acc[4]), .Y(oc8051_sfr1_oc8051_dptr1_n10) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u17 ( .B0(des2[4]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u19 ( .B0(des2[4]), .B1(
         oc8051_sfr1_oc8051_dptr1_n4), .A0N(oc8051_sfr1_oc8051_dptr1_n10), .Y(
         oc8051_sfr1_oc8051_dptr1_n22) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u16 ( .A0(dptr_hi[5]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u18 ( .A0(dptr_hi[5]), .A1(
         oc8051_sfr1_oc8051_dptr1_n6), .B0(oc8051_sfr1_oc8051_dptr1_n7), .B1(
         des_acc[5]), .Y(oc8051_sfr1_oc8051_dptr1_n9) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u15 ( .B0(des2[5]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u17 ( .B0(des2[5]), .B1(
         oc8051_sfr1_oc8051_dptr1_n4), .A0N(oc8051_sfr1_oc8051_dptr1_n9), .Y(
         oc8051_sfr1_oc8051_dptr1_n23) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u14 ( .A0(dptr_hi[6]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u16 ( .A0(dptr_hi[6]), .A1(
         oc8051_sfr1_oc8051_dptr1_n6), .B0(oc8051_sfr1_oc8051_dptr1_n7), .B1(
         des_acc[6]), .Y(oc8051_sfr1_oc8051_dptr1_n8) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u13 ( .B0(des2[6]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u15 ( .B0(des2[6]), .B1(
         oc8051_sfr1_oc8051_dptr1_n4), .A0N(oc8051_sfr1_oc8051_dptr1_n8), .Y(
         oc8051_sfr1_oc8051_dptr1_n24) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u12 ( .A0(dptr_hi[7]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u14 ( .A0(dptr_hi[7]), .A1(
         oc8051_sfr1_oc8051_dptr1_n6), .B0(oc8051_sfr1_oc8051_dptr1_n7), .B1(
         des_acc[7]), .Y(oc8051_sfr1_oc8051_dptr1_n5) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u11 ( .B0(des2[7]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u13 ( .B0(des2[7]), .B1(
         oc8051_sfr1_oc8051_dptr1_n4), .A0N(oc8051_sfr1_oc8051_dptr1_n5), .Y(
         oc8051_sfr1_oc8051_dptr1_n25) );
-  AOI2XB1_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u10 ( .A1N(
+  AOI2XB1_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u12 ( .A1N(
         oc8051_sfr1_oc8051_dptr1_n2), .A0(oc8051_sfr1_oc8051_dptr1_n3), .B0(
         oc8051_sfr1_oc8051_dptr1_n4), .Y(oc8051_sfr1_oc8051_dptr1_n1) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u9 ( .A(des_acc[0]), .B(dptr_lo[0]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n26) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u8 ( .A(des_acc[1]), .B(dptr_lo[1]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n27) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u7 ( .A(des_acc[2]), .B(dptr_lo[2]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n28) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u6 ( .A(des_acc[3]), .B(dptr_lo[3]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n29) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u5 ( .A(des_acc[4]), .B(dptr_lo[4]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n30) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u4 ( .A(des_acc[5]), .B(dptr_lo[5]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n31) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u3 ( .A(des_acc[6]), .B(dptr_lo[6]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n32) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u2 ( .A(des_acc[7]), .B(dptr_lo[7]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n33) );
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u11 ( .A(des_acc[0]), .B(
+        dptr_lo[0]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(
+        oc8051_sfr1_oc8051_dptr1_n26) );
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u10 ( .A(des_acc[1]), .B(
+        dptr_lo[1]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(
+        oc8051_sfr1_oc8051_dptr1_n27) );
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u9 ( .A(des_acc[2]), .B(dptr_lo[2]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n28) );
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u8 ( .A(des_acc[3]), .B(dptr_lo[3]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n29) );
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u7 ( .A(des_acc[4]), .B(dptr_lo[4]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n30) );
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u6 ( .A(des_acc[5]), .B(dptr_lo[5]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n31) );
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u5 ( .A(des_acc[6]), .B(dptr_lo[6]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n32) );
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u4 ( .A(des_acc[7]), .B(dptr_lo[7]), .S0(oc8051_sfr1_oc8051_dptr1_n1), .Y(oc8051_sfr1_oc8051_dptr1_n33) );
+  OR6_X0P7M_A12TS oc8051_sfr1_oc8051_dptr1_u3 ( .A(oc8051_sfr1_wr_bit_r), .B(
+        wr_addr[6]), .C(wr_addr[5]), .D(wr_addr[4]), .E(wr_addr[3]), .F(
+        oc8051_sfr1_oc8051_dptr1_n15), .Y(oc8051_sfr1_oc8051_dptr1_n2) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_dptr1_u2 ( .A(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_dptr1_n3) );
   DFFRPQ_X1M_A12TS oc8051_sfr1_oc8051_dptr1_data_hi_reg_0_ ( .D(
         oc8051_sfr1_oc8051_dptr1_n18), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         dptr_hi[0]) );
@@ -43719,124 +43703,123 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_sfr1_oc8051_psw1_n37) );
   AND4_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u47 ( .A(wr_addr[6]), .B(wr_addr[4]), .C(wr_addr[7]), .D(oc8051_sfr1_oc8051_psw1_n37), .Y(
         oc8051_sfr1_oc8051_psw1_n35) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u46 ( .A(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_psw1_n10) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u45 ( .A(wr_addr[1]), .B(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u46 ( .A(wr_addr[1]), .B(
         oc8051_sfr1_wr_bit_r), .C(wr_addr[2]), .Y(oc8051_sfr1_oc8051_psw1_n36)
          );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u44 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u45 ( .A(
         oc8051_sfr1_oc8051_psw1_n35), .B(oc8051_sfr1_oc8051_psw1_n10), .C(
         oc8051_sfr1_oc8051_psw1_n36), .Y(oc8051_sfr1_oc8051_psw1_n18) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u43 ( .A(wr_dat[3]), .B(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u44 ( .A(wr_dat[3]), .B(
         oc8051_sfr1_psw_3_), .S0(oc8051_sfr1_oc8051_psw1_n18), .Y(bank_sel[0])
          );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u42 ( .A(wr_dat[4]), .B(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u43 ( .A(wr_dat[4]), .B(
         oc8051_sfr1_psw_4_), .S0(oc8051_sfr1_oc8051_psw1_n18), .Y(bank_sel[1])
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u41 ( .A(oc8051_sfr1_oc8051_psw1_n18), .Y(oc8051_sfr1_oc8051_psw1_n11) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u40 ( .A(oc8051_sfr1_wr_bit_r), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u42 ( .A(oc8051_sfr1_oc8051_psw1_n18), .Y(oc8051_sfr1_oc8051_psw1_n11) );
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u41 ( .A(oc8051_sfr1_wr_bit_r), 
         .B(oc8051_sfr1_oc8051_psw1_n35), .Y(oc8051_sfr1_oc8051_psw1_n34) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u39 ( .A(oc8051_sfr1_oc8051_psw1_n34), .Y(oc8051_sfr1_oc8051_psw1_n25) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u38 ( .A(descy), .B(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u40 ( .A(oc8051_sfr1_oc8051_psw1_n34), .Y(oc8051_sfr1_oc8051_psw1_n25) );
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u39 ( .A(descy), .B(
         oc8051_sfr1_oc8051_psw1_n25), .Y(oc8051_sfr1_oc8051_psw1_n19) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u37 ( .A(wr_addr[1]), .Y(
-        oc8051_sfr1_oc8051_psw1_n8) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u36 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u38 ( .A(
         oc8051_sfr1_oc8051_psw1_n34), .B(wr_addr[2]), .Y(
         oc8051_sfr1_oc8051_psw1_n29) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u35 ( .A0(wr_addr[0]), .A1(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u37 ( .A0(wr_addr[0]), .A1(
         oc8051_sfr1_oc8051_psw1_n8), .A2(oc8051_sfr1_oc8051_psw1_n29), .B0(
         oc8051_sfr1_oc8051_psw1_n11), .Y(oc8051_sfr1_oc8051_psw1_n33) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u34 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u36 ( .A(
         oc8051_sfr1_oc8051_psw1_n32), .B(oc8051_sfr1_psw_1_), .S0(
         oc8051_sfr1_oc8051_psw1_n33), .Y(oc8051_sfr1_oc8051_psw1_n45) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u33 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u35 ( .A(
         oc8051_sfr1_oc8051_psw1_n25), .B(oc8051_sfr1_oc8051_psw1_n11), .Y(
         oc8051_sfr1_oc8051_psw1_n5) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u32 ( .A(oc8051_sfr1_oc8051_psw1_n19), .Y(oc8051_sfr1_oc8051_psw1_n12) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u31 ( .A0(wr_dat[2]), .A1(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u34 ( .A(oc8051_sfr1_oc8051_psw1_n19), .Y(oc8051_sfr1_oc8051_psw1_n12) );
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u33 ( .A0(wr_dat[2]), .A1(
         oc8051_sfr1_oc8051_psw1_n11), .B0(desov), .B1(
         oc8051_sfr1_oc8051_psw1_n5), .C0(oc8051_sfr1_oc8051_psw1_n12), .Y(
         oc8051_sfr1_oc8051_psw1_n30) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u30 ( .B0(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u32 ( .B0(
         oc8051_sfr1_oc8051_psw1_n5), .B1(psw_set[1]), .A0N(
         oc8051_sfr1_oc8051_psw1_n18), .Y(oc8051_sfr1_oc8051_psw1_n6) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u29 ( .A0(wr_addr[1]), .A1(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u31 ( .A0(wr_addr[1]), .A1(
         oc8051_sfr1_oc8051_psw1_n10), .A2(oc8051_sfr1_oc8051_psw1_n29), .B0(
         oc8051_sfr1_oc8051_psw1_n6), .Y(oc8051_sfr1_oc8051_psw1_n31) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u28 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u30 ( .A(
         oc8051_sfr1_oc8051_psw1_n30), .B(oc8051_sfr1_oc8051_psw1_n1), .S0(
         oc8051_sfr1_oc8051_psw1_n31), .Y(oc8051_sfr1_oc8051_psw1_n46) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u27 ( .A0(wr_dat[3]), .A1(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u29 ( .A0(wr_dat[3]), .A1(
         oc8051_sfr1_oc8051_psw1_n11), .B0(oc8051_sfr1_oc8051_psw1_n12), .Y(
         oc8051_sfr1_oc8051_psw1_n26) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u26 ( .A(oc8051_sfr1_psw_3_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u28 ( .A(oc8051_sfr1_psw_3_), .Y(
         oc8051_sfr1_oc8051_psw1_n27) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u25 ( .A0(wr_addr[1]), .A1(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u27 ( .A0(wr_addr[1]), .A1(
         wr_addr[0]), .A2(oc8051_sfr1_oc8051_psw1_n29), .B0(
         oc8051_sfr1_oc8051_psw1_n11), .Y(oc8051_sfr1_oc8051_psw1_n28) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u24 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u26 ( .A(
         oc8051_sfr1_oc8051_psw1_n26), .B(oc8051_sfr1_oc8051_psw1_n27), .S0(
         oc8051_sfr1_oc8051_psw1_n28), .Y(oc8051_sfr1_oc8051_psw1_n47) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u23 ( .A(wr_addr[2]), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u25 ( .A(wr_addr[2]), .B(
         oc8051_sfr1_oc8051_psw1_n25), .Y(oc8051_sfr1_oc8051_psw1_n9) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u22 ( .A(wr_addr[0]), .B(wr_addr[1]), .C(oc8051_sfr1_oc8051_psw1_n9), .Y(oc8051_sfr1_oc8051_psw1_n22) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u21 ( .AN(oc8051_sfr1_psw_4_), .B(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u24 ( .A(wr_addr[0]), .B(wr_addr[1]), .C(oc8051_sfr1_oc8051_psw1_n9), .Y(oc8051_sfr1_oc8051_psw1_n22) );
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u23 ( .AN(oc8051_sfr1_psw_4_), .B(
         oc8051_sfr1_oc8051_psw1_n22), .Y(oc8051_sfr1_oc8051_psw1_n24) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u20 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u22 ( .A(
         oc8051_sfr1_oc8051_psw1_n24), .B(wr_dat[4]), .S0(
         oc8051_sfr1_oc8051_psw1_n11), .Y(oc8051_sfr1_oc8051_psw1_n23) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u19 ( .B0(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u21 ( .B0(
         oc8051_sfr1_oc8051_psw1_n22), .B1(oc8051_sfr1_oc8051_psw1_n12), .A0N(
         oc8051_sfr1_oc8051_psw1_n23), .Y(oc8051_sfr1_oc8051_psw1_n48) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u18 ( .A0(
+  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u20 ( .A0(
         oc8051_sfr1_oc8051_psw1_n9), .A1(wr_addr[1]), .A2(
         oc8051_sfr1_oc8051_psw1_n10), .B0(oc8051_sfr1_oc8051_psw1_n18), .Y(
         oc8051_sfr1_oc8051_psw1_n21) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u17 ( .A(oc8051_sfr1_psw_5_), .B(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u19 ( .A(oc8051_sfr1_psw_5_), .B(
         oc8051_sfr1_oc8051_psw1_n20), .S0(oc8051_sfr1_oc8051_psw1_n21), .Y(
         oc8051_sfr1_oc8051_psw1_n49) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u16 ( .B0(wr_dat[6]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u18 ( .B0(wr_dat[6]), .B1(
         oc8051_sfr1_oc8051_psw1_n11), .A0N(oc8051_sfr1_oc8051_psw1_n19), .Y(
         oc8051_sfr1_oc8051_psw1_n15) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u15 ( .A0(
+  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u17 ( .A0(
         oc8051_sfr1_oc8051_psw1_n8), .A1(wr_addr[0]), .A2(
         oc8051_sfr1_oc8051_psw1_n9), .B0(oc8051_sfr1_oc8051_psw1_n18), .Y(
         oc8051_sfr1_oc8051_psw1_n17) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u14 ( .A0(psw_set[1]), .A1(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u16 ( .A0(psw_set[1]), .A1(
         oc8051_sfr1_oc8051_psw1_n5), .A2(psw_set[0]), .B0(
         oc8051_sfr1_oc8051_psw1_n17), .Y(oc8051_sfr1_oc8051_psw1_n16) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u13 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u15 ( .A(
         oc8051_sfr1_oc8051_psw1_n15), .B(srcac), .S0(
         oc8051_sfr1_oc8051_psw1_n16), .Y(oc8051_sfr1_oc8051_psw1_n13) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u12 ( .A(desac), .B(psw_set[0]), 
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u14 ( .A(desac), .B(psw_set[0]), 
         .C(psw_set[1]), .D(oc8051_sfr1_oc8051_psw1_n5), .Y(
         oc8051_sfr1_oc8051_psw1_n14) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u11 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u13 ( .A(
         oc8051_sfr1_oc8051_psw1_n13), .B(oc8051_sfr1_oc8051_psw1_n14), .Y(
         oc8051_sfr1_oc8051_psw1_n50) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u10 ( .A0(wr_dat[7]), .A1(
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u12 ( .A0(wr_dat[7]), .A1(
         oc8051_sfr1_oc8051_psw1_n11), .B0(descy), .B1(
         oc8051_sfr1_oc8051_psw1_n5), .C0(oc8051_sfr1_oc8051_psw1_n12), .Y(
         oc8051_sfr1_oc8051_psw1_n3) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u9 ( .A(oc8051_sfr1_oc8051_psw1_n8), 
-        .B(oc8051_sfr1_oc8051_psw1_n9), .C(oc8051_sfr1_oc8051_psw1_n10), .Y(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_psw1_u11 ( .A(oc8051_sfr1_oc8051_psw1_n8), .B(oc8051_sfr1_oc8051_psw1_n9), .C(oc8051_sfr1_oc8051_psw1_n10), .Y(
         oc8051_sfr1_oc8051_psw1_n7) );
-  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u8 ( .A0(psw_set[0]), .A1(
+  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u10 ( .A0(psw_set[0]), .A1(
         oc8051_sfr1_oc8051_psw1_n5), .B0(oc8051_sfr1_oc8051_psw1_n6), .C0(
         oc8051_sfr1_oc8051_psw1_n7), .Y(oc8051_sfr1_oc8051_psw1_n4) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u7 ( .A(oc8051_sfr1_oc8051_psw1_n3), .B(oc8051_sfr1_oc8051_psw1_n2), .S0(oc8051_sfr1_oc8051_psw1_n4), .Y(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u9 ( .A(oc8051_sfr1_oc8051_psw1_n3), .B(oc8051_sfr1_oc8051_psw1_n2), .S0(oc8051_sfr1_oc8051_psw1_n4), .Y(
         oc8051_sfr1_oc8051_psw1_n51) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u6 ( .A(oc8051_sfr1_oc8051_psw1_n1), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u8 ( .A(oc8051_sfr1_oc8051_psw1_n1), 
         .Y(oc8051_sfr1_psw_2_) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u5 ( .A(oc8051_sfr1_oc8051_psw1_n2), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_psw1_u7 ( .A(oc8051_sfr1_oc8051_psw1_n2), 
         .Y(cy) );
-  AO21B_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u4 ( .A0(wr_dat[5]), .A1(
-        oc8051_sfr1_oc8051_psw1_n11), .B0N(oc8051_sfr1_oc8051_psw1_n19), .Y(
-        oc8051_sfr1_oc8051_psw1_n20) );
-  AO21B_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u3 ( .A0(wr_dat[1]), .A1(
+  AO21B_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u6 ( .A0(wr_dat[1]), .A1(
         oc8051_sfr1_oc8051_psw1_n11), .B0N(oc8051_sfr1_oc8051_psw1_n19), .Y(
         oc8051_sfr1_oc8051_psw1_n32) );
+  AO21B_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u5 ( .A0(wr_dat[5]), .A1(
+        oc8051_sfr1_oc8051_psw1_n11), .B0N(oc8051_sfr1_oc8051_psw1_n19), .Y(
+        oc8051_sfr1_oc8051_psw1_n20) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u4 ( .A(wr_addr[1]), .Y(
+        oc8051_sfr1_oc8051_psw1_n8) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_psw1_u3 ( .A(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_psw1_n10) );
   DFFRPQN_X1M_A12TS oc8051_sfr1_oc8051_psw1_data_reg_2_ ( .D(
         oc8051_sfr1_oc8051_psw1_n46), .CK(wb_clk_i), .R(wb_rst_i), .QN(
         oc8051_sfr1_oc8051_psw1_n1) );
@@ -43903,439 +43886,439 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u152 ( .AN(
         oc8051_sfr1_oc8051_ports1_n33), .B(oc8051_sfr1_oc8051_ports1_n96), .Y(
         oc8051_sfr1_oc8051_ports1_n77) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u151 ( .A(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_ports1_n80) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u150 ( .A(wr_addr[1]), .B(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u151 ( .A(wr_addr[1]), .B(
         wr_addr[2]), .C(oc8051_sfr1_oc8051_ports1_n80), .Y(
         oc8051_sfr1_oc8051_ports1_n30) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u149 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u150 ( .A(
         oc8051_sfr1_oc8051_ports1_n36), .B(oc8051_sfr1_wr_bit_r), .Y(
         oc8051_sfr1_oc8051_ports1_n31) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u148 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u149 ( .AN(
         oc8051_sfr1_oc8051_ports1_n31), .B(oc8051_sfr1_oc8051_ports1_n96), .Y(
         oc8051_sfr1_oc8051_ports1_n78) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u147 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u148 ( .A0(
         oc8051_sfr1_oc8051_ports1_n77), .A1(oc8051_sfr1_oc8051_ports1_n30), 
         .B0(oc8051_sfr1_oc8051_ports1_n78), .Y(oc8051_sfr1_oc8051_ports1_n95)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u146 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u147 ( .A(
         oc8051_sfr1_oc8051_ports1_n27), .B(oc8051_sfr1_oc8051_ports1_n94), 
         .S0(oc8051_sfr1_oc8051_ports1_n95), .Y(oc8051_sfr1_oc8051_ports1_n143)
          );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u145 ( .A0(wr_dat[2]), .A1(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u146 ( .A0(wr_dat[2]), .A1(
         oc8051_sfr1_oc8051_ports1_n82), .B0(oc8051_sfr1_oc8051_ports1_n83), 
         .Y(oc8051_sfr1_oc8051_ports1_n23) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u144 ( .A(p2_o[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u145 ( .A(p2_o[2]), .Y(
         oc8051_sfr1_oc8051_ports1_n92) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u143 ( .A(wr_addr[1]), .Y(
-        oc8051_sfr1_oc8051_ports1_n79) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u142 ( .A(wr_addr[0]), .B(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u144 ( .A(wr_addr[0]), .B(
         wr_addr[2]), .C(oc8051_sfr1_oc8051_ports1_n79), .Y(
         oc8051_sfr1_oc8051_ports1_n26) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u141 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u143 ( .A0(
         oc8051_sfr1_oc8051_ports1_n77), .A1(oc8051_sfr1_oc8051_ports1_n26), 
         .B0(oc8051_sfr1_oc8051_ports1_n78), .Y(oc8051_sfr1_oc8051_ports1_n93)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u140 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u142 ( .A(
         oc8051_sfr1_oc8051_ports1_n23), .B(oc8051_sfr1_oc8051_ports1_n92), 
         .S0(oc8051_sfr1_oc8051_ports1_n93), .Y(oc8051_sfr1_oc8051_ports1_n144)
          );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u139 ( .A0(wr_dat[3]), .A1(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u141 ( .A0(wr_dat[3]), .A1(
         oc8051_sfr1_oc8051_ports1_n82), .B0(oc8051_sfr1_oc8051_ports1_n83), 
         .Y(oc8051_sfr1_oc8051_ports1_n19) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u138 ( .A(p2_o[3]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u140 ( .A(p2_o[3]), .Y(
         oc8051_sfr1_oc8051_ports1_n90) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u137 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u139 ( .A(
         oc8051_sfr1_oc8051_ports1_n80), .B(wr_addr[2]), .C(
         oc8051_sfr1_oc8051_ports1_n79), .Y(oc8051_sfr1_oc8051_ports1_n22) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u136 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u138 ( .A0(
         oc8051_sfr1_oc8051_ports1_n77), .A1(oc8051_sfr1_oc8051_ports1_n22), 
         .B0(oc8051_sfr1_oc8051_ports1_n78), .Y(oc8051_sfr1_oc8051_ports1_n91)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u135 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u137 ( .A(
         oc8051_sfr1_oc8051_ports1_n19), .B(oc8051_sfr1_oc8051_ports1_n90), 
         .S0(oc8051_sfr1_oc8051_ports1_n91), .Y(oc8051_sfr1_oc8051_ports1_n145)
          );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u134 ( .A0(wr_dat[4]), .A1(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u136 ( .A0(wr_dat[4]), .A1(
         oc8051_sfr1_oc8051_ports1_n82), .B0(oc8051_sfr1_oc8051_ports1_n83), 
         .Y(oc8051_sfr1_oc8051_ports1_n15) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u133 ( .A(p2_o[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u135 ( .A(p2_o[4]), .Y(
         oc8051_sfr1_oc8051_ports1_n88) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u132 ( .A(wr_addr[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u134 ( .A(wr_addr[2]), .Y(
         oc8051_sfr1_oc8051_ports1_n81) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u131 ( .A(wr_addr[0]), .B(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u133 ( .A(wr_addr[0]), .B(
         wr_addr[1]), .C(oc8051_sfr1_oc8051_ports1_n81), .Y(
         oc8051_sfr1_oc8051_ports1_n18) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u130 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u132 ( .A0(
         oc8051_sfr1_oc8051_ports1_n77), .A1(oc8051_sfr1_oc8051_ports1_n18), 
         .B0(oc8051_sfr1_oc8051_ports1_n78), .Y(oc8051_sfr1_oc8051_ports1_n89)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u129 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u131 ( .A(
         oc8051_sfr1_oc8051_ports1_n15), .B(oc8051_sfr1_oc8051_ports1_n88), 
         .S0(oc8051_sfr1_oc8051_ports1_n89), .Y(oc8051_sfr1_oc8051_ports1_n146)
          );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u128 ( .A0(wr_dat[5]), .A1(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u130 ( .A0(wr_dat[5]), .A1(
         oc8051_sfr1_oc8051_ports1_n82), .B0(oc8051_sfr1_oc8051_ports1_n83), 
         .Y(oc8051_sfr1_oc8051_ports1_n11) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u127 ( .A(p2_o[5]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u129 ( .A(p2_o[5]), .Y(
         oc8051_sfr1_oc8051_ports1_n86) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u126 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u128 ( .A(
         oc8051_sfr1_oc8051_ports1_n80), .B(wr_addr[1]), .C(
         oc8051_sfr1_oc8051_ports1_n81), .Y(oc8051_sfr1_oc8051_ports1_n14) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u125 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u127 ( .A0(
         oc8051_sfr1_oc8051_ports1_n77), .A1(oc8051_sfr1_oc8051_ports1_n14), 
         .B0(oc8051_sfr1_oc8051_ports1_n78), .Y(oc8051_sfr1_oc8051_ports1_n87)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u124 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u126 ( .A(
         oc8051_sfr1_oc8051_ports1_n11), .B(oc8051_sfr1_oc8051_ports1_n86), 
         .S0(oc8051_sfr1_oc8051_ports1_n87), .Y(oc8051_sfr1_oc8051_ports1_n147)
          );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u123 ( .A0(wr_dat[6]), .A1(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u125 ( .A0(wr_dat[6]), .A1(
         oc8051_sfr1_oc8051_ports1_n82), .B0(oc8051_sfr1_oc8051_ports1_n83), 
         .Y(oc8051_sfr1_oc8051_ports1_n7) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u122 ( .A(p2_o[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u124 ( .A(p2_o[6]), .Y(
         oc8051_sfr1_oc8051_ports1_n84) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u121 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u123 ( .A(
         oc8051_sfr1_oc8051_ports1_n79), .B(wr_addr[0]), .C(
         oc8051_sfr1_oc8051_ports1_n81), .Y(oc8051_sfr1_oc8051_ports1_n10) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u120 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u122 ( .A0(
         oc8051_sfr1_oc8051_ports1_n77), .A1(oc8051_sfr1_oc8051_ports1_n10), 
         .B0(oc8051_sfr1_oc8051_ports1_n78), .Y(oc8051_sfr1_oc8051_ports1_n85)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u119 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u121 ( .A(
         oc8051_sfr1_oc8051_ports1_n7), .B(oc8051_sfr1_oc8051_ports1_n84), .S0(
         oc8051_sfr1_oc8051_ports1_n85), .Y(oc8051_sfr1_oc8051_ports1_n148) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u118 ( .A0(wr_dat[7]), .A1(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u120 ( .A0(wr_dat[7]), .A1(
         oc8051_sfr1_oc8051_ports1_n82), .B0(oc8051_sfr1_oc8051_ports1_n83), 
         .Y(oc8051_sfr1_oc8051_ports1_n1) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u117 ( .A(p2_o[7]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u119 ( .A(p2_o[7]), .Y(
         oc8051_sfr1_oc8051_ports1_n75) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u116 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u118 ( .A(
         oc8051_sfr1_oc8051_ports1_n79), .B(oc8051_sfr1_oc8051_ports1_n80), .C(
         oc8051_sfr1_oc8051_ports1_n81), .Y(oc8051_sfr1_oc8051_ports1_n4) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u115 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u117 ( .A0(
         oc8051_sfr1_oc8051_ports1_n77), .A1(oc8051_sfr1_oc8051_ports1_n4), 
         .B0(oc8051_sfr1_oc8051_ports1_n78), .Y(oc8051_sfr1_oc8051_ports1_n76)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u114 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u116 ( .A(
         oc8051_sfr1_oc8051_ports1_n1), .B(oc8051_sfr1_oc8051_ports1_n75), .S0(
         oc8051_sfr1_oc8051_ports1_n76), .Y(oc8051_sfr1_oc8051_ports1_n149) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u113 ( .A(wr_addr[5]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u115 ( .A(wr_addr[5]), .Y(
         oc8051_sfr1_oc8051_ports1_n55) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u112 ( .A(wr_addr[4]), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u114 ( .A(wr_addr[4]), .B(
         oc8051_sfr1_oc8051_ports1_n55), .Y(oc8051_sfr1_oc8051_ports1_n73) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u111 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u113 ( .A0(
         oc8051_sfr1_oc8051_ports1_n36), .A1(oc8051_sfr1_oc8051_ports1_n73), 
         .B0(p1_o[0]), .Y(oc8051_sfr1_oc8051_ports1_n74) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u110 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u112 ( .A0(
         oc8051_sfr1_oc8051_ports1_n34), .A1(oc8051_sfr1_oc8051_ports1_n73), 
         .B0(oc8051_sfr1_oc8051_ports1_n74), .Y(oc8051_sfr1_oc8051_ports1_n150)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u109 ( .A(p1_o[1]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u111 ( .A(p1_o[1]), .Y(
         oc8051_sfr1_oc8051_ports1_n71) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u108 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u110 ( .AN(
         oc8051_sfr1_oc8051_ports1_n33), .B(oc8051_sfr1_oc8051_ports1_n73), .Y(
         oc8051_sfr1_oc8051_ports1_n59) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u107 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u109 ( .AN(
         oc8051_sfr1_oc8051_ports1_n31), .B(oc8051_sfr1_oc8051_ports1_n73), .Y(
         oc8051_sfr1_oc8051_ports1_n60) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u106 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u108 ( .A0(
         oc8051_sfr1_oc8051_ports1_n59), .A1(oc8051_sfr1_oc8051_ports1_n30), 
         .B0(oc8051_sfr1_oc8051_ports1_n60), .Y(oc8051_sfr1_oc8051_ports1_n72)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u105 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u107 ( .A(
         oc8051_sfr1_oc8051_ports1_n27), .B(oc8051_sfr1_oc8051_ports1_n71), 
         .S0(oc8051_sfr1_oc8051_ports1_n72), .Y(oc8051_sfr1_oc8051_ports1_n151)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u104 ( .A(p1_o[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u106 ( .A(p1_o[2]), .Y(
         oc8051_sfr1_oc8051_ports1_n69) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u103 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u105 ( .A0(
         oc8051_sfr1_oc8051_ports1_n59), .A1(oc8051_sfr1_oc8051_ports1_n26), 
         .B0(oc8051_sfr1_oc8051_ports1_n60), .Y(oc8051_sfr1_oc8051_ports1_n70)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u102 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u104 ( .A(
         oc8051_sfr1_oc8051_ports1_n23), .B(oc8051_sfr1_oc8051_ports1_n69), 
         .S0(oc8051_sfr1_oc8051_ports1_n70), .Y(oc8051_sfr1_oc8051_ports1_n152)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u101 ( .A(p1_o[3]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u103 ( .A(p1_o[3]), .Y(
         oc8051_sfr1_oc8051_ports1_n67) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u100 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u102 ( .A0(
         oc8051_sfr1_oc8051_ports1_n59), .A1(oc8051_sfr1_oc8051_ports1_n22), 
         .B0(oc8051_sfr1_oc8051_ports1_n60), .Y(oc8051_sfr1_oc8051_ports1_n68)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u99 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u101 ( .A(
         oc8051_sfr1_oc8051_ports1_n19), .B(oc8051_sfr1_oc8051_ports1_n67), 
         .S0(oc8051_sfr1_oc8051_ports1_n68), .Y(oc8051_sfr1_oc8051_ports1_n153)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u98 ( .A(p1_o[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u100 ( .A(p1_o[4]), .Y(
         oc8051_sfr1_oc8051_ports1_n65) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u97 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u99 ( .A0(
         oc8051_sfr1_oc8051_ports1_n59), .A1(oc8051_sfr1_oc8051_ports1_n18), 
         .B0(oc8051_sfr1_oc8051_ports1_n60), .Y(oc8051_sfr1_oc8051_ports1_n66)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u96 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u98 ( .A(
         oc8051_sfr1_oc8051_ports1_n15), .B(oc8051_sfr1_oc8051_ports1_n65), 
         .S0(oc8051_sfr1_oc8051_ports1_n66), .Y(oc8051_sfr1_oc8051_ports1_n154)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u95 ( .A(p1_o[5]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u97 ( .A(p1_o[5]), .Y(
         oc8051_sfr1_oc8051_ports1_n63) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u94 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u96 ( .A0(
         oc8051_sfr1_oc8051_ports1_n59), .A1(oc8051_sfr1_oc8051_ports1_n14), 
         .B0(oc8051_sfr1_oc8051_ports1_n60), .Y(oc8051_sfr1_oc8051_ports1_n64)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u93 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u95 ( .A(
         oc8051_sfr1_oc8051_ports1_n11), .B(oc8051_sfr1_oc8051_ports1_n63), 
         .S0(oc8051_sfr1_oc8051_ports1_n64), .Y(oc8051_sfr1_oc8051_ports1_n155)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u92 ( .A(p1_o[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u94 ( .A(p1_o[6]), .Y(
         oc8051_sfr1_oc8051_ports1_n61) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u91 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u93 ( .A0(
         oc8051_sfr1_oc8051_ports1_n59), .A1(oc8051_sfr1_oc8051_ports1_n10), 
         .B0(oc8051_sfr1_oc8051_ports1_n60), .Y(oc8051_sfr1_oc8051_ports1_n62)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u90 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u92 ( .A(
         oc8051_sfr1_oc8051_ports1_n7), .B(oc8051_sfr1_oc8051_ports1_n61), .S0(
         oc8051_sfr1_oc8051_ports1_n62), .Y(oc8051_sfr1_oc8051_ports1_n156) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u89 ( .A(p1_o[7]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u91 ( .A(p1_o[7]), .Y(
         oc8051_sfr1_oc8051_ports1_n57) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u88 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u90 ( .A0(
         oc8051_sfr1_oc8051_ports1_n59), .A1(oc8051_sfr1_oc8051_ports1_n4), 
         .B0(oc8051_sfr1_oc8051_ports1_n60), .Y(oc8051_sfr1_oc8051_ports1_n58)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u87 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u89 ( .A(
         oc8051_sfr1_oc8051_ports1_n1), .B(oc8051_sfr1_oc8051_ports1_n57), .S0(
         oc8051_sfr1_oc8051_ports1_n58), .Y(oc8051_sfr1_oc8051_ports1_n157) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u86 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u88 ( .A(
         oc8051_sfr1_oc8051_ports1_n55), .B(oc8051_sfr1_oc8051_ports1_n56), .Y(
         oc8051_sfr1_oc8051_ports1_n53) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u85 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u87 ( .A0(
         oc8051_sfr1_oc8051_ports1_n36), .A1(oc8051_sfr1_oc8051_ports1_n53), 
         .B0(p0_o[0]), .Y(oc8051_sfr1_oc8051_ports1_n54) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u84 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u86 ( .A0(
         oc8051_sfr1_oc8051_ports1_n34), .A1(oc8051_sfr1_oc8051_ports1_n53), 
         .B0(oc8051_sfr1_oc8051_ports1_n54), .Y(oc8051_sfr1_oc8051_ports1_n158)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u83 ( .A(p0_o[1]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u85 ( .A(p0_o[1]), .Y(
         oc8051_sfr1_oc8051_ports1_n51) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u82 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u84 ( .AN(
         oc8051_sfr1_oc8051_ports1_n33), .B(oc8051_sfr1_oc8051_ports1_n53), .Y(
         oc8051_sfr1_oc8051_ports1_n39) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u81 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u83 ( .AN(
         oc8051_sfr1_oc8051_ports1_n31), .B(oc8051_sfr1_oc8051_ports1_n53), .Y(
         oc8051_sfr1_oc8051_ports1_n40) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u80 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u82 ( .A0(
         oc8051_sfr1_oc8051_ports1_n39), .A1(oc8051_sfr1_oc8051_ports1_n30), 
         .B0(oc8051_sfr1_oc8051_ports1_n40), .Y(oc8051_sfr1_oc8051_ports1_n52)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u79 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u81 ( .A(
         oc8051_sfr1_oc8051_ports1_n27), .B(oc8051_sfr1_oc8051_ports1_n51), 
         .S0(oc8051_sfr1_oc8051_ports1_n52), .Y(oc8051_sfr1_oc8051_ports1_n159)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u78 ( .A(p0_o[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u80 ( .A(p0_o[2]), .Y(
         oc8051_sfr1_oc8051_ports1_n49) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u77 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u79 ( .A0(
         oc8051_sfr1_oc8051_ports1_n39), .A1(oc8051_sfr1_oc8051_ports1_n26), 
         .B0(oc8051_sfr1_oc8051_ports1_n40), .Y(oc8051_sfr1_oc8051_ports1_n50)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u76 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u78 ( .A(
         oc8051_sfr1_oc8051_ports1_n23), .B(oc8051_sfr1_oc8051_ports1_n49), 
         .S0(oc8051_sfr1_oc8051_ports1_n50), .Y(oc8051_sfr1_oc8051_ports1_n160)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u75 ( .A(p0_o[3]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u77 ( .A(p0_o[3]), .Y(
         oc8051_sfr1_oc8051_ports1_n47) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u74 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u76 ( .A0(
         oc8051_sfr1_oc8051_ports1_n39), .A1(oc8051_sfr1_oc8051_ports1_n22), 
         .B0(oc8051_sfr1_oc8051_ports1_n40), .Y(oc8051_sfr1_oc8051_ports1_n48)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u73 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u75 ( .A(
         oc8051_sfr1_oc8051_ports1_n19), .B(oc8051_sfr1_oc8051_ports1_n47), 
         .S0(oc8051_sfr1_oc8051_ports1_n48), .Y(oc8051_sfr1_oc8051_ports1_n161)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u72 ( .A(p0_o[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u74 ( .A(p0_o[4]), .Y(
         oc8051_sfr1_oc8051_ports1_n45) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u71 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u73 ( .A0(
         oc8051_sfr1_oc8051_ports1_n39), .A1(oc8051_sfr1_oc8051_ports1_n18), 
         .B0(oc8051_sfr1_oc8051_ports1_n40), .Y(oc8051_sfr1_oc8051_ports1_n46)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u70 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u72 ( .A(
         oc8051_sfr1_oc8051_ports1_n15), .B(oc8051_sfr1_oc8051_ports1_n45), 
         .S0(oc8051_sfr1_oc8051_ports1_n46), .Y(oc8051_sfr1_oc8051_ports1_n162)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u69 ( .A(p0_o[5]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u71 ( .A(p0_o[5]), .Y(
         oc8051_sfr1_oc8051_ports1_n43) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u68 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u70 ( .A0(
         oc8051_sfr1_oc8051_ports1_n39), .A1(oc8051_sfr1_oc8051_ports1_n14), 
         .B0(oc8051_sfr1_oc8051_ports1_n40), .Y(oc8051_sfr1_oc8051_ports1_n44)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u67 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u69 ( .A(
         oc8051_sfr1_oc8051_ports1_n11), .B(oc8051_sfr1_oc8051_ports1_n43), 
         .S0(oc8051_sfr1_oc8051_ports1_n44), .Y(oc8051_sfr1_oc8051_ports1_n163)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u66 ( .A(p0_o[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u68 ( .A(p0_o[6]), .Y(
         oc8051_sfr1_oc8051_ports1_n41) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u65 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u67 ( .A0(
         oc8051_sfr1_oc8051_ports1_n39), .A1(oc8051_sfr1_oc8051_ports1_n10), 
         .B0(oc8051_sfr1_oc8051_ports1_n40), .Y(oc8051_sfr1_oc8051_ports1_n42)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u64 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u66 ( .A(
         oc8051_sfr1_oc8051_ports1_n7), .B(oc8051_sfr1_oc8051_ports1_n41), .S0(
         oc8051_sfr1_oc8051_ports1_n42), .Y(oc8051_sfr1_oc8051_ports1_n164) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u63 ( .A(p0_o[7]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u65 ( .A(p0_o[7]), .Y(
         oc8051_sfr1_oc8051_ports1_n37) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u62 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u64 ( .A0(
         oc8051_sfr1_oc8051_ports1_n39), .A1(oc8051_sfr1_oc8051_ports1_n4), 
         .B0(oc8051_sfr1_oc8051_ports1_n40), .Y(oc8051_sfr1_oc8051_ports1_n38)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u61 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u63 ( .A(
         oc8051_sfr1_oc8051_ports1_n1), .B(oc8051_sfr1_oc8051_ports1_n37), .S0(
         oc8051_sfr1_oc8051_ports1_n38), .Y(oc8051_sfr1_oc8051_ports1_n165) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u60 ( .A(wr_addr[5]), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_ports1_u62 ( .A(wr_addr[5]), .B(
         wr_addr[4]), .Y(oc8051_sfr1_oc8051_ports1_n32) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u59 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u61 ( .A0(
         oc8051_sfr1_oc8051_ports1_n32), .A1(oc8051_sfr1_oc8051_ports1_n36), 
         .B0(p3_o[0]), .Y(oc8051_sfr1_oc8051_ports1_n35) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u58 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u60 ( .A0(
         oc8051_sfr1_oc8051_ports1_n32), .A1(oc8051_sfr1_oc8051_ports1_n34), 
         .B0(oc8051_sfr1_oc8051_ports1_n35), .Y(oc8051_sfr1_oc8051_ports1_n166)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u57 ( .A(p3_o[1]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u59 ( .A(p3_o[1]), .Y(
         oc8051_sfr1_oc8051_ports1_n28) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u56 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u58 ( .AN(
         oc8051_sfr1_oc8051_ports1_n33), .B(oc8051_sfr1_oc8051_ports1_n32), .Y(
         oc8051_sfr1_oc8051_ports1_n5) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u55 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u57 ( .AN(
         oc8051_sfr1_oc8051_ports1_n31), .B(oc8051_sfr1_oc8051_ports1_n32), .Y(
         oc8051_sfr1_oc8051_ports1_n6) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u54 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u56 ( .A0(
         oc8051_sfr1_oc8051_ports1_n30), .A1(oc8051_sfr1_oc8051_ports1_n5), 
         .B0(oc8051_sfr1_oc8051_ports1_n6), .Y(oc8051_sfr1_oc8051_ports1_n29)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u53 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u55 ( .A(
         oc8051_sfr1_oc8051_ports1_n27), .B(oc8051_sfr1_oc8051_ports1_n28), 
         .S0(oc8051_sfr1_oc8051_ports1_n29), .Y(oc8051_sfr1_oc8051_ports1_n167)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u52 ( .A(p3_o[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u54 ( .A(p3_o[2]), .Y(
         oc8051_sfr1_oc8051_ports1_n24) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u51 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u53 ( .A0(
         oc8051_sfr1_oc8051_ports1_n26), .A1(oc8051_sfr1_oc8051_ports1_n5), 
         .B0(oc8051_sfr1_oc8051_ports1_n6), .Y(oc8051_sfr1_oc8051_ports1_n25)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u50 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u52 ( .A(
         oc8051_sfr1_oc8051_ports1_n23), .B(oc8051_sfr1_oc8051_ports1_n24), 
         .S0(oc8051_sfr1_oc8051_ports1_n25), .Y(oc8051_sfr1_oc8051_ports1_n168)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u49 ( .A(p3_o[3]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u51 ( .A(p3_o[3]), .Y(
         oc8051_sfr1_oc8051_ports1_n20) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u48 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u50 ( .A0(
         oc8051_sfr1_oc8051_ports1_n22), .A1(oc8051_sfr1_oc8051_ports1_n5), 
         .B0(oc8051_sfr1_oc8051_ports1_n6), .Y(oc8051_sfr1_oc8051_ports1_n21)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u47 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u49 ( .A(
         oc8051_sfr1_oc8051_ports1_n19), .B(oc8051_sfr1_oc8051_ports1_n20), 
         .S0(oc8051_sfr1_oc8051_ports1_n21), .Y(oc8051_sfr1_oc8051_ports1_n169)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u46 ( .A(p3_o[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u48 ( .A(p3_o[4]), .Y(
         oc8051_sfr1_oc8051_ports1_n16) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u45 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u47 ( .A0(
         oc8051_sfr1_oc8051_ports1_n18), .A1(oc8051_sfr1_oc8051_ports1_n5), 
         .B0(oc8051_sfr1_oc8051_ports1_n6), .Y(oc8051_sfr1_oc8051_ports1_n17)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u44 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u46 ( .A(
         oc8051_sfr1_oc8051_ports1_n15), .B(oc8051_sfr1_oc8051_ports1_n16), 
         .S0(oc8051_sfr1_oc8051_ports1_n17), .Y(oc8051_sfr1_oc8051_ports1_n170)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u43 ( .A(p3_o[5]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u45 ( .A(p3_o[5]), .Y(
         oc8051_sfr1_oc8051_ports1_n12) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u42 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u44 ( .A0(
         oc8051_sfr1_oc8051_ports1_n14), .A1(oc8051_sfr1_oc8051_ports1_n5), 
         .B0(oc8051_sfr1_oc8051_ports1_n6), .Y(oc8051_sfr1_oc8051_ports1_n13)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u41 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u43 ( .A(
         oc8051_sfr1_oc8051_ports1_n11), .B(oc8051_sfr1_oc8051_ports1_n12), 
         .S0(oc8051_sfr1_oc8051_ports1_n13), .Y(oc8051_sfr1_oc8051_ports1_n171)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u40 ( .A(p3_o[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u42 ( .A(p3_o[6]), .Y(
         oc8051_sfr1_oc8051_ports1_n8) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u39 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u41 ( .A0(
         oc8051_sfr1_oc8051_ports1_n10), .A1(oc8051_sfr1_oc8051_ports1_n5), 
         .B0(oc8051_sfr1_oc8051_ports1_n6), .Y(oc8051_sfr1_oc8051_ports1_n9) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u38 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u40 ( .A(
         oc8051_sfr1_oc8051_ports1_n7), .B(oc8051_sfr1_oc8051_ports1_n8), .S0(
         oc8051_sfr1_oc8051_ports1_n9), .Y(oc8051_sfr1_oc8051_ports1_n172) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u37 ( .A(p3_o[7]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_ports1_u39 ( .A(p3_o[7]), .Y(
         oc8051_sfr1_oc8051_ports1_n2) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u36 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u38 ( .A0(
         oc8051_sfr1_oc8051_ports1_n4), .A1(oc8051_sfr1_oc8051_ports1_n5), .B0(
         oc8051_sfr1_oc8051_ports1_n6), .Y(oc8051_sfr1_oc8051_ports1_n3) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u35 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u37 ( .A(
         oc8051_sfr1_oc8051_ports1_n1), .B(oc8051_sfr1_oc8051_ports1_n2), .S0(
         oc8051_sfr1_oc8051_ports1_n3), .Y(oc8051_sfr1_oc8051_ports1_n173) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u34 ( .A(p0_i[0]), .B(p0_o[0]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u36 ( .A(p0_i[0]), .B(p0_o[0]), 
         .S0(rmw), .Y(oc8051_sfr1_p0_data_0_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u33 ( .A(p0_i[1]), .B(p0_o[1]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u35 ( .A(p0_i[1]), .B(p0_o[1]), 
         .S0(rmw), .Y(oc8051_sfr1_p0_data_1_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u32 ( .A(p0_i[2]), .B(p0_o[2]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u34 ( .A(p0_i[2]), .B(p0_o[2]), 
         .S0(rmw), .Y(oc8051_sfr1_p0_data_2_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u31 ( .A(p0_i[3]), .B(p0_o[3]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u33 ( .A(p0_i[3]), .B(p0_o[3]), 
         .S0(rmw), .Y(oc8051_sfr1_p0_data_3_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u30 ( .A(p0_i[4]), .B(p0_o[4]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u32 ( .A(p0_i[4]), .B(p0_o[4]), 
         .S0(rmw), .Y(oc8051_sfr1_p0_data_4_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u29 ( .A(p0_i[5]), .B(p0_o[5]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u31 ( .A(p0_i[5]), .B(p0_o[5]), 
         .S0(rmw), .Y(oc8051_sfr1_p0_data_5_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u28 ( .A(p0_i[6]), .B(p0_o[6]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u30 ( .A(p0_i[6]), .B(p0_o[6]), 
         .S0(rmw), .Y(oc8051_sfr1_p0_data_6_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u27 ( .A(p0_i[7]), .B(p0_o[7]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u29 ( .A(p0_i[7]), .B(p0_o[7]), 
         .S0(rmw), .Y(oc8051_sfr1_p0_data_7_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u26 ( .A(p1_i[0]), .B(p1_o[0]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u28 ( .A(p1_i[0]), .B(p1_o[0]), 
         .S0(rmw), .Y(oc8051_sfr1_p1_data_0_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u25 ( .A(p1_i[1]), .B(p1_o[1]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u27 ( .A(p1_i[1]), .B(p1_o[1]), 
         .S0(rmw), .Y(oc8051_sfr1_p1_data_1_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u24 ( .A(p1_i[2]), .B(p1_o[2]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u26 ( .A(p1_i[2]), .B(p1_o[2]), 
         .S0(rmw), .Y(oc8051_sfr1_p1_data_2_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u23 ( .A(p1_i[3]), .B(p1_o[3]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u25 ( .A(p1_i[3]), .B(p1_o[3]), 
         .S0(rmw), .Y(oc8051_sfr1_p1_data_3_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u22 ( .A(p1_i[4]), .B(p1_o[4]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u24 ( .A(p1_i[4]), .B(p1_o[4]), 
         .S0(rmw), .Y(oc8051_sfr1_p1_data_4_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u21 ( .A(p1_i[5]), .B(p1_o[5]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u23 ( .A(p1_i[5]), .B(p1_o[5]), 
         .S0(rmw), .Y(oc8051_sfr1_p1_data_5_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u20 ( .A(p1_i[6]), .B(p1_o[6]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u22 ( .A(p1_i[6]), .B(p1_o[6]), 
         .S0(rmw), .Y(oc8051_sfr1_p1_data_6_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u19 ( .A(p1_i[7]), .B(p1_o[7]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u21 ( .A(p1_i[7]), .B(p1_o[7]), 
         .S0(rmw), .Y(oc8051_sfr1_p1_data_7_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u18 ( .A(p2_i[0]), .B(p2_o[0]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u20 ( .A(p2_i[0]), .B(p2_o[0]), 
         .S0(rmw), .Y(oc8051_sfr1_p2_data_0_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u17 ( .A(p2_i[1]), .B(p2_o[1]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u19 ( .A(p2_i[1]), .B(p2_o[1]), 
         .S0(rmw), .Y(oc8051_sfr1_p2_data_1_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u16 ( .A(p2_i[2]), .B(p2_o[2]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u18 ( .A(p2_i[2]), .B(p2_o[2]), 
         .S0(rmw), .Y(oc8051_sfr1_p2_data_2_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u15 ( .A(p2_i[3]), .B(p2_o[3]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u17 ( .A(p2_i[3]), .B(p2_o[3]), 
         .S0(rmw), .Y(oc8051_sfr1_p2_data_3_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u14 ( .A(p2_i[4]), .B(p2_o[4]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u16 ( .A(p2_i[4]), .B(p2_o[4]), 
         .S0(rmw), .Y(oc8051_sfr1_p2_data_4_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u13 ( .A(p2_i[5]), .B(p2_o[5]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u15 ( .A(p2_i[5]), .B(p2_o[5]), 
         .S0(rmw), .Y(oc8051_sfr1_p2_data_5_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u12 ( .A(p2_i[6]), .B(p2_o[6]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u14 ( .A(p2_i[6]), .B(p2_o[6]), 
         .S0(rmw), .Y(oc8051_sfr1_p2_data_6_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u11 ( .A(p2_i[7]), .B(p2_o[7]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u13 ( .A(p2_i[7]), .B(p2_o[7]), 
         .S0(rmw), .Y(oc8051_sfr1_p2_data_7_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u10 ( .A(p3_i[0]), .B(p3_o[0]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u12 ( .A(p3_i[0]), .B(p3_o[0]), 
         .S0(rmw), .Y(oc8051_sfr1_p3_data_0_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u9 ( .A(p3_i[1]), .B(p3_o[1]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u11 ( .A(p3_i[1]), .B(p3_o[1]), 
         .S0(rmw), .Y(oc8051_sfr1_p3_data_1_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u8 ( .A(p3_i[2]), .B(p3_o[2]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u10 ( .A(p3_i[2]), .B(p3_o[2]), 
         .S0(rmw), .Y(oc8051_sfr1_p3_data_2_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u7 ( .A(p3_i[3]), .B(p3_o[3]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u9 ( .A(p3_i[3]), .B(p3_o[3]), 
         .S0(rmw), .Y(oc8051_sfr1_p3_data_3_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u6 ( .A(p3_i[4]), .B(p3_o[4]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u8 ( .A(p3_i[4]), .B(p3_o[4]), 
         .S0(rmw), .Y(oc8051_sfr1_p3_data_4_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u5 ( .A(p3_i[5]), .B(p3_o[5]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u7 ( .A(p3_i[5]), .B(p3_o[5]), 
         .S0(rmw), .Y(oc8051_sfr1_p3_data_5_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u4 ( .A(p3_i[6]), .B(p3_o[6]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u6 ( .A(p3_i[6]), .B(p3_o[6]), 
         .S0(rmw), .Y(oc8051_sfr1_p3_data_6_) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u3 ( .A(p3_i[7]), .B(p3_o[7]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u5 ( .A(p3_i[7]), .B(p3_o[7]), 
         .S0(rmw), .Y(oc8051_sfr1_p3_data_7_) );
-  INV_X1B_A12TS oc8051_sfr1_oc8051_ports1_u2 ( .A(wb_rst_i), .Y(
+  INV_X1B_A12TS oc8051_sfr1_oc8051_ports1_u4 ( .A(wb_rst_i), .Y(
         oc8051_sfr1_oc8051_ports1_n103) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u3 ( .A(wr_addr[1]), .Y(
+        oc8051_sfr1_oc8051_ports1_n79) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_u2 ( .A(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_ports1_n80) );
   DFFSQ_X0P5M_A12TS oc8051_sfr1_oc8051_ports1_p2_out_reg_1_ ( .D(
         oc8051_sfr1_oc8051_ports1_n143), .CK(wb_clk_i), .SN(
         oc8051_sfr1_oc8051_ports1_n103), .Q(p2_o[1]) );
@@ -44497,696 +44480,696 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u224 ( .A(oc8051_sfr1_sbuf[0]), 
         .B(oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_3_), .S0(
         oc8051_sfr1_oc8051_uatr1_n122), .Y(oc8051_sfr1_oc8051_uatr1_n187) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u223 ( .A(wr_addr[1]), .Y(
-        oc8051_sfr1_oc8051_uatr1_n43) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u222 ( .A(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_uatr1_n42) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u221 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u223 ( .A(
         oc8051_sfr1_oc8051_uatr1_n43), .B(oc8051_sfr1_oc8051_uatr1_n42), .Y(
         oc8051_sfr1_oc8051_uatr1_n38) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u220 ( .A(wr_addr[6]), .B(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u222 ( .A(wr_addr[6]), .B(
         wr_addr[5]), .Y(oc8051_sfr1_oc8051_uatr1_n168) );
-  AND3_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u219 ( .A(wr_addr[7]), .B(n_5_net_), .C(oc8051_sfr1_oc8051_uatr1_n168), .Y(oc8051_sfr1_oc8051_uatr1_n164) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u218 ( .A(wr_addr[3]), .B(
+  AND3_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u221 ( .A(wr_addr[7]), .B(n_5_net_), .C(oc8051_sfr1_oc8051_uatr1_n168), .Y(oc8051_sfr1_oc8051_uatr1_n164) );
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u220 ( .A(wr_addr[3]), .B(
         oc8051_sfr1_wr_bit_r), .C(wr_addr[4]), .Y(
         oc8051_sfr1_oc8051_uatr1_n167) );
-  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u217 ( .A(
-        oc8051_sfr1_oc8051_uatr1_n38), .B(oc8051_sfr1_oc8051_uatr1_n164), .C(
-        wr_addr[2]), .D(oc8051_sfr1_oc8051_uatr1_n167), .Y(
-        oc8051_sfr1_oc8051_uatr1_n166) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u216 ( .A(oc8051_sfr1_pcon[0]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u219 ( .A(oc8051_sfr1_pcon[0]), 
         .B(wr_dat[0]), .S0(oc8051_sfr1_oc8051_uatr1_n166), .Y(
         oc8051_sfr1_oc8051_uatr1_n189) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u215 ( .A(oc8051_sfr1_pcon[1]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u218 ( .A(oc8051_sfr1_pcon[1]), 
         .B(wr_dat[1]), .S0(oc8051_sfr1_oc8051_uatr1_n166), .Y(
         oc8051_sfr1_oc8051_uatr1_n190) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u214 ( .A(oc8051_sfr1_pcon[2]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u217 ( .A(oc8051_sfr1_pcon[2]), 
         .B(wr_dat[2]), .S0(oc8051_sfr1_oc8051_uatr1_n166), .Y(
         oc8051_sfr1_oc8051_uatr1_n191) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u213 ( .A(oc8051_sfr1_pcon[3]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u216 ( .A(oc8051_sfr1_pcon[3]), 
         .B(wr_dat[3]), .S0(oc8051_sfr1_oc8051_uatr1_n166), .Y(
         oc8051_sfr1_oc8051_uatr1_n192) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u212 ( .A(oc8051_sfr1_pcon[4]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u215 ( .A(oc8051_sfr1_pcon[4]), 
         .B(wr_dat[4]), .S0(oc8051_sfr1_oc8051_uatr1_n166), .Y(
         oc8051_sfr1_oc8051_uatr1_n193) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u211 ( .A(oc8051_sfr1_pcon[5]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u214 ( .A(oc8051_sfr1_pcon[5]), 
         .B(wr_dat[5]), .S0(oc8051_sfr1_oc8051_uatr1_n166), .Y(
         oc8051_sfr1_oc8051_uatr1_n194) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u210 ( .A(oc8051_sfr1_pcon[6]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u213 ( .A(oc8051_sfr1_pcon[6]), 
         .B(wr_dat[6]), .S0(oc8051_sfr1_oc8051_uatr1_n166), .Y(
         oc8051_sfr1_oc8051_uatr1_n195) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u209 ( .A(oc8051_sfr1_pcon[7]), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u212 ( .A(oc8051_sfr1_pcon[7]), 
         .B(wr_dat[7]), .S0(oc8051_sfr1_oc8051_uatr1_n166), .Y(
         oc8051_sfr1_oc8051_uatr1_n196) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u208 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u211 ( .A(
         oc8051_sfr1_oc8051_uatr1_re_count_0_), .Y(
         oc8051_sfr1_oc8051_uatr1_n136) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u207 ( .A(oc8051_sfr1_scon_6_), 
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u210 ( .A(oc8051_sfr1_scon_6_), 
         .B(oc8051_sfr1_scon_7_), .Y(oc8051_sfr1_oc8051_uatr1_n79) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u206 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u209 ( .A(
         oc8051_sfr1_oc8051_uatr1_n79), .Y(oc8051_sfr1_oc8051_uatr1_n82) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u205 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u208 ( .A(
         oc8051_sfr1_oc8051_uatr1_receive), .B(oc8051_sfr1_oc8051_uatr1_n82), 
         .C(oc8051_sfr1_oc8051_uatr1_shift_re), .Y(
         oc8051_sfr1_oc8051_uatr1_n146) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u204 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u207 ( .A(
         oc8051_sfr1_oc8051_uatr1_n122), .B(oc8051_sfr1_oc8051_uatr1_n146), .Y(
         oc8051_sfr1_oc8051_uatr1_n91) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u203 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u206 ( .A(
         oc8051_sfr1_oc8051_uatr1_re_count_1_), .Y(oc8051_sfr1_oc8051_uatr1_n89) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u202 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u205 ( .A(
         oc8051_sfr1_oc8051_uatr1_re_count_2_), .Y(oc8051_sfr1_oc8051_uatr1_n90) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u201 ( .A(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u204 ( .A(
         oc8051_sfr1_oc8051_uatr1_re_count_3_), .B(oc8051_sfr1_oc8051_uatr1_n91), .C(oc8051_sfr1_oc8051_uatr1_n89), .D(oc8051_sfr1_oc8051_uatr1_n90), .Y(
         oc8051_sfr1_oc8051_uatr1_n93) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u200 ( .A(oc8051_sfr1_pres_ow), 
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u203 ( .A(oc8051_sfr1_pres_ow), 
         .B(oc8051_sfr1_oc8051_uatr1_n79), .C(oc8051_sfr1_oc8051_uatr1_receive), 
         .Y(oc8051_sfr1_oc8051_uatr1_n157) );
-  OA21A1OI2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u199 ( .A0(
+  OA21A1OI2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u202 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n136), .A1(oc8051_sfr1_oc8051_uatr1_n93), 
         .B0(oc8051_sfr1_oc8051_uatr1_n157), .C0(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_0_), .Y(
         oc8051_sfr1_oc8051_uatr1_n165) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u198 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u201 ( .A(
         oc8051_sfr1_oc8051_uatr1_n165), .B(oc8051_sfr1_oc8051_uatr1_rx_done), 
         .Y(oc8051_sfr1_oc8051_uatr1_n197) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u197 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u200 ( .A(
         oc8051_sfr1_oc8051_uatr1_trans), .Y(oc8051_sfr1_oc8051_uatr1_n57) );
-  AND3_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u196 ( .A(wr_addr[3]), .B(
+  AND3_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u199 ( .A(wr_addr[3]), .B(
         oc8051_sfr1_oc8051_uatr1_n164), .C(wr_addr[4]), .Y(
         oc8051_sfr1_oc8051_uatr1_n124) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u195 ( .A(wr_addr[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u198 ( .A(wr_addr[2]), .Y(
         oc8051_sfr1_oc8051_uatr1_n54) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u194 ( .AN(oc8051_sfr1_wr_bit_r), 
+  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u197 ( .AN(oc8051_sfr1_wr_bit_r), 
         .B(oc8051_sfr1_oc8051_uatr1_n124), .C(oc8051_sfr1_oc8051_uatr1_n43), 
         .D(oc8051_sfr1_oc8051_uatr1_n54), .Y(oc8051_sfr1_oc8051_uatr1_n123) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u193 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u196 ( .A(
         oc8051_sfr1_oc8051_uatr1_n42), .B(oc8051_sfr1_oc8051_uatr1_n123), .Y(
         oc8051_sfr1_oc8051_uatr1_n22) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u192 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u195 ( .A(
         oc8051_sfr1_oc8051_uatr1_n57), .B(oc8051_sfr1_oc8051_uatr1_n22), .Y(
         oc8051_sfr1_oc8051_uatr1_n29) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u191 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u194 ( .A(
         oc8051_sfr1_oc8051_uatr1_n29), .B(oc8051_sfr1_oc8051_uatr1_n82), .C(
         oc8051_sfr1_oc8051_uatr1_shift_tr), .Y(oc8051_sfr1_oc8051_uatr1_n23)
          );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u190 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u193 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_1_), .B(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_3_), .C(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_2_), .Y(
         oc8051_sfr1_oc8051_uatr1_n161) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u189 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u192 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_7_), .Y(oc8051_sfr1_oc8051_uatr1_n75) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u188 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u191 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_8_), .Y(oc8051_sfr1_oc8051_uatr1_n77) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u187 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u190 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_6_), .Y(oc8051_sfr1_oc8051_uatr1_n73) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u186 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u189 ( .A(
         oc8051_sfr1_oc8051_uatr1_n75), .B(oc8051_sfr1_oc8051_uatr1_n77), .C(
         oc8051_sfr1_oc8051_uatr1_n73), .Y(oc8051_sfr1_oc8051_uatr1_n163) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u185 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u188 ( .A(
         oc8051_sfr1_oc8051_uatr1_n163), .B(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_5_), .C(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_4_), .Y(
         oc8051_sfr1_oc8051_uatr1_n162) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u184 ( .A(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u187 ( .A(
         oc8051_sfr1_oc8051_uatr1_n200), .B(oc8051_sfr1_oc8051_uatr1_n199), .C(
         oc8051_sfr1_oc8051_uatr1_n161), .D(oc8051_sfr1_oc8051_uatr1_n162), .Y(
         oc8051_sfr1_oc8051_uatr1_n59) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u183 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u186 ( .A(
         oc8051_sfr1_oc8051_uatr1_n23), .B(oc8051_sfr1_oc8051_uatr1_sbuf_txd_0_), .C(oc8051_sfr1_oc8051_uatr1_n59), .Y(oc8051_sfr1_oc8051_uatr1_n31) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u182 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u185 ( .A(
         oc8051_sfr1_oc8051_uatr1_n31), .Y(oc8051_sfr1_oc8051_uatr1_n62) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u181 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u184 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_0_), .Y(oc8051_sfr1_oc8051_uatr1_n6)
          );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u180 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u183 ( .A(
         oc8051_sfr1_oc8051_uatr1_n62), .B(oc8051_sfr1_oc8051_uatr1_n6), .C(
         oc8051_sfr1_oc8051_uatr1_trans), .Y(oc8051_sfr1_oc8051_uatr1_n159) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u179 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u182 ( .A(
         oc8051_sfr1_oc8051_uatr1_n29), .B(oc8051_sfr1_oc8051_uatr1_n79), .C(
         oc8051_sfr1_pres_ow), .Y(oc8051_sfr1_oc8051_uatr1_n60) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u178 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u181 ( .A(
         oc8051_sfr1_oc8051_uatr1_n60), .Y(oc8051_sfr1_oc8051_uatr1_n27) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u177 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u180 ( .A(
         oc8051_sfr1_oc8051_uatr1_tr_count_1_), .Y(oc8051_sfr1_oc8051_uatr1_n19) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u176 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u179 ( .A(
         oc8051_sfr1_oc8051_uatr1_tr_count_2_), .Y(oc8051_sfr1_oc8051_uatr1_n13) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u175 ( .AN(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u178 ( .AN(
         oc8051_sfr1_oc8051_uatr1_tr_count_0_), .B(oc8051_sfr1_oc8051_uatr1_n19), .C(oc8051_sfr1_oc8051_uatr1_n201), .D(oc8051_sfr1_oc8051_uatr1_n13), .Y(
         oc8051_sfr1_oc8051_uatr1_n61) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u174 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u177 ( .A(
         oc8051_sfr1_oc8051_uatr1_n23), .B(oc8051_sfr1_oc8051_uatr1_n61), .Y(
         oc8051_sfr1_oc8051_uatr1_n28) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u173 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u176 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n59), .A1(oc8051_sfr1_oc8051_uatr1_n27), .B0(
         oc8051_sfr1_oc8051_uatr1_n28), .Y(oc8051_sfr1_oc8051_uatr1_n84) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u172 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u175 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n22), .A1(oc8051_sfr1_oc8051_uatr1_trans), 
         .B0(oc8051_sfr1_oc8051_uatr1_n84), .Y(oc8051_sfr1_oc8051_uatr1_n160)
          );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u171 ( .A(txd_o), .B(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u174 ( .A(txd_o), .B(
         oc8051_sfr1_oc8051_uatr1_n159), .S0(oc8051_sfr1_oc8051_uatr1_n160), 
         .Y(oc8051_sfr1_oc8051_uatr1_n205) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u170 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u173 ( .A(
         oc8051_sfr1_oc8051_uatr1_receive), .B(oc8051_sfr1_scon_0_), .C(
         oc8051_sfr1_oc8051_uatr1_n82), .Y(oc8051_sfr1_oc8051_uatr1_n158) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u169 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u172 ( .A(
         oc8051_sfr1_oc8051_uatr1_n157), .Y(oc8051_sfr1_oc8051_uatr1_n99) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u168 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u171 ( .A(
         oc8051_sfr1_oc8051_uatr1_n146), .Y(oc8051_sfr1_oc8051_uatr1_n137) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u167 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u170 ( .A(
         oc8051_sfr1_oc8051_uatr1_n99), .B(oc8051_sfr1_oc8051_uatr1_n137), .C(
         oc8051_sfr1_oc8051_uatr1_n122), .Y(oc8051_sfr1_oc8051_uatr1_n131) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u166 ( .A(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u169 ( .A(
         oc8051_sfr1_oc8051_uatr1_n131), .B(oc8051_sfr1_oc8051_uatr1_shift_re), 
         .C(oc8051_sfr1_scon_4_), .D(oc8051_sfr1_oc8051_uatr1_n82), .Y(
         oc8051_sfr1_oc8051_uatr1_n156) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u165 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u168 ( .A(
         oc8051_sfr1_oc8051_uatr1_n156), .Y(oc8051_sfr1_oc8051_uatr1_n129) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u164 ( .A0(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u167 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n158), .A1(oc8051_sfr1_scon_4_), .A2(
         oc8051_sfr1_oc8051_uatr1_n131), .B0(oc8051_sfr1_oc8051_uatr1_n129), 
         .Y(oc8051_sfr1_oc8051_uatr1_n128) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u163 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u166 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n122), .A1(oc8051_sfr1_oc8051_uatr1_n157), 
         .B0(oc8051_sfr1_oc8051_uatr1_n136), .B1(oc8051_sfr1_oc8051_uatr1_n93), 
         .C0(oc8051_sfr1_oc8051_uatr1_n128), .Y(oc8051_sfr1_oc8051_uatr1_n96)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u162 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u165 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_10_), .Y(
         oc8051_sfr1_oc8051_uatr1_n155) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u161 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u164 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_11_), .Y(
         oc8051_sfr1_oc8051_uatr1_n94) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u160 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u163 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n91), .A1(oc8051_sfr1_oc8051_uatr1_n99), .B0(
         oc8051_sfr1_oc8051_uatr1_n96), .Y(oc8051_sfr1_oc8051_uatr1_n100) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u159 ( .A0(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u162 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n96), .A1(oc8051_sfr1_oc8051_uatr1_n155), 
         .B0(oc8051_sfr1_oc8051_uatr1_n94), .B1(oc8051_sfr1_oc8051_uatr1_n100), 
         .Y(oc8051_sfr1_oc8051_uatr1_n206) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u158 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u161 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_9_), .Y(
         oc8051_sfr1_oc8051_uatr1_n154) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u157 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u160 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_8_), .Y(
         oc8051_sfr1_oc8051_uatr1_n153) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u156 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u159 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n100), .A1(oc8051_sfr1_oc8051_uatr1_n154), 
         .B0(oc8051_sfr1_oc8051_uatr1_n96), .B1(oc8051_sfr1_oc8051_uatr1_n153), 
         .C0(oc8051_sfr1_oc8051_uatr1_n156), .Y(oc8051_sfr1_oc8051_uatr1_n207)
          );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u155 ( .A0(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u158 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n96), .A1(oc8051_sfr1_oc8051_uatr1_n154), 
         .B0(oc8051_sfr1_oc8051_uatr1_n100), .B1(oc8051_sfr1_oc8051_uatr1_n155), 
         .Y(oc8051_sfr1_oc8051_uatr1_n208) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u154 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u157 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_7_), .Y(
         oc8051_sfr1_oc8051_uatr1_n152) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u153 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u156 ( .A(
         oc8051_sfr1_oc8051_uatr1_n131), .B(oc8051_sfr1_oc8051_uatr1_n96), .Y(
         oc8051_sfr1_oc8051_uatr1_n102) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u152 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u155 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n100), .A1(oc8051_sfr1_oc8051_uatr1_n153), 
         .B0(oc8051_sfr1_oc8051_uatr1_n96), .B1(oc8051_sfr1_oc8051_uatr1_n152), 
         .C0(oc8051_sfr1_oc8051_uatr1_n102), .Y(oc8051_sfr1_oc8051_uatr1_n209)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u151 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u154 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_6_), .Y(
         oc8051_sfr1_oc8051_uatr1_n151) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u150 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u153 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n100), .A1(oc8051_sfr1_oc8051_uatr1_n152), 
         .B0(oc8051_sfr1_oc8051_uatr1_n96), .B1(oc8051_sfr1_oc8051_uatr1_n151), 
         .C0(oc8051_sfr1_oc8051_uatr1_n102), .Y(oc8051_sfr1_oc8051_uatr1_n210)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u149 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u152 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_5_), .Y(
         oc8051_sfr1_oc8051_uatr1_n150) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u148 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u151 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n100), .A1(oc8051_sfr1_oc8051_uatr1_n151), 
         .B0(oc8051_sfr1_oc8051_uatr1_n96), .B1(oc8051_sfr1_oc8051_uatr1_n150), 
         .C0(oc8051_sfr1_oc8051_uatr1_n102), .Y(oc8051_sfr1_oc8051_uatr1_n211)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u147 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u150 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_4_), .Y(
         oc8051_sfr1_oc8051_uatr1_n149) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u146 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u149 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n100), .A1(oc8051_sfr1_oc8051_uatr1_n150), 
         .B0(oc8051_sfr1_oc8051_uatr1_n96), .B1(oc8051_sfr1_oc8051_uatr1_n149), 
         .C0(oc8051_sfr1_oc8051_uatr1_n102), .Y(oc8051_sfr1_oc8051_uatr1_n212)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u145 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u148 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_3_), .Y(
         oc8051_sfr1_oc8051_uatr1_n148) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u144 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u147 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n100), .A1(oc8051_sfr1_oc8051_uatr1_n149), 
         .B0(oc8051_sfr1_oc8051_uatr1_n96), .B1(oc8051_sfr1_oc8051_uatr1_n148), 
         .C0(oc8051_sfr1_oc8051_uatr1_n102), .Y(oc8051_sfr1_oc8051_uatr1_n213)
          );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u143 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u146 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n100), .A1(oc8051_sfr1_oc8051_uatr1_n148), 
         .B0(oc8051_sfr1_oc8051_uatr1_n202), .B1(oc8051_sfr1_oc8051_uatr1_n96), 
         .C0(oc8051_sfr1_oc8051_uatr1_n102), .Y(oc8051_sfr1_oc8051_uatr1_n214)
          );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u142 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u145 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n202), .A1(oc8051_sfr1_oc8051_uatr1_n100), 
         .B0(oc8051_sfr1_oc8051_uatr1_n203), .B1(oc8051_sfr1_oc8051_uatr1_n96), 
         .C0(oc8051_sfr1_oc8051_uatr1_n102), .Y(oc8051_sfr1_oc8051_uatr1_n215)
          );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u141 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u144 ( .A(
         oc8051_sfr1_oc8051_uatr1_n91), .B(oc8051_sfr1_oc8051_uatr1_n129), .Y(
         oc8051_sfr1_oc8051_uatr1_n147) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u140 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u143 ( .A(
         oc8051_sfr1_oc8051_uatr1_n147), .Y(oc8051_sfr1_oc8051_uatr1_n134) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u139 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u142 ( .A(
         oc8051_sfr1_oc8051_uatr1_n137), .B(oc8051_sfr1_oc8051_uatr1_n134), .C(
         oc8051_sfr1_oc8051_uatr1_re_count_0_), .Y(
         oc8051_sfr1_oc8051_uatr1_n139) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u138 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u141 ( .A(
         oc8051_sfr1_oc8051_uatr1_n139), .Y(oc8051_sfr1_oc8051_uatr1_n142) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u137 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u140 ( .A(
         oc8051_sfr1_oc8051_uatr1_re_count_2_), .B(
         oc8051_sfr1_oc8051_uatr1_re_count_1_), .C(
         oc8051_sfr1_oc8051_uatr1_n142), .Y(oc8051_sfr1_oc8051_uatr1_n144) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u136 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u139 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n136), .A1(oc8051_sfr1_oc8051_uatr1_n137), 
         .B0(oc8051_sfr1_oc8051_uatr1_n147), .Y(oc8051_sfr1_oc8051_uatr1_n138)
          );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u135 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u138 ( .A0(
         oc8051_sfr1_oc8051_uatr1_re_count_1_), .A1(
         oc8051_sfr1_oc8051_uatr1_n146), .B0(oc8051_sfr1_oc8051_uatr1_n138), 
         .Y(oc8051_sfr1_oc8051_uatr1_n143) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u134 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u137 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n137), .A1(oc8051_sfr1_oc8051_uatr1_n90), 
         .B0(oc8051_sfr1_oc8051_uatr1_n143), .Y(oc8051_sfr1_oc8051_uatr1_n145)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u133 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u136 ( .A(
         oc8051_sfr1_oc8051_uatr1_n144), .B(oc8051_sfr1_oc8051_uatr1_n145), 
         .S0(oc8051_sfr1_oc8051_uatr1_re_count_3_), .Y(
         oc8051_sfr1_oc8051_uatr1_n216) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u132 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u135 ( .A(
         oc8051_sfr1_oc8051_uatr1_n143), .Y(oc8051_sfr1_oc8051_uatr1_n140) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u131 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u134 ( .A(
         oc8051_sfr1_oc8051_uatr1_n142), .B(
         oc8051_sfr1_oc8051_uatr1_re_count_1_), .Y(
         oc8051_sfr1_oc8051_uatr1_n141) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u130 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u133 ( .A(
         oc8051_sfr1_oc8051_uatr1_n140), .B(oc8051_sfr1_oc8051_uatr1_n141), 
         .S0(oc8051_sfr1_oc8051_uatr1_n90), .Y(oc8051_sfr1_oc8051_uatr1_n217)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u129 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u132 ( .A(
         oc8051_sfr1_oc8051_uatr1_n138), .B(oc8051_sfr1_oc8051_uatr1_n139), 
         .S0(oc8051_sfr1_oc8051_uatr1_n89), .Y(oc8051_sfr1_oc8051_uatr1_n218)
          );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u128 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u131 ( .A(
         oc8051_sfr1_oc8051_uatr1_n137), .B(oc8051_sfr1_oc8051_uatr1_n134), .Y(
         oc8051_sfr1_oc8051_uatr1_n135) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u127 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u130 ( .A(
         oc8051_sfr1_oc8051_uatr1_n134), .B(oc8051_sfr1_oc8051_uatr1_n135), 
         .S0(oc8051_sfr1_oc8051_uatr1_n136), .Y(oc8051_sfr1_oc8051_uatr1_n219)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u126 ( .A(oc8051_sfr1_scon_4_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u129 ( .A(oc8051_sfr1_scon_4_), .Y(
         oc8051_sfr1_oc8051_uatr1_n133) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u125 ( .A0(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u128 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n82), .A1(oc8051_sfr1_oc8051_uatr1_n133), 
         .A2(oc8051_sfr1_oc8051_uatr1_n131), .B0(oc8051_sfr1_oc8051_uatr1_n129), 
         .Y(oc8051_sfr1_oc8051_uatr1_n132) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u124 ( .A(rxd_i), .B(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u127 ( .A(rxd_i), .B(
         oc8051_sfr1_oc8051_uatr1_rxd_r), .S0(oc8051_sfr1_oc8051_uatr1_n132), 
         .Y(oc8051_sfr1_oc8051_uatr1_n220) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u123 ( .A(rxd_i), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u126 ( .A(rxd_i), .Y(
         oc8051_sfr1_oc8051_uatr1_n130) );
-  AOI32_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u122 ( .A0(
+  AOI32_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u125 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n129), .A1(oc8051_sfr1_oc8051_uatr1_n130), 
         .A2(oc8051_sfr1_oc8051_uatr1_rxd_r), .B0(oc8051_sfr1_oc8051_uatr1_n131), .B1(oc8051_sfr1_oc8051_uatr1_n79), .Y(oc8051_sfr1_oc8051_uatr1_n125) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u121 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u124 ( .A(
         oc8051_sfr1_oc8051_uatr1_receive), .Y(oc8051_sfr1_oc8051_uatr1_n126)
          );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u120 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u123 ( .A(
         oc8051_sfr1_oc8051_uatr1_n128), .B(oc8051_sfr1_oc8051_uatr1_rx_done), 
         .Y(oc8051_sfr1_oc8051_uatr1_n127) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u119 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u122 ( .A(
         oc8051_sfr1_oc8051_uatr1_n125), .B(oc8051_sfr1_oc8051_uatr1_n126), 
         .S0(oc8051_sfr1_oc8051_uatr1_n127), .Y(oc8051_sfr1_oc8051_uatr1_n221)
          );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u118 ( .A(oc8051_sfr1_wr_bit_r), 
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u121 ( .A(oc8051_sfr1_wr_bit_r), 
         .B(oc8051_sfr1_oc8051_uatr1_n124), .Y(oc8051_sfr1_oc8051_uatr1_n55) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u117 ( .A(
-        oc8051_sfr1_oc8051_uatr1_n123), .B(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_uatr1_n107) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u116 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u120 ( .A(
         oc8051_sfr1_oc8051_uatr1_n107), .Y(oc8051_sfr1_oc8051_uatr1_n36) );
-  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u115 ( .A(
+  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u119 ( .A(
         oc8051_sfr1_oc8051_uatr1_n198), .B(oc8051_sfr1_oc8051_uatr1_n55), .C(
         oc8051_sfr1_oc8051_uatr1_n36), .D(oc8051_sfr1_oc8051_uatr1_n122), .Y(
         oc8051_sfr1_oc8051_uatr1_n114) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u114 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u118 ( .A(
         oc8051_sfr1_oc8051_uatr1_n55), .Y(oc8051_sfr1_oc8051_uatr1_n121) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u113 ( .A(descy), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u117 ( .A(descy), .B(
         oc8051_sfr1_oc8051_uatr1_n121), .Y(oc8051_sfr1_oc8051_uatr1_n33) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u112 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u116 ( .A(
         oc8051_sfr1_oc8051_uatr1_n33), .Y(oc8051_sfr1_oc8051_uatr1_n109) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u111 ( .A0(
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u115 ( .A0(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_11_), .A1(
         oc8051_sfr1_oc8051_uatr1_n114), .B0(oc8051_sfr1_oc8051_uatr1_n107), 
         .B1(wr_dat[2]), .C0(oc8051_sfr1_oc8051_uatr1_n109), .Y(
         oc8051_sfr1_oc8051_uatr1_n117) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u110 ( .A(oc8051_sfr1_scon_2_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u114 ( .A(oc8051_sfr1_scon_2_), .Y(
         oc8051_sfr1_oc8051_uatr1_n118) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u109 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u113 ( .A(
         oc8051_sfr1_oc8051_uatr1_n121), .B(oc8051_sfr1_oc8051_uatr1_n54), .Y(
         oc8051_sfr1_oc8051_uatr1_n37) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u108 ( .A0(
+  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u112 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n37), .A1(wr_addr[0]), .A2(
         oc8051_sfr1_oc8051_uatr1_n43), .B0(oc8051_sfr1_oc8051_uatr1_n36), .Y(
         oc8051_sfr1_oc8051_uatr1_n120) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u107 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u111 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n114), .A1(oc8051_sfr1_oc8051_uatr1_n82), 
         .B0(oc8051_sfr1_oc8051_uatr1_n120), .Y(oc8051_sfr1_oc8051_uatr1_n119)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u106 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u110 ( .A(
         oc8051_sfr1_oc8051_uatr1_n117), .B(oc8051_sfr1_oc8051_uatr1_n118), 
         .S0(oc8051_sfr1_oc8051_uatr1_n119), .Y(oc8051_sfr1_oc8051_uatr1_n222)
          );
-  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u105 ( .A0(
+  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u109 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n107), .A1(wr_dat[0]), .B0(
         oc8051_sfr1_oc8051_uatr1_n109), .C0(oc8051_sfr1_oc8051_uatr1_n114), 
         .Y(oc8051_sfr1_oc8051_uatr1_n111) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u104 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u108 ( .A(
         oc8051_sfr1_oc8051_uatr1_n82), .B(oc8051_sfr1_oc8051_uatr1_n94), .C(
         oc8051_sfr1_scon_5_), .Y(oc8051_sfr1_oc8051_uatr1_n115) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u103 ( .A0(
+  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u107 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n37), .A1(wr_addr[1]), .A2(wr_addr[0]), .B0(
         oc8051_sfr1_oc8051_uatr1_n36), .Y(oc8051_sfr1_oc8051_uatr1_n116) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u102 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u106 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n114), .A1(oc8051_sfr1_oc8051_uatr1_n115), 
         .B0(oc8051_sfr1_oc8051_uatr1_n116), .Y(oc8051_sfr1_oc8051_uatr1_n113)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u101 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u105 ( .A(
         oc8051_sfr1_oc8051_uatr1_n111), .B(oc8051_sfr1_oc8051_uatr1_n112), 
         .S0(oc8051_sfr1_oc8051_uatr1_n113), .Y(oc8051_sfr1_oc8051_uatr1_n223)
          );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u100 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u104 ( .A(
         oc8051_sfr1_oc8051_uatr1_n55), .B(wr_dat[1]), .S0(
         oc8051_sfr1_oc8051_uatr1_n107), .Y(oc8051_sfr1_oc8051_uatr1_n110) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u99 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u103 ( .A(
         oc8051_sfr1_oc8051_uatr1_n109), .B(oc8051_sfr1_oc8051_uatr1_n110), .Y(
         oc8051_sfr1_oc8051_uatr1_n103) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u98 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u102 ( .A(
         oc8051_sfr1_oc8051_uatr1_n198), .Y(oc8051_sfr1_oc8051_uatr1_n106) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u97 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u101 ( .A(
         oc8051_sfr1_oc8051_uatr1_n37), .B(wr_addr[1]), .C(
         oc8051_sfr1_oc8051_uatr1_n42), .Y(oc8051_sfr1_oc8051_uatr1_n108) );
-  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u96 ( .A0(
+  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u100 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n55), .A1(oc8051_sfr1_oc8051_uatr1_n106), 
         .B0(oc8051_sfr1_oc8051_uatr1_n107), .C0(oc8051_sfr1_oc8051_uatr1_n108), 
         .Y(oc8051_sfr1_oc8051_uatr1_n105) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u95 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u99 ( .A(
         oc8051_sfr1_oc8051_uatr1_n103), .B(oc8051_sfr1_oc8051_uatr1_n104), 
         .S0(oc8051_sfr1_oc8051_uatr1_n105), .Y(oc8051_sfr1_oc8051_uatr1_n224)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u94 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u98 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_rxd_tmp_0_), .Y(
         oc8051_sfr1_oc8051_uatr1_n101) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u93 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u97 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n203), .A1(oc8051_sfr1_oc8051_uatr1_n100), 
         .B0(oc8051_sfr1_oc8051_uatr1_n96), .B1(oc8051_sfr1_oc8051_uatr1_n101), 
         .C0(oc8051_sfr1_oc8051_uatr1_n102), .Y(oc8051_sfr1_oc8051_uatr1_n225)
          );
-  OA21A1OI2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u92 ( .A0(
+  OA21A1OI2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u96 ( .A0(
         oc8051_sfr1_oc8051_uatr1_rx_sam_1_), .A1(
         oc8051_sfr1_oc8051_uatr1_rx_sam_0_), .B0(oc8051_sfr1_oc8051_uatr1_n91), 
         .C0(oc8051_sfr1_oc8051_uatr1_n99), .Y(oc8051_sfr1_oc8051_uatr1_n98) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u91 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u95 ( .A(
         oc8051_sfr1_oc8051_uatr1_n98), .Y(oc8051_sfr1_oc8051_uatr1_n97) );
-  AOI32_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u90 ( .A0(
+  AOI32_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u94 ( .A0(
         oc8051_sfr1_oc8051_uatr1_rx_sam_0_), .A1(oc8051_sfr1_oc8051_uatr1_n91), 
         .A2(oc8051_sfr1_oc8051_uatr1_rx_sam_1_), .B0(rxd_i), .B1(
         oc8051_sfr1_oc8051_uatr1_n97), .Y(oc8051_sfr1_oc8051_uatr1_n95) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u89 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u93 ( .A(
         oc8051_sfr1_oc8051_uatr1_n94), .B(oc8051_sfr1_oc8051_uatr1_n95), .S0(
         oc8051_sfr1_oc8051_uatr1_n96), .Y(oc8051_sfr1_oc8051_uatr1_n226) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u88 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u92 ( .A(
         oc8051_sfr1_oc8051_uatr1_re_count_0_), .B(oc8051_sfr1_oc8051_uatr1_n93), .Y(oc8051_sfr1_oc8051_uatr1_n92) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u87 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u91 ( .A(
         oc8051_sfr1_oc8051_uatr1_rx_sam_1_), .B(rxd_i), .S0(
         oc8051_sfr1_oc8051_uatr1_n92), .Y(oc8051_sfr1_oc8051_uatr1_n227) );
-  NAND3B_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u86 ( .AN(
+  NAND3B_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u90 ( .AN(
         oc8051_sfr1_oc8051_uatr1_re_count_3_), .B(oc8051_sfr1_oc8051_uatr1_n91), .C(oc8051_sfr1_oc8051_uatr1_re_count_0_), .Y(oc8051_sfr1_oc8051_uatr1_n88)
          );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u85 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u89 ( .A(
         oc8051_sfr1_oc8051_uatr1_n88), .B(oc8051_sfr1_oc8051_uatr1_n89), .C(
         oc8051_sfr1_oc8051_uatr1_n90), .Y(oc8051_sfr1_oc8051_uatr1_n87) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u84 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u88 ( .A(
         oc8051_sfr1_oc8051_uatr1_rx_sam_0_), .B(rxd_i), .S0(
         oc8051_sfr1_oc8051_uatr1_n87), .Y(oc8051_sfr1_oc8051_uatr1_n228) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u83 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u87 ( .A(
         oc8051_sfr1_oc8051_uatr1_n86), .B(oc8051_sfr1_pcon[7]), .Y(
         oc8051_sfr1_oc8051_uatr1_n85) );
-  XOR2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u82 ( .A(
+  XOR2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u86 ( .A(
         oc8051_sfr1_oc8051_uatr1_smod_clk_re), .B(oc8051_sfr1_oc8051_uatr1_n85), .Y(oc8051_sfr1_oc8051_uatr1_n229) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u81 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u85 ( .A(
         oc8051_sfr1_oc8051_uatr1_n22), .Y(oc8051_sfr1_oc8051_uatr1_n12) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u80 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u84 ( .A(
         oc8051_sfr1_oc8051_uatr1_n84), .B(oc8051_sfr1_oc8051_uatr1_n12), .Y(
         oc8051_sfr1_oc8051_uatr1_n5) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u79 ( .B0(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u83 ( .B0(
         oc8051_sfr1_oc8051_uatr1_n23), .B1(oc8051_sfr1_oc8051_uatr1_n60), 
         .A0N(oc8051_sfr1_oc8051_uatr1_n5), .Y(oc8051_sfr1_oc8051_uatr1_n1) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u78 ( .A(oc8051_sfr1_scon_7_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u82 ( .A(oc8051_sfr1_scon_7_), .Y(
         oc8051_sfr1_oc8051_uatr1_n56) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u77 ( .A(oc8051_sfr1_scon_3_), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u81 ( .A(oc8051_sfr1_scon_3_), 
         .B(oc8051_sfr1_scon_6_), .S0(oc8051_sfr1_oc8051_uatr1_n56), .Y(
         oc8051_sfr1_oc8051_uatr1_n83) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u76 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u80 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n199), .A1(oc8051_sfr1_oc8051_uatr1_n1), .B0(
         oc8051_sfr1_oc8051_uatr1_n12), .B1(oc8051_sfr1_oc8051_uatr1_n83), .C0(
         oc8051_sfr1_oc8051_uatr1_n200), .C1(oc8051_sfr1_oc8051_uatr1_n5), .Y(
         oc8051_sfr1_oc8051_uatr1_n230) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u75 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u79 ( .A(
         oc8051_sfr1_oc8051_uatr1_n82), .B(oc8051_sfr1_oc8051_uatr1_n12), .Y(
         oc8051_sfr1_oc8051_uatr1_n66) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u74 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u78 ( .A(
         oc8051_sfr1_oc8051_uatr1_n66), .Y(oc8051_sfr1_oc8051_uatr1_n3) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u73 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u77 ( .A(
         oc8051_sfr1_oc8051_uatr1_n5), .Y(oc8051_sfr1_oc8051_uatr1_n81) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u72 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u76 ( .A0(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_8_), .A1(
         oc8051_sfr1_oc8051_uatr1_n81), .B0(wr_dat[7]), .B1(
         oc8051_sfr1_oc8051_uatr1_n22), .Y(oc8051_sfr1_oc8051_uatr1_n80) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u71 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u75 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n200), .A1(oc8051_sfr1_oc8051_uatr1_n1), .B0(
         oc8051_sfr1_oc8051_uatr1_n3), .C0(oc8051_sfr1_oc8051_uatr1_n80), .Y(
         oc8051_sfr1_oc8051_uatr1_n231) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u70 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u74 ( .A(
         oc8051_sfr1_oc8051_uatr1_n12), .B(oc8051_sfr1_oc8051_uatr1_n79), .Y(
         oc8051_sfr1_oc8051_uatr1_n65) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u69 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u73 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n65), .A1(wr_dat[6]), .B0(wr_dat[7]), .B1(
         oc8051_sfr1_oc8051_uatr1_n66), .Y(oc8051_sfr1_oc8051_uatr1_n78) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u68 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u72 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n1), .A1(oc8051_sfr1_oc8051_uatr1_n77), .B0(
         oc8051_sfr1_oc8051_uatr1_n5), .B1(oc8051_sfr1_oc8051_uatr1_n75), .C0(
         oc8051_sfr1_oc8051_uatr1_n78), .Y(oc8051_sfr1_oc8051_uatr1_n232) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u67 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u71 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n65), .A1(wr_dat[5]), .B0(wr_dat[6]), .B1(
         oc8051_sfr1_oc8051_uatr1_n66), .Y(oc8051_sfr1_oc8051_uatr1_n76) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u66 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u70 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n1), .A1(oc8051_sfr1_oc8051_uatr1_n75), .B0(
         oc8051_sfr1_oc8051_uatr1_n5), .B1(oc8051_sfr1_oc8051_uatr1_n73), .C0(
         oc8051_sfr1_oc8051_uatr1_n76), .Y(oc8051_sfr1_oc8051_uatr1_n233) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u65 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u69 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_5_), .Y(oc8051_sfr1_oc8051_uatr1_n71) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u64 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u68 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n65), .A1(wr_dat[4]), .B0(wr_dat[5]), .B1(
         oc8051_sfr1_oc8051_uatr1_n66), .Y(oc8051_sfr1_oc8051_uatr1_n74) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u63 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u67 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n1), .A1(oc8051_sfr1_oc8051_uatr1_n73), .B0(
         oc8051_sfr1_oc8051_uatr1_n5), .B1(oc8051_sfr1_oc8051_uatr1_n71), .C0(
         oc8051_sfr1_oc8051_uatr1_n74), .Y(oc8051_sfr1_oc8051_uatr1_n234) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u62 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u66 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_4_), .Y(oc8051_sfr1_oc8051_uatr1_n69) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u61 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u65 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n65), .A1(wr_dat[3]), .B0(wr_dat[4]), .B1(
         oc8051_sfr1_oc8051_uatr1_n66), .Y(oc8051_sfr1_oc8051_uatr1_n72) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u60 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u64 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n1), .A1(oc8051_sfr1_oc8051_uatr1_n71), .B0(
         oc8051_sfr1_oc8051_uatr1_n5), .B1(oc8051_sfr1_oc8051_uatr1_n69), .C0(
         oc8051_sfr1_oc8051_uatr1_n72), .Y(oc8051_sfr1_oc8051_uatr1_n235) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u59 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u63 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_3_), .Y(oc8051_sfr1_oc8051_uatr1_n67) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u58 ( .A0(wr_dat[2]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u62 ( .A0(wr_dat[2]), .A1(
         oc8051_sfr1_oc8051_uatr1_n65), .B0(wr_dat[3]), .B1(
         oc8051_sfr1_oc8051_uatr1_n66), .Y(oc8051_sfr1_oc8051_uatr1_n70) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u57 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u61 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n1), .A1(oc8051_sfr1_oc8051_uatr1_n69), .B0(
         oc8051_sfr1_oc8051_uatr1_n5), .B1(oc8051_sfr1_oc8051_uatr1_n67), .C0(
         oc8051_sfr1_oc8051_uatr1_n70), .Y(oc8051_sfr1_oc8051_uatr1_n236) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u56 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u60 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_2_), .Y(oc8051_sfr1_oc8051_uatr1_n63) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u55 ( .A0(wr_dat[1]), .A1(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u59 ( .A0(wr_dat[1]), .A1(
         oc8051_sfr1_oc8051_uatr1_n65), .B0(wr_dat[2]), .B1(
         oc8051_sfr1_oc8051_uatr1_n66), .Y(oc8051_sfr1_oc8051_uatr1_n68) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u54 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u58 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n1), .A1(oc8051_sfr1_oc8051_uatr1_n67), .B0(
         oc8051_sfr1_oc8051_uatr1_n5), .B1(oc8051_sfr1_oc8051_uatr1_n63), .C0(
         oc8051_sfr1_oc8051_uatr1_n68), .Y(oc8051_sfr1_oc8051_uatr1_n237) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u53 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u57 ( .A(
         oc8051_sfr1_oc8051_uatr1_sbuf_txd_1_), .Y(oc8051_sfr1_oc8051_uatr1_n2)
          );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u52 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u56 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n65), .A1(wr_dat[0]), .B0(wr_dat[1]), .B1(
         oc8051_sfr1_oc8051_uatr1_n66), .Y(oc8051_sfr1_oc8051_uatr1_n64) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u51 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u55 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n1), .A1(oc8051_sfr1_oc8051_uatr1_n63), .B0(
         oc8051_sfr1_oc8051_uatr1_n2), .B1(oc8051_sfr1_oc8051_uatr1_n5), .C0(
         oc8051_sfr1_oc8051_uatr1_n64), .Y(oc8051_sfr1_oc8051_uatr1_n238) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u50 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u54 ( .A(
         oc8051_sfr1_oc8051_uatr1_n61), .B(oc8051_sfr1_oc8051_uatr1_n62), .Y(
         oc8051_sfr1_oc8051_uatr1_n58) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u49 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u53 ( .A(
         oc8051_sfr1_oc8051_uatr1_n59), .B(oc8051_sfr1_oc8051_uatr1_n60), .Y(
         oc8051_sfr1_oc8051_uatr1_n30) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u48 ( .A0(
+  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u52 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n57), .A1(oc8051_sfr1_oc8051_uatr1_n58), .A2(
         oc8051_sfr1_oc8051_uatr1_n30), .B0(oc8051_sfr1_oc8051_uatr1_n12), .Y(
         oc8051_sfr1_oc8051_uatr1_n240) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u47 ( .A0(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u51 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n12), .A1(oc8051_sfr1_oc8051_uatr1_n56), .B0(
         oc8051_sfr1_oc8051_uatr1_n199), .B1(oc8051_sfr1_oc8051_uatr1_n5), .Y(
         oc8051_sfr1_oc8051_uatr1_n241) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u46 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u50 ( .A(
         oc8051_sfr1_oc8051_uatr1_n54), .B(oc8051_sfr1_oc8051_uatr1_n55), .Y(
         oc8051_sfr1_oc8051_uatr1_n44) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u45 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u49 ( .A(
         oc8051_sfr1_oc8051_uatr1_n44), .B(oc8051_sfr1_oc8051_uatr1_n38), .Y(
         oc8051_sfr1_oc8051_uatr1_n51) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u44 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u48 ( .A(
         oc8051_sfr1_oc8051_uatr1_n51), .B(oc8051_sfr1_scon_7_), .Y(
         oc8051_sfr1_oc8051_uatr1_n53) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u43 ( .A(wr_dat[7]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u47 ( .A(wr_dat[7]), .B(
         oc8051_sfr1_oc8051_uatr1_n53), .S0(oc8051_sfr1_oc8051_uatr1_n36), .Y(
         oc8051_sfr1_oc8051_uatr1_n52) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u42 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u46 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n33), .A1(oc8051_sfr1_oc8051_uatr1_n51), .B0(
         oc8051_sfr1_oc8051_uatr1_n52), .Y(oc8051_sfr1_oc8051_uatr1_n242) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u41 ( .A(wr_addr[1]), .B(
-        oc8051_sfr1_oc8051_uatr1_n42), .C(oc8051_sfr1_oc8051_uatr1_n44), .Y(
-        oc8051_sfr1_oc8051_uatr1_n48) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u40 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u45 ( .A(
         oc8051_sfr1_oc8051_uatr1_n48), .B(oc8051_sfr1_scon_6_), .Y(
         oc8051_sfr1_oc8051_uatr1_n50) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u39 ( .A(wr_dat[6]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u44 ( .A(wr_dat[6]), .B(
         oc8051_sfr1_oc8051_uatr1_n50), .S0(oc8051_sfr1_oc8051_uatr1_n36), .Y(
         oc8051_sfr1_oc8051_uatr1_n49) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u38 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u43 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n33), .A1(oc8051_sfr1_oc8051_uatr1_n48), .B0(
         oc8051_sfr1_oc8051_uatr1_n49), .Y(oc8051_sfr1_oc8051_uatr1_n243) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u37 ( .A(wr_addr[0]), .B(
-        oc8051_sfr1_oc8051_uatr1_n43), .C(oc8051_sfr1_oc8051_uatr1_n44), .Y(
-        oc8051_sfr1_oc8051_uatr1_n45) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u36 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u42 ( .A(
         oc8051_sfr1_oc8051_uatr1_n45), .B(oc8051_sfr1_scon_5_), .Y(
         oc8051_sfr1_oc8051_uatr1_n47) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u35 ( .A(wr_dat[5]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u41 ( .A(wr_dat[5]), .B(
         oc8051_sfr1_oc8051_uatr1_n47), .S0(oc8051_sfr1_oc8051_uatr1_n36), .Y(
         oc8051_sfr1_oc8051_uatr1_n46) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u34 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u40 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n33), .A1(oc8051_sfr1_oc8051_uatr1_n45), .B0(
         oc8051_sfr1_oc8051_uatr1_n46), .Y(oc8051_sfr1_oc8051_uatr1_n244) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u33 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u39 ( .A(
         oc8051_sfr1_oc8051_uatr1_n42), .B(oc8051_sfr1_oc8051_uatr1_n43), .C(
         oc8051_sfr1_oc8051_uatr1_n44), .Y(oc8051_sfr1_oc8051_uatr1_n39) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u32 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u38 ( .A(
         oc8051_sfr1_oc8051_uatr1_n39), .B(oc8051_sfr1_scon_4_), .Y(
         oc8051_sfr1_oc8051_uatr1_n41) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u31 ( .A(wr_dat[4]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u37 ( .A(wr_dat[4]), .B(
         oc8051_sfr1_oc8051_uatr1_n41), .S0(oc8051_sfr1_oc8051_uatr1_n36), .Y(
         oc8051_sfr1_oc8051_uatr1_n40) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u30 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u36 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n33), .A1(oc8051_sfr1_oc8051_uatr1_n39), .B0(
         oc8051_sfr1_oc8051_uatr1_n40), .Y(oc8051_sfr1_oc8051_uatr1_n245) );
-  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u29 ( .AN(
+  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u35 ( .AN(
         oc8051_sfr1_oc8051_uatr1_n37), .B(oc8051_sfr1_oc8051_uatr1_n38), .Y(
         oc8051_sfr1_oc8051_uatr1_n32) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u28 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u34 ( .A(
         oc8051_sfr1_oc8051_uatr1_n32), .B(oc8051_sfr1_scon_3_), .Y(
         oc8051_sfr1_oc8051_uatr1_n35) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u27 ( .A(wr_dat[3]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u33 ( .A(wr_dat[3]), .B(
         oc8051_sfr1_oc8051_uatr1_n35), .S0(oc8051_sfr1_oc8051_uatr1_n36), .Y(
         oc8051_sfr1_oc8051_uatr1_n34) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u26 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u32 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n32), .A1(oc8051_sfr1_oc8051_uatr1_n33), .B0(
         oc8051_sfr1_oc8051_uatr1_n34), .Y(oc8051_sfr1_oc8051_uatr1_n246) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u25 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u31 ( .A(
         oc8051_sfr1_oc8051_uatr1_n30), .B(oc8051_sfr1_oc8051_uatr1_n31), .Y(
         oc8051_sfr1_oc8051_uatr1_n24) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u24 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u30 ( .A(
         oc8051_sfr1_oc8051_uatr1_n29), .Y(oc8051_sfr1_oc8051_uatr1_n26) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u23 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u29 ( .A(
         oc8051_sfr1_oc8051_uatr1_n26), .B(oc8051_sfr1_oc8051_uatr1_n27), .C(
         oc8051_sfr1_oc8051_uatr1_n28), .Y(oc8051_sfr1_oc8051_uatr1_n25) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u22 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u28 ( .A(
         oc8051_sfr1_oc8051_uatr1_n24), .B(oc8051_sfr1_oc8051_uatr1_n198), .S0(
         oc8051_sfr1_oc8051_uatr1_n25), .Y(oc8051_sfr1_oc8051_uatr1_n247) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u21 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u27 ( .A(
         oc8051_sfr1_oc8051_uatr1_n12), .B(oc8051_sfr1_oc8051_uatr1_n23), .Y(
         oc8051_sfr1_oc8051_uatr1_n16) );
-  OA21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u20 ( .A0(
+  OA21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u26 ( .A0(
         oc8051_sfr1_oc8051_uatr1_tr_count_0_), .A1(
         oc8051_sfr1_oc8051_uatr1_n22), .B0(oc8051_sfr1_oc8051_uatr1_n16), .Y(
         oc8051_sfr1_oc8051_uatr1_n17) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u19 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u25 ( .A0(
         oc8051_sfr1_oc8051_uatr1_tr_count_1_), .A1(
         oc8051_sfr1_oc8051_uatr1_n22), .B0(oc8051_sfr1_oc8051_uatr1_n17), .Y(
         oc8051_sfr1_oc8051_uatr1_n14) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u18 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u24 ( .A(
         oc8051_sfr1_oc8051_uatr1_n14), .Y(oc8051_sfr1_oc8051_uatr1_n20) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u17 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u23 ( .A(
         oc8051_sfr1_oc8051_uatr1_n16), .B(oc8051_sfr1_oc8051_uatr1_n12), .C(
         oc8051_sfr1_oc8051_uatr1_tr_count_0_), .Y(oc8051_sfr1_oc8051_uatr1_n18) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u16 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u22 ( .A(
         oc8051_sfr1_oc8051_uatr1_n18), .Y(oc8051_sfr1_oc8051_uatr1_n11) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u15 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u21 ( .A(
         oc8051_sfr1_oc8051_uatr1_tr_count_1_), .B(oc8051_sfr1_oc8051_uatr1_n11), .Y(oc8051_sfr1_oc8051_uatr1_n21) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u14 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u20 ( .A(
         oc8051_sfr1_oc8051_uatr1_n20), .B(oc8051_sfr1_oc8051_uatr1_n21), .S0(
         oc8051_sfr1_oc8051_uatr1_n13), .Y(oc8051_sfr1_oc8051_uatr1_n248) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u13 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u19 ( .A(
         oc8051_sfr1_oc8051_uatr1_n17), .B(oc8051_sfr1_oc8051_uatr1_n18), .S0(
         oc8051_sfr1_oc8051_uatr1_n19), .Y(oc8051_sfr1_oc8051_uatr1_n249) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u12 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u18 ( .A(
         oc8051_sfr1_oc8051_uatr1_n16), .B(oc8051_sfr1_oc8051_uatr1_n12), .Y(
         oc8051_sfr1_oc8051_uatr1_n15) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u11 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u17 ( .A(
         oc8051_sfr1_oc8051_uatr1_n15), .B(oc8051_sfr1_oc8051_uatr1_n16), .S0(
         oc8051_sfr1_oc8051_uatr1_tr_count_0_), .Y(
         oc8051_sfr1_oc8051_uatr1_n250) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u10 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u16 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n12), .A1(oc8051_sfr1_oc8051_uatr1_n13), .B0(
         oc8051_sfr1_oc8051_uatr1_n14), .Y(oc8051_sfr1_oc8051_uatr1_n9) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u9 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u15 ( .A(
         oc8051_sfr1_oc8051_uatr1_tr_count_1_), .B(oc8051_sfr1_oc8051_uatr1_n11), .C(oc8051_sfr1_oc8051_uatr1_tr_count_2_), .Y(oc8051_sfr1_oc8051_uatr1_n10)
          );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u8 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u14 ( .A(
         oc8051_sfr1_oc8051_uatr1_n9), .B(oc8051_sfr1_oc8051_uatr1_n10), .S0(
         oc8051_sfr1_oc8051_uatr1_n201), .Y(oc8051_sfr1_oc8051_uatr1_n251) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u7 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_uatr1_u13 ( .A(
         oc8051_sfr1_oc8051_uatr1_n8), .B(oc8051_sfr1_pcon[7]), .Y(
         oc8051_sfr1_oc8051_uatr1_n7) );
-  XOR2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u6 ( .A(
+  XOR2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u12 ( .A(
         oc8051_sfr1_oc8051_uatr1_smod_clk_tr), .B(oc8051_sfr1_oc8051_uatr1_n7), 
         .Y(oc8051_sfr1_oc8051_uatr1_n252) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u5 ( .A(wb_rst_i), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u11 ( .A(wb_rst_i), .Y(
         oc8051_sfr1_oc8051_uatr1_n177) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u4 ( .A(wr_dat[0]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_uatr1_u10 ( .A(wr_dat[0]), .Y(
         oc8051_sfr1_oc8051_uatr1_n4) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u3 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u9 ( .A0(
         oc8051_sfr1_oc8051_uatr1_n1), .A1(oc8051_sfr1_oc8051_uatr1_n2), .B0(
         oc8051_sfr1_oc8051_uatr1_n3), .B1(oc8051_sfr1_oc8051_uatr1_n4), .C0(
         oc8051_sfr1_oc8051_uatr1_n5), .C1(oc8051_sfr1_oc8051_uatr1_n6), .Y(
         oc8051_sfr1_oc8051_uatr1_n176) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u8 ( .A(wr_addr[1]), .B(
+        oc8051_sfr1_oc8051_uatr1_n42), .C(oc8051_sfr1_oc8051_uatr1_n44), .Y(
+        oc8051_sfr1_oc8051_uatr1_n48) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u7 ( .A(wr_addr[0]), .B(
+        oc8051_sfr1_oc8051_uatr1_n43), .C(oc8051_sfr1_oc8051_uatr1_n44), .Y(
+        oc8051_sfr1_oc8051_uatr1_n45) );
+  AND4_X0P7M_A12TS oc8051_sfr1_oc8051_uatr1_u6 ( .A(
+        oc8051_sfr1_oc8051_uatr1_n38), .B(oc8051_sfr1_oc8051_uatr1_n164), .C(
+        wr_addr[2]), .D(oc8051_sfr1_oc8051_uatr1_n167), .Y(
+        oc8051_sfr1_oc8051_uatr1_n166) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u5 ( .A(wr_addr[1]), .Y(
+        oc8051_sfr1_oc8051_uatr1_n43) );
+  NOR2_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u4 ( .A(
+        oc8051_sfr1_oc8051_uatr1_n123), .B(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_uatr1_n107) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_uatr1_u3 ( .A(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_uatr1_n42) );
   DFFRPQN_X1M_A12TS oc8051_sfr1_oc8051_uatr1_sbuf_txd_reg_9_ ( .D(
         oc8051_sfr1_oc8051_uatr1_n230), .CK(wb_clk_i), .R(wb_rst_i), .QN(
         oc8051_sfr1_oc8051_uatr1_n200) );
@@ -45649,447 +45632,447 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_sfr1_oc8051_int1_int_dept_1_), .A0(oc8051_sfr1_oc8051_int1_n152), .B0(oc8051_sfr1_oc8051_int1_n153), .Y(oc8051_sfr1_oc8051_int1_n260) );
   INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u161 ( .A(wr_addr[2]), .Y(
         oc8051_sfr1_oc8051_int1_n103) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u160 ( .A(wr_addr[0]), .B(
-        oc8051_sfr1_oc8051_int1_n103), .C(wr_addr[1]), .Y(
-        oc8051_sfr1_oc8051_int1_n141) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u159 ( .A(wr_addr[4]), .B(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u160 ( .A(wr_addr[4]), .B(
         wr_addr[6]), .C(wr_addr[5]), .Y(oc8051_sfr1_oc8051_int1_n151) );
-  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u158 ( .A(wr_addr[7]), .B(n_5_net_), 
+  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u159 ( .A(wr_addr[7]), .B(n_5_net_), 
         .C(wr_addr[3]), .D(oc8051_sfr1_oc8051_int1_n151), .Y(
         oc8051_sfr1_oc8051_int1_n150) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u157 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u158 ( .A(
         oc8051_sfr1_oc8051_int1_n150), .B(oc8051_sfr1_wr_bit_r), .Y(
         oc8051_sfr1_oc8051_int1_n110) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u156 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u157 ( .A(
         oc8051_sfr1_oc8051_int1_n110), .Y(oc8051_sfr1_oc8051_int1_n95) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u155 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u156 ( .A(
         oc8051_sfr1_oc8051_int1_n95), .B(descy), .Y(
         oc8051_sfr1_oc8051_int1_n100) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u154 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u155 ( .A0(
         oc8051_sfr1_oc8051_int1_n110), .A1(oc8051_sfr1_oc8051_int1_n141), .B0(
         oc8051_sfr1_tcon_3_), .Y(oc8051_sfr1_oc8051_int1_n146) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u153 ( .A(wr_addr[1]), .B(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u154 ( .A(wr_addr[1]), .B(
         wr_addr[2]), .C(wr_addr[0]), .Y(oc8051_sfr1_oc8051_int1_n58) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u152 ( .A(oc8051_sfr1_wr_bit_r), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u153 ( .A(oc8051_sfr1_wr_bit_r), .Y(
         oc8051_sfr1_oc8051_int1_n47) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u151 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u152 ( .A(
         oc8051_sfr1_oc8051_int1_n58), .B(oc8051_sfr1_oc8051_int1_n47), .C(
         oc8051_sfr1_oc8051_int1_n150), .Y(oc8051_sfr1_oc8051_int1_n99) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u150 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u151 ( .A(
         oc8051_sfr1_oc8051_int1_n10), .Y(oc8051_sfr1_tcon_2_) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u149 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u150 ( .A(
         oc8051_sfr1_oc8051_int1_n52), .B(oc8051_sfr1_oc8051_int1_n56), .S0(
         oc8051_sfr1_oc8051_int1_int_dept_0_), .Y(oc8051_sfr1_oc8051_int1_n149)
          );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u148 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u149 ( .A(
         oc8051_sfr1_oc8051_int1_n149), .B(oc8051_sfr1_oc8051_int1_int_proc), 
         .Y(oc8051_sfr1_oc8051_int1_n121) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u147 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u148 ( .A(
         oc8051_sfr1_oc8051_int1_n50), .B(oc8051_sfr1_oc8051_int1_n55), .S0(
         oc8051_sfr1_oc8051_int1_int_dept_0_), .Y(oc8051_sfr1_oc8051_int1_n122)
          );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u146 ( .A(int_ack), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u147 ( .A(int_ack), .Y(
         oc8051_sfr1_oc8051_int1_n119) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u145 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u146 ( .A(
         oc8051_sfr1_oc8051_int1_n122), .B(oc8051_sfr1_oc8051_int1_n119), .Y(
         oc8051_sfr1_oc8051_int1_n140) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u144 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u145 ( .A(
         oc8051_sfr1_oc8051_int1_n140), .Y(oc8051_sfr1_oc8051_int1_n132) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u143 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u144 ( .A(
         oc8051_sfr1_oc8051_int1_n54), .B(oc8051_sfr1_oc8051_int1_n57), .S0(
         oc8051_sfr1_oc8051_int1_int_dept_0_), .Y(oc8051_sfr1_oc8051_int1_n148)
          );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u142 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u143 ( .A(
         oc8051_sfr1_oc8051_int1_n148), .B(oc8051_sfr1_oc8051_int1_int_proc), 
         .Y(oc8051_sfr1_oc8051_int1_n120) );
-  OR3_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u141 ( .A(
+  OR3_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u142 ( .A(
         oc8051_sfr1_oc8051_int1_n121), .B(oc8051_sfr1_oc8051_int1_n132), .C(
         oc8051_sfr1_oc8051_int1_n120), .Y(oc8051_sfr1_oc8051_int1_n147) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u140 ( .AN(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u141 ( .AN(
         oc8051_sfr1_oc8051_int1_n146), .B(oc8051_sfr1_oc8051_int1_n99), .C(
         oc8051_sfr1_tcon_2_), .D(oc8051_sfr1_oc8051_int1_n147), .Y(
         oc8051_sfr1_oc8051_int1_n142) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u139 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u140 ( .A(
         oc8051_sfr1_oc8051_int1_n141), .Y(oc8051_sfr1_oc8051_int1_n36) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u138 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u139 ( .A(
         oc8051_sfr1_oc8051_int1_n10), .B(oc8051_sfr1_oc8051_int1_ie1_buff), 
         .Y(oc8051_sfr1_oc8051_int1_n145) );
-  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u137 ( .A0(
+  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u138 ( .A0(
         oc8051_sfr1_oc8051_int1_n95), .A1(oc8051_sfr1_oc8051_int1_n36), .B0(
         oc8051_sfr1_oc8051_int1_n145), .C0(int1_i), .Y(
         oc8051_sfr1_oc8051_int1_n144) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u136 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u137 ( .A(
         oc8051_sfr1_oc8051_int1_n99), .Y(oc8051_sfr1_oc8051_int1_n96) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u135 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u136 ( .A(
         oc8051_sfr1_oc8051_int1_n144), .B(wr_dat[3]), .S0(
         oc8051_sfr1_oc8051_int1_n96), .Y(oc8051_sfr1_oc8051_int1_n143) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u134 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u135 ( .A0(
         oc8051_sfr1_oc8051_int1_n141), .A1(oc8051_sfr1_oc8051_int1_n100), .B0(
         oc8051_sfr1_oc8051_int1_n142), .C0(oc8051_sfr1_oc8051_int1_n143), .Y(
         oc8051_sfr1_oc8051_int1_n261) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u133 ( .A(wr_addr[1]), .Y(
-        oc8051_sfr1_oc8051_int1_n98) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u132 ( .A(
-        oc8051_sfr1_oc8051_int1_n98), .B(oc8051_sfr1_oc8051_int1_n103), .C(
-        wr_addr[0]), .Y(oc8051_sfr1_oc8051_int1_n133) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u131 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u134 ( .A0(
         oc8051_sfr1_oc8051_int1_n110), .A1(oc8051_sfr1_oc8051_int1_n133), .B0(
         oc8051_sfr1_tcon_1_), .Y(oc8051_sfr1_oc8051_int1_n138) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u130 ( .A(oc8051_sfr1_oc8051_int1_n9), .Y(oc8051_sfr1_tcon_0_) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u129 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u133 ( .A(oc8051_sfr1_oc8051_int1_n9), .Y(oc8051_sfr1_tcon_0_) );
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u132 ( .A(
         oc8051_sfr1_oc8051_int1_n120), .Y(oc8051_sfr1_oc8051_int1_n131) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u128 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u131 ( .A(
         oc8051_sfr1_oc8051_int1_n140), .B(oc8051_sfr1_oc8051_int1_n121), .C(
         oc8051_sfr1_oc8051_int1_n131), .Y(oc8051_sfr1_oc8051_int1_n139) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u127 ( .AN(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u130 ( .AN(
         oc8051_sfr1_oc8051_int1_n138), .B(oc8051_sfr1_oc8051_int1_n99), .C(
         oc8051_sfr1_tcon_0_), .D(oc8051_sfr1_oc8051_int1_n139), .Y(
         oc8051_sfr1_oc8051_int1_n134) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u126 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u129 ( .A(
         oc8051_sfr1_oc8051_int1_n133), .Y(oc8051_sfr1_oc8051_int1_n43) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u125 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u128 ( .A(
         oc8051_sfr1_oc8051_int1_n9), .B(oc8051_sfr1_oc8051_int1_ie0_buff), .Y(
         oc8051_sfr1_oc8051_int1_n137) );
-  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u124 ( .A0(
+  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u127 ( .A0(
         oc8051_sfr1_oc8051_int1_n95), .A1(oc8051_sfr1_oc8051_int1_n43), .B0(
         oc8051_sfr1_oc8051_int1_n137), .C0(int0_i), .Y(
         oc8051_sfr1_oc8051_int1_n136) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u123 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u126 ( .A(
         oc8051_sfr1_oc8051_int1_n136), .B(wr_dat[1]), .S0(
         oc8051_sfr1_oc8051_int1_n96), .Y(oc8051_sfr1_oc8051_int1_n135) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u122 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u125 ( .A0(
         oc8051_sfr1_oc8051_int1_n133), .A1(oc8051_sfr1_oc8051_int1_n100), .B0(
         oc8051_sfr1_oc8051_int1_n134), .C0(oc8051_sfr1_oc8051_int1_n135), .Y(
         oc8051_sfr1_oc8051_int1_n262) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u121 ( .A0(
+  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u124 ( .A0(
         oc8051_sfr1_oc8051_int1_n121), .A1(oc8051_sfr1_oc8051_int1_n131), .A2(
         oc8051_sfr1_oc8051_int1_n132), .B0(oc8051_sfr1_tcon_5_), .Y(
         oc8051_sfr1_oc8051_int1_n130) );
-  OAI2XB1_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u120 ( .A1N(oc8051_sfr1_tf0), 
+  OAI2XB1_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u123 ( .A1N(oc8051_sfr1_tf0), 
         .A0(oc8051_sfr1_oc8051_int1_tf0_buff), .B0(
         oc8051_sfr1_oc8051_int1_n130), .Y(oc8051_sfr1_oc8051_int1_n127) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u119 ( .A(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_int1_n129) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u118 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u122 ( .A(
         oc8051_sfr1_oc8051_int1_n129), .B(wr_addr[1]), .C(
         oc8051_sfr1_oc8051_int1_n103), .Y(oc8051_sfr1_oc8051_int1_n27) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u117 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u121 ( .AN(
         oc8051_sfr1_oc8051_int1_n27), .B(oc8051_sfr1_oc8051_int1_n110), .Y(
         oc8051_sfr1_oc8051_int1_n128) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u116 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u120 ( .A(
         oc8051_sfr1_oc8051_int1_n127), .B(descy), .S0(
         oc8051_sfr1_oc8051_int1_n128), .Y(oc8051_sfr1_oc8051_int1_n125) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u115 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u119 ( .A(
         oc8051_sfr1_oc8051_int1_n125), .B(oc8051_sfr1_oc8051_int1_n126), .S0(
         oc8051_sfr1_oc8051_int1_n96), .Y(oc8051_sfr1_oc8051_int1_n263) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u114 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u118 ( .A(
         oc8051_sfr1_oc8051_int1_n50), .B(oc8051_sfr1_oc8051_int1_n123), .S0(
         oc8051_sfr1_oc8051_int1_n124), .Y(oc8051_sfr1_oc8051_int1_n264) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u113 ( .A(wr_addr[1]), .B(
-        wr_addr[0]), .C(wr_addr[2]), .Y(oc8051_sfr1_oc8051_int1_n51) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u112 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u117 ( .A(
         oc8051_sfr1_oc8051_int1_n110), .B(oc8051_sfr1_oc8051_int1_n51), .Y(
         oc8051_sfr1_oc8051_int1_n115) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u111 ( .AN(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u116 ( .AN(
         oc8051_sfr1_oc8051_int1_n115), .B(oc8051_sfr1_tf1), .C(
         oc8051_sfr1_oc8051_int1_n66), .D(oc8051_sfr1_oc8051_int1_n99), .Y(
         oc8051_sfr1_oc8051_int1_n111) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u110 ( .A(oc8051_sfr1_tcon_7_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u115 ( .A(oc8051_sfr1_tcon_7_), .Y(
         oc8051_sfr1_oc8051_int1_n114) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u109 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u114 ( .A(
         oc8051_sfr1_oc8051_int1_n120), .B(oc8051_sfr1_oc8051_int1_n121), .C(
         oc8051_sfr1_oc8051_int1_n122), .Y(oc8051_sfr1_oc8051_int1_n117) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u108 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u113 ( .A(
         oc8051_sfr1_oc8051_int1_n117), .B(oc8051_sfr1_oc8051_int1_n118), .C(
         oc8051_sfr1_oc8051_int1_n119), .Y(oc8051_sfr1_oc8051_int1_n116) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u107 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u112 ( .A(
         oc8051_sfr1_oc8051_int1_n114), .B(oc8051_sfr1_oc8051_int1_n115), .C(
         oc8051_sfr1_oc8051_int1_n116), .Y(oc8051_sfr1_oc8051_int1_n113) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u106 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u111 ( .A(
         oc8051_sfr1_oc8051_int1_n113), .B(wr_dat[7]), .S0(
         oc8051_sfr1_oc8051_int1_n96), .Y(oc8051_sfr1_oc8051_int1_n112) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u105 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u110 ( .A0(
         oc8051_sfr1_oc8051_int1_n51), .A1(oc8051_sfr1_oc8051_int1_n100), .B0(
         oc8051_sfr1_oc8051_int1_n111), .C0(oc8051_sfr1_oc8051_int1_n112), .Y(
         oc8051_sfr1_oc8051_int1_n265) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u104 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u109 ( .A(
         oc8051_sfr1_oc8051_int1_n9), .B(oc8051_sfr1_oc8051_int1_n96), .Y(
         oc8051_sfr1_oc8051_int1_n108) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u103 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u108 ( .A(
         oc8051_sfr1_oc8051_int1_n100), .Y(oc8051_sfr1_oc8051_int1_n106) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u102 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u107 ( .AN(
         oc8051_sfr1_oc8051_int1_n58), .B(oc8051_sfr1_oc8051_int1_n110), .Y(
         oc8051_sfr1_oc8051_int1_n109) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u101 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u106 ( .A(
         oc8051_sfr1_oc8051_int1_n108), .B(oc8051_sfr1_oc8051_int1_n106), .S0(
         oc8051_sfr1_oc8051_int1_n109), .Y(oc8051_sfr1_oc8051_int1_n107) );
-  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u100 ( .B0(wr_dat[0]), .B1(
+  AO1B2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u105 ( .B0(wr_dat[0]), .B1(
         oc8051_sfr1_oc8051_int1_n96), .A0N(oc8051_sfr1_oc8051_int1_n107), .Y(
         oc8051_sfr1_oc8051_int1_n266) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u99 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u104 ( .A0(
         oc8051_sfr1_oc8051_int1_n96), .A1(wr_dat[2]), .B0(
         oc8051_sfr1_oc8051_int1_n106), .Y(oc8051_sfr1_oc8051_int1_n104) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u98 ( .A(wr_addr[0]), .B(wr_addr[2]), .C(oc8051_sfr1_oc8051_int1_n98), .Y(oc8051_sfr1_oc8051_int1_n39) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u97 ( .A0(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u103 ( .A(wr_addr[0]), .B(
+        wr_addr[2]), .C(oc8051_sfr1_oc8051_int1_n98), .Y(
+        oc8051_sfr1_oc8051_int1_n39) );
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u102 ( .A0(
         oc8051_sfr1_oc8051_int1_n95), .A1(oc8051_sfr1_oc8051_int1_n39), .B0(
         oc8051_sfr1_oc8051_int1_n96), .Y(oc8051_sfr1_oc8051_int1_n105) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u96 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u101 ( .A(
         oc8051_sfr1_oc8051_int1_n104), .B(oc8051_sfr1_oc8051_int1_n10), .S0(
         oc8051_sfr1_oc8051_int1_n105), .Y(oc8051_sfr1_oc8051_int1_n267) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u95 ( .A(
-        oc8051_sfr1_oc8051_int1_n103), .B(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_int1_n97) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u94 ( .AN(
-        oc8051_sfr1_oc8051_int1_n97), .B(wr_addr[1]), .Y(
-        oc8051_sfr1_oc8051_int1_n31) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u93 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u100 ( .A0(
         oc8051_sfr1_oc8051_int1_n95), .A1(oc8051_sfr1_oc8051_int1_n31), .B0(
         oc8051_sfr1_oc8051_int1_n96), .Y(oc8051_sfr1_oc8051_int1_n102) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u92 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u99 ( .A(
         oc8051_sfr1_oc8051_int1_n101), .B(oc8051_sfr1_tr0), .S0(
         oc8051_sfr1_oc8051_int1_n102), .Y(oc8051_sfr1_oc8051_int1_n268) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u91 ( .A(wr_dat[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u98 ( .A(wr_dat[6]), .Y(
         oc8051_sfr1_oc8051_int1_n23) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u90 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u97 ( .A0(
         oc8051_sfr1_oc8051_int1_n23), .A1(oc8051_sfr1_oc8051_int1_n99), .B0(
         oc8051_sfr1_oc8051_int1_n100), .Y(oc8051_sfr1_oc8051_int1_n93) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u89 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u96 ( .AN(
         oc8051_sfr1_oc8051_int1_n97), .B(oc8051_sfr1_oc8051_int1_n98), .Y(
         oc8051_sfr1_oc8051_int1_n21) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u88 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u95 ( .A0(
         oc8051_sfr1_oc8051_int1_n95), .A1(oc8051_sfr1_oc8051_int1_n21), .B0(
         oc8051_sfr1_oc8051_int1_n96), .Y(oc8051_sfr1_oc8051_int1_n94) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u87 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u94 ( .A(
         oc8051_sfr1_oc8051_int1_n93), .B(oc8051_sfr1_tr1), .S0(
         oc8051_sfr1_oc8051_int1_n94), .Y(oc8051_sfr1_oc8051_int1_n269) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u86 ( .A(wr_addr[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u93 ( .A(wr_addr[6]), .Y(
         oc8051_sfr1_oc8051_int1_n92) );
-  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u85 ( .A(
+  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u92 ( .A(
         oc8051_sfr1_oc8051_int1_n92), .B(wr_addr[7]), .C(wr_addr[5]), .D(
         n_5_net_), .Y(oc8051_sfr1_oc8051_int1_n48) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u84 ( .A(wr_addr[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u91 ( .A(wr_addr[4]), .Y(
         oc8051_sfr1_oc8051_int1_n53) );
-  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u83 ( .A(oc8051_sfr1_wr_bit_r), .B(
-        wr_addr[3]), .C(oc8051_sfr1_oc8051_int1_n48), .D(
-        oc8051_sfr1_oc8051_int1_n53), .Y(oc8051_sfr1_oc8051_int1_n67) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u82 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u90 ( .A(
         oc8051_sfr1_oc8051_int1_n67), .B(descy), .Y(
         oc8051_sfr1_oc8051_int1_n62) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u81 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u89 ( .A(
         oc8051_sfr1_oc8051_int1_n67), .B(oc8051_sfr1_oc8051_int1_n58), .Y(
         oc8051_sfr1_oc8051_int1_n88) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u80 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u88 ( .A(
         oc8051_sfr1_oc8051_int1_n88), .B(oc8051_sfr1_ie_0_), .Y(
         oc8051_sfr1_oc8051_int1_n90) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u79 ( .A(oc8051_sfr1_wr_bit_r), .B(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u87 ( .A(oc8051_sfr1_wr_bit_r), .B(
         wr_addr[4]), .Y(oc8051_sfr1_oc8051_int1_n91) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u78 ( .A(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u86 ( .A(
         oc8051_sfr1_oc8051_int1_n58), .B(wr_addr[3]), .C(
         oc8051_sfr1_oc8051_int1_n91), .D(oc8051_sfr1_oc8051_int1_n48), .Y(
         oc8051_sfr1_oc8051_int1_n70) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u77 ( .A(oc8051_sfr1_oc8051_int1_n70), .Y(oc8051_sfr1_oc8051_int1_n65) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u76 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u85 ( .A(oc8051_sfr1_oc8051_int1_n70), .Y(oc8051_sfr1_oc8051_int1_n65) );
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u84 ( .A(
         oc8051_sfr1_oc8051_int1_n90), .B(wr_dat[0]), .S0(
         oc8051_sfr1_oc8051_int1_n65), .Y(oc8051_sfr1_oc8051_int1_n89) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u75 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u83 ( .A0(
         oc8051_sfr1_oc8051_int1_n62), .A1(oc8051_sfr1_oc8051_int1_n88), .B0(
         oc8051_sfr1_oc8051_int1_n89), .Y(oc8051_sfr1_oc8051_int1_n270) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u74 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u82 ( .A(
         oc8051_sfr1_oc8051_int1_n67), .B(oc8051_sfr1_oc8051_int1_n43), .Y(
         oc8051_sfr1_oc8051_int1_n85) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u73 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u81 ( .A(
         oc8051_sfr1_oc8051_int1_n85), .B(oc8051_sfr1_ie_1_), .Y(
         oc8051_sfr1_oc8051_int1_n87) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u72 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u80 ( .A(
         oc8051_sfr1_oc8051_int1_n87), .B(wr_dat[1]), .S0(
         oc8051_sfr1_oc8051_int1_n65), .Y(oc8051_sfr1_oc8051_int1_n86) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u71 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u79 ( .A0(
         oc8051_sfr1_oc8051_int1_n62), .A1(oc8051_sfr1_oc8051_int1_n85), .B0(
         oc8051_sfr1_oc8051_int1_n86), .Y(oc8051_sfr1_oc8051_int1_n271) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u70 ( .A(oc8051_sfr1_oc8051_int1_n62), .Y(oc8051_sfr1_oc8051_int1_n78) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u69 ( .A0(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u78 ( .A(oc8051_sfr1_oc8051_int1_n62), .Y(oc8051_sfr1_oc8051_int1_n78) );
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u77 ( .A0(
         oc8051_sfr1_oc8051_int1_n65), .A1(wr_dat[2]), .B0(
         oc8051_sfr1_oc8051_int1_n78), .Y(oc8051_sfr1_oc8051_int1_n82) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u68 ( .A(oc8051_sfr1_ie_2_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u76 ( .A(oc8051_sfr1_ie_2_), .Y(
         oc8051_sfr1_oc8051_int1_n83) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u67 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u75 ( .A0(
         oc8051_sfr1_oc8051_int1_n67), .A1(oc8051_sfr1_oc8051_int1_n39), .B0(
         oc8051_sfr1_oc8051_int1_n65), .Y(oc8051_sfr1_oc8051_int1_n84) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u66 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u74 ( .A(
         oc8051_sfr1_oc8051_int1_n82), .B(oc8051_sfr1_oc8051_int1_n83), .S0(
         oc8051_sfr1_oc8051_int1_n84), .Y(oc8051_sfr1_oc8051_int1_n272) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u65 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u73 ( .A(
         oc8051_sfr1_oc8051_int1_n67), .B(oc8051_sfr1_oc8051_int1_n36), .Y(
         oc8051_sfr1_oc8051_int1_n79) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u64 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u72 ( .A(
         oc8051_sfr1_oc8051_int1_n79), .B(oc8051_sfr1_ie_3_), .Y(
         oc8051_sfr1_oc8051_int1_n81) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u63 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u71 ( .A(
         oc8051_sfr1_oc8051_int1_n81), .B(wr_dat[3]), .S0(
         oc8051_sfr1_oc8051_int1_n65), .Y(oc8051_sfr1_oc8051_int1_n80) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u62 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u70 ( .A0(
         oc8051_sfr1_oc8051_int1_n62), .A1(oc8051_sfr1_oc8051_int1_n79), .B0(
         oc8051_sfr1_oc8051_int1_n80), .Y(oc8051_sfr1_oc8051_int1_n273) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u61 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u69 ( .A0(
         oc8051_sfr1_oc8051_int1_n65), .A1(wr_dat[4]), .B0(
         oc8051_sfr1_oc8051_int1_n78), .Y(oc8051_sfr1_oc8051_int1_n75) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u60 ( .A(oc8051_sfr1_ie_4_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u68 ( .A(oc8051_sfr1_ie_4_), .Y(
         oc8051_sfr1_oc8051_int1_n76) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u59 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u67 ( .A0(
         oc8051_sfr1_oc8051_int1_n67), .A1(oc8051_sfr1_oc8051_int1_n31), .B0(
         oc8051_sfr1_oc8051_int1_n65), .Y(oc8051_sfr1_oc8051_int1_n77) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u58 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u66 ( .A(
         oc8051_sfr1_oc8051_int1_n75), .B(oc8051_sfr1_oc8051_int1_n76), .S0(
         oc8051_sfr1_oc8051_int1_n77), .Y(oc8051_sfr1_oc8051_int1_n274) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u57 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u65 ( .A(
         oc8051_sfr1_oc8051_int1_n67), .B(oc8051_sfr1_oc8051_int1_n27), .Y(
         oc8051_sfr1_oc8051_int1_n71) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u56 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u64 ( .AN(
         oc8051_sfr1_oc8051_int1_n71), .B(oc8051_sfr1_oc8051_int1_n74), .Y(
         oc8051_sfr1_oc8051_int1_n73) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u55 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u63 ( .A(
         oc8051_sfr1_oc8051_int1_n73), .B(wr_dat[5]), .S0(
         oc8051_sfr1_oc8051_int1_n65), .Y(oc8051_sfr1_oc8051_int1_n72) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u54 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u62 ( .A0(
         oc8051_sfr1_oc8051_int1_n62), .A1(oc8051_sfr1_oc8051_int1_n71), .B0(
         oc8051_sfr1_oc8051_int1_n72), .Y(oc8051_sfr1_oc8051_int1_n275) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u53 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u61 ( .A0(
         oc8051_sfr1_oc8051_int1_n23), .A1(oc8051_sfr1_oc8051_int1_n70), .B0(
         oc8051_sfr1_oc8051_int1_n62), .Y(oc8051_sfr1_oc8051_int1_n68) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u52 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u60 ( .A0(
         oc8051_sfr1_oc8051_int1_n67), .A1(oc8051_sfr1_oc8051_int1_n21), .B0(
         oc8051_sfr1_oc8051_int1_n65), .Y(oc8051_sfr1_oc8051_int1_n69) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u51 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u59 ( .A(
         oc8051_sfr1_oc8051_int1_n68), .B(oc8051_sfr1_ie_6_), .S0(
         oc8051_sfr1_oc8051_int1_n69), .Y(oc8051_sfr1_oc8051_int1_n276) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u50 ( .A(oc8051_sfr1_oc8051_int1_n51), .Y(oc8051_sfr1_oc8051_int1_n18) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u49 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u58 ( .A(oc8051_sfr1_oc8051_int1_n51), .Y(oc8051_sfr1_oc8051_int1_n18) );
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u57 ( .A(
         oc8051_sfr1_oc8051_int1_n67), .B(oc8051_sfr1_oc8051_int1_n18), .Y(
         oc8051_sfr1_oc8051_int1_n59) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u48 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u56 ( .A(
         oc8051_sfr1_oc8051_int1_n59), .B(oc8051_sfr1_ie_7_), .Y(
         oc8051_sfr1_oc8051_int1_n64) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u47 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u55 ( .A(
         oc8051_sfr1_oc8051_int1_n64), .B(wr_dat[7]), .S0(
         oc8051_sfr1_oc8051_int1_n65), .Y(oc8051_sfr1_oc8051_int1_n63) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u46 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u54 ( .A0(
         oc8051_sfr1_oc8051_int1_n59), .A1(oc8051_sfr1_oc8051_int1_n62), .B0(
         oc8051_sfr1_oc8051_int1_n63), .Y(oc8051_sfr1_oc8051_int1_n277) );
-  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u45 ( .A(oc8051_sfr1_wr_bit_r), .B(
-        wr_addr[3]), .C(wr_addr[4]), .D(oc8051_sfr1_oc8051_int1_n48), .Y(
-        oc8051_sfr1_oc8051_int1_n17) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u44 ( .A(descy), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u53 ( .A(descy), .B(
         oc8051_sfr1_oc8051_int1_n17), .Y(oc8051_sfr1_oc8051_int1_n3) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u43 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u52 ( .A(
         oc8051_sfr1_oc8051_int1_n58), .B(oc8051_sfr1_oc8051_int1_n17), .Y(
         oc8051_sfr1_oc8051_int1_n44) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u42 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u51 ( .AN(
         oc8051_sfr1_oc8051_int1_n44), .B(oc8051_sfr1_oc8051_int1_n11), .Y(
         oc8051_sfr1_oc8051_int1_n46) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u41 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u50 ( .A(
         oc8051_sfr1_oc8051_int1_n51), .B(oc8051_sfr1_oc8051_int1_n53), .Y(
         oc8051_sfr1_oc8051_int1_n49) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u40 ( .AN(wr_addr[3]), .B(
+  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u49 ( .AN(wr_addr[3]), .B(
         oc8051_sfr1_oc8051_int1_n47), .C(oc8051_sfr1_oc8051_int1_n48), .D(
         oc8051_sfr1_oc8051_int1_n49), .Y(oc8051_sfr1_oc8051_int1_n22) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u39 ( .A(oc8051_sfr1_oc8051_int1_n22), .Y(oc8051_sfr1_oc8051_int1_n16) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u38 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u48 ( .A(oc8051_sfr1_oc8051_int1_n22), .Y(oc8051_sfr1_oc8051_int1_n16) );
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u47 ( .A(
         oc8051_sfr1_oc8051_int1_n46), .B(wr_dat[0]), .S0(
         oc8051_sfr1_oc8051_int1_n16), .Y(oc8051_sfr1_oc8051_int1_n45) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u37 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u46 ( .A0(
         oc8051_sfr1_oc8051_int1_n3), .A1(oc8051_sfr1_oc8051_int1_n44), .B0(
         oc8051_sfr1_oc8051_int1_n45), .Y(oc8051_sfr1_oc8051_int1_n278) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u36 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u45 ( .A(
         oc8051_sfr1_oc8051_int1_n43), .B(oc8051_sfr1_oc8051_int1_n17), .Y(
         oc8051_sfr1_oc8051_int1_n40) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u35 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u44 ( .A(
         oc8051_sfr1_oc8051_int1_n40), .B(oc8051_sfr1_ip_1_), .Y(
         oc8051_sfr1_oc8051_int1_n42) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u34 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u43 ( .A(
         oc8051_sfr1_oc8051_int1_n42), .B(wr_dat[1]), .S0(
         oc8051_sfr1_oc8051_int1_n16), .Y(oc8051_sfr1_oc8051_int1_n41) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u33 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u42 ( .A0(
         oc8051_sfr1_oc8051_int1_n3), .A1(oc8051_sfr1_oc8051_int1_n40), .B0(
         oc8051_sfr1_oc8051_int1_n41), .Y(oc8051_sfr1_oc8051_int1_n279) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u32 ( .A(oc8051_sfr1_oc8051_int1_n3), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u41 ( .A(oc8051_sfr1_oc8051_int1_n3), 
         .Y(oc8051_sfr1_oc8051_int1_n32) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u31 ( .A0(wr_dat[2]), .A1(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u40 ( .A0(wr_dat[2]), .A1(
         oc8051_sfr1_oc8051_int1_n16), .B0(oc8051_sfr1_oc8051_int1_n32), .Y(
         oc8051_sfr1_oc8051_int1_n37) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u30 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u39 ( .A0(
         oc8051_sfr1_oc8051_int1_n39), .A1(oc8051_sfr1_oc8051_int1_n17), .B0(
         oc8051_sfr1_oc8051_int1_n16), .Y(oc8051_sfr1_oc8051_int1_n38) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u29 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u38 ( .A(
         oc8051_sfr1_oc8051_int1_n37), .B(oc8051_sfr1_oc8051_int1_n12), .S0(
         oc8051_sfr1_oc8051_int1_n38), .Y(oc8051_sfr1_oc8051_int1_n280) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u28 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u37 ( .A(
         oc8051_sfr1_oc8051_int1_n36), .B(oc8051_sfr1_oc8051_int1_n17), .Y(
         oc8051_sfr1_oc8051_int1_n33) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u27 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u36 ( .A(
         oc8051_sfr1_oc8051_int1_n33), .B(oc8051_sfr1_ip_3_), .Y(
         oc8051_sfr1_oc8051_int1_n35) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u26 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u35 ( .A(
         oc8051_sfr1_oc8051_int1_n35), .B(wr_dat[3]), .S0(
         oc8051_sfr1_oc8051_int1_n16), .Y(oc8051_sfr1_oc8051_int1_n34) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u25 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u34 ( .A0(
         oc8051_sfr1_oc8051_int1_n3), .A1(oc8051_sfr1_oc8051_int1_n33), .B0(
         oc8051_sfr1_oc8051_int1_n34), .Y(oc8051_sfr1_oc8051_int1_n281) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u24 ( .A0(wr_dat[4]), .A1(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u33 ( .A0(wr_dat[4]), .A1(
         oc8051_sfr1_oc8051_int1_n16), .B0(oc8051_sfr1_oc8051_int1_n32), .Y(
         oc8051_sfr1_oc8051_int1_n28) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u23 ( .A(oc8051_sfr1_ip_4_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u32 ( .A(oc8051_sfr1_ip_4_), .Y(
         oc8051_sfr1_oc8051_int1_n29) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u22 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u31 ( .A0(
         oc8051_sfr1_oc8051_int1_n31), .A1(oc8051_sfr1_oc8051_int1_n17), .B0(
         oc8051_sfr1_oc8051_int1_n16), .Y(oc8051_sfr1_oc8051_int1_n30) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u21 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u30 ( .A(
         oc8051_sfr1_oc8051_int1_n28), .B(oc8051_sfr1_oc8051_int1_n29), .S0(
         oc8051_sfr1_oc8051_int1_n30), .Y(oc8051_sfr1_oc8051_int1_n282) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u20 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u29 ( .A(
         oc8051_sfr1_oc8051_int1_n27), .B(oc8051_sfr1_oc8051_int1_n17), .Y(
         oc8051_sfr1_oc8051_int1_n24) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u19 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u28 ( .AN(
         oc8051_sfr1_oc8051_int1_n24), .B(oc8051_sfr1_oc8051_int1_n13), .Y(
         oc8051_sfr1_oc8051_int1_n26) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u18 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u27 ( .A(
         oc8051_sfr1_oc8051_int1_n26), .B(wr_dat[5]), .S0(
         oc8051_sfr1_oc8051_int1_n16), .Y(oc8051_sfr1_oc8051_int1_n25) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u17 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u26 ( .A0(
         oc8051_sfr1_oc8051_int1_n3), .A1(oc8051_sfr1_oc8051_int1_n24), .B0(
         oc8051_sfr1_oc8051_int1_n25), .Y(oc8051_sfr1_oc8051_int1_n283) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u16 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u25 ( .A0(
         oc8051_sfr1_oc8051_int1_n22), .A1(oc8051_sfr1_oc8051_int1_n23), .B0(
         oc8051_sfr1_oc8051_int1_n3), .Y(oc8051_sfr1_oc8051_int1_n19) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u15 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u24 ( .A0(
         oc8051_sfr1_oc8051_int1_n21), .A1(oc8051_sfr1_oc8051_int1_n17), .B0(
         oc8051_sfr1_oc8051_int1_n16), .Y(oc8051_sfr1_oc8051_int1_n20) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u14 ( .A(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u23 ( .A(
         oc8051_sfr1_oc8051_int1_n19), .B(oc8051_sfr1_ip_6_), .S0(
         oc8051_sfr1_oc8051_int1_n20), .Y(oc8051_sfr1_oc8051_int1_n284) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u13 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_int1_u22 ( .A(
         oc8051_sfr1_oc8051_int1_n17), .B(oc8051_sfr1_oc8051_int1_n18), .Y(
         oc8051_sfr1_oc8051_int1_n2) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u12 ( .A(oc8051_sfr1_ip_7_), .B(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u21 ( .A(oc8051_sfr1_ip_7_), .B(
         oc8051_sfr1_oc8051_int1_n2), .Y(oc8051_sfr1_oc8051_int1_n15) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u11 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u20 ( .A(
         oc8051_sfr1_oc8051_int1_n15), .B(wr_dat[7]), .S0(
         oc8051_sfr1_oc8051_int1_n16), .Y(oc8051_sfr1_oc8051_int1_n14) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u10 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u19 ( .A0(
         oc8051_sfr1_oc8051_int1_n2), .A1(oc8051_sfr1_oc8051_int1_n3), .B0(
         oc8051_sfr1_oc8051_int1_n14), .Y(oc8051_sfr1_oc8051_int1_n285) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u9 ( .A(oc8051_sfr1_oc8051_int1_n4), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u18 ( .A(oc8051_sfr1_oc8051_int1_n4), 
         .Y(int_src[0]) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u8 ( .A(oc8051_sfr1_oc8051_int1_n5), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u17 ( .A(oc8051_sfr1_oc8051_int1_n5), 
         .Y(int_src[1]) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u7 ( .A(oc8051_sfr1_oc8051_int1_n6), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u16 ( .A(oc8051_sfr1_oc8051_int1_n6), 
         .Y(int_src[3]) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u6 ( .A(oc8051_sfr1_oc8051_int1_n13), 
-        .Y(oc8051_sfr1_ip_5_) );
-  AO21B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u5 ( .A0(wr_dat[4]), .A1(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_int1_u15 ( .A(oc8051_sfr1_oc8051_int1_n13), .Y(oc8051_sfr1_ip_5_) );
+  AO21B_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u14 ( .A0(wr_dat[4]), .A1(
         oc8051_sfr1_oc8051_int1_n96), .B0N(oc8051_sfr1_oc8051_int1_n100), .Y(
         oc8051_sfr1_oc8051_int1_n101) );
-  INV_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u4 ( .A(wr_dat[5]), .Y(
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u13 ( .A(wr_dat[5]), .Y(
         oc8051_sfr1_oc8051_int1_n126) );
+  AND4_X0P7M_A12TS oc8051_sfr1_oc8051_int1_u12 ( .A(oc8051_sfr1_wr_bit_r), .B(
+        wr_addr[3]), .C(wr_addr[4]), .D(oc8051_sfr1_oc8051_int1_n48), .Y(
+        oc8051_sfr1_oc8051_int1_n17) );
+  AND4_X0P7M_A12TS oc8051_sfr1_oc8051_int1_u11 ( .A(oc8051_sfr1_wr_bit_r), .B(
+        wr_addr[3]), .C(oc8051_sfr1_oc8051_int1_n48), .D(
+        oc8051_sfr1_oc8051_int1_n53), .Y(oc8051_sfr1_oc8051_int1_n67) );
+  NOR2_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u10 ( .A(
+        oc8051_sfr1_oc8051_int1_n103), .B(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_int1_n97) );
+  NOR2XB_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u9 ( .BN(
+        oc8051_sfr1_oc8051_int1_n97), .A(wr_addr[1]), .Y(
+        oc8051_sfr1_oc8051_int1_n31) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u8 ( .A(wr_addr[1]), .Y(
+        oc8051_sfr1_oc8051_int1_n98) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u7 ( .A(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_int1_n129) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u6 ( .A(wr_addr[0]), .B(
+        oc8051_sfr1_oc8051_int1_n103), .C(wr_addr[1]), .Y(
+        oc8051_sfr1_oc8051_int1_n141) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u5 ( .A(
+        oc8051_sfr1_oc8051_int1_n98), .B(oc8051_sfr1_oc8051_int1_n103), .C(
+        wr_addr[0]), .Y(oc8051_sfr1_oc8051_int1_n133) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_int1_u4 ( .A(wr_addr[1]), .B(wr_addr[0]), .C(wr_addr[2]), .Y(oc8051_sfr1_oc8051_int1_n51) );
   TIELO_X1M_A12TS oc8051_sfr1_oc8051_int1_u3 ( .Y(
         oc8051_sfr1_oc8051_int1_int_vec_2_) );
   DFFRPQN_X1M_A12TS oc8051_sfr1_oc8051_int1_tcon_s_reg_1_ ( .D(
@@ -46419,529 +46402,531 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   NAND3B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u181 ( .AN(wr_addr[2]), .B(
         oc8051_sfr1_oc8051_tc1_n156), .C(oc8051_sfr1_oc8051_tc1_n155), .Y(
         oc8051_sfr1_oc8051_tc1_n157) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u180 ( .A(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_tc1_n81) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u179 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u180 ( .A(
         oc8051_sfr1_oc8051_tc1_n157), .B(wr_addr[1]), .C(
         oc8051_sfr1_oc8051_tc1_n81), .Y(oc8051_sfr1_oc8051_tc1_n158) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u178 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u179 ( .A(
         oc8051_sfr1_oc8051_tc1_n159), .B(oc8051_sfr1_oc8051_tc1_n26), .S0(
         oc8051_sfr1_oc8051_tc1_n158), .Y(oc8051_sfr1_oc8051_tc1_n229) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u177 ( .A(wr_dat[1]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u178 ( .A(wr_dat[1]), .Y(
         oc8051_sfr1_oc8051_tc1_n30) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u176 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u177 ( .A(
         oc8051_sfr1_oc8051_tc1_n79), .B(oc8051_sfr1_oc8051_tc1_n30), .S0(
         oc8051_sfr1_oc8051_tc1_n158), .Y(oc8051_sfr1_oc8051_tc1_n230) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u175 ( .A(oc8051_sfr1_tmod[2]), .B(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u176 ( .A(oc8051_sfr1_tmod[2]), .B(
         wr_dat[2]), .S0(oc8051_sfr1_oc8051_tc1_n158), .Y(
         oc8051_sfr1_oc8051_tc1_n231) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u174 ( .A(oc8051_sfr1_tmod[3]), .B(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u175 ( .A(oc8051_sfr1_tmod[3]), .B(
         wr_dat[3]), .S0(oc8051_sfr1_oc8051_tc1_n158), .Y(
         oc8051_sfr1_oc8051_tc1_n232) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u173 ( .A(wr_dat[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u174 ( .A(wr_dat[4]), .Y(
         oc8051_sfr1_oc8051_tc1_n36) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u172 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u173 ( .A(
         oc8051_sfr1_oc8051_tc1_n150), .B(oc8051_sfr1_oc8051_tc1_n36), .S0(
         oc8051_sfr1_oc8051_tc1_n158), .Y(oc8051_sfr1_oc8051_tc1_n233) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u171 ( .A(oc8051_sfr1_tmod[5]), .B(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u172 ( .A(oc8051_sfr1_tmod[5]), .B(
         wr_dat[5]), .S0(oc8051_sfr1_oc8051_tc1_n158), .Y(
         oc8051_sfr1_oc8051_tc1_n234) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u170 ( .A(oc8051_sfr1_tmod[6]), .B(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u171 ( .A(oc8051_sfr1_tmod[6]), .B(
         wr_dat[6]), .S0(oc8051_sfr1_oc8051_tc1_n158), .Y(
         oc8051_sfr1_oc8051_tc1_n235) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u169 ( .A(oc8051_sfr1_tmod[7]), .B(
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u170 ( .A(oc8051_sfr1_tmod[7]), .B(
         wr_dat[7]), .S0(oc8051_sfr1_oc8051_tc1_n158), .Y(
         oc8051_sfr1_oc8051_tc1_n236) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u168 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u169 ( .A0(
         oc8051_sfr1_oc8051_tc1_n178), .A1(oc8051_sfr1_oc8051_tc1_n142), .B0(
         oc8051_sfr1_oc8051_tc1_n196), .B1(oc8051_sfr1_oc8051_tc1_n112), .Y(
         oc8051_sfr1_oc8051_tc1_n144) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u167 ( .A(oc8051_sfr1_oc8051_tc1_n157), .Y(oc8051_sfr1_oc8051_tc1_n80) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u166 ( .A(wr_addr[1]), .B(
-        oc8051_sfr1_oc8051_tc1_n80), .C(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_tc1_n91) );
-  NAND4B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u165 ( .AN(wr_addr[1]), .B(
-        wr_addr[2]), .C(oc8051_sfr1_oc8051_tc1_n155), .D(
-        oc8051_sfr1_oc8051_tc1_n156), .Y(oc8051_sfr1_oc8051_tc1_n82) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u164 ( .A(oc8051_sfr1_oc8051_tc1_n81), .B(oc8051_sfr1_oc8051_tc1_n82), .Y(oc8051_sfr1_oc8051_tc1_n127) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u163 ( .A(oc8051_sfr1_oc8051_tc1_n127), .Y(oc8051_sfr1_oc8051_tc1_n85) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u162 ( .A(oc8051_sfr1_oc8051_tc1_n91), .B(oc8051_sfr1_oc8051_tc1_n85), .Y(oc8051_sfr1_oc8051_tc1_n118) );
-  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u161 ( .AN(t1_i), .B(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u168 ( .A(oc8051_sfr1_oc8051_tc1_n157), .Y(oc8051_sfr1_oc8051_tc1_n80) );
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u167 ( .A(oc8051_sfr1_oc8051_tc1_n81), .B(oc8051_sfr1_oc8051_tc1_n82), .Y(oc8051_sfr1_oc8051_tc1_n127) );
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u166 ( .A(oc8051_sfr1_oc8051_tc1_n127), .Y(oc8051_sfr1_oc8051_tc1_n85) );
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u165 ( .A(oc8051_sfr1_oc8051_tc1_n91), .B(oc8051_sfr1_oc8051_tc1_n85), .Y(oc8051_sfr1_oc8051_tc1_n118) );
+  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u164 ( .AN(t1_i), .B(
         oc8051_sfr1_oc8051_tc1_t1_buff), .Y(oc8051_sfr1_oc8051_tc1_n154) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u160 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u163 ( .A(
         oc8051_sfr1_oc8051_tc1_n153), .B(oc8051_sfr1_oc8051_tc1_n154), .S0(
         oc8051_sfr1_tmod[6]), .Y(oc8051_sfr1_oc8051_tc1_n151) );
-  AOI21B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u159 ( .A0(oc8051_sfr1_tmod[7]), 
+  AOI21B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u162 ( .A0(oc8051_sfr1_tmod[7]), 
         .A1(int1_i), .B0N(oc8051_sfr1_tr1), .Y(oc8051_sfr1_oc8051_tc1_n152) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u158 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u161 ( .A(
         oc8051_sfr1_oc8051_tc1_n151), .B(oc8051_sfr1_oc8051_tc1_n118), .C(
         oc8051_sfr1_oc8051_tc1_n152), .Y(oc8051_sfr1_oc8051_tc1_n143) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u157 ( .A(oc8051_sfr1_tmod[5]), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u160 ( .A(oc8051_sfr1_tmod[5]), .B(
         oc8051_sfr1_oc8051_tc1_n150), .Y(oc8051_sfr1_oc8051_tc1_n119) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u156 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u159 ( .A0(
         oc8051_sfr1_oc8051_tc1_n149), .A1(oc8051_sfr1_oc8051_tc1_n119), .B0(
         oc8051_sfr1_oc8051_tc1_n143), .C0(oc8051_sfr1_oc8051_tc1_n91), .Y(
         oc8051_sfr1_oc8051_tc1_n109) );
-  OAI21B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u155 ( .A0(
+  OAI21B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u158 ( .A0(
         oc8051_sfr1_oc8051_tc1_n143), .A1(oc8051_sfr1_oc8051_tc1_n148), .B0N(
         oc8051_sfr1_oc8051_tc1_n109), .Y(oc8051_sfr1_oc8051_tc1_n90) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u154 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u157 ( .A(
         oc8051_sfr1_oc8051_tc1_n118), .B(oc8051_sfr1_oc8051_tc1_n90), .Y(
         oc8051_sfr1_oc8051_tc1_n104) );
-  OR3_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u153 ( .A(oc8051_sfr1_oc8051_tc1_n238), .B(oc8051_sfr1_oc8051_tc1_n127), .C(oc8051_sfr1_oc8051_tc1_n90), .Y(
+  OR3_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u156 ( .A(oc8051_sfr1_oc8051_tc1_n238), .B(oc8051_sfr1_oc8051_tc1_n127), .C(oc8051_sfr1_oc8051_tc1_n90), .Y(
         oc8051_sfr1_oc8051_tc1_n145) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u152 ( .A(oc8051_sfr1_tl1[3]), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u155 ( .A(oc8051_sfr1_tl1[3]), .B(
         oc8051_sfr1_tl1[2]), .C(oc8051_sfr1_tl1[1]), .D(oc8051_sfr1_tl1[0]), 
         .Y(oc8051_sfr1_oc8051_tc1_n146) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u151 ( .A(oc8051_sfr1_tl1[7]), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u154 ( .A(oc8051_sfr1_tl1[7]), .B(
         oc8051_sfr1_tl1[6]), .C(oc8051_sfr1_tl1[5]), .D(oc8051_sfr1_tl1[4]), 
         .Y(oc8051_sfr1_oc8051_tc1_n147) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u150 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u153 ( .A(
         oc8051_sfr1_oc8051_tc1_n146), .B(oc8051_sfr1_oc8051_tc1_n147), .Y(
         oc8051_sfr1_oc8051_tc1_n120) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u149 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u152 ( .AN(
         oc8051_sfr1_oc8051_tc1_n120), .B(oc8051_sfr1_oc8051_tc1_n119), .Y(
         oc8051_sfr1_oc8051_tc1_n113) );
-  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u148 ( .AN(
+  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u151 ( .AN(
         oc8051_sfr1_oc8051_tc1_n104), .B(oc8051_sfr1_oc8051_tc1_n113), .Y(
         oc8051_sfr1_oc8051_tc1_n106) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u147 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u150 ( .A0(
         oc8051_sfr1_oc8051_tc1_n144), .A1(oc8051_sfr1_oc8051_tc1_n104), .B0(
         oc8051_sfr1_oc8051_tc1_n145), .C0(oc8051_sfr1_oc8051_tc1_n106), .Y(
         oc8051_sfr1_oc8051_tc1_n239) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u146 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u149 ( .A(
         oc8051_sfr1_oc8051_tc1_n112), .B(oc8051_sfr1_oc8051_tc1_n142), .Y(
         oc8051_sfr1_oc8051_tc1_n105) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u145 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u148 ( .A0(
         oc8051_sfr1_oc8051_tc1_n105), .A1(oc8051_sfr1_oc8051_tc1_n143), .B0(
         oc8051_sfr1_oc8051_tc1_n85), .Y(oc8051_sfr1_oc8051_tc1_n83) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u144 ( .A(wr_dat[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u147 ( .A(wr_dat[6]), .Y(
         oc8051_sfr1_oc8051_tc1_n40) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u143 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u146 ( .A(
         oc8051_sfr1_oc8051_tc1_n118), .B(oc8051_sfr1_oc8051_tc1_n83), .C(
         oc8051_sfr1_oc8051_tc1_n142), .Y(oc8051_sfr1_oc8051_tc1_n121) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u142 ( .A(oc8051_sfr1_oc8051_tc1_n121), .Y(oc8051_sfr1_oc8051_tc1_n87) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u141 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u145 ( .A(oc8051_sfr1_oc8051_tc1_n121), .Y(oc8051_sfr1_oc8051_tc1_n87) );
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u144 ( .A(
         oc8051_sfr1_oc8051_tc1_n118), .B(oc8051_sfr1_oc8051_tc1_n83), .C(
         oc8051_sfr1_oc8051_tc1_n112), .Y(oc8051_sfr1_oc8051_tc1_n123) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u140 ( .A(oc8051_sfr1_oc8051_tc1_n123), .Y(oc8051_sfr1_oc8051_tc1_n88) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u139 ( .A0(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u143 ( .A(oc8051_sfr1_oc8051_tc1_n123), .Y(oc8051_sfr1_oc8051_tc1_n88) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u142 ( .A0(
         oc8051_sfr1_oc8051_tc1_n176), .A1(oc8051_sfr1_oc8051_tc1_n87), .B0(
         oc8051_sfr1_oc8051_tc1_n194), .B1(oc8051_sfr1_oc8051_tc1_n88), .Y(
         oc8051_sfr1_oc8051_tc1_n141) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u138 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u141 ( .A0(
         oc8051_sfr1_oc8051_tc1_n83), .A1(oc8051_sfr1_oc8051_tc1_n140), .B0(
         oc8051_sfr1_oc8051_tc1_n40), .B1(oc8051_sfr1_oc8051_tc1_n85), .C0(
         oc8051_sfr1_oc8051_tc1_n141), .Y(oc8051_sfr1_oc8051_tc1_n240) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u137 ( .A(oc8051_sfr1_oc8051_tc1_n175), .Y(oc8051_sfr1_oc8051_tc1_n132) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u136 ( .A(oc8051_sfr1_oc8051_tc1_n178), .Y(oc8051_sfr1_oc8051_tc1_n138) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u135 ( .A(oc8051_sfr1_oc8051_tc1_n83), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u140 ( .A(oc8051_sfr1_oc8051_tc1_n175), .Y(oc8051_sfr1_oc8051_tc1_n132) );
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u139 ( .A(oc8051_sfr1_oc8051_tc1_n178), .Y(oc8051_sfr1_oc8051_tc1_n138) );
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u138 ( .A(oc8051_sfr1_oc8051_tc1_n83), 
         .Y(oc8051_sfr1_oc8051_tc1_n126) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u134 ( .A0(oc8051_sfr1_th1[5]), 
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u137 ( .A0(oc8051_sfr1_th1[5]), 
         .A1(oc8051_sfr1_oc8051_tc1_n126), .B0(oc8051_sfr1_oc8051_tc1_n127), 
         .B1(wr_dat[5]), .Y(oc8051_sfr1_oc8051_tc1_n139) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u133 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u136 ( .A0(
         oc8051_sfr1_oc8051_tc1_n121), .A1(oc8051_sfr1_oc8051_tc1_n132), .B0(
         oc8051_sfr1_oc8051_tc1_n123), .B1(oc8051_sfr1_oc8051_tc1_n138), .C0(
         oc8051_sfr1_oc8051_tc1_n139), .Y(oc8051_sfr1_oc8051_tc1_n241) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u132 ( .A(oc8051_sfr1_oc8051_tc1_n174), .Y(oc8051_sfr1_oc8051_tc1_n129) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u131 ( .A(oc8051_sfr1_oc8051_tc1_n177), .Y(oc8051_sfr1_oc8051_tc1_n136) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u130 ( .A0(oc8051_sfr1_th1[4]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u135 ( .A(oc8051_sfr1_oc8051_tc1_n174), .Y(oc8051_sfr1_oc8051_tc1_n129) );
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u134 ( .A(oc8051_sfr1_oc8051_tc1_n177), .Y(oc8051_sfr1_oc8051_tc1_n136) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u133 ( .A0(oc8051_sfr1_th1[4]), 
         .A1(oc8051_sfr1_oc8051_tc1_n126), .B0(oc8051_sfr1_oc8051_tc1_n127), 
         .B1(wr_dat[4]), .Y(oc8051_sfr1_oc8051_tc1_n137) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u129 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u132 ( .A0(
         oc8051_sfr1_oc8051_tc1_n121), .A1(oc8051_sfr1_oc8051_tc1_n129), .B0(
         oc8051_sfr1_oc8051_tc1_n136), .B1(oc8051_sfr1_oc8051_tc1_n123), .C0(
         oc8051_sfr1_oc8051_tc1_n137), .Y(oc8051_sfr1_oc8051_tc1_n242) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u128 ( .A(oc8051_sfr1_oc8051_tc1_n173), .Y(oc8051_sfr1_oc8051_tc1_n124) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u127 ( .A(oc8051_sfr1_oc8051_tc1_n176), .Y(oc8051_sfr1_oc8051_tc1_n134) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u126 ( .A0(oc8051_sfr1_th1[3]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u131 ( .A(oc8051_sfr1_oc8051_tc1_n173), .Y(oc8051_sfr1_oc8051_tc1_n124) );
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u130 ( .A(oc8051_sfr1_oc8051_tc1_n176), .Y(oc8051_sfr1_oc8051_tc1_n134) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u129 ( .A0(oc8051_sfr1_th1[3]), 
         .A1(oc8051_sfr1_oc8051_tc1_n126), .B0(oc8051_sfr1_oc8051_tc1_n127), 
         .B1(wr_dat[3]), .Y(oc8051_sfr1_oc8051_tc1_n135) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u125 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u128 ( .A0(
         oc8051_sfr1_oc8051_tc1_n121), .A1(oc8051_sfr1_oc8051_tc1_n124), .B0(
         oc8051_sfr1_oc8051_tc1_n123), .B1(oc8051_sfr1_oc8051_tc1_n134), .C0(
         oc8051_sfr1_oc8051_tc1_n135), .Y(oc8051_sfr1_oc8051_tc1_n243) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u124 ( .A(oc8051_sfr1_oc8051_tc1_n172), .Y(oc8051_sfr1_oc8051_tc1_n131) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u123 ( .A0(oc8051_sfr1_th1[2]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u127 ( .A(oc8051_sfr1_oc8051_tc1_n172), .Y(oc8051_sfr1_oc8051_tc1_n131) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u126 ( .A0(oc8051_sfr1_th1[2]), 
         .A1(oc8051_sfr1_oc8051_tc1_n126), .B0(oc8051_sfr1_oc8051_tc1_n127), 
         .B1(wr_dat[2]), .Y(oc8051_sfr1_oc8051_tc1_n133) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u122 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u125 ( .A0(
         oc8051_sfr1_oc8051_tc1_n121), .A1(oc8051_sfr1_oc8051_tc1_n131), .B0(
         oc8051_sfr1_oc8051_tc1_n123), .B1(oc8051_sfr1_oc8051_tc1_n132), .C0(
         oc8051_sfr1_oc8051_tc1_n133), .Y(oc8051_sfr1_oc8051_tc1_n244) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u121 ( .A(oc8051_sfr1_oc8051_tc1_n171), .Y(oc8051_sfr1_oc8051_tc1_n128) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u120 ( .A0(oc8051_sfr1_th1[1]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u124 ( .A(oc8051_sfr1_oc8051_tc1_n171), .Y(oc8051_sfr1_oc8051_tc1_n128) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u123 ( .A0(oc8051_sfr1_th1[1]), 
         .A1(oc8051_sfr1_oc8051_tc1_n126), .B0(oc8051_sfr1_oc8051_tc1_n127), 
         .B1(wr_dat[1]), .Y(oc8051_sfr1_oc8051_tc1_n130) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u119 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u122 ( .A0(
         oc8051_sfr1_oc8051_tc1_n121), .A1(oc8051_sfr1_oc8051_tc1_n128), .B0(
         oc8051_sfr1_oc8051_tc1_n123), .B1(oc8051_sfr1_oc8051_tc1_n129), .C0(
         oc8051_sfr1_oc8051_tc1_n130), .Y(oc8051_sfr1_oc8051_tc1_n245) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u118 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u121 ( .A(
         oc8051_sfr1_oc8051_tc1_n1700), .Y(oc8051_sfr1_oc8051_tc1_n122) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u117 ( .A0(oc8051_sfr1_th1[0]), 
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u120 ( .A0(oc8051_sfr1_th1[0]), 
         .A1(oc8051_sfr1_oc8051_tc1_n126), .B0(oc8051_sfr1_oc8051_tc1_n127), 
         .B1(wr_dat[0]), .Y(oc8051_sfr1_oc8051_tc1_n125) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u116 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u119 ( .A0(
         oc8051_sfr1_oc8051_tc1_n121), .A1(oc8051_sfr1_oc8051_tc1_n122), .B0(
         oc8051_sfr1_oc8051_tc1_n123), .B1(oc8051_sfr1_oc8051_tc1_n124), .C0(
         oc8051_sfr1_oc8051_tc1_n125), .Y(oc8051_sfr1_oc8051_tc1_n246) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u115 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u118 ( .A(
         oc8051_sfr1_oc8051_tc1_n119), .B(oc8051_sfr1_oc8051_tc1_n120), .Y(
         oc8051_sfr1_oc8051_tc1_n107) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u114 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u117 ( .A0(
         oc8051_sfr1_oc8051_tc1_n172), .A1(oc8051_sfr1_oc8051_tc1_n112), .B0(
         oc8051_sfr1_oc8051_tc1_n207), .B1(oc8051_sfr1_oc8051_tc1_n107), .C0(
         oc8051_sfr1_oc8051_tc1_n113), .C1(oc8051_sfr1_th1[7]), .Y(
         oc8051_sfr1_oc8051_tc1_n117) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u113 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u116 ( .A(
         oc8051_sfr1_oc8051_tc1_n118), .B(oc8051_sfr1_oc8051_tc1_n109), .Y(
         oc8051_sfr1_oc8051_tc1_n111) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u112 ( .A(wr_dat[7]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u115 ( .A(wr_dat[7]), .Y(
         oc8051_sfr1_oc8051_tc1_n9) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u111 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u114 ( .A0(
         oc8051_sfr1_oc8051_tc1_n116), .A1(oc8051_sfr1_oc8051_tc1_n109), .B0(
         oc8051_sfr1_oc8051_tc1_n117), .B1(oc8051_sfr1_oc8051_tc1_n111), .C0(
         oc8051_sfr1_oc8051_tc1_n9), .C1(oc8051_sfr1_oc8051_tc1_n91), .Y(
         oc8051_sfr1_oc8051_tc1_n247) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u110 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u113 ( .A0(
         oc8051_sfr1_oc8051_tc1_n171), .A1(oc8051_sfr1_oc8051_tc1_n112), .B0(
         oc8051_sfr1_oc8051_tc1_n206), .B1(oc8051_sfr1_oc8051_tc1_n107), .C0(
         oc8051_sfr1_th1[6]), .C1(oc8051_sfr1_oc8051_tc1_n113), .Y(
         oc8051_sfr1_oc8051_tc1_n115) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u109 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u112 ( .A0(
         oc8051_sfr1_oc8051_tc1_n114), .A1(oc8051_sfr1_oc8051_tc1_n109), .B0(
         oc8051_sfr1_oc8051_tc1_n115), .B1(oc8051_sfr1_oc8051_tc1_n111), .C0(
         oc8051_sfr1_oc8051_tc1_n40), .C1(oc8051_sfr1_oc8051_tc1_n91), .Y(
         oc8051_sfr1_oc8051_tc1_n248) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u108 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u111 ( .A0(
         oc8051_sfr1_oc8051_tc1_n1700), .A1(oc8051_sfr1_oc8051_tc1_n112), .B0(
         oc8051_sfr1_oc8051_tc1_n205), .B1(oc8051_sfr1_oc8051_tc1_n107), .C0(
         oc8051_sfr1_th1[5]), .C1(oc8051_sfr1_oc8051_tc1_n113), .Y(
         oc8051_sfr1_oc8051_tc1_n110) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u107 ( .A(wr_dat[5]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u110 ( .A(wr_dat[5]), .Y(
         oc8051_sfr1_oc8051_tc1_n38) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u106 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u109 ( .A0(
         oc8051_sfr1_oc8051_tc1_n108), .A1(oc8051_sfr1_oc8051_tc1_n109), .B0(
         oc8051_sfr1_oc8051_tc1_n110), .B1(oc8051_sfr1_oc8051_tc1_n111), .C0(
         oc8051_sfr1_oc8051_tc1_n38), .C1(oc8051_sfr1_oc8051_tc1_n91), .Y(
         oc8051_sfr1_oc8051_tc1_n249) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u105 ( .A(oc8051_sfr1_tl1[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u108 ( .A(oc8051_sfr1_tl1[4]), .Y(
         oc8051_sfr1_oc8051_tc1_n102) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u104 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u107 ( .AN(
         oc8051_sfr1_oc8051_tc1_n107), .B(oc8051_sfr1_oc8051_tc1_n104), .Y(
         oc8051_sfr1_oc8051_tc1_n93) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u103 ( .A(oc8051_sfr1_oc8051_tc1_n106), .Y(oc8051_sfr1_oc8051_tc1_n94) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u102 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u106 ( .A(oc8051_sfr1_oc8051_tc1_n106), .Y(oc8051_sfr1_oc8051_tc1_n94) );
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u105 ( .A(
         oc8051_sfr1_oc8051_tc1_n104), .B(oc8051_sfr1_oc8051_tc1_n105), .Y(
         oc8051_sfr1_oc8051_tc1_n95) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u101 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u104 ( .A0(
         oc8051_sfr1_oc8051_tc1_n204), .A1(oc8051_sfr1_oc8051_tc1_n93), .B0(
         oc8051_sfr1_th1[4]), .B1(oc8051_sfr1_oc8051_tc1_n94), .C0(
         oc8051_sfr1_oc8051_tc1_n1690), .C1(oc8051_sfr1_oc8051_tc1_n95), .Y(
         oc8051_sfr1_oc8051_tc1_n103) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u100 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u103 ( .A0(
         oc8051_sfr1_oc8051_tc1_n102), .A1(oc8051_sfr1_oc8051_tc1_n90), .B0(
         oc8051_sfr1_oc8051_tc1_n36), .B1(oc8051_sfr1_oc8051_tc1_n91), .C0(
         oc8051_sfr1_oc8051_tc1_n103), .Y(oc8051_sfr1_oc8051_tc1_n250) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u99 ( .A(oc8051_sfr1_tl1[3]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u102 ( .A(oc8051_sfr1_tl1[3]), .Y(
         oc8051_sfr1_oc8051_tc1_n100) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u98 ( .A(wr_dat[3]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u101 ( .A(wr_dat[3]), .Y(
         oc8051_sfr1_oc8051_tc1_n34) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u97 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u100 ( .A0(
         oc8051_sfr1_oc8051_tc1_n203), .A1(oc8051_sfr1_oc8051_tc1_n93), .B0(
         oc8051_sfr1_th1[3]), .B1(oc8051_sfr1_oc8051_tc1_n94), .C0(
         oc8051_sfr1_oc8051_tc1_n1680), .C1(oc8051_sfr1_oc8051_tc1_n95), .Y(
         oc8051_sfr1_oc8051_tc1_n101) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u96 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u99 ( .A0(
         oc8051_sfr1_oc8051_tc1_n100), .A1(oc8051_sfr1_oc8051_tc1_n90), .B0(
         oc8051_sfr1_oc8051_tc1_n34), .B1(oc8051_sfr1_oc8051_tc1_n91), .C0(
         oc8051_sfr1_oc8051_tc1_n101), .Y(oc8051_sfr1_oc8051_tc1_n251) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u95 ( .A(oc8051_sfr1_tl1[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u98 ( .A(oc8051_sfr1_tl1[2]), .Y(
         oc8051_sfr1_oc8051_tc1_n98) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u94 ( .A(wr_dat[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u97 ( .A(wr_dat[2]), .Y(
         oc8051_sfr1_oc8051_tc1_n32) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u93 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u96 ( .A0(
         oc8051_sfr1_oc8051_tc1_n202), .A1(oc8051_sfr1_oc8051_tc1_n93), .B0(
         oc8051_sfr1_th1[2]), .B1(oc8051_sfr1_oc8051_tc1_n94), .C0(
         oc8051_sfr1_oc8051_tc1_n1670), .C1(oc8051_sfr1_oc8051_tc1_n95), .Y(
         oc8051_sfr1_oc8051_tc1_n99) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u92 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u95 ( .A0(
         oc8051_sfr1_oc8051_tc1_n98), .A1(oc8051_sfr1_oc8051_tc1_n90), .B0(
         oc8051_sfr1_oc8051_tc1_n32), .B1(oc8051_sfr1_oc8051_tc1_n91), .C0(
         oc8051_sfr1_oc8051_tc1_n99), .Y(oc8051_sfr1_oc8051_tc1_n252) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u91 ( .A(oc8051_sfr1_tl1[1]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u94 ( .A(oc8051_sfr1_tl1[1]), .Y(
         oc8051_sfr1_oc8051_tc1_n96) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u90 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u93 ( .A0(
         oc8051_sfr1_oc8051_tc1_n201), .A1(oc8051_sfr1_oc8051_tc1_n93), .B0(
         oc8051_sfr1_th1[1]), .B1(oc8051_sfr1_oc8051_tc1_n94), .C0(
         oc8051_sfr1_oc8051_tc1_n1660), .C1(oc8051_sfr1_oc8051_tc1_n95), .Y(
         oc8051_sfr1_oc8051_tc1_n97) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u89 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u92 ( .A0(
         oc8051_sfr1_oc8051_tc1_n96), .A1(oc8051_sfr1_oc8051_tc1_n90), .B0(
         oc8051_sfr1_oc8051_tc1_n30), .B1(oc8051_sfr1_oc8051_tc1_n91), .C0(
         oc8051_sfr1_oc8051_tc1_n97), .Y(oc8051_sfr1_oc8051_tc1_n253) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u88 ( .A(oc8051_sfr1_tl1[0]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u91 ( .A(oc8051_sfr1_tl1[0]), .Y(
         oc8051_sfr1_oc8051_tc1_n89) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u87 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u90 ( .A0(
         oc8051_sfr1_oc8051_tc1_n200), .A1(oc8051_sfr1_oc8051_tc1_n93), .B0(
         oc8051_sfr1_th1[0]), .B1(oc8051_sfr1_oc8051_tc1_n94), .C0(
         oc8051_sfr1_oc8051_tc1_n1650), .C1(oc8051_sfr1_oc8051_tc1_n95), .Y(
         oc8051_sfr1_oc8051_tc1_n92) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u86 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u89 ( .A0(
         oc8051_sfr1_oc8051_tc1_n89), .A1(oc8051_sfr1_oc8051_tc1_n90), .B0(
         oc8051_sfr1_oc8051_tc1_n26), .B1(oc8051_sfr1_oc8051_tc1_n91), .C0(
         oc8051_sfr1_oc8051_tc1_n92), .Y(oc8051_sfr1_oc8051_tc1_n254) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u85 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u88 ( .A0(
         oc8051_sfr1_oc8051_tc1_n177), .A1(oc8051_sfr1_oc8051_tc1_n87), .B0(
         oc8051_sfr1_oc8051_tc1_n195), .B1(oc8051_sfr1_oc8051_tc1_n88), .Y(
         oc8051_sfr1_oc8051_tc1_n86) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u84 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u87 ( .A0(
         oc8051_sfr1_oc8051_tc1_n83), .A1(oc8051_sfr1_oc8051_tc1_n84), .B0(
         oc8051_sfr1_oc8051_tc1_n9), .B1(oc8051_sfr1_oc8051_tc1_n85), .C0(
         oc8051_sfr1_oc8051_tc1_n86), .Y(oc8051_sfr1_oc8051_tc1_n255) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u83 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u86 ( .A0(
         oc8051_sfr1_oc8051_tc1_n960), .A1(oc8051_sfr1_oc8051_tc1_n20), .B0(
         oc8051_sfr1_oc8051_tc1_n670), .B1(oc8051_sfr1_oc8051_tc1_n27), .C0(
         oc8051_sfr1_oc8051_tc1_n640), .C1(oc8051_sfr1_oc8051_tc1_n28), .Y(
         oc8051_sfr1_oc8051_tc1_n76) );
-  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u82 ( .AN(
+  NAND2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u85 ( .AN(
         oc8051_sfr1_oc8051_tc1_n82), .B(oc8051_sfr1_oc8051_tc1_n81), .Y(
         oc8051_sfr1_oc8051_tc1_n25) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u81 ( .A(oc8051_sfr1_oc8051_tc1_n80), .B(oc8051_sfr1_oc8051_tc1_n81), .C(wr_addr[1]), .Y(oc8051_sfr1_oc8051_tc1_n8) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u80 ( .A(oc8051_sfr1_oc8051_tc1_n25), .B(oc8051_sfr1_oc8051_tc1_n8), .Y(oc8051_sfr1_oc8051_tc1_n15) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u79 ( .A(oc8051_sfr1_oc8051_tc1_n79), 
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u84 ( .A(oc8051_sfr1_oc8051_tc1_n25), .B(oc8051_sfr1_oc8051_tc1_n8), .Y(oc8051_sfr1_oc8051_tc1_n15) );
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u83 ( .A(oc8051_sfr1_oc8051_tc1_n79), 
         .B(oc8051_sfr1_tmod[0]), .Y(oc8051_sfr1_oc8051_tc1_n68) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u78 ( .A(oc8051_sfr1_oc8051_tc1_n15), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u82 ( .A(oc8051_sfr1_oc8051_tc1_n15), 
         .Y(oc8051_sfr1_oc8051_tc1_n21) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u77 ( .A(oc8051_sfr1_tl0[3]), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u81 ( .A(oc8051_sfr1_tl0[3]), .B(
         oc8051_sfr1_tl0[2]), .C(oc8051_sfr1_tl0[1]), .D(oc8051_sfr1_tl0[0]), 
         .Y(oc8051_sfr1_oc8051_tc1_n77) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u76 ( .A(oc8051_sfr1_tl0[7]), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u80 ( .A(oc8051_sfr1_tl0[7]), .B(
         oc8051_sfr1_tl0[6]), .C(oc8051_sfr1_tl0[5]), .D(oc8051_sfr1_tl0[4]), 
         .Y(oc8051_sfr1_oc8051_tc1_n78) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u75 ( .A(oc8051_sfr1_oc8051_tc1_n77), 
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u79 ( .A(oc8051_sfr1_oc8051_tc1_n77), 
         .B(oc8051_sfr1_oc8051_tc1_n78), .Y(oc8051_sfr1_oc8051_tc1_n71) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u74 ( .A(oc8051_sfr1_oc8051_tc1_n68), .B(oc8051_sfr1_oc8051_tc1_n21), .C(oc8051_sfr1_oc8051_tc1_n71), .Y(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u78 ( .A(oc8051_sfr1_oc8051_tc1_n68), .B(oc8051_sfr1_oc8051_tc1_n21), .C(oc8051_sfr1_oc8051_tc1_n71), .Y(
         oc8051_sfr1_oc8051_tc1_n10) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u73 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u77 ( .A0(
         oc8051_sfr1_oc8051_tc1_n76), .A1(oc8051_sfr1_oc8051_tc1_n15), .B0(
         oc8051_sfr1_oc8051_tc1_n10), .Y(oc8051_sfr1_oc8051_tc1_n73) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u72 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u76 ( .A0(
         oc8051_sfr1_oc8051_tc1_n75), .A1(oc8051_sfr1_oc8051_tc1_n15), .B0(
         oc8051_sfr1_oc8051_tc1_n8), .Y(oc8051_sfr1_oc8051_tc1_n45) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u71 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u75 ( .AN(
         oc8051_sfr1_oc8051_tc1_n25), .B(oc8051_sfr1_oc8051_tc1_n45), .Y(
         oc8051_sfr1_oc8051_tc1_n74) );
-  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u70 ( .A(oc8051_sfr1_oc8051_tc1_n73), 
+  MXT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u74 ( .A(oc8051_sfr1_oc8051_tc1_n73), 
         .B(oc8051_sfr1_tf0), .S0(oc8051_sfr1_oc8051_tc1_n74), .Y(
         oc8051_sfr1_oc8051_tc1_n256) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u69 ( .A(oc8051_sfr1_oc8051_tc1_n27), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u73 ( .A(oc8051_sfr1_oc8051_tc1_n27), 
         .Y(oc8051_sfr1_oc8051_tc1_n18) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u68 ( .A(oc8051_sfr1_oc8051_tc1_n15), 
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u72 ( .A(oc8051_sfr1_oc8051_tc1_n15), 
         .B(oc8051_sfr1_oc8051_tc1_n18), .Y(oc8051_sfr1_oc8051_tc1_n5) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u67 ( .A(oc8051_sfr1_oc8051_tc1_n68), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u71 ( .A(oc8051_sfr1_oc8051_tc1_n68), 
         .Y(oc8051_sfr1_oc8051_tc1_n19) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u66 ( .A(oc8051_sfr1_oc8051_tc1_n20), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u70 ( .A(oc8051_sfr1_oc8051_tc1_n20), 
         .Y(oc8051_sfr1_oc8051_tc1_n72) );
-  OA21A1OI2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u65 ( .A0(
+  OA21A1OI2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u69 ( .A0(
         oc8051_sfr1_oc8051_tc1_n19), .A1(oc8051_sfr1_oc8051_tc1_n71), .B0(
         oc8051_sfr1_oc8051_tc1_n72), .C0(oc8051_sfr1_oc8051_tc1_n15), .Y(
         oc8051_sfr1_oc8051_tc1_n6) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u64 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n40), .B0(oc8051_sfr1_oc8051_tc1_n222), .B1(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u68 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n40), .B0(oc8051_sfr1_oc8051_tc1_n222), .B1(
         oc8051_sfr1_oc8051_tc1_n10), .Y(oc8051_sfr1_oc8051_tc1_n70) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u63 ( .A0(
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u67 ( .A0(
         oc8051_sfr1_oc8051_tc1_n570), .A1(oc8051_sfr1_oc8051_tc1_n5), .B0(
         oc8051_sfr1_oc8051_tc1_n940), .B1(oc8051_sfr1_oc8051_tc1_n6), .C0(
         oc8051_sfr1_oc8051_tc1_n70), .Y(oc8051_sfr1_oc8051_tc1_n65) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u62 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u66 ( .A0(
         oc8051_sfr1_oc8051_tc1_n68), .A1(oc8051_sfr1_oc8051_tc1_n20), .B0(
         oc8051_sfr1_oc8051_tc1_n69), .Y(oc8051_sfr1_oc8051_tc1_n67) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u61 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u65 ( .A0(
         oc8051_sfr1_oc8051_tc1_n66), .A1(oc8051_sfr1_oc8051_tc1_n67), .B0(
         oc8051_sfr1_oc8051_tc1_n15), .C0(oc8051_sfr1_oc8051_tc1_n8), .Y(
         oc8051_sfr1_oc8051_tc1_n3) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u60 ( .A(oc8051_sfr1_oc8051_tc1_n64), .B(oc8051_sfr1_oc8051_tc1_n65), .S0(oc8051_sfr1_oc8051_tc1_n3), .Y(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u64 ( .A(oc8051_sfr1_oc8051_tc1_n64), .B(oc8051_sfr1_oc8051_tc1_n65), .S0(oc8051_sfr1_oc8051_tc1_n3), .Y(
         oc8051_sfr1_oc8051_tc1_n257) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u59 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n38), .B0(oc8051_sfr1_oc8051_tc1_n223), .B1(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u63 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n38), .B0(oc8051_sfr1_oc8051_tc1_n223), .B1(
         oc8051_sfr1_oc8051_tc1_n10), .Y(oc8051_sfr1_oc8051_tc1_n63) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u58 ( .A0(
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u62 ( .A0(
         oc8051_sfr1_oc8051_tc1_n560), .A1(oc8051_sfr1_oc8051_tc1_n5), .B0(
         oc8051_sfr1_oc8051_tc1_n930), .B1(oc8051_sfr1_oc8051_tc1_n6), .C0(
         oc8051_sfr1_oc8051_tc1_n63), .Y(oc8051_sfr1_oc8051_tc1_n62) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u57 ( .A(oc8051_sfr1_oc8051_tc1_n61), .B(oc8051_sfr1_oc8051_tc1_n62), .S0(oc8051_sfr1_oc8051_tc1_n3), .Y(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u61 ( .A(oc8051_sfr1_oc8051_tc1_n61), .B(oc8051_sfr1_oc8051_tc1_n62), .S0(oc8051_sfr1_oc8051_tc1_n3), .Y(
         oc8051_sfr1_oc8051_tc1_n258) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u56 ( .A(oc8051_sfr1_oc8051_tc1_n28), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u60 ( .A(oc8051_sfr1_oc8051_tc1_n28), 
         .Y(oc8051_sfr1_oc8051_tc1_n17) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u55 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u59 ( .A0(
         oc8051_sfr1_oc8051_tc1_n17), .A1(oc8051_sfr1_oc8051_tc1_n18), .B0(
         oc8051_sfr1_oc8051_tc1_n15), .Y(oc8051_sfr1_oc8051_tc1_n46) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u54 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n36), .B0(oc8051_sfr1_oc8051_tc1_n224), .B1(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u58 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n36), .B0(oc8051_sfr1_oc8051_tc1_n224), .B1(
         oc8051_sfr1_oc8051_tc1_n10), .Y(oc8051_sfr1_oc8051_tc1_n60) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u53 ( .A0(
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u57 ( .A0(
         oc8051_sfr1_oc8051_tc1_n46), .A1(oc8051_sfr1_oc8051_tc1_n550), .B0(
         oc8051_sfr1_oc8051_tc1_n920), .B1(oc8051_sfr1_oc8051_tc1_n6), .C0(
         oc8051_sfr1_oc8051_tc1_n60), .Y(oc8051_sfr1_oc8051_tc1_n59) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u52 ( .A(oc8051_sfr1_oc8051_tc1_n58), .B(oc8051_sfr1_oc8051_tc1_n59), .S0(oc8051_sfr1_oc8051_tc1_n45), .Y(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u56 ( .A(oc8051_sfr1_oc8051_tc1_n58), .B(oc8051_sfr1_oc8051_tc1_n59), .S0(oc8051_sfr1_oc8051_tc1_n45), .Y(
         oc8051_sfr1_oc8051_tc1_n259) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u51 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n34), .B0(oc8051_sfr1_oc8051_tc1_n225), .B1(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u55 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n34), .B0(oc8051_sfr1_oc8051_tc1_n225), .B1(
         oc8051_sfr1_oc8051_tc1_n10), .Y(oc8051_sfr1_oc8051_tc1_n57) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u50 ( .A0(
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u54 ( .A0(
         oc8051_sfr1_oc8051_tc1_n46), .A1(oc8051_sfr1_oc8051_tc1_n540), .B0(
         oc8051_sfr1_oc8051_tc1_n910), .B1(oc8051_sfr1_oc8051_tc1_n6), .C0(
         oc8051_sfr1_oc8051_tc1_n57), .Y(oc8051_sfr1_oc8051_tc1_n56) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u49 ( .A(oc8051_sfr1_oc8051_tc1_n55), .B(oc8051_sfr1_oc8051_tc1_n56), .S0(oc8051_sfr1_oc8051_tc1_n45), .Y(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u53 ( .A(oc8051_sfr1_oc8051_tc1_n55), .B(oc8051_sfr1_oc8051_tc1_n56), .S0(oc8051_sfr1_oc8051_tc1_n45), .Y(
         oc8051_sfr1_oc8051_tc1_n260) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u48 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n32), .B0(oc8051_sfr1_oc8051_tc1_n226), .B1(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u52 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n32), .B0(oc8051_sfr1_oc8051_tc1_n226), .B1(
         oc8051_sfr1_oc8051_tc1_n10), .Y(oc8051_sfr1_oc8051_tc1_n54) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u47 ( .A0(
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u51 ( .A0(
         oc8051_sfr1_oc8051_tc1_n46), .A1(oc8051_sfr1_oc8051_tc1_n530), .B0(
         oc8051_sfr1_oc8051_tc1_n900), .B1(oc8051_sfr1_oc8051_tc1_n6), .C0(
         oc8051_sfr1_oc8051_tc1_n54), .Y(oc8051_sfr1_oc8051_tc1_n53) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u46 ( .A(oc8051_sfr1_oc8051_tc1_n52), .B(oc8051_sfr1_oc8051_tc1_n53), .S0(oc8051_sfr1_oc8051_tc1_n45), .Y(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u50 ( .A(oc8051_sfr1_oc8051_tc1_n52), .B(oc8051_sfr1_oc8051_tc1_n53), .S0(oc8051_sfr1_oc8051_tc1_n45), .Y(
         oc8051_sfr1_oc8051_tc1_n261) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u45 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n30), .B0(oc8051_sfr1_oc8051_tc1_n227), .B1(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u49 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n30), .B0(oc8051_sfr1_oc8051_tc1_n227), .B1(
         oc8051_sfr1_oc8051_tc1_n10), .Y(oc8051_sfr1_oc8051_tc1_n51) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u44 ( .A0(
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u48 ( .A0(
         oc8051_sfr1_oc8051_tc1_n46), .A1(oc8051_sfr1_oc8051_tc1_n520), .B0(
         oc8051_sfr1_oc8051_tc1_n890), .B1(oc8051_sfr1_oc8051_tc1_n6), .C0(
         oc8051_sfr1_oc8051_tc1_n51), .Y(oc8051_sfr1_oc8051_tc1_n50) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u43 ( .A(oc8051_sfr1_oc8051_tc1_n49), .B(oc8051_sfr1_oc8051_tc1_n50), .S0(oc8051_sfr1_oc8051_tc1_n45), .Y(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u47 ( .A(oc8051_sfr1_oc8051_tc1_n49), .B(oc8051_sfr1_oc8051_tc1_n50), .S0(oc8051_sfr1_oc8051_tc1_n45), .Y(
         oc8051_sfr1_oc8051_tc1_n262) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u42 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u46 ( .A(
         oc8051_sfr1_oc8051_tc1_u3_u1_z_0), .Y(oc8051_sfr1_oc8051_tc1_n47) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u41 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n26), .B0(oc8051_sfr1_oc8051_tc1_n228), .B1(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u45 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n26), .B0(oc8051_sfr1_oc8051_tc1_n228), .B1(
         oc8051_sfr1_oc8051_tc1_n10), .Y(oc8051_sfr1_oc8051_tc1_n48) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u40 ( .A0(
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u44 ( .A0(
         oc8051_sfr1_oc8051_tc1_n46), .A1(oc8051_sfr1_oc8051_tc1_n47), .B0(
         oc8051_sfr1_oc8051_tc1_n880), .B1(oc8051_sfr1_oc8051_tc1_n6), .C0(
         oc8051_sfr1_oc8051_tc1_n48), .Y(oc8051_sfr1_oc8051_tc1_n44) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u39 ( .A(oc8051_sfr1_oc8051_tc1_n43), .B(oc8051_sfr1_oc8051_tc1_n44), .S0(oc8051_sfr1_oc8051_tc1_n45), .Y(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u43 ( .A(oc8051_sfr1_oc8051_tc1_n43), .B(oc8051_sfr1_oc8051_tc1_n44), .S0(oc8051_sfr1_oc8051_tc1_n45), .Y(
         oc8051_sfr1_oc8051_tc1_n263) );
-  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u38 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u42 ( .A0(
         oc8051_sfr1_oc8051_tc1_n42), .A1(oc8051_sfr1_oc8051_tc1_n16), .B0(
         oc8051_sfr1_oc8051_tc1_n15), .C0(oc8051_sfr1_oc8051_tc1_n25), .Y(
         oc8051_sfr1_oc8051_tc1_n22) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u37 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u41 ( .A0(
         oc8051_sfr1_oc8051_tc1_n20), .A1(oc8051_sfr1_oc8051_tc1_n580), .B0(
         oc8051_sfr1_oc8051_tc1_n660), .B1(oc8051_sfr1_oc8051_tc1_n27), .C0(
         oc8051_sfr1_oc8051_tc1_n630), .C1(oc8051_sfr1_oc8051_tc1_n28), .Y(
         oc8051_sfr1_oc8051_tc1_n41) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u36 ( .A(oc8051_sfr1_oc8051_tc1_n21), .B(oc8051_sfr1_oc8051_tc1_n22), .Y(oc8051_sfr1_oc8051_tc1_n24) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u35 ( .A0(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u40 ( .A(oc8051_sfr1_oc8051_tc1_n21), .B(oc8051_sfr1_oc8051_tc1_n22), .Y(oc8051_sfr1_oc8051_tc1_n24) );
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u39 ( .A0(
         oc8051_sfr1_oc8051_tc1_n221), .A1(oc8051_sfr1_oc8051_tc1_n22), .B0(
         oc8051_sfr1_oc8051_tc1_n41), .B1(oc8051_sfr1_oc8051_tc1_n24), .C0(
         oc8051_sfr1_oc8051_tc1_n9), .C1(oc8051_sfr1_oc8051_tc1_n25), .Y(
         oc8051_sfr1_oc8051_tc1_n264) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u34 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u38 ( .A0(
         oc8051_sfr1_oc8051_tc1_n570), .A1(oc8051_sfr1_oc8051_tc1_n20), .B0(
         oc8051_sfr1_oc8051_tc1_n650), .B1(oc8051_sfr1_oc8051_tc1_n27), .C0(
         oc8051_sfr1_oc8051_tc1_n620), .C1(oc8051_sfr1_oc8051_tc1_n28), .Y(
         oc8051_sfr1_oc8051_tc1_n39) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u33 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u37 ( .A0(
         oc8051_sfr1_oc8051_tc1_n222), .A1(oc8051_sfr1_oc8051_tc1_n22), .B0(
         oc8051_sfr1_oc8051_tc1_n39), .B1(oc8051_sfr1_oc8051_tc1_n24), .C0(
         oc8051_sfr1_oc8051_tc1_n25), .C1(oc8051_sfr1_oc8051_tc1_n40), .Y(
         oc8051_sfr1_oc8051_tc1_n265) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u32 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u36 ( .A0(
         oc8051_sfr1_oc8051_tc1_n560), .A1(oc8051_sfr1_oc8051_tc1_n20), .B0(
         oc8051_sfr1_oc8051_tc1_n640), .B1(oc8051_sfr1_oc8051_tc1_n27), .C0(
         oc8051_sfr1_oc8051_tc1_n610), .C1(oc8051_sfr1_oc8051_tc1_n28), .Y(
         oc8051_sfr1_oc8051_tc1_n37) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u31 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u35 ( .A0(
         oc8051_sfr1_oc8051_tc1_n223), .A1(oc8051_sfr1_oc8051_tc1_n22), .B0(
         oc8051_sfr1_oc8051_tc1_n37), .B1(oc8051_sfr1_oc8051_tc1_n24), .C0(
         oc8051_sfr1_oc8051_tc1_n25), .C1(oc8051_sfr1_oc8051_tc1_n38), .Y(
         oc8051_sfr1_oc8051_tc1_n266) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u30 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u34 ( .A0(
         oc8051_sfr1_oc8051_tc1_n550), .A1(oc8051_sfr1_oc8051_tc1_n20), .B0(
         oc8051_sfr1_oc8051_tc1_n630), .B1(oc8051_sfr1_oc8051_tc1_n27), .C0(
         oc8051_sfr1_oc8051_tc1_n600), .C1(oc8051_sfr1_oc8051_tc1_n28), .Y(
         oc8051_sfr1_oc8051_tc1_n35) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u29 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u33 ( .A0(
         oc8051_sfr1_oc8051_tc1_n224), .A1(oc8051_sfr1_oc8051_tc1_n22), .B0(
         oc8051_sfr1_oc8051_tc1_n35), .B1(oc8051_sfr1_oc8051_tc1_n24), .C0(
         oc8051_sfr1_oc8051_tc1_n25), .C1(oc8051_sfr1_oc8051_tc1_n36), .Y(
         oc8051_sfr1_oc8051_tc1_n267) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u28 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u32 ( .A0(
         oc8051_sfr1_oc8051_tc1_n540), .A1(oc8051_sfr1_oc8051_tc1_n20), .B0(
         oc8051_sfr1_oc8051_tc1_n620), .B1(oc8051_sfr1_oc8051_tc1_n27), .C0(
         oc8051_sfr1_oc8051_tc1_n28), .C1(oc8051_sfr1_oc8051_tc1_n590), .Y(
         oc8051_sfr1_oc8051_tc1_n33) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u27 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u31 ( .A0(
         oc8051_sfr1_oc8051_tc1_n225), .A1(oc8051_sfr1_oc8051_tc1_n22), .B0(
         oc8051_sfr1_oc8051_tc1_n33), .B1(oc8051_sfr1_oc8051_tc1_n24), .C0(
         oc8051_sfr1_oc8051_tc1_n25), .C1(oc8051_sfr1_oc8051_tc1_n34), .Y(
         oc8051_sfr1_oc8051_tc1_n268) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u26 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u30 ( .A0(
         oc8051_sfr1_oc8051_tc1_n530), .A1(oc8051_sfr1_oc8051_tc1_n20), .B0(
         oc8051_sfr1_oc8051_tc1_n610), .B1(oc8051_sfr1_oc8051_tc1_n27), .C0(
         oc8051_sfr1_oc8051_tc1_n28), .C1(oc8051_sfr1_oc8051_tc1_n580), .Y(
         oc8051_sfr1_oc8051_tc1_n31) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u25 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u29 ( .A0(
         oc8051_sfr1_oc8051_tc1_n226), .A1(oc8051_sfr1_oc8051_tc1_n22), .B0(
         oc8051_sfr1_oc8051_tc1_n31), .B1(oc8051_sfr1_oc8051_tc1_n24), .C0(
         oc8051_sfr1_oc8051_tc1_n25), .C1(oc8051_sfr1_oc8051_tc1_n32), .Y(
         oc8051_sfr1_oc8051_tc1_n269) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u24 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u28 ( .A0(
         oc8051_sfr1_oc8051_tc1_n520), .A1(oc8051_sfr1_oc8051_tc1_n20), .B0(
         oc8051_sfr1_oc8051_tc1_n600), .B1(oc8051_sfr1_oc8051_tc1_n27), .C0(
         oc8051_sfr1_oc8051_tc1_n570), .C1(oc8051_sfr1_oc8051_tc1_n28), .Y(
         oc8051_sfr1_oc8051_tc1_n29) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u23 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u27 ( .A0(
         oc8051_sfr1_oc8051_tc1_n227), .A1(oc8051_sfr1_oc8051_tc1_n22), .B0(
         oc8051_sfr1_oc8051_tc1_n29), .B1(oc8051_sfr1_oc8051_tc1_n24), .C0(
         oc8051_sfr1_oc8051_tc1_n25), .C1(oc8051_sfr1_oc8051_tc1_n30), .Y(
         oc8051_sfr1_oc8051_tc1_n270) );
-  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u22 ( .A0(
+  AOI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u26 ( .A0(
         oc8051_sfr1_oc8051_tc1_n510), .A1(oc8051_sfr1_oc8051_tc1_n20), .B0(
         oc8051_sfr1_oc8051_tc1_n590), .B1(oc8051_sfr1_oc8051_tc1_n27), .C0(
         oc8051_sfr1_oc8051_tc1_n560), .C1(oc8051_sfr1_oc8051_tc1_n28), .Y(
         oc8051_sfr1_oc8051_tc1_n23) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u21 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u25 ( .A0(
         oc8051_sfr1_oc8051_tc1_n228), .A1(oc8051_sfr1_oc8051_tc1_n22), .B0(
         oc8051_sfr1_oc8051_tc1_n23), .B1(oc8051_sfr1_oc8051_tc1_n24), .C0(
         oc8051_sfr1_oc8051_tc1_n25), .C1(oc8051_sfr1_oc8051_tc1_n26), .Y(
         oc8051_sfr1_oc8051_tc1_n271) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u20 ( .A(oc8051_sfr1_oc8051_tc1_n20), .B(oc8051_sfr1_oc8051_tc1_n21), .C(oc8051_sfr1_oc8051_tc1_n590), .Y(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u24 ( .A(oc8051_sfr1_oc8051_tc1_n20), .B(oc8051_sfr1_oc8051_tc1_n21), .C(oc8051_sfr1_oc8051_tc1_n590), .Y(
         oc8051_sfr1_oc8051_tc1_n11) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u19 ( .A(oc8051_sfr1_oc8051_tc1_n17), .B(oc8051_sfr1_oc8051_tc1_n18), .C(oc8051_sfr1_oc8051_tc1_n19), .Y(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u23 ( .A(oc8051_sfr1_oc8051_tc1_n17), .B(oc8051_sfr1_oc8051_tc1_n18), .C(oc8051_sfr1_oc8051_tc1_n19), .Y(
         oc8051_sfr1_oc8051_tc1_n13) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u18 ( .A(oc8051_sfr1_oc8051_tc1_n16), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u22 ( .A(oc8051_sfr1_oc8051_tc1_n16), 
         .Y(oc8051_sfr1_oc8051_tc1_n14) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u17 ( .A(oc8051_sfr1_oc8051_tc1_n13), 
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u21 ( .A(oc8051_sfr1_oc8051_tc1_n13), 
         .B(oc8051_sfr1_oc8051_tc1_n14), .C(oc8051_sfr1_oc8051_tc1_n15), .Y(
         oc8051_sfr1_oc8051_tc1_n12) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u16 ( .A(oc8051_sfr1_oc8051_tc1_n11), .B(oc8051_sfr1_oc8051_tc1_n237), .S0(oc8051_sfr1_oc8051_tc1_n12), .Y(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u20 ( .A(oc8051_sfr1_oc8051_tc1_n11), .B(oc8051_sfr1_oc8051_tc1_n237), .S0(oc8051_sfr1_oc8051_tc1_n12), .Y(
         oc8051_sfr1_oc8051_tc1_n272) );
-  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u15 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n9), .B0(oc8051_sfr1_oc8051_tc1_n221), .B1(
+  OAI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u19 ( .A0(oc8051_sfr1_oc8051_tc1_n8), .A1(oc8051_sfr1_oc8051_tc1_n9), .B0(oc8051_sfr1_oc8051_tc1_n221), .B1(
         oc8051_sfr1_oc8051_tc1_n10), .Y(oc8051_sfr1_oc8051_tc1_n7) );
-  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u14 ( .A0(
+  AOI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u18 ( .A0(
         oc8051_sfr1_oc8051_tc1_n580), .A1(oc8051_sfr1_oc8051_tc1_n5), .B0(
         oc8051_sfr1_oc8051_tc1_n950), .B1(oc8051_sfr1_oc8051_tc1_n6), .C0(
         oc8051_sfr1_oc8051_tc1_n7), .Y(oc8051_sfr1_oc8051_tc1_n2) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u13 ( .A(oc8051_sfr1_oc8051_tc1_n1), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u17 ( .A(oc8051_sfr1_oc8051_tc1_n1), 
         .B(oc8051_sfr1_oc8051_tc1_n2), .S0(oc8051_sfr1_oc8051_tc1_n3), .Y(
         oc8051_sfr1_oc8051_tc1_n273) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u12 ( .A(oc8051_sfr1_oc8051_tc1_n221), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u16 ( .A(oc8051_sfr1_oc8051_tc1_n221), 
         .Y(oc8051_sfr1_th0[7]) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u11 ( .A(oc8051_sfr1_oc8051_tc1_n222), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u15 ( .A(oc8051_sfr1_oc8051_tc1_n222), 
         .Y(oc8051_sfr1_th0[6]) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u10 ( .A(oc8051_sfr1_oc8051_tc1_n223), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u14 ( .A(oc8051_sfr1_oc8051_tc1_n223), 
         .Y(oc8051_sfr1_th0[5]) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u9 ( .A(oc8051_sfr1_oc8051_tc1_n224), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u13 ( .A(oc8051_sfr1_oc8051_tc1_n224), 
         .Y(oc8051_sfr1_th0[4]) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u8 ( .A(oc8051_sfr1_oc8051_tc1_n225), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u12 ( .A(oc8051_sfr1_oc8051_tc1_n225), 
         .Y(oc8051_sfr1_th0[3]) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u7 ( .A(oc8051_sfr1_oc8051_tc1_n226), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u11 ( .A(oc8051_sfr1_oc8051_tc1_n226), 
         .Y(oc8051_sfr1_th0[2]) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u6 ( .A(oc8051_sfr1_oc8051_tc1_n227), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u10 ( .A(oc8051_sfr1_oc8051_tc1_n227), 
         .Y(oc8051_sfr1_th0[1]) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u5 ( .A(oc8051_sfr1_oc8051_tc1_n228), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc1_u9 ( .A(oc8051_sfr1_oc8051_tc1_n228), 
         .Y(oc8051_sfr1_th0[0]) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u4 ( .A(oc8051_sfr1_oc8051_tc1_n238), .B(oc8051_sfr1_oc8051_tc1_n237), .Y(oc8051_sfr1_tf1) );
-  TIELO_X1M_A12TS oc8051_sfr1_oc8051_tc1_u3 ( .Y(oc8051_sfr1_oc8051_tc1_n4) );
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc1_u8 ( .A(oc8051_sfr1_oc8051_tc1_n238), .B(oc8051_sfr1_oc8051_tc1_n237), .Y(oc8051_sfr1_tf1) );
+  TIELO_X1M_A12TS oc8051_sfr1_oc8051_tc1_u7 ( .Y(oc8051_sfr1_oc8051_tc1_n4) );
+  NAND4B_X0P7M_A12TS oc8051_sfr1_oc8051_tc1_u6 ( .AN(wr_addr[1]), .B(
+        wr_addr[2]), .C(oc8051_sfr1_oc8051_tc1_n155), .D(
+        oc8051_sfr1_oc8051_tc1_n156), .Y(oc8051_sfr1_oc8051_tc1_n82) );
+  INV_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u5 ( .A(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_tc1_n81) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u4 ( .A(wr_addr[1]), .B(
+        oc8051_sfr1_oc8051_tc1_n80), .C(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_tc1_n91) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_tc1_u3 ( .A(oc8051_sfr1_oc8051_tc1_n80), 
+        .B(oc8051_sfr1_oc8051_tc1_n81), .C(wr_addr[1]), .Y(
+        oc8051_sfr1_oc8051_tc1_n8) );
   DFFRPQN_X1M_A12TS oc8051_sfr1_oc8051_tc1_th0_reg_2_ ( .D(
         oc8051_sfr1_oc8051_tc1_n269), .CK(wb_clk_i), .R(wb_rst_i), .QN(
         oc8051_sfr1_oc8051_tc1_n226) );
@@ -47219,6 +47204,11 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_sfr1_oc8051_tc1_r359_carry[4]), .CO(
         oc8051_sfr1_oc8051_tc1_r359_carry[5]), .S(oc8051_sfr1_oc8051_tc1_n550)
          );
+  ADDH_X1M_A12TS oc8051_sfr1_oc8051_tc1_r359_u1_1_8 ( .A(
+        oc8051_sfr1_oc8051_tc1_u3_u1_z_8), .B(
+        oc8051_sfr1_oc8051_tc1_r359_carry[8]), .CO(
+        oc8051_sfr1_oc8051_tc1_r359_carry[9]), .S(oc8051_sfr1_oc8051_tc1_n590)
+         );
   ADDH_X1M_A12TS oc8051_sfr1_oc8051_tc1_r359_u1_1_9 ( .A(
         oc8051_sfr1_oc8051_tc1_u3_u1_z_9), .B(
         oc8051_sfr1_oc8051_tc1_r359_carry[9]), .CO(
@@ -47235,11 +47225,6 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_sfr1_oc8051_tc1_u3_u1_z_12), .B(
         oc8051_sfr1_oc8051_tc1_r359_carry[12]), .CO(
         oc8051_sfr1_oc8051_tc1_r359_carry[13]), .S(oc8051_sfr1_oc8051_tc1_n630) );
-  ADDH_X1M_A12TS oc8051_sfr1_oc8051_tc1_r359_u1_1_8 ( .A(
-        oc8051_sfr1_oc8051_tc1_u3_u1_z_8), .B(
-        oc8051_sfr1_oc8051_tc1_r359_carry[8]), .CO(
-        oc8051_sfr1_oc8051_tc1_r359_carry[9]), .S(oc8051_sfr1_oc8051_tc1_n590)
-         );
   ADDH_X1M_A12TS oc8051_sfr1_oc8051_tc1_r359_u1_1_14 ( .A(
         oc8051_sfr1_oc8051_tc1_u3_u1_z_14), .B(
         oc8051_sfr1_oc8051_tc1_r359_carry[14]), .CO(
@@ -47269,531 +47254,531 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_sfr1_oc8051_tc21_n11) );
   INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u179 ( .A(
         oc8051_sfr1_oc8051_tc21_n11), .Y(oc8051_sfr1_oc8051_tc21_n135) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u178 ( .AN(wr_addr[2]), .B(
-        wr_addr[1]), .Y(oc8051_sfr1_oc8051_tc21_n34) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u177 ( .A(n_5_net_), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u178 ( .A(n_5_net_), .Y(
         oc8051_sfr1_oc8051_tc21_n139) );
-  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u176 ( .A(
+  NOR3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u177 ( .A(
         oc8051_sfr1_oc8051_tc21_n139), .B(wr_addr[5]), .C(wr_addr[4]), .Y(
         oc8051_sfr1_oc8051_tc21_n138) );
-  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u175 ( .A(wr_addr[6]), .B(
+  AND4_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u176 ( .A(wr_addr[6]), .B(
         wr_addr[3]), .C(wr_addr[7]), .D(oc8051_sfr1_oc8051_tc21_n138), .Y(
         oc8051_sfr1_oc8051_tc21_n127) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u174 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u175 ( .AN(
         oc8051_sfr1_oc8051_tc21_n127), .B(oc8051_sfr1_wr_bit_r), .Y(
         oc8051_sfr1_oc8051_tc21_n114) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u173 ( .A(
-        oc8051_sfr1_oc8051_tc21_n34), .B(oc8051_sfr1_oc8051_tc21_n114), .C(
-        wr_addr[0]), .Y(oc8051_sfr1_oc8051_tc21_n83) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u172 ( .AN(
-        oc8051_sfr1_oc8051_tc21_n114), .B(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_tc21_n113) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u171 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u174 ( .A(
         oc8051_sfr1_oc8051_tc21_n113), .B(oc8051_sfr1_oc8051_tc21_n34), .Y(
         oc8051_sfr1_oc8051_tc21_n77) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u170 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u173 ( .A(
         oc8051_sfr1_oc8051_tc21_n83), .B(oc8051_sfr1_oc8051_tc21_n77), .Y(
         oc8051_sfr1_oc8051_tc21_n2) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u169 ( .A(oc8051_sfr1_pres_ow), 
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u172 ( .A(oc8051_sfr1_pres_ow), 
         .B(oc8051_sfr1_oc8051_tc21_tc2_event), .S0(oc8051_sfr1_t2con_1_), .Y(
         oc8051_sfr1_oc8051_tc21_n137) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u168 ( .AN(oc8051_sfr1_t2con_2_), 
+  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u171 ( .AN(oc8051_sfr1_t2con_2_), 
         .B(oc8051_sfr1_oc8051_tc21_n137), .Y(oc8051_sfr1_oc8051_tc21_n136) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u167 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u170 ( .A0(
         oc8051_sfr1_oc8051_tc21_n115), .A1(oc8051_sfr1_oc8051_tc21_n135), .B0(
         oc8051_sfr1_oc8051_tc21_n2), .C0(oc8051_sfr1_oc8051_tc21_n136), .Y(
         oc8051_sfr1_oc8051_tc21_n79) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u166 ( .A(
+  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u169 ( .A(
         oc8051_sfr1_oc8051_tc21_n79), .B(oc8051_sfr1_oc8051_tc21_n116), .Y(
         oc8051_sfr1_oc8051_tc21_n129) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u165 ( .A(oc8051_sfr1_brate2), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u168 ( .A(oc8051_sfr1_brate2), .B(
         oc8051_sfr1_oc8051_tc21_n850), .S0(oc8051_sfr1_oc8051_tc21_n129), .Y(
         oc8051_sfr1_oc8051_tc21_n128) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u164 ( .A(oc8051_sfr1_tl2[3]), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u167 ( .A(oc8051_sfr1_tl2[3]), .B(
         oc8051_sfr1_tl2[2]), .C(oc8051_sfr1_tl2[1]), .D(oc8051_sfr1_tl2[0]), 
         .Y(oc8051_sfr1_oc8051_tc21_n131) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u163 ( .A(oc8051_sfr1_tl2[7]), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u166 ( .A(oc8051_sfr1_tl2[7]), .B(
         oc8051_sfr1_tl2[6]), .C(oc8051_sfr1_tl2[5]), .D(oc8051_sfr1_tl2[4]), 
         .Y(oc8051_sfr1_oc8051_tc21_n132) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u162 ( .A(oc8051_sfr1_th2[3]), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u165 ( .A(oc8051_sfr1_th2[3]), .B(
         oc8051_sfr1_th2[2]), .C(oc8051_sfr1_th2[1]), .D(oc8051_sfr1_th2[0]), 
         .Y(oc8051_sfr1_oc8051_tc21_n133) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u161 ( .A(oc8051_sfr1_th2[7]), .B(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u164 ( .A(oc8051_sfr1_th2[7]), .B(
         oc8051_sfr1_th2[6]), .C(oc8051_sfr1_th2[5]), .D(oc8051_sfr1_th2[4]), 
         .Y(oc8051_sfr1_oc8051_tc21_n134) );
-  OR4_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u160 ( .A(
+  OR4_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u163 ( .A(
         oc8051_sfr1_oc8051_tc21_n131), .B(oc8051_sfr1_oc8051_tc21_n132), .C(
         oc8051_sfr1_oc8051_tc21_n133), .D(oc8051_sfr1_oc8051_tc21_n134), .Y(
         oc8051_sfr1_oc8051_tc21_n130) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u159 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u162 ( .A(
         oc8051_sfr1_oc8051_tc21_n130), .Y(oc8051_sfr1_oc8051_tc21_n100) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u158 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u161 ( .A(
         oc8051_sfr1_oc8051_tc21_n129), .B(oc8051_sfr1_oc8051_tc21_n100), .Y(
         oc8051_sfr1_oc8051_tc21_n101) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u157 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u160 ( .A(
         oc8051_sfr1_oc8051_tc21_n128), .B(oc8051_sfr1_oc8051_tc21_n101), .Y(
         oc8051_sfr1_oc8051_tc21_n150) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u156 ( .A(wr_addr[2]), .B(
-        wr_addr[1]), .Y(oc8051_sfr1_oc8051_tc21_n19) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u155 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u159 ( .A(
         oc8051_sfr1_oc8051_tc21_n19), .B(oc8051_sfr1_oc8051_tc21_n113), .Y(
         oc8051_sfr1_oc8051_tc21_n17) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u154 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u158 ( .A(
         oc8051_sfr1_oc8051_tc21_n17), .Y(oc8051_sfr1_oc8051_tc21_n122) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u153 ( .A(oc8051_sfr1_wr_bit_r), 
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u157 ( .A(oc8051_sfr1_wr_bit_r), 
         .B(oc8051_sfr1_oc8051_tc21_n127), .Y(oc8051_sfr1_oc8051_tc21_n121) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u152 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u156 ( .A(
         oc8051_sfr1_oc8051_tc21_n121), .Y(oc8051_sfr1_oc8051_tc21_n120) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u151 ( .A(descy), .B(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u155 ( .A(descy), .B(
         oc8051_sfr1_oc8051_tc21_n120), .Y(oc8051_sfr1_oc8051_tc21_n14) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u150 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u154 ( .A0(
         oc8051_sfr1_oc8051_tc21_n122), .A1(oc8051_sfr1_oc8051_tc21_n120), .B0(
         oc8051_sfr1_oc8051_tc21_n14), .Y(oc8051_sfr1_oc8051_tc21_n123) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u149 ( .A0(wr_dat[7]), .A1(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u153 ( .A0(wr_dat[7]), .A1(
         oc8051_sfr1_oc8051_tc21_n122), .B0(oc8051_sfr1_oc8051_tc21_n123), .Y(
         oc8051_sfr1_oc8051_tc21_n124) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u148 ( .AN(wr_addr[0]), .B(
-        oc8051_sfr1_oc8051_tc21_n121), .Y(oc8051_sfr1_oc8051_tc21_n23) );
-  AND3_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u147 ( .A(wr_addr[1]), .B(
-        wr_addr[2]), .C(oc8051_sfr1_oc8051_tc21_n23), .Y(
-        oc8051_sfr1_oc8051_tc21_n126) );
-  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u146 ( .A0(
+  AOI211_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u152 ( .A0(
         oc8051_sfr1_oc8051_tc21_tf2_set), .A1(oc8051_sfr1_oc8051_tc21_n121), 
         .B0(oc8051_sfr1_oc8051_tc21_n122), .C0(oc8051_sfr1_oc8051_tc21_n126), 
         .Y(oc8051_sfr1_oc8051_tc21_n125) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u145 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u151 ( .A(
         oc8051_sfr1_oc8051_tc21_n124), .B(oc8051_sfr1_oc8051_tc21_n6), .S0(
         oc8051_sfr1_oc8051_tc21_n125), .Y(oc8051_sfr1_oc8051_tc21_n151) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u144 ( .A0(wr_dat[6]), .A1(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u150 ( .A0(wr_dat[6]), .A1(
         oc8051_sfr1_oc8051_tc21_n122), .B0(oc8051_sfr1_oc8051_tc21_n123), .Y(
         oc8051_sfr1_oc8051_tc21_n117) );
-  NOR2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u143 ( .A(
-        oc8051_sfr1_oc8051_tc21_n121), .B(wr_addr[0]), .Y(
-        oc8051_sfr1_oc8051_tc21_n18) );
-  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u142 ( .A0(
+  OAI31_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u149 ( .A0(
         oc8051_sfr1_oc8051_tc21_n115), .A1(oc8051_sfr1_oc8051_tc21_tf2_set), 
         .A2(oc8051_sfr1_oc8051_tc21_n120), .B0(oc8051_sfr1_oc8051_tc21_n17), 
         .Y(oc8051_sfr1_oc8051_tc21_n119) );
-  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u141 ( .A0(
+  AOI31_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u148 ( .A0(
         oc8051_sfr1_oc8051_tc21_n18), .A1(wr_addr[2]), .A2(wr_addr[1]), .B0(
         oc8051_sfr1_oc8051_tc21_n119), .Y(oc8051_sfr1_oc8051_tc21_n118) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u140 ( .A(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u147 ( .A(
         oc8051_sfr1_oc8051_tc21_n117), .B(oc8051_sfr1_oc8051_tc21_n5), .S0(
         oc8051_sfr1_oc8051_tc21_n118), .Y(oc8051_sfr1_oc8051_tc21_n152) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u139 ( .A(oc8051_sfr1_th2[7]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u146 ( .A(oc8051_sfr1_th2[7]), .Y(
         oc8051_sfr1_oc8051_tc21_n97) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u138 ( .A(oc8051_sfr1_t2con_0_), 
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u145 ( .A(oc8051_sfr1_t2con_0_), 
         .B(oc8051_sfr1_oc8051_tc21_n116), .Y(oc8051_sfr1_oc8051_tc21_n99) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u137 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u144 ( .A(
         oc8051_sfr1_oc8051_tc21_n99), .Y(oc8051_sfr1_oc8051_tc21_n10) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u136 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u143 ( .A(
         oc8051_sfr1_oc8051_tc21_n115), .Y(oc8051_sfr1_oc8051_tc21_n102) );
-  NOR2B_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u135 ( .AN(wr_addr[1]), .B(
-        wr_addr[2]), .Y(oc8051_sfr1_oc8051_tc21_n27) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u134 ( .A(wr_addr[0]), .B(
-        oc8051_sfr1_oc8051_tc21_n114), .C(oc8051_sfr1_oc8051_tc21_n27), .Y(
-        oc8051_sfr1_oc8051_tc21_n105) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u133 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u142 ( .A(
         oc8051_sfr1_oc8051_tc21_n27), .B(oc8051_sfr1_oc8051_tc21_n113), .Y(
         oc8051_sfr1_oc8051_tc21_n43) );
-  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u132 ( .A(
+  NAND4_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u141 ( .A(
         oc8051_sfr1_oc8051_tc21_n10), .B(oc8051_sfr1_oc8051_tc21_n102), .C(
         oc8051_sfr1_oc8051_tc21_n105), .D(oc8051_sfr1_oc8051_tc21_n43), .Y(
         oc8051_sfr1_oc8051_tc21_n39) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u131 ( .A(oc8051_sfr1_rcap2h[7]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u140 ( .A(oc8051_sfr1_rcap2h[7]), 
         .Y(oc8051_sfr1_oc8051_tc21_n112) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u130 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u139 ( .A(
         oc8051_sfr1_oc8051_tc21_n105), .B(oc8051_sfr1_oc8051_tc21_n39), .Y(
         oc8051_sfr1_oc8051_tc21_n104) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u129 ( .A(wr_dat[7]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u138 ( .A(wr_dat[7]), .Y(
         oc8051_sfr1_oc8051_tc21_n64) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u128 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u137 ( .A0(
         oc8051_sfr1_oc8051_tc21_n97), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n112), .B1(oc8051_sfr1_oc8051_tc21_n104), .C0(
         oc8051_sfr1_oc8051_tc21_n64), .C1(oc8051_sfr1_oc8051_tc21_n105), .Y(
         oc8051_sfr1_oc8051_tc21_n153) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u127 ( .A(oc8051_sfr1_th2[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u136 ( .A(oc8051_sfr1_th2[6]), .Y(
         oc8051_sfr1_oc8051_tc21_n95) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u126 ( .A(oc8051_sfr1_rcap2h[6]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u135 ( .A(oc8051_sfr1_rcap2h[6]), 
         .Y(oc8051_sfr1_oc8051_tc21_n111) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u125 ( .A(wr_dat[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u134 ( .A(wr_dat[6]), .Y(
         oc8051_sfr1_oc8051_tc21_n61) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u124 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u133 ( .A0(
         oc8051_sfr1_oc8051_tc21_n95), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n111), .B1(oc8051_sfr1_oc8051_tc21_n104), .C0(
         oc8051_sfr1_oc8051_tc21_n61), .C1(oc8051_sfr1_oc8051_tc21_n105), .Y(
         oc8051_sfr1_oc8051_tc21_n154) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u123 ( .A(oc8051_sfr1_th2[5]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u132 ( .A(oc8051_sfr1_th2[5]), .Y(
         oc8051_sfr1_oc8051_tc21_n93) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u122 ( .A(oc8051_sfr1_rcap2h[5]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u131 ( .A(oc8051_sfr1_rcap2h[5]), 
         .Y(oc8051_sfr1_oc8051_tc21_n110) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u121 ( .A(wr_dat[5]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u130 ( .A(wr_dat[5]), .Y(
         oc8051_sfr1_oc8051_tc21_n58) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u120 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u129 ( .A0(
         oc8051_sfr1_oc8051_tc21_n93), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n110), .B1(oc8051_sfr1_oc8051_tc21_n104), .C0(
         oc8051_sfr1_oc8051_tc21_n58), .C1(oc8051_sfr1_oc8051_tc21_n105), .Y(
         oc8051_sfr1_oc8051_tc21_n155) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u119 ( .A(oc8051_sfr1_th2[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u128 ( .A(oc8051_sfr1_th2[4]), .Y(
         oc8051_sfr1_oc8051_tc21_n91) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u118 ( .A(oc8051_sfr1_rcap2h[4]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u127 ( .A(oc8051_sfr1_rcap2h[4]), 
         .Y(oc8051_sfr1_oc8051_tc21_n109) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u117 ( .A(wr_dat[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u126 ( .A(wr_dat[4]), .Y(
         oc8051_sfr1_oc8051_tc21_n55) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u116 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u125 ( .A0(
         oc8051_sfr1_oc8051_tc21_n91), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n109), .B1(oc8051_sfr1_oc8051_tc21_n104), .C0(
         oc8051_sfr1_oc8051_tc21_n55), .C1(oc8051_sfr1_oc8051_tc21_n105), .Y(
         oc8051_sfr1_oc8051_tc21_n156) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u115 ( .A(oc8051_sfr1_th2[3]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u124 ( .A(oc8051_sfr1_th2[3]), .Y(
         oc8051_sfr1_oc8051_tc21_n89) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u114 ( .A(oc8051_sfr1_rcap2h[3]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u123 ( .A(oc8051_sfr1_rcap2h[3]), 
         .Y(oc8051_sfr1_oc8051_tc21_n108) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u113 ( .A(wr_dat[3]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u122 ( .A(wr_dat[3]), .Y(
         oc8051_sfr1_oc8051_tc21_n52) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u112 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u121 ( .A0(
         oc8051_sfr1_oc8051_tc21_n89), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n108), .B1(oc8051_sfr1_oc8051_tc21_n104), .C0(
         oc8051_sfr1_oc8051_tc21_n52), .C1(oc8051_sfr1_oc8051_tc21_n105), .Y(
         oc8051_sfr1_oc8051_tc21_n157) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u111 ( .A(oc8051_sfr1_th2[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u120 ( .A(oc8051_sfr1_th2[2]), .Y(
         oc8051_sfr1_oc8051_tc21_n87) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u110 ( .A(oc8051_sfr1_rcap2h[2]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u119 ( .A(oc8051_sfr1_rcap2h[2]), 
         .Y(oc8051_sfr1_oc8051_tc21_n107) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u109 ( .A(wr_dat[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u118 ( .A(wr_dat[2]), .Y(
         oc8051_sfr1_oc8051_tc21_n49) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u108 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u117 ( .A0(
         oc8051_sfr1_oc8051_tc21_n87), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n107), .B1(oc8051_sfr1_oc8051_tc21_n104), .C0(
         oc8051_sfr1_oc8051_tc21_n49), .C1(oc8051_sfr1_oc8051_tc21_n105), .Y(
         oc8051_sfr1_oc8051_tc21_n158) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u107 ( .A(oc8051_sfr1_th2[1]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u116 ( .A(oc8051_sfr1_th2[1]), .Y(
         oc8051_sfr1_oc8051_tc21_n85) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u106 ( .A(oc8051_sfr1_rcap2h[1]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u115 ( .A(oc8051_sfr1_rcap2h[1]), 
         .Y(oc8051_sfr1_oc8051_tc21_n106) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u105 ( .A(wr_dat[1]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u114 ( .A(wr_dat[1]), .Y(
         oc8051_sfr1_oc8051_tc21_n46) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u104 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u113 ( .A0(
         oc8051_sfr1_oc8051_tc21_n85), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n106), .B1(oc8051_sfr1_oc8051_tc21_n104), .C0(
         oc8051_sfr1_oc8051_tc21_n46), .C1(oc8051_sfr1_oc8051_tc21_n105), .Y(
         oc8051_sfr1_oc8051_tc21_n159) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u103 ( .A(oc8051_sfr1_th2[0]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u112 ( .A(oc8051_sfr1_th2[0]), .Y(
         oc8051_sfr1_oc8051_tc21_n81) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u102 ( .A(oc8051_sfr1_rcap2h[0]), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u111 ( .A(oc8051_sfr1_rcap2h[0]), 
         .Y(oc8051_sfr1_oc8051_tc21_n103) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u101 ( .A(wr_dat[0]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u110 ( .A(wr_dat[0]), .Y(
         oc8051_sfr1_oc8051_tc21_n42) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u100 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u109 ( .A0(
         oc8051_sfr1_oc8051_tc21_n81), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n103), .B1(oc8051_sfr1_oc8051_tc21_n104), .C0(
         oc8051_sfr1_oc8051_tc21_n42), .C1(oc8051_sfr1_oc8051_tc21_n105), .Y(
         oc8051_sfr1_oc8051_tc21_n160) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u99 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u108 ( .A(
         oc8051_sfr1_oc8051_tc21_n11), .B(oc8051_sfr1_oc8051_tc21_n102), .C(
         oc8051_sfr1_oc8051_tc21_n2), .Y(oc8051_sfr1_oc8051_tc21_n80) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u98 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u107 ( .A(
         oc8051_sfr1_oc8051_tc21_n79), .B(oc8051_sfr1_oc8051_tc21_n83), .C(
         oc8051_sfr1_oc8051_tc21_n80), .Y(oc8051_sfr1_oc8051_tc21_n82) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u97 ( .A(oc8051_sfr1_oc8051_tc21_n79), .Y(oc8051_sfr1_oc8051_tc21_n12) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u96 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u106 ( .A(
+        oc8051_sfr1_oc8051_tc21_n79), .Y(oc8051_sfr1_oc8051_tc21_n12) );
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u105 ( .A(
         oc8051_sfr1_oc8051_tc21_n100), .B(oc8051_sfr1_oc8051_tc21_n11), .C(
         oc8051_sfr1_oc8051_tc21_n12), .Y(oc8051_sfr1_oc8051_tc21_n9) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u95 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u104 ( .A(
         oc8051_sfr1_oc8051_tc21_n101), .B(oc8051_sfr1_oc8051_tc21_n9), .C(
         oc8051_sfr1_oc8051_tc21_n80), .Y(oc8051_sfr1_oc8051_tc21_n78) );
-  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u94 ( .A0(
+  AOI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u103 ( .A0(
         oc8051_sfr1_oc8051_tc21_n99), .A1(oc8051_sfr1_oc8051_tc21_n100), .B0(
         oc8051_sfr1_oc8051_tc21_n79), .Y(oc8051_sfr1_oc8051_tc21_n68) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u93 ( .A0(oc8051_sfr1_rcap2h[7]), 
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u102 ( .A0(oc8051_sfr1_rcap2h[7]), 
         .A1(oc8051_sfr1_oc8051_tc21_n78), .B0(oc8051_sfr1_oc8051_tc21_n840), 
         .B1(oc8051_sfr1_oc8051_tc21_n68), .Y(oc8051_sfr1_oc8051_tc21_n98) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u92 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u101 ( .A0(
         oc8051_sfr1_oc8051_tc21_n97), .A1(oc8051_sfr1_oc8051_tc21_n82), .B0(
         oc8051_sfr1_oc8051_tc21_n64), .B1(oc8051_sfr1_oc8051_tc21_n83), .C0(
         oc8051_sfr1_oc8051_tc21_n98), .Y(oc8051_sfr1_oc8051_tc21_n161) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u91 ( .A0(oc8051_sfr1_rcap2h[6]), 
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u100 ( .A0(oc8051_sfr1_rcap2h[6]), 
         .A1(oc8051_sfr1_oc8051_tc21_n78), .B0(oc8051_sfr1_oc8051_tc21_n830), 
         .B1(oc8051_sfr1_oc8051_tc21_n68), .Y(oc8051_sfr1_oc8051_tc21_n96) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u90 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u99 ( .A0(
         oc8051_sfr1_oc8051_tc21_n95), .A1(oc8051_sfr1_oc8051_tc21_n82), .B0(
         oc8051_sfr1_oc8051_tc21_n61), .B1(oc8051_sfr1_oc8051_tc21_n83), .C0(
         oc8051_sfr1_oc8051_tc21_n96), .Y(oc8051_sfr1_oc8051_tc21_n162) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u89 ( .A0(oc8051_sfr1_rcap2h[5]), 
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u98 ( .A0(oc8051_sfr1_rcap2h[5]), 
         .A1(oc8051_sfr1_oc8051_tc21_n78), .B0(oc8051_sfr1_oc8051_tc21_n820), 
         .B1(oc8051_sfr1_oc8051_tc21_n68), .Y(oc8051_sfr1_oc8051_tc21_n94) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u88 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u97 ( .A0(
         oc8051_sfr1_oc8051_tc21_n93), .A1(oc8051_sfr1_oc8051_tc21_n82), .B0(
         oc8051_sfr1_oc8051_tc21_n58), .B1(oc8051_sfr1_oc8051_tc21_n83), .C0(
         oc8051_sfr1_oc8051_tc21_n94), .Y(oc8051_sfr1_oc8051_tc21_n163) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u87 ( .A0(oc8051_sfr1_rcap2h[4]), 
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u96 ( .A0(oc8051_sfr1_rcap2h[4]), 
         .A1(oc8051_sfr1_oc8051_tc21_n78), .B0(oc8051_sfr1_oc8051_tc21_n810), 
         .B1(oc8051_sfr1_oc8051_tc21_n68), .Y(oc8051_sfr1_oc8051_tc21_n92) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u86 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u95 ( .A0(
         oc8051_sfr1_oc8051_tc21_n91), .A1(oc8051_sfr1_oc8051_tc21_n82), .B0(
         oc8051_sfr1_oc8051_tc21_n55), .B1(oc8051_sfr1_oc8051_tc21_n83), .C0(
         oc8051_sfr1_oc8051_tc21_n92), .Y(oc8051_sfr1_oc8051_tc21_n164) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u85 ( .A0(oc8051_sfr1_rcap2h[3]), 
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u94 ( .A0(oc8051_sfr1_rcap2h[3]), 
         .A1(oc8051_sfr1_oc8051_tc21_n78), .B0(oc8051_sfr1_oc8051_tc21_n800), 
         .B1(oc8051_sfr1_oc8051_tc21_n68), .Y(oc8051_sfr1_oc8051_tc21_n90) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u84 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u93 ( .A0(
         oc8051_sfr1_oc8051_tc21_n89), .A1(oc8051_sfr1_oc8051_tc21_n82), .B0(
         oc8051_sfr1_oc8051_tc21_n52), .B1(oc8051_sfr1_oc8051_tc21_n83), .C0(
         oc8051_sfr1_oc8051_tc21_n90), .Y(oc8051_sfr1_oc8051_tc21_n165) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u83 ( .A0(oc8051_sfr1_rcap2h[2]), 
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u92 ( .A0(oc8051_sfr1_rcap2h[2]), 
         .A1(oc8051_sfr1_oc8051_tc21_n78), .B0(oc8051_sfr1_oc8051_tc21_n790), 
         .B1(oc8051_sfr1_oc8051_tc21_n68), .Y(oc8051_sfr1_oc8051_tc21_n88) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u82 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u91 ( .A0(
         oc8051_sfr1_oc8051_tc21_n87), .A1(oc8051_sfr1_oc8051_tc21_n82), .B0(
         oc8051_sfr1_oc8051_tc21_n49), .B1(oc8051_sfr1_oc8051_tc21_n83), .C0(
         oc8051_sfr1_oc8051_tc21_n88), .Y(oc8051_sfr1_oc8051_tc21_n166) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u81 ( .A0(oc8051_sfr1_rcap2h[1]), 
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u90 ( .A0(oc8051_sfr1_rcap2h[1]), 
         .A1(oc8051_sfr1_oc8051_tc21_n78), .B0(oc8051_sfr1_oc8051_tc21_n780), 
         .B1(oc8051_sfr1_oc8051_tc21_n68), .Y(oc8051_sfr1_oc8051_tc21_n86) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u80 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u89 ( .A0(
         oc8051_sfr1_oc8051_tc21_n85), .A1(oc8051_sfr1_oc8051_tc21_n82), .B0(
         oc8051_sfr1_oc8051_tc21_n46), .B1(oc8051_sfr1_oc8051_tc21_n83), .C0(
         oc8051_sfr1_oc8051_tc21_n86), .Y(oc8051_sfr1_oc8051_tc21_n167) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u79 ( .A0(oc8051_sfr1_rcap2h[0]), 
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u88 ( .A0(oc8051_sfr1_rcap2h[0]), 
         .A1(oc8051_sfr1_oc8051_tc21_n78), .B0(oc8051_sfr1_oc8051_tc21_n770), 
         .B1(oc8051_sfr1_oc8051_tc21_n68), .Y(oc8051_sfr1_oc8051_tc21_n84) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u78 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u87 ( .A0(
         oc8051_sfr1_oc8051_tc21_n81), .A1(oc8051_sfr1_oc8051_tc21_n82), .B0(
         oc8051_sfr1_oc8051_tc21_n42), .B1(oc8051_sfr1_oc8051_tc21_n83), .C0(
         oc8051_sfr1_oc8051_tc21_n84), .Y(oc8051_sfr1_oc8051_tc21_n168) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u77 ( .A(oc8051_sfr1_tl2[7]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u86 ( .A(oc8051_sfr1_tl2[7]), .Y(
         oc8051_sfr1_oc8051_tc21_n62) );
-  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u76 ( .A(
+  NAND3_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u85 ( .A(
         oc8051_sfr1_oc8051_tc21_n79), .B(oc8051_sfr1_oc8051_tc21_n77), .C(
         oc8051_sfr1_oc8051_tc21_n80), .Y(oc8051_sfr1_oc8051_tc21_n65) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u75 ( .A(oc8051_sfr1_oc8051_tc21_n78), .Y(oc8051_sfr1_oc8051_tc21_n66) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u74 ( .A(oc8051_sfr1_rcap2l[7]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u84 ( .A(oc8051_sfr1_oc8051_tc21_n78), .Y(oc8051_sfr1_oc8051_tc21_n66) );
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u83 ( .A(oc8051_sfr1_rcap2l[7]), .Y(
         oc8051_sfr1_oc8051_tc21_n63) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u73 ( .A(oc8051_sfr1_oc8051_tc21_n77), .Y(oc8051_sfr1_oc8051_tc21_n69) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u72 ( .A0(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u82 ( .A(oc8051_sfr1_oc8051_tc21_n77), .Y(oc8051_sfr1_oc8051_tc21_n69) );
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u81 ( .A0(
         oc8051_sfr1_oc8051_tc21_n760), .A1(oc8051_sfr1_oc8051_tc21_n68), .B0(
         oc8051_sfr1_oc8051_tc21_n69), .B1(wr_dat[7]), .Y(
         oc8051_sfr1_oc8051_tc21_n76) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u71 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u80 ( .A0(
         oc8051_sfr1_oc8051_tc21_n62), .A1(oc8051_sfr1_oc8051_tc21_n65), .B0(
         oc8051_sfr1_oc8051_tc21_n66), .B1(oc8051_sfr1_oc8051_tc21_n63), .C0(
         oc8051_sfr1_oc8051_tc21_n76), .Y(oc8051_sfr1_oc8051_tc21_n169) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u70 ( .A(oc8051_sfr1_tl2[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u79 ( .A(oc8051_sfr1_tl2[6]), .Y(
         oc8051_sfr1_oc8051_tc21_n59) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u69 ( .A(oc8051_sfr1_rcap2l[6]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u78 ( .A(oc8051_sfr1_rcap2l[6]), .Y(
         oc8051_sfr1_oc8051_tc21_n60) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u68 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u77 ( .A0(
         oc8051_sfr1_oc8051_tc21_n750), .A1(oc8051_sfr1_oc8051_tc21_n68), .B0(
         oc8051_sfr1_oc8051_tc21_n69), .B1(wr_dat[6]), .Y(
         oc8051_sfr1_oc8051_tc21_n75) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u67 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u76 ( .A0(
         oc8051_sfr1_oc8051_tc21_n59), .A1(oc8051_sfr1_oc8051_tc21_n65), .B0(
         oc8051_sfr1_oc8051_tc21_n66), .B1(oc8051_sfr1_oc8051_tc21_n60), .C0(
         oc8051_sfr1_oc8051_tc21_n75), .Y(oc8051_sfr1_oc8051_tc21_n170) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u66 ( .A(oc8051_sfr1_tl2[5]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u75 ( .A(oc8051_sfr1_tl2[5]), .Y(
         oc8051_sfr1_oc8051_tc21_n56) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u65 ( .A(oc8051_sfr1_rcap2l[5]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u74 ( .A(oc8051_sfr1_rcap2l[5]), .Y(
         oc8051_sfr1_oc8051_tc21_n57) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u64 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u73 ( .A0(
         oc8051_sfr1_oc8051_tc21_n740), .A1(oc8051_sfr1_oc8051_tc21_n68), .B0(
         oc8051_sfr1_oc8051_tc21_n69), .B1(wr_dat[5]), .Y(
         oc8051_sfr1_oc8051_tc21_n74) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u63 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u72 ( .A0(
         oc8051_sfr1_oc8051_tc21_n56), .A1(oc8051_sfr1_oc8051_tc21_n65), .B0(
         oc8051_sfr1_oc8051_tc21_n66), .B1(oc8051_sfr1_oc8051_tc21_n57), .C0(
         oc8051_sfr1_oc8051_tc21_n74), .Y(oc8051_sfr1_oc8051_tc21_n171) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u62 ( .A(oc8051_sfr1_tl2[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u71 ( .A(oc8051_sfr1_tl2[4]), .Y(
         oc8051_sfr1_oc8051_tc21_n53) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u61 ( .A(oc8051_sfr1_rcap2l[4]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u70 ( .A(oc8051_sfr1_rcap2l[4]), .Y(
         oc8051_sfr1_oc8051_tc21_n54) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u60 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u69 ( .A0(
         oc8051_sfr1_oc8051_tc21_n730), .A1(oc8051_sfr1_oc8051_tc21_n68), .B0(
         oc8051_sfr1_oc8051_tc21_n69), .B1(wr_dat[4]), .Y(
         oc8051_sfr1_oc8051_tc21_n73) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u59 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u68 ( .A0(
         oc8051_sfr1_oc8051_tc21_n53), .A1(oc8051_sfr1_oc8051_tc21_n65), .B0(
         oc8051_sfr1_oc8051_tc21_n66), .B1(oc8051_sfr1_oc8051_tc21_n54), .C0(
         oc8051_sfr1_oc8051_tc21_n73), .Y(oc8051_sfr1_oc8051_tc21_n172) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u58 ( .A(oc8051_sfr1_tl2[3]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u67 ( .A(oc8051_sfr1_tl2[3]), .Y(
         oc8051_sfr1_oc8051_tc21_n50) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u57 ( .A(oc8051_sfr1_rcap2l[3]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u66 ( .A(oc8051_sfr1_rcap2l[3]), .Y(
         oc8051_sfr1_oc8051_tc21_n51) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u56 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u65 ( .A0(
         oc8051_sfr1_oc8051_tc21_n720), .A1(oc8051_sfr1_oc8051_tc21_n68), .B0(
         oc8051_sfr1_oc8051_tc21_n69), .B1(wr_dat[3]), .Y(
         oc8051_sfr1_oc8051_tc21_n72) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u55 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u64 ( .A0(
         oc8051_sfr1_oc8051_tc21_n50), .A1(oc8051_sfr1_oc8051_tc21_n65), .B0(
         oc8051_sfr1_oc8051_tc21_n66), .B1(oc8051_sfr1_oc8051_tc21_n51), .C0(
         oc8051_sfr1_oc8051_tc21_n72), .Y(oc8051_sfr1_oc8051_tc21_n173) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u54 ( .A(oc8051_sfr1_tl2[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u63 ( .A(oc8051_sfr1_tl2[2]), .Y(
         oc8051_sfr1_oc8051_tc21_n47) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u53 ( .A(oc8051_sfr1_rcap2l[2]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u62 ( .A(oc8051_sfr1_rcap2l[2]), .Y(
         oc8051_sfr1_oc8051_tc21_n48) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u52 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u61 ( .A0(
         oc8051_sfr1_oc8051_tc21_n710), .A1(oc8051_sfr1_oc8051_tc21_n68), .B0(
         oc8051_sfr1_oc8051_tc21_n69), .B1(wr_dat[2]), .Y(
         oc8051_sfr1_oc8051_tc21_n71) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u51 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u60 ( .A0(
         oc8051_sfr1_oc8051_tc21_n47), .A1(oc8051_sfr1_oc8051_tc21_n65), .B0(
         oc8051_sfr1_oc8051_tc21_n66), .B1(oc8051_sfr1_oc8051_tc21_n48), .C0(
         oc8051_sfr1_oc8051_tc21_n71), .Y(oc8051_sfr1_oc8051_tc21_n174) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u50 ( .A(oc8051_sfr1_tl2[1]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u59 ( .A(oc8051_sfr1_tl2[1]), .Y(
         oc8051_sfr1_oc8051_tc21_n44) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u49 ( .A(oc8051_sfr1_rcap2l[1]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u58 ( .A(oc8051_sfr1_rcap2l[1]), .Y(
         oc8051_sfr1_oc8051_tc21_n45) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u48 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u57 ( .A0(
         oc8051_sfr1_oc8051_tc21_n700), .A1(oc8051_sfr1_oc8051_tc21_n68), .B0(
         oc8051_sfr1_oc8051_tc21_n69), .B1(wr_dat[1]), .Y(
         oc8051_sfr1_oc8051_tc21_n70) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u47 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u56 ( .A0(
         oc8051_sfr1_oc8051_tc21_n44), .A1(oc8051_sfr1_oc8051_tc21_n65), .B0(
         oc8051_sfr1_oc8051_tc21_n66), .B1(oc8051_sfr1_oc8051_tc21_n45), .C0(
         oc8051_sfr1_oc8051_tc21_n70), .Y(oc8051_sfr1_oc8051_tc21_n175) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u46 ( .A(oc8051_sfr1_tl2[0]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u55 ( .A(oc8051_sfr1_tl2[0]), .Y(
         oc8051_sfr1_oc8051_tc21_n38) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u45 ( .A(oc8051_sfr1_rcap2l[0]), .Y(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u54 ( .A(oc8051_sfr1_rcap2l[0]), .Y(
         oc8051_sfr1_oc8051_tc21_n41) );
-  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u44 ( .A0(
+  AOI22_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u53 ( .A0(
         oc8051_sfr1_oc8051_tc21_n690), .A1(oc8051_sfr1_oc8051_tc21_n68), .B0(
         oc8051_sfr1_oc8051_tc21_n69), .B1(wr_dat[0]), .Y(
         oc8051_sfr1_oc8051_tc21_n67) );
-  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u43 ( .A0(
+  OAI221_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u52 ( .A0(
         oc8051_sfr1_oc8051_tc21_n38), .A1(oc8051_sfr1_oc8051_tc21_n65), .B0(
         oc8051_sfr1_oc8051_tc21_n66), .B1(oc8051_sfr1_oc8051_tc21_n41), .C0(
         oc8051_sfr1_oc8051_tc21_n67), .Y(oc8051_sfr1_oc8051_tc21_n176) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u42 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u51 ( .A(
         oc8051_sfr1_oc8051_tc21_n43), .B(oc8051_sfr1_oc8051_tc21_n39), .Y(
         oc8051_sfr1_oc8051_tc21_n40) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u41 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u50 ( .A0(
         oc8051_sfr1_oc8051_tc21_n62), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n40), .B1(oc8051_sfr1_oc8051_tc21_n63), .C0(
         oc8051_sfr1_oc8051_tc21_n43), .C1(oc8051_sfr1_oc8051_tc21_n64), .Y(
         oc8051_sfr1_oc8051_tc21_n177) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u40 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u49 ( .A0(
         oc8051_sfr1_oc8051_tc21_n59), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n40), .B1(oc8051_sfr1_oc8051_tc21_n60), .C0(
         oc8051_sfr1_oc8051_tc21_n43), .C1(oc8051_sfr1_oc8051_tc21_n61), .Y(
         oc8051_sfr1_oc8051_tc21_n178) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u39 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u48 ( .A0(
         oc8051_sfr1_oc8051_tc21_n56), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n40), .B1(oc8051_sfr1_oc8051_tc21_n57), .C0(
         oc8051_sfr1_oc8051_tc21_n58), .C1(oc8051_sfr1_oc8051_tc21_n43), .Y(
         oc8051_sfr1_oc8051_tc21_n179) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u38 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u47 ( .A0(
         oc8051_sfr1_oc8051_tc21_n53), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n40), .B1(oc8051_sfr1_oc8051_tc21_n54), .C0(
         oc8051_sfr1_oc8051_tc21_n55), .C1(oc8051_sfr1_oc8051_tc21_n43), .Y(
         oc8051_sfr1_oc8051_tc21_n180) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u37 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u46 ( .A0(
         oc8051_sfr1_oc8051_tc21_n50), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n40), .B1(oc8051_sfr1_oc8051_tc21_n51), .C0(
         oc8051_sfr1_oc8051_tc21_n52), .C1(oc8051_sfr1_oc8051_tc21_n43), .Y(
         oc8051_sfr1_oc8051_tc21_n181) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u36 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u45 ( .A0(
         oc8051_sfr1_oc8051_tc21_n47), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n40), .B1(oc8051_sfr1_oc8051_tc21_n48), .C0(
         oc8051_sfr1_oc8051_tc21_n49), .C1(oc8051_sfr1_oc8051_tc21_n43), .Y(
         oc8051_sfr1_oc8051_tc21_n182) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u35 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u44 ( .A0(
         oc8051_sfr1_oc8051_tc21_n44), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n40), .B1(oc8051_sfr1_oc8051_tc21_n45), .C0(
         oc8051_sfr1_oc8051_tc21_n46), .C1(oc8051_sfr1_oc8051_tc21_n43), .Y(
         oc8051_sfr1_oc8051_tc21_n183) );
-  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u34 ( .A0(
+  OAI222_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u43 ( .A0(
         oc8051_sfr1_oc8051_tc21_n38), .A1(oc8051_sfr1_oc8051_tc21_n39), .B0(
         oc8051_sfr1_oc8051_tc21_n40), .B1(oc8051_sfr1_oc8051_tc21_n41), .C0(
         oc8051_sfr1_oc8051_tc21_n42), .C1(oc8051_sfr1_oc8051_tc21_n43), .Y(
         oc8051_sfr1_oc8051_tc21_n184) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u33 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u42 ( .A(
         oc8051_sfr1_oc8051_tc21_n23), .B(oc8051_sfr1_oc8051_tc21_n34), .Y(
         oc8051_sfr1_oc8051_tc21_n35) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u32 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u41 ( .A(
         oc8051_sfr1_oc8051_tc21_n35), .B(oc8051_sfr1_rclk), .Y(
         oc8051_sfr1_oc8051_tc21_n37) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u31 ( .A(wr_dat[5]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u40 ( .A(wr_dat[5]), .B(
         oc8051_sfr1_oc8051_tc21_n37), .S0(oc8051_sfr1_oc8051_tc21_n17), .Y(
         oc8051_sfr1_oc8051_tc21_n36) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u30 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u39 ( .A0(
         oc8051_sfr1_oc8051_tc21_n14), .A1(oc8051_sfr1_oc8051_tc21_n35), .B0(
         oc8051_sfr1_oc8051_tc21_n36), .Y(oc8051_sfr1_oc8051_tc21_n185) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u29 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u38 ( .A(
         oc8051_sfr1_oc8051_tc21_n18), .B(oc8051_sfr1_oc8051_tc21_n34), .Y(
         oc8051_sfr1_oc8051_tc21_n31) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u28 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u37 ( .A(
         oc8051_sfr1_oc8051_tc21_n31), .B(oc8051_sfr1_tclk), .Y(
         oc8051_sfr1_oc8051_tc21_n33) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u27 ( .A(wr_dat[4]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u36 ( .A(wr_dat[4]), .B(
         oc8051_sfr1_oc8051_tc21_n33), .S0(oc8051_sfr1_oc8051_tc21_n17), .Y(
         oc8051_sfr1_oc8051_tc21_n32) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u26 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u35 ( .A0(
         oc8051_sfr1_oc8051_tc21_n14), .A1(oc8051_sfr1_oc8051_tc21_n31), .B0(
         oc8051_sfr1_oc8051_tc21_n32), .Y(oc8051_sfr1_oc8051_tc21_n186) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u25 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u34 ( .A(
         oc8051_sfr1_oc8051_tc21_n27), .B(oc8051_sfr1_oc8051_tc21_n23), .Y(
         oc8051_sfr1_oc8051_tc21_n28) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u24 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u33 ( .A(
         oc8051_sfr1_oc8051_tc21_n28), .B(oc8051_sfr1_t2con_3_), .Y(
         oc8051_sfr1_oc8051_tc21_n30) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u23 ( .A(wr_dat[3]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u32 ( .A(wr_dat[3]), .B(
         oc8051_sfr1_oc8051_tc21_n30), .S0(oc8051_sfr1_oc8051_tc21_n17), .Y(
         oc8051_sfr1_oc8051_tc21_n29) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u22 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u31 ( .A0(
         oc8051_sfr1_oc8051_tc21_n14), .A1(oc8051_sfr1_oc8051_tc21_n28), .B0(
         oc8051_sfr1_oc8051_tc21_n29), .Y(oc8051_sfr1_oc8051_tc21_n187) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u21 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u30 ( .A(
         oc8051_sfr1_oc8051_tc21_n27), .B(oc8051_sfr1_oc8051_tc21_n18), .Y(
         oc8051_sfr1_oc8051_tc21_n24) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u20 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u29 ( .A(
         oc8051_sfr1_oc8051_tc21_n24), .B(oc8051_sfr1_t2con_2_), .Y(
         oc8051_sfr1_oc8051_tc21_n26) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u19 ( .A(wr_dat[2]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u28 ( .A(wr_dat[2]), .B(
         oc8051_sfr1_oc8051_tc21_n26), .S0(oc8051_sfr1_oc8051_tc21_n17), .Y(
         oc8051_sfr1_oc8051_tc21_n25) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u18 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u27 ( .A0(
         oc8051_sfr1_oc8051_tc21_n14), .A1(oc8051_sfr1_oc8051_tc21_n24), .B0(
         oc8051_sfr1_oc8051_tc21_n25), .Y(oc8051_sfr1_oc8051_tc21_n188) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u17 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u26 ( .A(
         oc8051_sfr1_oc8051_tc21_n23), .B(oc8051_sfr1_oc8051_tc21_n19), .Y(
         oc8051_sfr1_oc8051_tc21_n20) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u16 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u25 ( .A(
         oc8051_sfr1_oc8051_tc21_n20), .B(oc8051_sfr1_t2con_1_), .Y(
         oc8051_sfr1_oc8051_tc21_n22) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u15 ( .A(wr_dat[1]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u24 ( .A(wr_dat[1]), .B(
         oc8051_sfr1_oc8051_tc21_n22), .S0(oc8051_sfr1_oc8051_tc21_n17), .Y(
         oc8051_sfr1_oc8051_tc21_n21) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u14 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u23 ( .A0(
         oc8051_sfr1_oc8051_tc21_n14), .A1(oc8051_sfr1_oc8051_tc21_n20), .B0(
         oc8051_sfr1_oc8051_tc21_n21), .Y(oc8051_sfr1_oc8051_tc21_n189) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u13 ( .A(
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u22 ( .A(
         oc8051_sfr1_oc8051_tc21_n18), .B(oc8051_sfr1_oc8051_tc21_n19), .Y(
         oc8051_sfr1_oc8051_tc21_n13) );
-  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u12 ( .A(
+  AND2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u21 ( .A(
         oc8051_sfr1_oc8051_tc21_n13), .B(oc8051_sfr1_t2con_0_), .Y(
         oc8051_sfr1_oc8051_tc21_n16) );
-  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u11 ( .A(wr_dat[0]), .B(
+  MXIT2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u20 ( .A(wr_dat[0]), .B(
         oc8051_sfr1_oc8051_tc21_n16), .S0(oc8051_sfr1_oc8051_tc21_n17), .Y(
         oc8051_sfr1_oc8051_tc21_n15) );
-  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u10 ( .A0(
+  OAI21_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u19 ( .A0(
         oc8051_sfr1_oc8051_tc21_n13), .A1(oc8051_sfr1_oc8051_tc21_n14), .B0(
         oc8051_sfr1_oc8051_tc21_n15), .Y(oc8051_sfr1_oc8051_tc21_n190) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u9 ( .A(
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u18 ( .A(
         oc8051_sfr1_oc8051_tc21_tf2_set), .Y(oc8051_sfr1_oc8051_tc21_n3) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u8 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u17 ( .A0(
         oc8051_sfr1_oc8051_tc21_n10), .A1(oc8051_sfr1_oc8051_tc21_n11), .B0(
         oc8051_sfr1_oc8051_tc21_n12), .C0(oc8051_sfr1_oc8051_tc21_n850), .Y(
         oc8051_sfr1_oc8051_tc21_n4) );
-  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u7 ( .A0(
+  OAI211_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u16 ( .A0(
         oc8051_sfr1_oc8051_tc21_n2), .A1(oc8051_sfr1_oc8051_tc21_n3), .B0(
         oc8051_sfr1_oc8051_tc21_n4), .C0(oc8051_sfr1_oc8051_tc21_n9), .Y(
         oc8051_sfr1_oc8051_tc21_n191) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u6 ( .A(oc8051_sfr1_oc8051_tc21_n5), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u15 ( .A(oc8051_sfr1_oc8051_tc21_n5), 
         .Y(oc8051_sfr1_t2con_6_) );
-  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u5 ( .A(oc8051_sfr1_oc8051_tc21_n6), 
+  INV_X0P5B_A12TS oc8051_sfr1_oc8051_tc21_u14 ( .A(oc8051_sfr1_oc8051_tc21_n6), 
         .Y(oc8051_sfr1_t2con_7_) );
-  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u4 ( .A(oc8051_sfr1_oc8051_tc21_n5), .B(oc8051_sfr1_oc8051_tc21_n6), .Y(oc8051_sfr1_tc2_int) );
-  TIELO_X1M_A12TS oc8051_sfr1_oc8051_tc21_u3 ( .Y(oc8051_sfr1_oc8051_tc21_n1)
+  NAND2_X0P5A_A12TS oc8051_sfr1_oc8051_tc21_u13 ( .A(
+        oc8051_sfr1_oc8051_tc21_n5), .B(oc8051_sfr1_oc8051_tc21_n6), .Y(
+        oc8051_sfr1_tc2_int) );
+  TIELO_X1M_A12TS oc8051_sfr1_oc8051_tc21_u12 ( .Y(oc8051_sfr1_oc8051_tc21_n1)
          );
+  AND3_X0P7M_A12TS oc8051_sfr1_oc8051_tc21_u11 ( .A(wr_addr[1]), .B(wr_addr[2]), .C(oc8051_sfr1_oc8051_tc21_n23), .Y(oc8051_sfr1_oc8051_tc21_n126) );
+  NOR2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u10 ( .A(wr_addr[2]), .B(wr_addr[1]), .Y(oc8051_sfr1_oc8051_tc21_n19) );
+  NOR2XB_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u9 ( .BN(
+        oc8051_sfr1_oc8051_tc21_n114), .A(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_tc21_n113) );
+  NOR2XB_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u8 ( .BN(wr_addr[2]), .A(
+        wr_addr[1]), .Y(oc8051_sfr1_oc8051_tc21_n34) );
+  NOR2_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u7 ( .A(
+        oc8051_sfr1_oc8051_tc21_n121), .B(wr_addr[0]), .Y(
+        oc8051_sfr1_oc8051_tc21_n18) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u6 ( .A(
+        oc8051_sfr1_oc8051_tc21_n34), .B(oc8051_sfr1_oc8051_tc21_n114), .C(
+        wr_addr[0]), .Y(oc8051_sfr1_oc8051_tc21_n83) );
+  NOR2B_X0P7M_A12TS oc8051_sfr1_oc8051_tc21_u5 ( .AN(wr_addr[0]), .B(
+        oc8051_sfr1_oc8051_tc21_n121), .Y(oc8051_sfr1_oc8051_tc21_n23) );
+  NOR2B_X0P7M_A12TS oc8051_sfr1_oc8051_tc21_u4 ( .AN(wr_addr[1]), .B(
+        wr_addr[2]), .Y(oc8051_sfr1_oc8051_tc21_n27) );
+  NAND3_X0P5M_A12TS oc8051_sfr1_oc8051_tc21_u3 ( .A(wr_addr[0]), .B(
+        oc8051_sfr1_oc8051_tc21_n114), .C(oc8051_sfr1_oc8051_tc21_n27), .Y(
+        oc8051_sfr1_oc8051_tc21_n105) );
   DFFRPQN_X1M_A12TS oc8051_sfr1_oc8051_tc21_t2con_reg_7_ ( .D(
         oc8051_sfr1_oc8051_tc21_n151), .CK(wb_clk_i), .R(wb_rst_i), .QN(
         oc8051_sfr1_oc8051_tc21_n6) );

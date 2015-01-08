@@ -359,6 +359,24 @@ set_dont_use {
     sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFNSRPQ_X1M_A12TS
     sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFNSRPQ_X2M_A12TS
     sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFNSRPQ_X3M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFRPQN_X0P5M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFRPQN_X1M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFRPQN_X2M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFRPQN_X3M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFRPQ_X0P5M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFRPQ_X1M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFRPQ_X2M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFRPQ_X3M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFRPQ_X4M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFSQN_X0P5M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFSQN_X1M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFSQN_X2M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFSQN_X3M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFSQ_X0P5M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFSQ_X1M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFSQ_X2M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFSQ_X3M_A12TS
+    sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DFFSQ_X4M_A12TS
     sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DLY2S1_X2M_A12TS
     sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DLY2S2_X2M_A12TS
     sc12_soi12s0_base_svt_ff_nominal_min_0p99v_m40c_mns/DLY2S2_X3M_A12TS
@@ -958,7 +976,7 @@ uniquify
 
 #change_names -rules verilog
 change_names -rules verilog -hier
-write -f verilog -hier -output "${netList_path}/${design}_flat.v"
+write -f verilog -hier -output "${netList_path}/${design}_flat_simple.v"
 #write -f ddc -hier -output "${netList_path}/${design}.ddc"
 #write -f verilog -output "${netList_path}/${design}.v"
 #write -f ddc -output "${netList_path}/${design}.ddc"
