@@ -422,7 +422,8 @@ begin
     `OC8051_RWS_SP : wr_addr = sp_w;
     `OC8051_RWS_D3 : wr_addr = imm2_r;
     `OC8051_RWS_B  : wr_addr = `OC8051_SFR_B;
-//    default        : wr_addr = 2'bxx;
+    // spramod: changed this to make it a full case.
+    default        : wr_addr = 2'bxx;
   endcase
 end
 

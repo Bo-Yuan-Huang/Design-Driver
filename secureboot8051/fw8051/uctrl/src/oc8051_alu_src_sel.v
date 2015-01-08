@@ -102,7 +102,9 @@ begin
     `OC8051_AS1_OP3: src1 = op3_r;
     `OC8051_AS1_PCH: src1 = pc[15:8];
     `OC8051_AS1_PCL: src1 = pc[7:0];
-//    default: src1 = 8'h00;
+    // spramod: changed this to make this a full case statement to avoid
+    // inferring the latch.
+    default: src1 = 8'h00;
   endcase
 end
 
