@@ -80,6 +80,8 @@ module oc8051_rom (rst, clk, addr, ea_int, data_o);
 
     assign ea = 1'b0;
     oc8051_cxrom oc8051_cxrom1(
+            .clk                ( clk            ),
+            .rst                ( rst            ),
             .cxrom_addr         ( addr           ),
             .cxrom_data_out     ( cxrom_data_out )
     );
