@@ -1,16 +1,14 @@
 
 module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o, 
         wbi_ack_i, wbi_cyc_o, wbi_err_i, wbd_dat_i, wbd_dat_o, wbd_adr_o, 
-        wbd_we_o, wbd_ack_i, wbd_stb_o, wbd_cyc_o, wbd_err_i, cxrom_addr, 
-        cxrom_data_out, int0_i, int1_i, p0_i, p0_o, p1_i, p1_o, p2_i, p2_o, 
-        p3_i, p3_o, rxd_i, txd_o, t0_i, t1_i, t2_i, t2ex_i, ea_in );
+        wbd_we_o, wbd_ack_i, wbd_stb_o, wbd_cyc_o, wbd_err_i, int0_i, int1_i, 
+        p0_i, p0_o, p1_i, p1_o, p2_i, p2_o, p3_i, p3_o, rxd_i, txd_o, t0_i, 
+        t1_i, t2_i, t2ex_i, ea_in );
   output [15:0] wbi_adr_o;
   input [31:0] wbi_dat_i;
   input [7:0] wbd_dat_i;
   output [7:0] wbd_dat_o;
   output [15:0] wbd_adr_o;
-  output [15:0] cxrom_addr;
-  input [31:0] cxrom_data_out;
   input [7:0] p0_i;
   output [7:0] p0_o;
   input [7:0] p1_i;
@@ -6230,396 +6228,394 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
          oc8051_indi_addr1_buff_0__2_, oc8051_indi_addr1_buff_0__3_,
          oc8051_indi_addr1_buff_0__4_, oc8051_indi_addr1_buff_0__5_,
          oc8051_indi_addr1_buff_0__6_, oc8051_indi_addr1_buff_0__7_,
-         oc8051_memory_interface1_n792, oc8051_memory_interface1_n791,
-         oc8051_memory_interface1_n790, oc8051_memory_interface1_n789,
-         oc8051_memory_interface1_n788, oc8051_memory_interface1_n787,
-         oc8051_memory_interface1_n786, oc8051_memory_interface1_n785,
-         oc8051_memory_interface1_n784, oc8051_memory_interface1_n783,
-         oc8051_memory_interface1_n782, oc8051_memory_interface1_n781,
-         oc8051_memory_interface1_n780, oc8051_memory_interface1_n779,
-         oc8051_memory_interface1_n778, oc8051_memory_interface1_n777,
-         oc8051_memory_interface1_n776, oc8051_memory_interface1_n759,
-         oc8051_memory_interface1_n758, oc8051_memory_interface1_n757,
-         oc8051_memory_interface1_n756, oc8051_memory_interface1_n755,
-         oc8051_memory_interface1_n754, oc8051_memory_interface1_n753,
-         oc8051_memory_interface1_n752, oc8051_memory_interface1_n751,
-         oc8051_memory_interface1_n750, oc8051_memory_interface1_n749,
-         oc8051_memory_interface1_n748, oc8051_memory_interface1_n747,
-         oc8051_memory_interface1_n746, oc8051_memory_interface1_n745,
-         oc8051_memory_interface1_n744, oc8051_memory_interface1_n743,
-         oc8051_memory_interface1_n742, oc8051_memory_interface1_n741,
-         oc8051_memory_interface1_n740, oc8051_memory_interface1_n739,
-         oc8051_memory_interface1_n738, oc8051_memory_interface1_n737,
-         oc8051_memory_interface1_n736, oc8051_memory_interface1_n735,
-         oc8051_memory_interface1_n734, oc8051_memory_interface1_n733,
-         oc8051_memory_interface1_n732, oc8051_memory_interface1_n731,
-         oc8051_memory_interface1_n730, oc8051_memory_interface1_n729,
-         oc8051_memory_interface1_n728, oc8051_memory_interface1_n727,
-         oc8051_memory_interface1_n726, oc8051_memory_interface1_n725,
-         oc8051_memory_interface1_n724, oc8051_memory_interface1_n723,
-         oc8051_memory_interface1_n722, oc8051_memory_interface1_n721,
-         oc8051_memory_interface1_n720, oc8051_memory_interface1_n719,
-         oc8051_memory_interface1_n718, oc8051_memory_interface1_n717,
-         oc8051_memory_interface1_n716, oc8051_memory_interface1_n715,
-         oc8051_memory_interface1_n714, oc8051_memory_interface1_n713,
-         oc8051_memory_interface1_n712, oc8051_memory_interface1_n711,
-         oc8051_memory_interface1_n710, oc8051_memory_interface1_n709,
-         oc8051_memory_interface1_n708, oc8051_memory_interface1_n707,
-         oc8051_memory_interface1_n706, oc8051_memory_interface1_n705,
-         oc8051_memory_interface1_n704, oc8051_memory_interface1_n703,
-         oc8051_memory_interface1_n702, oc8051_memory_interface1_n701,
-         oc8051_memory_interface1_n700, oc8051_memory_interface1_n699,
-         oc8051_memory_interface1_n698, oc8051_memory_interface1_n697,
-         oc8051_memory_interface1_n696, oc8051_memory_interface1_n695,
-         oc8051_memory_interface1_n694, oc8051_memory_interface1_n693,
-         oc8051_memory_interface1_n692, oc8051_memory_interface1_n691,
-         oc8051_memory_interface1_n690, oc8051_memory_interface1_n689,
-         oc8051_memory_interface1_n688, oc8051_memory_interface1_n687,
-         oc8051_memory_interface1_n686, oc8051_memory_interface1_n685,
-         oc8051_memory_interface1_n684, oc8051_memory_interface1_n683,
-         oc8051_memory_interface1_n682, oc8051_memory_interface1_n681,
-         oc8051_memory_interface1_n680, oc8051_memory_interface1_n679,
-         oc8051_memory_interface1_n678, oc8051_memory_interface1_n677,
-         oc8051_memory_interface1_n676, oc8051_memory_interface1_n675,
-         oc8051_memory_interface1_n674, oc8051_memory_interface1_n673,
-         oc8051_memory_interface1_n672, oc8051_memory_interface1_n671,
-         oc8051_memory_interface1_n670, oc8051_memory_interface1_n669,
-         oc8051_memory_interface1_n668, oc8051_memory_interface1_n667,
-         oc8051_memory_interface1_n666, oc8051_memory_interface1_n665,
-         oc8051_memory_interface1_n664, oc8051_memory_interface1_n663,
-         oc8051_memory_interface1_n662, oc8051_memory_interface1_n661,
-         oc8051_memory_interface1_n660, oc8051_memory_interface1_n659,
-         oc8051_memory_interface1_n658, oc8051_memory_interface1_n657,
-         oc8051_memory_interface1_n656, oc8051_memory_interface1_n655,
-         oc8051_memory_interface1_n654, oc8051_memory_interface1_n653,
-         oc8051_memory_interface1_n652, oc8051_memory_interface1_n651,
-         oc8051_memory_interface1_n650, oc8051_memory_interface1_n649,
-         oc8051_memory_interface1_n648, oc8051_memory_interface1_n647,
-         oc8051_memory_interface1_n646, oc8051_memory_interface1_n645,
-         oc8051_memory_interface1_n644, oc8051_memory_interface1_n643,
-         oc8051_memory_interface1_n642, oc8051_memory_interface1_n641,
-         oc8051_memory_interface1_n640, oc8051_memory_interface1_n639,
-         oc8051_memory_interface1_n638, oc8051_memory_interface1_n637,
-         oc8051_memory_interface1_n636, oc8051_memory_interface1_n635,
-         oc8051_memory_interface1_n634, oc8051_memory_interface1_n633,
-         oc8051_memory_interface1_n632, oc8051_memory_interface1_n631,
-         oc8051_memory_interface1_n630, oc8051_memory_interface1_n629,
-         oc8051_memory_interface1_n628, oc8051_memory_interface1_n627,
-         oc8051_memory_interface1_n626, oc8051_memory_interface1_n625,
-         oc8051_memory_interface1_n624, oc8051_memory_interface1_n623,
-         oc8051_memory_interface1_n622, oc8051_memory_interface1_n621,
-         oc8051_memory_interface1_n620, oc8051_memory_interface1_n619,
-         oc8051_memory_interface1_n618, oc8051_memory_interface1_n617,
-         oc8051_memory_interface1_n616, oc8051_memory_interface1_n615,
-         oc8051_memory_interface1_n614, oc8051_memory_interface1_n613,
-         oc8051_memory_interface1_n612, oc8051_memory_interface1_n611,
-         oc8051_memory_interface1_n610, oc8051_memory_interface1_n609,
-         oc8051_memory_interface1_n608, oc8051_memory_interface1_n607,
-         oc8051_memory_interface1_n606, oc8051_memory_interface1_n605,
-         oc8051_memory_interface1_n604, oc8051_memory_interface1_n603,
-         oc8051_memory_interface1_n602, oc8051_memory_interface1_n601,
-         oc8051_memory_interface1_n600, oc8051_memory_interface1_n599,
-         oc8051_memory_interface1_n598, oc8051_memory_interface1_n597,
-         oc8051_memory_interface1_n596, oc8051_memory_interface1_n595,
-         oc8051_memory_interface1_n594, oc8051_memory_interface1_n593,
-         oc8051_memory_interface1_n592, oc8051_memory_interface1_n591,
-         oc8051_memory_interface1_n590, oc8051_memory_interface1_n589,
-         oc8051_memory_interface1_n588, oc8051_memory_interface1_n587,
-         oc8051_memory_interface1_n586, oc8051_memory_interface1_n585,
-         oc8051_memory_interface1_n584, oc8051_memory_interface1_n583,
-         oc8051_memory_interface1_n582, oc8051_memory_interface1_n581,
-         oc8051_memory_interface1_n580, oc8051_memory_interface1_n579,
-         oc8051_memory_interface1_n578, oc8051_memory_interface1_n577,
-         oc8051_memory_interface1_n576, oc8051_memory_interface1_n575,
-         oc8051_memory_interface1_n574, oc8051_memory_interface1_n573,
-         oc8051_memory_interface1_n572, oc8051_memory_interface1_n571,
-         oc8051_memory_interface1_n570, oc8051_memory_interface1_n569,
-         oc8051_memory_interface1_n568, oc8051_memory_interface1_n567,
-         oc8051_memory_interface1_n566, oc8051_memory_interface1_n565,
-         oc8051_memory_interface1_n564, oc8051_memory_interface1_n563,
-         oc8051_memory_interface1_n562, oc8051_memory_interface1_n561,
-         oc8051_memory_interface1_n560, oc8051_memory_interface1_n559,
-         oc8051_memory_interface1_n558, oc8051_memory_interface1_n557,
-         oc8051_memory_interface1_n556, oc8051_memory_interface1_n555,
-         oc8051_memory_interface1_n554, oc8051_memory_interface1_n533,
-         oc8051_memory_interface1_n521, oc8051_memory_interface1_n519,
-         oc8051_memory_interface1_n517, oc8051_memory_interface1_n515,
-         oc8051_memory_interface1_n513, oc8051_memory_interface1_n511,
-         oc8051_memory_interface1_n509, oc8051_memory_interface1_n507,
-         oc8051_memory_interface1_n419, oc8051_memory_interface1_n418,
-         oc8051_memory_interface1_n400, oc8051_memory_interface1_n399,
-         oc8051_memory_interface1_n398, oc8051_memory_interface1_n397,
-         oc8051_memory_interface1_n396, oc8051_memory_interface1_n395,
-         oc8051_memory_interface1_n394, oc8051_memory_interface1_n393,
-         oc8051_memory_interface1_n376, oc8051_memory_interface1_n375,
-         oc8051_memory_interface1_n374, oc8051_memory_interface1_n373,
-         oc8051_memory_interface1_n372, oc8051_memory_interface1_n371,
-         oc8051_memory_interface1_n370, oc8051_memory_interface1_n369,
-         oc8051_memory_interface1_n368, oc8051_memory_interface1_n367,
-         oc8051_memory_interface1_n366, oc8051_memory_interface1_n365,
-         oc8051_memory_interface1_n364, oc8051_memory_interface1_n363,
-         oc8051_memory_interface1_n362, oc8051_memory_interface1_n361,
-         oc8051_memory_interface1_n351, oc8051_memory_interface1_n350,
-         oc8051_memory_interface1_n349, oc8051_memory_interface1_n348,
-         oc8051_memory_interface1_n347, oc8051_memory_interface1_n346,
-         oc8051_memory_interface1_n345, oc8051_memory_interface1_n344,
-         oc8051_memory_interface1_n343, oc8051_memory_interface1_n342,
-         oc8051_memory_interface1_n341, oc8051_memory_interface1_n340,
-         oc8051_memory_interface1_n339, oc8051_memory_interface1_n338,
-         oc8051_memory_interface1_n337, oc8051_memory_interface1_n336,
-         oc8051_memory_interface1_n335, oc8051_memory_interface1_n334,
-         oc8051_memory_interface1_n333, oc8051_memory_interface1_n332,
-         oc8051_memory_interface1_n331, oc8051_memory_interface1_n330,
-         oc8051_memory_interface1_n329, oc8051_memory_interface1_n328,
-         oc8051_memory_interface1_n327, oc8051_memory_interface1_n326,
-         oc8051_memory_interface1_n325, oc8051_memory_interface1_n324,
-         oc8051_memory_interface1_n323, oc8051_memory_interface1_n322,
-         oc8051_memory_interface1_n321, oc8051_memory_interface1_n320,
-         oc8051_memory_interface1_n319, oc8051_memory_interface1_n318,
-         oc8051_memory_interface1_n317, oc8051_memory_interface1_n316,
-         oc8051_memory_interface1_n315, oc8051_memory_interface1_n314,
-         oc8051_memory_interface1_n313, oc8051_memory_interface1_n312,
-         oc8051_memory_interface1_n311, oc8051_memory_interface1_n310,
-         oc8051_memory_interface1_n309, oc8051_memory_interface1_n308,
-         oc8051_memory_interface1_n307, oc8051_memory_interface1_n306,
-         oc8051_memory_interface1_n305, oc8051_memory_interface1_n304,
-         oc8051_memory_interface1_n303, oc8051_memory_interface1_n302,
-         oc8051_memory_interface1_n301, oc8051_memory_interface1_n300,
-         oc8051_memory_interface1_n299, oc8051_memory_interface1_n298,
-         oc8051_memory_interface1_n297, oc8051_memory_interface1_n296,
-         oc8051_memory_interface1_n295, oc8051_memory_interface1_n294,
-         oc8051_memory_interface1_n293, oc8051_memory_interface1_n292,
-         oc8051_memory_interface1_n291, oc8051_memory_interface1_n290,
-         oc8051_memory_interface1_n289, oc8051_memory_interface1_n288,
-         oc8051_memory_interface1_n287, oc8051_memory_interface1_n286,
-         oc8051_memory_interface1_n285, oc8051_memory_interface1_n284,
-         oc8051_memory_interface1_n283, oc8051_memory_interface1_n282,
-         oc8051_memory_interface1_n281, oc8051_memory_interface1_n280,
-         oc8051_memory_interface1_n279, oc8051_memory_interface1_n278,
-         oc8051_memory_interface1_n277, oc8051_memory_interface1_n276,
-         oc8051_memory_interface1_n275, oc8051_memory_interface1_n274,
-         oc8051_memory_interface1_n273, oc8051_memory_interface1_n272,
-         oc8051_memory_interface1_n271, oc8051_memory_interface1_n270,
-         oc8051_memory_interface1_n269, oc8051_memory_interface1_n268,
-         oc8051_memory_interface1_n267, oc8051_memory_interface1_n266,
-         oc8051_memory_interface1_n265, oc8051_memory_interface1_n264,
-         oc8051_memory_interface1_n263, oc8051_memory_interface1_n262,
-         oc8051_memory_interface1_n261, oc8051_memory_interface1_n260,
-         oc8051_memory_interface1_n259, oc8051_memory_interface1_n258,
-         oc8051_memory_interface1_n257, oc8051_memory_interface1_n256,
-         oc8051_memory_interface1_n255, oc8051_memory_interface1_n254,
-         oc8051_memory_interface1_n253, oc8051_memory_interface1_n252,
-         oc8051_memory_interface1_n251, oc8051_memory_interface1_n250,
-         oc8051_memory_interface1_n249, oc8051_memory_interface1_n248,
-         oc8051_memory_interface1_n247, oc8051_memory_interface1_n246,
-         oc8051_memory_interface1_n245, oc8051_memory_interface1_n244,
-         oc8051_memory_interface1_n243, oc8051_memory_interface1_n242,
-         oc8051_memory_interface1_n241, oc8051_memory_interface1_n240,
-         oc8051_memory_interface1_n239, oc8051_memory_interface1_n238,
-         oc8051_memory_interface1_n237, oc8051_memory_interface1_n236,
-         oc8051_memory_interface1_n235, oc8051_memory_interface1_n234,
-         oc8051_memory_interface1_n233, oc8051_memory_interface1_n232,
-         oc8051_memory_interface1_n231, oc8051_memory_interface1_n230,
-         oc8051_memory_interface1_n229, oc8051_memory_interface1_n228,
-         oc8051_memory_interface1_n227, oc8051_memory_interface1_n226,
-         oc8051_memory_interface1_n225, oc8051_memory_interface1_n224,
-         oc8051_memory_interface1_n223, oc8051_memory_interface1_n222,
-         oc8051_memory_interface1_n221, oc8051_memory_interface1_n220,
-         oc8051_memory_interface1_n219, oc8051_memory_interface1_n218,
-         oc8051_memory_interface1_n217, oc8051_memory_interface1_n216,
-         oc8051_memory_interface1_n215, oc8051_memory_interface1_n214,
-         oc8051_memory_interface1_n213, oc8051_memory_interface1_n212,
-         oc8051_memory_interface1_n211, oc8051_memory_interface1_n210,
-         oc8051_memory_interface1_n209, oc8051_memory_interface1_n208,
-         oc8051_memory_interface1_n207, oc8051_memory_interface1_n206,
-         oc8051_memory_interface1_n205, oc8051_memory_interface1_n204,
-         oc8051_memory_interface1_n203, oc8051_memory_interface1_n202,
-         oc8051_memory_interface1_n201, oc8051_memory_interface1_n200,
-         oc8051_memory_interface1_n199, oc8051_memory_interface1_n198,
-         oc8051_memory_interface1_n197, oc8051_memory_interface1_n196,
-         oc8051_memory_interface1_n195, oc8051_memory_interface1_n194,
-         oc8051_memory_interface1_n193, oc8051_memory_interface1_n192,
-         oc8051_memory_interface1_n191, oc8051_memory_interface1_n190,
-         oc8051_memory_interface1_n189, oc8051_memory_interface1_n188,
-         oc8051_memory_interface1_n187, oc8051_memory_interface1_n186,
-         oc8051_memory_interface1_n185, oc8051_memory_interface1_n184,
-         oc8051_memory_interface1_n183, oc8051_memory_interface1_n182,
-         oc8051_memory_interface1_n181, oc8051_memory_interface1_n180,
-         oc8051_memory_interface1_n179, oc8051_memory_interface1_n178,
-         oc8051_memory_interface1_n177, oc8051_memory_interface1_n176,
-         oc8051_memory_interface1_n175, oc8051_memory_interface1_n174,
-         oc8051_memory_interface1_n173, oc8051_memory_interface1_n172,
-         oc8051_memory_interface1_n171, oc8051_memory_interface1_n170,
-         oc8051_memory_interface1_n169, oc8051_memory_interface1_n168,
-         oc8051_memory_interface1_n167, oc8051_memory_interface1_n166,
-         oc8051_memory_interface1_n165, oc8051_memory_interface1_n164,
-         oc8051_memory_interface1_n163, oc8051_memory_interface1_n162,
-         oc8051_memory_interface1_n161, oc8051_memory_interface1_n160,
-         oc8051_memory_interface1_n159, oc8051_memory_interface1_n158,
-         oc8051_memory_interface1_n157, oc8051_memory_interface1_n156,
-         oc8051_memory_interface1_n155, oc8051_memory_interface1_n154,
-         oc8051_memory_interface1_n153, oc8051_memory_interface1_n152,
-         oc8051_memory_interface1_n151, oc8051_memory_interface1_n150,
-         oc8051_memory_interface1_n149, oc8051_memory_interface1_n148,
-         oc8051_memory_interface1_n147, oc8051_memory_interface1_n146,
-         oc8051_memory_interface1_n145, oc8051_memory_interface1_n144,
-         oc8051_memory_interface1_n143, oc8051_memory_interface1_n142,
-         oc8051_memory_interface1_n141, oc8051_memory_interface1_n140,
-         oc8051_memory_interface1_n139, oc8051_memory_interface1_n138,
-         oc8051_memory_interface1_n137, oc8051_memory_interface1_n136,
-         oc8051_memory_interface1_n135, oc8051_memory_interface1_n134,
-         oc8051_memory_interface1_n133, oc8051_memory_interface1_n132,
-         oc8051_memory_interface1_n131, oc8051_memory_interface1_n130,
-         oc8051_memory_interface1_n129, oc8051_memory_interface1_n128,
-         oc8051_memory_interface1_n127, oc8051_memory_interface1_n126,
-         oc8051_memory_interface1_n125, oc8051_memory_interface1_n124,
-         oc8051_memory_interface1_n123, oc8051_memory_interface1_n122,
-         oc8051_memory_interface1_n121, oc8051_memory_interface1_n120,
-         oc8051_memory_interface1_n119, oc8051_memory_interface1_n118,
-         oc8051_memory_interface1_n117, oc8051_memory_interface1_n116,
-         oc8051_memory_interface1_n115, oc8051_memory_interface1_n114,
-         oc8051_memory_interface1_n113, oc8051_memory_interface1_n112,
-         oc8051_memory_interface1_n111, oc8051_memory_interface1_n110,
-         oc8051_memory_interface1_n109, oc8051_memory_interface1_n108,
-         oc8051_memory_interface1_n107, oc8051_memory_interface1_n106,
-         oc8051_memory_interface1_n105, oc8051_memory_interface1_n104,
-         oc8051_memory_interface1_n103, oc8051_memory_interface1_n102,
-         oc8051_memory_interface1_n101, oc8051_memory_interface1_n100,
-         oc8051_memory_interface1_n99, oc8051_memory_interface1_n98,
-         oc8051_memory_interface1_n97, oc8051_memory_interface1_n96,
-         oc8051_memory_interface1_n95, oc8051_memory_interface1_n94,
-         oc8051_memory_interface1_n93, oc8051_memory_interface1_n92,
-         oc8051_memory_interface1_n91, oc8051_memory_interface1_n90,
-         oc8051_memory_interface1_n89, oc8051_memory_interface1_n88,
-         oc8051_memory_interface1_n87, oc8051_memory_interface1_n86,
-         oc8051_memory_interface1_n85, oc8051_memory_interface1_n84,
-         oc8051_memory_interface1_n83, oc8051_memory_interface1_n82,
-         oc8051_memory_interface1_n81, oc8051_memory_interface1_n80,
-         oc8051_memory_interface1_n79, oc8051_memory_interface1_n78,
-         oc8051_memory_interface1_n77, oc8051_memory_interface1_n76,
-         oc8051_memory_interface1_n75, oc8051_memory_interface1_n74,
-         oc8051_memory_interface1_n73, oc8051_memory_interface1_n72,
-         oc8051_memory_interface1_n71, oc8051_memory_interface1_n70,
-         oc8051_memory_interface1_n69, oc8051_memory_interface1_n68,
-         oc8051_memory_interface1_n67, oc8051_memory_interface1_n66,
-         oc8051_memory_interface1_n65, oc8051_memory_interface1_n64,
-         oc8051_memory_interface1_n63, oc8051_memory_interface1_n62,
-         oc8051_memory_interface1_n61, oc8051_memory_interface1_n60,
-         oc8051_memory_interface1_n59, oc8051_memory_interface1_n58,
-         oc8051_memory_interface1_n57, oc8051_memory_interface1_n56,
-         oc8051_memory_interface1_n55, oc8051_memory_interface1_n54,
-         oc8051_memory_interface1_n53, oc8051_memory_interface1_n52,
-         oc8051_memory_interface1_n51, oc8051_memory_interface1_n50,
-         oc8051_memory_interface1_n49, oc8051_memory_interface1_n48,
-         oc8051_memory_interface1_n47, oc8051_memory_interface1_n46,
-         oc8051_memory_interface1_n45, oc8051_memory_interface1_n44,
-         oc8051_memory_interface1_n43, oc8051_memory_interface1_n42,
-         oc8051_memory_interface1_n41, oc8051_memory_interface1_n40,
-         oc8051_memory_interface1_n39, oc8051_memory_interface1_n38,
-         oc8051_memory_interface1_n37, oc8051_memory_interface1_n36,
-         oc8051_memory_interface1_n35, oc8051_memory_interface1_n34,
-         oc8051_memory_interface1_n33, oc8051_memory_interface1_n32,
-         oc8051_memory_interface1_n31, oc8051_memory_interface1_n30,
-         oc8051_memory_interface1_n29, oc8051_memory_interface1_n28,
-         oc8051_memory_interface1_n27, oc8051_memory_interface1_n26,
-         oc8051_memory_interface1_n25, oc8051_memory_interface1_n24,
-         oc8051_memory_interface1_n23, oc8051_memory_interface1_n22,
-         oc8051_memory_interface1_n21, oc8051_memory_interface1_n20,
-         oc8051_memory_interface1_n19, oc8051_memory_interface1_n18,
-         oc8051_memory_interface1_n17, oc8051_memory_interface1_n16,
-         oc8051_memory_interface1_n15, oc8051_memory_interface1_n14,
-         oc8051_memory_interface1_n13, oc8051_memory_interface1_n12,
-         oc8051_memory_interface1_n11, oc8051_memory_interface1_n10,
-         oc8051_memory_interface1_n9, oc8051_memory_interface1_n8,
-         oc8051_memory_interface1_n7, oc8051_memory_interface1_n6,
-         oc8051_memory_interface1_n5, oc8051_memory_interface1_n4,
-         oc8051_memory_interface1_n3, oc8051_memory_interface1_n2,
-         oc8051_memory_interface1_n1, oc8051_memory_interface1_n553,
-         oc8051_memory_interface1_n552, oc8051_memory_interface1_n551,
-         oc8051_memory_interface1_n550, oc8051_memory_interface1_n549,
-         oc8051_memory_interface1_n548, oc8051_memory_interface1_n547,
-         oc8051_memory_interface1_n546, oc8051_memory_interface1_n545,
-         oc8051_memory_interface1_n544, oc8051_memory_interface1_n543,
-         oc8051_memory_interface1_n542, oc8051_memory_interface1_n541,
-         oc8051_memory_interface1_n540, oc8051_memory_interface1_n539,
-         oc8051_memory_interface1_n538, oc8051_memory_interface1_n537,
-         oc8051_memory_interface1_n536, oc8051_memory_interface1_n535,
-         oc8051_memory_interface1_n534, oc8051_memory_interface1_n532,
-         oc8051_memory_interface1_n531, oc8051_memory_interface1_n530,
-         oc8051_memory_interface1_n529, oc8051_memory_interface1_n528,
-         oc8051_memory_interface1_n527, oc8051_memory_interface1_n526,
-         oc8051_memory_interface1_n525, oc8051_memory_interface1_n524,
-         oc8051_memory_interface1_n523, oc8051_memory_interface1_n522,
-         oc8051_memory_interface1_n520, oc8051_memory_interface1_n518,
-         oc8051_memory_interface1_n516, oc8051_memory_interface1_n514,
-         oc8051_memory_interface1_n512, oc8051_memory_interface1_n510,
-         oc8051_memory_interface1_n508, oc8051_memory_interface1_n506,
-         oc8051_memory_interface1_n505, oc8051_memory_interface1_n504,
-         oc8051_memory_interface1_n503, oc8051_memory_interface1_n502,
-         oc8051_memory_interface1_n501, oc8051_memory_interface1_n500,
-         oc8051_memory_interface1_n499, oc8051_memory_interface1_n498,
-         oc8051_memory_interface1_n497, oc8051_memory_interface1_n496,
-         oc8051_memory_interface1_n495, oc8051_memory_interface1_n494,
-         oc8051_memory_interface1_n493, oc8051_memory_interface1_n492,
-         oc8051_memory_interface1_n491, oc8051_memory_interface1_n490,
-         oc8051_memory_interface1_n489, oc8051_memory_interface1_n488,
-         oc8051_memory_interface1_n487, oc8051_memory_interface1_n486,
-         oc8051_memory_interface1_n485, oc8051_memory_interface1_n484,
-         oc8051_memory_interface1_n483, oc8051_memory_interface1_n482,
-         oc8051_memory_interface1_n481, oc8051_memory_interface1_n480,
-         oc8051_memory_interface1_n479, oc8051_memory_interface1_n478,
-         oc8051_memory_interface1_n477, oc8051_memory_interface1_n476,
-         oc8051_memory_interface1_n475, oc8051_memory_interface1_n474,
-         oc8051_memory_interface1_n473, oc8051_memory_interface1_n472,
-         oc8051_memory_interface1_n471, oc8051_memory_interface1_n470,
-         oc8051_memory_interface1_n469, oc8051_memory_interface1_n468,
-         oc8051_memory_interface1_n467, oc8051_memory_interface1_n466,
-         oc8051_memory_interface1_n465, oc8051_memory_interface1_n464,
-         oc8051_memory_interface1_n463, oc8051_memory_interface1_n462,
-         oc8051_memory_interface1_n461, oc8051_memory_interface1_n460,
-         oc8051_memory_interface1_n459, oc8051_memory_interface1_n458,
-         oc8051_memory_interface1_n457, oc8051_memory_interface1_n456,
-         oc8051_memory_interface1_n455, oc8051_memory_interface1_n454,
-         oc8051_memory_interface1_n453, oc8051_memory_interface1_n452,
-         oc8051_memory_interface1_n451, oc8051_memory_interface1_n450,
-         oc8051_memory_interface1_n449, oc8051_memory_interface1_n448,
-         oc8051_memory_interface1_n447, oc8051_memory_interface1_n446,
-         oc8051_memory_interface1_n445, oc8051_memory_interface1_n444,
-         oc8051_memory_interface1_n443, oc8051_memory_interface1_n442,
-         oc8051_memory_interface1_n441, oc8051_memory_interface1_n440,
-         oc8051_memory_interface1_n439, oc8051_memory_interface1_n438,
-         oc8051_memory_interface1_n437, oc8051_memory_interface1_n436,
-         oc8051_memory_interface1_n435, oc8051_memory_interface1_n434,
-         oc8051_memory_interface1_n433, oc8051_memory_interface1_n432,
-         oc8051_memory_interface1_n431, oc8051_memory_interface1_n430,
-         oc8051_memory_interface1_n429, oc8051_memory_interface1_n428,
-         oc8051_memory_interface1_n427, oc8051_memory_interface1_n426,
-         oc8051_memory_interface1_n425, oc8051_memory_interface1_n424,
-         oc8051_memory_interface1_n423, oc8051_memory_interface1_n422,
-         oc8051_memory_interface1_n421, oc8051_memory_interface1_n420,
-         oc8051_memory_interface1_n417, oc8051_memory_interface1_n416,
-         oc8051_memory_interface1_n415, oc8051_memory_interface1_n414,
-         oc8051_memory_interface1_n413, oc8051_memory_interface1_n412,
-         oc8051_memory_interface1_n411, oc8051_memory_interface1_n410,
-         oc8051_memory_interface1_n409, oc8051_memory_interface1_n408,
-         oc8051_memory_interface1_n407, oc8051_memory_interface1_n406,
-         oc8051_memory_interface1_n405, oc8051_memory_interface1_n404,
-         oc8051_memory_interface1_n403, oc8051_memory_interface1_n402,
-         oc8051_memory_interface1_n401, oc8051_memory_interface1_n392,
-         oc8051_memory_interface1_n391, oc8051_memory_interface1_n390,
-         oc8051_memory_interface1_n389, oc8051_memory_interface1_n388,
-         oc8051_memory_interface1_n387, oc8051_memory_interface1_n386,
-         oc8051_memory_interface1_n385, oc8051_memory_interface1_n384,
-         oc8051_memory_interface1_n383, oc8051_memory_interface1_n382,
-         oc8051_memory_interface1_n381, oc8051_memory_interface1_n380,
-         oc8051_memory_interface1_n379, oc8051_memory_interface1_n378,
-         oc8051_memory_interface1_n377, oc8051_memory_interface1_n360,
-         oc8051_memory_interface1_n359, oc8051_memory_interface1_n358,
-         oc8051_memory_interface1_n357, oc8051_memory_interface1_n356,
-         oc8051_memory_interface1_n355, oc8051_memory_interface1_n354,
-         oc8051_memory_interface1_n353, oc8051_memory_interface1_n352,
-         oc8051_memory_interface1_n5470, oc8051_memory_interface1_pc_wr_r,
-         oc8051_memory_interface1_pc_buf_2_,
+         oc8051_memory_interface1_n789, oc8051_memory_interface1_n788,
+         oc8051_memory_interface1_n787, oc8051_memory_interface1_n786,
+         oc8051_memory_interface1_n785, oc8051_memory_interface1_n784,
+         oc8051_memory_interface1_n783, oc8051_memory_interface1_n782,
+         oc8051_memory_interface1_n781, oc8051_memory_interface1_n780,
+         oc8051_memory_interface1_n779, oc8051_memory_interface1_n778,
+         oc8051_memory_interface1_n777, oc8051_memory_interface1_n776,
+         oc8051_memory_interface1_n775, oc8051_memory_interface1_n774,
+         oc8051_memory_interface1_n773, oc8051_memory_interface1_n756,
+         oc8051_memory_interface1_n755, oc8051_memory_interface1_n754,
+         oc8051_memory_interface1_n753, oc8051_memory_interface1_n752,
+         oc8051_memory_interface1_n751, oc8051_memory_interface1_n750,
+         oc8051_memory_interface1_n749, oc8051_memory_interface1_n748,
+         oc8051_memory_interface1_n747, oc8051_memory_interface1_n746,
+         oc8051_memory_interface1_n745, oc8051_memory_interface1_n744,
+         oc8051_memory_interface1_n743, oc8051_memory_interface1_n742,
+         oc8051_memory_interface1_n741, oc8051_memory_interface1_n740,
+         oc8051_memory_interface1_n739, oc8051_memory_interface1_n738,
+         oc8051_memory_interface1_n737, oc8051_memory_interface1_n736,
+         oc8051_memory_interface1_n735, oc8051_memory_interface1_n734,
+         oc8051_memory_interface1_n733, oc8051_memory_interface1_n732,
+         oc8051_memory_interface1_n731, oc8051_memory_interface1_n730,
+         oc8051_memory_interface1_n729, oc8051_memory_interface1_n728,
+         oc8051_memory_interface1_n727, oc8051_memory_interface1_n726,
+         oc8051_memory_interface1_n725, oc8051_memory_interface1_n724,
+         oc8051_memory_interface1_n723, oc8051_memory_interface1_n722,
+         oc8051_memory_interface1_n721, oc8051_memory_interface1_n720,
+         oc8051_memory_interface1_n719, oc8051_memory_interface1_n718,
+         oc8051_memory_interface1_n717, oc8051_memory_interface1_n716,
+         oc8051_memory_interface1_n715, oc8051_memory_interface1_n714,
+         oc8051_memory_interface1_n713, oc8051_memory_interface1_n712,
+         oc8051_memory_interface1_n711, oc8051_memory_interface1_n710,
+         oc8051_memory_interface1_n709, oc8051_memory_interface1_n708,
+         oc8051_memory_interface1_n707, oc8051_memory_interface1_n706,
+         oc8051_memory_interface1_n705, oc8051_memory_interface1_n704,
+         oc8051_memory_interface1_n703, oc8051_memory_interface1_n702,
+         oc8051_memory_interface1_n701, oc8051_memory_interface1_n700,
+         oc8051_memory_interface1_n699, oc8051_memory_interface1_n698,
+         oc8051_memory_interface1_n697, oc8051_memory_interface1_n696,
+         oc8051_memory_interface1_n695, oc8051_memory_interface1_n694,
+         oc8051_memory_interface1_n693, oc8051_memory_interface1_n692,
+         oc8051_memory_interface1_n691, oc8051_memory_interface1_n690,
+         oc8051_memory_interface1_n689, oc8051_memory_interface1_n688,
+         oc8051_memory_interface1_n687, oc8051_memory_interface1_n686,
+         oc8051_memory_interface1_n685, oc8051_memory_interface1_n684,
+         oc8051_memory_interface1_n683, oc8051_memory_interface1_n682,
+         oc8051_memory_interface1_n681, oc8051_memory_interface1_n680,
+         oc8051_memory_interface1_n679, oc8051_memory_interface1_n678,
+         oc8051_memory_interface1_n677, oc8051_memory_interface1_n676,
+         oc8051_memory_interface1_n675, oc8051_memory_interface1_n674,
+         oc8051_memory_interface1_n673, oc8051_memory_interface1_n672,
+         oc8051_memory_interface1_n671, oc8051_memory_interface1_n670,
+         oc8051_memory_interface1_n669, oc8051_memory_interface1_n668,
+         oc8051_memory_interface1_n667, oc8051_memory_interface1_n666,
+         oc8051_memory_interface1_n665, oc8051_memory_interface1_n664,
+         oc8051_memory_interface1_n663, oc8051_memory_interface1_n662,
+         oc8051_memory_interface1_n661, oc8051_memory_interface1_n660,
+         oc8051_memory_interface1_n659, oc8051_memory_interface1_n658,
+         oc8051_memory_interface1_n657, oc8051_memory_interface1_n656,
+         oc8051_memory_interface1_n655, oc8051_memory_interface1_n654,
+         oc8051_memory_interface1_n653, oc8051_memory_interface1_n652,
+         oc8051_memory_interface1_n651, oc8051_memory_interface1_n650,
+         oc8051_memory_interface1_n649, oc8051_memory_interface1_n648,
+         oc8051_memory_interface1_n647, oc8051_memory_interface1_n646,
+         oc8051_memory_interface1_n645, oc8051_memory_interface1_n644,
+         oc8051_memory_interface1_n643, oc8051_memory_interface1_n642,
+         oc8051_memory_interface1_n641, oc8051_memory_interface1_n640,
+         oc8051_memory_interface1_n639, oc8051_memory_interface1_n638,
+         oc8051_memory_interface1_n637, oc8051_memory_interface1_n636,
+         oc8051_memory_interface1_n635, oc8051_memory_interface1_n634,
+         oc8051_memory_interface1_n633, oc8051_memory_interface1_n632,
+         oc8051_memory_interface1_n631, oc8051_memory_interface1_n630,
+         oc8051_memory_interface1_n629, oc8051_memory_interface1_n628,
+         oc8051_memory_interface1_n627, oc8051_memory_interface1_n626,
+         oc8051_memory_interface1_n625, oc8051_memory_interface1_n624,
+         oc8051_memory_interface1_n623, oc8051_memory_interface1_n622,
+         oc8051_memory_interface1_n621, oc8051_memory_interface1_n620,
+         oc8051_memory_interface1_n619, oc8051_memory_interface1_n618,
+         oc8051_memory_interface1_n617, oc8051_memory_interface1_n616,
+         oc8051_memory_interface1_n615, oc8051_memory_interface1_n614,
+         oc8051_memory_interface1_n613, oc8051_memory_interface1_n612,
+         oc8051_memory_interface1_n611, oc8051_memory_interface1_n610,
+         oc8051_memory_interface1_n609, oc8051_memory_interface1_n608,
+         oc8051_memory_interface1_n607, oc8051_memory_interface1_n606,
+         oc8051_memory_interface1_n605, oc8051_memory_interface1_n604,
+         oc8051_memory_interface1_n603, oc8051_memory_interface1_n602,
+         oc8051_memory_interface1_n601, oc8051_memory_interface1_n600,
+         oc8051_memory_interface1_n599, oc8051_memory_interface1_n598,
+         oc8051_memory_interface1_n597, oc8051_memory_interface1_n596,
+         oc8051_memory_interface1_n595, oc8051_memory_interface1_n594,
+         oc8051_memory_interface1_n593, oc8051_memory_interface1_n592,
+         oc8051_memory_interface1_n591, oc8051_memory_interface1_n590,
+         oc8051_memory_interface1_n589, oc8051_memory_interface1_n588,
+         oc8051_memory_interface1_n587, oc8051_memory_interface1_n586,
+         oc8051_memory_interface1_n585, oc8051_memory_interface1_n584,
+         oc8051_memory_interface1_n583, oc8051_memory_interface1_n582,
+         oc8051_memory_interface1_n581, oc8051_memory_interface1_n580,
+         oc8051_memory_interface1_n579, oc8051_memory_interface1_n578,
+         oc8051_memory_interface1_n577, oc8051_memory_interface1_n576,
+         oc8051_memory_interface1_n575, oc8051_memory_interface1_n574,
+         oc8051_memory_interface1_n573, oc8051_memory_interface1_n572,
+         oc8051_memory_interface1_n571, oc8051_memory_interface1_n570,
+         oc8051_memory_interface1_n569, oc8051_memory_interface1_n568,
+         oc8051_memory_interface1_n567, oc8051_memory_interface1_n566,
+         oc8051_memory_interface1_n565, oc8051_memory_interface1_n564,
+         oc8051_memory_interface1_n563, oc8051_memory_interface1_n562,
+         oc8051_memory_interface1_n561, oc8051_memory_interface1_n560,
+         oc8051_memory_interface1_n559, oc8051_memory_interface1_n558,
+         oc8051_memory_interface1_n557, oc8051_memory_interface1_n556,
+         oc8051_memory_interface1_n555, oc8051_memory_interface1_n554,
+         oc8051_memory_interface1_n533, oc8051_memory_interface1_n521,
+         oc8051_memory_interface1_n519, oc8051_memory_interface1_n517,
+         oc8051_memory_interface1_n515, oc8051_memory_interface1_n513,
+         oc8051_memory_interface1_n511, oc8051_memory_interface1_n509,
+         oc8051_memory_interface1_n507, oc8051_memory_interface1_n419,
+         oc8051_memory_interface1_n418, oc8051_memory_interface1_n400,
+         oc8051_memory_interface1_n399, oc8051_memory_interface1_n398,
+         oc8051_memory_interface1_n397, oc8051_memory_interface1_n396,
+         oc8051_memory_interface1_n395, oc8051_memory_interface1_n394,
+         oc8051_memory_interface1_n393, oc8051_memory_interface1_n376,
+         oc8051_memory_interface1_n375, oc8051_memory_interface1_n374,
+         oc8051_memory_interface1_n373, oc8051_memory_interface1_n372,
+         oc8051_memory_interface1_n371, oc8051_memory_interface1_n370,
+         oc8051_memory_interface1_n369, oc8051_memory_interface1_n368,
+         oc8051_memory_interface1_n367, oc8051_memory_interface1_n366,
+         oc8051_memory_interface1_n365, oc8051_memory_interface1_n364,
+         oc8051_memory_interface1_n363, oc8051_memory_interface1_n362,
+         oc8051_memory_interface1_n361, oc8051_memory_interface1_n351,
+         oc8051_memory_interface1_n350, oc8051_memory_interface1_n349,
+         oc8051_memory_interface1_n348, oc8051_memory_interface1_n347,
+         oc8051_memory_interface1_n346, oc8051_memory_interface1_n345,
+         oc8051_memory_interface1_n344, oc8051_memory_interface1_n343,
+         oc8051_memory_interface1_n342, oc8051_memory_interface1_n341,
+         oc8051_memory_interface1_n340, oc8051_memory_interface1_n339,
+         oc8051_memory_interface1_n338, oc8051_memory_interface1_n337,
+         oc8051_memory_interface1_n336, oc8051_memory_interface1_n335,
+         oc8051_memory_interface1_n334, oc8051_memory_interface1_n333,
+         oc8051_memory_interface1_n332, oc8051_memory_interface1_n331,
+         oc8051_memory_interface1_n330, oc8051_memory_interface1_n329,
+         oc8051_memory_interface1_n328, oc8051_memory_interface1_n327,
+         oc8051_memory_interface1_n326, oc8051_memory_interface1_n325,
+         oc8051_memory_interface1_n324, oc8051_memory_interface1_n323,
+         oc8051_memory_interface1_n322, oc8051_memory_interface1_n321,
+         oc8051_memory_interface1_n320, oc8051_memory_interface1_n319,
+         oc8051_memory_interface1_n318, oc8051_memory_interface1_n317,
+         oc8051_memory_interface1_n316, oc8051_memory_interface1_n315,
+         oc8051_memory_interface1_n314, oc8051_memory_interface1_n313,
+         oc8051_memory_interface1_n312, oc8051_memory_interface1_n311,
+         oc8051_memory_interface1_n310, oc8051_memory_interface1_n309,
+         oc8051_memory_interface1_n308, oc8051_memory_interface1_n307,
+         oc8051_memory_interface1_n306, oc8051_memory_interface1_n305,
+         oc8051_memory_interface1_n304, oc8051_memory_interface1_n303,
+         oc8051_memory_interface1_n302, oc8051_memory_interface1_n301,
+         oc8051_memory_interface1_n300, oc8051_memory_interface1_n299,
+         oc8051_memory_interface1_n298, oc8051_memory_interface1_n297,
+         oc8051_memory_interface1_n296, oc8051_memory_interface1_n295,
+         oc8051_memory_interface1_n294, oc8051_memory_interface1_n293,
+         oc8051_memory_interface1_n292, oc8051_memory_interface1_n291,
+         oc8051_memory_interface1_n290, oc8051_memory_interface1_n289,
+         oc8051_memory_interface1_n288, oc8051_memory_interface1_n287,
+         oc8051_memory_interface1_n286, oc8051_memory_interface1_n285,
+         oc8051_memory_interface1_n284, oc8051_memory_interface1_n283,
+         oc8051_memory_interface1_n282, oc8051_memory_interface1_n281,
+         oc8051_memory_interface1_n280, oc8051_memory_interface1_n279,
+         oc8051_memory_interface1_n278, oc8051_memory_interface1_n277,
+         oc8051_memory_interface1_n276, oc8051_memory_interface1_n275,
+         oc8051_memory_interface1_n274, oc8051_memory_interface1_n273,
+         oc8051_memory_interface1_n272, oc8051_memory_interface1_n271,
+         oc8051_memory_interface1_n270, oc8051_memory_interface1_n269,
+         oc8051_memory_interface1_n268, oc8051_memory_interface1_n267,
+         oc8051_memory_interface1_n266, oc8051_memory_interface1_n265,
+         oc8051_memory_interface1_n264, oc8051_memory_interface1_n263,
+         oc8051_memory_interface1_n262, oc8051_memory_interface1_n261,
+         oc8051_memory_interface1_n260, oc8051_memory_interface1_n259,
+         oc8051_memory_interface1_n258, oc8051_memory_interface1_n257,
+         oc8051_memory_interface1_n256, oc8051_memory_interface1_n255,
+         oc8051_memory_interface1_n254, oc8051_memory_interface1_n253,
+         oc8051_memory_interface1_n252, oc8051_memory_interface1_n251,
+         oc8051_memory_interface1_n250, oc8051_memory_interface1_n249,
+         oc8051_memory_interface1_n248, oc8051_memory_interface1_n247,
+         oc8051_memory_interface1_n246, oc8051_memory_interface1_n245,
+         oc8051_memory_interface1_n244, oc8051_memory_interface1_n243,
+         oc8051_memory_interface1_n242, oc8051_memory_interface1_n241,
+         oc8051_memory_interface1_n240, oc8051_memory_interface1_n239,
+         oc8051_memory_interface1_n238, oc8051_memory_interface1_n237,
+         oc8051_memory_interface1_n236, oc8051_memory_interface1_n235,
+         oc8051_memory_interface1_n234, oc8051_memory_interface1_n233,
+         oc8051_memory_interface1_n232, oc8051_memory_interface1_n231,
+         oc8051_memory_interface1_n230, oc8051_memory_interface1_n229,
+         oc8051_memory_interface1_n228, oc8051_memory_interface1_n227,
+         oc8051_memory_interface1_n226, oc8051_memory_interface1_n225,
+         oc8051_memory_interface1_n224, oc8051_memory_interface1_n223,
+         oc8051_memory_interface1_n222, oc8051_memory_interface1_n221,
+         oc8051_memory_interface1_n220, oc8051_memory_interface1_n219,
+         oc8051_memory_interface1_n218, oc8051_memory_interface1_n217,
+         oc8051_memory_interface1_n216, oc8051_memory_interface1_n215,
+         oc8051_memory_interface1_n214, oc8051_memory_interface1_n213,
+         oc8051_memory_interface1_n212, oc8051_memory_interface1_n211,
+         oc8051_memory_interface1_n210, oc8051_memory_interface1_n209,
+         oc8051_memory_interface1_n208, oc8051_memory_interface1_n207,
+         oc8051_memory_interface1_n206, oc8051_memory_interface1_n205,
+         oc8051_memory_interface1_n204, oc8051_memory_interface1_n203,
+         oc8051_memory_interface1_n202, oc8051_memory_interface1_n201,
+         oc8051_memory_interface1_n200, oc8051_memory_interface1_n199,
+         oc8051_memory_interface1_n198, oc8051_memory_interface1_n197,
+         oc8051_memory_interface1_n196, oc8051_memory_interface1_n195,
+         oc8051_memory_interface1_n194, oc8051_memory_interface1_n193,
+         oc8051_memory_interface1_n192, oc8051_memory_interface1_n191,
+         oc8051_memory_interface1_n190, oc8051_memory_interface1_n189,
+         oc8051_memory_interface1_n188, oc8051_memory_interface1_n187,
+         oc8051_memory_interface1_n186, oc8051_memory_interface1_n185,
+         oc8051_memory_interface1_n184, oc8051_memory_interface1_n183,
+         oc8051_memory_interface1_n182, oc8051_memory_interface1_n181,
+         oc8051_memory_interface1_n180, oc8051_memory_interface1_n179,
+         oc8051_memory_interface1_n178, oc8051_memory_interface1_n177,
+         oc8051_memory_interface1_n176, oc8051_memory_interface1_n175,
+         oc8051_memory_interface1_n174, oc8051_memory_interface1_n173,
+         oc8051_memory_interface1_n172, oc8051_memory_interface1_n171,
+         oc8051_memory_interface1_n170, oc8051_memory_interface1_n169,
+         oc8051_memory_interface1_n168, oc8051_memory_interface1_n167,
+         oc8051_memory_interface1_n166, oc8051_memory_interface1_n165,
+         oc8051_memory_interface1_n164, oc8051_memory_interface1_n163,
+         oc8051_memory_interface1_n162, oc8051_memory_interface1_n161,
+         oc8051_memory_interface1_n160, oc8051_memory_interface1_n159,
+         oc8051_memory_interface1_n158, oc8051_memory_interface1_n157,
+         oc8051_memory_interface1_n156, oc8051_memory_interface1_n155,
+         oc8051_memory_interface1_n154, oc8051_memory_interface1_n153,
+         oc8051_memory_interface1_n152, oc8051_memory_interface1_n151,
+         oc8051_memory_interface1_n150, oc8051_memory_interface1_n149,
+         oc8051_memory_interface1_n148, oc8051_memory_interface1_n147,
+         oc8051_memory_interface1_n146, oc8051_memory_interface1_n145,
+         oc8051_memory_interface1_n144, oc8051_memory_interface1_n143,
+         oc8051_memory_interface1_n142, oc8051_memory_interface1_n141,
+         oc8051_memory_interface1_n140, oc8051_memory_interface1_n139,
+         oc8051_memory_interface1_n138, oc8051_memory_interface1_n137,
+         oc8051_memory_interface1_n136, oc8051_memory_interface1_n135,
+         oc8051_memory_interface1_n134, oc8051_memory_interface1_n133,
+         oc8051_memory_interface1_n132, oc8051_memory_interface1_n131,
+         oc8051_memory_interface1_n130, oc8051_memory_interface1_n129,
+         oc8051_memory_interface1_n128, oc8051_memory_interface1_n127,
+         oc8051_memory_interface1_n126, oc8051_memory_interface1_n125,
+         oc8051_memory_interface1_n124, oc8051_memory_interface1_n123,
+         oc8051_memory_interface1_n122, oc8051_memory_interface1_n121,
+         oc8051_memory_interface1_n120, oc8051_memory_interface1_n119,
+         oc8051_memory_interface1_n118, oc8051_memory_interface1_n117,
+         oc8051_memory_interface1_n116, oc8051_memory_interface1_n115,
+         oc8051_memory_interface1_n114, oc8051_memory_interface1_n113,
+         oc8051_memory_interface1_n112, oc8051_memory_interface1_n111,
+         oc8051_memory_interface1_n110, oc8051_memory_interface1_n109,
+         oc8051_memory_interface1_n108, oc8051_memory_interface1_n107,
+         oc8051_memory_interface1_n106, oc8051_memory_interface1_n105,
+         oc8051_memory_interface1_n104, oc8051_memory_interface1_n103,
+         oc8051_memory_interface1_n102, oc8051_memory_interface1_n101,
+         oc8051_memory_interface1_n100, oc8051_memory_interface1_n99,
+         oc8051_memory_interface1_n98, oc8051_memory_interface1_n97,
+         oc8051_memory_interface1_n96, oc8051_memory_interface1_n95,
+         oc8051_memory_interface1_n94, oc8051_memory_interface1_n93,
+         oc8051_memory_interface1_n92, oc8051_memory_interface1_n91,
+         oc8051_memory_interface1_n90, oc8051_memory_interface1_n89,
+         oc8051_memory_interface1_n88, oc8051_memory_interface1_n87,
+         oc8051_memory_interface1_n86, oc8051_memory_interface1_n85,
+         oc8051_memory_interface1_n84, oc8051_memory_interface1_n83,
+         oc8051_memory_interface1_n82, oc8051_memory_interface1_n81,
+         oc8051_memory_interface1_n80, oc8051_memory_interface1_n79,
+         oc8051_memory_interface1_n78, oc8051_memory_interface1_n77,
+         oc8051_memory_interface1_n76, oc8051_memory_interface1_n75,
+         oc8051_memory_interface1_n74, oc8051_memory_interface1_n73,
+         oc8051_memory_interface1_n72, oc8051_memory_interface1_n71,
+         oc8051_memory_interface1_n70, oc8051_memory_interface1_n69,
+         oc8051_memory_interface1_n68, oc8051_memory_interface1_n67,
+         oc8051_memory_interface1_n66, oc8051_memory_interface1_n65,
+         oc8051_memory_interface1_n64, oc8051_memory_interface1_n63,
+         oc8051_memory_interface1_n62, oc8051_memory_interface1_n61,
+         oc8051_memory_interface1_n60, oc8051_memory_interface1_n59,
+         oc8051_memory_interface1_n58, oc8051_memory_interface1_n57,
+         oc8051_memory_interface1_n56, oc8051_memory_interface1_n55,
+         oc8051_memory_interface1_n54, oc8051_memory_interface1_n53,
+         oc8051_memory_interface1_n52, oc8051_memory_interface1_n51,
+         oc8051_memory_interface1_n50, oc8051_memory_interface1_n49,
+         oc8051_memory_interface1_n48, oc8051_memory_interface1_n47,
+         oc8051_memory_interface1_n46, oc8051_memory_interface1_n45,
+         oc8051_memory_interface1_n44, oc8051_memory_interface1_n43,
+         oc8051_memory_interface1_n42, oc8051_memory_interface1_n41,
+         oc8051_memory_interface1_n40, oc8051_memory_interface1_n39,
+         oc8051_memory_interface1_n38, oc8051_memory_interface1_n37,
+         oc8051_memory_interface1_n36, oc8051_memory_interface1_n35,
+         oc8051_memory_interface1_n34, oc8051_memory_interface1_n33,
+         oc8051_memory_interface1_n32, oc8051_memory_interface1_n31,
+         oc8051_memory_interface1_n30, oc8051_memory_interface1_n29,
+         oc8051_memory_interface1_n28, oc8051_memory_interface1_n27,
+         oc8051_memory_interface1_n26, oc8051_memory_interface1_n25,
+         oc8051_memory_interface1_n24, oc8051_memory_interface1_n23,
+         oc8051_memory_interface1_n22, oc8051_memory_interface1_n21,
+         oc8051_memory_interface1_n20, oc8051_memory_interface1_n19,
+         oc8051_memory_interface1_n18, oc8051_memory_interface1_n17,
+         oc8051_memory_interface1_n16, oc8051_memory_interface1_n15,
+         oc8051_memory_interface1_n14, oc8051_memory_interface1_n13,
+         oc8051_memory_interface1_n12, oc8051_memory_interface1_n11,
+         oc8051_memory_interface1_n10, oc8051_memory_interface1_n9,
+         oc8051_memory_interface1_n8, oc8051_memory_interface1_n7,
+         oc8051_memory_interface1_n6, oc8051_memory_interface1_n5,
+         oc8051_memory_interface1_n4, oc8051_memory_interface1_n3,
+         oc8051_memory_interface1_n2, oc8051_memory_interface1_n1,
+         oc8051_memory_interface1_n553, oc8051_memory_interface1_n552,
+         oc8051_memory_interface1_n551, oc8051_memory_interface1_n550,
+         oc8051_memory_interface1_n549, oc8051_memory_interface1_n548,
+         oc8051_memory_interface1_n547, oc8051_memory_interface1_n546,
+         oc8051_memory_interface1_n545, oc8051_memory_interface1_n544,
+         oc8051_memory_interface1_n543, oc8051_memory_interface1_n542,
+         oc8051_memory_interface1_n541, oc8051_memory_interface1_n540,
+         oc8051_memory_interface1_n539, oc8051_memory_interface1_n538,
+         oc8051_memory_interface1_n537, oc8051_memory_interface1_n536,
+         oc8051_memory_interface1_n535, oc8051_memory_interface1_n534,
+         oc8051_memory_interface1_n532, oc8051_memory_interface1_n531,
+         oc8051_memory_interface1_n530, oc8051_memory_interface1_n529,
+         oc8051_memory_interface1_n528, oc8051_memory_interface1_n527,
+         oc8051_memory_interface1_n526, oc8051_memory_interface1_n525,
+         oc8051_memory_interface1_n524, oc8051_memory_interface1_n523,
+         oc8051_memory_interface1_n522, oc8051_memory_interface1_n520,
+         oc8051_memory_interface1_n518, oc8051_memory_interface1_n516,
+         oc8051_memory_interface1_n514, oc8051_memory_interface1_n512,
+         oc8051_memory_interface1_n510, oc8051_memory_interface1_n508,
+         oc8051_memory_interface1_n506, oc8051_memory_interface1_n505,
+         oc8051_memory_interface1_n504, oc8051_memory_interface1_n503,
+         oc8051_memory_interface1_n502, oc8051_memory_interface1_n501,
+         oc8051_memory_interface1_n500, oc8051_memory_interface1_n499,
+         oc8051_memory_interface1_n498, oc8051_memory_interface1_n497,
+         oc8051_memory_interface1_n496, oc8051_memory_interface1_n495,
+         oc8051_memory_interface1_n494, oc8051_memory_interface1_n493,
+         oc8051_memory_interface1_n492, oc8051_memory_interface1_n491,
+         oc8051_memory_interface1_n490, oc8051_memory_interface1_n489,
+         oc8051_memory_interface1_n488, oc8051_memory_interface1_n487,
+         oc8051_memory_interface1_n486, oc8051_memory_interface1_n485,
+         oc8051_memory_interface1_n484, oc8051_memory_interface1_n483,
+         oc8051_memory_interface1_n482, oc8051_memory_interface1_n481,
+         oc8051_memory_interface1_n480, oc8051_memory_interface1_n479,
+         oc8051_memory_interface1_n478, oc8051_memory_interface1_n477,
+         oc8051_memory_interface1_n476, oc8051_memory_interface1_n475,
+         oc8051_memory_interface1_n474, oc8051_memory_interface1_n473,
+         oc8051_memory_interface1_n472, oc8051_memory_interface1_n471,
+         oc8051_memory_interface1_n470, oc8051_memory_interface1_n469,
+         oc8051_memory_interface1_n468, oc8051_memory_interface1_n467,
+         oc8051_memory_interface1_n466, oc8051_memory_interface1_n465,
+         oc8051_memory_interface1_n464, oc8051_memory_interface1_n463,
+         oc8051_memory_interface1_n462, oc8051_memory_interface1_n461,
+         oc8051_memory_interface1_n460, oc8051_memory_interface1_n459,
+         oc8051_memory_interface1_n458, oc8051_memory_interface1_n457,
+         oc8051_memory_interface1_n456, oc8051_memory_interface1_n455,
+         oc8051_memory_interface1_n454, oc8051_memory_interface1_n453,
+         oc8051_memory_interface1_n452, oc8051_memory_interface1_n451,
+         oc8051_memory_interface1_n450, oc8051_memory_interface1_n449,
+         oc8051_memory_interface1_n448, oc8051_memory_interface1_n447,
+         oc8051_memory_interface1_n446, oc8051_memory_interface1_n445,
+         oc8051_memory_interface1_n444, oc8051_memory_interface1_n443,
+         oc8051_memory_interface1_n442, oc8051_memory_interface1_n441,
+         oc8051_memory_interface1_n440, oc8051_memory_interface1_n439,
+         oc8051_memory_interface1_n438, oc8051_memory_interface1_n437,
+         oc8051_memory_interface1_n436, oc8051_memory_interface1_n435,
+         oc8051_memory_interface1_n434, oc8051_memory_interface1_n433,
+         oc8051_memory_interface1_n432, oc8051_memory_interface1_n431,
+         oc8051_memory_interface1_n430, oc8051_memory_interface1_n429,
+         oc8051_memory_interface1_n428, oc8051_memory_interface1_n427,
+         oc8051_memory_interface1_n426, oc8051_memory_interface1_n425,
+         oc8051_memory_interface1_n424, oc8051_memory_interface1_n423,
+         oc8051_memory_interface1_n422, oc8051_memory_interface1_n421,
+         oc8051_memory_interface1_n420, oc8051_memory_interface1_n417,
+         oc8051_memory_interface1_n416, oc8051_memory_interface1_n415,
+         oc8051_memory_interface1_n414, oc8051_memory_interface1_n413,
+         oc8051_memory_interface1_n412, oc8051_memory_interface1_n411,
+         oc8051_memory_interface1_n410, oc8051_memory_interface1_n409,
+         oc8051_memory_interface1_n408, oc8051_memory_interface1_n407,
+         oc8051_memory_interface1_n406, oc8051_memory_interface1_n405,
+         oc8051_memory_interface1_n404, oc8051_memory_interface1_n403,
+         oc8051_memory_interface1_n402, oc8051_memory_interface1_n401,
+         oc8051_memory_interface1_n392, oc8051_memory_interface1_n391,
+         oc8051_memory_interface1_n390, oc8051_memory_interface1_n389,
+         oc8051_memory_interface1_n388, oc8051_memory_interface1_n387,
+         oc8051_memory_interface1_n386, oc8051_memory_interface1_n385,
+         oc8051_memory_interface1_n384, oc8051_memory_interface1_n383,
+         oc8051_memory_interface1_n382, oc8051_memory_interface1_n381,
+         oc8051_memory_interface1_n380, oc8051_memory_interface1_n379,
+         oc8051_memory_interface1_n378, oc8051_memory_interface1_n377,
+         oc8051_memory_interface1_n360, oc8051_memory_interface1_n359,
+         oc8051_memory_interface1_n358, oc8051_memory_interface1_n357,
+         oc8051_memory_interface1_n356, oc8051_memory_interface1_n355,
+         oc8051_memory_interface1_n354, oc8051_memory_interface1_n353,
+         oc8051_memory_interface1_n352, oc8051_memory_interface1_n5470,
+         oc8051_memory_interface1_pc_wr_r, oc8051_memory_interface1_pc_buf_2_,
          oc8051_memory_interface1_pc_buf_3_,
          oc8051_memory_interface1_pc_buf_4_,
          oc8051_memory_interface1_pc_buf_5_,
@@ -7644,6 +7640,7 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   wire   [7:0] op3_n;
   wire   [7:0] dptr_hi;
   wire   [7:0] dptr_lo;
+  wire   [15:0] iadr_o;
   wire   [31:0] idat_onchip;
   wire   [7:0] ri;
   wire   [1:0] bank_sel;
@@ -7670,6 +7667,7 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   wire   [7:0] oc8051_ram_top1_wr_data_r;
   wire   [7:0] oc8051_alu_src_sel1_op3_r;
   wire   [7:0] oc8051_alu_src_sel1_op1_r;
+  wire   [31:0] oc8051_rom1_cxrom_data_out;
   wire   [7:0] oc8051_memory_interface1_op2_buff;
   wire   [7:0] oc8051_memory_interface1_op3_buff;
   wire   [7:0] oc8051_memory_interface1_op3;
@@ -38118,70 +38116,72 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_comp1_n2), .D(bit_out), .S0(comp_sel[1]), .S1(comp_sel[0]), .Y(
         eq) );
   TIEHI_X1M_A12TS oc8051_rom1_u3 ( .Y(oc8051_rom1_ea_int) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_0_ ( .D(cxrom_data_out[0]), .CK(
-        wb_clk_i), .Q(idat_onchip[0]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_1_ ( .D(cxrom_data_out[1]), .CK(
-        wb_clk_i), .Q(idat_onchip[1]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_2_ ( .D(cxrom_data_out[2]), .CK(
-        wb_clk_i), .Q(idat_onchip[2]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_3_ ( .D(cxrom_data_out[3]), .CK(
-        wb_clk_i), .Q(idat_onchip[3]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_4_ ( .D(cxrom_data_out[4]), .CK(
-        wb_clk_i), .Q(idat_onchip[4]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_5_ ( .D(cxrom_data_out[5]), .CK(
-        wb_clk_i), .Q(idat_onchip[5]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_6_ ( .D(cxrom_data_out[6]), .CK(
-        wb_clk_i), .Q(idat_onchip[6]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_7_ ( .D(cxrom_data_out[7]), .CK(
-        wb_clk_i), .Q(idat_onchip[7]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_8_ ( .D(cxrom_data_out[8]), .CK(
-        wb_clk_i), .Q(idat_onchip[8]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_9_ ( .D(cxrom_data_out[9]), .CK(
-        wb_clk_i), .Q(idat_onchip[9]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_10_ ( .D(cxrom_data_out[10]), .CK(
-        wb_clk_i), .Q(idat_onchip[10]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_11_ ( .D(cxrom_data_out[11]), .CK(
-        wb_clk_i), .Q(idat_onchip[11]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_12_ ( .D(cxrom_data_out[12]), .CK(
-        wb_clk_i), .Q(idat_onchip[12]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_13_ ( .D(cxrom_data_out[13]), .CK(
-        wb_clk_i), .Q(idat_onchip[13]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_14_ ( .D(cxrom_data_out[14]), .CK(
-        wb_clk_i), .Q(idat_onchip[14]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_15_ ( .D(cxrom_data_out[15]), .CK(
-        wb_clk_i), .Q(idat_onchip[15]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_16_ ( .D(cxrom_data_out[16]), .CK(
-        wb_clk_i), .Q(idat_onchip[16]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_17_ ( .D(cxrom_data_out[17]), .CK(
-        wb_clk_i), .Q(idat_onchip[17]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_18_ ( .D(cxrom_data_out[18]), .CK(
-        wb_clk_i), .Q(idat_onchip[18]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_19_ ( .D(cxrom_data_out[19]), .CK(
-        wb_clk_i), .Q(idat_onchip[19]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_20_ ( .D(cxrom_data_out[20]), .CK(
-        wb_clk_i), .Q(idat_onchip[20]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_21_ ( .D(cxrom_data_out[21]), .CK(
-        wb_clk_i), .Q(idat_onchip[21]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_22_ ( .D(cxrom_data_out[22]), .CK(
-        wb_clk_i), .Q(idat_onchip[22]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_23_ ( .D(cxrom_data_out[23]), .CK(
-        wb_clk_i), .Q(idat_onchip[23]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_24_ ( .D(cxrom_data_out[24]), .CK(
-        wb_clk_i), .Q(idat_onchip[24]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_25_ ( .D(cxrom_data_out[25]), .CK(
-        wb_clk_i), .Q(idat_onchip[25]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_26_ ( .D(cxrom_data_out[26]), .CK(
-        wb_clk_i), .Q(idat_onchip[26]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_27_ ( .D(cxrom_data_out[27]), .CK(
-        wb_clk_i), .Q(idat_onchip[27]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_28_ ( .D(cxrom_data_out[28]), .CK(
-        wb_clk_i), .Q(idat_onchip[28]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_29_ ( .D(cxrom_data_out[29]), .CK(
-        wb_clk_i), .Q(idat_onchip[29]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_30_ ( .D(cxrom_data_out[30]), .CK(
-        wb_clk_i), .Q(idat_onchip[30]) );
-  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_31_ ( .D(cxrom_data_out[31]), .CK(
-        wb_clk_i), .Q(idat_onchip[31]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_0_ ( .D(oc8051_rom1_cxrom_data_out[0]), 
+        .CK(wb_clk_i), .Q(idat_onchip[0]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_1_ ( .D(oc8051_rom1_cxrom_data_out[1]), 
+        .CK(wb_clk_i), .Q(idat_onchip[1]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_2_ ( .D(oc8051_rom1_cxrom_data_out[2]), 
+        .CK(wb_clk_i), .Q(idat_onchip[2]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_3_ ( .D(oc8051_rom1_cxrom_data_out[3]), 
+        .CK(wb_clk_i), .Q(idat_onchip[3]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_4_ ( .D(oc8051_rom1_cxrom_data_out[4]), 
+        .CK(wb_clk_i), .Q(idat_onchip[4]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_5_ ( .D(oc8051_rom1_cxrom_data_out[5]), 
+        .CK(wb_clk_i), .Q(idat_onchip[5]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_6_ ( .D(oc8051_rom1_cxrom_data_out[6]), 
+        .CK(wb_clk_i), .Q(idat_onchip[6]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_7_ ( .D(oc8051_rom1_cxrom_data_out[7]), 
+        .CK(wb_clk_i), .Q(idat_onchip[7]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_8_ ( .D(oc8051_rom1_cxrom_data_out[8]), 
+        .CK(wb_clk_i), .Q(idat_onchip[8]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_9_ ( .D(oc8051_rom1_cxrom_data_out[9]), 
+        .CK(wb_clk_i), .Q(idat_onchip[9]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_10_ ( .D(
+        oc8051_rom1_cxrom_data_out[10]), .CK(wb_clk_i), .Q(idat_onchip[10]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_11_ ( .D(
+        oc8051_rom1_cxrom_data_out[11]), .CK(wb_clk_i), .Q(idat_onchip[11]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_12_ ( .D(
+        oc8051_rom1_cxrom_data_out[12]), .CK(wb_clk_i), .Q(idat_onchip[12]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_13_ ( .D(
+        oc8051_rom1_cxrom_data_out[13]), .CK(wb_clk_i), .Q(idat_onchip[13]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_14_ ( .D(
+        oc8051_rom1_cxrom_data_out[14]), .CK(wb_clk_i), .Q(idat_onchip[14]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_15_ ( .D(
+        oc8051_rom1_cxrom_data_out[15]), .CK(wb_clk_i), .Q(idat_onchip[15]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_16_ ( .D(
+        oc8051_rom1_cxrom_data_out[16]), .CK(wb_clk_i), .Q(idat_onchip[16]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_17_ ( .D(
+        oc8051_rom1_cxrom_data_out[17]), .CK(wb_clk_i), .Q(idat_onchip[17]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_18_ ( .D(
+        oc8051_rom1_cxrom_data_out[18]), .CK(wb_clk_i), .Q(idat_onchip[18]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_19_ ( .D(
+        oc8051_rom1_cxrom_data_out[19]), .CK(wb_clk_i), .Q(idat_onchip[19]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_20_ ( .D(
+        oc8051_rom1_cxrom_data_out[20]), .CK(wb_clk_i), .Q(idat_onchip[20]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_21_ ( .D(
+        oc8051_rom1_cxrom_data_out[21]), .CK(wb_clk_i), .Q(idat_onchip[21]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_22_ ( .D(
+        oc8051_rom1_cxrom_data_out[22]), .CK(wb_clk_i), .Q(idat_onchip[22]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_23_ ( .D(
+        oc8051_rom1_cxrom_data_out[23]), .CK(wb_clk_i), .Q(idat_onchip[23]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_24_ ( .D(
+        oc8051_rom1_cxrom_data_out[24]), .CK(wb_clk_i), .Q(idat_onchip[24]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_25_ ( .D(
+        oc8051_rom1_cxrom_data_out[25]), .CK(wb_clk_i), .Q(idat_onchip[25]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_26_ ( .D(
+        oc8051_rom1_cxrom_data_out[26]), .CK(wb_clk_i), .Q(idat_onchip[26]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_27_ ( .D(
+        oc8051_rom1_cxrom_data_out[27]), .CK(wb_clk_i), .Q(idat_onchip[27]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_28_ ( .D(
+        oc8051_rom1_cxrom_data_out[28]), .CK(wb_clk_i), .Q(idat_onchip[28]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_29_ ( .D(
+        oc8051_rom1_cxrom_data_out[29]), .CK(wb_clk_i), .Q(idat_onchip[29]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_30_ ( .D(
+        oc8051_rom1_cxrom_data_out[30]), .CK(wb_clk_i), .Q(idat_onchip[30]) );
+  DFFQ_X1M_A12TS oc8051_rom1_data_o_reg_31_ ( .D(
+        oc8051_rom1_cxrom_data_out[31]), .CK(wb_clk_i), .Q(idat_onchip[31]) );
+  oc8051_cxrom oc8051_rom1_oc8051_cxrom1 ( .clk(wb_clk_i), .rst(wb_rst_i), 
+        .cxrom_addr(iadr_o), .cxrom_data_out(oc8051_rom1_cxrom_data_out) );
   OAI21_X0P5M_A12TS oc8051_cy_select1_u4 ( .A0(cy_sel[0]), .A1(bit_out), .B0(
         cy_sel[1]), .Y(oc8051_cy_select1_n1) );
   AO1B2_X0P5M_A12TS oc8051_cy_select1_u3 ( .B0(cy_sel[0]), .B1(cy), .A0N(
@@ -38591,2341 +38591,2335 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_indi_addr1_buff_reg_3__7_ ( .D(oc8051_indi_addr1_n52), .CK(wb_clk_i), .R(wb_rst_i), .Q(oc8051_indi_addr1_buff_3__7_) );
   DFFRPQ_X1M_A12TS oc8051_indi_addr1_wr_bit_r_reg ( .D(bit_addr_o), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_indi_addr1_wr_bit_r) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u870 ( .A(
-        oc8051_memory_interface1_op1_5_), .Y(oc8051_memory_interface1_n759) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u869 ( .A(
-        oc8051_memory_interface1_imem_wait), .Y(oc8051_memory_interface1_n173)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u868 ( .A(
-        oc8051_memory_interface1_pc_wr_r2), .Y(oc8051_memory_interface1_n200)
-         );
   INV_X0P5B_A12TS oc8051_memory_interface1_u867 ( .A(
-        oc8051_memory_interface1_dmem_wait), .Y(oc8051_memory_interface1_n175)
+        oc8051_memory_interface1_op1_5_), .Y(oc8051_memory_interface1_n756) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u866 ( .A(
+        oc8051_memory_interface1_imem_wait), .Y(oc8051_memory_interface1_n190)
          );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u866 ( .A(
-        oc8051_memory_interface1_n173), .B(oc8051_memory_interface1_n200), .C(
-        oc8051_memory_interface1_n175), .Y(mem_wait) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u865 ( .A(rd), .Y(
-        oc8051_memory_interface1_n190) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u865 ( .A(
+        oc8051_memory_interface1_pc_wr_r2), .Y(oc8051_memory_interface1_n217)
+         );
   INV_X0P5B_A12TS oc8051_memory_interface1_u864 ( .A(
-        oc8051_memory_interface1_int_ack_t), .Y(oc8051_memory_interface1_n189)
+        oc8051_memory_interface1_dmem_wait), .Y(oc8051_memory_interface1_n192)
          );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u863 ( .A(ea_int), .B(ea_in), .Y(
-        oc8051_memory_interface1_n167) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u862 ( .A(
-        oc8051_memory_interface1_n167), .Y(oc8051_memory_interface1_n230) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u861 ( .A(
-        oc8051_memory_interface1_n230), .B(iack_i), .Y(
-        oc8051_memory_interface1_n171) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u860 ( .A(
-        oc8051_memory_interface1_n189), .B(oc8051_memory_interface1_n171), .Y(
-        oc8051_memory_interface1_n556) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u859 ( .A(
-        oc8051_memory_interface1_n190), .B(oc8051_memory_interface1_n556), .Y(
-        oc8051_memory_interface1_n723) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u858 ( .A(
-        oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n721) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u857 ( .A(
-        oc8051_memory_interface1_n759), .B(mem_wait), .C(
-        oc8051_memory_interface1_n721), .Y(oc8051_memory_interface1_n756) );
-  OR3_X0P5M_A12TS oc8051_memory_interface1_u856 ( .A(
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u863 ( .A(
+        oc8051_memory_interface1_n190), .B(oc8051_memory_interface1_n217), .C(
+        oc8051_memory_interface1_n192), .Y(mem_wait) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u862 ( .A(rd), .Y(
+        oc8051_memory_interface1_n207) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u861 ( .A(
+        oc8051_memory_interface1_int_ack_t), .Y(oc8051_memory_interface1_n206)
+         );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u860 ( .A(ea_int), .B(ea_in), .Y(
+        oc8051_memory_interface1_n184) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u859 ( .A(
+        oc8051_memory_interface1_n184), .Y(oc8051_memory_interface1_n247) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u858 ( .A(
+        oc8051_memory_interface1_n247), .B(iack_i), .Y(
+        oc8051_memory_interface1_n188) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u857 ( .A(
+        oc8051_memory_interface1_n206), .B(oc8051_memory_interface1_n188), .Y(
+        oc8051_memory_interface1_n572) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u856 ( .A(
+        oc8051_memory_interface1_n207), .B(oc8051_memory_interface1_n572), .Y(
+        oc8051_memory_interface1_n737) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u855 ( .A(
+        oc8051_memory_interface1_n737), .Y(oc8051_memory_interface1_n735) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u854 ( .A(
+        oc8051_memory_interface1_n756), .B(mem_wait), .C(
+        oc8051_memory_interface1_n735), .Y(oc8051_memory_interface1_n753) );
+  OR3_X0P5M_A12TS oc8051_memory_interface1_u853 ( .A(
         oc8051_memory_interface1_op1_6_), .B(oc8051_memory_interface1_op1_7_), 
-        .C(oc8051_memory_interface1_op1_3_), .Y(oc8051_memory_interface1_n758)
+        .C(oc8051_memory_interface1_op1_3_), .Y(oc8051_memory_interface1_n755)
          );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u855 ( .A(
-        oc8051_memory_interface1_n758), .B(oc8051_memory_interface1_op1_2_), 
-        .C(oc8051_memory_interface1_op1_0_), .Y(oc8051_memory_interface1_n757)
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u852 ( .A(
+        oc8051_memory_interface1_n755), .B(oc8051_memory_interface1_op1_2_), 
+        .C(oc8051_memory_interface1_op1_0_), .Y(oc8051_memory_interface1_n754)
          );
-  AND4_X0P5M_A12TS oc8051_memory_interface1_u854 ( .A(
+  AND4_X0P5M_A12TS oc8051_memory_interface1_u851 ( .A(
         oc8051_memory_interface1_op1_4_), .B(oc8051_memory_interface1_op1_1_), 
-        .C(oc8051_memory_interface1_n756), .D(oc8051_memory_interface1_n757), 
+        .C(oc8051_memory_interface1_n753), .D(oc8051_memory_interface1_n754), 
         .Y(oc8051_memory_interface1_n2090) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u853 ( .AN(
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u850 ( .AN(
         oc8051_memory_interface1_int_ack_buff), .B(
         oc8051_memory_interface1_int_ack_t), .Y(oc8051_memory_interface1_n3810) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u852 ( .A(pc_wr_sel[1]), .Y(
-        oc8051_memory_interface1_n706) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u851 ( .A(pc_wr_sel[2]), .Y(
-        oc8051_memory_interface1_n626) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u850 ( .A(
-        oc8051_memory_interface1_n706), .B(oc8051_memory_interface1_n626), .C(
-        pc_wr_sel[0]), .Y(oc8051_memory_interface1_n643) );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u849 ( .A(
-        oc8051_memory_interface1_n643), .B(n_3_net_), .Y(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u849 ( .A(n_3_net_), .Y(
+        oc8051_memory_interface1_n590) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u848 ( .A(pc_wr_sel[1]), .Y(
+        oc8051_memory_interface1_n720) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u847 ( .A(pc_wr_sel[2]), .Y(
+        oc8051_memory_interface1_n639) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u846 ( .A(
+        oc8051_memory_interface1_n720), .B(oc8051_memory_interface1_n639), .C(
+        pc_wr_sel[0]), .Y(oc8051_memory_interface1_n662) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u845 ( .A(
+        oc8051_memory_interface1_n662), .Y(oc8051_memory_interface1_n655) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u844 ( .A(
+        oc8051_memory_interface1_n590), .B(oc8051_memory_interface1_n655), .Y(
         oc8051_memory_interface1_n5470) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u848 ( .A(ram_rd_sel[0]), .Y(
-        oc8051_memory_interface1_n127) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u847 ( .A(
-        oc8051_memory_interface1_n127), .B(ram_rd_sel[2]), .Y(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u843 ( .A(ram_rd_sel[0]), .Y(
+        oc8051_memory_interface1_n145) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u842 ( .A(
+        oc8051_memory_interface1_n145), .B(ram_rd_sel[2]), .Y(
         oc8051_memory_interface1_n910) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u846 ( .A(ram_wr_sel[1]), .Y(
-        oc8051_memory_interface1_n87) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u845 ( .A(
-        oc8051_memory_interface1_n87), .B(ram_wr_sel[2]), .Y(wr_ind) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u844 ( .AN(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u841 ( .A(ram_wr_sel[1]), .Y(
+        oc8051_memory_interface1_n105) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u840 ( .A(
+        oc8051_memory_interface1_n105), .B(ram_wr_sel[2]), .Y(wr_ind) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u839 ( .AN(
         oc8051_memory_interface1_rd_addr_r), .B(
-        oc8051_memory_interface1_rd_ind), .Y(oc8051_memory_interface1_n739) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u843 ( .A(bit_data), .B(sfr_bit), 
-        .S0(oc8051_memory_interface1_n739), .Y(bit_out) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u842 ( .A(
-        oc8051_memory_interface1_pc_out_0_), .Y(oc8051_memory_interface1_n241)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u841 ( .A(
-        oc8051_memory_interface1_iadr_t_0_), .Y(oc8051_memory_interface1_n736)
-         );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u840 ( .A(
-        oc8051_memory_interface1_n241), .B(oc8051_memory_interface1_n736), 
-        .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[0]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u839 ( .A(
-        oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n294) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u838 ( .A(
-        oc8051_memory_interface1_pc_buf_9_), .Y(oc8051_memory_interface1_n289)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u837 ( .A(
-        oc8051_memory_interface1_pc_buf_8_), .Y(oc8051_memory_interface1_n284)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u836 ( .A(
-        oc8051_memory_interface1_pc_buf_2_), .Y(oc8051_memory_interface1_n251)
-         );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u835 ( .A0(
+        oc8051_memory_interface1_rd_ind), .Y(oc8051_memory_interface1_n752) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u838 ( .A(bit_data), .B(sfr_bit), 
+        .S0(oc8051_memory_interface1_n752), .Y(bit_out) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u837 ( .A(ram_data[0]), .B(
+        sfr_out[0]), .S0(oc8051_memory_interface1_n752), .Y(ram_out[0]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u836 ( .A(ram_data[1]), .B(
+        sfr_out[1]), .S0(oc8051_memory_interface1_n752), .Y(ram_out[1]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u835 ( .A(ram_data[2]), .B(
+        sfr_out[2]), .S0(oc8051_memory_interface1_n752), .Y(ram_out[2]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u834 ( .A(ram_data[3]), .B(
+        sfr_out[3]), .S0(oc8051_memory_interface1_n752), .Y(ram_out[3]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u833 ( .A(ram_data[4]), .B(
+        sfr_out[4]), .S0(oc8051_memory_interface1_n752), .Y(ram_out[4]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u832 ( .A(ram_data[5]), .B(
+        sfr_out[5]), .S0(oc8051_memory_interface1_n752), .Y(ram_out[5]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u831 ( .A(ram_data[6]), .B(
+        sfr_out[6]), .S0(oc8051_memory_interface1_n752), .Y(ram_out[6]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u830 ( .A(ram_data[7]), .B(
+        sfr_out[7]), .S0(oc8051_memory_interface1_n752), .Y(ram_out[7]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u829 ( .A(
+        oc8051_memory_interface1_istb_t), .Y(oc8051_memory_interface1_n74) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u828 ( .A(
+        oc8051_memory_interface1_n74), .B(oc8051_memory_interface1_n247), .Y(
+        oc8051_memory_interface1_n176) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u827 ( .A(
+        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n750) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u826 ( .A(istb), .B(
+        oc8051_memory_interface1_n184), .Y(oc8051_memory_interface1_n751) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u825 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n750), .B0(oc8051_memory_interface1_n751), 
+        .C0(wbd_cyc_o), .Y(oc8051_memory_interface1_istb_o) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u824 ( .A0(
         oc8051_memory_interface1_op_pos_1_), .A1(
         oc8051_memory_interface1_op_pos_0_), .B0(
         oc8051_memory_interface1_op_pos_2_), .C0(rd), .Y(
-        oc8051_memory_interface1_n755) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u834 ( .A(
-        oc8051_memory_interface1_n200), .B(oc8051_memory_interface1_n755), .Y(
-        oc8051_memory_interface1_n197) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u833 ( .A(
-        oc8051_memory_interface1_n197), .Y(oc8051_memory_interface1_n203) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u832 ( .A(
-        oc8051_memory_interface1_pc_buf_3_), .Y(oc8051_memory_interface1_n256)
-         );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u831 ( .A(
-        oc8051_memory_interface1_n251), .B(oc8051_memory_interface1_n203), .C(
-        oc8051_memory_interface1_n256), .Y(oc8051_memory_interface1_n745) );
-  AND3_X0P5M_A12TS oc8051_memory_interface1_u830 ( .A(
-        oc8051_memory_interface1_pc_buf_5_), .B(
-        oc8051_memory_interface1_pc_buf_4_), .C(oc8051_memory_interface1_n745), 
-        .Y(oc8051_memory_interface1_n743) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u829 ( .A(
-        oc8051_memory_interface1_pc_buf_7_), .B(
-        oc8051_memory_interface1_pc_buf_6_), .C(oc8051_memory_interface1_n743), 
-        .Y(oc8051_memory_interface1_n741) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u828 ( .A(
-        oc8051_memory_interface1_n289), .B(oc8051_memory_interface1_n284), .C(
-        oc8051_memory_interface1_n741), .Y(oc8051_memory_interface1_n752) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u827 ( .A(
-        oc8051_memory_interface1_n294), .B(oc8051_memory_interface1_n752), .Y(
-        oc8051_memory_interface1_n658) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u826 ( .A(
-        oc8051_memory_interface1_istb_t), .Y(oc8051_memory_interface1_n159) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u825 ( .A(
-        oc8051_memory_interface1_iadr_t_10_), .B(oc8051_memory_interface1_n658), .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[10]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u824 ( .A(
-        oc8051_memory_interface1_n752), .B(oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n754) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u823 ( .A(
-        oc8051_memory_interface1_n754), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n668) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u822 ( .A(
-        oc8051_memory_interface1_iadr_t_11_), .Y(oc8051_memory_interface1_n753) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u821 ( .A(
-        oc8051_memory_interface1_n668), .B(oc8051_memory_interface1_n753), 
-        .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[11]) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u820 ( .A(
-        oc8051_memory_interface1_pc_buf_11_), .B(
-        oc8051_memory_interface1_pc_buf_10_), .C(oc8051_memory_interface1_n752), .Y(oc8051_memory_interface1_n749) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u819 ( .A(
-        oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n304) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u818 ( .A(
-        oc8051_memory_interface1_n749), .B(oc8051_memory_interface1_n304), .Y(
-        oc8051_memory_interface1_n685) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u817 ( .A(
-        oc8051_memory_interface1_iadr_t_12_), .B(oc8051_memory_interface1_n685), .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[12]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u816 ( .A(
-        oc8051_memory_interface1_pc_buf_13_), .Y(oc8051_memory_interface1_n309) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u815 ( .A(
-        oc8051_memory_interface1_n304), .B(oc8051_memory_interface1_n749), .Y(
-        oc8051_memory_interface1_n751) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u814 ( .A(
-        oc8051_memory_interface1_n309), .B(oc8051_memory_interface1_n751), .Y(
-        oc8051_memory_interface1_n686) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u813 ( .A(
-        oc8051_memory_interface1_iadr_t_13_), .Y(oc8051_memory_interface1_n750) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u812 ( .A(
-        oc8051_memory_interface1_n686), .B(oc8051_memory_interface1_n750), 
-        .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[13]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u811 ( .A(
-        oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n315) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u810 ( .A(
-        oc8051_memory_interface1_n309), .B(oc8051_memory_interface1_n304), .C(
-        oc8051_memory_interface1_n749), .Y(oc8051_memory_interface1_n748) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u809 ( .A(
-        oc8051_memory_interface1_n315), .B(oc8051_memory_interface1_n748), .Y(
-        oc8051_memory_interface1_n701) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u808 ( .A(
-        oc8051_memory_interface1_iadr_t_14_), .B(oc8051_memory_interface1_n701), .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[14]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u807 ( .A(
-        oc8051_memory_interface1_n748), .B(oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n747) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u806 ( .A(
-        oc8051_memory_interface1_n747), .B(oc8051_memory_interface1_pc_buf_15_), .Y(oc8051_memory_interface1_n714) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u805 ( .A(
-        oc8051_memory_interface1_iadr_t_15_), .B(oc8051_memory_interface1_n714), .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[15]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u804 ( .A(
-        oc8051_memory_interface1_pc_out_1_), .Y(oc8051_memory_interface1_n245)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u803 ( .A(
-        oc8051_memory_interface1_iadr_t_1_), .Y(oc8051_memory_interface1_n735)
-         );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u802 ( .A(
-        oc8051_memory_interface1_n245), .B(oc8051_memory_interface1_n735), 
-        .S0(oc8051_memory_interface1_istb_t), .Y(cxrom_addr[1]) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u801 ( .A(
-        oc8051_memory_interface1_n197), .B(oc8051_memory_interface1_pc_buf_2_), 
-        .Y(oc8051_memory_interface1_n581) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u800 ( .A(
-        oc8051_memory_interface1_iadr_t_2_), .B(oc8051_memory_interface1_n581), 
-        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[2]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u799 ( .A(
-        oc8051_memory_interface1_pc_buf_2_), .B(oc8051_memory_interface1_n197), 
-        .Y(oc8051_memory_interface1_n746) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u798 ( .A(
-        oc8051_memory_interface1_n746), .B(oc8051_memory_interface1_pc_buf_3_), 
-        .Y(oc8051_memory_interface1_n588) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u797 ( .A(
-        oc8051_memory_interface1_iadr_t_3_), .B(oc8051_memory_interface1_n588), 
-        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[3]) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u796 ( .A(
-        oc8051_memory_interface1_n745), .B(oc8051_memory_interface1_pc_buf_4_), 
-        .Y(oc8051_memory_interface1_n594) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u795 ( .A(
-        oc8051_memory_interface1_iadr_t_4_), .B(oc8051_memory_interface1_n594), 
-        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[4]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u794 ( .A(
-        oc8051_memory_interface1_n745), .B(oc8051_memory_interface1_pc_buf_4_), 
-        .Y(oc8051_memory_interface1_n744) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u793 ( .A(
-        oc8051_memory_interface1_n744), .B(oc8051_memory_interface1_pc_buf_5_), 
-        .Y(oc8051_memory_interface1_n601) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u792 ( .A(
-        oc8051_memory_interface1_iadr_t_5_), .B(oc8051_memory_interface1_n601), 
-        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[5]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u791 ( .A(
-        oc8051_memory_interface1_pc_buf_6_), .Y(oc8051_memory_interface1_n273)
-         );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u790 ( .A(
-        oc8051_memory_interface1_n273), .B(oc8051_memory_interface1_n743), .Y(
-        oc8051_memory_interface1_n607) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u789 ( .A(
-        oc8051_memory_interface1_iadr_t_6_), .B(oc8051_memory_interface1_n607), 
-        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[6]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u788 ( .A(
-        oc8051_memory_interface1_n743), .B(oc8051_memory_interface1_pc_buf_6_), 
-        .Y(oc8051_memory_interface1_n742) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u787 ( .A(
-        oc8051_memory_interface1_n742), .B(oc8051_memory_interface1_pc_buf_7_), 
-        .Y(oc8051_memory_interface1_n614) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u786 ( .A(
-        oc8051_memory_interface1_iadr_t_7_), .B(oc8051_memory_interface1_n614), 
-        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[7]) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u785 ( .A(
-        oc8051_memory_interface1_n741), .B(oc8051_memory_interface1_n284), .Y(
-        oc8051_memory_interface1_n638) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u784 ( .A(
-        oc8051_memory_interface1_iadr_t_8_), .B(oc8051_memory_interface1_n638), 
-        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[8]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u783 ( .A(
-        oc8051_memory_interface1_n284), .B(oc8051_memory_interface1_n741), .Y(
-        oc8051_memory_interface1_n740) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u782 ( .A(
-        oc8051_memory_interface1_n289), .B(oc8051_memory_interface1_n740), .Y(
-        oc8051_memory_interface1_n645) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u781 ( .A(
-        oc8051_memory_interface1_iadr_t_9_), .B(oc8051_memory_interface1_n645), 
-        .S0(oc8051_memory_interface1_n159), .Y(cxrom_addr[9]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u780 ( .A(ram_data[0]), .B(
-        sfr_out[0]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[0]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u779 ( .A(ram_data[1]), .B(
-        sfr_out[1]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[1]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u778 ( .A(ram_data[2]), .B(
-        sfr_out[2]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[2]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u777 ( .A(ram_data[3]), .B(
-        sfr_out[3]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[3]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u776 ( .A(ram_data[4]), .B(
-        sfr_out[4]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[4]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u775 ( .A(ram_data[5]), .B(
-        sfr_out[5]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[5]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u774 ( .A(ram_data[6]), .B(
-        sfr_out[6]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[6]) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u773 ( .A(ram_data[7]), .B(
-        sfr_out[7]), .S0(oc8051_memory_interface1_n739), .Y(ram_out[7]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u772 ( .A(
-        oc8051_memory_interface1_n159), .B(oc8051_memory_interface1_n230), .Y(
-        oc8051_memory_interface1_n158) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u771 ( .A(
-        oc8051_memory_interface1_n158), .Y(oc8051_memory_interface1_n737) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u770 ( .A(istb), .B(
-        oc8051_memory_interface1_n167), .Y(oc8051_memory_interface1_n738) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u769 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n737), .B0(oc8051_memory_interface1_n738), 
-        .C0(wbd_cyc_o), .Y(oc8051_memory_interface1_istb_o) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u768 ( .AN(
+        oc8051_memory_interface1_n749) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u823 ( .A(
+        oc8051_memory_interface1_n217), .B(oc8051_memory_interface1_n749), .Y(
+        oc8051_memory_interface1_n214) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u822 ( .AN(
         oc8051_memory_interface1_going_out_of_rst), .B(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n352) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u767 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n352) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u821 ( .A(
         oc8051_memory_interface1_ddat_ir_0_), .B(wbd_dat_i[0]), .S0(wbd_ack_i), 
         .Y(oc8051_memory_interface1_n377) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u766 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u820 ( .A(
         oc8051_memory_interface1_ddat_ir_1_), .B(wbd_dat_i[1]), .S0(wbd_ack_i), 
         .Y(oc8051_memory_interface1_n378) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u765 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u819 ( .A(
         oc8051_memory_interface1_ddat_ir_2_), .B(wbd_dat_i[2]), .S0(wbd_ack_i), 
         .Y(oc8051_memory_interface1_n379) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u764 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u818 ( .A(
         oc8051_memory_interface1_ddat_ir_3_), .B(wbd_dat_i[3]), .S0(wbd_ack_i), 
         .Y(oc8051_memory_interface1_n380) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u763 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u817 ( .A(
         oc8051_memory_interface1_ddat_ir_4_), .B(wbd_dat_i[4]), .S0(wbd_ack_i), 
         .Y(oc8051_memory_interface1_n381) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u762 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u816 ( .A(
         oc8051_memory_interface1_ddat_ir_5_), .B(wbd_dat_i[5]), .S0(wbd_ack_i), 
         .Y(oc8051_memory_interface1_n382) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u761 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u815 ( .A(
         oc8051_memory_interface1_ddat_ir_6_), .B(wbd_dat_i[6]), .S0(wbd_ack_i), 
         .Y(oc8051_memory_interface1_n383) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u760 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u814 ( .A(
         oc8051_memory_interface1_ddat_ir_7_), .B(wbd_dat_i[7]), .S0(wbd_ack_i), 
         .Y(oc8051_memory_interface1_n384) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u759 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u813 ( .A(
         oc8051_memory_interface1_int_vec_buff_0_), .B(int_src[0]), .S0(intr), 
         .Y(oc8051_memory_interface1_n385) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u758 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u812 ( .A(
         oc8051_memory_interface1_int_vec_buff_1_), .B(int_src[1]), .S0(intr), 
         .Y(oc8051_memory_interface1_n386) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u757 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u811 ( .A(
         oc8051_memory_interface1_int_vec_buff_2_), .B(iack_i), .S0(intr), .Y(
         oc8051_memory_interface1_n387) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u756 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u810 ( .A(
         oc8051_memory_interface1_int_vec_buff_3_), .B(int_src[3]), .S0(intr), 
         .Y(oc8051_memory_interface1_n388) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u755 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u809 ( .A(
         oc8051_memory_interface1_int_vec_buff_4_), .B(int_src[4]), .S0(intr), 
         .Y(oc8051_memory_interface1_n389) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u754 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u808 ( .A(
         oc8051_memory_interface1_int_vec_buff_5_), .B(int_src[5]), .S0(intr), 
         .Y(oc8051_memory_interface1_n390) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u753 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u807 ( .A(
         oc8051_memory_interface1_int_vec_buff_6_), .B(iack_i), .S0(intr), .Y(
         oc8051_memory_interface1_n391) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u752 ( .A(
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u806 ( .A(
         oc8051_memory_interface1_int_vec_buff_7_), .B(iack_i), .S0(intr), .Y(
         oc8051_memory_interface1_n392) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u751 ( .A(des_acc[0]), .Y(
-        oc8051_memory_interface1_n642) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u750 ( .A(mem_act[0]), .Y(
-        oc8051_memory_interface1_n187) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u749 ( .A(mem_act[1]), .Y(
-        oc8051_memory_interface1_n186) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u748 ( .A(
-        oc8051_memory_interface1_n642), .B(oc8051_memory_interface1_n736), 
-        .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n402)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u805 ( .A(mem_act[0]), .Y(
+        oc8051_memory_interface1_n204) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u804 ( .A(mem_act[1]), .Y(
+        oc8051_memory_interface1_n203) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u803 ( .A(des_acc[0]), .B(
+        oc8051_memory_interface1_iadr_t_0_), .S0(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n402) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u802 ( .A(des_acc[1]), .Y(
+        oc8051_memory_interface1_n661) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u801 ( .A(
+        oc8051_memory_interface1_iadr_t_1_), .Y(oc8051_memory_interface1_n84)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u747 ( .A(des_acc[1]), .Y(
-        oc8051_memory_interface1_n648) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u746 ( .A(
-        oc8051_memory_interface1_n648), .B(oc8051_memory_interface1_n735), 
-        .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n403)
-         );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u745 ( .A(des_acc[2]), .B(
-        oc8051_memory_interface1_iadr_t_2_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n404) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u744 ( .A(des_acc[3]), .B(
-        oc8051_memory_interface1_iadr_t_3_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n405) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u743 ( .A(des_acc[4]), .B(
-        oc8051_memory_interface1_iadr_t_4_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n406) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u742 ( .A(des_acc[5]), .B(
-        oc8051_memory_interface1_iadr_t_5_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n407) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u741 ( .A(des_acc[6]), .B(
-        oc8051_memory_interface1_iadr_t_6_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n408) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u740 ( .A(des_acc[7]), .B(
-        oc8051_memory_interface1_iadr_t_7_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n409) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u739 ( .A(des2[0]), .B(
-        oc8051_memory_interface1_iadr_t_8_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n410) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u738 ( .A(des2[1]), .B(
-        oc8051_memory_interface1_iadr_t_9_), .S0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n411) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u737 ( .A(des2[2]), .B(
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u800 ( .A(
+        oc8051_memory_interface1_n661), .B(oc8051_memory_interface1_n84), .S0(
+        oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n403) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u799 ( .A(des_acc[2]), .B(
+        oc8051_memory_interface1_iadr_t_2_), .S0(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n404) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u798 ( .A(des_acc[3]), .B(
+        oc8051_memory_interface1_iadr_t_3_), .S0(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n405) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u797 ( .A(des_acc[4]), .B(
+        oc8051_memory_interface1_iadr_t_4_), .S0(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n406) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u796 ( .A(des_acc[5]), .B(
+        oc8051_memory_interface1_iadr_t_5_), .S0(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n407) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u795 ( .A(des_acc[6]), .B(
+        oc8051_memory_interface1_iadr_t_6_), .S0(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n408) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u794 ( .A(des_acc[7]), .B(
+        oc8051_memory_interface1_iadr_t_7_), .S0(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n409) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u793 ( .A(des2[0]), .B(
+        oc8051_memory_interface1_iadr_t_8_), .S0(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n410) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u792 ( .A(des2[1]), .B(
+        oc8051_memory_interface1_iadr_t_9_), .S0(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n411) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u791 ( .A(des2[2]), .B(
         oc8051_memory_interface1_iadr_t_10_), .S0(
-        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n412) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u736 ( .A(des2[3]), .B(
+        oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n412) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u790 ( .A(des2[3]), .B(
         oc8051_memory_interface1_iadr_t_11_), .S0(
-        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n413) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u735 ( .A(des2[4]), .B(
+        oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n413) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u789 ( .A(des2[4]), .B(
         oc8051_memory_interface1_iadr_t_12_), .S0(
-        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n414) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u734 ( .A(des2[5]), .B(
+        oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n414) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u788 ( .A(des2[5]), .B(
         oc8051_memory_interface1_iadr_t_13_), .S0(
-        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n415) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u733 ( .A(des2[6]), .B(
+        oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n415) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u787 ( .A(des2[6]), .B(
         oc8051_memory_interface1_iadr_t_14_), .S0(
-        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n416) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u732 ( .A(des2[7]), .B(
+        oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n416) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u786 ( .A(des2[7]), .B(
         oc8051_memory_interface1_iadr_t_15_), .S0(
-        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n417) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u731 ( .A(n_3_net_), .Y(
-        oc8051_memory_interface1_n574) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u730 ( .A(pc_wr_sel[1]), .B(
-        oc8051_memory_interface1_n626), .Y(oc8051_memory_interface1_n611) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u729 ( .A0(
+        oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n417) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u785 ( .A(pc_wr_sel[0]), .B(
+        oc8051_memory_interface1_n720), .C(pc_wr_sel[2]), .Y(
+        oc8051_memory_interface1_n638) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u784 ( .A(
+        oc8051_memory_interface1_n638), .B(oc8051_memory_interface1_n590), .Y(
+        oc8051_memory_interface1_n596) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u783 ( .A0(
         oc8051_memory_interface1_op2_buff[7]), .A1(
-        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[7]), 
-        .B1(oc8051_memory_interface1_n723), .Y(op2_n[7]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u728 ( .A(
-        oc8051_memory_interface1_n556), .B(rd), .Y(
-        oc8051_memory_interface1_n722) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u727 ( .A0(
-        oc8051_memory_interface1_op3[7]), .A1(oc8051_memory_interface1_n721), 
+        oc8051_memory_interface1_n207), .B0(oc8051_memory_interface1_op2[7]), 
+        .B1(oc8051_memory_interface1_n737), .Y(op2_n[7]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u782 ( .A(pc_wr_sel[1]), .B(
+        oc8051_memory_interface1_n639), .Y(oc8051_memory_interface1_n625) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u781 ( .A(
+        oc8051_memory_interface1_n572), .B(rd), .Y(
+        oc8051_memory_interface1_n736) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u780 ( .A0(
+        oc8051_memory_interface1_op3[7]), .A1(oc8051_memory_interface1_n735), 
         .B0(oc8051_memory_interface1_int_vec_buff_7_), .B1(
-        oc8051_memory_interface1_n722), .C0(rd), .C1(
+        oc8051_memory_interface1_n736), .C0(rd), .C1(
         oc8051_memory_interface1_op3_buff[7]), .Y(
+        oc8051_memory_interface1_n748) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u779 ( .A(
+        oc8051_memory_interface1_n748), .Y(op3_n[7]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u778 ( .A(op2_n[7]), .B(op3_n[7]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n732) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u777 ( .A(
+        oc8051_memory_interface1_n625), .B(oc8051_memory_interface1_n732), .Y(
+        oc8051_memory_interface1_n666) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u776 ( .A(
+        oc8051_memory_interface1_n666), .B(n_3_net_), .Y(
+        oc8051_memory_interface1_n648) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u775 ( .A(
+        oc8051_memory_interface1_n359), .Y(pc[14]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u774 ( .A(
+        oc8051_memory_interface1_n358), .Y(pc[8]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u773 ( .A(
+        oc8051_memory_interface1_n732), .B(pc[8]), .Y(
+        oc8051_memory_interface1_n729) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u772 ( .A0(
+        oc8051_memory_interface1_op2_buff[1]), .A1(
+        oc8051_memory_interface1_n207), .B0(oc8051_memory_interface1_op2[1]), 
+        .B1(oc8051_memory_interface1_n737), .Y(oc8051_memory_interface1_n587)
+         );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u771 ( .A0(
+        oc8051_memory_interface1_op3[1]), .A1(oc8051_memory_interface1_n735), 
+        .B0(oc8051_memory_interface1_int_vec_buff_1_), .B1(
+        oc8051_memory_interface1_n736), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[1]), .Y(
+        oc8051_memory_interface1_n162) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u770 ( .A(
+        oc8051_memory_interface1_n587), .B(oc8051_memory_interface1_n162), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n589) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u769 ( .A0(
+        oc8051_memory_interface1_op2_buff[0]), .A1(
+        oc8051_memory_interface1_n207), .B0(oc8051_memory_interface1_op2[0]), 
+        .B1(oc8051_memory_interface1_n737), .Y(oc8051_memory_interface1_n159)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u768 ( .A(
+        oc8051_memory_interface1_n159), .Y(op2_n[0]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u767 ( .A0(
+        oc8051_memory_interface1_op3[0]), .A1(oc8051_memory_interface1_n735), 
+        .B0(oc8051_memory_interface1_int_vec_buff_0_), .B1(
+        oc8051_memory_interface1_n736), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[0]), .Y(
+        oc8051_memory_interface1_n577) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u766 ( .A(
+        oc8051_memory_interface1_n577), .Y(op3_n[0]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u765 ( .A(op2_n[0]), .B(op3_n[0]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n584) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u764 ( .A(pc[0]), .Y(
+        oc8051_memory_interface1_n255) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u763 ( .A(
+        oc8051_memory_interface1_n584), .B(oc8051_memory_interface1_n255), .Y(
+        oc8051_memory_interface1_n588) );
+  CGENI_X1M_A12TS oc8051_memory_interface1_u762 ( .A(
+        oc8051_memory_interface1_n589), .B(pc[1]), .CI(
+        oc8051_memory_interface1_n588), .CON(oc8051_memory_interface1_n597) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u761 ( .A0(
+        oc8051_memory_interface1_op2_buff[2]), .A1(
+        oc8051_memory_interface1_n207), .B0(oc8051_memory_interface1_op2[2]), 
+        .B1(oc8051_memory_interface1_n737), .Y(oc8051_memory_interface1_n153)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u760 ( .A(
+        oc8051_memory_interface1_n153), .Y(op2_n[2]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u759 ( .A0(
+        oc8051_memory_interface1_op3[2]), .A1(oc8051_memory_interface1_n735), 
+        .B0(oc8051_memory_interface1_int_vec_buff_2_), .B1(
+        oc8051_memory_interface1_n736), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[2]), .Y(
+        oc8051_memory_interface1_n747) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u758 ( .A(
+        oc8051_memory_interface1_n747), .Y(op3_n[2]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u757 ( .A(op2_n[2]), .B(op3_n[2]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n599) );
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u756 ( .A(
+        oc8051_memory_interface1_n597), .B(oc8051_memory_interface1_n599), .Y(
+        oc8051_memory_interface1_n746) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u755 ( .A(pc[2]), .Y(
+        oc8051_memory_interface1_n265) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u754 ( .A0(
+        oc8051_memory_interface1_n597), .A1(oc8051_memory_interface1_n599), 
+        .B0(oc8051_memory_interface1_n746), .B1(oc8051_memory_interface1_n265), 
+        .Y(oc8051_memory_interface1_n604) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u753 ( .A0(
+        oc8051_memory_interface1_op2_buff[3]), .A1(
+        oc8051_memory_interface1_n207), .B0(oc8051_memory_interface1_op2[3]), 
+        .B1(oc8051_memory_interface1_n737), .Y(oc8051_memory_interface1_n150)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u752 ( .A(
+        oc8051_memory_interface1_n150), .Y(op2_n[3]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u751 ( .A0(
+        oc8051_memory_interface1_op3[3]), .A1(oc8051_memory_interface1_n735), 
+        .B0(oc8051_memory_interface1_int_vec_buff_3_), .B1(
+        oc8051_memory_interface1_n736), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[3]), .Y(
+        oc8051_memory_interface1_n745) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u750 ( .A(
+        oc8051_memory_interface1_n745), .Y(op3_n[3]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u749 ( .A(op2_n[3]), .B(op3_n[3]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n744) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u748 ( .A(
+        oc8051_memory_interface1_n744), .Y(oc8051_memory_interface1_n605) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u747 ( .AN(
+        oc8051_memory_interface1_n604), .B(oc8051_memory_interface1_n744), .Y(
+        oc8051_memory_interface1_n743) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u746 ( .A0(
+        oc8051_memory_interface1_n604), .A1(oc8051_memory_interface1_n605), 
+        .B0(oc8051_memory_interface1_n743), .B1(pc[3]), .Y(
+        oc8051_memory_interface1_n610) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u745 ( .A0(
+        oc8051_memory_interface1_op2_buff[4]), .A1(
+        oc8051_memory_interface1_n207), .B0(oc8051_memory_interface1_op2[4]), 
+        .B1(oc8051_memory_interface1_n737), .Y(oc8051_memory_interface1_n146)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u744 ( .A(
+        oc8051_memory_interface1_n146), .Y(op2_n[4]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u743 ( .A0(
+        oc8051_memory_interface1_op3[4]), .A1(oc8051_memory_interface1_n735), 
+        .B0(oc8051_memory_interface1_int_vec_buff_4_), .B1(
+        oc8051_memory_interface1_n736), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[4]), .Y(
+        oc8051_memory_interface1_n742) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u742 ( .A(
+        oc8051_memory_interface1_n742), .Y(op3_n[4]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u741 ( .A(op2_n[4]), .B(op3_n[4]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n612) );
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u740 ( .A(
+        oc8051_memory_interface1_n610), .B(oc8051_memory_interface1_n612), .Y(
+        oc8051_memory_interface1_n741) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u739 ( .A(pc[4]), .Y(
+        oc8051_memory_interface1_n275) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u738 ( .A0(
+        oc8051_memory_interface1_n610), .A1(oc8051_memory_interface1_n612), 
+        .B0(oc8051_memory_interface1_n741), .B1(oc8051_memory_interface1_n275), 
+        .Y(oc8051_memory_interface1_n617) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u737 ( .A0(
+        oc8051_memory_interface1_op2_buff[5]), .A1(
+        oc8051_memory_interface1_n207), .B0(oc8051_memory_interface1_op2[5]), 
+        .B1(oc8051_memory_interface1_n737), .Y(oc8051_memory_interface1_n141)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u736 ( .A(
+        oc8051_memory_interface1_n141), .Y(op2_n[5]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u735 ( .A0(
+        oc8051_memory_interface1_op3[5]), .A1(oc8051_memory_interface1_n735), 
+        .B0(oc8051_memory_interface1_int_vec_buff_5_), .B1(
+        oc8051_memory_interface1_n736), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[5]), .Y(
+        oc8051_memory_interface1_n740) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u734 ( .A(
+        oc8051_memory_interface1_n740), .Y(op3_n[5]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u733 ( .A(op2_n[5]), .B(op3_n[5]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n739) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u732 ( .A(
+        oc8051_memory_interface1_n739), .Y(oc8051_memory_interface1_n618) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u731 ( .AN(
+        oc8051_memory_interface1_n617), .B(oc8051_memory_interface1_n739), .Y(
+        oc8051_memory_interface1_n738) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u730 ( .A0(
+        oc8051_memory_interface1_n617), .A1(oc8051_memory_interface1_n618), 
+        .B0(oc8051_memory_interface1_n738), .B1(pc[5]), .Y(
+        oc8051_memory_interface1_n623) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u729 ( .A0(
+        oc8051_memory_interface1_op2_buff[6]), .A1(
+        oc8051_memory_interface1_n207), .B0(oc8051_memory_interface1_op2[6]), 
+        .B1(oc8051_memory_interface1_n737), .Y(oc8051_memory_interface1_n135)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u728 ( .A(
+        oc8051_memory_interface1_n135), .Y(op2_n[6]) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u727 ( .A0(
+        oc8051_memory_interface1_op3[6]), .A1(oc8051_memory_interface1_n735), 
+        .B0(oc8051_memory_interface1_int_vec_buff_6_), .B1(
+        oc8051_memory_interface1_n736), .C0(rd), .C1(
+        oc8051_memory_interface1_op3_buff[6]), .Y(
         oc8051_memory_interface1_n734) );
   INV_X0P5B_A12TS oc8051_memory_interface1_u726 ( .A(
-        oc8051_memory_interface1_n734), .Y(op3_n[7]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u725 ( .A(op2_n[7]), .B(op3_n[7]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n718) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u724 ( .A(
-        oc8051_memory_interface1_n611), .B(oc8051_memory_interface1_n718), .Y(
-        oc8051_memory_interface1_n653) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u723 ( .A(
-        oc8051_memory_interface1_n653), .B(n_3_net_), .Y(
-        oc8051_memory_interface1_n634) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u722 ( .A(
-        oc8051_memory_interface1_n359), .Y(pc[14]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u721 ( .A(
-        oc8051_memory_interface1_n358), .Y(pc[8]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u720 ( .A(
-        oc8051_memory_interface1_n718), .B(pc[8]), .Y(
-        oc8051_memory_interface1_n715) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u719 ( .A0(
-        oc8051_memory_interface1_op2_buff[1]), .A1(
-        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[1]), 
-        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n571)
-         );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u718 ( .A0(
-        oc8051_memory_interface1_op3[1]), .A1(oc8051_memory_interface1_n721), 
-        .B0(oc8051_memory_interface1_int_vec_buff_1_), .B1(
-        oc8051_memory_interface1_n722), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[1]), .Y(
-        oc8051_memory_interface1_n144) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u717 ( .A(
-        oc8051_memory_interface1_n571), .B(oc8051_memory_interface1_n144), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n573) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u716 ( .A0(
-        oc8051_memory_interface1_op2_buff[0]), .A1(
-        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[0]), 
-        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n141)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u715 ( .A(
-        oc8051_memory_interface1_n141), .Y(op2_n[0]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u714 ( .A0(
-        oc8051_memory_interface1_op3[0]), .A1(oc8051_memory_interface1_n721), 
-        .B0(oc8051_memory_interface1_int_vec_buff_0_), .B1(
-        oc8051_memory_interface1_n722), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[0]), .Y(
-        oc8051_memory_interface1_n561) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u713 ( .A(
-        oc8051_memory_interface1_n561), .Y(op3_n[0]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u712 ( .A(op2_n[0]), .B(op3_n[0]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n568) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u711 ( .A(pc[0]), .Y(
-        oc8051_memory_interface1_n238) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u710 ( .A(
-        oc8051_memory_interface1_n568), .B(oc8051_memory_interface1_n238), .Y(
-        oc8051_memory_interface1_n572) );
-  CGENI_X1M_A12TS oc8051_memory_interface1_u709 ( .A(
-        oc8051_memory_interface1_n573), .B(pc[1]), .CI(
-        oc8051_memory_interface1_n572), .CON(oc8051_memory_interface1_n582) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u708 ( .A0(
-        oc8051_memory_interface1_op2_buff[2]), .A1(
-        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[2]), 
-        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n135)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u707 ( .A(
-        oc8051_memory_interface1_n135), .Y(op2_n[2]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u706 ( .A0(
-        oc8051_memory_interface1_op3[2]), .A1(oc8051_memory_interface1_n721), 
-        .B0(oc8051_memory_interface1_int_vec_buff_2_), .B1(
-        oc8051_memory_interface1_n722), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[2]), .Y(
+        oc8051_memory_interface1_n734), .Y(op3_n[6]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u725 ( .A(op2_n[6]), .B(op3_n[6]), 
+        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n634) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u724 ( .A(
+        oc8051_memory_interface1_n623), .Y(oc8051_memory_interface1_n632) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u723 ( .A(
+        oc8051_memory_interface1_n634), .Y(oc8051_memory_interface1_n624) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u722 ( .A(
+        oc8051_memory_interface1_n632), .B(oc8051_memory_interface1_n624), .Y(
         oc8051_memory_interface1_n733) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u705 ( .A(
-        oc8051_memory_interface1_n733), .Y(op3_n[2]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u704 ( .A(op2_n[2]), .B(op3_n[2]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n584) );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u703 ( .A(
-        oc8051_memory_interface1_n582), .B(oc8051_memory_interface1_n584), .Y(
-        oc8051_memory_interface1_n732) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u702 ( .A(pc[2]), .Y(
-        oc8051_memory_interface1_n249) );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u701 ( .A0(
-        oc8051_memory_interface1_n582), .A1(oc8051_memory_interface1_n584), 
-        .B0(oc8051_memory_interface1_n732), .B1(oc8051_memory_interface1_n249), 
-        .Y(oc8051_memory_interface1_n589) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u700 ( .A0(
-        oc8051_memory_interface1_op2_buff[3]), .A1(
-        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[3]), 
-        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n132)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u699 ( .A(
-        oc8051_memory_interface1_n132), .Y(op2_n[3]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u698 ( .A0(
-        oc8051_memory_interface1_op3[3]), .A1(oc8051_memory_interface1_n721), 
-        .B0(oc8051_memory_interface1_int_vec_buff_3_), .B1(
-        oc8051_memory_interface1_n722), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[3]), .Y(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u721 ( .A(pc[6]), .Y(
+        oc8051_memory_interface1_n288) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u720 ( .A0(
+        oc8051_memory_interface1_n623), .A1(oc8051_memory_interface1_n634), 
+        .B0(oc8051_memory_interface1_n733), .B1(oc8051_memory_interface1_n288), 
+        .Y(oc8051_memory_interface1_n730) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u719 ( .A(
+        oc8051_memory_interface1_n732), .Y(oc8051_memory_interface1_n728) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u718 ( .AN(
+        oc8051_memory_interface1_n730), .B(oc8051_memory_interface1_n732), .Y(
         oc8051_memory_interface1_n731) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u697 ( .A(
-        oc8051_memory_interface1_n731), .Y(op3_n[3]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u696 ( .A(op2_n[3]), .B(op3_n[3]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n730) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u695 ( .A(
-        oc8051_memory_interface1_n730), .Y(oc8051_memory_interface1_n590) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u694 ( .AN(
-        oc8051_memory_interface1_n589), .B(oc8051_memory_interface1_n730), .Y(
-        oc8051_memory_interface1_n729) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u693 ( .A0(
-        oc8051_memory_interface1_n589), .A1(oc8051_memory_interface1_n590), 
-        .B0(oc8051_memory_interface1_n729), .B1(pc[3]), .Y(
-        oc8051_memory_interface1_n595) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u692 ( .A0(
-        oc8051_memory_interface1_op2_buff[4]), .A1(
-        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[4]), 
-        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n128)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u691 ( .A(
-        oc8051_memory_interface1_n128), .Y(op2_n[4]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u690 ( .A0(
-        oc8051_memory_interface1_op3[4]), .A1(oc8051_memory_interface1_n721), 
-        .B0(oc8051_memory_interface1_int_vec_buff_4_), .B1(
-        oc8051_memory_interface1_n722), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[4]), .Y(
-        oc8051_memory_interface1_n728) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u689 ( .A(
-        oc8051_memory_interface1_n728), .Y(op3_n[4]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u688 ( .A(op2_n[4]), .B(op3_n[4]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n597) );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u687 ( .A(
-        oc8051_memory_interface1_n595), .B(oc8051_memory_interface1_n597), .Y(
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u717 ( .A0(
+        oc8051_memory_interface1_n730), .A1(oc8051_memory_interface1_n728), 
+        .B0(oc8051_memory_interface1_n731), .B1(pc[7]), .Y(
         oc8051_memory_interface1_n727) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u686 ( .A(pc[4]), .Y(
-        oc8051_memory_interface1_n259) );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u685 ( .A0(
-        oc8051_memory_interface1_n595), .A1(oc8051_memory_interface1_n597), 
-        .B0(oc8051_memory_interface1_n727), .B1(oc8051_memory_interface1_n259), 
-        .Y(oc8051_memory_interface1_n602) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u684 ( .A0(
-        oc8051_memory_interface1_op2_buff[5]), .A1(
-        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[5]), 
-        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n123)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u683 ( .A(
-        oc8051_memory_interface1_n123), .Y(op2_n[5]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u682 ( .A0(
-        oc8051_memory_interface1_op3[5]), .A1(oc8051_memory_interface1_n721), 
-        .B0(oc8051_memory_interface1_int_vec_buff_5_), .B1(
-        oc8051_memory_interface1_n722), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[5]), .Y(
-        oc8051_memory_interface1_n726) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u681 ( .A(
-        oc8051_memory_interface1_n726), .Y(op3_n[5]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u680 ( .A(op2_n[5]), .B(op3_n[5]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n725) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u679 ( .A(
-        oc8051_memory_interface1_n725), .Y(oc8051_memory_interface1_n603) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u678 ( .AN(
-        oc8051_memory_interface1_n602), .B(oc8051_memory_interface1_n725), .Y(
-        oc8051_memory_interface1_n724) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u677 ( .A0(
-        oc8051_memory_interface1_n602), .A1(oc8051_memory_interface1_n603), 
-        .B0(oc8051_memory_interface1_n724), .B1(pc[5]), .Y(
-        oc8051_memory_interface1_n609) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u676 ( .A0(
-        oc8051_memory_interface1_op2_buff[6]), .A1(
-        oc8051_memory_interface1_n190), .B0(oc8051_memory_interface1_op2[6]), 
-        .B1(oc8051_memory_interface1_n723), .Y(oc8051_memory_interface1_n117)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u675 ( .A(
-        oc8051_memory_interface1_n117), .Y(op2_n[6]) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u674 ( .A0(
-        oc8051_memory_interface1_op3[6]), .A1(oc8051_memory_interface1_n721), 
-        .B0(oc8051_memory_interface1_int_vec_buff_6_), .B1(
-        oc8051_memory_interface1_n722), .C0(rd), .C1(
-        oc8051_memory_interface1_op3_buff[6]), .Y(
-        oc8051_memory_interface1_n720) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u673 ( .A(
-        oc8051_memory_interface1_n720), .Y(op3_n[6]) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u672 ( .A(op2_n[6]), .B(op3_n[6]), 
-        .S0(pc_wr_sel[0]), .Y(oc8051_memory_interface1_n621) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u671 ( .A(
-        oc8051_memory_interface1_n609), .Y(oc8051_memory_interface1_n619) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u670 ( .A(
-        oc8051_memory_interface1_n621), .Y(oc8051_memory_interface1_n610) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u669 ( .A(
-        oc8051_memory_interface1_n619), .B(oc8051_memory_interface1_n610), .Y(
-        oc8051_memory_interface1_n719) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u668 ( .A(pc[6]), .Y(
-        oc8051_memory_interface1_n272) );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u667 ( .A0(
-        oc8051_memory_interface1_n609), .A1(oc8051_memory_interface1_n621), 
-        .B0(oc8051_memory_interface1_n719), .B1(oc8051_memory_interface1_n272), 
-        .Y(oc8051_memory_interface1_n716) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u666 ( .A(
-        oc8051_memory_interface1_n718), .Y(oc8051_memory_interface1_n713) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u665 ( .AN(
-        oc8051_memory_interface1_n716), .B(oc8051_memory_interface1_n718), .Y(
-        oc8051_memory_interface1_n717) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u664 ( .A0(
-        oc8051_memory_interface1_n716), .A1(oc8051_memory_interface1_n713), 
-        .B0(oc8051_memory_interface1_n717), .B1(pc[7]), .Y(
-        oc8051_memory_interface1_n712) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u663 ( .A(
-        oc8051_memory_interface1_n715), .B(oc8051_memory_interface1_n712), .Y(
-        oc8051_memory_interface1_n636) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u662 ( .AN(
-        oc8051_memory_interface1_n636), .B(pc[8]), .Y(
-        oc8051_memory_interface1_n631) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u661 ( .A(
-        oc8051_memory_interface1_n631), .B(oc8051_memory_interface1_n357), .Y(
-        oc8051_memory_interface1_n655) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u660 ( .A(
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u716 ( .A(
+        oc8051_memory_interface1_n729), .B(oc8051_memory_interface1_n727), .Y(
+        oc8051_memory_interface1_n650) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u715 ( .AN(
+        oc8051_memory_interface1_n650), .B(pc[8]), .Y(
+        oc8051_memory_interface1_n645) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u714 ( .A(
+        oc8051_memory_interface1_n645), .B(oc8051_memory_interface1_n357), .Y(
+        oc8051_memory_interface1_n668) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u713 ( .A(
         oc8051_memory_interface1_n356), .Y(pc[10]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u659 ( .A(
-        oc8051_memory_interface1_n655), .B(pc[10]), .Y(
-        oc8051_memory_interface1_n665) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u658 ( .A(
-        oc8051_memory_interface1_n665), .B(oc8051_memory_interface1_n355), .Y(
-        oc8051_memory_interface1_n674) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u657 ( .A(
-        oc8051_memory_interface1_n354), .Y(pc[12]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u656 ( .A(
-        oc8051_memory_interface1_n674), .B(pc[12]), .Y(
-        oc8051_memory_interface1_n683) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u655 ( .A(
-        oc8051_memory_interface1_n683), .B(oc8051_memory_interface1_n353), .Y(
-        oc8051_memory_interface1_n692) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u654 ( .A(
-        oc8051_memory_interface1_n634), .B(pc[14]), .C(
-        oc8051_memory_interface1_n692), .Y(oc8051_memory_interface1_n698) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u653 ( .A0(
-        oc8051_memory_interface1_n714), .A1(oc8051_memory_interface1_n574), 
-        .B0(oc8051_memory_interface1_n698), .B1(oc8051_memory_interface1_n360), 
-        .Y(oc8051_memory_interface1_n702) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u652 ( .A(
-        oc8051_memory_interface1_n692), .Y(oc8051_memory_interface1_n710) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u651 ( .A(
-        oc8051_memory_interface1_n713), .B(oc8051_memory_interface1_n611), .Y(
-        oc8051_memory_interface1_n651) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u650 ( .A(
-        oc8051_memory_interface1_n651), .B(n_3_net_), .Y(
-        oc8051_memory_interface1_n635) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u649 ( .A(
-        oc8051_memory_interface1_n635), .Y(oc8051_memory_interface1_n616) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u648 ( .A(
-        oc8051_memory_interface1_n712), .B(oc8051_memory_interface1_n358), .Y(
-        oc8051_memory_interface1_n656) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u647 ( .A(
-        oc8051_memory_interface1_n357), .Y(pc[9]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u646 ( .A(
-        oc8051_memory_interface1_n656), .B(pc[9]), .Y(
-        oc8051_memory_interface1_n666) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u645 ( .A(
-        oc8051_memory_interface1_n666), .B(oc8051_memory_interface1_n356), .Y(
-        oc8051_memory_interface1_n677) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u644 ( .A(
-        oc8051_memory_interface1_n355), .Y(pc[11]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u643 ( .A(
-        oc8051_memory_interface1_n677), .B(pc[11]), .Y(
-        oc8051_memory_interface1_n684) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u642 ( .A(
-        oc8051_memory_interface1_n684), .B(oc8051_memory_interface1_n354), .Y(
-        oc8051_memory_interface1_n693) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u641 ( .A(
-        oc8051_memory_interface1_n353), .Y(pc[13]) );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u640 ( .A(
-        oc8051_memory_interface1_n693), .B(pc[13]), .Y(
-        oc8051_memory_interface1_n700) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u639 ( .A(
-        oc8051_memory_interface1_n700), .B(pc[14]), .Y(
-        oc8051_memory_interface1_n709) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u638 ( .A(
-        oc8051_memory_interface1_n616), .B(oc8051_memory_interface1_n709), .Y(
-        oc8051_memory_interface1_n711) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u637 ( .A0(
-        oc8051_memory_interface1_n710), .A1(oc8051_memory_interface1_n359), 
-        .B0(oc8051_memory_interface1_n634), .C0(oc8051_memory_interface1_n711), 
-        .Y(oc8051_memory_interface1_n707) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u636 ( .A(
-        oc8051_memory_interface1_n635), .B(oc8051_memory_interface1_n709), .Y(
-        oc8051_memory_interface1_n708) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u635 ( .A(
-        oc8051_memory_interface1_n707), .B(oc8051_memory_interface1_n708), 
-        .S0(oc8051_memory_interface1_n360), .Y(oc8051_memory_interface1_n703)
-         );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u634 ( .A(
-        oc8051_memory_interface1_n706), .B(pc_wr_sel[0]), .C(
-        oc8051_memory_interface1_n626), .Y(oc8051_memory_interface1_n628) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u633 ( .A(
-        oc8051_memory_interface1_n628), .Y(oc8051_memory_interface1_n640) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u632 ( .A(pc_wr_sel[0]), .B(
-        oc8051_memory_interface1_n706), .C(pc_wr_sel[2]), .Y(
-        oc8051_memory_interface1_n625) );
-  AND4_X0P5M_A12TS oc8051_memory_interface1_u631 ( .A(
-        oc8051_memory_interface1_n5470), .B(oc8051_memory_interface1_n640), 
-        .C(oc8051_memory_interface1_n611), .D(oc8051_memory_interface1_n625), 
-        .Y(oc8051_memory_interface1_n667) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u630 ( .A(
-        oc8051_memory_interface1_n625), .B(oc8051_memory_interface1_n574), .Y(
-        oc8051_memory_interface1_n580) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u629 ( .A0(
-        oc8051_memory_interface1_n667), .A1(
-        oc8051_memory_interface1_pc_buf_15_), .B0(
-        oc8051_memory_interface1_n580), .B1(op2_n[7]), .Y(
-        oc8051_memory_interface1_n704) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u628 ( .A(
-        oc8051_memory_interface1_n640), .B(oc8051_memory_interface1_n574), .Y(
-        oc8051_memory_interface1_n676) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u627 ( .A(
-        oc8051_memory_interface1_n643), .B(oc8051_memory_interface1_n574), .Y(
-        oc8051_memory_interface1_n675) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u626 ( .A0(des2[7]), .A1(
-        oc8051_memory_interface1_n676), .B0(oc8051_memory_interface1_n675), 
-        .B1(des_acc[7]), .Y(oc8051_memory_interface1_n705) );
-  NAND4_X0P5A_A12TS oc8051_memory_interface1_u625 ( .A(
-        oc8051_memory_interface1_n702), .B(oc8051_memory_interface1_n703), .C(
-        oc8051_memory_interface1_n704), .D(oc8051_memory_interface1_n705), .Y(
-        oc8051_memory_interface1_n424) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u624 ( .A0(
-        oc8051_memory_interface1_n667), .A1(
-        oc8051_memory_interface1_pc_buf_14_), .B0(
-        oc8051_memory_interface1_n580), .B1(op2_n[6]), .Y(
-        oc8051_memory_interface1_n694) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u623 ( .A0(
-        oc8051_memory_interface1_n675), .A1(des_acc[6]), .B0(
-        oc8051_memory_interface1_n701), .B1(oc8051_memory_interface1_n574), 
-        .Y(oc8051_memory_interface1_n695) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u622 ( .A(
-        oc8051_memory_interface1_n700), .B(pc[14]), .Y(
-        oc8051_memory_interface1_n699) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u621 ( .A0(
-        oc8051_memory_interface1_n616), .A1(oc8051_memory_interface1_n699), 
-        .B0(des2[6]), .B1(oc8051_memory_interface1_n676), .Y(
-        oc8051_memory_interface1_n696) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u620 ( .A(
-        oc8051_memory_interface1_n634), .Y(oc8051_memory_interface1_n617) );
-  AOI31_X0P5M_A12TS oc8051_memory_interface1_u619 ( .A0(
-        oc8051_memory_interface1_n692), .A1(pc[14]), .A2(
-        oc8051_memory_interface1_n617), .B0(oc8051_memory_interface1_n698), 
-        .Y(oc8051_memory_interface1_n697) );
-  NAND4_X0P5A_A12TS oc8051_memory_interface1_u618 ( .A(
-        oc8051_memory_interface1_n694), .B(oc8051_memory_interface1_n695), .C(
-        oc8051_memory_interface1_n696), .D(oc8051_memory_interface1_n697), .Y(
-        oc8051_memory_interface1_n425) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u617 ( .A0(
-        oc8051_memory_interface1_n667), .A1(
-        oc8051_memory_interface1_pc_buf_13_), .B0(
-        oc8051_memory_interface1_n580), .B1(op2_n[5]), .Y(
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u712 ( .A(
+        oc8051_memory_interface1_n668), .B(pc[10]), .Y(
+        oc8051_memory_interface1_n678) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u711 ( .A(
+        oc8051_memory_interface1_n678), .B(oc8051_memory_interface1_n355), .Y(
         oc8051_memory_interface1_n687) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u616 ( .A(
-        oc8051_memory_interface1_n693), .B(pc[13]), .Y(
-        oc8051_memory_interface1_n689) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u615 ( .A0(des_acc[5]), .A1(
-        oc8051_memory_interface1_n675), .B0(oc8051_memory_interface1_n676), 
-        .B1(des2[5]), .Y(oc8051_memory_interface1_n690) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u614 ( .A0(
-        oc8051_memory_interface1_n353), .A1(oc8051_memory_interface1_n683), 
-        .B0(oc8051_memory_interface1_n692), .C0(oc8051_memory_interface1_n634), 
-        .Y(oc8051_memory_interface1_n691) );
-  AOI211_X0P5M_A12TS oc8051_memory_interface1_u613 ( .A0(
-        oc8051_memory_interface1_n616), .A1(oc8051_memory_interface1_n689), 
-        .B0(oc8051_memory_interface1_n690), .C0(oc8051_memory_interface1_n691), 
-        .Y(oc8051_memory_interface1_n688) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u612 ( .A0(n_3_net_), .A1(
-        oc8051_memory_interface1_n686), .B0(oc8051_memory_interface1_n687), 
-        .C0(oc8051_memory_interface1_n688), .Y(oc8051_memory_interface1_n426)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u611 ( .A(
-        oc8051_memory_interface1_n580), .Y(oc8051_memory_interface1_n562) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u610 ( .A0(
-        oc8051_memory_interface1_n685), .A1(oc8051_memory_interface1_n574), 
-        .B0(oc8051_memory_interface1_n667), .B1(
-        oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n678) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u609 ( .A(
-        oc8051_memory_interface1_n684), .B(pc[12]), .Y(
-        oc8051_memory_interface1_n680) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u608 ( .A0(des_acc[4]), .A1(
-        oc8051_memory_interface1_n675), .B0(oc8051_memory_interface1_n676), 
-        .B1(des2[4]), .Y(oc8051_memory_interface1_n681) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u607 ( .A0(pc[12]), .A1(
-        oc8051_memory_interface1_n674), .B0(oc8051_memory_interface1_n683), 
-        .C0(oc8051_memory_interface1_n617), .Y(oc8051_memory_interface1_n682)
-         );
-  OA211_X0P5M_A12TS oc8051_memory_interface1_u606 ( .A0(
-        oc8051_memory_interface1_n635), .A1(oc8051_memory_interface1_n680), 
-        .B0(oc8051_memory_interface1_n681), .C0(oc8051_memory_interface1_n682), 
-        .Y(oc8051_memory_interface1_n679) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u605 ( .A0(
-        oc8051_memory_interface1_n128), .A1(oc8051_memory_interface1_n562), 
-        .B0(oc8051_memory_interface1_n678), .C0(oc8051_memory_interface1_n679), 
-        .Y(oc8051_memory_interface1_n427) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u604 ( .A0(
-        oc8051_memory_interface1_n667), .A1(
-        oc8051_memory_interface1_pc_buf_11_), .B0(
-        oc8051_memory_interface1_n580), .B1(op2_n[3]), .Y(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u710 ( .A(
+        oc8051_memory_interface1_n354), .Y(pc[12]) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u709 ( .A(
+        oc8051_memory_interface1_n687), .B(pc[12]), .Y(
+        oc8051_memory_interface1_n697) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u708 ( .A(
+        oc8051_memory_interface1_n697), .B(oc8051_memory_interface1_n353), .Y(
+        oc8051_memory_interface1_n705) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u707 ( .A(
+        oc8051_memory_interface1_n648), .B(pc[14]), .C(
+        oc8051_memory_interface1_n705), .Y(oc8051_memory_interface1_n712) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u706 ( .A0(
+        oc8051_memory_interface1_n596), .A1(op2_n[7]), .B0(
+        oc8051_memory_interface1_n712), .B1(oc8051_memory_interface1_n360), 
+        .Y(oc8051_memory_interface1_n716) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u705 ( .A(
+        oc8051_memory_interface1_n705), .Y(oc8051_memory_interface1_n725) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u704 ( .A(
+        oc8051_memory_interface1_n728), .B(oc8051_memory_interface1_n625), .Y(
+        oc8051_memory_interface1_n664) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u703 ( .A(
+        oc8051_memory_interface1_n664), .B(n_3_net_), .Y(
+        oc8051_memory_interface1_n649) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u702 ( .A(
+        oc8051_memory_interface1_n649), .Y(oc8051_memory_interface1_n629) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u701 ( .A(
+        oc8051_memory_interface1_n727), .B(oc8051_memory_interface1_n358), .Y(
         oc8051_memory_interface1_n669) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u603 ( .A(
-        oc8051_memory_interface1_n677), .B(pc[11]), .Y(
-        oc8051_memory_interface1_n671) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u602 ( .A0(des_acc[3]), .A1(
-        oc8051_memory_interface1_n675), .B0(oc8051_memory_interface1_n676), 
-        .B1(des2[3]), .Y(oc8051_memory_interface1_n672) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u601 ( .A0(
-        oc8051_memory_interface1_n355), .A1(oc8051_memory_interface1_n665), 
-        .B0(oc8051_memory_interface1_n674), .C0(oc8051_memory_interface1_n634), 
-        .Y(oc8051_memory_interface1_n673) );
-  AOI211_X0P5M_A12TS oc8051_memory_interface1_u600 ( .A0(
-        oc8051_memory_interface1_n616), .A1(oc8051_memory_interface1_n671), 
-        .B0(oc8051_memory_interface1_n672), .C0(oc8051_memory_interface1_n673), 
-        .Y(oc8051_memory_interface1_n670) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u599 ( .A0(n_3_net_), .A1(
-        oc8051_memory_interface1_n668), .B0(oc8051_memory_interface1_n669), 
-        .C0(oc8051_memory_interface1_n670), .Y(oc8051_memory_interface1_n428)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u700 ( .A(
+        oc8051_memory_interface1_n357), .Y(pc[9]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u699 ( .A(
+        oc8051_memory_interface1_n669), .B(pc[9]), .Y(
+        oc8051_memory_interface1_n679) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u698 ( .A(
+        oc8051_memory_interface1_n679), .B(oc8051_memory_interface1_n356), .Y(
+        oc8051_memory_interface1_n690) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u697 ( .A(
+        oc8051_memory_interface1_n355), .Y(pc[11]) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u696 ( .A(
+        oc8051_memory_interface1_n690), .B(pc[11]), .Y(
+        oc8051_memory_interface1_n698) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u695 ( .A(
+        oc8051_memory_interface1_n698), .B(oc8051_memory_interface1_n354), .Y(
+        oc8051_memory_interface1_n706) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u694 ( .A(
+        oc8051_memory_interface1_n353), .Y(pc[13]) );
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u693 ( .A(
+        oc8051_memory_interface1_n706), .B(pc[13]), .Y(
+        oc8051_memory_interface1_n714) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u692 ( .A(
+        oc8051_memory_interface1_n714), .B(pc[14]), .Y(
+        oc8051_memory_interface1_n724) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u691 ( .A(
+        oc8051_memory_interface1_n629), .B(oc8051_memory_interface1_n724), .Y(
+        oc8051_memory_interface1_n726) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u690 ( .A0(
+        oc8051_memory_interface1_n725), .A1(oc8051_memory_interface1_n359), 
+        .B0(oc8051_memory_interface1_n648), .C0(oc8051_memory_interface1_n726), 
+        .Y(oc8051_memory_interface1_n722) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u689 ( .A(
+        oc8051_memory_interface1_n649), .B(oc8051_memory_interface1_n724), .Y(
+        oc8051_memory_interface1_n723) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u688 ( .A(
+        oc8051_memory_interface1_n722), .B(oc8051_memory_interface1_n723), 
+        .S0(oc8051_memory_interface1_n360), .Y(oc8051_memory_interface1_n717)
          );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u598 ( .A(pc_wr_sel[1]), .B(
-        pc_wr_sel[0]), .Y(oc8051_memory_interface1_n627) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u597 ( .A(
-        oc8051_memory_interface1_n627), .B(pc_wr_sel[2]), .Y(
-        oc8051_memory_interface1_n622) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u596 ( .A(
-        oc8051_memory_interface1_n667), .B(oc8051_memory_interface1_n622), .Y(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u687 ( .A(
+        oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n320) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u686 ( .A(
+        oc8051_memory_interface1_pc_buf_8_), .Y(oc8051_memory_interface1_n300)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u685 ( .A(
+        oc8051_memory_interface1_pc_buf_4_), .Y(oc8051_memory_interface1_n276)
+         );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u684 ( .A(
+        oc8051_memory_interface1_pc_buf_2_), .B(oc8051_memory_interface1_n214), 
+        .C(oc8051_memory_interface1_pc_buf_3_), .Y(
+        oc8051_memory_interface1_n609) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u683 ( .A(
+        oc8051_memory_interface1_pc_buf_5_), .Y(oc8051_memory_interface1_n283)
+         );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u682 ( .A(
+        oc8051_memory_interface1_n276), .B(oc8051_memory_interface1_n609), .C(
+        oc8051_memory_interface1_n283), .Y(oc8051_memory_interface1_n622) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u681 ( .A(
+        oc8051_memory_interface1_pc_buf_6_), .B(oc8051_memory_interface1_n622), 
+        .C(oc8051_memory_interface1_pc_buf_7_), .Y(
+        oc8051_memory_interface1_n656) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u680 ( .A(
+        oc8051_memory_interface1_pc_buf_9_), .Y(oc8051_memory_interface1_n305)
+         );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u679 ( .A(
+        oc8051_memory_interface1_n300), .B(oc8051_memory_interface1_n656), .C(
+        oc8051_memory_interface1_n305), .Y(oc8051_memory_interface1_n680) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u678 ( .A(
+        oc8051_memory_interface1_pc_buf_10_), .B(oc8051_memory_interface1_n680), .C(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n699)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u677 ( .A(
+        oc8051_memory_interface1_pc_buf_13_), .Y(oc8051_memory_interface1_n325) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u676 ( .A(
+        oc8051_memory_interface1_n320), .B(oc8051_memory_interface1_n699), .C(
+        oc8051_memory_interface1_n325), .Y(oc8051_memory_interface1_n715) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u675 ( .A(
+        oc8051_memory_interface1_pc_buf_14_), .B(oc8051_memory_interface1_n715), .Y(oc8051_memory_interface1_n721) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u674 ( .A(
+        oc8051_memory_interface1_n721), .B(oc8051_memory_interface1_pc_buf_15_), .Y(oc8051_memory_interface1_n85) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u673 ( .A(
+        oc8051_memory_interface1_n720), .B(pc_wr_sel[0]), .C(
+        oc8051_memory_interface1_n639), .Y(oc8051_memory_interface1_n641) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u672 ( .A(
+        oc8051_memory_interface1_n641), .Y(oc8051_memory_interface1_n659) );
+  AND4_X0P5M_A12TS oc8051_memory_interface1_u671 ( .A(
+        oc8051_memory_interface1_n5470), .B(oc8051_memory_interface1_n659), 
+        .C(oc8051_memory_interface1_n625), .D(oc8051_memory_interface1_n638), 
+        .Y(oc8051_memory_interface1_n681) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u670 ( .A0(
+        oc8051_memory_interface1_n85), .A1(oc8051_memory_interface1_n590), 
+        .B0(oc8051_memory_interface1_n681), .B1(
+        oc8051_memory_interface1_pc_buf_15_), .Y(oc8051_memory_interface1_n718) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u669 ( .A(
+        oc8051_memory_interface1_n659), .B(oc8051_memory_interface1_n590), .Y(
+        oc8051_memory_interface1_n689) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u668 ( .A(
+        oc8051_memory_interface1_n662), .B(oc8051_memory_interface1_n590), .Y(
+        oc8051_memory_interface1_n688) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u667 ( .A0(des2[7]), .A1(
+        oc8051_memory_interface1_n689), .B0(oc8051_memory_interface1_n688), 
+        .B1(des_acc[7]), .Y(oc8051_memory_interface1_n719) );
+  NAND4_X0P5A_A12TS oc8051_memory_interface1_u666 ( .A(
+        oc8051_memory_interface1_n716), .B(oc8051_memory_interface1_n717), .C(
+        oc8051_memory_interface1_n718), .D(oc8051_memory_interface1_n719), .Y(
+        oc8051_memory_interface1_n424) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u665 ( .A0(
+        oc8051_memory_interface1_n681), .A1(
+        oc8051_memory_interface1_pc_buf_14_), .B0(
+        oc8051_memory_interface1_n596), .B1(op2_n[6]), .Y(
+        oc8051_memory_interface1_n708) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u664 ( .A(
+        oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n331) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u663 ( .A(
+        oc8051_memory_interface1_n331), .B(oc8051_memory_interface1_n715), .Y(
+        oc8051_memory_interface1_n86) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u662 ( .A0(
+        oc8051_memory_interface1_n688), .A1(des_acc[6]), .B0(
+        oc8051_memory_interface1_n86), .B1(oc8051_memory_interface1_n590), .Y(
+        oc8051_memory_interface1_n709) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u661 ( .A(
+        oc8051_memory_interface1_n714), .B(pc[14]), .Y(
+        oc8051_memory_interface1_n713) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u660 ( .A0(
+        oc8051_memory_interface1_n629), .A1(oc8051_memory_interface1_n713), 
+        .B0(des2[6]), .B1(oc8051_memory_interface1_n689), .Y(
+        oc8051_memory_interface1_n710) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u659 ( .A(
+        oc8051_memory_interface1_n648), .Y(oc8051_memory_interface1_n630) );
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u658 ( .A0(
+        oc8051_memory_interface1_n705), .A1(pc[14]), .A2(
+        oc8051_memory_interface1_n630), .B0(oc8051_memory_interface1_n712), 
+        .Y(oc8051_memory_interface1_n711) );
+  NAND4_X0P5A_A12TS oc8051_memory_interface1_u657 ( .A(
+        oc8051_memory_interface1_n708), .B(oc8051_memory_interface1_n709), .C(
+        oc8051_memory_interface1_n710), .D(oc8051_memory_interface1_n711), .Y(
+        oc8051_memory_interface1_n425) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u656 ( .A(
+        oc8051_memory_interface1_n596), .Y(oc8051_memory_interface1_n578) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u655 ( .A(
+        oc8051_memory_interface1_n699), .B(oc8051_memory_interface1_n320), .Y(
+        oc8051_memory_interface1_n707) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u654 ( .A(
+        oc8051_memory_interface1_n325), .B(oc8051_memory_interface1_n707), .Y(
+        oc8051_memory_interface1_n87) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u653 ( .A0(
+        oc8051_memory_interface1_n87), .A1(oc8051_memory_interface1_n590), 
+        .B0(oc8051_memory_interface1_n681), .B1(
+        oc8051_memory_interface1_pc_buf_13_), .Y(oc8051_memory_interface1_n700) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u652 ( .A(
+        oc8051_memory_interface1_n706), .B(pc[13]), .Y(
+        oc8051_memory_interface1_n702) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u651 ( .A0(des_acc[5]), .A1(
+        oc8051_memory_interface1_n688), .B0(oc8051_memory_interface1_n689), 
+        .B1(des2[5]), .Y(oc8051_memory_interface1_n703) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u650 ( .A0(
+        oc8051_memory_interface1_n353), .A1(oc8051_memory_interface1_n697), 
+        .B0(oc8051_memory_interface1_n705), .C0(oc8051_memory_interface1_n648), 
+        .Y(oc8051_memory_interface1_n704) );
+  AOI211_X0P5M_A12TS oc8051_memory_interface1_u649 ( .A0(
+        oc8051_memory_interface1_n629), .A1(oc8051_memory_interface1_n702), 
+        .B0(oc8051_memory_interface1_n703), .C0(oc8051_memory_interface1_n704), 
+        .Y(oc8051_memory_interface1_n701) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u648 ( .A0(
+        oc8051_memory_interface1_n141), .A1(oc8051_memory_interface1_n578), 
+        .B0(oc8051_memory_interface1_n700), .C0(oc8051_memory_interface1_n701), 
+        .Y(oc8051_memory_interface1_n426) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u647 ( .A(
+        oc8051_memory_interface1_n699), .B(oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n88) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u646 ( .A0(
+        oc8051_memory_interface1_n88), .A1(oc8051_memory_interface1_n590), 
+        .B0(oc8051_memory_interface1_n681), .B1(
+        oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n692) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u645 ( .A(
+        oc8051_memory_interface1_n698), .B(pc[12]), .Y(
+        oc8051_memory_interface1_n694) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u644 ( .A0(des_acc[4]), .A1(
+        oc8051_memory_interface1_n688), .B0(oc8051_memory_interface1_n689), 
+        .B1(des2[4]), .Y(oc8051_memory_interface1_n695) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u643 ( .A0(pc[12]), .A1(
+        oc8051_memory_interface1_n687), .B0(oc8051_memory_interface1_n697), 
+        .C0(oc8051_memory_interface1_n630), .Y(oc8051_memory_interface1_n696)
+         );
+  OA211_X0P5M_A12TS oc8051_memory_interface1_u642 ( .A0(
+        oc8051_memory_interface1_n649), .A1(oc8051_memory_interface1_n694), 
+        .B0(oc8051_memory_interface1_n695), .C0(oc8051_memory_interface1_n696), 
+        .Y(oc8051_memory_interface1_n693) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u641 ( .A0(
+        oc8051_memory_interface1_n146), .A1(oc8051_memory_interface1_n578), 
+        .B0(oc8051_memory_interface1_n692), .C0(oc8051_memory_interface1_n693), 
+        .Y(oc8051_memory_interface1_n427) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u640 ( .A(
+        oc8051_memory_interface1_pc_buf_10_), .B(oc8051_memory_interface1_n680), .Y(oc8051_memory_interface1_n691) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u639 ( .A(
+        oc8051_memory_interface1_n691), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n89) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u638 ( .A0(
+        oc8051_memory_interface1_n89), .A1(oc8051_memory_interface1_n590), 
+        .B0(oc8051_memory_interface1_n681), .B1(
+        oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n682) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u637 ( .A(
+        oc8051_memory_interface1_n690), .B(pc[11]), .Y(
+        oc8051_memory_interface1_n684) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u636 ( .A0(des_acc[3]), .A1(
+        oc8051_memory_interface1_n688), .B0(oc8051_memory_interface1_n689), 
+        .B1(des2[3]), .Y(oc8051_memory_interface1_n685) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u635 ( .A0(
+        oc8051_memory_interface1_n355), .A1(oc8051_memory_interface1_n678), 
+        .B0(oc8051_memory_interface1_n687), .C0(oc8051_memory_interface1_n648), 
+        .Y(oc8051_memory_interface1_n686) );
+  AOI211_X0P5M_A12TS oc8051_memory_interface1_u634 ( .A0(
+        oc8051_memory_interface1_n629), .A1(oc8051_memory_interface1_n684), 
+        .B0(oc8051_memory_interface1_n685), .C0(oc8051_memory_interface1_n686), 
+        .Y(oc8051_memory_interface1_n683) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u633 ( .A0(
+        oc8051_memory_interface1_n150), .A1(oc8051_memory_interface1_n578), 
+        .B0(oc8051_memory_interface1_n682), .C0(oc8051_memory_interface1_n683), 
+        .Y(oc8051_memory_interface1_n428) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u632 ( .A(
+        oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n310) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u631 ( .A(pc_wr_sel[1]), .B(
+        pc_wr_sel[0]), .Y(oc8051_memory_interface1_n640) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u630 ( .A(
+        oc8051_memory_interface1_n640), .B(pc_wr_sel[2]), .Y(
         oc8051_memory_interface1_n637) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u595 ( .A(des2[2]), .Y(
-        oc8051_memory_interface1_n660) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u594 ( .A(des_acc[2]), .Y(
-        oc8051_memory_interface1_n661) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u593 ( .A(
-        oc8051_memory_interface1_n622), .Y(oc8051_memory_interface1_n650) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u592 ( .A(
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u629 ( .A(
+        oc8051_memory_interface1_n681), .B(oc8051_memory_interface1_n637), .Y(
+        oc8051_memory_interface1_n651) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u628 ( .A(
+        oc8051_memory_interface1_n310), .B(oc8051_memory_interface1_n680), .Y(
+        oc8051_memory_interface1_n90) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u627 ( .A(
+        oc8051_memory_interface1_n637), .Y(oc8051_memory_interface1_n654) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u626 ( .A(
         oc8051_memory_interface1_cdone), .B(oc8051_memory_interface1_dack_ir), 
-        .Y(oc8051_memory_interface1_n557) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u591 ( .AN(
-        oc8051_memory_interface1_n557), .B(oc8051_memory_interface1_n556), .Y(
-        oc8051_memory_interface1_n521) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u590 ( .AN(
+        .Y(oc8051_memory_interface1_n573) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u625 ( .AN(
+        oc8051_memory_interface1_n573), .B(oc8051_memory_interface1_n572), .Y(
+        oc8051_memory_interface1_n568) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u624 ( .AN(
         oc8051_memory_interface1_cdone), .B(oc8051_memory_interface1_dack_ir), 
-        .Y(oc8051_memory_interface1_n533) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u589 ( .A0(
+        .Y(oc8051_memory_interface1_n569) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u623 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_7_), .B0(
-        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_7_), 
+        oc8051_memory_interface1_n568), .B1(oc8051_memory_interface1_op1_7_), 
         .C0(oc8051_memory_interface1_cdata_7_), .C1(
-        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n364) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u588 ( .A(
-        oc8051_memory_interface1_n364), .Y(op1_n[7]) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u587 ( .A(
-        oc8051_memory_interface1_n666), .B(oc8051_memory_interface1_n356), .Y(
-        oc8051_memory_interface1_n663) );
-  AO21_X0P5M_A12TS oc8051_memory_interface1_u586 ( .A0(pc[10]), .A1(
-        oc8051_memory_interface1_n655), .B0(oc8051_memory_interface1_n665), 
-        .Y(oc8051_memory_interface1_n664) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u585 ( .A0(
-        oc8051_memory_interface1_n650), .A1(op1_n[7]), .B0(
-        oc8051_memory_interface1_n651), .B1(oc8051_memory_interface1_n663), 
-        .C0(oc8051_memory_interface1_n653), .C1(oc8051_memory_interface1_n664), 
-        .Y(oc8051_memory_interface1_n662) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u584 ( .A0(
-        oc8051_memory_interface1_n640), .A1(oc8051_memory_interface1_n660), 
-        .B0(oc8051_memory_interface1_n661), .B1(oc8051_memory_interface1_n643), 
-        .C0(oc8051_memory_interface1_n662), .Y(oc8051_memory_interface1_n659)
+        oc8051_memory_interface1_n569), .Y(oc8051_memory_interface1_n396) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u622 ( .A(
+        oc8051_memory_interface1_n396), .Y(op1_n[7]) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u621 ( .A(
+        oc8051_memory_interface1_n679), .B(oc8051_memory_interface1_n356), .Y(
+        oc8051_memory_interface1_n676) );
+  AO21_X0P5M_A12TS oc8051_memory_interface1_u620 ( .A0(pc[10]), .A1(
+        oc8051_memory_interface1_n668), .B0(oc8051_memory_interface1_n678), 
+        .Y(oc8051_memory_interface1_n677) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u619 ( .A0(
+        oc8051_memory_interface1_n654), .A1(op1_n[7]), .B0(
+        oc8051_memory_interface1_n664), .B1(oc8051_memory_interface1_n676), 
+        .C0(oc8051_memory_interface1_n666), .C1(oc8051_memory_interface1_n677), 
+        .Y(oc8051_memory_interface1_n675) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u618 ( .A(
+        oc8051_memory_interface1_n675), .Y(oc8051_memory_interface1_n674) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u617 ( .A0(
+        oc8051_memory_interface1_n641), .A1(des2[2]), .B0(des_acc[2]), .B1(
+        oc8051_memory_interface1_n655), .C0(oc8051_memory_interface1_n674), 
+        .Y(oc8051_memory_interface1_n673) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u616 ( .A(
+        oc8051_memory_interface1_n673), .Y(oc8051_memory_interface1_n672) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u615 ( .A(
+        oc8051_memory_interface1_n90), .B(oc8051_memory_interface1_n672), .S0(
+        n_3_net_), .Y(oc8051_memory_interface1_n671) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u614 ( .A0(
+        oc8051_memory_interface1_n310), .A1(oc8051_memory_interface1_n651), 
+        .B0(oc8051_memory_interface1_n153), .B1(oc8051_memory_interface1_n578), 
+        .C0(oc8051_memory_interface1_n671), .Y(oc8051_memory_interface1_n429)
          );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u583 ( .A(
-        oc8051_memory_interface1_n658), .B(oc8051_memory_interface1_n659), 
-        .S0(n_3_net_), .Y(oc8051_memory_interface1_n657) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u582 ( .A0(
-        oc8051_memory_interface1_n294), .A1(oc8051_memory_interface1_n637), 
-        .B0(oc8051_memory_interface1_n135), .B1(oc8051_memory_interface1_n562), 
-        .C0(oc8051_memory_interface1_n657), .Y(oc8051_memory_interface1_n429)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u581 ( .A(des2[1]), .Y(
-        oc8051_memory_interface1_n647) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u580 ( .A0(
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u613 ( .A(
+        oc8051_memory_interface1_n656), .B(oc8051_memory_interface1_n300), .Y(
+        oc8051_memory_interface1_n670) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u612 ( .A(
+        oc8051_memory_interface1_n305), .B(oc8051_memory_interface1_n670), .Y(
+        oc8051_memory_interface1_n73) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u611 ( .A(des2[1]), .Y(
+        oc8051_memory_interface1_n660) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u610 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_6_), .B0(
-        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_6_), 
+        oc8051_memory_interface1_n568), .B1(oc8051_memory_interface1_op1_6_), 
         .C0(oc8051_memory_interface1_cdata_6_), .C1(
-        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n343) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u579 ( .A(
-        oc8051_memory_interface1_n343), .Y(op1_n[6]) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u578 ( .A(
-        oc8051_memory_interface1_n656), .B(pc[9]), .Y(
-        oc8051_memory_interface1_n652) );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u577 ( .A0(
-        oc8051_memory_interface1_n357), .A1(oc8051_memory_interface1_n631), 
-        .B0(oc8051_memory_interface1_n655), .Y(oc8051_memory_interface1_n654)
+        oc8051_memory_interface1_n569), .Y(oc8051_memory_interface1_n368) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u609 ( .A(
+        oc8051_memory_interface1_n368), .Y(op1_n[6]) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u608 ( .A(
+        oc8051_memory_interface1_n669), .B(pc[9]), .Y(
+        oc8051_memory_interface1_n665) );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u607 ( .A0(
+        oc8051_memory_interface1_n357), .A1(oc8051_memory_interface1_n645), 
+        .B0(oc8051_memory_interface1_n668), .Y(oc8051_memory_interface1_n667)
          );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u576 ( .A0(
-        oc8051_memory_interface1_n650), .A1(op1_n[6]), .B0(
-        oc8051_memory_interface1_n651), .B1(oc8051_memory_interface1_n652), 
-        .C0(oc8051_memory_interface1_n653), .C1(oc8051_memory_interface1_n654), 
-        .Y(oc8051_memory_interface1_n649) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u575 ( .A0(
-        oc8051_memory_interface1_n640), .A1(oc8051_memory_interface1_n647), 
-        .B0(oc8051_memory_interface1_n648), .B1(oc8051_memory_interface1_n643), 
-        .C0(oc8051_memory_interface1_n649), .Y(oc8051_memory_interface1_n646)
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u606 ( .A0(
+        oc8051_memory_interface1_n654), .A1(op1_n[6]), .B0(
+        oc8051_memory_interface1_n664), .B1(oc8051_memory_interface1_n665), 
+        .C0(oc8051_memory_interface1_n666), .C1(oc8051_memory_interface1_n667), 
+        .Y(oc8051_memory_interface1_n663) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u605 ( .A0(
+        oc8051_memory_interface1_n659), .A1(oc8051_memory_interface1_n660), 
+        .B0(oc8051_memory_interface1_n661), .B1(oc8051_memory_interface1_n662), 
+        .C0(oc8051_memory_interface1_n663), .Y(oc8051_memory_interface1_n658)
          );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u574 ( .A(
-        oc8051_memory_interface1_n645), .B(oc8051_memory_interface1_n646), 
-        .S0(n_3_net_), .Y(oc8051_memory_interface1_n644) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u573 ( .A0(
-        oc8051_memory_interface1_n289), .A1(oc8051_memory_interface1_n637), 
-        .B0(oc8051_memory_interface1_n571), .B1(oc8051_memory_interface1_n562), 
-        .C0(oc8051_memory_interface1_n644), .Y(oc8051_memory_interface1_n430)
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u604 ( .A(
+        oc8051_memory_interface1_n73), .B(oc8051_memory_interface1_n658), .S0(
+        n_3_net_), .Y(oc8051_memory_interface1_n657) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u603 ( .A0(
+        oc8051_memory_interface1_n305), .A1(oc8051_memory_interface1_n651), 
+        .B0(oc8051_memory_interface1_n587), .B1(oc8051_memory_interface1_n578), 
+        .C0(oc8051_memory_interface1_n657), .Y(oc8051_memory_interface1_n430)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u572 ( .A(des2[0]), .Y(
-        oc8051_memory_interface1_n641) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u571 ( .A0(
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u602 ( .A(
+        oc8051_memory_interface1_n656), .B(oc8051_memory_interface1_n300), .Y(
+        oc8051_memory_interface1_n75) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u601 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_5_), .B0(
-        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_5_), 
+        oc8051_memory_interface1_n568), .B1(oc8051_memory_interface1_op1_5_), 
         .C0(oc8051_memory_interface1_cdata_5_), .C1(
-        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n351) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u570 ( .A0(
-        oc8051_memory_interface1_n640), .A1(oc8051_memory_interface1_n641), 
-        .B0(oc8051_memory_interface1_n351), .B1(oc8051_memory_interface1_n622), 
-        .C0(oc8051_memory_interface1_n642), .C1(oc8051_memory_interface1_n643), 
-        .Y(oc8051_memory_interface1_n639) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u569 ( .A(
-        oc8051_memory_interface1_n638), .B(oc8051_memory_interface1_n639), 
-        .S0(n_3_net_), .Y(oc8051_memory_interface1_n629) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u568 ( .A(
-        oc8051_memory_interface1_n637), .Y(oc8051_memory_interface1_n632) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u567 ( .A0(
-        oc8051_memory_interface1_n358), .A1(oc8051_memory_interface1_n634), 
-        .B0(oc8051_memory_interface1_n635), .C0(oc8051_memory_interface1_n636), 
-        .Y(oc8051_memory_interface1_n633) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u566 ( .A0(
-        oc8051_memory_interface1_n631), .A1(oc8051_memory_interface1_n617), 
-        .B0(oc8051_memory_interface1_n632), .B1(
-        oc8051_memory_interface1_pc_buf_8_), .C0(oc8051_memory_interface1_n633), .Y(oc8051_memory_interface1_n630) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u565 ( .A0(
-        oc8051_memory_interface1_n141), .A1(oc8051_memory_interface1_n562), 
-        .B0(oc8051_memory_interface1_n629), .C0(oc8051_memory_interface1_n630), 
+        oc8051_memory_interface1_n569), .Y(oc8051_memory_interface1_n376) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u600 ( .A(
+        oc8051_memory_interface1_n376), .Y(op1_n[5]) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u599 ( .A0(
+        oc8051_memory_interface1_n641), .A1(des2[0]), .B0(op1_n[5]), .B1(
+        oc8051_memory_interface1_n654), .C0(des_acc[0]), .C1(
+        oc8051_memory_interface1_n655), .Y(oc8051_memory_interface1_n653) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u598 ( .A(
+        oc8051_memory_interface1_n653), .Y(oc8051_memory_interface1_n652) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u597 ( .A(
+        oc8051_memory_interface1_n75), .B(oc8051_memory_interface1_n652), .S0(
+        n_3_net_), .Y(oc8051_memory_interface1_n643) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u596 ( .A(
+        oc8051_memory_interface1_n651), .Y(oc8051_memory_interface1_n646) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u595 ( .A0(
+        oc8051_memory_interface1_n358), .A1(oc8051_memory_interface1_n648), 
+        .B0(oc8051_memory_interface1_n649), .C0(oc8051_memory_interface1_n650), 
+        .Y(oc8051_memory_interface1_n647) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u594 ( .A0(
+        oc8051_memory_interface1_n645), .A1(oc8051_memory_interface1_n630), 
+        .B0(oc8051_memory_interface1_n646), .B1(
+        oc8051_memory_interface1_pc_buf_8_), .C0(oc8051_memory_interface1_n647), .Y(oc8051_memory_interface1_n644) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u593 ( .A0(
+        oc8051_memory_interface1_n159), .A1(oc8051_memory_interface1_n578), 
+        .B0(oc8051_memory_interface1_n643), .C0(oc8051_memory_interface1_n644), 
         .Y(oc8051_memory_interface1_n431) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u564 ( .A(
-        oc8051_memory_interface1_pc_buf_7_), .Y(oc8051_memory_interface1_n279)
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u592 ( .A(
+        oc8051_memory_interface1_pc_buf_6_), .B(oc8051_memory_interface1_n622), 
+        .Y(oc8051_memory_interface1_n642) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u591 ( .A(
+        oc8051_memory_interface1_n642), .B(oc8051_memory_interface1_pc_buf_7_), 
+        .Y(oc8051_memory_interface1_n76) );
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u590 ( .A0(
+        oc8051_memory_interface1_n639), .A1(oc8051_memory_interface1_n640), 
+        .B0(oc8051_memory_interface1_n641), .Y(oc8051_memory_interface1_n635)
          );
-  AOI21_X0P5M_A12TS oc8051_memory_interface1_u563 ( .A0(
-        oc8051_memory_interface1_n626), .A1(oc8051_memory_interface1_n627), 
-        .B0(oc8051_memory_interface1_n628), .Y(oc8051_memory_interface1_n623)
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u589 ( .A(
+        oc8051_memory_interface1_n590), .B(oc8051_memory_interface1_n635), .Y(
+        oc8051_memory_interface1_n583) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u588 ( .A(
+        oc8051_memory_interface1_n637), .B(oc8051_memory_interface1_n590), .Y(
+        oc8051_memory_interface1_n580) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u587 ( .A0(des_acc[7]), .A1(
+        oc8051_memory_interface1_n583), .B0(oc8051_memory_interface1_n580), 
+        .B1(op2_n[7]), .Y(oc8051_memory_interface1_n626) );
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u586 ( .A(
+        oc8051_memory_interface1_n638), .B(oc8051_memory_interface1_n625), .Y(
+        oc8051_memory_interface1_n636) );
+  AND4_X0P5M_A12TS oc8051_memory_interface1_u585 ( .A(
+        oc8051_memory_interface1_n635), .B(n_3_net_), .C(
+        oc8051_memory_interface1_n636), .D(oc8051_memory_interface1_n637), .Y(
+        oc8051_memory_interface1_n591) );
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u584 ( .A0(
+        oc8051_memory_interface1_n634), .A1(oc8051_memory_interface1_n623), 
+        .B0(oc8051_memory_interface1_n288), .Y(oc8051_memory_interface1_n633)
          );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u562 ( .A(
-        oc8051_memory_interface1_n625), .B(oc8051_memory_interface1_n611), .Y(
-        oc8051_memory_interface1_n624) );
-  NAND4_X0P5A_A12TS oc8051_memory_interface1_u561 ( .A(
-        oc8051_memory_interface1_n623), .B(n_3_net_), .C(
-        oc8051_memory_interface1_n624), .D(oc8051_memory_interface1_n622), .Y(
-        oc8051_memory_interface1_n608) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u560 ( .A(
-        oc8051_memory_interface1_n574), .B(oc8051_memory_interface1_n623), .Y(
-        oc8051_memory_interface1_n567) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u559 ( .A(
-        oc8051_memory_interface1_n622), .B(oc8051_memory_interface1_n574), .Y(
-        oc8051_memory_interface1_n564) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u558 ( .A0(des_acc[7]), .A1(
-        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
-        .B1(op2_n[7]), .Y(oc8051_memory_interface1_n612) );
-  AOI21_X0P5M_A12TS oc8051_memory_interface1_u557 ( .A0(
-        oc8051_memory_interface1_n621), .A1(oc8051_memory_interface1_n609), 
-        .B0(oc8051_memory_interface1_n272), .Y(oc8051_memory_interface1_n620)
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u583 ( .A0(
+        oc8051_memory_interface1_n624), .A1(oc8051_memory_interface1_n632), 
+        .B0(oc8051_memory_interface1_n633), .Y(oc8051_memory_interface1_n631)
          );
-  AOI21_X0P5M_A12TS oc8051_memory_interface1_u556 ( .A0(
-        oc8051_memory_interface1_n610), .A1(oc8051_memory_interface1_n619), 
-        .B0(oc8051_memory_interface1_n620), .Y(oc8051_memory_interface1_n618)
+  MXT4_X0P5M_A12TS oc8051_memory_interface1_u582 ( .A(
+        oc8051_memory_interface1_n629), .B(oc8051_memory_interface1_n630), .C(
+        oc8051_memory_interface1_n630), .D(oc8051_memory_interface1_n629), 
+        .S0(pc[7]), .S1(oc8051_memory_interface1_n631), .Y(
+        oc8051_memory_interface1_n628) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u581 ( .A0(
+        oc8051_memory_interface1_n591), .A1(oc8051_memory_interface1_pc_buf_7_), .B0(op3_n[7]), .B1(oc8051_memory_interface1_n596), .C0(
+        oc8051_memory_interface1_n628), .Y(oc8051_memory_interface1_n627) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u580 ( .A0(n_3_net_), .A1(
+        oc8051_memory_interface1_n76), .B0(oc8051_memory_interface1_n626), 
+        .C0(oc8051_memory_interface1_n627), .Y(oc8051_memory_interface1_n432)
          );
-  MXT4_X0P5M_A12TS oc8051_memory_interface1_u555 ( .A(
-        oc8051_memory_interface1_n616), .B(oc8051_memory_interface1_n617), .C(
-        oc8051_memory_interface1_n617), .D(oc8051_memory_interface1_n616), 
-        .S0(pc[7]), .S1(oc8051_memory_interface1_n618), .Y(
-        oc8051_memory_interface1_n615) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u554 ( .A0(op3_n[7]), .A1(
-        oc8051_memory_interface1_n580), .B0(oc8051_memory_interface1_n614), 
-        .B1(oc8051_memory_interface1_n574), .C0(oc8051_memory_interface1_n615), 
-        .Y(oc8051_memory_interface1_n613) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u553 ( .A0(
-        oc8051_memory_interface1_n279), .A1(oc8051_memory_interface1_n608), 
-        .B0(oc8051_memory_interface1_n612), .C0(oc8051_memory_interface1_n613), 
-        .Y(oc8051_memory_interface1_n432) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u552 ( .A(
-        oc8051_memory_interface1_n574), .B(oc8051_memory_interface1_n611), .Y(
-        oc8051_memory_interface1_n565) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u551 ( .A(
-        oc8051_memory_interface1_n565), .Y(oc8051_memory_interface1_n576) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u550 ( .A(
-        oc8051_memory_interface1_n609), .B(oc8051_memory_interface1_n610), .C(
-        oc8051_memory_interface1_n272), .Y(oc8051_memory_interface1_n604) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u549 ( .A0(des_acc[6]), .A1(
-        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
-        .B1(op2_n[6]), .Y(oc8051_memory_interface1_n605) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u548 ( .A(
-        oc8051_memory_interface1_n608), .Y(oc8051_memory_interface1_n575) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u547 ( .A0(op3_n[6]), .A1(
-        oc8051_memory_interface1_n580), .B0(oc8051_memory_interface1_n607), 
-        .B1(oc8051_memory_interface1_n574), .C0(oc8051_memory_interface1_n575), 
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u579 ( .A(
+        oc8051_memory_interface1_n590), .B(oc8051_memory_interface1_n625), .Y(
+        oc8051_memory_interface1_n581) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u578 ( .A(
+        oc8051_memory_interface1_n581), .Y(oc8051_memory_interface1_n592) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u577 ( .A(
+        oc8051_memory_interface1_n623), .B(oc8051_memory_interface1_n624), .C(
+        oc8051_memory_interface1_n288), .Y(oc8051_memory_interface1_n619) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u576 ( .A0(des_acc[6]), .A1(
+        oc8051_memory_interface1_n583), .B0(oc8051_memory_interface1_n580), 
+        .B1(op2_n[6]), .Y(oc8051_memory_interface1_n620) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u575 ( .A(
+        oc8051_memory_interface1_pc_buf_6_), .Y(oc8051_memory_interface1_n289)
+         );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u574 ( .A(
+        oc8051_memory_interface1_n289), .B(oc8051_memory_interface1_n622), .Y(
+        oc8051_memory_interface1_n78) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u573 ( .A0(op3_n[6]), .A1(
+        oc8051_memory_interface1_n596), .B0(oc8051_memory_interface1_n78), 
+        .B1(oc8051_memory_interface1_n590), .C0(oc8051_memory_interface1_n591), 
         .C1(oc8051_memory_interface1_pc_buf_6_), .Y(
-        oc8051_memory_interface1_n606) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u546 ( .A0(
-        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n604), 
-        .B0(oc8051_memory_interface1_n605), .C0(oc8051_memory_interface1_n606), 
+        oc8051_memory_interface1_n621) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u572 ( .A0(
+        oc8051_memory_interface1_n592), .A1(oc8051_memory_interface1_n619), 
+        .B0(oc8051_memory_interface1_n620), .C0(oc8051_memory_interface1_n621), 
         .Y(oc8051_memory_interface1_n433) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u545 ( .A(
-        oc8051_memory_interface1_n602), .B(oc8051_memory_interface1_n603), .C(
-        pc[5]), .Y(oc8051_memory_interface1_n598) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u544 ( .A0(des_acc[5]), .A1(
-        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
-        .B1(op2_n[5]), .Y(oc8051_memory_interface1_n599) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u543 ( .A0(
-        oc8051_memory_interface1_n601), .A1(oc8051_memory_interface1_n574), 
-        .B0(oc8051_memory_interface1_n575), .B1(
-        oc8051_memory_interface1_pc_buf_5_), .C0(op3_n[5]), .C1(
-        oc8051_memory_interface1_n580), .Y(oc8051_memory_interface1_n600) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u542 ( .A0(
-        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n598), 
-        .B0(oc8051_memory_interface1_n599), .C0(oc8051_memory_interface1_n600), 
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u571 ( .A(
+        oc8051_memory_interface1_n617), .B(oc8051_memory_interface1_n618), .C(
+        pc[5]), .Y(oc8051_memory_interface1_n613) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u570 ( .A0(des_acc[5]), .A1(
+        oc8051_memory_interface1_n583), .B0(oc8051_memory_interface1_n580), 
+        .B1(op2_n[5]), .Y(oc8051_memory_interface1_n614) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u569 ( .A(
+        oc8051_memory_interface1_n609), .B(oc8051_memory_interface1_n276), .Y(
+        oc8051_memory_interface1_n616) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u568 ( .A(
+        oc8051_memory_interface1_n283), .B(oc8051_memory_interface1_n616), .Y(
+        oc8051_memory_interface1_n79) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u567 ( .A0(op3_n[5]), .A1(
+        oc8051_memory_interface1_n596), .B0(oc8051_memory_interface1_n79), 
+        .B1(oc8051_memory_interface1_n590), .C0(oc8051_memory_interface1_n591), 
+        .C1(oc8051_memory_interface1_pc_buf_5_), .Y(
+        oc8051_memory_interface1_n615) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u566 ( .A0(
+        oc8051_memory_interface1_n592), .A1(oc8051_memory_interface1_n613), 
+        .B0(oc8051_memory_interface1_n614), .C0(oc8051_memory_interface1_n615), 
         .Y(oc8051_memory_interface1_n434) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u541 ( .A(
-        oc8051_memory_interface1_n597), .Y(oc8051_memory_interface1_n596) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u540 ( .A(
-        oc8051_memory_interface1_n595), .B(oc8051_memory_interface1_n596), .C(
-        oc8051_memory_interface1_n259), .Y(oc8051_memory_interface1_n591) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u539 ( .A0(des_acc[4]), .A1(
-        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
-        .B1(op2_n[4]), .Y(oc8051_memory_interface1_n592) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u538 ( .A0(op3_n[4]), .A1(
-        oc8051_memory_interface1_n580), .B0(oc8051_memory_interface1_n594), 
-        .B1(oc8051_memory_interface1_n574), .C0(oc8051_memory_interface1_n575), 
+  INV_X0P5B_A12TS oc8051_memory_interface1_u565 ( .A(
+        oc8051_memory_interface1_n612), .Y(oc8051_memory_interface1_n611) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u564 ( .A(
+        oc8051_memory_interface1_n610), .B(oc8051_memory_interface1_n611), .C(
+        oc8051_memory_interface1_n275), .Y(oc8051_memory_interface1_n606) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u563 ( .A0(des_acc[4]), .A1(
+        oc8051_memory_interface1_n583), .B0(oc8051_memory_interface1_n580), 
+        .B1(op2_n[4]), .Y(oc8051_memory_interface1_n607) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u562 ( .A(
+        oc8051_memory_interface1_n609), .B(oc8051_memory_interface1_n276), .Y(
+        oc8051_memory_interface1_n80) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u561 ( .A0(op3_n[4]), .A1(
+        oc8051_memory_interface1_n596), .B0(oc8051_memory_interface1_n80), 
+        .B1(oc8051_memory_interface1_n590), .C0(oc8051_memory_interface1_n591), 
         .C1(oc8051_memory_interface1_pc_buf_4_), .Y(
-        oc8051_memory_interface1_n593) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u537 ( .A0(
-        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n591), 
-        .B0(oc8051_memory_interface1_n592), .C0(oc8051_memory_interface1_n593), 
+        oc8051_memory_interface1_n608) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u560 ( .A0(
+        oc8051_memory_interface1_n592), .A1(oc8051_memory_interface1_n606), 
+        .B0(oc8051_memory_interface1_n607), .C0(oc8051_memory_interface1_n608), 
         .Y(oc8051_memory_interface1_n435) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u536 ( .A(
-        oc8051_memory_interface1_n589), .B(oc8051_memory_interface1_n590), .C(
-        pc[3]), .Y(oc8051_memory_interface1_n585) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u535 ( .A0(des_acc[3]), .A1(
-        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
-        .B1(op2_n[3]), .Y(oc8051_memory_interface1_n586) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u534 ( .A0(
-        oc8051_memory_interface1_n588), .A1(oc8051_memory_interface1_n574), 
-        .B0(oc8051_memory_interface1_n575), .B1(
-        oc8051_memory_interface1_pc_buf_3_), .C0(op3_n[3]), .C1(
-        oc8051_memory_interface1_n580), .Y(oc8051_memory_interface1_n587) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u533 ( .A0(
-        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n585), 
-        .B0(oc8051_memory_interface1_n586), .C0(oc8051_memory_interface1_n587), 
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u559 ( .A(
+        oc8051_memory_interface1_n604), .B(oc8051_memory_interface1_n605), .C(
+        pc[3]), .Y(oc8051_memory_interface1_n600) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u558 ( .A0(des_acc[3]), .A1(
+        oc8051_memory_interface1_n583), .B0(oc8051_memory_interface1_n580), 
+        .B1(op2_n[3]), .Y(oc8051_memory_interface1_n601) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u557 ( .A(
+        oc8051_memory_interface1_pc_buf_2_), .B(oc8051_memory_interface1_n214), 
+        .Y(oc8051_memory_interface1_n603) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u556 ( .A(
+        oc8051_memory_interface1_n603), .B(oc8051_memory_interface1_pc_buf_3_), 
+        .Y(oc8051_memory_interface1_n81) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u555 ( .A0(op3_n[3]), .A1(
+        oc8051_memory_interface1_n596), .B0(oc8051_memory_interface1_n81), 
+        .B1(oc8051_memory_interface1_n590), .C0(oc8051_memory_interface1_n591), 
+        .C1(oc8051_memory_interface1_pc_buf_3_), .Y(
+        oc8051_memory_interface1_n602) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u554 ( .A0(
+        oc8051_memory_interface1_n592), .A1(oc8051_memory_interface1_n600), 
+        .B0(oc8051_memory_interface1_n601), .C0(oc8051_memory_interface1_n602), 
         .Y(oc8051_memory_interface1_n436) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u532 ( .A(
-        oc8051_memory_interface1_n584), .Y(oc8051_memory_interface1_n583) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u531 ( .A(
-        oc8051_memory_interface1_n582), .B(oc8051_memory_interface1_n583), .C(
-        oc8051_memory_interface1_n249), .Y(oc8051_memory_interface1_n577) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u530 ( .A0(des_acc[2]), .A1(
-        oc8051_memory_interface1_n567), .B0(oc8051_memory_interface1_n564), 
-        .B1(op2_n[2]), .Y(oc8051_memory_interface1_n578) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u529 ( .A0(op3_n[2]), .A1(
-        oc8051_memory_interface1_n580), .B0(oc8051_memory_interface1_n581), 
-        .B1(oc8051_memory_interface1_n574), .C0(oc8051_memory_interface1_n575), 
+  INV_X0P5B_A12TS oc8051_memory_interface1_u553 ( .A(
+        oc8051_memory_interface1_n599), .Y(oc8051_memory_interface1_n598) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u552 ( .A(
+        oc8051_memory_interface1_n597), .B(oc8051_memory_interface1_n598), .C(
+        oc8051_memory_interface1_n265), .Y(oc8051_memory_interface1_n593) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u551 ( .A0(des_acc[2]), .A1(
+        oc8051_memory_interface1_n583), .B0(oc8051_memory_interface1_n580), 
+        .B1(op2_n[2]), .Y(oc8051_memory_interface1_n594) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u550 ( .A(
+        oc8051_memory_interface1_n214), .B(oc8051_memory_interface1_pc_buf_2_), 
+        .Y(oc8051_memory_interface1_n82) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u549 ( .A0(op3_n[2]), .A1(
+        oc8051_memory_interface1_n596), .B0(oc8051_memory_interface1_n82), 
+        .B1(oc8051_memory_interface1_n590), .C0(oc8051_memory_interface1_n591), 
         .C1(oc8051_memory_interface1_pc_buf_2_), .Y(
-        oc8051_memory_interface1_n579) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u528 ( .A0(
-        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n577), 
-        .B0(oc8051_memory_interface1_n578), .C0(oc8051_memory_interface1_n579), 
+        oc8051_memory_interface1_n595) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u548 ( .A0(
+        oc8051_memory_interface1_n592), .A1(oc8051_memory_interface1_n593), 
+        .B0(oc8051_memory_interface1_n594), .C0(oc8051_memory_interface1_n595), 
         .Y(oc8051_memory_interface1_n437) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u527 ( .A(
-        oc8051_memory_interface1_n574), .B(oc8051_memory_interface1_n575), .Y(
-        oc8051_memory_interface1_n560) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u526 ( .A(pc[1]), .Y(
-        oc8051_memory_interface1_n243) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u525 ( .A(
-        oc8051_memory_interface1_n572), .B(oc8051_memory_interface1_n573), .C(
-        oc8051_memory_interface1_n243), .Y(oc8051_memory_interface1_n570) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u524 ( .A(
-        oc8051_memory_interface1_n571), .Y(op2_n[1]) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u523 ( .A0(
-        oc8051_memory_interface1_n565), .A1(oc8051_memory_interface1_n570), 
-        .B0(des_acc[1]), .B1(oc8051_memory_interface1_n567), .C0(
-        oc8051_memory_interface1_n564), .C1(op2_n[1]), .Y(
-        oc8051_memory_interface1_n569) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u522 ( .A0(
-        oc8051_memory_interface1_n560), .A1(oc8051_memory_interface1_n245), 
-        .B0(oc8051_memory_interface1_n562), .B1(oc8051_memory_interface1_n144), 
-        .C0(oc8051_memory_interface1_n569), .Y(oc8051_memory_interface1_n438)
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u547 ( .A(
+        oc8051_memory_interface1_n590), .B(oc8051_memory_interface1_n591), .Y(
+        oc8051_memory_interface1_n576) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u546 ( .A(
+        oc8051_memory_interface1_pc_out_1_), .Y(oc8051_memory_interface1_n83)
          );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u521 ( .A(
-        oc8051_memory_interface1_n238), .B(oc8051_memory_interface1_n568), .Y(
-        oc8051_memory_interface1_n566) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u520 ( .A0(
-        oc8051_memory_interface1_n564), .A1(op2_n[0]), .B0(
-        oc8051_memory_interface1_n565), .B1(oc8051_memory_interface1_n566), 
-        .C0(des_acc[0]), .C1(oc8051_memory_interface1_n567), .Y(
-        oc8051_memory_interface1_n563) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u519 ( .A0(
-        oc8051_memory_interface1_n560), .A1(oc8051_memory_interface1_n241), 
-        .B0(oc8051_memory_interface1_n561), .B1(oc8051_memory_interface1_n562), 
-        .C0(oc8051_memory_interface1_n563), .Y(oc8051_memory_interface1_n439)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u545 ( .A(pc[1]), .Y(
+        oc8051_memory_interface1_n260) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u544 ( .A(
+        oc8051_memory_interface1_n588), .B(oc8051_memory_interface1_n589), .C(
+        oc8051_memory_interface1_n260), .Y(oc8051_memory_interface1_n586) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u543 ( .A(
+        oc8051_memory_interface1_n587), .Y(op2_n[1]) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u542 ( .A0(
+        oc8051_memory_interface1_n581), .A1(oc8051_memory_interface1_n586), 
+        .B0(des_acc[1]), .B1(oc8051_memory_interface1_n583), .C0(
+        oc8051_memory_interface1_n580), .C1(op2_n[1]), .Y(
+        oc8051_memory_interface1_n585) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u541 ( .A0(
+        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n83), 
+        .B0(oc8051_memory_interface1_n578), .B1(oc8051_memory_interface1_n162), 
+        .C0(oc8051_memory_interface1_n585), .Y(oc8051_memory_interface1_n438)
          );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u518 ( .A(
-        oc8051_memory_interface1_n189), .B(oc8051_memory_interface1_n200), .C(
-        rd), .Y(oc8051_memory_interface1_n239) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u517 ( .A(
-        oc8051_memory_interface1_n239), .B(oc8051_memory_interface1_n200), .Y(
-        oc8051_memory_interface1_n237) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u516 ( .A0(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u540 ( .A(
+        oc8051_memory_interface1_pc_out_0_), .Y(oc8051_memory_interface1_n258)
+         );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u539 ( .A(
+        oc8051_memory_interface1_n255), .B(oc8051_memory_interface1_n584), .Y(
+        oc8051_memory_interface1_n582) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u538 ( .A0(
+        oc8051_memory_interface1_n580), .A1(op2_n[0]), .B0(
+        oc8051_memory_interface1_n581), .B1(oc8051_memory_interface1_n582), 
+        .C0(des_acc[0]), .C1(oc8051_memory_interface1_n583), .Y(
+        oc8051_memory_interface1_n579) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u537 ( .A0(
+        oc8051_memory_interface1_n576), .A1(oc8051_memory_interface1_n258), 
+        .B0(oc8051_memory_interface1_n577), .B1(oc8051_memory_interface1_n578), 
+        .C0(oc8051_memory_interface1_n579), .Y(oc8051_memory_interface1_n439)
+         );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u536 ( .A(
+        oc8051_memory_interface1_n206), .B(oc8051_memory_interface1_n217), .C(
+        rd), .Y(oc8051_memory_interface1_n256) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u535 ( .A(
+        oc8051_memory_interface1_n256), .B(oc8051_memory_interface1_n217), .Y(
+        oc8051_memory_interface1_n254) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u534 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_3_), .B0(
-        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_3_), 
+        oc8051_memory_interface1_n568), .B1(oc8051_memory_interface1_op1_3_), 
         .C0(oc8051_memory_interface1_cdata_3_), .C1(
-        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n346) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u515 ( .A0(
+        oc8051_memory_interface1_n569), .Y(oc8051_memory_interface1_n371) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u533 ( .A0(
         oc8051_memory_interface1_ddat_ir_1_), .A1(
-        oc8051_memory_interface1_dack_ir), .B0(oc8051_memory_interface1_n533), 
+        oc8051_memory_interface1_dack_ir), .B0(oc8051_memory_interface1_n569), 
         .B1(oc8051_memory_interface1_cdata_1_), .Y(
-        oc8051_memory_interface1_n559) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u514 ( .A0(
-        oc8051_memory_interface1_n556), .A1(oc8051_memory_interface1_op1_1_), 
-        .B0(oc8051_memory_interface1_n557), .C0(oc8051_memory_interface1_n559), 
-        .Y(oc8051_memory_interface1_n349) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u513 ( .A0(
+        oc8051_memory_interface1_n575) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u532 ( .A0(
+        oc8051_memory_interface1_n572), .A1(oc8051_memory_interface1_op1_1_), 
+        .B0(oc8051_memory_interface1_n573), .C0(oc8051_memory_interface1_n575), 
+        .Y(oc8051_memory_interface1_n374) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u531 ( .A0(
         oc8051_memory_interface1_ddat_ir_4_), .A1(
-        oc8051_memory_interface1_dack_ir), .B0(oc8051_memory_interface1_n533), 
+        oc8051_memory_interface1_dack_ir), .B0(oc8051_memory_interface1_n569), 
         .B1(oc8051_memory_interface1_cdata_4_), .Y(
-        oc8051_memory_interface1_n558) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u512 ( .A0(
-        oc8051_memory_interface1_n556), .A1(oc8051_memory_interface1_op1_4_), 
-        .B0(oc8051_memory_interface1_n557), .C0(oc8051_memory_interface1_n558), 
-        .Y(oc8051_memory_interface1_n347) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u511 ( .A(op1_n[7]), .B(
-        oc8051_memory_interface1_n343), .Y(oc8051_memory_interface1_n517) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u510 ( .A(
-        oc8051_memory_interface1_n351), .Y(op1_n[5]) );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u509 ( .A0(op1_n[6]), .A1(
-        op1_n[5]), .B0(oc8051_memory_interface1_n364), .Y(
-        oc8051_memory_interface1_n554) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u508 ( .A0(
+        oc8051_memory_interface1_n574) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u530 ( .A0(
+        oc8051_memory_interface1_n572), .A1(oc8051_memory_interface1_op1_4_), 
+        .B0(oc8051_memory_interface1_n573), .C0(oc8051_memory_interface1_n574), 
+        .Y(oc8051_memory_interface1_n372) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u529 ( .A(op1_n[7]), .B(
+        oc8051_memory_interface1_n368), .Y(oc8051_memory_interface1_n566) );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u528 ( .A0(op1_n[6]), .A1(
+        op1_n[5]), .B0(oc8051_memory_interface1_n396), .Y(
+        oc8051_memory_interface1_n570) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u527 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_0_), .B0(
-        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_0_), 
+        oc8051_memory_interface1_n568), .B1(oc8051_memory_interface1_op1_0_), 
         .C0(oc8051_memory_interface1_cdata_0_), .C1(
-        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n370) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u507 ( .A(
-        oc8051_memory_interface1_n370), .Y(op1_n[0]) );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u506 ( .A0(op1_n[6]), .A1(
-        oc8051_memory_interface1_n351), .B0(op1_n[0]), .Y(
-        oc8051_memory_interface1_n555) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u505 ( .A0(
-        oc8051_memory_interface1_n347), .A1(oc8051_memory_interface1_n517), 
-        .B0(oc8051_memory_interface1_n554), .C0(oc8051_memory_interface1_n555), 
-        .Y(oc8051_memory_interface1_n509) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u504 ( .A0(
+        oc8051_memory_interface1_n569), .Y(oc8051_memory_interface1_n419) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u526 ( .A(
+        oc8051_memory_interface1_n419), .Y(op1_n[0]) );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u525 ( .A0(op1_n[6]), .A1(
+        oc8051_memory_interface1_n376), .B0(op1_n[0]), .Y(
+        oc8051_memory_interface1_n571) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u524 ( .A0(
+        oc8051_memory_interface1_n372), .A1(oc8051_memory_interface1_n566), 
+        .B0(oc8051_memory_interface1_n570), .C0(oc8051_memory_interface1_n571), 
+        .Y(oc8051_memory_interface1_n562) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u523 ( .A0(
         oc8051_memory_interface1_dack_ir), .A1(
         oc8051_memory_interface1_ddat_ir_2_), .B0(
-        oc8051_memory_interface1_n521), .B1(oc8051_memory_interface1_op1_2_), 
+        oc8051_memory_interface1_n568), .B1(oc8051_memory_interface1_op1_2_), 
         .C0(oc8051_memory_interface1_cdata_2_), .C1(
-        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n348) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u503 ( .A(
-        oc8051_memory_interface1_n348), .Y(op1_n[2]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u502 ( .A(
-        oc8051_memory_interface1_n346), .Y(op1_n[3]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u501 ( .A(op1_n[2]), .B(op1_n[3]), 
-        .Y(oc8051_memory_interface1_n366) );
+        oc8051_memory_interface1_n569), .Y(oc8051_memory_interface1_n373) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u522 ( .A(
+        oc8051_memory_interface1_n373), .Y(op1_n[2]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u521 ( .A(
+        oc8051_memory_interface1_n371), .Y(op1_n[3]) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u520 ( .A(op1_n[2]), .B(op1_n[3]), 
+        .Y(oc8051_memory_interface1_n398) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u519 ( .A(
+        oc8051_memory_interface1_n374), .Y(op1_n[1]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u518 ( .A(
+        oc8051_memory_interface1_n372), .Y(op1_n[4]) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u517 ( .A(op1_n[6]), .B(op1_n[1]), 
+        .C(op1_n[4]), .Y(oc8051_memory_interface1_n533) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u516 ( .A(
+        oc8051_memory_interface1_n419), .B(oc8051_memory_interface1_n376), .Y(
+        oc8051_memory_interface1_n369) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u515 ( .A(op1_n[4]), .B(op1_n[5]), 
+        .C(op1_n[0]), .Y(oc8051_memory_interface1_n567) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u514 ( .A(op1_n[6]), .B(
+        oc8051_memory_interface1_n396), .C(oc8051_memory_interface1_n567), .Y(
+        oc8051_memory_interface1_n564) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u513 ( .A(
+        oc8051_memory_interface1_n566), .Y(oc8051_memory_interface1_n557) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u512 ( .A(
+        oc8051_memory_interface1_n374), .B(oc8051_memory_interface1_n557), 
+        .S0(oc8051_memory_interface1_n419), .Y(oc8051_memory_interface1_n565)
+         );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u511 ( .A0(
+        oc8051_memory_interface1_n533), .A1(oc8051_memory_interface1_n369), 
+        .B0(oc8051_memory_interface1_n564), .C0(oc8051_memory_interface1_n565), 
+        .Y(oc8051_memory_interface1_n563) );
+  AOI32_X0P5M_A12TS oc8051_memory_interface1_u510 ( .A0(
+        oc8051_memory_interface1_n371), .A1(oc8051_memory_interface1_n374), 
+        .A2(oc8051_memory_interface1_n562), .B0(oc8051_memory_interface1_n398), 
+        .B1(oc8051_memory_interface1_n563), .Y(oc8051_memory_interface1_n555)
+         );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u509 ( .A0(
+        oc8051_memory_interface1_n374), .A1(oc8051_memory_interface1_n373), 
+        .B0(oc8051_memory_interface1_n371), .Y(oc8051_memory_interface1_n511)
+         );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u508 ( .A(op1_n[4]), .B(
+        oc8051_memory_interface1_n376), .Y(oc8051_memory_interface1_n554) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u507 ( .A(
+        oc8051_memory_interface1_n368), .B(oc8051_memory_interface1_n372), .Y(
+        oc8051_memory_interface1_n558) );
+  OR2_X0P5M_A12TS oc8051_memory_interface1_u506 ( .A(
+        oc8051_memory_interface1_n398), .B(op1_n[7]), .Y(
+        oc8051_memory_interface1_n560) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u505 ( .A(op1_n[3]), .B(op1_n[7]), 
+        .Y(oc8051_memory_interface1_n561) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u504 ( .A(
+        oc8051_memory_interface1_n560), .B(oc8051_memory_interface1_n561), 
+        .S0(oc8051_memory_interface1_n376), .Y(oc8051_memory_interface1_n559)
+         );
+  AOI32_X0P5M_A12TS oc8051_memory_interface1_u503 ( .A0(
+        oc8051_memory_interface1_n511), .A1(oc8051_memory_interface1_n554), 
+        .A2(oc8051_memory_interface1_n557), .B0(oc8051_memory_interface1_n558), 
+        .B1(oc8051_memory_interface1_n559), .Y(oc8051_memory_interface1_n556)
+         );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u502 ( .A(
+        oc8051_memory_interface1_n555), .B(oc8051_memory_interface1_n556), .Y(
+        oc8051_memory_interface1_n263) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u501 ( .A(
+        oc8051_memory_interface1_n263), .Y(oc8051_memory_interface1_n215) );
   INV_X0P5B_A12TS oc8051_memory_interface1_u500 ( .A(
-        oc8051_memory_interface1_n349), .Y(op1_n[1]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u499 ( .A(
-        oc8051_memory_interface1_n347), .Y(op1_n[4]) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u498 ( .A(op1_n[6]), .B(op1_n[1]), 
-        .C(op1_n[4]), .Y(oc8051_memory_interface1_n395) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u497 ( .A(
-        oc8051_memory_interface1_n370), .B(oc8051_memory_interface1_n351), .Y(
-        oc8051_memory_interface1_n344) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u496 ( .A(op1_n[4]), .B(op1_n[5]), 
-        .C(op1_n[0]), .Y(oc8051_memory_interface1_n519) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u495 ( .A(op1_n[6]), .B(
-        oc8051_memory_interface1_n364), .C(oc8051_memory_interface1_n519), .Y(
-        oc8051_memory_interface1_n513) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u494 ( .A(
-        oc8051_memory_interface1_n517), .Y(oc8051_memory_interface1_n399) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u493 ( .A(
-        oc8051_memory_interface1_n349), .B(oc8051_memory_interface1_n399), 
-        .S0(oc8051_memory_interface1_n370), .Y(oc8051_memory_interface1_n515)
+        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n208)
          );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u492 ( .A0(
-        oc8051_memory_interface1_n395), .A1(oc8051_memory_interface1_n344), 
-        .B0(oc8051_memory_interface1_n513), .C0(oc8051_memory_interface1_n515), 
-        .Y(oc8051_memory_interface1_n511) );
-  AOI32_X0P5M_A12TS oc8051_memory_interface1_u491 ( .A0(
-        oc8051_memory_interface1_n346), .A1(oc8051_memory_interface1_n349), 
-        .A2(oc8051_memory_interface1_n509), .B0(oc8051_memory_interface1_n366), 
-        .B1(oc8051_memory_interface1_n511), .Y(oc8051_memory_interface1_n397)
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u499 ( .A(
+        oc8051_memory_interface1_n258), .B(oc8051_memory_interface1_n208), .Y(
+        oc8051_memory_interface1_n259) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u498 ( .A(
+        oc8051_memory_interface1_n554), .Y(oc8051_memory_interface1_n521) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u497 ( .A0(op1_n[4]), .A1(
+        op1_n[1]), .B0(oc8051_memory_interface1_n521), .B1(op1_n[6]), .C0(
+        oc8051_memory_interface1_n533), .Y(oc8051_memory_interface1_n513) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u496 ( .A(
+        oc8051_memory_interface1_n376), .B(op1_n[6]), .Y(
+        oc8051_memory_interface1_n517) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u495 ( .A(
+        oc8051_memory_interface1_n368), .B(op1_n[0]), .Y(
+        oc8051_memory_interface1_n519) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u494 ( .A(
+        oc8051_memory_interface1_n517), .B(oc8051_memory_interface1_n519), 
+        .S0(oc8051_memory_interface1_n372), .Y(oc8051_memory_interface1_n515)
          );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u490 ( .A0(
-        oc8051_memory_interface1_n349), .A1(oc8051_memory_interface1_n348), 
-        .B0(oc8051_memory_interface1_n346), .Y(oc8051_memory_interface1_n373)
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u493 ( .A0(op1_n[3]), .A1(
+        oc8051_memory_interface1_n513), .B0(oc8051_memory_interface1_n515), 
+        .C0(oc8051_memory_interface1_n373), .Y(oc8051_memory_interface1_n399)
          );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u489 ( .A(op1_n[4]), .B(
-        oc8051_memory_interface1_n351), .Y(oc8051_memory_interface1_n396) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u488 ( .A(
-        oc8051_memory_interface1_n343), .B(oc8051_memory_interface1_n347), .Y(
-        oc8051_memory_interface1_n400) );
-  OR2_X0P5M_A12TS oc8051_memory_interface1_u487 ( .A(
-        oc8051_memory_interface1_n366), .B(op1_n[7]), .Y(
-        oc8051_memory_interface1_n419) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u486 ( .A(op1_n[3]), .B(op1_n[7]), 
-        .Y(oc8051_memory_interface1_n507) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u485 ( .A(
-        oc8051_memory_interface1_n419), .B(oc8051_memory_interface1_n507), 
-        .S0(oc8051_memory_interface1_n351), .Y(oc8051_memory_interface1_n418)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u492 ( .A(
+        oc8051_memory_interface1_n511), .Y(oc8051_memory_interface1_n375) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u491 ( .A(
+        oc8051_memory_interface1_n371), .B(oc8051_memory_interface1_n374), .Y(
+        oc8051_memory_interface1_n507) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u490 ( .A(
+        oc8051_memory_interface1_n369), .Y(oc8051_memory_interface1_n509) );
+  AOI211_X0P5M_A12TS oc8051_memory_interface1_u489 ( .A0(
+        oc8051_memory_interface1_n373), .A1(oc8051_memory_interface1_n419), 
+        .B0(oc8051_memory_interface1_n507), .C0(oc8051_memory_interface1_n509), 
+        .Y(oc8051_memory_interface1_n418) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u488 ( .A0(op1_n[5]), .A1(
+        oc8051_memory_interface1_n375), .B0(op1_n[6]), .B1(
+        oc8051_memory_interface1_n418), .Y(oc8051_memory_interface1_n400) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u487 ( .A(
+        oc8051_memory_interface1_n399), .B(oc8051_memory_interface1_n400), 
+        .S0(oc8051_memory_interface1_n396), .Y(oc8051_memory_interface1_n363)
          );
-  AOI32_X0P5M_A12TS oc8051_memory_interface1_u484 ( .A0(
-        oc8051_memory_interface1_n373), .A1(oc8051_memory_interface1_n396), 
-        .A2(oc8051_memory_interface1_n399), .B0(oc8051_memory_interface1_n400), 
-        .B1(oc8051_memory_interface1_n418), .Y(oc8051_memory_interface1_n398)
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u486 ( .A(op1_n[0]), .B(op1_n[1]), 
+        .C(oc8051_memory_interface1_n398), .Y(oc8051_memory_interface1_n364)
          );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u483 ( .A(
-        oc8051_memory_interface1_n397), .B(oc8051_memory_interface1_n398), .Y(
-        oc8051_memory_interface1_n247) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u482 ( .A(
-        oc8051_memory_interface1_n247), .Y(oc8051_memory_interface1_n198) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u481 ( .A(
-        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n191)
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u485 ( .A(op1_n[0]), .B(
+        oc8051_memory_interface1_n371), .Y(oc8051_memory_interface1_n394) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u484 ( .A(
+        oc8051_memory_interface1_n394), .Y(oc8051_memory_interface1_n397) );
+  AND4_X0P5M_A12TS oc8051_memory_interface1_u483 ( .A(
+        oc8051_memory_interface1_n397), .B(op1_n[2]), .C(op1_n[4]), .D(
+        oc8051_memory_interface1_n374), .Y(oc8051_memory_interface1_n395) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u482 ( .A(
+        oc8051_memory_interface1_n394), .B(oc8051_memory_interface1_n395), 
+        .S0(oc8051_memory_interface1_n396), .Y(oc8051_memory_interface1_n393)
          );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u480 ( .A(
-        oc8051_memory_interface1_n241), .B(oc8051_memory_interface1_n191), .Y(
-        oc8051_memory_interface1_n242) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u479 ( .A(
-        oc8051_memory_interface1_n396), .Y(oc8051_memory_interface1_n394) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u478 ( .A0(op1_n[4]), .A1(
-        op1_n[1]), .B0(oc8051_memory_interface1_n394), .B1(op1_n[6]), .C0(
-        oc8051_memory_interface1_n395), .Y(oc8051_memory_interface1_n374) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u477 ( .A(
-        oc8051_memory_interface1_n351), .B(op1_n[6]), .Y(
-        oc8051_memory_interface1_n376) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u476 ( .A(
-        oc8051_memory_interface1_n343), .B(op1_n[0]), .Y(
-        oc8051_memory_interface1_n393) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u475 ( .A(
-        oc8051_memory_interface1_n376), .B(oc8051_memory_interface1_n393), 
-        .S0(oc8051_memory_interface1_n347), .Y(oc8051_memory_interface1_n375)
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u481 ( .A0(op1_n[4]), .A1(
+        oc8051_memory_interface1_n375), .B0(oc8051_memory_interface1_n376), 
+        .B1(oc8051_memory_interface1_n393), .Y(oc8051_memory_interface1_n366)
          );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u474 ( .A0(op1_n[3]), .A1(
-        oc8051_memory_interface1_n374), .B0(oc8051_memory_interface1_n375), 
-        .C0(oc8051_memory_interface1_n348), .Y(oc8051_memory_interface1_n367)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u473 ( .A(
-        oc8051_memory_interface1_n373), .Y(oc8051_memory_interface1_n350) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u472 ( .A(
-        oc8051_memory_interface1_n346), .B(oc8051_memory_interface1_n349), .Y(
-        oc8051_memory_interface1_n371) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u471 ( .A(
-        oc8051_memory_interface1_n344), .Y(oc8051_memory_interface1_n372) );
-  AOI211_X0P5M_A12TS oc8051_memory_interface1_u470 ( .A0(
-        oc8051_memory_interface1_n348), .A1(oc8051_memory_interface1_n370), 
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u480 ( .A(
+        oc8051_memory_interface1_n373), .B(oc8051_memory_interface1_n374), .Y(
+        oc8051_memory_interface1_n370) );
+  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u479 ( .A0(
+        oc8051_memory_interface1_n369), .A1(oc8051_memory_interface1_n370), 
         .B0(oc8051_memory_interface1_n371), .C0(oc8051_memory_interface1_n372), 
-        .Y(oc8051_memory_interface1_n369) );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u469 ( .A0(op1_n[5]), .A1(
-        oc8051_memory_interface1_n350), .B0(op1_n[6]), .B1(
-        oc8051_memory_interface1_n369), .Y(oc8051_memory_interface1_n368) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u468 ( .A(
-        oc8051_memory_interface1_n367), .B(oc8051_memory_interface1_n368), 
-        .S0(oc8051_memory_interface1_n364), .Y(oc8051_memory_interface1_n338)
+        .Y(oc8051_memory_interface1_n367) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u478 ( .A(
+        oc8051_memory_interface1_n366), .B(oc8051_memory_interface1_n367), 
+        .S0(oc8051_memory_interface1_n368), .Y(oc8051_memory_interface1_n365)
          );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u467 ( .A(op1_n[0]), .B(op1_n[1]), 
-        .C(oc8051_memory_interface1_n366), .Y(oc8051_memory_interface1_n339)
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u477 ( .A(
+        oc8051_memory_interface1_n363), .B(oc8051_memory_interface1_n364), .C(
+        oc8051_memory_interface1_n365), .Y(oc8051_memory_interface1_n253) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u476 ( .A(
+        oc8051_memory_interface1_n259), .B(oc8051_memory_interface1_n253), .Y(
+        oc8051_memory_interface1_n262) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u475 ( .AN(
+        oc8051_memory_interface1_n262), .B(oc8051_memory_interface1_n263), .Y(
+        oc8051_memory_interface1_n361) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u474 ( .A(
+        oc8051_memory_interface1_op_pos_1_), .Y(oc8051_memory_interface1_n216)
          );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u466 ( .A(op1_n[0]), .B(
-        oc8051_memory_interface1_n346), .Y(oc8051_memory_interface1_n362) );
-  NAND4B_X0P5M_A12TS oc8051_memory_interface1_u465 ( .AN(
-        oc8051_memory_interface1_n362), .B(op1_n[2]), .C(op1_n[4]), .D(
-        oc8051_memory_interface1_n349), .Y(oc8051_memory_interface1_n365) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u464 ( .A(
-        oc8051_memory_interface1_n365), .Y(oc8051_memory_interface1_n363) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u463 ( .A(
-        oc8051_memory_interface1_n362), .B(oc8051_memory_interface1_n363), 
-        .S0(oc8051_memory_interface1_n364), .Y(oc8051_memory_interface1_n361)
-         );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u462 ( .A0(op1_n[4]), .A1(
-        oc8051_memory_interface1_n350), .B0(oc8051_memory_interface1_n351), 
-        .B1(oc8051_memory_interface1_n361), .Y(oc8051_memory_interface1_n341)
-         );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u461 ( .A(
-        oc8051_memory_interface1_n348), .B(oc8051_memory_interface1_n349), .Y(
-        oc8051_memory_interface1_n345) );
-  OA21A1OI2_X0P5M_A12TS oc8051_memory_interface1_u460 ( .A0(
-        oc8051_memory_interface1_n344), .A1(oc8051_memory_interface1_n345), 
-        .B0(oc8051_memory_interface1_n346), .C0(oc8051_memory_interface1_n347), 
-        .Y(oc8051_memory_interface1_n342) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u459 ( .A(
-        oc8051_memory_interface1_n341), .B(oc8051_memory_interface1_n342), 
-        .S0(oc8051_memory_interface1_n343), .Y(oc8051_memory_interface1_n340)
-         );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u458 ( .A(
-        oc8051_memory_interface1_n338), .B(oc8051_memory_interface1_n339), .C(
-        oc8051_memory_interface1_n340), .Y(oc8051_memory_interface1_n236) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u457 ( .A(
-        oc8051_memory_interface1_n242), .B(oc8051_memory_interface1_n236), .Y(
-        oc8051_memory_interface1_n246) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u456 ( .AN(
-        oc8051_memory_interface1_n246), .B(oc8051_memory_interface1_n247), .Y(
-        oc8051_memory_interface1_n336) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u455 ( .A(
-        oc8051_memory_interface1_op_pos_1_), .Y(oc8051_memory_interface1_n199)
-         );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u454 ( .A(
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u473 ( .A(
         oc8051_memory_interface1_pc_out_0_), .B(
-        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n337)
+        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n362)
          );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u453 ( .A(
-        oc8051_memory_interface1_pc_out_1_), .B(oc8051_memory_interface1_n199), 
-        .C(oc8051_memory_interface1_n337), .Y(oc8051_memory_interface1_n248)
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u472 ( .A(
+        oc8051_memory_interface1_pc_out_1_), .B(oc8051_memory_interface1_n216), 
+        .C(oc8051_memory_interface1_n362), .Y(oc8051_memory_interface1_n264)
          );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u452 ( .A0(
-        oc8051_memory_interface1_n198), .A1(oc8051_memory_interface1_n246), 
-        .B0(oc8051_memory_interface1_n336), .B1(oc8051_memory_interface1_n248), 
-        .Y(oc8051_memory_interface1_n252) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u451 ( .A(
-        oc8051_memory_interface1_n191), .B(oc8051_memory_interface1_n241), .Y(
-        oc8051_memory_interface1_n335) );
-  CGENI_X1M_A12TS oc8051_memory_interface1_u450 ( .A(
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u471 ( .A0(
+        oc8051_memory_interface1_n215), .A1(oc8051_memory_interface1_n262), 
+        .B0(oc8051_memory_interface1_n361), .B1(oc8051_memory_interface1_n264), 
+        .Y(oc8051_memory_interface1_n268) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u470 ( .A(
+        oc8051_memory_interface1_n208), .B(oc8051_memory_interface1_n258), .Y(
+        oc8051_memory_interface1_n351) );
+  CGENI_X1M_A12TS oc8051_memory_interface1_u469 ( .A(
         oc8051_memory_interface1_op_pos_1_), .B(
-        oc8051_memory_interface1_pc_out_1_), .CI(oc8051_memory_interface1_n335), .CON(oc8051_memory_interface1_n333) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u449 ( .A(
-        oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n205)
+        oc8051_memory_interface1_pc_out_1_), .CI(oc8051_memory_interface1_n351), .CON(oc8051_memory_interface1_n349) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u468 ( .A(
+        oc8051_memory_interface1_pc_buf_2_), .Y(oc8051_memory_interface1_n267)
          );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u448 ( .A(
-        oc8051_memory_interface1_n333), .B(oc8051_memory_interface1_n251), .C(
-        oc8051_memory_interface1_n205), .Y(oc8051_memory_interface1_n253) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u447 ( .AN(
-        oc8051_memory_interface1_n333), .B(oc8051_memory_interface1_op_pos_2_), 
-        .Y(oc8051_memory_interface1_n334) );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u446 ( .A0(
-        oc8051_memory_interface1_n333), .A1(oc8051_memory_interface1_n205), 
-        .B0(oc8051_memory_interface1_n334), .B1(oc8051_memory_interface1_n251), 
-        .Y(oc8051_memory_interface1_n331) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u445 ( .A(
-        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n331), 
-        .Y(oc8051_memory_interface1_n257) );
-  AOI21_X0P5M_A12TS oc8051_memory_interface1_u444 ( .A0(
-        oc8051_memory_interface1_n252), .A1(oc8051_memory_interface1_n253), 
-        .B0(oc8051_memory_interface1_n257), .Y(oc8051_memory_interface1_n258)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u467 ( .A(
+        oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n222)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u443 ( .A(
-        oc8051_memory_interface1_n258), .Y(oc8051_memory_interface1_n263) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u442 ( .A(
-        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n331), 
-        .Y(oc8051_memory_interface1_n332) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u441 ( .A(
-        oc8051_memory_interface1_n332), .B(oc8051_memory_interface1_pc_buf_4_), 
-        .Y(oc8051_memory_interface1_n262) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u440 ( .A(
-        oc8051_memory_interface1_n263), .B(oc8051_memory_interface1_n262), .Y(
-        oc8051_memory_interface1_n264) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u439 ( .A(
-        oc8051_memory_interface1_n264), .Y(oc8051_memory_interface1_n270) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u438 ( .A(
-        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n331), 
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u466 ( .A(
+        oc8051_memory_interface1_n349), .B(oc8051_memory_interface1_n267), .C(
+        oc8051_memory_interface1_n222), .Y(oc8051_memory_interface1_n269) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u465 ( .AN(
+        oc8051_memory_interface1_n349), .B(oc8051_memory_interface1_op_pos_2_), 
+        .Y(oc8051_memory_interface1_n350) );
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u464 ( .A0(
+        oc8051_memory_interface1_n349), .A1(oc8051_memory_interface1_n222), 
+        .B0(oc8051_memory_interface1_n350), .B1(oc8051_memory_interface1_n267), 
+        .Y(oc8051_memory_interface1_n347) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u463 ( .A(
+        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n347), 
+        .Y(oc8051_memory_interface1_n273) );
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u462 ( .A0(
+        oc8051_memory_interface1_n268), .A1(oc8051_memory_interface1_n269), 
+        .B0(oc8051_memory_interface1_n273), .Y(oc8051_memory_interface1_n274)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u461 ( .A(
+        oc8051_memory_interface1_n274), .Y(oc8051_memory_interface1_n279) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u460 ( .A(
+        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n347), 
+        .Y(oc8051_memory_interface1_n348) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u459 ( .A(
+        oc8051_memory_interface1_n348), .B(oc8051_memory_interface1_pc_buf_4_), 
+        .Y(oc8051_memory_interface1_n278) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u458 ( .A(
+        oc8051_memory_interface1_n279), .B(oc8051_memory_interface1_n278), .Y(
+        oc8051_memory_interface1_n280) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u457 ( .A(
+        oc8051_memory_interface1_n280), .Y(oc8051_memory_interface1_n286) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u456 ( .A(
+        oc8051_memory_interface1_pc_buf_3_), .B(oc8051_memory_interface1_n347), 
         .C(oc8051_memory_interface1_pc_buf_4_), .Y(
-        oc8051_memory_interface1_n329) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u437 ( .A(
-        oc8051_memory_interface1_pc_buf_5_), .Y(oc8051_memory_interface1_n267)
-         );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u436 ( .A(
-        oc8051_memory_interface1_n329), .B(oc8051_memory_interface1_n267), .Y(
-        oc8051_memory_interface1_n269) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u435 ( .A(
-        oc8051_memory_interface1_n270), .B(oc8051_memory_interface1_n269), .Y(
-        oc8051_memory_interface1_n271) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u434 ( .A(
-        oc8051_memory_interface1_n271), .Y(oc8051_memory_interface1_n276) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u433 ( .AN(
-        oc8051_memory_interface1_n329), .B(oc8051_memory_interface1_pc_buf_5_), 
-        .Y(oc8051_memory_interface1_n330) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u432 ( .A(
-        oc8051_memory_interface1_n330), .B(oc8051_memory_interface1_pc_buf_6_), 
-        .Y(oc8051_memory_interface1_n275) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u431 ( .A(
-        oc8051_memory_interface1_n276), .B(oc8051_memory_interface1_n275), .Y(
-        oc8051_memory_interface1_n277) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u430 ( .A(
-        oc8051_memory_interface1_n277), .Y(oc8051_memory_interface1_n282) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u429 ( .A(
-        oc8051_memory_interface1_n329), .B(oc8051_memory_interface1_n267), .C(
-        oc8051_memory_interface1_n273), .Y(oc8051_memory_interface1_n327) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u428 ( .A(
-        oc8051_memory_interface1_n327), .B(oc8051_memory_interface1_pc_buf_7_), 
-        .Y(oc8051_memory_interface1_n281) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u427 ( .A(
-        oc8051_memory_interface1_n282), .B(oc8051_memory_interface1_n281), .Y(
-        oc8051_memory_interface1_n283) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u426 ( .A(
-        oc8051_memory_interface1_n283), .Y(oc8051_memory_interface1_n287) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u425 ( .A(
-        oc8051_memory_interface1_n327), .B(oc8051_memory_interface1_pc_buf_7_), 
-        .Y(oc8051_memory_interface1_n328) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u424 ( .A(
-        oc8051_memory_interface1_n328), .B(oc8051_memory_interface1_pc_buf_8_), 
-        .Y(oc8051_memory_interface1_n286) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u423 ( .A(
-        oc8051_memory_interface1_n287), .B(oc8051_memory_interface1_n286), .Y(
-        oc8051_memory_interface1_n288) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u422 ( .A(
-        oc8051_memory_interface1_n288), .Y(oc8051_memory_interface1_n292) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u421 ( .A(
-        oc8051_memory_interface1_n327), .B(oc8051_memory_interface1_pc_buf_7_), 
-        .C(oc8051_memory_interface1_pc_buf_8_), .Y(
-        oc8051_memory_interface1_n325) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u420 ( .A(
-        oc8051_memory_interface1_n325), .B(oc8051_memory_interface1_n289), .Y(
-        oc8051_memory_interface1_n291) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u419 ( .A(
+        oc8051_memory_interface1_n345) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u455 ( .A(
+        oc8051_memory_interface1_n345), .B(oc8051_memory_interface1_n283), .Y(
+        oc8051_memory_interface1_n285) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u454 ( .A(
+        oc8051_memory_interface1_n286), .B(oc8051_memory_interface1_n285), .Y(
+        oc8051_memory_interface1_n287) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u453 ( .A(
+        oc8051_memory_interface1_n287), .Y(oc8051_memory_interface1_n292) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u452 ( .AN(
+        oc8051_memory_interface1_n345), .B(oc8051_memory_interface1_pc_buf_5_), 
+        .Y(oc8051_memory_interface1_n346) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u451 ( .A(
+        oc8051_memory_interface1_n346), .B(oc8051_memory_interface1_pc_buf_6_), 
+        .Y(oc8051_memory_interface1_n291) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u450 ( .A(
         oc8051_memory_interface1_n292), .B(oc8051_memory_interface1_n291), .Y(
         oc8051_memory_interface1_n293) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u418 ( .A(
-        oc8051_memory_interface1_n293), .Y(oc8051_memory_interface1_n297) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u417 ( .AN(
-        oc8051_memory_interface1_n325), .B(oc8051_memory_interface1_pc_buf_9_), 
-        .Y(oc8051_memory_interface1_n326) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u416 ( .A(
-        oc8051_memory_interface1_n326), .B(oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n296) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u415 ( .A(
-        oc8051_memory_interface1_n297), .B(oc8051_memory_interface1_n296), .Y(
-        oc8051_memory_interface1_n298) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u414 ( .A(
-        oc8051_memory_interface1_n298), .Y(oc8051_memory_interface1_n302) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u413 ( .A(
-        oc8051_memory_interface1_n325), .B(oc8051_memory_interface1_n289), .C(
-        oc8051_memory_interface1_n294), .Y(oc8051_memory_interface1_n323) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u412 ( .A(
-        oc8051_memory_interface1_n323), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n301) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u411 ( .A(
-        oc8051_memory_interface1_n302), .B(oc8051_memory_interface1_n301), .Y(
-        oc8051_memory_interface1_n303) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u410 ( .A(
-        oc8051_memory_interface1_n303), .Y(oc8051_memory_interface1_n307) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u409 ( .A(
-        oc8051_memory_interface1_n323), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n324) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u408 ( .A(
-        oc8051_memory_interface1_n324), .B(oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n306) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u407 ( .A(
-        oc8051_memory_interface1_n307), .B(oc8051_memory_interface1_n306), .Y(
-        oc8051_memory_interface1_n308) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u406 ( .A(
-        oc8051_memory_interface1_n308), .Y(oc8051_memory_interface1_n312) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u405 ( .A(
-        oc8051_memory_interface1_n323), .B(oc8051_memory_interface1_pc_buf_11_), .C(oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n322)
-         );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u404 ( .A(
-        oc8051_memory_interface1_n322), .B(oc8051_memory_interface1_n309), .Y(
-        oc8051_memory_interface1_n311) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u403 ( .A(
-        oc8051_memory_interface1_n312), .B(oc8051_memory_interface1_n311), .Y(
-        oc8051_memory_interface1_n313) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u402 ( .A(
-        oc8051_memory_interface1_n322), .B(oc8051_memory_interface1_n309), .Y(
-        oc8051_memory_interface1_n321) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u401 ( .A(
-        oc8051_memory_interface1_n321), .B(oc8051_memory_interface1_n315), .Y(
-        oc8051_memory_interface1_n316) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u400 ( .AN(
-        oc8051_memory_interface1_n313), .B(oc8051_memory_interface1_n316), .Y(
-        oc8051_memory_interface1_n319) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u399 ( .A(
-        oc8051_memory_interface1_pc_buf_15_), .Y(oc8051_memory_interface1_n318) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u398 ( .A(
-        oc8051_memory_interface1_n321), .B(oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n320) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u397 ( .A(
-        oc8051_memory_interface1_n319), .B(oc8051_memory_interface1_n318), .C(
-        oc8051_memory_interface1_n320), .Y(oc8051_memory_interface1_n317) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u396 ( .A0(
-        oc8051_memory_interface1_n360), .A1(oc8051_memory_interface1_n237), 
-        .B0(oc8051_memory_interface1_n317), .B1(oc8051_memory_interface1_n239), 
-        .C0(oc8051_memory_interface1_n200), .C1(oc8051_memory_interface1_n318), 
-        .Y(oc8051_memory_interface1_n440) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u395 ( .A(
-        oc8051_memory_interface1_n313), .B(oc8051_memory_interface1_n316), .Y(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u449 ( .A(
+        oc8051_memory_interface1_n293), .Y(oc8051_memory_interface1_n298) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u448 ( .A(
+        oc8051_memory_interface1_n289), .B(oc8051_memory_interface1_n283), .C(
+        oc8051_memory_interface1_n345), .Y(oc8051_memory_interface1_n343) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u447 ( .A(
+        oc8051_memory_interface1_n343), .B(oc8051_memory_interface1_pc_buf_7_), 
+        .Y(oc8051_memory_interface1_n297) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u446 ( .A(
+        oc8051_memory_interface1_n298), .B(oc8051_memory_interface1_n297), .Y(
+        oc8051_memory_interface1_n299) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u445 ( .A(
+        oc8051_memory_interface1_n299), .Y(oc8051_memory_interface1_n303) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u444 ( .A(
+        oc8051_memory_interface1_n343), .B(oc8051_memory_interface1_pc_buf_7_), 
+        .Y(oc8051_memory_interface1_n344) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u443 ( .A(
+        oc8051_memory_interface1_n344), .B(oc8051_memory_interface1_pc_buf_8_), 
+        .Y(oc8051_memory_interface1_n302) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u442 ( .A(
+        oc8051_memory_interface1_n303), .B(oc8051_memory_interface1_n302), .Y(
+        oc8051_memory_interface1_n304) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u441 ( .A(
+        oc8051_memory_interface1_n304), .Y(oc8051_memory_interface1_n308) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u440 ( .A(
+        oc8051_memory_interface1_pc_buf_8_), .B(
+        oc8051_memory_interface1_pc_buf_7_), .C(oc8051_memory_interface1_n343), 
+        .Y(oc8051_memory_interface1_n341) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u439 ( .A(
+        oc8051_memory_interface1_n341), .B(oc8051_memory_interface1_n305), .Y(
+        oc8051_memory_interface1_n307) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u438 ( .A(
+        oc8051_memory_interface1_n308), .B(oc8051_memory_interface1_n307), .Y(
+        oc8051_memory_interface1_n309) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u437 ( .A(
+        oc8051_memory_interface1_n309), .Y(oc8051_memory_interface1_n313) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u436 ( .AN(
+        oc8051_memory_interface1_n341), .B(oc8051_memory_interface1_pc_buf_9_), 
+        .Y(oc8051_memory_interface1_n342) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u435 ( .A(
+        oc8051_memory_interface1_n342), .B(oc8051_memory_interface1_pc_buf_10_), .Y(oc8051_memory_interface1_n312) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u434 ( .A(
+        oc8051_memory_interface1_n313), .B(oc8051_memory_interface1_n312), .Y(
         oc8051_memory_interface1_n314) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u394 ( .A0(
-        oc8051_memory_interface1_n359), .A1(oc8051_memory_interface1_n237), 
-        .B0(oc8051_memory_interface1_n314), .B1(oc8051_memory_interface1_n239), 
-        .C0(oc8051_memory_interface1_n200), .C1(oc8051_memory_interface1_n315), 
+  INV_X0P5B_A12TS oc8051_memory_interface1_u433 ( .A(
+        oc8051_memory_interface1_n314), .Y(oc8051_memory_interface1_n318) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u432 ( .A(
+        oc8051_memory_interface1_n310), .B(oc8051_memory_interface1_n305), .C(
+        oc8051_memory_interface1_n341), .Y(oc8051_memory_interface1_n339) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u431 ( .A(
+        oc8051_memory_interface1_n339), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n317) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u430 ( .A(
+        oc8051_memory_interface1_n318), .B(oc8051_memory_interface1_n317), .Y(
+        oc8051_memory_interface1_n319) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u429 ( .A(
+        oc8051_memory_interface1_n319), .Y(oc8051_memory_interface1_n323) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u428 ( .A(
+        oc8051_memory_interface1_n339), .B(oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n340) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u427 ( .A(
+        oc8051_memory_interface1_n340), .B(oc8051_memory_interface1_pc_buf_12_), .Y(oc8051_memory_interface1_n322) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u426 ( .A(
+        oc8051_memory_interface1_n323), .B(oc8051_memory_interface1_n322), .Y(
+        oc8051_memory_interface1_n324) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u425 ( .A(
+        oc8051_memory_interface1_n324), .Y(oc8051_memory_interface1_n328) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u424 ( .A(
+        oc8051_memory_interface1_pc_buf_12_), .B(
+        oc8051_memory_interface1_pc_buf_11_), .C(oc8051_memory_interface1_n339), .Y(oc8051_memory_interface1_n338) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u423 ( .A(
+        oc8051_memory_interface1_n338), .B(oc8051_memory_interface1_n325), .Y(
+        oc8051_memory_interface1_n327) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u422 ( .A(
+        oc8051_memory_interface1_n328), .B(oc8051_memory_interface1_n327), .Y(
+        oc8051_memory_interface1_n329) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u421 ( .A(
+        oc8051_memory_interface1_n338), .B(oc8051_memory_interface1_n325), .Y(
+        oc8051_memory_interface1_n337) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u420 ( .A(
+        oc8051_memory_interface1_n337), .B(oc8051_memory_interface1_n331), .Y(
+        oc8051_memory_interface1_n332) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u419 ( .AN(
+        oc8051_memory_interface1_n329), .B(oc8051_memory_interface1_n332), .Y(
+        oc8051_memory_interface1_n335) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u418 ( .A(
+        oc8051_memory_interface1_pc_buf_15_), .Y(oc8051_memory_interface1_n334) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u417 ( .A(
+        oc8051_memory_interface1_n337), .B(oc8051_memory_interface1_pc_buf_14_), .Y(oc8051_memory_interface1_n336) );
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u416 ( .A(
+        oc8051_memory_interface1_n335), .B(oc8051_memory_interface1_n334), .C(
+        oc8051_memory_interface1_n336), .Y(oc8051_memory_interface1_n333) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u415 ( .A0(
+        oc8051_memory_interface1_n360), .A1(oc8051_memory_interface1_n254), 
+        .B0(oc8051_memory_interface1_n333), .B1(oc8051_memory_interface1_n256), 
+        .C0(oc8051_memory_interface1_n334), .C1(oc8051_memory_interface1_n217), 
+        .Y(oc8051_memory_interface1_n440) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u414 ( .A(
+        oc8051_memory_interface1_n329), .B(oc8051_memory_interface1_n332), .Y(
+        oc8051_memory_interface1_n330) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u413 ( .A0(
+        oc8051_memory_interface1_n359), .A1(oc8051_memory_interface1_n254), 
+        .B0(oc8051_memory_interface1_n330), .B1(oc8051_memory_interface1_n256), 
+        .C0(oc8051_memory_interface1_n331), .C1(oc8051_memory_interface1_n217), 
         .Y(oc8051_memory_interface1_n441) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u393 ( .A(
-        oc8051_memory_interface1_n239), .Y(oc8051_memory_interface1_n265) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u392 ( .A0(
-        oc8051_memory_interface1_n311), .A1(oc8051_memory_interface1_n312), 
-        .B0(oc8051_memory_interface1_n313), .C0(oc8051_memory_interface1_n265), 
-        .Y(oc8051_memory_interface1_n310) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u391 ( .A0(
-        oc8051_memory_interface1_n353), .A1(oc8051_memory_interface1_n237), 
-        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n309), 
-        .C0(oc8051_memory_interface1_n310), .Y(oc8051_memory_interface1_n442)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u412 ( .A(
+        oc8051_memory_interface1_n256), .Y(oc8051_memory_interface1_n281) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u411 ( .A0(
+        oc8051_memory_interface1_n327), .A1(oc8051_memory_interface1_n328), 
+        .B0(oc8051_memory_interface1_n329), .C0(oc8051_memory_interface1_n281), 
+        .Y(oc8051_memory_interface1_n326) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u410 ( .A0(
+        oc8051_memory_interface1_n353), .A1(oc8051_memory_interface1_n254), 
+        .B0(oc8051_memory_interface1_n325), .B1(oc8051_memory_interface1_n217), 
+        .C0(oc8051_memory_interface1_n326), .Y(oc8051_memory_interface1_n442)
          );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u390 ( .A0(
-        oc8051_memory_interface1_n306), .A1(oc8051_memory_interface1_n307), 
-        .B0(oc8051_memory_interface1_n308), .C0(oc8051_memory_interface1_n265), 
-        .Y(oc8051_memory_interface1_n305) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u389 ( .A0(
-        oc8051_memory_interface1_n354), .A1(oc8051_memory_interface1_n237), 
-        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n304), 
-        .C0(oc8051_memory_interface1_n305), .Y(oc8051_memory_interface1_n443)
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u409 ( .A0(
+        oc8051_memory_interface1_n322), .A1(oc8051_memory_interface1_n323), 
+        .B0(oc8051_memory_interface1_n324), .C0(oc8051_memory_interface1_n281), 
+        .Y(oc8051_memory_interface1_n321) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u408 ( .A0(
+        oc8051_memory_interface1_n354), .A1(oc8051_memory_interface1_n254), 
+        .B0(oc8051_memory_interface1_n320), .B1(oc8051_memory_interface1_n217), 
+        .C0(oc8051_memory_interface1_n321), .Y(oc8051_memory_interface1_n443)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u388 ( .A(
-        oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n299) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u387 ( .A0(
-        oc8051_memory_interface1_n301), .A1(oc8051_memory_interface1_n302), 
-        .B0(oc8051_memory_interface1_n303), .C0(oc8051_memory_interface1_n265), 
-        .Y(oc8051_memory_interface1_n300) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u386 ( .A0(
-        oc8051_memory_interface1_n355), .A1(oc8051_memory_interface1_n237), 
-        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n299), 
-        .C0(oc8051_memory_interface1_n300), .Y(oc8051_memory_interface1_n444)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u407 ( .A(
+        oc8051_memory_interface1_pc_buf_11_), .Y(oc8051_memory_interface1_n315) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u406 ( .A0(
+        oc8051_memory_interface1_n317), .A1(oc8051_memory_interface1_n318), 
+        .B0(oc8051_memory_interface1_n319), .C0(oc8051_memory_interface1_n281), 
+        .Y(oc8051_memory_interface1_n316) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u405 ( .A0(
+        oc8051_memory_interface1_n355), .A1(oc8051_memory_interface1_n254), 
+        .B0(oc8051_memory_interface1_n315), .B1(oc8051_memory_interface1_n217), 
+        .C0(oc8051_memory_interface1_n316), .Y(oc8051_memory_interface1_n444)
          );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u385 ( .A0(
-        oc8051_memory_interface1_n296), .A1(oc8051_memory_interface1_n297), 
-        .B0(oc8051_memory_interface1_n298), .C0(oc8051_memory_interface1_n265), 
-        .Y(oc8051_memory_interface1_n295) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u384 ( .A0(
-        oc8051_memory_interface1_n356), .A1(oc8051_memory_interface1_n237), 
-        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n294), 
-        .C0(oc8051_memory_interface1_n295), .Y(oc8051_memory_interface1_n445)
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u404 ( .A0(
+        oc8051_memory_interface1_n312), .A1(oc8051_memory_interface1_n313), 
+        .B0(oc8051_memory_interface1_n314), .C0(oc8051_memory_interface1_n281), 
+        .Y(oc8051_memory_interface1_n311) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u403 ( .A0(
+        oc8051_memory_interface1_n356), .A1(oc8051_memory_interface1_n254), 
+        .B0(oc8051_memory_interface1_n310), .B1(oc8051_memory_interface1_n217), 
+        .C0(oc8051_memory_interface1_n311), .Y(oc8051_memory_interface1_n445)
          );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u383 ( .A0(
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u402 ( .A0(
+        oc8051_memory_interface1_n307), .A1(oc8051_memory_interface1_n308), 
+        .B0(oc8051_memory_interface1_n309), .C0(oc8051_memory_interface1_n281), 
+        .Y(oc8051_memory_interface1_n306) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u401 ( .A0(
+        oc8051_memory_interface1_n357), .A1(oc8051_memory_interface1_n254), 
+        .B0(oc8051_memory_interface1_n305), .B1(oc8051_memory_interface1_n217), 
+        .C0(oc8051_memory_interface1_n306), .Y(oc8051_memory_interface1_n446)
+         );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u400 ( .A0(
+        oc8051_memory_interface1_n302), .A1(oc8051_memory_interface1_n303), 
+        .B0(oc8051_memory_interface1_n304), .C0(oc8051_memory_interface1_n281), 
+        .Y(oc8051_memory_interface1_n301) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u399 ( .A0(
+        oc8051_memory_interface1_n358), .A1(oc8051_memory_interface1_n254), 
+        .B0(oc8051_memory_interface1_n300), .B1(oc8051_memory_interface1_n217), 
+        .C0(oc8051_memory_interface1_n301), .Y(oc8051_memory_interface1_n447)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u398 ( .A(pc[7]), .Y(
+        oc8051_memory_interface1_n294) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u397 ( .A(
+        oc8051_memory_interface1_pc_buf_7_), .Y(oc8051_memory_interface1_n295)
+         );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u396 ( .A0(
+        oc8051_memory_interface1_n297), .A1(oc8051_memory_interface1_n298), 
+        .B0(oc8051_memory_interface1_n299), .C0(oc8051_memory_interface1_n281), 
+        .Y(oc8051_memory_interface1_n296) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u395 ( .A0(
+        oc8051_memory_interface1_n254), .A1(oc8051_memory_interface1_n294), 
+        .B0(oc8051_memory_interface1_n295), .B1(oc8051_memory_interface1_n217), 
+        .C0(oc8051_memory_interface1_n296), .Y(oc8051_memory_interface1_n448)
+         );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u394 ( .A0(
         oc8051_memory_interface1_n291), .A1(oc8051_memory_interface1_n292), 
-        .B0(oc8051_memory_interface1_n293), .C0(oc8051_memory_interface1_n265), 
+        .B0(oc8051_memory_interface1_n293), .C0(oc8051_memory_interface1_n281), 
         .Y(oc8051_memory_interface1_n290) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u382 ( .A0(
-        oc8051_memory_interface1_n357), .A1(oc8051_memory_interface1_n237), 
-        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n289), 
-        .C0(oc8051_memory_interface1_n290), .Y(oc8051_memory_interface1_n446)
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u393 ( .A0(
+        oc8051_memory_interface1_n254), .A1(oc8051_memory_interface1_n288), 
+        .B0(oc8051_memory_interface1_n289), .B1(oc8051_memory_interface1_n217), 
+        .C0(oc8051_memory_interface1_n290), .Y(oc8051_memory_interface1_n449)
          );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u381 ( .A0(
-        oc8051_memory_interface1_n286), .A1(oc8051_memory_interface1_n287), 
-        .B0(oc8051_memory_interface1_n288), .C0(oc8051_memory_interface1_n265), 
-        .Y(oc8051_memory_interface1_n285) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u380 ( .A0(
-        oc8051_memory_interface1_n358), .A1(oc8051_memory_interface1_n237), 
-        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n284), 
-        .C0(oc8051_memory_interface1_n285), .Y(oc8051_memory_interface1_n447)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u392 ( .A(pc[5]), .Y(
+        oc8051_memory_interface1_n282) );
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u391 ( .A0(
+        oc8051_memory_interface1_n285), .A1(oc8051_memory_interface1_n286), 
+        .B0(oc8051_memory_interface1_n287), .C0(oc8051_memory_interface1_n281), 
+        .Y(oc8051_memory_interface1_n284) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u390 ( .A0(
+        oc8051_memory_interface1_n254), .A1(oc8051_memory_interface1_n282), 
+        .B0(oc8051_memory_interface1_n283), .B1(oc8051_memory_interface1_n217), 
+        .C0(oc8051_memory_interface1_n284), .Y(oc8051_memory_interface1_n450)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u379 ( .A(pc[7]), .Y(
-        oc8051_memory_interface1_n278) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u378 ( .A0(
-        oc8051_memory_interface1_n281), .A1(oc8051_memory_interface1_n282), 
-        .B0(oc8051_memory_interface1_n283), .C0(oc8051_memory_interface1_n265), 
-        .Y(oc8051_memory_interface1_n280) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u377 ( .A0(
-        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n278), 
-        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n279), 
-        .C0(oc8051_memory_interface1_n280), .Y(oc8051_memory_interface1_n448)
+  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u389 ( .A0(
+        oc8051_memory_interface1_n278), .A1(oc8051_memory_interface1_n279), 
+        .B0(oc8051_memory_interface1_n280), .C0(oc8051_memory_interface1_n281), 
+        .Y(oc8051_memory_interface1_n277) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u388 ( .A0(
+        oc8051_memory_interface1_n254), .A1(oc8051_memory_interface1_n275), 
+        .B0(oc8051_memory_interface1_n276), .B1(oc8051_memory_interface1_n217), 
+        .C0(oc8051_memory_interface1_n277), .Y(oc8051_memory_interface1_n451)
          );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u376 ( .A0(
-        oc8051_memory_interface1_n275), .A1(oc8051_memory_interface1_n276), 
-        .B0(oc8051_memory_interface1_n277), .C0(oc8051_memory_interface1_n265), 
-        .Y(oc8051_memory_interface1_n274) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u375 ( .A0(
-        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n272), 
-        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n273), 
-        .C0(oc8051_memory_interface1_n274), .Y(oc8051_memory_interface1_n449)
+  INV_X0P5B_A12TS oc8051_memory_interface1_u387 ( .A(pc[3]), .Y(
+        oc8051_memory_interface1_n270) );
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u386 ( .A0(
+        oc8051_memory_interface1_n269), .A1(oc8051_memory_interface1_n268), 
+        .A2(oc8051_memory_interface1_n273), .B0(oc8051_memory_interface1_n274), 
+        .Y(oc8051_memory_interface1_n271) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u385 ( .A(
+        oc8051_memory_interface1_pc_buf_3_), .Y(oc8051_memory_interface1_n272)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u374 ( .A(pc[5]), .Y(
-        oc8051_memory_interface1_n266) );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u373 ( .A0(
-        oc8051_memory_interface1_n269), .A1(oc8051_memory_interface1_n270), 
-        .B0(oc8051_memory_interface1_n271), .C0(oc8051_memory_interface1_n265), 
-        .Y(oc8051_memory_interface1_n268) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u372 ( .A0(
-        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n266), 
-        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n267), 
-        .C0(oc8051_memory_interface1_n268), .Y(oc8051_memory_interface1_n450)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u371 ( .A(
-        oc8051_memory_interface1_pc_buf_4_), .Y(oc8051_memory_interface1_n260)
-         );
-  AO21A1AI2_X0P5M_A12TS oc8051_memory_interface1_u370 ( .A0(
-        oc8051_memory_interface1_n262), .A1(oc8051_memory_interface1_n263), 
-        .B0(oc8051_memory_interface1_n264), .C0(oc8051_memory_interface1_n265), 
-        .Y(oc8051_memory_interface1_n261) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u369 ( .A0(
-        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n259), 
-        .B0(oc8051_memory_interface1_n200), .B1(oc8051_memory_interface1_n260), 
-        .C0(oc8051_memory_interface1_n261), .Y(oc8051_memory_interface1_n451)
-         );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u368 ( .A(pc[3]), .Y(
-        oc8051_memory_interface1_n254) );
-  AOI31_X0P5M_A12TS oc8051_memory_interface1_u367 ( .A0(
-        oc8051_memory_interface1_n253), .A1(oc8051_memory_interface1_n252), 
-        .A2(oc8051_memory_interface1_n257), .B0(oc8051_memory_interface1_n258), 
-        .Y(oc8051_memory_interface1_n255) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u366 ( .A0(
-        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n254), 
-        .B0(oc8051_memory_interface1_n255), .B1(oc8051_memory_interface1_n239), 
-        .C0(oc8051_memory_interface1_n200), .C1(oc8051_memory_interface1_n256), 
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u384 ( .A0(
+        oc8051_memory_interface1_n254), .A1(oc8051_memory_interface1_n270), 
+        .B0(oc8051_memory_interface1_n271), .B1(oc8051_memory_interface1_n256), 
+        .C0(oc8051_memory_interface1_n272), .C1(oc8051_memory_interface1_n217), 
         .Y(oc8051_memory_interface1_n452) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u365 ( .A(
-        oc8051_memory_interface1_n252), .B(oc8051_memory_interface1_n253), .Y(
-        oc8051_memory_interface1_n250) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u364 ( .A0(
-        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n249), 
-        .B0(oc8051_memory_interface1_n250), .B1(oc8051_memory_interface1_n239), 
-        .C0(oc8051_memory_interface1_n200), .C1(oc8051_memory_interface1_n251), 
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u383 ( .A(
+        oc8051_memory_interface1_n268), .B(oc8051_memory_interface1_n269), .Y(
+        oc8051_memory_interface1_n266) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u382 ( .A0(
+        oc8051_memory_interface1_n254), .A1(oc8051_memory_interface1_n265), 
+        .B0(oc8051_memory_interface1_n266), .B1(oc8051_memory_interface1_n256), 
+        .C0(oc8051_memory_interface1_n267), .C1(oc8051_memory_interface1_n217), 
         .Y(oc8051_memory_interface1_n453) );
-  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u363 ( .A(
-        oc8051_memory_interface1_n246), .B(oc8051_memory_interface1_n247), .C(
-        oc8051_memory_interface1_n248), .Y(oc8051_memory_interface1_n244) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u362 ( .A0(
-        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n243), 
-        .B0(oc8051_memory_interface1_n239), .B1(oc8051_memory_interface1_n244), 
-        .C0(oc8051_memory_interface1_n200), .C1(oc8051_memory_interface1_n245), 
+  XNOR3_X0P5M_A12TS oc8051_memory_interface1_u381 ( .A(
+        oc8051_memory_interface1_n262), .B(oc8051_memory_interface1_n263), .C(
+        oc8051_memory_interface1_n264), .Y(oc8051_memory_interface1_n261) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u380 ( .A0(
+        oc8051_memory_interface1_n254), .A1(oc8051_memory_interface1_n260), 
+        .B0(oc8051_memory_interface1_n256), .B1(oc8051_memory_interface1_n261), 
+        .C0(oc8051_memory_interface1_n83), .C1(oc8051_memory_interface1_n217), 
         .Y(oc8051_memory_interface1_n454) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u361 ( .A(
-        oc8051_memory_interface1_n236), .Y(oc8051_memory_interface1_n192) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u360 ( .A(
-        oc8051_memory_interface1_n192), .B(oc8051_memory_interface1_n242), .Y(
-        oc8051_memory_interface1_n240) );
-  OAI222_X0P5M_A12TS oc8051_memory_interface1_u359 ( .A0(
-        oc8051_memory_interface1_n237), .A1(oc8051_memory_interface1_n238), 
-        .B0(oc8051_memory_interface1_n239), .B1(oc8051_memory_interface1_n240), 
-        .C0(oc8051_memory_interface1_n241), .C1(oc8051_memory_interface1_n200), 
+  INV_X0P5B_A12TS oc8051_memory_interface1_u379 ( .A(
+        oc8051_memory_interface1_n253), .Y(oc8051_memory_interface1_n209) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u378 ( .A(
+        oc8051_memory_interface1_n209), .B(oc8051_memory_interface1_n259), .Y(
+        oc8051_memory_interface1_n257) );
+  OAI222_X0P5M_A12TS oc8051_memory_interface1_u377 ( .A0(
+        oc8051_memory_interface1_n254), .A1(oc8051_memory_interface1_n255), 
+        .B0(oc8051_memory_interface1_n256), .B1(oc8051_memory_interface1_n257), 
+        .C0(oc8051_memory_interface1_n258), .C1(oc8051_memory_interface1_n217), 
         .Y(oc8051_memory_interface1_n455) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u358 ( .A(
-        oc8051_memory_interface1_op_pos_0_), .B(oc8051_memory_interface1_n236), 
-        .Y(oc8051_memory_interface1_n235) );
-  XOR2_X0P5M_A12TS oc8051_memory_interface1_u357 ( .A(
-        oc8051_memory_interface1_n198), .B(oc8051_memory_interface1_n199), .Y(
-        oc8051_memory_interface1_n201) );
-  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u356 ( .A(
-        oc8051_memory_interface1_n235), .B(oc8051_memory_interface1_n201), .Y(
-        oc8051_memory_interface1_n234) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u355 ( .A(
-        oc8051_memory_interface1_n234), .B(oc8051_memory_interface1_n200), .Y(
-        oc8051_memory_interface1_n233) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u354 ( .A(
-        oc8051_memory_interface1_n190), .B(oc8051_memory_interface1_n200), .Y(
-        oc8051_memory_interface1_n202) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u353 ( .A(
-        oc8051_memory_interface1_n202), .Y(oc8051_memory_interface1_n196) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u352 ( .A(
-        oc8051_memory_interface1_n233), .B(oc8051_memory_interface1_n199), 
-        .S0(oc8051_memory_interface1_n196), .Y(oc8051_memory_interface1_n456)
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u376 ( .A(
+        oc8051_memory_interface1_op_pos_0_), .B(oc8051_memory_interface1_n253), 
+        .Y(oc8051_memory_interface1_n252) );
+  XOR2_X0P5M_A12TS oc8051_memory_interface1_u375 ( .A(
+        oc8051_memory_interface1_n215), .B(oc8051_memory_interface1_n216), .Y(
+        oc8051_memory_interface1_n220) );
+  XNOR2_X0P5M_A12TS oc8051_memory_interface1_u374 ( .A(
+        oc8051_memory_interface1_n252), .B(oc8051_memory_interface1_n220), .Y(
+        oc8051_memory_interface1_n251) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u373 ( .A(
+        oc8051_memory_interface1_n251), .B(oc8051_memory_interface1_n217), .Y(
+        oc8051_memory_interface1_n250) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u372 ( .A(
+        oc8051_memory_interface1_n207), .B(oc8051_memory_interface1_n217), .Y(
+        oc8051_memory_interface1_n219) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u371 ( .A(
+        oc8051_memory_interface1_n219), .Y(oc8051_memory_interface1_n213) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u370 ( .A(
+        oc8051_memory_interface1_n250), .B(oc8051_memory_interface1_n216), 
+        .S0(oc8051_memory_interface1_n213), .Y(oc8051_memory_interface1_n456)
          );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u351 ( .A(
-        oc8051_memory_interface1_op_pos_0_), .B(oc8051_memory_interface1_n196), 
-        .Y(oc8051_memory_interface1_n232) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u350 ( .A(
-        oc8051_memory_interface1_n232), .B(oc8051_memory_interface1_op_pos_0_), 
-        .S0(oc8051_memory_interface1_n192), .Y(oc8051_memory_interface1_n231)
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u369 ( .A(
+        oc8051_memory_interface1_op_pos_0_), .B(oc8051_memory_interface1_n213), 
+        .Y(oc8051_memory_interface1_n249) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u368 ( .A(
+        oc8051_memory_interface1_n249), .B(oc8051_memory_interface1_op_pos_0_), 
+        .S0(oc8051_memory_interface1_n209), .Y(oc8051_memory_interface1_n248)
          );
-  OAI22_X0P5M_A12TS oc8051_memory_interface1_u349 ( .A0(
-        oc8051_memory_interface1_n191), .A1(oc8051_memory_interface1_n202), 
+  OAI22_X0P5M_A12TS oc8051_memory_interface1_u367 ( .A0(
+        oc8051_memory_interface1_n208), .A1(oc8051_memory_interface1_n219), 
         .B0(oc8051_memory_interface1_pc_wr_r2), .B1(
-        oc8051_memory_interface1_n231), .Y(oc8051_memory_interface1_n457) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u348 ( .A(
+        oc8051_memory_interface1_n248), .Y(oc8051_memory_interface1_n457) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u366 ( .A(
         oc8051_memory_interface1_idat_cur_31_), .B(
         oc8051_memory_interface1_idat_old_31_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n458) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u347 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[31]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n229) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u346 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n458) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u365 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[31]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n246) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u364 ( .A(
         oc8051_memory_interface1_idat_cur_30_), .B(
         oc8051_memory_interface1_idat_old_30_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n460) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u345 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[30]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n228) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u344 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n460) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u363 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[30]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n245) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u362 ( .A(
         oc8051_memory_interface1_idat_cur_29_), .B(
         oc8051_memory_interface1_idat_old_29_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n462) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u343 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[29]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n227) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u342 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n462) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u361 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[29]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n244) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u360 ( .A(
         oc8051_memory_interface1_idat_cur_28_), .B(
         oc8051_memory_interface1_idat_old_28_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n464) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u341 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[28]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n226) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u340 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n464) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u359 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[28]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n243) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u358 ( .A(
         oc8051_memory_interface1_idat_cur_27_), .B(
         oc8051_memory_interface1_idat_old_27_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n466) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u339 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[27]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n225) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u338 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n466) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u357 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[27]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n242) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u356 ( .A(
         oc8051_memory_interface1_idat_cur_26_), .B(
         oc8051_memory_interface1_idat_old_26_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n468) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u337 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[26]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n224) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u336 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n468) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u355 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[26]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n241) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u354 ( .A(
         oc8051_memory_interface1_idat_cur_25_), .B(
         oc8051_memory_interface1_idat_old_25_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n470) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u335 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[25]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n223) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u334 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n470) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u353 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[25]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n240) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u352 ( .A(
         oc8051_memory_interface1_idat_cur_24_), .B(
         oc8051_memory_interface1_idat_old_24_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n472) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u333 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[24]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n222) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u332 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n472) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u351 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[24]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n239) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u350 ( .A(
         oc8051_memory_interface1_idat_cur_23_), .B(
         oc8051_memory_interface1_idat_old_23_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n474) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u331 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[23]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n221) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u330 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n474) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u349 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[23]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n238) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u348 ( .A(
         oc8051_memory_interface1_idat_cur_22_), .B(
         oc8051_memory_interface1_idat_old_22_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n476) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u329 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[22]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n220) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u328 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n476) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u347 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[22]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n237) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u346 ( .A(
         oc8051_memory_interface1_idat_cur_21_), .B(
         oc8051_memory_interface1_idat_old_21_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n478) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u327 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[21]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n219) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u326 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n478) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u345 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[21]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n236) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u344 ( .A(
         oc8051_memory_interface1_idat_cur_20_), .B(
         oc8051_memory_interface1_idat_old_20_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n480) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u325 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[20]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n218) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u324 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n480) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u343 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[20]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n235) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u342 ( .A(
         oc8051_memory_interface1_idat_cur_19_), .B(
         oc8051_memory_interface1_idat_old_19_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n482) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u323 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[19]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n217) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u322 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n482) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u341 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[19]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n234) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u340 ( .A(
         oc8051_memory_interface1_idat_cur_18_), .B(
         oc8051_memory_interface1_idat_old_18_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n484) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u321 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[18]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n216) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u320 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n484) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u339 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[18]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n233) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u338 ( .A(
         oc8051_memory_interface1_idat_cur_17_), .B(
         oc8051_memory_interface1_idat_old_17_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n486) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u319 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[17]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n215) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u318 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n486) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u337 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[17]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n232) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u336 ( .A(
         oc8051_memory_interface1_idat_cur_16_), .B(
         oc8051_memory_interface1_idat_old_16_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n488) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u317 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[16]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n214) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u316 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n488) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u335 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[16]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n231) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u334 ( .A(
         oc8051_memory_interface1_idat_cur_15_), .B(
         oc8051_memory_interface1_idat_old_15_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n490) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u315 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[15]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n213) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u314 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n490) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u333 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[15]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n230) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u332 ( .A(
         oc8051_memory_interface1_idat_cur_14_), .B(
         oc8051_memory_interface1_idat_old_14_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n492) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u313 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[14]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n212) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u312 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n492) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u331 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[14]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n229) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u330 ( .A(
         oc8051_memory_interface1_idat_cur_13_), .B(
         oc8051_memory_interface1_idat_old_13_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n494) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u311 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[13]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n211) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u310 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n494) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u329 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[13]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n228) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u328 ( .A(
         oc8051_memory_interface1_idat_cur_12_), .B(
         oc8051_memory_interface1_idat_old_12_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n496) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u309 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[12]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n210) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u308 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n496) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u327 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[12]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n227) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u326 ( .A(
         oc8051_memory_interface1_idat_cur_11_), .B(
         oc8051_memory_interface1_idat_old_11_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n498) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u307 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[11]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n209) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u306 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n498) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u325 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[11]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n226) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u324 ( .A(
         oc8051_memory_interface1_idat_cur_10_), .B(
         oc8051_memory_interface1_idat_old_10_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n500) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u305 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[10]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n208) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u304 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n500) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u323 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[10]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n225) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u322 ( .A(
         oc8051_memory_interface1_idat_cur_9_), .B(
         oc8051_memory_interface1_idat_old_9_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n502) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u303 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[9]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n207) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u302 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n502) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u321 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[9]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n224) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u320 ( .A(
         oc8051_memory_interface1_idat_cur_8_), .B(
         oc8051_memory_interface1_idat_old_8_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n504) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u301 ( .A0(iack_i), .A1(
-        oc8051_memory_interface1_n147), .B0(idat_onchip[8]), .B1(
-        oc8051_memory_interface1_n146), .Y(oc8051_memory_interface1_n206) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u300 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n504) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u319 ( .A0(iack_i), .A1(
+        oc8051_memory_interface1_n165), .B0(idat_onchip[8]), .B1(
+        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n223) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u318 ( .A(
         oc8051_memory_interface1_idat_cur_7_), .B(
         oc8051_memory_interface1_idat_old_7_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n506) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u299 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n506) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u317 ( .A(
         oc8051_memory_interface1_idat_cur_6_), .B(
         oc8051_memory_interface1_idat_old_6_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n508) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u298 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n508) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u316 ( .A(
         oc8051_memory_interface1_idat_cur_5_), .B(
         oc8051_memory_interface1_idat_old_5_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n510) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u297 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n510) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u315 ( .A(
         oc8051_memory_interface1_idat_cur_4_), .B(
         oc8051_memory_interface1_idat_old_4_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n512) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u296 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n512) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u314 ( .A(
         oc8051_memory_interface1_idat_cur_3_), .B(
         oc8051_memory_interface1_idat_old_3_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n514) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u295 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n514) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u313 ( .A(
         oc8051_memory_interface1_idat_cur_2_), .B(
         oc8051_memory_interface1_idat_old_2_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n516) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u294 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n516) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u312 ( .A(
         oc8051_memory_interface1_idat_cur_1_), .B(
         oc8051_memory_interface1_idat_old_1_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n518) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u293 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n518) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u311 ( .A(
         oc8051_memory_interface1_idat_cur_0_), .B(
         oc8051_memory_interface1_idat_old_0_), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n520) );
-  MXT2_X0P5M_A12TS oc8051_memory_interface1_u292 ( .A(
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n520) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u310 ( .A(
         oc8051_memory_interface1_going_out_of_rst), .B(irom_out_of_rst), .S0(
-        oc8051_memory_interface1_n148), .Y(oc8051_memory_interface1_n522) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u291 ( .A(
-        oc8051_memory_interface1_n205), .B(oc8051_memory_interface1_op_pos_1_), 
-        .C(oc8051_memory_interface1_n198), .Y(oc8051_memory_interface1_n204)
+        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n522) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u309 ( .A(
+        oc8051_memory_interface1_n214), .Y(oc8051_memory_interface1_n218) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u308 ( .A(
+        oc8051_memory_interface1_n222), .B(oc8051_memory_interface1_op_pos_1_), 
+        .C(oc8051_memory_interface1_n215), .Y(oc8051_memory_interface1_n221)
          );
-  AOI31_X0P5M_A12TS oc8051_memory_interface1_u290 ( .A0(
-        oc8051_memory_interface1_n201), .A1(oc8051_memory_interface1_n202), 
-        .A2(oc8051_memory_interface1_n203), .B0(oc8051_memory_interface1_n204), 
-        .Y(oc8051_memory_interface1_n193) );
-  OAI31_X0P5M_A12TS oc8051_memory_interface1_u289 ( .A0(
-        oc8051_memory_interface1_n197), .A1(oc8051_memory_interface1_n198), 
-        .A2(oc8051_memory_interface1_n199), .B0(oc8051_memory_interface1_n200), 
-        .Y(oc8051_memory_interface1_n195) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u288 ( .A(
-        oc8051_memory_interface1_n195), .B(oc8051_memory_interface1_op_pos_2_), 
-        .S0(oc8051_memory_interface1_n196), .Y(oc8051_memory_interface1_n194)
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u307 ( .A0(
+        oc8051_memory_interface1_n218), .A1(oc8051_memory_interface1_n219), 
+        .A2(oc8051_memory_interface1_n220), .B0(oc8051_memory_interface1_n221), 
+        .Y(oc8051_memory_interface1_n210) );
+  OAI31_X0P5M_A12TS oc8051_memory_interface1_u306 ( .A0(
+        oc8051_memory_interface1_n214), .A1(oc8051_memory_interface1_n215), 
+        .A2(oc8051_memory_interface1_n216), .B0(oc8051_memory_interface1_n217), 
+        .Y(oc8051_memory_interface1_n212) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u305 ( .A(
+        oc8051_memory_interface1_n212), .B(oc8051_memory_interface1_op_pos_2_), 
+        .S0(oc8051_memory_interface1_n213), .Y(oc8051_memory_interface1_n211)
          );
-  OAI31_X0P5M_A12TS oc8051_memory_interface1_u287 ( .A0(
-        oc8051_memory_interface1_n191), .A1(oc8051_memory_interface1_n192), 
-        .A2(oc8051_memory_interface1_n193), .B0(oc8051_memory_interface1_n194), 
+  OAI31_X0P5M_A12TS oc8051_memory_interface1_u304 ( .A0(
+        oc8051_memory_interface1_n208), .A1(oc8051_memory_interface1_n209), 
+        .A2(oc8051_memory_interface1_n210), .B0(oc8051_memory_interface1_n211), 
         .Y(oc8051_memory_interface1_n523) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u286 ( .A(
-        oc8051_memory_interface1_n190), .B(oc8051_memory_interface1_pc_wr_r2), 
-        .C(oc8051_memory_interface1_n171), .Y(oc8051_memory_interface1_n188)
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u303 ( .A(
+        oc8051_memory_interface1_n207), .B(oc8051_memory_interface1_pc_wr_r2), 
+        .C(oc8051_memory_interface1_n188), .Y(oc8051_memory_interface1_n205)
          );
-  OAI21B_X0P5M_A12TS oc8051_memory_interface1_u285 ( .A0(
-        oc8051_memory_interface1_n188), .A1(oc8051_memory_interface1_n189), 
+  OAI21B_X0P5M_A12TS oc8051_memory_interface1_u302 ( .A0(
+        oc8051_memory_interface1_n205), .A1(oc8051_memory_interface1_n206), 
         .B0N(intr), .Y(oc8051_memory_interface1_n524) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u284 ( .A(wbd_ack_i), .Y(
-        oc8051_memory_interface1_n169) );
-  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u283 ( .AN(mem_act[2]), .B(
-        oc8051_memory_interface1_n169), .Y(oc8051_memory_interface1_n174) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u282 ( .A(
-        oc8051_memory_interface1_n187), .B(oc8051_memory_interface1_n174), .Y(
-        oc8051_memory_interface1_n170) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u281 ( .A0(wbd_dat_o[0]), .A1(
-        oc8051_memory_interface1_n174), .B0(acc[0]), .B1(
-        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n525) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u280 ( .A0(wbd_dat_o[1]), .A1(
-        oc8051_memory_interface1_n174), .B0(acc[1]), .B1(
-        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n526) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u279 ( .A0(wbd_dat_o[2]), .A1(
-        oc8051_memory_interface1_n174), .B0(acc[2]), .B1(
-        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n527) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u278 ( .A0(wbd_dat_o[3]), .A1(
-        oc8051_memory_interface1_n174), .B0(acc[3]), .B1(
-        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n528) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u277 ( .A0(wbd_dat_o[4]), .A1(
-        oc8051_memory_interface1_n174), .B0(acc[4]), .B1(
-        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n529) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u276 ( .A0(wbd_dat_o[5]), .A1(
-        oc8051_memory_interface1_n174), .B0(acc[5]), .B1(
-        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n530) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u275 ( .A0(wbd_dat_o[6]), .A1(
-        oc8051_memory_interface1_n174), .B0(acc[6]), .B1(
-        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n531) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u274 ( .A0(wbd_dat_o[7]), .A1(
-        oc8051_memory_interface1_n174), .B0(acc[7]), .B1(
-        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n532) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u273 ( .A(
-        oc8051_memory_interface1_n174), .B(mem_act[1]), .Y(
-        oc8051_memory_interface1_n176) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u272 ( .A(
-        oc8051_memory_interface1_n186), .B(oc8051_memory_interface1_n174), .Y(
-        oc8051_memory_interface1_n178) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u271 ( .A0(dptr_lo[0]), .A1(
-        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
-        .B1(ri[0]), .Y(oc8051_memory_interface1_n185) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u270 ( .B0(wbd_adr_o[0]), .B1(
-        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n185), 
+  INV_X0P5B_A12TS oc8051_memory_interface1_u301 ( .A(wbd_ack_i), .Y(
+        oc8051_memory_interface1_n186) );
+  NAND2B_X0P5M_A12TS oc8051_memory_interface1_u300 ( .AN(mem_act[2]), .B(
+        oc8051_memory_interface1_n186), .Y(oc8051_memory_interface1_n191) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u299 ( .A(
+        oc8051_memory_interface1_n204), .B(oc8051_memory_interface1_n191), .Y(
+        oc8051_memory_interface1_n187) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u298 ( .A0(wbd_dat_o[0]), .A1(
+        oc8051_memory_interface1_n191), .B0(acc[0]), .B1(
+        oc8051_memory_interface1_n187), .Y(oc8051_memory_interface1_n525) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u297 ( .A0(wbd_dat_o[1]), .A1(
+        oc8051_memory_interface1_n191), .B0(acc[1]), .B1(
+        oc8051_memory_interface1_n187), .Y(oc8051_memory_interface1_n526) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u296 ( .A0(wbd_dat_o[2]), .A1(
+        oc8051_memory_interface1_n191), .B0(acc[2]), .B1(
+        oc8051_memory_interface1_n187), .Y(oc8051_memory_interface1_n527) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u295 ( .A0(wbd_dat_o[3]), .A1(
+        oc8051_memory_interface1_n191), .B0(acc[3]), .B1(
+        oc8051_memory_interface1_n187), .Y(oc8051_memory_interface1_n528) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u294 ( .A0(wbd_dat_o[4]), .A1(
+        oc8051_memory_interface1_n191), .B0(acc[4]), .B1(
+        oc8051_memory_interface1_n187), .Y(oc8051_memory_interface1_n529) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u293 ( .A0(wbd_dat_o[5]), .A1(
+        oc8051_memory_interface1_n191), .B0(acc[5]), .B1(
+        oc8051_memory_interface1_n187), .Y(oc8051_memory_interface1_n530) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u292 ( .A0(wbd_dat_o[6]), .A1(
+        oc8051_memory_interface1_n191), .B0(acc[6]), .B1(
+        oc8051_memory_interface1_n187), .Y(oc8051_memory_interface1_n531) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u291 ( .A0(wbd_dat_o[7]), .A1(
+        oc8051_memory_interface1_n191), .B0(acc[7]), .B1(
+        oc8051_memory_interface1_n187), .Y(oc8051_memory_interface1_n532) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u290 ( .A(
+        oc8051_memory_interface1_n191), .B(mem_act[1]), .Y(
+        oc8051_memory_interface1_n193) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u289 ( .A(
+        oc8051_memory_interface1_n203), .B(oc8051_memory_interface1_n191), .Y(
+        oc8051_memory_interface1_n195) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u288 ( .A0(dptr_lo[0]), .A1(
+        oc8051_memory_interface1_n193), .B0(oc8051_memory_interface1_n195), 
+        .B1(ri[0]), .Y(oc8051_memory_interface1_n202) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u287 ( .B0(wbd_adr_o[0]), .B1(
+        oc8051_memory_interface1_n191), .A0N(oc8051_memory_interface1_n202), 
         .Y(oc8051_memory_interface1_n534) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u269 ( .A0(dptr_lo[1]), .A1(
-        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
-        .B1(ri[1]), .Y(oc8051_memory_interface1_n184) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u268 ( .B0(wbd_adr_o[1]), .B1(
-        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n184), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u286 ( .A0(dptr_lo[1]), .A1(
+        oc8051_memory_interface1_n193), .B0(oc8051_memory_interface1_n195), 
+        .B1(ri[1]), .Y(oc8051_memory_interface1_n201) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u285 ( .B0(wbd_adr_o[1]), .B1(
+        oc8051_memory_interface1_n191), .A0N(oc8051_memory_interface1_n201), 
         .Y(oc8051_memory_interface1_n535) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u267 ( .A0(dptr_lo[2]), .A1(
-        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
-        .B1(ri[2]), .Y(oc8051_memory_interface1_n183) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u266 ( .B0(wbd_adr_o[2]), .B1(
-        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n183), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u284 ( .A0(dptr_lo[2]), .A1(
+        oc8051_memory_interface1_n193), .B0(oc8051_memory_interface1_n195), 
+        .B1(ri[2]), .Y(oc8051_memory_interface1_n200) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u283 ( .B0(wbd_adr_o[2]), .B1(
+        oc8051_memory_interface1_n191), .A0N(oc8051_memory_interface1_n200), 
         .Y(oc8051_memory_interface1_n536) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u265 ( .A0(dptr_lo[3]), .A1(
-        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
-        .B1(ri[3]), .Y(oc8051_memory_interface1_n182) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u264 ( .B0(wbd_adr_o[3]), .B1(
-        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n182), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u282 ( .A0(dptr_lo[3]), .A1(
+        oc8051_memory_interface1_n193), .B0(oc8051_memory_interface1_n195), 
+        .B1(ri[3]), .Y(oc8051_memory_interface1_n199) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u281 ( .B0(wbd_adr_o[3]), .B1(
+        oc8051_memory_interface1_n191), .A0N(oc8051_memory_interface1_n199), 
         .Y(oc8051_memory_interface1_n537) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u263 ( .A0(dptr_lo[4]), .A1(
-        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
-        .B1(ri[4]), .Y(oc8051_memory_interface1_n181) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u262 ( .B0(wbd_adr_o[4]), .B1(
-        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n181), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u280 ( .A0(dptr_lo[4]), .A1(
+        oc8051_memory_interface1_n193), .B0(oc8051_memory_interface1_n195), 
+        .B1(ri[4]), .Y(oc8051_memory_interface1_n198) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u279 ( .B0(wbd_adr_o[4]), .B1(
+        oc8051_memory_interface1_n191), .A0N(oc8051_memory_interface1_n198), 
         .Y(oc8051_memory_interface1_n538) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u261 ( .A0(dptr_lo[5]), .A1(
-        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
-        .B1(ri[5]), .Y(oc8051_memory_interface1_n180) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u260 ( .B0(wbd_adr_o[5]), .B1(
-        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n180), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u278 ( .A0(dptr_lo[5]), .A1(
+        oc8051_memory_interface1_n193), .B0(oc8051_memory_interface1_n195), 
+        .B1(ri[5]), .Y(oc8051_memory_interface1_n197) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u277 ( .B0(wbd_adr_o[5]), .B1(
+        oc8051_memory_interface1_n191), .A0N(oc8051_memory_interface1_n197), 
         .Y(oc8051_memory_interface1_n539) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u259 ( .A0(dptr_lo[6]), .A1(
-        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
-        .B1(ri[6]), .Y(oc8051_memory_interface1_n179) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u258 ( .B0(wbd_adr_o[6]), .B1(
-        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n179), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u276 ( .A0(dptr_lo[6]), .A1(
+        oc8051_memory_interface1_n193), .B0(oc8051_memory_interface1_n195), 
+        .B1(ri[6]), .Y(oc8051_memory_interface1_n196) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u275 ( .B0(wbd_adr_o[6]), .B1(
+        oc8051_memory_interface1_n191), .A0N(oc8051_memory_interface1_n196), 
         .Y(oc8051_memory_interface1_n540) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u257 ( .A0(dptr_lo[7]), .A1(
-        oc8051_memory_interface1_n176), .B0(oc8051_memory_interface1_n178), 
-        .B1(ri[7]), .Y(oc8051_memory_interface1_n177) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u256 ( .B0(wbd_adr_o[7]), .B1(
-        oc8051_memory_interface1_n174), .A0N(oc8051_memory_interface1_n177), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u274 ( .A0(dptr_lo[7]), .A1(
+        oc8051_memory_interface1_n193), .B0(oc8051_memory_interface1_n195), 
+        .B1(ri[7]), .Y(oc8051_memory_interface1_n194) );
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u273 ( .B0(wbd_adr_o[7]), .B1(
+        oc8051_memory_interface1_n191), .A0N(oc8051_memory_interface1_n194), 
         .Y(oc8051_memory_interface1_n541) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u255 ( .A0(wbd_adr_o[8]), .A1(
-        oc8051_memory_interface1_n174), .B0(dptr_hi[0]), .B1(
-        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n542) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u254 ( .A0(wbd_adr_o[9]), .A1(
-        oc8051_memory_interface1_n174), .B0(dptr_hi[1]), .B1(
-        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n543) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u253 ( .A0(wbd_adr_o[10]), .A1(
-        oc8051_memory_interface1_n174), .B0(dptr_hi[2]), .B1(
-        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n544) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u252 ( .A0(wbd_adr_o[11]), .A1(
-        oc8051_memory_interface1_n174), .B0(dptr_hi[3]), .B1(
-        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n545) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u251 ( .A0(wbd_adr_o[12]), .A1(
-        oc8051_memory_interface1_n174), .B0(dptr_hi[4]), .B1(
-        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n546) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u250 ( .A0(wbd_adr_o[13]), .A1(
-        oc8051_memory_interface1_n174), .B0(dptr_hi[5]), .B1(
-        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n547) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u249 ( .A0(wbd_adr_o[14]), .A1(
-        oc8051_memory_interface1_n174), .B0(dptr_hi[6]), .B1(
-        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n548) );
-  AO22_X0P5M_A12TS oc8051_memory_interface1_u248 ( .A0(wbd_adr_o[15]), .A1(
-        oc8051_memory_interface1_n174), .B0(dptr_hi[7]), .B1(
-        oc8051_memory_interface1_n176), .Y(oc8051_memory_interface1_n549) );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u247 ( .A0(wbd_ack_i), .A1(
-        oc8051_memory_interface1_n175), .B0(oc8051_memory_interface1_n174), 
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u272 ( .A0(wbd_adr_o[8]), .A1(
+        oc8051_memory_interface1_n191), .B0(dptr_hi[0]), .B1(
+        oc8051_memory_interface1_n193), .Y(oc8051_memory_interface1_n542) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u271 ( .A0(wbd_adr_o[9]), .A1(
+        oc8051_memory_interface1_n191), .B0(dptr_hi[1]), .B1(
+        oc8051_memory_interface1_n193), .Y(oc8051_memory_interface1_n543) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u270 ( .A0(wbd_adr_o[10]), .A1(
+        oc8051_memory_interface1_n191), .B0(dptr_hi[2]), .B1(
+        oc8051_memory_interface1_n193), .Y(oc8051_memory_interface1_n544) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u269 ( .A0(wbd_adr_o[11]), .A1(
+        oc8051_memory_interface1_n191), .B0(dptr_hi[3]), .B1(
+        oc8051_memory_interface1_n193), .Y(oc8051_memory_interface1_n545) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u268 ( .A0(wbd_adr_o[12]), .A1(
+        oc8051_memory_interface1_n191), .B0(dptr_hi[4]), .B1(
+        oc8051_memory_interface1_n193), .Y(oc8051_memory_interface1_n546) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u267 ( .A0(wbd_adr_o[13]), .A1(
+        oc8051_memory_interface1_n191), .B0(dptr_hi[5]), .B1(
+        oc8051_memory_interface1_n193), .Y(oc8051_memory_interface1_n547) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u266 ( .A0(wbd_adr_o[14]), .A1(
+        oc8051_memory_interface1_n191), .B0(dptr_hi[6]), .B1(
+        oc8051_memory_interface1_n193), .Y(oc8051_memory_interface1_n548) );
+  AO22_X0P5M_A12TS oc8051_memory_interface1_u265 ( .A0(wbd_adr_o[15]), .A1(
+        oc8051_memory_interface1_n191), .B0(dptr_hi[7]), .B1(
+        oc8051_memory_interface1_n193), .Y(oc8051_memory_interface1_n549) );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u264 ( .A0(wbd_ack_i), .A1(
+        oc8051_memory_interface1_n192), .B0(oc8051_memory_interface1_n191), 
         .Y(oc8051_memory_interface1_n550) );
-  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u246 ( .B0(
-        oc8051_memory_interface1_n169), .B1(wbd_cyc_o), .A0N(
-        oc8051_memory_interface1_n174), .Y(oc8051_memory_interface1_n551) );
-  OAI21_X0P5M_A12TS oc8051_memory_interface1_u245 ( .A0(
-        oc8051_memory_interface1_n159), .A1(oc8051_memory_interface1_n173), 
-        .B0(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n552)
+  AO1B2_X0P5M_A12TS oc8051_memory_interface1_u263 ( .B0(
+        oc8051_memory_interface1_n186), .B1(wbd_cyc_o), .A0N(
+        oc8051_memory_interface1_n191), .Y(oc8051_memory_interface1_n551) );
+  OAI21_X0P5M_A12TS oc8051_memory_interface1_u262 ( .A0(
+        oc8051_memory_interface1_n74), .A1(oc8051_memory_interface1_n190), 
+        .B0(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n552)
          );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u244 ( .A(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u261 ( .A(
         oc8051_memory_interface1_n401), .Y(wbd_we_o) );
-  AOI31_X0P5M_A12TS oc8051_memory_interface1_u243 ( .A0(mem_act[2]), .A1(
-        wbd_we_o), .A2(oc8051_memory_interface1_n169), .B0(
-        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n168) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u242 ( .A(
-        oc8051_memory_interface1_n168), .Y(oc8051_memory_interface1_n792) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u241 ( .A(
-        oc8051_memory_interface1_n159), .B(oc8051_memory_interface1_n167), .Y(
-        oc8051_memory_interface1_n157) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u240 ( .A0(idat_onchip[7]), .A1(
-        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u260 ( .A0(mem_act[2]), .A1(
+        wbd_we_o), .A2(oc8051_memory_interface1_n186), .B0(
+        oc8051_memory_interface1_n187), .Y(oc8051_memory_interface1_n185) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u259 ( .A(
+        oc8051_memory_interface1_n185), .Y(oc8051_memory_interface1_n789) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u258 ( .A(
+        oc8051_memory_interface1_n184), .B(oc8051_memory_interface1_n74), .Y(
+        oc8051_memory_interface1_n175) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u257 ( .A0(idat_onchip[7]), .A1(
+        oc8051_memory_interface1_n175), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n176), .C0(oc8051_memory_interface1_n74), 
         .C1(oc8051_memory_interface1_cdata_7_), .Y(
-        oc8051_memory_interface1_n166) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u239 ( .A(
-        oc8051_memory_interface1_n166), .Y(oc8051_memory_interface1_n791) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u238 ( .A0(idat_onchip[6]), .A1(
-        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
+        oc8051_memory_interface1_n183) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u256 ( .A(
+        oc8051_memory_interface1_n183), .Y(oc8051_memory_interface1_n788) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u255 ( .A0(idat_onchip[6]), .A1(
+        oc8051_memory_interface1_n175), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n176), .C0(oc8051_memory_interface1_n74), 
         .C1(oc8051_memory_interface1_cdata_6_), .Y(
-        oc8051_memory_interface1_n165) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u237 ( .A(
-        oc8051_memory_interface1_n165), .Y(oc8051_memory_interface1_n790) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u236 ( .A0(idat_onchip[5]), .A1(
-        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
+        oc8051_memory_interface1_n182) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u254 ( .A(
+        oc8051_memory_interface1_n182), .Y(oc8051_memory_interface1_n787) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u253 ( .A0(idat_onchip[5]), .A1(
+        oc8051_memory_interface1_n175), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n176), .C0(oc8051_memory_interface1_n74), 
         .C1(oc8051_memory_interface1_cdata_5_), .Y(
-        oc8051_memory_interface1_n164) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u235 ( .A(
-        oc8051_memory_interface1_n164), .Y(oc8051_memory_interface1_n789) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u234 ( .A0(idat_onchip[4]), .A1(
-        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
+        oc8051_memory_interface1_n181) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u252 ( .A(
+        oc8051_memory_interface1_n181), .Y(oc8051_memory_interface1_n786) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u251 ( .A0(idat_onchip[4]), .A1(
+        oc8051_memory_interface1_n175), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n176), .C0(oc8051_memory_interface1_n74), 
         .C1(oc8051_memory_interface1_cdata_4_), .Y(
-        oc8051_memory_interface1_n163) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u233 ( .A(
-        oc8051_memory_interface1_n163), .Y(oc8051_memory_interface1_n788) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u232 ( .A0(idat_onchip[3]), .A1(
-        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
+        oc8051_memory_interface1_n180) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u250 ( .A(
+        oc8051_memory_interface1_n180), .Y(oc8051_memory_interface1_n785) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u249 ( .A0(idat_onchip[3]), .A1(
+        oc8051_memory_interface1_n175), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n176), .C0(oc8051_memory_interface1_n74), 
         .C1(oc8051_memory_interface1_cdata_3_), .Y(
-        oc8051_memory_interface1_n162) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u231 ( .A(
-        oc8051_memory_interface1_n162), .Y(oc8051_memory_interface1_n787) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u230 ( .A0(idat_onchip[2]), .A1(
-        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
+        oc8051_memory_interface1_n179) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u248 ( .A(
+        oc8051_memory_interface1_n179), .Y(oc8051_memory_interface1_n784) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u247 ( .A0(idat_onchip[2]), .A1(
+        oc8051_memory_interface1_n175), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n176), .C0(oc8051_memory_interface1_n74), 
         .C1(oc8051_memory_interface1_cdata_2_), .Y(
-        oc8051_memory_interface1_n161) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u229 ( .A(
-        oc8051_memory_interface1_n161), .Y(oc8051_memory_interface1_n786) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u228 ( .A0(idat_onchip[1]), .A1(
-        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
+        oc8051_memory_interface1_n178) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u246 ( .A(
+        oc8051_memory_interface1_n178), .Y(oc8051_memory_interface1_n783) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u245 ( .A0(idat_onchip[1]), .A1(
+        oc8051_memory_interface1_n175), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n176), .C0(oc8051_memory_interface1_n74), 
         .C1(oc8051_memory_interface1_cdata_1_), .Y(
-        oc8051_memory_interface1_n160) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u227 ( .A(
-        oc8051_memory_interface1_n160), .Y(oc8051_memory_interface1_n785) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u226 ( .A0(idat_onchip[0]), .A1(
-        oc8051_memory_interface1_n157), .B0(iack_i), .B1(
-        oc8051_memory_interface1_n158), .C0(oc8051_memory_interface1_n159), 
+        oc8051_memory_interface1_n177) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u244 ( .A(
+        oc8051_memory_interface1_n177), .Y(oc8051_memory_interface1_n782) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u243 ( .A0(idat_onchip[0]), .A1(
+        oc8051_memory_interface1_n175), .B0(iack_i), .B1(
+        oc8051_memory_interface1_n176), .C0(oc8051_memory_interface1_n74), 
         .C1(oc8051_memory_interface1_cdata_0_), .Y(
-        oc8051_memory_interface1_n156) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u225 ( .A(
-        oc8051_memory_interface1_n156), .Y(oc8051_memory_interface1_n784) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u224 ( .A0(
-        oc8051_memory_interface1_n146), .A1(idat_onchip[7]), .B0(
-        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n148), .C1(
+        oc8051_memory_interface1_n174) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u242 ( .A(
+        oc8051_memory_interface1_n174), .Y(oc8051_memory_interface1_n781) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u241 ( .A0(
+        oc8051_memory_interface1_n164), .A1(idat_onchip[7]), .B0(
+        oc8051_memory_interface1_n165), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n166), .C1(
         oc8051_memory_interface1_idat_cur_7_), .Y(
-        oc8051_memory_interface1_n155) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u223 ( .A(
-        oc8051_memory_interface1_n155), .Y(oc8051_memory_interface1_n783) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u222 ( .A0(
-        oc8051_memory_interface1_n146), .A1(idat_onchip[6]), .B0(
-        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n148), .C1(
+        oc8051_memory_interface1_n173) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u240 ( .A(
+        oc8051_memory_interface1_n173), .Y(oc8051_memory_interface1_n780) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u239 ( .A0(
+        oc8051_memory_interface1_n164), .A1(idat_onchip[6]), .B0(
+        oc8051_memory_interface1_n165), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n166), .C1(
         oc8051_memory_interface1_idat_cur_6_), .Y(
-        oc8051_memory_interface1_n154) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u221 ( .A(
-        oc8051_memory_interface1_n154), .Y(oc8051_memory_interface1_n782) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u220 ( .A0(
-        oc8051_memory_interface1_n146), .A1(idat_onchip[5]), .B0(
-        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n148), .C1(
+        oc8051_memory_interface1_n172) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u238 ( .A(
+        oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n779) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u237 ( .A0(
+        oc8051_memory_interface1_n164), .A1(idat_onchip[5]), .B0(
+        oc8051_memory_interface1_n165), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n166), .C1(
         oc8051_memory_interface1_idat_cur_5_), .Y(
-        oc8051_memory_interface1_n153) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u219 ( .A(
-        oc8051_memory_interface1_n153), .Y(oc8051_memory_interface1_n781) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u218 ( .A0(
-        oc8051_memory_interface1_n146), .A1(idat_onchip[4]), .B0(
-        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n148), .C1(
+        oc8051_memory_interface1_n171) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u236 ( .A(
+        oc8051_memory_interface1_n171), .Y(oc8051_memory_interface1_n778) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u235 ( .A0(
+        oc8051_memory_interface1_n164), .A1(idat_onchip[4]), .B0(
+        oc8051_memory_interface1_n165), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n166), .C1(
         oc8051_memory_interface1_idat_cur_4_), .Y(
-        oc8051_memory_interface1_n152) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u217 ( .A(
-        oc8051_memory_interface1_n152), .Y(oc8051_memory_interface1_n780) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u216 ( .A0(
-        oc8051_memory_interface1_n146), .A1(idat_onchip[3]), .B0(
-        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n148), .C1(
+        oc8051_memory_interface1_n170) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u234 ( .A(
+        oc8051_memory_interface1_n170), .Y(oc8051_memory_interface1_n777) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u233 ( .A0(
+        oc8051_memory_interface1_n164), .A1(idat_onchip[3]), .B0(
+        oc8051_memory_interface1_n165), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n166), .C1(
         oc8051_memory_interface1_idat_cur_3_), .Y(
-        oc8051_memory_interface1_n151) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u215 ( .A(
-        oc8051_memory_interface1_n151), .Y(oc8051_memory_interface1_n779) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u214 ( .A0(
-        oc8051_memory_interface1_n146), .A1(idat_onchip[2]), .B0(
-        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n148), .C1(
+        oc8051_memory_interface1_n169) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u232 ( .A(
+        oc8051_memory_interface1_n169), .Y(oc8051_memory_interface1_n776) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u231 ( .A0(
+        oc8051_memory_interface1_n164), .A1(idat_onchip[2]), .B0(
+        oc8051_memory_interface1_n165), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n166), .C1(
         oc8051_memory_interface1_idat_cur_2_), .Y(
-        oc8051_memory_interface1_n150) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u213 ( .A(
-        oc8051_memory_interface1_n150), .Y(oc8051_memory_interface1_n778) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u212 ( .A0(
-        oc8051_memory_interface1_n146), .A1(idat_onchip[1]), .B0(
-        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n148), .C1(
+        oc8051_memory_interface1_n168) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u230 ( .A(
+        oc8051_memory_interface1_n168), .Y(oc8051_memory_interface1_n775) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u229 ( .A0(
+        oc8051_memory_interface1_n164), .A1(idat_onchip[1]), .B0(
+        oc8051_memory_interface1_n165), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n166), .C1(
         oc8051_memory_interface1_idat_cur_1_), .Y(
-        oc8051_memory_interface1_n149) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u211 ( .A(
-        oc8051_memory_interface1_n149), .Y(oc8051_memory_interface1_n777) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u210 ( .A0(
-        oc8051_memory_interface1_n146), .A1(idat_onchip[0]), .B0(
-        oc8051_memory_interface1_n147), .B1(iack_i), .C0(
-        oc8051_memory_interface1_n148), .C1(
+        oc8051_memory_interface1_n167) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u228 ( .A(
+        oc8051_memory_interface1_n167), .Y(oc8051_memory_interface1_n774) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u227 ( .A0(
+        oc8051_memory_interface1_n164), .A1(idat_onchip[0]), .B0(
+        oc8051_memory_interface1_n165), .B1(iack_i), .C0(
+        oc8051_memory_interface1_n166), .C1(
         oc8051_memory_interface1_idat_cur_0_), .Y(
-        oc8051_memory_interface1_n145) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u209 ( .A(
-        oc8051_memory_interface1_n145), .Y(oc8051_memory_interface1_n776) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u208 ( .A(
-        oc8051_memory_interface1_n144), .Y(op3_n[1]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u207 ( .A(ram_rd_sel[2]), .Y(
-        oc8051_memory_interface1_n113) );
-  NAND3_X0P5A_A12TS oc8051_memory_interface1_u206 ( .A(
-        oc8051_memory_interface1_n127), .B(oc8051_memory_interface1_n113), .C(
-        ram_rd_sel[1]), .Y(oc8051_memory_interface1_n118) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u205 ( .A(ram_rd_sel[1]), .Y(
-        oc8051_memory_interface1_n119) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u204 ( .AN(
-        oc8051_memory_interface1_n910), .B(oc8051_memory_interface1_n119), .Y(
-        oc8051_memory_interface1_n115) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u203 ( .A(
-        oc8051_memory_interface1_n910), .B(oc8051_memory_interface1_n119), .Y(
-        oc8051_memory_interface1_n111) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u202 ( .A(
-        oc8051_memory_interface1_n111), .Y(oc8051_memory_interface1_n121) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u201 ( .A(ram_rd_sel[1]), .B(
-        ram_rd_sel[2]), .C(ram_rd_sel[0]), .Y(oc8051_memory_interface1_n131)
+        oc8051_memory_interface1_n163) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u226 ( .A(
+        oc8051_memory_interface1_n163), .Y(oc8051_memory_interface1_n773) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u225 ( .A(
+        oc8051_memory_interface1_n162), .Y(op3_n[1]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u224 ( .A(ram_rd_sel[2]), .Y(
+        oc8051_memory_interface1_n131) );
+  NAND3_X0P5A_A12TS oc8051_memory_interface1_u223 ( .A(
+        oc8051_memory_interface1_n145), .B(oc8051_memory_interface1_n131), .C(
+        ram_rd_sel[1]), .Y(oc8051_memory_interface1_n136) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u222 ( .A(ram_rd_sel[1]), .Y(
+        oc8051_memory_interface1_n137) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u221 ( .AN(
+        oc8051_memory_interface1_n910), .B(oc8051_memory_interface1_n137), .Y(
+        oc8051_memory_interface1_n133) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u220 ( .A(
+        oc8051_memory_interface1_n910), .B(oc8051_memory_interface1_n137), .Y(
+        oc8051_memory_interface1_n129) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u219 ( .A(
+        oc8051_memory_interface1_n129), .Y(oc8051_memory_interface1_n139) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u218 ( .A(ram_rd_sel[1]), .B(
+        ram_rd_sel[2]), .C(ram_rd_sel[0]), .Y(oc8051_memory_interface1_n149)
          );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u200 ( .A0(ri[0]), .A1(
-        oc8051_memory_interface1_n121), .B0(op1_cur[0]), .B1(
-        oc8051_memory_interface1_n131), .Y(oc8051_memory_interface1_n143) );
-  AOI32_X0P5M_A12TS oc8051_memory_interface1_u199 ( .A0(ram_rd_sel[0]), .A1(
-        oc8051_memory_interface1_n119), .A2(ram_rd_sel[2]), .B0(ri[1]), .B1(
-        oc8051_memory_interface1_n121), .Y(oc8051_memory_interface1_n138) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u198 ( .A(op1_cur[1]), .B(
-        oc8051_memory_interface1_n131), .Y(oc8051_memory_interface1_n139) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u197 ( .A(
-        oc8051_memory_interface1_n118), .Y(oc8051_memory_interface1_n116) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u196 ( .A(sp[2]), .B(
-        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n136) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u195 ( .A0(ri[2]), .A1(
-        oc8051_memory_interface1_n121), .B0(op1_cur[2]), .B1(
-        oc8051_memory_interface1_n131), .Y(oc8051_memory_interface1_n137) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u194 ( .A(sp[3]), .B(
-        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n133) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u193 ( .A0(ri[3]), .A1(
-        oc8051_memory_interface1_n121), .B0(bank_sel[0]), .B1(
-        oc8051_memory_interface1_n131), .Y(oc8051_memory_interface1_n134) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u192 ( .A0(
-        oc8051_memory_interface1_n132), .A1(oc8051_memory_interface1_n118), 
-        .B0(oc8051_memory_interface1_n133), .C0(oc8051_memory_interface1_n134), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u217 ( .A0(ri[0]), .A1(
+        oc8051_memory_interface1_n139), .B0(op1_cur[0]), .B1(
+        oc8051_memory_interface1_n149), .Y(oc8051_memory_interface1_n161) );
+  AOI32_X0P5M_A12TS oc8051_memory_interface1_u216 ( .A0(ram_rd_sel[0]), .A1(
+        oc8051_memory_interface1_n137), .A2(ram_rd_sel[2]), .B0(ri[1]), .B1(
+        oc8051_memory_interface1_n139), .Y(oc8051_memory_interface1_n156) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u215 ( .A(op1_cur[1]), .B(
+        oc8051_memory_interface1_n149), .Y(oc8051_memory_interface1_n157) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u214 ( .A(
+        oc8051_memory_interface1_n136), .Y(oc8051_memory_interface1_n134) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u213 ( .A(sp[2]), .B(
+        oc8051_memory_interface1_n133), .Y(oc8051_memory_interface1_n154) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u212 ( .A0(ri[2]), .A1(
+        oc8051_memory_interface1_n139), .B0(op1_cur[2]), .B1(
+        oc8051_memory_interface1_n149), .Y(oc8051_memory_interface1_n155) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u211 ( .A(sp[3]), .B(
+        oc8051_memory_interface1_n133), .Y(oc8051_memory_interface1_n151) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u210 ( .A0(ri[3]), .A1(
+        oc8051_memory_interface1_n139), .B0(bank_sel[0]), .B1(
+        oc8051_memory_interface1_n149), .Y(oc8051_memory_interface1_n152) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u209 ( .A0(
+        oc8051_memory_interface1_n150), .A1(oc8051_memory_interface1_n136), 
+        .B0(oc8051_memory_interface1_n151), .C0(oc8051_memory_interface1_n152), 
         .Y(rd_addr[3]) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u191 ( .A(sp[4]), .B(
-        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n129) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u190 ( .A(
-        oc8051_memory_interface1_n113), .B(ram_rd_sel[0]), .Y(
-        oc8051_memory_interface1_n122) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u189 ( .A0(bank_sel[1]), .A1(
-        oc8051_memory_interface1_n131), .B0(ri[4]), .B1(
-        oc8051_memory_interface1_n121), .C0(oc8051_memory_interface1_n122), 
-        .Y(oc8051_memory_interface1_n130) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u188 ( .A0(
-        oc8051_memory_interface1_n128), .A1(oc8051_memory_interface1_n118), 
-        .B0(oc8051_memory_interface1_n129), .C0(oc8051_memory_interface1_n130), 
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u208 ( .A(sp[4]), .B(
+        oc8051_memory_interface1_n133), .Y(oc8051_memory_interface1_n147) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u207 ( .A(
+        oc8051_memory_interface1_n131), .B(ram_rd_sel[0]), .Y(
+        oc8051_memory_interface1_n140) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u206 ( .A0(bank_sel[1]), .A1(
+        oc8051_memory_interface1_n149), .B0(ri[4]), .B1(
+        oc8051_memory_interface1_n139), .C0(oc8051_memory_interface1_n140), 
+        .Y(oc8051_memory_interface1_n148) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u205 ( .A0(
+        oc8051_memory_interface1_n146), .A1(oc8051_memory_interface1_n136), 
+        .B0(oc8051_memory_interface1_n147), .C0(oc8051_memory_interface1_n148), 
         .Y(rd_addr[4]) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u187 ( .A(
-        oc8051_memory_interface1_n127), .B(oc8051_memory_interface1_n113), .Y(
-        oc8051_memory_interface1_n126) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u186 ( .A(
-        oc8051_memory_interface1_n122), .B(oc8051_memory_interface1_n126), 
-        .S0(ram_rd_sel[1]), .Y(oc8051_memory_interface1_n124) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u185 ( .A0(ri[5]), .A1(
-        oc8051_memory_interface1_n121), .B0(sp[5]), .B1(
-        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n125) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u184 ( .A0(
-        oc8051_memory_interface1_n123), .A1(oc8051_memory_interface1_n118), 
-        .B0(oc8051_memory_interface1_n124), .C0(oc8051_memory_interface1_n125), 
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u204 ( .A(
+        oc8051_memory_interface1_n145), .B(oc8051_memory_interface1_n131), .Y(
+        oc8051_memory_interface1_n144) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u203 ( .A(
+        oc8051_memory_interface1_n140), .B(oc8051_memory_interface1_n144), 
+        .S0(ram_rd_sel[1]), .Y(oc8051_memory_interface1_n142) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u202 ( .A0(ri[5]), .A1(
+        oc8051_memory_interface1_n139), .B0(sp[5]), .B1(
+        oc8051_memory_interface1_n133), .Y(oc8051_memory_interface1_n143) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u201 ( .A0(
+        oc8051_memory_interface1_n141), .A1(oc8051_memory_interface1_n136), 
+        .B0(oc8051_memory_interface1_n142), .C0(oc8051_memory_interface1_n143), 
         .Y(rd_addr[5]) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u183 ( .A0(sp[6]), .A1(
-        oc8051_memory_interface1_n115), .B0(ri[6]), .B1(
-        oc8051_memory_interface1_n121), .C0(oc8051_memory_interface1_n122), 
-        .Y(oc8051_memory_interface1_n120) );
-  OAI221_X0P5M_A12TS oc8051_memory_interface1_u182 ( .A0(
-        oc8051_memory_interface1_n117), .A1(oc8051_memory_interface1_n118), 
-        .B0(oc8051_memory_interface1_n119), .B1(oc8051_memory_interface1_n113), 
-        .C0(oc8051_memory_interface1_n120), .Y(rd_addr[6]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u181 ( .A(ri[7]), .Y(
-        oc8051_memory_interface1_n112) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u180 ( .A0(sp[7]), .A1(
-        oc8051_memory_interface1_n115), .B0(oc8051_memory_interface1_n116), 
-        .B1(op2_n[7]), .Y(oc8051_memory_interface1_n114) );
-  OAI211_X0P5M_A12TS oc8051_memory_interface1_u179 ( .A0(
-        oc8051_memory_interface1_n111), .A1(oc8051_memory_interface1_n112), 
-        .B0(oc8051_memory_interface1_n113), .C0(oc8051_memory_interface1_n114), 
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u200 ( .A0(sp[6]), .A1(
+        oc8051_memory_interface1_n133), .B0(ri[6]), .B1(
+        oc8051_memory_interface1_n139), .C0(oc8051_memory_interface1_n140), 
+        .Y(oc8051_memory_interface1_n138) );
+  OAI221_X0P5M_A12TS oc8051_memory_interface1_u199 ( .A0(
+        oc8051_memory_interface1_n135), .A1(oc8051_memory_interface1_n136), 
+        .B0(oc8051_memory_interface1_n137), .B1(oc8051_memory_interface1_n131), 
+        .C0(oc8051_memory_interface1_n138), .Y(rd_addr[6]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u198 ( .A(ri[7]), .Y(
+        oc8051_memory_interface1_n130) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u197 ( .A0(sp[7]), .A1(
+        oc8051_memory_interface1_n133), .B0(oc8051_memory_interface1_n134), 
+        .B1(op2_n[7]), .Y(oc8051_memory_interface1_n132) );
+  OAI211_X0P5M_A12TS oc8051_memory_interface1_u196 ( .A0(
+        oc8051_memory_interface1_n129), .A1(oc8051_memory_interface1_n130), 
+        .B0(oc8051_memory_interface1_n131), .C0(oc8051_memory_interface1_n132), 
         .Y(rd_addr[7]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u178 ( .A(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u195 ( .A(
         oc8051_memory_interface1_n360), .Y(pc[15]) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u177 ( .A(ram_wr_sel[0]), .Y(
-        oc8051_memory_interface1_n88) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u176 ( .A(
-        oc8051_memory_interface1_n88), .B(oc8051_memory_interface1_n87), .Y(
-        oc8051_memory_interface1_n100) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u175 ( .AN(wr_ind), .B(
-        oc8051_memory_interface1_n88), .Y(oc8051_memory_interface1_n93) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u174 ( .A(sp_w[0]), .B(
-        oc8051_memory_interface1_n93), .Y(oc8051_memory_interface1_n106) );
-  NOR3_X0P5A_A12TS oc8051_memory_interface1_u173 ( .A(ram_wr_sel[1]), .B(
-        ram_wr_sel[2]), .C(oc8051_memory_interface1_n88), .Y(
-        oc8051_memory_interface1_n79) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u172 ( .A(
+  INV_X0P5B_A12TS oc8051_memory_interface1_u194 ( .A(ram_wr_sel[0]), .Y(
+        oc8051_memory_interface1_n106) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u193 ( .A(
+        oc8051_memory_interface1_n106), .B(oc8051_memory_interface1_n105), .Y(
+        oc8051_memory_interface1_n118) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u192 ( .AN(wr_ind), .B(
+        oc8051_memory_interface1_n106), .Y(oc8051_memory_interface1_n111) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u191 ( .A(sp_w[0]), .B(
+        oc8051_memory_interface1_n111), .Y(oc8051_memory_interface1_n124) );
+  NOR3_X0P5A_A12TS oc8051_memory_interface1_u190 ( .A(ram_wr_sel[1]), .B(
+        ram_wr_sel[2]), .C(oc8051_memory_interface1_n106), .Y(
+        oc8051_memory_interface1_n97) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u189 ( .A(
         oc8051_memory_interface1_imm2_r[0]), .B(ram_wr_sel[2]), .Y(
-        oc8051_memory_interface1_n109) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u171 ( .A(
-        oc8051_memory_interface1_ri_r[0]), .B(oc8051_memory_interface1_n88), 
-        .Y(oc8051_memory_interface1_n110) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u170 ( .A(
-        oc8051_memory_interface1_n109), .B(oc8051_memory_interface1_n110), 
-        .S0(ram_wr_sel[1]), .Y(oc8051_memory_interface1_n108) );
-  AOI21_X0P5M_A12TS oc8051_memory_interface1_u169 ( .A0(
-        oc8051_memory_interface1_imm_r[0]), .A1(oc8051_memory_interface1_n79), 
-        .B0(oc8051_memory_interface1_n108), .Y(oc8051_memory_interface1_n107)
+        oc8051_memory_interface1_n127) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u188 ( .A(
+        oc8051_memory_interface1_ri_r[0]), .B(oc8051_memory_interface1_n106), 
+        .Y(oc8051_memory_interface1_n128) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u187 ( .A(
+        oc8051_memory_interface1_n127), .B(oc8051_memory_interface1_n128), 
+        .S0(ram_wr_sel[1]), .Y(oc8051_memory_interface1_n126) );
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u186 ( .A0(
+        oc8051_memory_interface1_imm_r[0]), .A1(oc8051_memory_interface1_n97), 
+        .B0(oc8051_memory_interface1_n126), .Y(oc8051_memory_interface1_n125)
          );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u168 ( .A(sp_w[1]), .B(
-        oc8051_memory_interface1_n93), .Y(oc8051_memory_interface1_n101) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u167 ( .A(
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u185 ( .A(sp_w[1]), .B(
+        oc8051_memory_interface1_n111), .Y(oc8051_memory_interface1_n119) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u184 ( .A(
         oc8051_memory_interface1_imm2_r[1]), .B(ram_wr_sel[2]), .Y(
-        oc8051_memory_interface1_n104) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u166 ( .A(
-        oc8051_memory_interface1_ri_r[1]), .B(oc8051_memory_interface1_n88), 
-        .Y(oc8051_memory_interface1_n105) );
-  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u165 ( .A(
-        oc8051_memory_interface1_n104), .B(oc8051_memory_interface1_n105), 
-        .S0(ram_wr_sel[1]), .Y(oc8051_memory_interface1_n103) );
-  AOI21_X0P5M_A12TS oc8051_memory_interface1_u164 ( .A0(
-        oc8051_memory_interface1_imm_r[1]), .A1(oc8051_memory_interface1_n79), 
-        .B0(oc8051_memory_interface1_n103), .Y(oc8051_memory_interface1_n102)
+        oc8051_memory_interface1_n122) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u183 ( .A(
+        oc8051_memory_interface1_ri_r[1]), .B(oc8051_memory_interface1_n106), 
+        .Y(oc8051_memory_interface1_n123) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u182 ( .A(
+        oc8051_memory_interface1_n122), .B(oc8051_memory_interface1_n123), 
+        .S0(ram_wr_sel[1]), .Y(oc8051_memory_interface1_n121) );
+  AOI21_X0P5M_A12TS oc8051_memory_interface1_u181 ( .A0(
+        oc8051_memory_interface1_imm_r[1]), .A1(oc8051_memory_interface1_n97), 
+        .B0(oc8051_memory_interface1_n121), .Y(oc8051_memory_interface1_n120)
          );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u163 ( .A(wr_ind), .B(
-        oc8051_memory_interface1_n88), .Y(oc8051_memory_interface1_n89) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u162 ( .A(
-        oc8051_memory_interface1_ri_r[2]), .Y(oc8051_memory_interface1_n96) );
-  AND2_X0P5M_A12TS oc8051_memory_interface1_u161 ( .A(ram_wr_sel[2]), .B(
-        ram_wr_sel[0]), .Y(oc8051_memory_interface1_n75) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u160 ( .A(
-        oc8051_memory_interface1_n100), .B(ram_wr_sel[2]), .Y(
-        oc8051_memory_interface1_n86) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u159 ( .A(
-        oc8051_memory_interface1_n86), .Y(oc8051_memory_interface1_n95) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u158 ( .A(
-        oc8051_memory_interface1_n421), .B(oc8051_memory_interface1_n95), .Y(
-        oc8051_memory_interface1_n99) );
-  AOI31_X0P5M_A12TS oc8051_memory_interface1_u157 ( .A0(
-        oc8051_memory_interface1_n75), .A1(oc8051_memory_interface1_n87), .A2(
-        oc8051_memory_interface1_imm2_r[2]), .B0(oc8051_memory_interface1_n99), 
-        .Y(oc8051_memory_interface1_n97) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u156 ( .A0(sp_w[2]), .A1(
-        oc8051_memory_interface1_n93), .B0(oc8051_memory_interface1_imm_r[2]), 
-        .B1(oc8051_memory_interface1_n79), .Y(oc8051_memory_interface1_n98) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u155 ( .A(
-        oc8051_memory_interface1_ri_r[3]), .Y(oc8051_memory_interface1_n90) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u154 ( .A(
-        oc8051_memory_interface1_n420), .B(oc8051_memory_interface1_n95), .Y(
-        oc8051_memory_interface1_n94) );
-  AOI31_X0P5M_A12TS oc8051_memory_interface1_u153 ( .A0(
-        oc8051_memory_interface1_n75), .A1(oc8051_memory_interface1_n87), .A2(
-        oc8051_memory_interface1_imm2_r[3]), .B0(oc8051_memory_interface1_n94), 
-        .Y(oc8051_memory_interface1_n91) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u152 ( .A0(sp_w[3]), .A1(
-        oc8051_memory_interface1_n93), .B0(oc8051_memory_interface1_imm_r[3]), 
-        .B1(oc8051_memory_interface1_n79), .Y(oc8051_memory_interface1_n92) );
-  INV_X0P5B_A12TS oc8051_memory_interface1_u151 ( .A(
-        oc8051_memory_interface1_n89), .Y(oc8051_memory_interface1_n78) );
-  AOI222_X0P5M_A12TS oc8051_memory_interface1_u150 ( .A0(
-        oc8051_memory_interface1_imm_r[4]), .A1(oc8051_memory_interface1_n79), 
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u180 ( .A(wr_ind), .B(
+        oc8051_memory_interface1_n106), .Y(oc8051_memory_interface1_n107) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u179 ( .A(
+        oc8051_memory_interface1_ri_r[2]), .Y(oc8051_memory_interface1_n114)
+         );
+  AND2_X0P5M_A12TS oc8051_memory_interface1_u178 ( .A(ram_wr_sel[2]), .B(
+        ram_wr_sel[0]), .Y(oc8051_memory_interface1_n93) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u177 ( .A(
+        oc8051_memory_interface1_n118), .B(ram_wr_sel[2]), .Y(
+        oc8051_memory_interface1_n104) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u176 ( .A(
+        oc8051_memory_interface1_n104), .Y(oc8051_memory_interface1_n113) );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u175 ( .A(
+        oc8051_memory_interface1_n421), .B(oc8051_memory_interface1_n113), .Y(
+        oc8051_memory_interface1_n117) );
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u174 ( .A0(
+        oc8051_memory_interface1_n93), .A1(oc8051_memory_interface1_n105), 
+        .A2(oc8051_memory_interface1_imm2_r[2]), .B0(
+        oc8051_memory_interface1_n117), .Y(oc8051_memory_interface1_n115) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u173 ( .A0(sp_w[2]), .A1(
+        oc8051_memory_interface1_n111), .B0(oc8051_memory_interface1_imm_r[2]), 
+        .B1(oc8051_memory_interface1_n97), .Y(oc8051_memory_interface1_n116)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u172 ( .A(
+        oc8051_memory_interface1_ri_r[3]), .Y(oc8051_memory_interface1_n108)
+         );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u171 ( .A(
+        oc8051_memory_interface1_n420), .B(oc8051_memory_interface1_n113), .Y(
+        oc8051_memory_interface1_n112) );
+  AOI31_X0P5M_A12TS oc8051_memory_interface1_u170 ( .A0(
+        oc8051_memory_interface1_n93), .A1(oc8051_memory_interface1_n105), 
+        .A2(oc8051_memory_interface1_imm2_r[3]), .B0(
+        oc8051_memory_interface1_n112), .Y(oc8051_memory_interface1_n109) );
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u169 ( .A0(sp_w[3]), .A1(
+        oc8051_memory_interface1_n111), .B0(oc8051_memory_interface1_imm_r[3]), 
+        .B1(oc8051_memory_interface1_n97), .Y(oc8051_memory_interface1_n110)
+         );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u168 ( .A(
+        oc8051_memory_interface1_n107), .Y(oc8051_memory_interface1_n96) );
+  AOI222_X0P5M_A12TS oc8051_memory_interface1_u167 ( .A0(
+        oc8051_memory_interface1_imm_r[4]), .A1(oc8051_memory_interface1_n97), 
         .B0(oc8051_memory_interface1_imm2_r[4]), .B1(
-        oc8051_memory_interface1_n75), .C0(oc8051_memory_interface1_ri_r[4]), 
-        .C1(oc8051_memory_interface1_n78), .Y(oc8051_memory_interface1_n84) );
-  NOR2_X0P5A_A12TS oc8051_memory_interface1_u149 ( .A(
-        oc8051_memory_interface1_n87), .B(oc8051_memory_interface1_n88), .Y(
-        oc8051_memory_interface1_n76) );
-  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u148 ( .AN(
-        oc8051_memory_interface1_n75), .B(oc8051_memory_interface1_n87), .Y(
-        oc8051_memory_interface1_n77) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u147 ( .A0(
-        oc8051_memory_interface1_rn_r_4_), .A1(oc8051_memory_interface1_n86), 
-        .B0(sp_w[4]), .B1(oc8051_memory_interface1_n76), .C0(
-        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n85) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u146 ( .A(
-        oc8051_memory_interface1_n84), .B(oc8051_memory_interface1_n85), .Y(
+        oc8051_memory_interface1_n93), .C0(oc8051_memory_interface1_ri_r[4]), 
+        .C1(oc8051_memory_interface1_n96), .Y(oc8051_memory_interface1_n102)
+         );
+  NOR2_X0P5A_A12TS oc8051_memory_interface1_u166 ( .A(
+        oc8051_memory_interface1_n105), .B(oc8051_memory_interface1_n106), .Y(
+        oc8051_memory_interface1_n94) );
+  NOR2B_X0P5M_A12TS oc8051_memory_interface1_u165 ( .AN(
+        oc8051_memory_interface1_n93), .B(oc8051_memory_interface1_n105), .Y(
+        oc8051_memory_interface1_n95) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u164 ( .A0(
+        oc8051_memory_interface1_rn_r_4_), .A1(oc8051_memory_interface1_n104), 
+        .B0(sp_w[4]), .B1(oc8051_memory_interface1_n94), .C0(
+        oc8051_memory_interface1_n95), .Y(oc8051_memory_interface1_n103) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u163 ( .A(
+        oc8051_memory_interface1_n102), .B(oc8051_memory_interface1_n103), .Y(
         wr_addr[4]) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u145 ( .A0(
-        oc8051_memory_interface1_ri_r[5]), .A1(oc8051_memory_interface1_n78), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u162 ( .A0(
+        oc8051_memory_interface1_ri_r[5]), .A1(oc8051_memory_interface1_n96), 
         .B0(oc8051_memory_interface1_imm_r[5]), .B1(
-        oc8051_memory_interface1_n79), .Y(oc8051_memory_interface1_n82) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u144 ( .A0(
-        oc8051_memory_interface1_imm2_r[5]), .A1(oc8051_memory_interface1_n75), 
-        .B0(sp_w[5]), .B1(oc8051_memory_interface1_n76), .C0(
-        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n83) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u143 ( .A(
-        oc8051_memory_interface1_n82), .B(oc8051_memory_interface1_n83), .Y(
+        oc8051_memory_interface1_n97), .Y(oc8051_memory_interface1_n100) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u161 ( .A0(
+        oc8051_memory_interface1_imm2_r[5]), .A1(oc8051_memory_interface1_n93), 
+        .B0(sp_w[5]), .B1(oc8051_memory_interface1_n94), .C0(
+        oc8051_memory_interface1_n95), .Y(oc8051_memory_interface1_n101) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u160 ( .A(
+        oc8051_memory_interface1_n100), .B(oc8051_memory_interface1_n101), .Y(
         wr_addr[5]) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u142 ( .A0(
-        oc8051_memory_interface1_ri_r[6]), .A1(oc8051_memory_interface1_n78), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u159 ( .A0(
+        oc8051_memory_interface1_ri_r[6]), .A1(oc8051_memory_interface1_n96), 
         .B0(oc8051_memory_interface1_imm_r[6]), .B1(
-        oc8051_memory_interface1_n79), .Y(oc8051_memory_interface1_n80) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u141 ( .A0(
-        oc8051_memory_interface1_imm2_r[6]), .A1(oc8051_memory_interface1_n75), 
-        .B0(sp_w[6]), .B1(oc8051_memory_interface1_n76), .C0(
-        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n81) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u140 ( .A(
-        oc8051_memory_interface1_n80), .B(oc8051_memory_interface1_n81), .Y(
+        oc8051_memory_interface1_n97), .Y(oc8051_memory_interface1_n98) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u158 ( .A0(
+        oc8051_memory_interface1_imm2_r[6]), .A1(oc8051_memory_interface1_n93), 
+        .B0(sp_w[6]), .B1(oc8051_memory_interface1_n94), .C0(
+        oc8051_memory_interface1_n95), .Y(oc8051_memory_interface1_n99) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u157 ( .A(
+        oc8051_memory_interface1_n98), .B(oc8051_memory_interface1_n99), .Y(
         wr_addr[6]) );
-  AOI22_X0P5M_A12TS oc8051_memory_interface1_u139 ( .A0(
-        oc8051_memory_interface1_ri_r[7]), .A1(oc8051_memory_interface1_n78), 
+  AOI22_X0P5M_A12TS oc8051_memory_interface1_u156 ( .A0(
+        oc8051_memory_interface1_ri_r[7]), .A1(oc8051_memory_interface1_n96), 
         .B0(oc8051_memory_interface1_imm_r[7]), .B1(
-        oc8051_memory_interface1_n79), .Y(oc8051_memory_interface1_n73) );
-  AOI221_X0P5M_A12TS oc8051_memory_interface1_u138 ( .A0(
-        oc8051_memory_interface1_imm2_r[7]), .A1(oc8051_memory_interface1_n75), 
-        .B0(sp_w[7]), .B1(oc8051_memory_interface1_n76), .C0(
-        oc8051_memory_interface1_n77), .Y(oc8051_memory_interface1_n74) );
-  NAND2_X0P5A_A12TS oc8051_memory_interface1_u137 ( .A(
-        oc8051_memory_interface1_n73), .B(oc8051_memory_interface1_n74), .Y(
+        oc8051_memory_interface1_n97), .Y(oc8051_memory_interface1_n91) );
+  AOI221_X0P5M_A12TS oc8051_memory_interface1_u155 ( .A0(
+        oc8051_memory_interface1_imm2_r[7]), .A1(oc8051_memory_interface1_n93), 
+        .B0(sp_w[7]), .B1(oc8051_memory_interface1_n94), .C0(
+        oc8051_memory_interface1_n95), .Y(oc8051_memory_interface1_n92) );
+  NAND2_X0P5A_A12TS oc8051_memory_interface1_u154 ( .A(
+        oc8051_memory_interface1_n91), .B(oc8051_memory_interface1_n92), .Y(
         wr_addr[7]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u153 ( .A(
+        oc8051_memory_interface1_iadr_t_0_), .B(
+        oc8051_memory_interface1_pc_out_0_), .S0(oc8051_memory_interface1_n74), 
+        .Y(iadr_o[0]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u152 ( .A(
+        oc8051_memory_interface1_iadr_t_10_), .B(oc8051_memory_interface1_n90), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[10]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u151 ( .A(
+        oc8051_memory_interface1_iadr_t_11_), .B(oc8051_memory_interface1_n89), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[11]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u150 ( .A(
+        oc8051_memory_interface1_iadr_t_12_), .B(oc8051_memory_interface1_n88), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[12]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u149 ( .A(
+        oc8051_memory_interface1_iadr_t_13_), .B(oc8051_memory_interface1_n87), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[13]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u148 ( .A(
+        oc8051_memory_interface1_iadr_t_14_), .B(oc8051_memory_interface1_n86), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[14]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u147 ( .A(
+        oc8051_memory_interface1_iadr_t_15_), .B(oc8051_memory_interface1_n85), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[15]) );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u146 ( .A(
+        oc8051_memory_interface1_n83), .B(oc8051_memory_interface1_n84), .S0(
+        oc8051_memory_interface1_istb_t), .Y(iadr_o[1]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u145 ( .A(
+        oc8051_memory_interface1_iadr_t_2_), .B(oc8051_memory_interface1_n82), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[2]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u144 ( .A(
+        oc8051_memory_interface1_iadr_t_3_), .B(oc8051_memory_interface1_n81), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[3]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u143 ( .A(
+        oc8051_memory_interface1_iadr_t_4_), .B(oc8051_memory_interface1_n80), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[4]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u142 ( .A(
+        oc8051_memory_interface1_iadr_t_5_), .B(oc8051_memory_interface1_n79), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[5]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u141 ( .A(
+        oc8051_memory_interface1_iadr_t_6_), .B(oc8051_memory_interface1_n78), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[6]) );
+  INV_X0P5B_A12TS oc8051_memory_interface1_u140 ( .A(
+        oc8051_memory_interface1_iadr_t_7_), .Y(oc8051_memory_interface1_n77)
+         );
+  MXIT2_X0P5M_A12TS oc8051_memory_interface1_u139 ( .A(
+        oc8051_memory_interface1_n76), .B(oc8051_memory_interface1_n77), .S0(
+        oc8051_memory_interface1_istb_t), .Y(iadr_o[7]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u138 ( .A(
+        oc8051_memory_interface1_iadr_t_8_), .B(oc8051_memory_interface1_n75), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[8]) );
+  MXT2_X0P5M_A12TS oc8051_memory_interface1_u137 ( .A(
+        oc8051_memory_interface1_iadr_t_9_), .B(oc8051_memory_interface1_n73), 
+        .S0(oc8051_memory_interface1_n74), .Y(iadr_o[9]) );
   MXIT2_X0P7M_A12TS oc8051_memory_interface1_u136 ( .A(
         oc8051_memory_interface1_idat_old_4_), .B(
         oc8051_memory_interface1_idat_old_12_), .S0(
@@ -41156,50 +41150,50 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[6]) );
   INV_X1B_A12TS oc8051_memory_interface1_u88 ( .A(
-        oc8051_memory_interface1_idat_cur_28_), .Y(
-        oc8051_memory_interface1_n69) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u87 ( .A(
-        oc8051_memory_interface1_n13), .B(oc8051_memory_interface1_n14), .C(
-        oc8051_memory_interface1_n15), .D(oc8051_memory_interface1_n69), .S0(
-        oc8051_memory_interface1_op_pos_1_), .S1(
-        oc8051_memory_interface1_op_pos_2_), .Y(
-        oc8051_memory_interface1_op3[4]) );
-  INV_X1B_A12TS oc8051_memory_interface1_u86 ( .A(
-        oc8051_memory_interface1_idat_cur_26_), .Y(
-        oc8051_memory_interface1_n67) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u85 ( .A(
-        oc8051_memory_interface1_n7), .B(oc8051_memory_interface1_n8), .C(
-        oc8051_memory_interface1_n9), .D(oc8051_memory_interface1_n67), .S0(
-        oc8051_memory_interface1_op_pos_1_), .S1(
-        oc8051_memory_interface1_op_pos_2_), .Y(
-        oc8051_memory_interface1_op3[2]) );
-  INV_X1B_A12TS oc8051_memory_interface1_u84 ( .A(
-        oc8051_memory_interface1_idat_cur_31_), .Y(
-        oc8051_memory_interface1_n72) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u83 ( .A(
-        oc8051_memory_interface1_n22), .B(oc8051_memory_interface1_n23), .C(
-        oc8051_memory_interface1_n24), .D(oc8051_memory_interface1_n72), .S0(
-        oc8051_memory_interface1_op_pos_1_), .S1(
-        oc8051_memory_interface1_op_pos_2_), .Y(
-        oc8051_memory_interface1_op3[7]) );
-  INV_X1B_A12TS oc8051_memory_interface1_u82 ( .A(
         oc8051_memory_interface1_idat_cur_29_), .Y(
         oc8051_memory_interface1_n70) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u81 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u87 ( .A(
         oc8051_memory_interface1_n16), .B(oc8051_memory_interface1_n17), .C(
         oc8051_memory_interface1_n18), .D(oc8051_memory_interface1_n70), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[5]) );
-  INV_X1B_A12TS oc8051_memory_interface1_u80 ( .A(
+  INV_X1B_A12TS oc8051_memory_interface1_u86 ( .A(
+        oc8051_memory_interface1_idat_cur_28_), .Y(
+        oc8051_memory_interface1_n69) );
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u85 ( .A(
+        oc8051_memory_interface1_n13), .B(oc8051_memory_interface1_n14), .C(
+        oc8051_memory_interface1_n15), .D(oc8051_memory_interface1_n69), .S0(
+        oc8051_memory_interface1_op_pos_1_), .S1(
+        oc8051_memory_interface1_op_pos_2_), .Y(
+        oc8051_memory_interface1_op3[4]) );
+  INV_X1B_A12TS oc8051_memory_interface1_u84 ( .A(
         oc8051_memory_interface1_idat_cur_27_), .Y(
         oc8051_memory_interface1_n68) );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u79 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u83 ( .A(
         oc8051_memory_interface1_n10), .B(oc8051_memory_interface1_n11), .C(
         oc8051_memory_interface1_n12), .D(oc8051_memory_interface1_n68), .S0(
         oc8051_memory_interface1_op_pos_1_), .S1(
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[3]) );
+  INV_X1B_A12TS oc8051_memory_interface1_u82 ( .A(
+        oc8051_memory_interface1_idat_cur_26_), .Y(
+        oc8051_memory_interface1_n67) );
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u81 ( .A(
+        oc8051_memory_interface1_n7), .B(oc8051_memory_interface1_n8), .C(
+        oc8051_memory_interface1_n9), .D(oc8051_memory_interface1_n67), .S0(
+        oc8051_memory_interface1_op_pos_1_), .S1(
+        oc8051_memory_interface1_op_pos_2_), .Y(
+        oc8051_memory_interface1_op3[2]) );
+  INV_X1B_A12TS oc8051_memory_interface1_u80 ( .A(
+        oc8051_memory_interface1_idat_cur_31_), .Y(
+        oc8051_memory_interface1_n72) );
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u79 ( .A(
+        oc8051_memory_interface1_n22), .B(oc8051_memory_interface1_n23), .C(
+        oc8051_memory_interface1_n24), .D(oc8051_memory_interface1_n72), .S0(
+        oc8051_memory_interface1_op_pos_1_), .S1(
+        oc8051_memory_interface1_op_pos_2_), .Y(
+        oc8051_memory_interface1_op3[7]) );
   MXT2_X1M_A12TS oc8051_memory_interface1_u78 ( .A(
         oc8051_memory_interface1_idat_old_31_), .B(
         oc8051_memory_interface1_idat_cur_7_), .S0(
@@ -41216,24 +41210,24 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n25)
          );
   MXT2_X1M_A12TS oc8051_memory_interface1_u75 ( .A(
-        oc8051_memory_interface1_idat_old_28_), .B(
-        oc8051_memory_interface1_idat_cur_4_), .S0(
-        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n37)
-         );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u74 ( .A(
-        oc8051_memory_interface1_idat_old_25_), .B(
-        oc8051_memory_interface1_idat_cur_1_), .S0(
-        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n28)
-         );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u73 ( .A(
         oc8051_memory_interface1_idat_old_29_), .B(
         oc8051_memory_interface1_idat_cur_5_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n40)
          );
-  MXT2_X1M_A12TS oc8051_memory_interface1_u72 ( .A(
+  MXT2_X1M_A12TS oc8051_memory_interface1_u74 ( .A(
+        oc8051_memory_interface1_idat_old_28_), .B(
+        oc8051_memory_interface1_idat_cur_4_), .S0(
+        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n37)
+         );
+  MXT2_X1M_A12TS oc8051_memory_interface1_u73 ( .A(
         oc8051_memory_interface1_idat_old_27_), .B(
         oc8051_memory_interface1_idat_cur_3_), .S0(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n34)
+         );
+  MXT2_X1M_A12TS oc8051_memory_interface1_u72 ( .A(
+        oc8051_memory_interface1_idat_old_25_), .B(
+        oc8051_memory_interface1_idat_cur_1_), .S0(
+        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n28)
          );
   MXT2_X1M_A12TS oc8051_memory_interface1_u71 ( .A(
         oc8051_memory_interface1_idat_old_30_), .B(
@@ -41258,45 +41252,11 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[7]) );
   MXIT2_X0P7M_A12TS oc8051_memory_interface1_u67 ( .A(
-        oc8051_memory_interface1_n40), .B(
-        oc8051_memory_interface1_idat_cur_21_), .S0(
-        oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n42)
-         );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u66 ( .A(
-        oc8051_memory_interface1_idat_old_13_), .B(
-        oc8051_memory_interface1_idat_cur_13_), .C(
-        oc8051_memory_interface1_idat_old_21_), .D(
-        oc8051_memory_interface1_idat_cur_21_), .S0(
-        oc8051_memory_interface1_op_pos_2_), .S1(
-        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n41)
-         );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u65 ( .A(
-        oc8051_memory_interface1_n41), .B(oc8051_memory_interface1_n42), .S0(
-        oc8051_memory_interface1_op_pos_1_), .Y(
-        oc8051_memory_interface1_op2[5]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u64 ( .A(
-        oc8051_memory_interface1_n34), .B(
-        oc8051_memory_interface1_idat_cur_19_), .S0(
-        oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n36)
-         );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u63 ( .A(
-        oc8051_memory_interface1_idat_old_11_), .B(
-        oc8051_memory_interface1_idat_cur_11_), .C(
-        oc8051_memory_interface1_idat_old_19_), .D(
-        oc8051_memory_interface1_idat_cur_19_), .S0(
-        oc8051_memory_interface1_op_pos_2_), .S1(
-        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n35)
-         );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u62 ( .A(
-        oc8051_memory_interface1_n35), .B(oc8051_memory_interface1_n36), .S0(
-        oc8051_memory_interface1_op_pos_1_), .Y(
-        oc8051_memory_interface1_op2[3]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u61 ( .A(
         oc8051_memory_interface1_n43), .B(
         oc8051_memory_interface1_idat_cur_22_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n45)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u60 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u66 ( .A(
         oc8051_memory_interface1_idat_old_14_), .B(
         oc8051_memory_interface1_idat_cur_14_), .C(
         oc8051_memory_interface1_idat_old_22_), .D(
@@ -41304,16 +41264,16 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n44)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u59 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u65 ( .A(
         oc8051_memory_interface1_n44), .B(oc8051_memory_interface1_n45), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[6]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u58 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u64 ( .A(
         oc8051_memory_interface1_n25), .B(
         oc8051_memory_interface1_idat_cur_16_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n27)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u57 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u63 ( .A(
         oc8051_memory_interface1_idat_old_8_), .B(
         oc8051_memory_interface1_idat_cur_8_), .C(
         oc8051_memory_interface1_idat_old_16_), .D(
@@ -41321,16 +41281,33 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n26)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u56 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u62 ( .A(
         oc8051_memory_interface1_n26), .B(oc8051_memory_interface1_n27), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[0]) );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u55 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u61 ( .A(
+        oc8051_memory_interface1_n40), .B(
+        oc8051_memory_interface1_idat_cur_21_), .S0(
+        oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n42)
+         );
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u60 ( .A(
+        oc8051_memory_interface1_idat_old_13_), .B(
+        oc8051_memory_interface1_idat_cur_13_), .C(
+        oc8051_memory_interface1_idat_old_21_), .D(
+        oc8051_memory_interface1_idat_cur_21_), .S0(
+        oc8051_memory_interface1_op_pos_2_), .S1(
+        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n41)
+         );
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u59 ( .A(
+        oc8051_memory_interface1_n41), .B(oc8051_memory_interface1_n42), .S0(
+        oc8051_memory_interface1_op_pos_1_), .Y(
+        oc8051_memory_interface1_op2[5]) );
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u58 ( .A(
         oc8051_memory_interface1_n37), .B(
         oc8051_memory_interface1_idat_cur_20_), .S0(
         oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n39)
          );
-  MXIT4_X1M_A12TS oc8051_memory_interface1_u54 ( .A(
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u57 ( .A(
         oc8051_memory_interface1_idat_old_12_), .B(
         oc8051_memory_interface1_idat_cur_12_), .C(
         oc8051_memory_interface1_idat_old_20_), .D(
@@ -41338,10 +41315,27 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .S1(
         oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n38)
          );
-  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u53 ( .A(
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u56 ( .A(
         oc8051_memory_interface1_n38), .B(oc8051_memory_interface1_n39), .S0(
         oc8051_memory_interface1_op_pos_1_), .Y(
         oc8051_memory_interface1_op2[4]) );
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u55 ( .A(
+        oc8051_memory_interface1_n34), .B(
+        oc8051_memory_interface1_idat_cur_19_), .S0(
+        oc8051_memory_interface1_op_pos_2_), .Y(oc8051_memory_interface1_n36)
+         );
+  MXIT4_X1M_A12TS oc8051_memory_interface1_u54 ( .A(
+        oc8051_memory_interface1_idat_old_11_), .B(
+        oc8051_memory_interface1_idat_cur_11_), .C(
+        oc8051_memory_interface1_idat_old_19_), .D(
+        oc8051_memory_interface1_idat_cur_19_), .S0(
+        oc8051_memory_interface1_op_pos_2_), .S1(
+        oc8051_memory_interface1_op_pos_0_), .Y(oc8051_memory_interface1_n35)
+         );
+  MXIT2_X0P7M_A12TS oc8051_memory_interface1_u53 ( .A(
+        oc8051_memory_interface1_n35), .B(oc8051_memory_interface1_n36), .S0(
+        oc8051_memory_interface1_op_pos_1_), .Y(
+        oc8051_memory_interface1_op2[3]) );
   MXIT2_X0P7M_A12TS oc8051_memory_interface1_u52 ( .A(
         oc8051_memory_interface1_n31), .B(
         oc8051_memory_interface1_idat_cur_18_), .S0(
@@ -41405,147 +41399,147 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_op_pos_2_), .Y(
         oc8051_memory_interface1_op3[1]) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u40 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_31_), .B0N(
-        oc8051_memory_interface1_n229), .Y(oc8051_memory_interface1_n459) );
+        oc8051_memory_interface1_n246), .Y(oc8051_memory_interface1_n459) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u39 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_30_), .B0N(
-        oc8051_memory_interface1_n228), .Y(oc8051_memory_interface1_n461) );
+        oc8051_memory_interface1_n245), .Y(oc8051_memory_interface1_n461) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u38 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_29_), .B0N(
-        oc8051_memory_interface1_n227), .Y(oc8051_memory_interface1_n463) );
+        oc8051_memory_interface1_n244), .Y(oc8051_memory_interface1_n463) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u37 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_28_), .B0N(
-        oc8051_memory_interface1_n226), .Y(oc8051_memory_interface1_n465) );
+        oc8051_memory_interface1_n243), .Y(oc8051_memory_interface1_n465) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u36 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_27_), .B0N(
-        oc8051_memory_interface1_n225), .Y(oc8051_memory_interface1_n467) );
+        oc8051_memory_interface1_n242), .Y(oc8051_memory_interface1_n467) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u35 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_26_), .B0N(
-        oc8051_memory_interface1_n224), .Y(oc8051_memory_interface1_n469) );
+        oc8051_memory_interface1_n241), .Y(oc8051_memory_interface1_n469) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u34 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_25_), .B0N(
-        oc8051_memory_interface1_n223), .Y(oc8051_memory_interface1_n471) );
+        oc8051_memory_interface1_n240), .Y(oc8051_memory_interface1_n471) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u33 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_24_), .B0N(
-        oc8051_memory_interface1_n222), .Y(oc8051_memory_interface1_n473) );
+        oc8051_memory_interface1_n239), .Y(oc8051_memory_interface1_n473) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u32 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_23_), .B0N(
-        oc8051_memory_interface1_n221), .Y(oc8051_memory_interface1_n475) );
+        oc8051_memory_interface1_n238), .Y(oc8051_memory_interface1_n475) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u31 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_22_), .B0N(
-        oc8051_memory_interface1_n220), .Y(oc8051_memory_interface1_n477) );
+        oc8051_memory_interface1_n237), .Y(oc8051_memory_interface1_n477) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u30 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_21_), .B0N(
-        oc8051_memory_interface1_n219), .Y(oc8051_memory_interface1_n479) );
+        oc8051_memory_interface1_n236), .Y(oc8051_memory_interface1_n479) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u29 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_20_), .B0N(
-        oc8051_memory_interface1_n218), .Y(oc8051_memory_interface1_n481) );
+        oc8051_memory_interface1_n235), .Y(oc8051_memory_interface1_n481) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u28 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_19_), .B0N(
-        oc8051_memory_interface1_n217), .Y(oc8051_memory_interface1_n483) );
+        oc8051_memory_interface1_n234), .Y(oc8051_memory_interface1_n483) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u27 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_18_), .B0N(
-        oc8051_memory_interface1_n216), .Y(oc8051_memory_interface1_n485) );
+        oc8051_memory_interface1_n233), .Y(oc8051_memory_interface1_n485) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u26 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_17_), .B0N(
-        oc8051_memory_interface1_n215), .Y(oc8051_memory_interface1_n487) );
+        oc8051_memory_interface1_n232), .Y(oc8051_memory_interface1_n487) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u25 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_16_), .B0N(
-        oc8051_memory_interface1_n214), .Y(oc8051_memory_interface1_n489) );
+        oc8051_memory_interface1_n231), .Y(oc8051_memory_interface1_n489) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u24 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_15_), .B0N(
-        oc8051_memory_interface1_n213), .Y(oc8051_memory_interface1_n491) );
+        oc8051_memory_interface1_n230), .Y(oc8051_memory_interface1_n491) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u23 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_14_), .B0N(
-        oc8051_memory_interface1_n212), .Y(oc8051_memory_interface1_n493) );
+        oc8051_memory_interface1_n229), .Y(oc8051_memory_interface1_n493) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u22 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_13_), .B0N(
-        oc8051_memory_interface1_n211), .Y(oc8051_memory_interface1_n495) );
+        oc8051_memory_interface1_n228), .Y(oc8051_memory_interface1_n495) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u21 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_12_), .B0N(
-        oc8051_memory_interface1_n210), .Y(oc8051_memory_interface1_n497) );
+        oc8051_memory_interface1_n227), .Y(oc8051_memory_interface1_n497) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u20 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_11_), .B0N(
-        oc8051_memory_interface1_n209), .Y(oc8051_memory_interface1_n499) );
+        oc8051_memory_interface1_n226), .Y(oc8051_memory_interface1_n499) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u19 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_10_), .B0N(
-        oc8051_memory_interface1_n208), .Y(oc8051_memory_interface1_n501) );
+        oc8051_memory_interface1_n225), .Y(oc8051_memory_interface1_n501) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u18 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_9_), .B0N(
-        oc8051_memory_interface1_n207), .Y(oc8051_memory_interface1_n503) );
+        oc8051_memory_interface1_n224), .Y(oc8051_memory_interface1_n503) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u17 ( .A0(
-        oc8051_memory_interface1_n148), .A1(
+        oc8051_memory_interface1_n166), .A1(
         oc8051_memory_interface1_idat_cur_8_), .B0N(
-        oc8051_memory_interface1_n206), .Y(oc8051_memory_interface1_n505) );
+        oc8051_memory_interface1_n223), .Y(oc8051_memory_interface1_n505) );
   AO21B_X0P5M_A12TS oc8051_memory_interface1_u16 ( .A0(
-        oc8051_memory_interface1_n171), .A1(oc8051_memory_interface1_imem_wait), .B0N(oc8051_memory_interface1_n172), .Y(oc8051_memory_interface1_n553) );
+        oc8051_memory_interface1_n188), .A1(oc8051_memory_interface1_imem_wait), .B0N(oc8051_memory_interface1_n189), .Y(oc8051_memory_interface1_n553) );
   NAND3_X1M_A12TS oc8051_memory_interface1_u15 ( .A(
-        oc8051_memory_interface1_n187), .B(oc8051_memory_interface1_n186), .C(
-        mem_act[2]), .Y(oc8051_memory_interface1_n172) );
+        oc8051_memory_interface1_n204), .B(oc8051_memory_interface1_n203), .C(
+        mem_act[2]), .Y(oc8051_memory_interface1_n189) );
   OAI211_X1M_A12TS oc8051_memory_interface1_u14 ( .A0(
-        oc8051_memory_interface1_n89), .A1(oc8051_memory_interface1_n90), .B0(
-        oc8051_memory_interface1_n91), .C0(oc8051_memory_interface1_n92), .Y(
-        wr_addr[3]) );
+        oc8051_memory_interface1_n107), .A1(oc8051_memory_interface1_n108), 
+        .B0(oc8051_memory_interface1_n109), .C0(oc8051_memory_interface1_n110), 
+        .Y(wr_addr[3]) );
   OAI211_X1M_A12TS oc8051_memory_interface1_u13 ( .A0(
-        oc8051_memory_interface1_n89), .A1(oc8051_memory_interface1_n96), .B0(
-        oc8051_memory_interface1_n97), .C0(oc8051_memory_interface1_n98), .Y(
-        wr_addr[2]) );
+        oc8051_memory_interface1_n107), .A1(oc8051_memory_interface1_n114), 
+        .B0(oc8051_memory_interface1_n115), .C0(oc8051_memory_interface1_n116), 
+        .Y(wr_addr[2]) );
   OAI211_X1M_A12TS oc8051_memory_interface1_u12 ( .A0(
-        oc8051_memory_interface1_n135), .A1(oc8051_memory_interface1_n118), 
-        .B0(oc8051_memory_interface1_n136), .C0(oc8051_memory_interface1_n137), 
+        oc8051_memory_interface1_n153), .A1(oc8051_memory_interface1_n136), 
+        .B0(oc8051_memory_interface1_n154), .C0(oc8051_memory_interface1_n155), 
         .Y(rd_addr[2]) );
   NOR2_X0P5M_A12TS oc8051_memory_interface1_u11 ( .A(
-        oc8051_memory_interface1_n148), .B(oc8051_memory_interface1_n230), .Y(
-        oc8051_memory_interface1_n147) );
+        oc8051_memory_interface1_n166), .B(oc8051_memory_interface1_n247), .Y(
+        oc8051_memory_interface1_n165) );
   OAI211_X2M_A12TS oc8051_memory_interface1_u10 ( .A0(
-        oc8051_memory_interface1_n423), .A1(oc8051_memory_interface1_n100), 
-        .B0(oc8051_memory_interface1_n106), .C0(oc8051_memory_interface1_n107), 
+        oc8051_memory_interface1_n423), .A1(oc8051_memory_interface1_n118), 
+        .B0(oc8051_memory_interface1_n124), .C0(oc8051_memory_interface1_n125), 
         .Y(wr_addr[0]) );
   AOI22_X1M_A12TS oc8051_memory_interface1_u9 ( .A0(sp[1]), .A1(
-        oc8051_memory_interface1_n115), .B0(oc8051_memory_interface1_n116), 
-        .B1(op2_n[1]), .Y(oc8051_memory_interface1_n140) );
+        oc8051_memory_interface1_n133), .B0(oc8051_memory_interface1_n134), 
+        .B1(op2_n[1]), .Y(oc8051_memory_interface1_n158) );
   NAND3_X2M_A12TS oc8051_memory_interface1_u8 ( .A(
-        oc8051_memory_interface1_n138), .B(oc8051_memory_interface1_n139), .C(
-        oc8051_memory_interface1_n140), .Y(rd_addr[1]) );
+        oc8051_memory_interface1_n156), .B(oc8051_memory_interface1_n157), .C(
+        oc8051_memory_interface1_n158), .Y(rd_addr[1]) );
   OAI211_X2M_A12TS oc8051_memory_interface1_u7 ( .A0(
-        oc8051_memory_interface1_n422), .A1(oc8051_memory_interface1_n100), 
-        .B0(oc8051_memory_interface1_n101), .C0(oc8051_memory_interface1_n102), 
+        oc8051_memory_interface1_n422), .A1(oc8051_memory_interface1_n118), 
+        .B0(oc8051_memory_interface1_n119), .C0(oc8051_memory_interface1_n120), 
         .Y(wr_addr[1]) );
   NAND2_X1M_A12TS oc8051_memory_interface1_u6 ( .A(sp[0]), .B(
-        oc8051_memory_interface1_n115), .Y(oc8051_memory_interface1_n142) );
+        oc8051_memory_interface1_n133), .Y(oc8051_memory_interface1_n160) );
   OAI211_X2M_A12TS oc8051_memory_interface1_u5 ( .A0(
-        oc8051_memory_interface1_n141), .A1(oc8051_memory_interface1_n118), 
-        .B0(oc8051_memory_interface1_n142), .C0(oc8051_memory_interface1_n143), 
+        oc8051_memory_interface1_n159), .A1(oc8051_memory_interface1_n136), 
+        .B0(oc8051_memory_interface1_n160), .C0(oc8051_memory_interface1_n161), 
         .Y(rd_addr[0]) );
   NAND2B_X2M_A12TS oc8051_memory_interface1_u4 ( .AN(
-        oc8051_memory_interface1_n171), .B(oc8051_memory_interface1_n197), .Y(
-        oc8051_memory_interface1_n148) );
+        oc8051_memory_interface1_n188), .B(oc8051_memory_interface1_n214), .Y(
+        oc8051_memory_interface1_n166) );
   NOR2_X1A_A12TS oc8051_memory_interface1_u3 ( .A(
-        oc8051_memory_interface1_n167), .B(oc8051_memory_interface1_n148), .Y(
-        oc8051_memory_interface1_n146) );
+        oc8051_memory_interface1_n184), .B(oc8051_memory_interface1_n166), .Y(
+        oc8051_memory_interface1_n164) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_wr_r_reg ( .D(
         oc8051_memory_interface1_n5470), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_wr_r) );
@@ -41615,7 +41609,7 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQN_X1M_A12TS oc8051_memory_interface1_rn_r_reg_1_ ( .D(op1_cur[1]), 
         .CK(wb_clk_i), .R(wb_rst_i), .QN(oc8051_memory_interface1_n422) );
   DFFRPQN_X1M_A12TS oc8051_memory_interface1_dwe_o_reg ( .D(
-        oc8051_memory_interface1_n792), .CK(wb_clk_i), .R(wb_rst_i), .QN(
+        oc8051_memory_interface1_n789), .CK(wb_clk_i), .R(wb_rst_i), .QN(
         oc8051_memory_interface1_n401) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_8_ ( .D(
         oc8051_memory_interface1_n505), .CK(wb_clk_i), .R(wb_rst_i), .Q(
@@ -41644,28 +41638,28 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dack_ir_reg ( .D(wbd_ack_i), .CK(
         wb_clk_i), .R(wb_rst_i), .Q(oc8051_memory_interface1_dack_ir) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_0_ ( .D(
-        oc8051_memory_interface1_n776), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n773), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_1_ ( .D(
-        oc8051_memory_interface1_n777), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n774), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_1_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_2_ ( .D(
-        oc8051_memory_interface1_n778), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n775), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_3_ ( .D(
-        oc8051_memory_interface1_n779), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n776), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_3_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_4_ ( .D(
-        oc8051_memory_interface1_n780), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n777), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_5_ ( .D(
-        oc8051_memory_interface1_n781), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n778), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_5_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_6_ ( .D(
-        oc8051_memory_interface1_n782), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n779), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_6_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_7_ ( .D(
-        oc8051_memory_interface1_n783), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n780), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_24_ ( .D(
         oc8051_memory_interface1_n473), .CK(wb_clk_i), .R(wb_rst_i), .Q(
@@ -41691,9 +41685,6 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_cur_reg_31_ ( .D(
         oc8051_memory_interface1_n459), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_cur_31_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_istb_t_reg ( .D(
-        oc8051_memory_interface1_n552), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_istb_t) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_24_ ( .D(
         oc8051_memory_interface1_n472), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_24_) );
@@ -41718,15 +41709,15 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_31_ ( .D(
         oc8051_memory_interface1_n458), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_31_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_11_ ( .D(
-        oc8051_memory_interface1_n428), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_pc_buf_11_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_4_ ( .D(
-        oc8051_memory_interface1_n435), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_pc_buf_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_3_ ( .D(
         oc8051_memory_interface1_n436), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_3_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_11_ ( .D(
+        oc8051_memory_interface1_n428), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_pc_buf_11_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_7_ ( .D(
+        oc8051_memory_interface1_n432), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_pc_buf_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_8_ ( .D(
         oc8051_memory_interface1_n504), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_8_) );
@@ -41775,9 +41766,6 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_23_ ( .D(
         oc8051_memory_interface1_n474), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_23_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_7_ ( .D(
-        oc8051_memory_interface1_n432), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_pc_buf_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_0_ ( .D(
         oc8051_memory_interface1_n520), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_0_) );
@@ -41802,36 +41790,39 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_idat_old_reg_7_ ( .D(
         oc8051_memory_interface1_n506), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_idat_old_7_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_12_ ( .D(
+        oc8051_memory_interface1_n427), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_pc_buf_12_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_istb_t_reg ( .D(
+        oc8051_memory_interface1_n552), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_istb_t) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_1_ ( .D(
         oc8051_memory_interface1_n438), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_out_1_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_7_ ( .D(
-        oc8051_memory_interface1_n448), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[7])
-         );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_6_ ( .D(
         oc8051_memory_interface1_n433), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_6_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_5_ ( .D(
-        oc8051_memory_interface1_n434), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_pc_buf_5_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_7_ ( .D(
+        oc8051_memory_interface1_n448), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[7])
+         );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_2_ ( .D(
+        oc8051_memory_interface1_n437), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_pc_buf_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_1_ ( .D(
         oc8051_memory_interface1_n454), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[1])
          );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_10_ ( .D(
         oc8051_memory_interface1_n429), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_10_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_12_ ( .D(
-        oc8051_memory_interface1_n427), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_pc_buf_12_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_8_ ( .D(
         oc8051_memory_interface1_n431), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_8_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_2_ ( .D(
-        oc8051_memory_interface1_n437), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_pc_buf_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_14_ ( .D(
         oc8051_memory_interface1_n425), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_14_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_4_ ( .D(
+        oc8051_memory_interface1_n435), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_pc_buf_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_5_ ( .D(
         oc8051_memory_interface1_n450), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[5])
          );
@@ -41844,12 +41835,15 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_int_ack_t_reg ( .D(
         oc8051_memory_interface1_n524), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_int_ack_t) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_wr_r2_reg ( .D(
-        oc8051_memory_interface1_pc_wr_r), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_pc_wr_r2) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_0_ ( .D(
         oc8051_memory_interface1_n439), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_out_0_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_wr_r2_reg ( .D(
+        oc8051_memory_interface1_pc_wr_r), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_pc_wr_r2) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_5_ ( .D(
+        oc8051_memory_interface1_n434), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_pc_buf_5_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_buf_reg_13_ ( .D(
         oc8051_memory_interface1_n426), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_pc_buf_13_) );
@@ -41868,29 +41862,26 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_pc_reg_0_ ( .D(
         oc8051_memory_interface1_n455), .CK(wb_clk_i), .R(wb_rst_i), .Q(pc[0])
          );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_11_ ( .D(
-        oc8051_memory_interface1_n413), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_iadr_t_11_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_13_ ( .D(
-        oc8051_memory_interface1_n415), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_iadr_t_13_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_7_ ( .D(
+        oc8051_memory_interface1_n409), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_iadr_t_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_0_ ( .D(
-        oc8051_memory_interface1_n784), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n781), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_2_ ( .D(
-        oc8051_memory_interface1_n786), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n783), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_2_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_3_ ( .D(
-        oc8051_memory_interface1_n787), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n784), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_3_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_5_ ( .D(
-        oc8051_memory_interface1_n789), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n786), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_5_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_6_ ( .D(
-        oc8051_memory_interface1_n790), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n787), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_6_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_7_ ( .D(
-        oc8051_memory_interface1_n791), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n788), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_ir_reg_0_ ( .D(
         oc8051_memory_interface1_n377), .CK(wb_clk_i), .R(wb_rst_i), .Q(
@@ -41910,6 +41901,9 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_ddat_ir_reg_7_ ( .D(
         oc8051_memory_interface1_n384), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_ddat_ir_7_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_0_ ( .D(
+        oc8051_memory_interface1_n402), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_iadr_t_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_2_ ( .D(
         oc8051_memory_interface1_n404), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_2_) );
@@ -41925,9 +41919,6 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_6_ ( .D(
         oc8051_memory_interface1_n408), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_6_) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_7_ ( .D(
-        oc8051_memory_interface1_n409), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_iadr_t_7_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_8_ ( .D(
         oc8051_memory_interface1_n410), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_8_) );
@@ -41937,9 +41928,15 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_10_ ( .D(
         oc8051_memory_interface1_n412), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_10_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_11_ ( .D(
+        oc8051_memory_interface1_n413), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_iadr_t_11_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_12_ ( .D(
         oc8051_memory_interface1_n414), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_12_) );
+  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_13_ ( .D(
+        oc8051_memory_interface1_n415), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_iadr_t_13_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_14_ ( .D(
         oc8051_memory_interface1_n416), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_14_) );
@@ -41983,10 +41980,10 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
         oc8051_memory_interface1_n551), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         wbd_cyc_o) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_1_ ( .D(
-        oc8051_memory_interface1_n785), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n782), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_1_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_cdata_reg_4_ ( .D(
-        oc8051_memory_interface1_n788), .CK(wb_clk_i), .R(wb_rst_i), .Q(
+        oc8051_memory_interface1_n785), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_cdata_4_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_going_out_of_rst_reg ( .D(
         oc8051_memory_interface1_n352), .CK(wb_clk_i), .R(wb_rst_i), .Q(
@@ -42084,9 +42081,6 @@ module oc8051_top ( wb_rst_i, wb_clk_i, wbi_adr_o, wbi_dat_i, wbi_stb_o,
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_dmem_wait_reg ( .D(
         oc8051_memory_interface1_n550), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_dmem_wait) );
-  DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_0_ ( .D(
-        oc8051_memory_interface1_n402), .CK(wb_clk_i), .R(wb_rst_i), .Q(
-        oc8051_memory_interface1_iadr_t_0_) );
   DFFRPQ_X1M_A12TS oc8051_memory_interface1_iadr_t_reg_1_ ( .D(
         oc8051_memory_interface1_n403), .CK(wb_clk_i), .R(wb_rst_i), .Q(
         oc8051_memory_interface1_iadr_t_1_) );

@@ -86,6 +86,7 @@ read_file -f verilog "${rtl_path}/oc8051_cache_ram.v"
 read_file -f verilog "${rtl_path}/oc8051_rom.v"
 read_file -f verilog "${rtl_path}/oc8051_ram_256x8_two_bist.v"
 read_file -f verilog "${rtl_path}/oc8051_ram_64x32_dual_bist.v"
+read_file -f verilog "${rtl_path}/oc8051_cxrom.v"
 
 set MODULE_NAME "oc8051_top"
 #-------------------------------------------------------------
