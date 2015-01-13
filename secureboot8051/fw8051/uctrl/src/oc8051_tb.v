@@ -124,6 +124,16 @@ integer num;
 assign wbd_err_i = 1'b0;
 assign wbi_err_i = 1'b0;
 
+// external code rom.
+wire [15:0] cxrom_addr;
+wire [31:0] cxrom_data_out;
+oc8051_cxrom oc8051_cxrom1(
+        .clk                ( clk            ),
+        .rst                ( rst            ),
+        .cxrom_addr         ( cxrom_addr     ),
+        .cxrom_data_out     ( cxrom_data_out )
+);
+
 //
 // oc8051 controller
 //
@@ -134,9 +144,11 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
          .wbd_adr_o(ext_addr), .wbd_err_i(wbd_err_i),
          .wbd_ack_i(ack_i), .wbd_stb_o(stb_o), .wbd_cyc_o(cyc_o),
 
-         .wbi_adr_o(iadr_o), .wbi_stb_o(istb_o), .wbi_ack_i(iack_i),
+	 .wbi_adr_o(iadr_o), .wbi_stb_o(istb_o), .wbi_ack_i(iack_i),
          .wbi_cyc_o(icyc_o), .wbi_dat_i(idat_i), .wbi_err_i(wbi_err_i),
 
+         .cxrom_addr            ( cxrom_addr     ),
+         .cxrom_data_out        ( cxrom_data_out ),
 
   `ifdef OC8051_PORTS
 

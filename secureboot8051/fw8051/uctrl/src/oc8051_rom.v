@@ -62,14 +62,12 @@
 //
 `include "oc8051_defines.v"
 
-module oc8051_rom (rst, clk, addr, ea_int, data_o);
+module oc8051_rom (rst, clk, ea_int, data_o, cxrom_data_out);
 
     input rst, clk;
-    input [15:0] addr;
+    input [31:0] cxrom_data_out;
     output ea_int;
     output [31:0] data_o;
-
-    wire [31:0] cxrom_data_out;
     
 
     reg [31:0] data_o;
@@ -79,13 +77,6 @@ module oc8051_rom (rst, clk, addr, ea_int, data_o);
 
 
     assign ea = 1'b0;
-    oc8051_cxrom oc8051_cxrom1(
-            .clk                ( clk            ),
-            .rst                ( rst            ),
-            .cxrom_addr         ( addr           ),
-            .cxrom_data_out     ( cxrom_data_out )
-    );
-
 
     always @(posedge clk or posedge rst)
       if (rst) ea_int <= #1 1'b1;
