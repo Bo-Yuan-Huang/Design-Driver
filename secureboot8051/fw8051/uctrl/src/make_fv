@@ -1,6 +1,5 @@
 iverilog -o oc8051_fv -Wall     \
 oc8051_fv_top.v                 \
-oc8051_xram.v                   \
 oc8051_top.v                    \
 oc8051_alu_src_sel.v            \
 oc8051_alu.v                    \
