@@ -123,6 +123,12 @@ input         t2_i,             // counter 2 input
     wire [31:0] cxrom_data_out = 32'b0;
     wire [15:0] wbi_adr_o;
 
+    wire pc_log_change;
+    wire [15:0] pc_log, pc_log_next;
+
+    // pc_log_change => (pc_log_next = pc_log + 1).
+    wire assert_valid = !pc_log_change || (pc_log_next == (pc_log+16'b1));
+
 
     oc8051_top oc8051_top_1(
          .wb_rst_i(rst), .wb_clk_i(clk),
@@ -137,6 +143,10 @@ input         t2_i,             // counter 2 input
 
          .cxrom_addr            ( cxrom_addr     ),
          .cxrom_data_out        ( cxrom_data_out ),
+
+         .pc_log_change (pc_log_change),
+         .pc_log        (pc_log),
+         .pc_log_next   (pc_log_next),
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
