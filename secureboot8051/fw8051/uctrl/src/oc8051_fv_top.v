@@ -123,11 +123,24 @@ input         t2_i,             // counter 2 input
     wire [31:0] cxrom_data_out = 32'b0;
     wire [15:0] wbi_adr_o;
 
+    reg  first_instr;
     wire pc_log_change;
-    wire [15:0] pc_log, pc_log_next;
+    wire [15:0] pc_log, pc_log_prev;
 
-    // pc_log_change => (pc_log_next = pc_log + 1).
-    wire assert_valid = pc_log_change && (pc_log_next != (pc_log+16'b1));
+    // pc_log_change => (pc_log_prev = pc_log + 1).
+    wire assert_valid = (!first_instr && pc_log_change) && ((pc_log_prev+16'b1) != pc_log);
+
+    always @(posedge clk)
+    begin
+        if (rst) begin
+            first_instr <= 1;
+        end
+        else begin
+            if(pc_log_change && first_instr) begin
+                first_instr <= 0;
+            end
+        end
+    end
 
 
     oc8051_top oc8051_top_1(
@@ -146,7 +159,7 @@ input         t2_i,             // counter 2 input
 
          .pc_log_change (pc_log_change),
          .pc_log        (pc_log),
-         .pc_log_next   (pc_log_next),
+         .pc_log_prev   (pc_log_prev),
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0

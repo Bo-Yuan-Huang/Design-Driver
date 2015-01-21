@@ -189,7 +189,7 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 ea_in,
                 pc_log_change,
                 pc_log,
-                pc_log_next
+                pc_log_prev
                 );
 
 
@@ -206,7 +206,7 @@ input         wb_rst_i,         // reset input
 
 output        pc_log_change;
 output [15:0] pc_log;
-output [15:0] pc_log_next;
+output [15:0] pc_log_prev;
 
 input [7:0]   wbd_dat_i;        // ram data input
 input [31:0]  wbi_dat_i;        // rom data input
@@ -356,7 +356,7 @@ wire        new_pc_log;
 wire        pc_log_change;
 wire        decoder_new_valid_pc;
 wire [15:0] pc_log;
-wire [15:0] pc_log_next;
+wire [15:0] pc_log_prev;
 
 wire [1:0]  comp_sel;   //select source1 and source2 to compare
 wire        eq,         //result (from comp1 to decoder)
@@ -571,7 +571,7 @@ oc8051_memory_interface oc8051_memory_interface1(.clk(wb_clk_i),
                        .out_of_rst(irom_out_of_rst),
                        .decoder_new_valid_pc(decoder_new_valid_pc),
                        .pc_log(pc_log),
-                       .pc_log_next(pc_log_next),
+                       .pc_log_prev(pc_log_prev),
 
 // internal instruction rom
                        .idat_onchip(idat_onchip),

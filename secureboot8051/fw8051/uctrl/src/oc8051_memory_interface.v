@@ -130,7 +130,7 @@ module oc8051_memory_interface (clk, rst,
      out_of_rst,
      decoder_new_valid_pc,
      pc_log,
-     pc_log_next,
+     pc_log_prev,
 
 //internal
      idat_onchip,
@@ -192,7 +192,7 @@ output [7:0]  iram_out,
 output        out_of_rst;
 input         decoder_new_valid_pc;
 output [15:0] pc_log;
-output [15:0] pc_log_next;
+output [15:0] pc_log_prev;
 
 reg           bit_out,
               reti;
@@ -563,8 +563,8 @@ begin
     out_of_rst_cycles   = 0;
   end
   else begin
-    out_of_rst_cycles = out_of_rst_cycles < 4'd13 ? out_of_rst_cycles + 1 : out_of_rst_cycles;
-    out_of_rst       <= out_of_rst_cycles == 4'd13;
+    out_of_rst_cycles = out_of_rst_cycles < 4'd12 ? out_of_rst_cycles + 1 : out_of_rst_cycles;
+    out_of_rst       <= out_of_rst_cycles == 4'd12;
   end 
 end
 
@@ -1175,15 +1175,18 @@ always @(posedge clk or posedge rst)
   end
 
 reg [15:0] pc_log;
-wire [15:0] pc_log_next = pc;
+reg [15:0] pc_log_prev;
 always @(posedge clk)
 begin
-    if (rst)
-        pc_log <= 0;
+    if (rst) begin
+        pc_log      <= 0;
+        pc_log_prev <= 0;
+    end
     else begin
         if (decoder_new_valid_pc) begin
-            pc_log <= pc;
+            pc_log  <= pc;
         end
+        pc_log_prev <= pc_log;
     end
 end
 
