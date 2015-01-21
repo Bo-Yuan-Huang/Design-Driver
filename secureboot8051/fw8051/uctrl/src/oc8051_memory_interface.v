@@ -542,23 +542,32 @@ end
 
 
 
+always @(posedge clk or posedge rst)
+begin
+  if (rst) begin
+    idat_cur            <= #1 32'h0;
+    idat_old            <= #1 32'h0;
+  end else if ((iack_i | ea_rom_sel) & (inc_pc | pc_wr_r2)) begin
+    idat_cur            <= #1 ea_rom_sel ? idat_onchip : idat_i;
+    idat_old            <= #1 idat_cur;
+  end
+end
+
 reg going_out_of_rst;
 reg out_of_rst;
 
 always @(posedge clk or posedge rst)
 begin
   if (rst) begin
-    idat_cur            <= #1 32'h0;
-    idat_old            <= #1 32'h0;
-    going_out_of_rst    <= #1 0;
     out_of_rst          <= #1 0;
-  end else if ((iack_i | ea_rom_sel) & (inc_pc | pc_wr_r2)) begin
-    idat_cur            <= #1 ea_rom_sel ? idat_onchip : idat_i;
-    idat_old            <= #1 idat_cur;
-    going_out_of_rst    <= #1 1;
-    out_of_rst          <= #1 going_out_of_rst;
+    going_out_of_rst    <= #1 0;
   end
-
+  else begin
+    out_of_rst              <= #1 going_out_of_rst;
+    if (pc_wr_r2) begin
+        going_out_of_rst    <= #1 1;
+    end
+  end 
 end
 
 always @(posedge clk or posedge rst)
