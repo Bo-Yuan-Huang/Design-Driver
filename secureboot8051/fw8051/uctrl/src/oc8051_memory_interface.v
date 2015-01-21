@@ -553,20 +553,18 @@ begin
   end
 end
 
-reg going_out_of_rst;
+reg [3:0] out_of_rst_cycles;
 reg out_of_rst;
 
 always @(posedge clk or posedge rst)
 begin
   if (rst) begin
     out_of_rst          <= #1 0;
-    going_out_of_rst    <= #1 0;
+    out_of_rst_cycles   <= 0;
   end
   else begin
-    out_of_rst              <= #1 going_out_of_rst;
-    if (inc_pc | pc_wr_r2) begin
-        going_out_of_rst    <= #1 1;
-    end
+    out_of_rst_cycles = out_of_rst_cycles < 4'd13 ? out_of_rst_cycles + 1 : out_of_rst_cycles;
+    out_of_rst       <= out_of_rst_cycles == 4'd13;
   end 
 end
 
