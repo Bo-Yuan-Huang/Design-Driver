@@ -564,7 +564,7 @@ begin
   end
   else begin
     out_of_rst              <= #1 going_out_of_rst;
-    if (pc_wr_r2) begin
+    if (inc_pc | pc_wr_r2) begin
         going_out_of_rst    <= #1 1;
     end
   end 
