@@ -553,20 +553,21 @@ begin
   end
 end
 
-reg [3:0] out_of_rst_cycles;
-reg out_of_rst;
-
-always @(posedge clk or posedge rst)
-begin
-  if (rst) begin
-    out_of_rst         <= 0;
-    out_of_rst_cycles   = 0;
-  end
-  else begin
-    out_of_rst_cycles = out_of_rst_cycles < 4'd12 ? out_of_rst_cycles + 1 : out_of_rst_cycles;
-    out_of_rst       <= out_of_rst_cycles == 4'd12;
-  end 
-end
+wire out_of_rst = !rst;
+//reg [3:0] out_of_rst_cycles;
+//reg out_of_rst;
+//
+//always @(posedge clk or posedge rst)
+//begin
+//  if (rst) begin
+//    out_of_rst         <= 0;
+//    out_of_rst_cycles   = 0;
+//  end
+//  else begin
+//    out_of_rst_cycles = out_of_rst_cycles < 4'd12 ? out_of_rst_cycles + 1 : out_of_rst_cycles;
+//    out_of_rst       <= out_of_rst_cycles == 4'd12;
+//  end 
+//end
 
 always @(posedge clk or posedge rst)
 begin
