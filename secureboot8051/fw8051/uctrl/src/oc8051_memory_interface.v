@@ -559,8 +559,8 @@ reg out_of_rst;
 always @(posedge clk or posedge rst)
 begin
   if (rst) begin
-    out_of_rst          <= #1 0;
-    out_of_rst_cycles   <= 0;
+    out_of_rst          = 0;
+    out_of_rst_cycles   = 0;
   end
   else begin
     out_of_rst_cycles = out_of_rst_cycles < 4'd13 ? out_of_rst_cycles + 1 : out_of_rst_cycles;
