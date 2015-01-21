@@ -127,7 +127,7 @@ input         t2_i,             // counter 2 input
     wire [15:0] pc_log, pc_log_next;
 
     // pc_log_change => (pc_log_next = pc_log + 1).
-    wire assert_valid = !pc_log_change || (pc_log_next == (pc_log+16'b1));
+    wire assert_valid = pc_log_change && (pc_log_next != (pc_log+16'b1));
 
 
     oc8051_top oc8051_top_1(
