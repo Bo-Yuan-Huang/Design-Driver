@@ -63,7 +63,7 @@ module DFFQ (D, CK, Q);
   dff (Q, D);
 endmodule
 
-module DFFQ (D, CK, Q);
+module DFFQN (D, CK, Q);
   input D, CK;
   output QN;
   wire Q;
