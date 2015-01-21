@@ -998,8 +998,9 @@ write -f verilog -hier -output "${netList_path}/${design}_flat.v"
 #set_false_path -from [get_clocks {Clk75}] -to [get_clocks {Clk600}]
 #!!! how do I set constraints between clock domains !!!
 
-#update_timing
+update_timing
 #write_sdc "${sdc_path}/${design}.sdc"
+report_timing -loop
 
 exit
 
