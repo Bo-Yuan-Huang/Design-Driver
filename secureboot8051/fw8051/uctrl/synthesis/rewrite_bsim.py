@@ -40,8 +40,8 @@ def rewrite_module(mod):
     for d in defs:
         print '  %s %s;' % d
     print 
-    print '  TIELO_X1M_A12TS uconst0 (.Y(const_zero);;'
-    print '  TIEHI_X1M_A12TS uconst1 (.Y(const_one);;'
+    print '  TIELO_X1M_A12TS uconst0 (.Y(const_zero);'
+    print '  TIEHI_X1M_A12TS uconst1 (.Y(const_one);'
     print
     for i in instances:
         print '  %s;' % i
