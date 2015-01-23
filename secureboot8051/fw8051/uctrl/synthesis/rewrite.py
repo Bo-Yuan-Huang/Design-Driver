@@ -98,6 +98,14 @@ def print_block(name, instance, ports, instances, defs):
     assert underscore_pos != -1
     gate_name = name[:underscore_pos]
 
+    def fix_constant (n): 
+        if n == '0':
+            return 'const_zero'
+        elif n == '1':
+            return 'const_one'
+        else:
+            return n
+
     if gate_name in gate_name_map:
         assert len(ports) == 2 or len(ports) == 3
 
@@ -108,20 +116,21 @@ def print_block(name, instance, ports, instances, defs):
             assert 'B' in ports
             port_str += [ports['B']]
         
+        port_str = [fix_constant(pi) for pi in port_str]
         instances.append('%s(%s)' % (gate_name_map[gate_name], ', '.join(port_str)))
     elif gate_name == 'DFFQ':
         assert len(ports) == 3
         assert 'Q' in ports
         assert 'D' in ports
         assert 'CK' in ports
-        instances.append('dff(%s, %s)' % (ports['Q'], ports['D']))
+        instances.append('dff(%s, %s)' % (ports['Q'], fix_constant(ports['D'])))
     elif gate_name == 'DFFQN':
         assert len(ports) == 3
         assert 'QN' in ports
         assert 'D' in ports
         assert 'CK' in ports
         Qwire = '%s_%s_Q' % (ports['QN'], instance)
-        instances.append('dff(%s, %s)' % (Qwire, ports['D']))
+        instances.append('dff(%s, %s)' % (Qwire, fix_constant(ports['D'])))
         instances.append('not(%s, %s)' % (ports['QN'], Qwire))
         defs.append(('wire', Qwire))
     elif gate_name == 'DFFSRPQ':
@@ -132,14 +141,6 @@ def print_block(name, instance, ports, instances, defs):
 
         name = lambda n1, n2: '%s_%s_%s' % (ports[n1], instance, n2)
         constant = lambda n: n == '0' or n == '1'
-        def fix_constant (n): 
-            if n == '0':
-                return 'const_zero'
-            elif n == '1':
-                return 'const_one'
-            else:
-                return n
-
         def invert(n): 
             assert n == '0' or n == '1'
             if n == '0': return '1'
