@@ -24,7 +24,6 @@ module oc8051_fv_top ( clk, rst, wbd_dat_i, wbi_dat_i, wbd_err_i, wbd_ack_i,
   wire   [7:0] oc8051_top_1_sp_w;
   wire   [5:0] oc8051_top_1_int_src;
   wire   [31:0] oc8051_top_1_idat_i;
-  DFFQN_X1M_A12TS first_instr_reg ( .D(n51), .CK(clk), .QN(n17) );
   OR2_X0P5M_A12TS u9 ( .A(n71), .B(rst), .Y(n51) );
   NOR2_X0P5A_A12TS u10 ( .A(pc_log_change), .B(n17), .Y(n71) );
   NOR2_X0P5A_A12TS u11 ( .A(n81), .B(n91), .Y(assert_valid) );
@@ -70,5 +69,28 @@ module oc8051_fv_top ( clk, rst, wbd_dat_i, wbi_dat_i, wbd_err_i, wbd_ack_i,
   INV_X1B_A12TS add_131_u3 ( .A(pc_log_prev[0]), .Y(n0) );
   INV_X1B_A12TS add_131_u2 ( .A(add_131_n39), .Y(add_131_n1) );
   INV_X1B_A12TS add_131_u1 ( .A(add_131_n42), .Y(add_131_n2) );
+  DFFQ_X1M_A12TS oc8051_top_1_oc8051_ram_top1_oc8051_idata_buff_reg_63__0_ ( 
+        .D(oc8051_top_1_oc8051_ram_top1_oc8051_idata_n10506), .CK(clk), .Q(
+        oc8051_top_1_oc8051_ram_top1_oc8051_idata_buff_63__0_) );
+  DFFQ_X1M_A12TS oc8051_top_1_oc8051_ram_top1_oc8051_idata_buff_reg_63__1_ ( 
+        .D(oc8051_top_1_oc8051_ram_top1_oc8051_idata_n10507), .CK(clk), .Q(
+        oc8051_top_1_oc8051_ram_top1_oc8051_idata_buff_63__1_) );
+  DFFQ_X1M_A12TS oc8051_top_1_oc8051_ram_top1_oc8051_idata_buff_reg_63__2_ ( 
+        .D(oc8051_top_1_oc8051_ram_top1_oc8051_idata_n10508), .CK(clk), .Q(
+        oc8051_top_1_oc8051_ram_top1_oc8051_idata_buff_63__2_) );
+  DFFQ_X1M_A12TS oc8051_top_1_oc8051_ram_top1_oc8051_idata_buff_reg_63__3_ ( 
+        .D(oc8051_top_1_oc8051_ram_top1_oc8051_idata_n10509), .CK(clk), .Q(
+        oc8051_top_1_oc8051_ram_top1_oc8051_idata_buff_63__3_) );
+  DFFQ_X1M_A12TS oc8051_top_1_oc8051_ram_top1_oc8051_idata_buff_reg_63__4_ ( 
+        .D(oc8051_top_1_oc8051_ram_top1_oc8051_idata_n10510), .CK(clk), .Q(
+        oc8051_top_1_oc8051_ram_top1_oc8051_idata_buff_63__4_) );
+  DFFQN_X1M_A12TS first_instr_reg ( .D(n51), .CK(clk), .QN(n17) );
+  DFFSRPQ_X1M_A12TS oc8051_top_1_oc8051_decoder1_src_sel3_reg ( .D(
+        oc8051_top_1_oc8051_decoder1_n935), .CK(clk), .R(rst), .SN(1'b1), .Q(
+        oc8051_top_1_src_sel3) );
+  DFFSRPQ_X1M_A12TS oc8051_top_1_oc8051_decoder1_src_sel1_reg_2_ ( .D(
+        oc8051_top_1_oc8051_decoder1_n959), .CK(clk), .R(rst), .SN(1'b1), .Q(
+        oc8051_top_1_src_sel1[2]) );
+
 endmodule
 
