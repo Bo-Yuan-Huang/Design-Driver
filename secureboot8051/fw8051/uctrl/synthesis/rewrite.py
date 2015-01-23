@@ -35,9 +35,14 @@ def rewrite_module(mod):
         else:
             assert False, s
 
+    defs.append(('wire', 'const_zero'))
+    defs.append(('wire', 'const_one'))
     for d in defs:
         print '  %s %s;' % d
     print 
+    print '  assign const_zero = 0;'
+    print '  assign const_one = 1;'
+    print
     for i in instances:
         print '  %s;' % i
 
@@ -126,20 +131,28 @@ def print_block(name, instance, ports, instances, defs):
         assert len(pns) == len(ports)
 
         name = lambda n1, n2: '%s_%s_%s' % (ports[n1], instance, n2)
-        zero_or_one = lambda n: n == '0' or n == '1'
+        constant = lambda n: n == '0' or n == '1'
+        def fix_constant (n): 
+            if n == '0':
+                return 'const_zero'
+            elif n == '1':
+                return 'const_one'
+            else:
+                return n
+
         def invert(n): 
             assert n == '0' or n == '1'
             if n == '0': return '1'
             else: return '0'
 
         SNwire = ports['SN']
-        Swire = invert(SNwire) if zero_or_one(SNwire) else name('SN', 'S') 
+        Swire = invert(SNwire) if constant(SNwire) else name('SN', 'S') 
 
         Rwire = ports['R']
-        RNwire = invert(Rwire) if zero_or_one(Rwire) else name('R', 'RN')
+        RNwire = invert(Rwire) if constant(Rwire) else name('R', 'RN')
 
         Dwire = ports['D']
-        if zero_or_one(Dwire):
+        if constant(Dwire):
             DRwire = '%s_%s' % (instance, 'DR')
             DSRwire = '%s_%s' % (instance, 'DSR')
         else:
@@ -148,14 +161,22 @@ def print_block(name, instance, ports, instances, defs):
 
         Qwire = ports['Q']
 
-        if not zero_or_one(Swire): defs.append(('wire', Swire))
-        if not zero_or_one(RNwire): defs.append(('wire', RNwire))
+        if not constant(Swire): defs.append(('wire', Swire))
+        if not constant(RNwire): defs.append(('wire', RNwire))
         defs.append(('wire', DRwire))
         defs.append(('wire', DSRwire))
 
         add_gate = lambda t, args: instances.append('%s(%s)' % (t, ', '.join(args)))
-        if not zero_or_one(SNwire): add_gate('not', [Swire, SNwire])
-        if not zero_or_one(RNwire): add_gate('not', [RNwire, Rwire])
+        if not constant(SNwire): add_gate('not', [Swire, SNwire])
+        if not constant(RNwire): add_gate('not', [RNwire, Rwire])
+
+        # return 0,1 -> const_zero, const_one
+        Swire = fix_constant(Swire)
+        SNwire = fix_constant(SNwire)
+        Rwire = fix_constant(Rwire)
+        RNwire = fix_constant(RNwire)
+        Dwire = fix_constant(Dwire)
+
         add_gate('and', [DRwire, Dwire, RNwire])
         add_gate('or', [DSRwire, DRwire, Swire])
         add_gate('dff', [Qwire, DSRwire])
