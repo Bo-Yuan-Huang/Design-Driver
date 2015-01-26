@@ -1,0 +1,9 @@
+read_verilog ../src/oc8051_top.v ../src/oc8051_alu_src_sel.v ../src/oc8051_alu.v ../src/oc8051_decoder.v ../src/oc8051_divide.v ../src/oc8051_multiply.v ../src/oc8051_memory_interface.v ../src/oc8051_ram_top.v ../src/oc8051_acc.v ../src/oc8051_comp.v ../src/oc8051_sp.v ../src/oc8051_dptr.v ../src/oc8051_cy_select.v ../src/oc8051_psw.v ../src/oc8051_indi_addr.v ../src/oc8051_ports.v ../src/oc8051_b_register.v ../src/oc8051_uart.v ../src/oc8051_int.v ../src/oc8051_tc.v ../src/oc8051_tc2.v ../src/oc8051_icache.v ../src/oc8051_wb_iinterface.v ../src/oc8051_sfr.v ../src/oc8051_cache_ram.v ../src/oc8051_rom.v ../src/oc8051_ram_256x8_two_bist.v ../src/oc8051_ram_64x32_dual_bist.v ../src/oc8051_cxrom.v 
+hierarchy -check  -top oc8051_top; 
+proc; opt; 
+memory;
+techmap; opt; 
+flatten; opt
+
+write_verilog -attr2comment synth.v
+
