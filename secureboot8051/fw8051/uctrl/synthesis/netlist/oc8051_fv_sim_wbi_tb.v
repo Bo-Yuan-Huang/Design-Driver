@@ -1,0 +1,402 @@
+module oc8051_fv_sim_tb();
+  reg ld;
+  reg clk;
+  reg [7:0] wbd_dat_i = 8'b0;
+  reg [31:0] wbi_dat_i = 32'b0;
+  reg wbd_err_i;
+  reg wbd_ack_i;
+  reg wbi_err_i;
+  reg wbi_ack_i;
+  reg [7:0] p0_in = 8'b0;
+  reg [7:0] p1_in = 8'b0;
+  reg [7:0] p2_in = 8'b0;
+  reg [7:0] p3_in = 8'b0;
+  reg rxd_i = 1'b0;
+  reg t0_i = 1'b0;
+  reg t1_i = 1'b0;
+  reg t2_i = 1'b0;
+  reg t2ex_i = 1'b0;
+  wire assert_valid;
+
+  oc8051_fv_top oc8051_fv_sim1(
+    .clk(clk),
+    .ld(ld),
+    .wbd_dat_i(wbd_dat_i),
+    .wbi_dat_i(wbi_dat_i),
+    .wbd_err_i(wbd_err_i),
+    .wbd_ack_i(wbd_ack_i),
+    .wbi_err_i(wbi_err_i),
+    .wbi_ack_i(wbi_ack_i),
+    .p0_in(p0_in),
+    .p1_in(p1_in),
+    .p2_in(p2_in),
+    .p3_in(p3_in),
+    .rxd_i(rxd_i),
+    .t0_i(t0_i),
+    .t1_i(t1_i),
+    .t2_i(t2_i),
+    .t2ex_i(t2ex_i),
+    .assert_valid(assert_valid)
+  );
+
+  initial begin
+    $dumpon;
+    $dumpfile("run.vcd");
+    $dumpvars(0,oc8051_fv_sim_tb);
+
+    ld = 1; #40;
+ld = 0; 
+wbd_dat_i[0] = 1;
+wbd_dat_i[1] = 0;
+wbd_dat_i[2] = 0;
+wbd_dat_i[3] = 1;
+wbd_dat_i[4] = 0;
+wbd_dat_i[5] = 1;
+wbd_dat_i[6] = 0;
+wbd_dat_i[7] = 1;
+wbi_dat_i[0] = 0;
+wbi_dat_i[1] = 0;
+wbi_dat_i[2] = 0;
+wbi_dat_i[3] = 0;
+wbi_dat_i[4] = 0;
+wbi_dat_i[5] = 0;
+wbi_dat_i[6] = 0;
+wbi_dat_i[7] = 0;
+wbi_dat_i[8] = 0;
+wbi_dat_i[9] = 0;
+wbi_dat_i[10] = 0;
+wbi_dat_i[11] = 0;
+wbi_dat_i[12] = 0;
+wbi_dat_i[13] = 0;
+wbi_dat_i[14] = 0;
+wbi_dat_i[15] = 0;
+wbi_dat_i[16] = 0;
+wbi_dat_i[17] = 0;
+wbi_dat_i[18] = 0;
+wbi_dat_i[19] = 0;
+wbi_dat_i[20] = 0;
+wbi_dat_i[21] = 0;
+wbi_dat_i[22] = 0;
+wbi_dat_i[23] = 0;
+wbi_dat_i[24] = 0;
+wbi_dat_i[25] = 0;
+wbi_dat_i[26] = 0;
+wbi_dat_i[27] = 0;
+wbi_dat_i[28] = 0;
+wbi_dat_i[29] = 0;
+wbi_dat_i[30] = 0;
+wbi_dat_i[31] = 0;
+wbd_err_i = 0;
+wbd_ack_i = 1;
+wbi_err_i = 0;
+wbi_ack_i = 0;
+p0_in[0] = 0;
+p0_in[1] = 0;
+p0_in[2] = 0;
+p0_in[3] = 0;
+p0_in[4] = 0;
+p0_in[5] = 0;
+p0_in[6] = 0;
+p0_in[7] = 0;
+p1_in[0] = 0;
+p1_in[1] = 0;
+p1_in[2] = 0;
+p1_in[3] = 0;
+p1_in[4] = 0;
+p1_in[5] = 0;
+p1_in[6] = 0;
+p1_in[7] = 0;
+p2_in[0] = 0;
+p2_in[1] = 0;
+p2_in[2] = 0;
+p2_in[3] = 0;
+p2_in[4] = 0;
+p2_in[5] = 0;
+p2_in[6] = 0;
+p2_in[7] = 0;
+p3_in[0] = 0;
+p3_in[1] = 0;
+p3_in[2] = 0;
+p3_in[3] = 0;
+p3_in[4] = 0;
+p3_in[5] = 0;
+p3_in[6] = 0;
+p3_in[7] = 0;
+rxd_i = 0;
+t0_i = 0;
+t1_i = 0;
+t2_i = 0;
+t2ex_i = 0;
+#20;
+wbd_dat_i[0] = 0;
+wbd_dat_i[1] = 1;
+wbd_dat_i[2] = 1;
+wbd_dat_i[3] = 1;
+wbd_dat_i[4] = 1;
+wbd_dat_i[5] = 0;
+wbd_dat_i[6] = 0;
+wbd_dat_i[7] = 1;
+wbi_dat_i[0] = 0;
+wbi_dat_i[1] = 0;
+wbi_dat_i[2] = 0;
+wbi_dat_i[3] = 0;
+wbi_dat_i[4] = 0;
+wbi_dat_i[5] = 0;
+wbi_dat_i[6] = 0;
+wbi_dat_i[7] = 0;
+wbi_dat_i[8] = 0;
+wbi_dat_i[9] = 0;
+wbi_dat_i[10] = 0;
+wbi_dat_i[11] = 0;
+wbi_dat_i[12] = 0;
+wbi_dat_i[13] = 0;
+wbi_dat_i[14] = 0;
+wbi_dat_i[15] = 0;
+wbi_dat_i[16] = 0;
+wbi_dat_i[17] = 0;
+wbi_dat_i[18] = 0;
+wbi_dat_i[19] = 0;
+wbi_dat_i[20] = 0;
+wbi_dat_i[21] = 0;
+wbi_dat_i[22] = 0;
+wbi_dat_i[23] = 0;
+wbi_dat_i[24] = 0;
+wbi_dat_i[25] = 0;
+wbi_dat_i[26] = 0;
+wbi_dat_i[27] = 0;
+wbi_dat_i[28] = 0;
+wbi_dat_i[29] = 0;
+wbi_dat_i[30] = 0;
+wbi_dat_i[31] = 0;
+wbd_err_i = 0;
+wbd_ack_i = 1;
+wbi_err_i = 0;
+wbi_ack_i = 0;
+p0_in[0] = 0;
+p0_in[1] = 0;
+p0_in[2] = 1;
+p0_in[3] = 0;
+p0_in[4] = 1;
+p0_in[5] = 0;
+p0_in[6] = 0;
+p0_in[7] = 1;
+p1_in[0] = 1;
+p1_in[1] = 0;
+p1_in[2] = 0;
+p1_in[3] = 0;
+p1_in[4] = 0;
+p1_in[5] = 0;
+p1_in[6] = 0;
+p1_in[7] = 0;
+p2_in[0] = 0;
+p2_in[1] = 0;
+p2_in[2] = 0;
+p2_in[3] = 0;
+p2_in[4] = 0;
+p2_in[5] = 0;
+p2_in[6] = 0;
+p2_in[7] = 0;
+p3_in[0] = 0;
+p3_in[1] = 0;
+p3_in[2] = 0;
+p3_in[3] = 0;
+p3_in[4] = 0;
+p3_in[5] = 0;
+p3_in[6] = 0;
+p3_in[7] = 0;
+rxd_i = 0;
+t0_i = 0;
+t1_i = 0;
+t2_i = 0;
+t2ex_i = 0;
+#20;
+wbd_dat_i[0] = 1;
+wbd_dat_i[1] = 1;
+wbd_dat_i[2] = 1;
+wbd_dat_i[3] = 0;
+wbd_dat_i[4] = 0;
+wbd_dat_i[5] = 1;
+wbd_dat_i[6] = 1;
+wbd_dat_i[7] = 1;
+wbi_dat_i[0] = 0;
+wbi_dat_i[1] = 0;
+wbi_dat_i[2] = 0;
+wbi_dat_i[3] = 0;
+wbi_dat_i[4] = 0;
+wbi_dat_i[5] = 0;
+wbi_dat_i[6] = 0;
+wbi_dat_i[7] = 0;
+wbi_dat_i[8] = 0;
+wbi_dat_i[9] = 0;
+wbi_dat_i[10] = 0;
+wbi_dat_i[11] = 0;
+wbi_dat_i[12] = 0;
+wbi_dat_i[13] = 0;
+wbi_dat_i[14] = 0;
+wbi_dat_i[15] = 0;
+wbi_dat_i[16] = 0;
+wbi_dat_i[17] = 0;
+wbi_dat_i[18] = 0;
+wbi_dat_i[19] = 0;
+wbi_dat_i[20] = 0;
+wbi_dat_i[21] = 0;
+wbi_dat_i[22] = 0;
+wbi_dat_i[23] = 0;
+wbi_dat_i[24] = 0;
+wbi_dat_i[25] = 0;
+wbi_dat_i[26] = 0;
+wbi_dat_i[27] = 0;
+wbi_dat_i[28] = 0;
+wbi_dat_i[29] = 0;
+wbi_dat_i[30] = 0;
+wbi_dat_i[31] = 0;
+wbd_err_i = 0;
+wbd_ack_i = 1;
+wbi_err_i = 0;
+wbi_ack_i = 0;
+p0_in[0] = 0;
+p0_in[1] = 0;
+p0_in[2] = 0;
+p0_in[3] = 0;
+p0_in[4] = 0;
+p0_in[5] = 0;
+p0_in[6] = 0;
+p0_in[7] = 0;
+p1_in[0] = 0;
+p1_in[1] = 0;
+p1_in[2] = 0;
+p1_in[3] = 0;
+p1_in[4] = 0;
+p1_in[5] = 0;
+p1_in[6] = 0;
+p1_in[7] = 0;
+p2_in[0] = 0;
+p2_in[1] = 0;
+p2_in[2] = 0;
+p2_in[3] = 0;
+p2_in[4] = 0;
+p2_in[5] = 0;
+p2_in[6] = 0;
+p2_in[7] = 0;
+p3_in[0] = 0;
+p3_in[1] = 0;
+p3_in[2] = 1;
+p3_in[3] = 1;
+p3_in[4] = 0;
+p3_in[5] = 0;
+p3_in[6] = 0;
+p3_in[7] = 1;
+rxd_i = 0;
+t0_i = 0;
+t1_i = 0;
+t2_i = 0;
+t2ex_i = 0;
+#20;
+wbd_dat_i[0] = 0;
+wbd_dat_i[1] = 1;
+wbd_dat_i[2] = 0;
+wbd_dat_i[3] = 0;
+wbd_dat_i[4] = 1;
+wbd_dat_i[5] = 0;
+wbd_dat_i[6] = 0;
+wbd_dat_i[7] = 0;
+wbi_dat_i[0] = 0;
+wbi_dat_i[1] = 0;
+wbi_dat_i[2] = 0;
+wbi_dat_i[3] = 0;
+wbi_dat_i[4] = 0;
+wbi_dat_i[5] = 0;
+wbi_dat_i[6] = 0;
+wbi_dat_i[7] = 0;
+wbi_dat_i[8] = 0;
+wbi_dat_i[9] = 0;
+wbi_dat_i[10] = 0;
+wbi_dat_i[11] = 0;
+wbi_dat_i[12] = 0;
+wbi_dat_i[13] = 0;
+wbi_dat_i[14] = 0;
+wbi_dat_i[15] = 0;
+wbi_dat_i[16] = 0;
+wbi_dat_i[17] = 0;
+wbi_dat_i[18] = 0;
+wbi_dat_i[19] = 0;
+wbi_dat_i[20] = 0;
+wbi_dat_i[21] = 0;
+wbi_dat_i[22] = 0;
+wbi_dat_i[23] = 0;
+wbi_dat_i[24] = 0;
+wbi_dat_i[25] = 0;
+wbi_dat_i[26] = 0;
+wbi_dat_i[27] = 0;
+wbi_dat_i[28] = 0;
+wbi_dat_i[29] = 0;
+wbi_dat_i[30] = 0;
+wbi_dat_i[31] = 0;
+wbd_err_i = 0;
+wbd_ack_i = 1;
+wbi_err_i = 0;
+wbi_ack_i = 0;
+p0_in[0] = 1;
+p0_in[1] = 1;
+p0_in[2] = 0;
+p0_in[3] = 1;
+p0_in[4] = 0;
+p0_in[5] = 1;
+p0_in[6] = 0;
+p0_in[7] = 0;
+p1_in[0] = 0;
+p1_in[1] = 0;
+p1_in[2] = 0;
+p1_in[3] = 0;
+p1_in[4] = 0;
+p1_in[5] = 0;
+p1_in[6] = 0;
+p1_in[7] = 0;
+p2_in[0] = 1;
+p2_in[1] = 0;
+p2_in[2] = 0;
+p2_in[3] = 0;
+p2_in[4] = 0;
+p2_in[5] = 0;
+p2_in[6] = 0;
+p2_in[7] = 0;
+p3_in[0] = 0;
+p3_in[1] = 0;
+p3_in[2] = 0;
+p3_in[3] = 0;
+p3_in[4] = 0;
+p3_in[5] = 0;
+p3_in[6] = 0;
+p3_in[7] = 0;
+rxd_i = 0;
+t0_i = 0;
+t1_i = 0;
+t2_i = 0;
+t2ex_i = 0;
+#20;
+
+    #20000;
+    $finish;
+  end
+
+  initial
+  begin
+    clk = 0;
+    forever #10 clk <= ~clk;
+  end
+
+endmodule
+
+module dff(q, d, clk, ld, ldval);
+    output q;
+    input d, clk, ld, ldval;
+    reg q;
+    always@(posedge clk or posedge ld) begin
+        if(ld) begin
+          q = ldval;
+        end
+        else begin
+          q = d;
+        end
+    end
+endmodule
