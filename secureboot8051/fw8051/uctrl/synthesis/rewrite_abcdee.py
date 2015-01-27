@@ -129,7 +129,7 @@ def print_block(name, instance, ports, instances, defs):
         assert 'QN' in ports
         assert 'D' in ports
         assert 'CK' in ports
-        Qwire = '%s_%s_Q' % (ports['QN'], instance)
+        Qwire = sanitize('%s_%s_Q' % (ports['QN'], instance))
         instances.append('dff(%s, %s)' % (Qwire, fix_constant(ports['D'])))
         instances.append('not(%s, %s)' % (ports['QN'], Qwire))
         defs.append(('wire', Qwire))
@@ -147,18 +147,18 @@ def print_block(name, instance, ports, instances, defs):
             else: return '0'
 
         SNwire = ports['SN']
-        Swire = invert(SNwire) if constant(SNwire) else name('SN', 'S') 
+        Swire = sanitize(invert(SNwire) if constant(SNwire) else name('SN', 'S'))
 
         Rwire = ports['R']
-        RNwire = invert(Rwire) if constant(Rwire) else name('R', 'RN')
+        RNwire = sanitize(invert(Rwire) if constant(Rwire) else name('R', 'RN'))
 
         Dwire = ports['D']
         if constant(Dwire):
-            DRwire = '%s_%s' % (instance, 'DR')
-            DSRwire = '%s_%s' % (instance, 'DSR')
+            DRwire = sanitize('%s_%s' % (instance, 'DR'))
+            DSRwire = sanitize('%s_%s' % (instance, 'DSR'))
         else:
-            DRwire = name('D', 'DR')
-            DSRwire = name('D', 'DSR')
+            DRwire = sanitize(name('D', 'DR'))
+            DSRwire = sanitize(name('D', 'DSR'))
 
         Qwire = ports['Q']
 
@@ -184,6 +184,10 @@ def print_block(name, instance, ports, instances, defs):
 
     else:
         assert False, 'not implemented gate type: %s' % gate_name
+
+def sanitize(s):
+    return s.replace('[', '_').replace(']', '_')
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
