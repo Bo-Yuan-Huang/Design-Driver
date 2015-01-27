@@ -2136,3 +2136,4 @@ oc8051_top_1_p3_o_6_ 1
 oc8051_top_1_p3_o_7_ 1
 oc8051_top_1_pc[0] 1
 oc8051_top_1_txd_o 1
+n17_first_instr_reg_Q 1
