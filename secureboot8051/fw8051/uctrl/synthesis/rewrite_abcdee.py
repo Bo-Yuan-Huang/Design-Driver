@@ -192,7 +192,7 @@ def sanitize(s):
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         print 'Syntax Error.'
-        print 'Usage: %s <filename>' % argv[0]
+        print 'Usage: %s <filename>' % sys.argv[0]
     else:
         rewrite(sys.argv[1])
 
