@@ -12,12 +12,7 @@
 module oc8051_fv_top(
     clk,
     rst,
-    wbd_dat_i,
-    wbi_dat_i,
-    wbd_err_i,
-    wbd_ack_i,
-    wbi_err_i,
-    wbi_ack_i,
+    word_in,
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
     p0_in,             // port 0 input
@@ -49,12 +44,7 @@ module oc8051_fv_top(
 );
     input clk;
     input rst;
-    input [7:0] wbd_dat_i;
-    input [31:0] wbi_dat_i;
-    input wbd_ack_i;
-    input wbi_ack_i;
-    input wbd_err_i;
-    input wbi_err_i;
+    input [31:0] word_in;
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
@@ -111,6 +101,13 @@ input         t2_i,             // counter 2 input
 `endif
 
 
+    wire [7:0] wbd_dat_i = 0;
+    wire [31:0] wbi_dat_i = 0;
+    wire wbd_ack_i = 0;
+    wire wbi_ack_i = 0;
+    wire wbd_err_i = 0;
+    wire wbi_err_i = 0;
+
     wire [7:0] data_out_uart, data_out_xram;
     wire wbd_we_o;
     wire wbd_stb_o;
@@ -146,16 +143,16 @@ input         t2_i,             // counter 2 input
         end
     end
 
-    oc8051_symbolic_cxrom ( 
+    oc8051_symbolic_cxrom oc8051_symbolic_cxrom1 ( 
         .clk                  ( clk            ),
         .rst                  ( rst            ),
-        .word_in              ( 32'b0          ),
+        .word_in              ( word_in        ),
         .cxrom_addr           ( cxrom_addr     ),
         .pc1                  ( pc1            ),
         .pc2                  ( pc2            ),
         .cxrom_data_out       ( cxrom_data_out ),
         .op_valid             ( op_valid       ),
-        .op_out               ( op_out         ),
+        .op_out               ( op_out         )
     );
 
 
