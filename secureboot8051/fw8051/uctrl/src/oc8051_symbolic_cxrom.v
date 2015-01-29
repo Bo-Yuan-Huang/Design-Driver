@@ -22,31 +22,11 @@ module oc8051_symbolic_cxrom(
     reg [7:0] regarray [15:0];
     reg [15:0] regvalid;
 
-    wire [15:0] regvalid_ormask;
-
     wire [3:0] addr0 = cxrom_addr[3:0];
     wire [3:0] addr1 = cxrom_addr[3:0] + 1;
     wire [3:0] addr2 = cxrom_addr[3:0] + 2;
     wire [3:0] addr3 = cxrom_addr[3:0] + 3;
 
-    assign regvalid_ormask = 
-        addr0 == 0  ? 16'b0000000000001111 : 
-        addr0 == 1  ? 16'b0000000000011110 : 
-        addr0 == 2  ? 16'b0000000000111100 : 
-        addr0 == 3  ? 16'b0000000001111000 : 
-        addr0 == 4  ? 16'b0000000011110000 : 
-        addr0 == 5  ? 16'b0000000111100000 : 
-        addr0 == 6  ? 16'b0000001111000000 : 
-        addr0 == 7  ? 16'b0000011110000000 : 
-        addr0 == 8  ? 16'b0000111100000000 : 
-        addr0 == 9  ? 16'b0001111000000000 : 
-        addr0 == 10 ? 16'b0011110000000000 : 
-        addr0 == 11 ? 16'b0111100000000000 : 
-        addr0 == 12 ? 16'b1111000000000000 : 
-        addr0 == 13 ? 16'b1110000000000001 : 
-        addr0 == 14 ? 16'b1100000000000011 : 16'b1000000000000111;
-
-    wire [15:0] regvalid_next;
     wire [7:0] bytein0 = word_in[7:0];
     wire [7:0] bytein1 = word_in[15:8];
     wire [7:0] bytein2 = word_in[23:16];
@@ -57,15 +37,22 @@ module oc8051_symbolic_cxrom(
             regvalid <= 16'b0;
         end
         else begin
-            regvalid <= regvalid | regvalid_ormask;
-            if (!regvalid[addr0])
+            if (!regvalid[addr0]) begin
                 regarray[addr0] <= bytein0;
-            if (!regvalid[addr1])
+                regvalid[addr0] <= 1;
+            end
+            if (!regvalid[addr1]) begin
                 regarray[addr1] <= bytein1;
-            if (!regvalid[addr2])
+                regvalid[addr1] <= 1;
+            end
+            if (!regvalid[addr2]) begin
                 regarray[addr2] <= bytein2;
-            if (!regvalid[addr3])
+                regvalid[addr2] <= 1;
+            end
+            if (!regvalid[addr3]) begin
                 regarray[addr3] <= bytein3;
+                regvalid[addr3] <= 1;
+            end
         end
     end
 
@@ -89,5 +76,5 @@ module oc8051_symbolic_cxrom(
     wire pc2_valid = regvalid[pc20] && regvalid[pc21] && regvalid[pc22] && regvalid[pc23];
 
     assign op_valid = pc1_valid && pc2_valid;
-    assign op_out = pc10 ? regarray[pc10] : 8'b0;
+    assign op_out = regvalid[pc10] ? regarray[pc10] : 8'b0;
 endmodule
