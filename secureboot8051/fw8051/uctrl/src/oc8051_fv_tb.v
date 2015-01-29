@@ -11,8 +11,8 @@
 
 module oc8051_fv_tb();
 
-parameter FREQ  = 20000; // frequency in kHz
-parameter DELAY = 500000/FREQ;
+// parameter FREQ  = 20000; // frequency in kHz
+parameter DELAY = 1; // 500000/FREQ;
 
     reg clk, rst;
     wire assert_valid;
@@ -61,10 +61,10 @@ parameter DELAY = 500000/FREQ;
       $dumpvars(0,oc8051_fv_tb);
       rst= 1'b1;
     
-      #220
+      #20
       rst = 1'b0;
 
-      #400000
+      #4000
       $display("time ",$time, "; end of time\n");
       $finish;
     end

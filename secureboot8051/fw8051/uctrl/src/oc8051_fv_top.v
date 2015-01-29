@@ -120,15 +120,19 @@ input         t2_i,             // counter 2 input
     wire [7:0] wbd_dat_o;
     wire [15:0] wbd_adr_o;
     wire [15:0] cxrom_addr;
-    wire [31:0] cxrom_data_out = 32'b0;
+    wire [31:0] cxrom_data_out;
     wire [15:0] wbi_adr_o;
 
     reg  first_instr;
     wire pc_log_change;
-    wire [15:0] pc_log, pc_log_prev;
+    wire [15:0] pc2, pc1;
+    wire op_valid;
+    wire [7:0] op_out;
 
     // pc_log_change => (pc_log_prev = pc_log + 1).
-    wire assert_valid = (!first_instr && pc_log_change) && ((pc_log_prev+16'b1) != pc_log);
+    wire assert_valid = 
+        (!first_instr && pc_log_change && op_valid && op_out == 8'b0) && 
+        ((pc1+16'b1) != pc2);
 
     always @(posedge clk)
     begin
@@ -141,6 +145,18 @@ input         t2_i,             // counter 2 input
             end
         end
     end
+
+    oc8051_symbolic_cxrom ( 
+        .clk                  ( clk            ),
+        .rst                  ( rst            ),
+        .word_in              ( 32'b0          ),
+        .cxrom_addr           ( cxrom_addr     ),
+        .pc1                  ( pc1            ),
+        .pc2                  ( pc2            ),
+        .cxrom_data_out       ( cxrom_data_out ),
+        .op_valid             ( op_valid       ),
+        .op_out               ( op_out         ),
+    );
 
 
     oc8051_top oc8051_top_1(
@@ -157,9 +173,9 @@ input         t2_i,             // counter 2 input
          .cxrom_addr            ( cxrom_addr     ),
          .cxrom_data_out        ( cxrom_data_out ),
 
-         .pc_log_change (pc_log_change),
-         .pc_log        (pc_log),
-         .pc_log_prev   (pc_log_prev),
+         .pc_log_change         (pc_log_change),
+         .pc_log                (pc2),
+         .pc_log_prev           (pc1),
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
