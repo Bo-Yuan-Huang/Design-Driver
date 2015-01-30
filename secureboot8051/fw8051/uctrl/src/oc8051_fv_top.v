@@ -127,8 +127,51 @@ input         t2_i,             // counter 2 input
     wire [7:0] op_out;
 
     // pc_log_change => (pc_log_prev = pc_log + 1).
+    wire pcp1 = 
+        (op_out[1] && op_out[2] && !op_out[4] && op_out[6]) || (op_out[1] && op_out[2]
+        && !op_out[3] && op_out[4] && !op_out[5]) || (op_out[0] && op_out[1] &&
+        !op_out[3] && op_out[6] && op_out[7]) || (op_out[0] && op_out[1] && !op_out[2]
+        && !op_out[3] && !op_out[6]) || (!op_out[0] && !op_out[1] && op_out[2] &&
+        !op_out[3] && !op_out[4] && !op_out[5] && !op_out[6]) || (!op_out[0] &&
+        op_out[5] && op_out[6] && op_out[7]) || (!op_out[1] && op_out[2] && !op_out[3]
+        && !op_out[4] && op_out[5] && !op_out[6] && op_out[7]) || (!op_out[0] &&
+        op_out[2] && !op_out[3] && op_out[6] && op_out[7]) || (!op_out[0] && !op_out[1]
+        && !op_out[4] && !op_out[5] && !op_out[6] && !op_out[7]) || (!op_out[0] &&
+        op_out[2] && !op_out[5] && !op_out[6] && !op_out[7]) || (op_out[3] && op_out[4]
+        && !op_out[5] && !op_out[6]) || (op_out[3] && op_out[5] && op_out[6] &&
+        op_out[7]) || (op_out[3] && !op_out[6] && !op_out[7]) || (op_out[1] &&
+        op_out[2] && !op_out[6] && !op_out[7]) || (op_out[3] && !op_out[4] &&
+        op_out[6]) || (op_out[3] && !op_out[5] && !op_out[7]);
+
+    wire pcp2 = 
+        (!op_out[1] && op_out[2] && !op_out[3] && op_out[5] && !op_out[6] &&
+        !op_out[7]) || (op_out[0] && !op_out[1] && op_out[2] && !op_out[3] &&
+        !op_out[5] && !op_out[7]) || (!op_out[0] && op_out[1] && !op_out[2] &&
+        !op_out[3] && !op_out[5] && op_out[7]) || (!op_out[0] && !op_out[1] &&
+        op_out[2] && !op_out[3] && op_out[6] && !op_out[7]) || (op_out[3] && op_out[4]
+        && op_out[5] && op_out[6] && !op_out[7]) || (op_out[3] && !op_out[4] &&
+        !op_out[6] && op_out[7]) || (!op_out[0] && op_out[1] && !op_out[2] &&
+        !op_out[3] && op_out[6] && !op_out[7]) || (op_out[1] && op_out[2] && op_out[4]
+        && op_out[5] && op_out[6] && !op_out[7]) || (!op_out[0] && !op_out[2] &&
+        !op_out[3] && !op_out[5] && op_out[6] && op_out[7]) || (!op_out[1] && op_out[2]
+        && !op_out[3] && op_out[4] && !op_out[5] && !op_out[6] && op_out[7]) ||
+        (op_out[0] && !op_out[1] && op_out[2] && !op_out[3] && op_out[5] && op_out[6]
+        && op_out[7]) || (op_out[0] && !op_out[1] && op_out[2] && !op_out[3] &&
+        !op_out[4] && op_out[6]) || (op_out[1] && op_out[2] && !op_out[4] && !op_out[6]
+        && op_out[7]) || (!op_out[0] && !op_out[2] && !op_out[3] && op_out[5] &&
+        !op_out[6] && op_out[7]);
+
+    wire pcp3 = 
+        (!op_out[0] && !op_out[1] && !op_out[2] && !op_out[3] && op_out[4] &&
+        !op_out[5] && !op_out[6] && op_out[7]) || (op_out[0] && !op_out[1] && op_out[2]
+        && !op_out[3] && !op_out[4] && !op_out[5] && !op_out[6] && op_out[7]) ||
+        (op_out[0] && !op_out[1] && op_out[2] && !op_out[3] && op_out[4] && op_out[5]
+        && op_out[6] && !op_out[7]) || (op_out[0] && op_out[1] && !op_out[2] &&
+        !op_out[3] && !op_out[4] && op_out[6] && !op_out[7]) || (op_out[0] && op_out[1]
+        && !op_out[2] && !op_out[3] && !op_out[5] && op_out[6] && !op_out[7]);
+
     wire assert_valid = 
-        (!first_instr && pc_log_change && op_valid && op_out == 8'b0) && 
+        (!first_instr && pc_log_change && op_valid && pcp1) && 
         ((pc1+16'b1) != pc2);
 
     always @(posedge clk)
