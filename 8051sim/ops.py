@@ -289,6 +289,20 @@ def compare(website, program):
                 print 'extra: %02x %s' % (i, opdesc[i])
 
 
-compare(onebytes, pcp1)
-compare(twobytes, pcp2)
-compare(threebytes, pcp3)
+#compare(onebytes, pcp1)
+#compare(twobytes, pcp2)
+#compare(threebytes, pcp3)
+
+def print_espresso(ps, filename):
+    with open(filename, 'wt') as fileobj:
+        print >> fileobj, '.i 8'
+        print >> fileobj, '.o 1'
+        for pi in ps:
+            print >> fileobj, format(pi, '010b')[2:], 1
+        print >> fileobj, '.e'
+
+print_espresso(pcp1, 'pcp1.y')
+print_espresso(pcp2, 'pcp2.y')
+print_espresso(pcp3, 'pcp3.y')
+
+    
