@@ -77,4 +77,21 @@ module oc8051_symbolic_cxrom(
 
     assign op_valid = pc1_valid && pc2_valid;
     assign op_out = regvalid[pc10] ? regarray[pc10] : 8'b0;
+
+    wire [7:0] regarray0  = regarray[0];
+    wire [7:0] regarray1  = regarray[1];
+    wire [7:0] regarray2  = regarray[2];
+    wire [7:0] regarray3  = regarray[3];
+    wire [7:0] regarray4  = regarray[4];
+    wire [7:0] regarray5  = regarray[5];
+    wire [7:0] regarray6  = regarray[6];
+    wire [7:0] regarray7  = regarray[7];
+    wire [7:0] regarray8  = regarray[8];
+    wire [7:0] regarray9  = regarray[9];
+    wire [7:0] regarray10 = regarray[10];
+    wire [7:0] regarray11 = regarray[11];
+    wire [7:0] regarray12 = regarray[12];
+    wire [7:0] regarray13 = regarray[13];
+    wire [7:0] regarray14 = regarray[14];
+    wire [7:0] regarray15 = regarray[15];
 endmodule
