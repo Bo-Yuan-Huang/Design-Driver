@@ -428,12 +428,28 @@ def synthesizePC(rows, cols):
 
 if __name__ == '__main__':
     rstrs = []
+    pc_plus_1_ops = []
+    pc_plus_2_ops = []
+    pc_plus_3_ops = []
     for r in xrange(16): # [0xB]: # 
         z3._main_ctx = None
 
         cs = xrange(16)
         s, m = synthesizePC([r], cs)
         rstrs.append([s.get_table_entry(r, ci, m) for ci in cs])
+        for ci in cs:
+            rstr = s.get_table_entry(r, ci, m)
+            op = (r << 4) | ci
+            if rstr == 'PC+1':
+                pc_plus_1_ops.append(op)
+            elif rstr == 'PC+2':
+                pc_plus_2_ops.append(op)
+            elif rstr == 'PC+3':
+                pc_plus_3_ops.append(op)
+
+    print 'PC+1: ', ' '.join('0x%02x' % op for op in pc_plus_1_ops)
+    print 'PC+2: ', ' '.join('0x%02x' % op for op in pc_plus_2_ops)
+    print 'PC+3: ', ' '.join('0x%02x' % op for op in pc_plus_3_ops)
 
     for r in rstrs:
         print ' '.join(r)
