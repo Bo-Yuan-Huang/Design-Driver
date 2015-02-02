@@ -1185,8 +1185,8 @@ begin
     else begin
         if (decoder_new_valid_pc) begin
             pc_log  <= pc;
+            pc_log_prev <= pc_log;
         end
-        pc_log_prev <= pc_log;
     end
 end
 
