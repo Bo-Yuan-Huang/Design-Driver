@@ -3,7 +3,9 @@ hierarchy -check  -top oc8051_top;
 proc; opt; 
 memory;
 techmap; opt; 
-flatten; opt
+flatten; opt;
+dfflibmap -liberty abc.lib
+abc -liberty abc.lib
 
-write_verilog -attr2comment synth.v
+write_verilog -attr2comment -noexpr synth.v
 
