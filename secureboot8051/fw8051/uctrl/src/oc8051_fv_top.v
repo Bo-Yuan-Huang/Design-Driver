@@ -40,7 +40,7 @@ module oc8051_fv_top(
     t2_i,             // counter 2 input
     t2ex_i,           //
 `endif
-    assert_valid
+    property_invalid
 );
     input clk;
     input rst;
@@ -76,7 +76,7 @@ input         t2_i,             // counter 2 input
 `endif
 
 
-    output assert_valid;
+    output property_invalid;
 
     wire int0 = 0;
     wire int1 = 1;
@@ -170,9 +170,17 @@ input         t2_i,             // counter 2 input
         !op_out[3] && !op_out[4] && op_out[6] && !op_out[7]) || (op_out[0] && op_out[1]
         && !op_out[2] && !op_out[3] && !op_out[5] && op_out[6] && !op_out[7]);
 
-    wire assert_valid = 
+    wire property_invalid_pcp1 = 
         (!first_instr && pc_log_change && op_valid && pcp1) && 
-        ((pc1+16'b1) != pc2);
+        ((pc1+16'd1) != pc2);
+    wire property_invalid_pcp2 = 
+        (!first_instr && pc_log_change && op_valid && pcp2) && 
+        ((pc1+16'd2) != pc2);
+    wire property_invalid_pcp3 = 
+        (!first_instr && pc_log_change && op_valid && pcp3) && 
+        ((pc1+16'd3) != pc2);
+
+    wire property_invalid = property_invalid_pcp1 || property_invalid_pcp2 || property_invalid_pcp3;
 
     always @(posedge clk)
     begin
