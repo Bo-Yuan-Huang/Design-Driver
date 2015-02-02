@@ -6,6 +6,6 @@ techmap; opt;
 flatten; opt;
 dfflibmap -liberty abc.lib
 abc -liberty abc.lib
-
-write_verilog -attr2comment -noexpr synth.v
+rename -enumerate
+write_verilog -bcd synth.v
 
