@@ -5,7 +5,7 @@ memory;
 techmap; opt; 
 flatten; opt;
 dfflibmap -liberty abc.lib
+bcdify
 abc -liberty abc.lib
-rename -enumerate
-write_verilog -bcd synth.v
+write_verilog -bcd netlist/oc8051_top_flat_yosys.v
 

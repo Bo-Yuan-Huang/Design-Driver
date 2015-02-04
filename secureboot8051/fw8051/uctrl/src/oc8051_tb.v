@@ -95,7 +95,7 @@ module oc8051_tb;
 //parameter FREQ  = 20000; // frequency in kHz
 //parameter FREQ  = 12000; // frequency in kHz
 
-parameter DELAY = 1; // 500000/FREQ;
+parameter DELAY = 50; // 500000/FREQ;
 
 reg  rst, clk;
 reg  [7:0] p0_in, p1_in, p2_in;
@@ -308,7 +308,7 @@ initial begin
   p0_in = 8'h00;
   p1_in = 8'h00;
   p2_in = 8'h00;
-#2
+#2000
   rst = 1'b0;
 
 #6400000
