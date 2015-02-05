@@ -14,7 +14,7 @@ module oc8051_fv_tb();
 // parameter FREQ  = 20000; // frequency in kHz
 
     reg clk, rst;
-    wire assert_valid;
+    wire property_invalid;
     reg [31:0] word_in = 32'hffffffff;
 
 
@@ -101,7 +101,7 @@ module oc8051_fv_tb();
         .t2_i(t2_i),             // counter 2 input
         .t2ex_i(t2ex_i),           //
 `endif
-        .assert_valid(assert_valid)
+        .property_invalid(property_invalid)
     );
 
 endmodule
