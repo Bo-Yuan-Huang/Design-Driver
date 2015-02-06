@@ -20,31 +20,31 @@ module oc8051_fv_tb();
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
-    reg  [7:0]  p0_in = 8'b0;
+    reg  [7:0]  p0_in = 8'hff;
  `endif
  `ifdef OC8051_PORT1
-    reg  [7:0]  p1_in = 8'b0;
+    reg  [7:0]  p1_in = 8'hff;
  `endif
  `ifdef OC8051_PORT2
-    reg  [7:0]  p2_in = 8'b0;
+    reg  [7:0]  p2_in = 8'hff;
  `endif
  `ifdef OC8051_PORT3
-    reg  [7:0]  p3_in = 8'b0;
+    reg  [7:0]  p3_in = 8'hff;
  `endif
 `endif
 
 `ifdef OC8051_UART
-    reg rxd_i = 0;
+    reg rxd_i = 1;
 `endif
 
 `ifdef OC8051_TC01
-    reg t0_i = 0;
-    reg t1_i = 0;
+    reg t0_i = 1;
+    reg t1_i = 1;
 `endif
 
 `ifdef OC8051_TC2
-    reg t2_i = 0;
-    reg t2ex_i = 0;
+    reg t2_i = 1;
+    reg t2ex_i = 1;
 `endif
 
 // reset.
@@ -57,7 +57,7 @@ module oc8051_fv_tb();
       #2001
       rst = 1'b0;
 
-`include "cex2.v"
+`include "cex4ys.v"
 
       #1000
       $display("time ",$time, "; end of time\n");
