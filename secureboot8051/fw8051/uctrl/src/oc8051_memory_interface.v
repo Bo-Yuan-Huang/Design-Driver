@@ -950,7 +950,7 @@ end
 
 
 // spramod added pc_for_ajmp
-wire [15:0] pc_for_ajmp = pc_buf - 2;
+wire [15:0] pc_for_ajmp = pc_out - 6;
 always @(posedge clk or posedge rst)
 begin
   if (rst) begin
