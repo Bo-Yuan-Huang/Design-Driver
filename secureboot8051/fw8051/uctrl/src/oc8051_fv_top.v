@@ -220,7 +220,13 @@ input         t2_i,             // counter 2 input
         (!first_instr && pc_log_change && op_valid && pc_is_ajmp) && 
         (ajmp_pc != pc2);
 
-    wire property_invalid = property_invalid_pcp1 || property_invalid_pcp2 || property_invalid_pcp3;
+    wire property_invalid = 
+            property_invalid_pcp1 || 
+            property_invalid_pcp2 || 
+            property_invalid_pcp3 ||
+            property_invalid_sjmp ||
+            property_invalid_ljmp ||
+            property_invalid_ajmp;
 
     always @(posedge clk)
     begin
