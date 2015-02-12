@@ -124,51 +124,82 @@ input         t2_i,             // counter 2 input
     wire pc_log_change;
     wire [15:0] pc2, pc1;
     wire op_valid;
-    wire [7:0] op_out;
+    wire [7:0] op0_out;
+    wire [7:0] op1_out;
+    wire [7:0] op2_out;
 
     // pc_log_change => (pc_log_prev = pc_log + 1).
     wire pcp1 = 
-        (op_out[1] && op_out[2] && !op_out[4] && op_out[6]) || (op_out[1] && op_out[2]
-        && !op_out[3] && op_out[4] && !op_out[5]) || (op_out[0] && op_out[1] &&
-        !op_out[3] && op_out[6] && op_out[7]) || (op_out[0] && op_out[1] && !op_out[2]
-        && !op_out[3] && !op_out[6]) || (!op_out[0] && !op_out[1] && op_out[2] &&
-        !op_out[3] && !op_out[4] && !op_out[5] && !op_out[6]) || (!op_out[0] &&
-        op_out[5] && op_out[6] && op_out[7]) || (!op_out[1] && op_out[2] && !op_out[3]
-        && !op_out[4] && op_out[5] && !op_out[6] && op_out[7]) || (!op_out[0] &&
-        op_out[2] && !op_out[3] && op_out[6] && op_out[7]) || (!op_out[0] && !op_out[1]
-        && !op_out[4] && !op_out[5] && !op_out[6] && !op_out[7]) || (!op_out[0] &&
-        op_out[2] && !op_out[5] && !op_out[6] && !op_out[7]) || (op_out[3] && op_out[4]
-        && !op_out[5] && !op_out[6]) || (op_out[3] && op_out[5] && op_out[6] &&
-        op_out[7]) || (op_out[3] && !op_out[6] && !op_out[7]) || (op_out[1] &&
-        op_out[2] && !op_out[6] && !op_out[7]) || (op_out[3] && !op_out[4] &&
-        op_out[6]) || (op_out[3] && !op_out[5] && !op_out[7]);
+        (op0_out[1] && op0_out[2] && !op0_out[4] && op0_out[6]) || (op0_out[1] && op0_out[2]
+        && !op0_out[3] && op0_out[4] && !op0_out[5]) || (op0_out[0] && op0_out[1] &&
+        !op0_out[3] && op0_out[6] && op0_out[7]) || (op0_out[0] && op0_out[1] && !op0_out[2]
+        && !op0_out[3] && !op0_out[6]) || (!op0_out[0] && !op0_out[1] && op0_out[2] &&
+        !op0_out[3] && !op0_out[4] && !op0_out[5] && !op0_out[6]) || (!op0_out[0] &&
+        op0_out[5] && op0_out[6] && op0_out[7]) || (!op0_out[1] && op0_out[2] && !op0_out[3]
+        && !op0_out[4] && op0_out[5] && !op0_out[6] && op0_out[7]) || (!op0_out[0] &&
+        op0_out[2] && !op0_out[3] && op0_out[6] && op0_out[7]) || (!op0_out[0] && !op0_out[1]
+        && !op0_out[4] && !op0_out[5] && !op0_out[6] && !op0_out[7]) || (!op0_out[0] &&
+        op0_out[2] && !op0_out[5] && !op0_out[6] && !op0_out[7]) || (op0_out[3] && op0_out[4]
+        && !op0_out[5] && !op0_out[6]) || (op0_out[3] && op0_out[5] && op0_out[6] &&
+        op0_out[7]) || (op0_out[3] && !op0_out[6] && !op0_out[7]) || (op0_out[1] &&
+        op0_out[2] && !op0_out[6] && !op0_out[7]) || (op0_out[3] && !op0_out[4] &&
+        op0_out[6]) || (op0_out[3] && !op0_out[5] && !op0_out[7]);
 
     wire pcp2 = 
-        (!op_out[1] && op_out[2] && !op_out[3] && op_out[5] && !op_out[6] &&
-        !op_out[7]) || (op_out[0] && !op_out[1] && op_out[2] && !op_out[3] &&
-        !op_out[5] && !op_out[7]) || (!op_out[0] && op_out[1] && !op_out[2] &&
-        !op_out[3] && !op_out[5] && op_out[7]) || (!op_out[0] && !op_out[1] &&
-        op_out[2] && !op_out[3] && op_out[6] && !op_out[7]) || (op_out[3] && op_out[4]
-        && op_out[5] && op_out[6] && !op_out[7]) || (op_out[3] && !op_out[4] &&
-        !op_out[6] && op_out[7]) || (!op_out[0] && op_out[1] && !op_out[2] &&
-        !op_out[3] && op_out[6] && !op_out[7]) || (op_out[1] && op_out[2] && op_out[4]
-        && op_out[5] && op_out[6] && !op_out[7]) || (!op_out[0] && !op_out[2] &&
-        !op_out[3] && !op_out[5] && op_out[6] && op_out[7]) || (!op_out[1] && op_out[2]
-        && !op_out[3] && op_out[4] && !op_out[5] && !op_out[6] && op_out[7]) ||
-        (op_out[0] && !op_out[1] && op_out[2] && !op_out[3] && op_out[5] && op_out[6]
-        && op_out[7]) || (op_out[0] && !op_out[1] && op_out[2] && !op_out[3] &&
-        !op_out[4] && op_out[6]) || (op_out[1] && op_out[2] && !op_out[4] && !op_out[6]
-        && op_out[7]) || (!op_out[0] && !op_out[2] && !op_out[3] && op_out[5] &&
-        !op_out[6] && op_out[7]);
+        (!op0_out[1] && op0_out[2] && !op0_out[3] && op0_out[5] && !op0_out[6] &&
+        !op0_out[7]) || (op0_out[0] && !op0_out[1] && op0_out[2] && !op0_out[3] &&
+        !op0_out[5] && !op0_out[7]) || (!op0_out[0] && op0_out[1] && !op0_out[2] &&
+        !op0_out[3] && !op0_out[5] && op0_out[7]) || (!op0_out[0] && !op0_out[1] &&
+        op0_out[2] && !op0_out[3] && op0_out[6] && !op0_out[7]) || (op0_out[3] && op0_out[4]
+        && op0_out[5] && op0_out[6] && !op0_out[7]) || (op0_out[3] && !op0_out[4] &&
+        !op0_out[6] && op0_out[7]) || (!op0_out[0] && op0_out[1] && !op0_out[2] &&
+        !op0_out[3] && op0_out[6] && !op0_out[7]) || (op0_out[1] && op0_out[2] && op0_out[4]
+        && op0_out[5] && op0_out[6] && !op0_out[7]) || (!op0_out[0] && !op0_out[2] &&
+        !op0_out[3] && !op0_out[5] && op0_out[6] && op0_out[7]) || (!op0_out[1] && op0_out[2]
+        && !op0_out[3] && op0_out[4] && !op0_out[5] && !op0_out[6] && op0_out[7]) ||
+        (op0_out[0] && !op0_out[1] && op0_out[2] && !op0_out[3] && op0_out[5] && op0_out[6]
+        && op0_out[7]) || (op0_out[0] && !op0_out[1] && op0_out[2] && !op0_out[3] &&
+        !op0_out[4] && op0_out[6]) || (op0_out[1] && op0_out[2] && !op0_out[4] && !op0_out[6]
+        && op0_out[7]) || (!op0_out[0] && !op0_out[2] && !op0_out[3] && op0_out[5] &&
+        !op0_out[6] && op0_out[7]);
 
     wire pcp3 = 
-        (!op_out[0] && !op_out[1] && !op_out[2] && !op_out[3] && op_out[4] &&
-        !op_out[5] && !op_out[6] && op_out[7]) || (op_out[0] && !op_out[1] && op_out[2]
-        && !op_out[3] && !op_out[4] && !op_out[5] && !op_out[6] && op_out[7]) ||
-        (op_out[0] && !op_out[1] && op_out[2] && !op_out[3] && op_out[4] && op_out[5]
-        && op_out[6] && !op_out[7]) || (op_out[0] && op_out[1] && !op_out[2] &&
-        !op_out[3] && !op_out[4] && op_out[6] && !op_out[7]) || (op_out[0] && op_out[1]
-        && !op_out[2] && !op_out[3] && !op_out[5] && op_out[6] && !op_out[7]);
+        (!op0_out[0] && !op0_out[1] && !op0_out[2] && !op0_out[3] && op0_out[4] &&
+        !op0_out[5] && !op0_out[6] && op0_out[7]) || (op0_out[0] && !op0_out[1] && op0_out[2]
+        && !op0_out[3] && !op0_out[4] && !op0_out[5] && !op0_out[6] && op0_out[7]) ||
+        (op0_out[0] && !op0_out[1] && op0_out[2] && !op0_out[3] && op0_out[4] && op0_out[5]
+        && op0_out[6] && !op0_out[7]) || (op0_out[0] && op0_out[1] && !op0_out[2] &&
+        !op0_out[3] && !op0_out[4] && op0_out[6] && !op0_out[7]) || (op0_out[0] && op0_out[1]
+        && !op0_out[2] && !op0_out[3] && !op0_out[5] && op0_out[6] && !op0_out[7]);
+    wire pc_is_sjmp = (op0_out == 8'h80);
+    wire pc_is_ljmp = (op0_out == 8'h02) || (op0_out == 8'h12);
+    wire pc_is_ajmp = (op0_out[3:0] == 4'h1);
+
+
+    // need these to compute relative addresses.
+    wire [15:0] pc1_plus_2 = pc1 + 16'h2;
+    wire [15:0] pc1_plus_3 = pc1 + 16'h3;
+
+    // relative addresses for jumps.
+    wire [15:0] reladdr1, reladdr2, rpc1, rpc2;
+
+    // sign-extend
+    assign reladdr1[15:8] = op1_out[7] ? 8'hFF : 8'h00;
+    assign reladdr2[15:8] = op2_out[7] ? 8'hFF : 8'h00;
+    assign reladdr1[7:0]  = op1_out;
+    assign reladdr2[7:0]  = op2_out;
+    assign rpc1 = (pc1_plus_2) + reladdr1;
+    assign rpc2 = (pc1_plus_3) + reladdr2;
+
+    // SJMP.
+    wire [15:0] sjmp_pc = rpc1;
+
+    // absolute address jumps.
+    wire [15:0] ljmp_pc = {op1_out, op2_out};
+
+    // The following is derived from this SMT expression.
+    // ajmp_pc = Concat(Extract(15, 11, pc_p2), Extract(7, 5, op0), op1)
+    wire [15:0] ajmp_pc = {pc1_plus_2[15:11], op0_out[7:5], op1_out};
 
     wire property_invalid_pcp1 = 
         (!first_instr && pc_log_change && op_valid && pcp1) && 
@@ -179,6 +210,15 @@ input         t2_i,             // counter 2 input
     wire property_invalid_pcp3 = 
         (!first_instr && pc_log_change && op_valid && pcp3) && 
         ((pc1+16'd3) != pc2);
+    wire property_invalid_sjmp = 
+        (!first_instr && pc_log_change && op_valid && pc_is_sjmp) && 
+        (sjmp_pc != pc2);
+    wire property_invalid_ljmp = 
+        (!first_instr && pc_log_change && op_valid && pc_is_ljmp) && 
+        (ljmp_pc != pc2);
+    wire property_invalid_ajmp = 
+        (!first_instr && pc_log_change && op_valid && pc_is_ajmp) && 
+        (ajmp_pc != pc2);
 
     wire property_invalid = property_invalid_pcp1 || property_invalid_pcp2 || property_invalid_pcp3;
 
@@ -203,7 +243,9 @@ input         t2_i,             // counter 2 input
         .pc2                  ( pc2            ),
         .cxrom_data_out       ( cxrom_data_out ),
         .op_valid             ( op_valid       ),
-        .op_out               ( op_out         )
+        .op0_out              ( op0_out        ),
+        .op1_out              ( op1_out        ),
+        .op2_out              ( op2_out        )
     );
 
 

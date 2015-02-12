@@ -7,7 +7,9 @@ module oc8051_symbolic_cxrom(
     pc2,
     cxrom_data_out,
     op_valid,
-    op_out
+    op0_out,
+    op1_out,
+    op2_out
 );
     input clk, rst;
     input [31:0] word_in;
@@ -17,7 +19,9 @@ module oc8051_symbolic_cxrom(
 
     output [31:0] cxrom_data_out;
     output op_valid;
-    output [7:0] op_out;
+    output [7:0] op0_out;
+    output [7:0] op1_out;
+    output [7:0] op2_out;
 
     reg [7:0] regarray [15:0];
     reg [15:0] regvalid;
@@ -76,7 +80,9 @@ module oc8051_symbolic_cxrom(
     wire pc2_valid = regvalid[pc20] && regvalid[pc21] && regvalid[pc22] && regvalid[pc23];
 
     assign op_valid = pc1_valid && pc2_valid;
-    assign op_out = regvalid[pc10] ? regarray[pc10] : 8'b0;
+    assign op0_out = regvalid[pc10] ? regarray[pc10] : 8'b0;
+    assign op1_out = regvalid[pc11] ? regarray[pc11] : 8'b0;
+    assign op2_out = regvalid[pc12] ? regarray[pc12] : 8'b0;
 
     wire [7:0] regarray0  = regarray[0];
     wire [7:0] regarray1  = regarray[1];
