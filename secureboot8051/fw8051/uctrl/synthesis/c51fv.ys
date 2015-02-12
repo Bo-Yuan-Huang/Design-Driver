@@ -6,15 +6,15 @@ memory
 techmap
 flatten 
 opt
-dfflibmap -liberty abc.lib
+dfflibmap -liberty abcv2.lib
+opt
+abc -liberty abcv2.lib
+opt_share
 opt_clean
 opt_const
 opt_muxtree
 opt_reduce
 opt_rmdff
-opt_share
-abc -liberty abc.lib
-opt_share
-opt_clean
+opt
 write_verilog -bcd -noinst -noclk -nocmt netlist/oc8051_fv_top_yosys.v
 
