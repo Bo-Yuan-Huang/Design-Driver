@@ -57,7 +57,7 @@ module oc8051_fv_tb();
       #2001
       rst = 1'b0;
 
-`include "cex_jmp.v"
+`include "cex_jmp2.v"
 
       #1000
       $display("time ",$time, "; end of time\n");

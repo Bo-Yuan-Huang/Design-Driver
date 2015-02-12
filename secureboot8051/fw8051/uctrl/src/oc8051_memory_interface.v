@@ -949,7 +949,8 @@ begin
 end
 
 
-wire [15:0] pc_buf_m8 = pc_buf - 16'd8;
+// spramod added pc_for_ajmp
+wire [15:0] pc_for_ajmp = pc_buf - 2;
 always @(posedge clk or posedge rst)
 begin
   if (rst) begin
@@ -961,7 +962,8 @@ begin
         `OC8051_PIS_ALU: pc_buf        <= #1 alu;
         `OC8051_PIS_AL:  pc_buf[7:0]   <= #1 alu[7:0];
         `OC8051_PIS_AH:  pc_buf[15:8]  <= #1 alu[7:0];
-        `OC8051_PIS_I11: pc_buf  <= #1 {pc_buf_m8[15:11], op1_out[7:5], op2_out};
+        // spramod changed this code to attempt to make AJMP work according to spec.
+        `OC8051_PIS_I11: pc_buf        <= #1 {pc_for_ajmp[15:11], op1_out[7:5], op2_out};
         `OC8051_PIS_I16: pc_buf        <= #1 {op2_out, op3_out};
         `OC8051_PIS_SO1: pc_buf        <= #1 pcs_result;
         `OC8051_PIS_SO2: pc_buf        <= #1 pcs_result;
