@@ -161,17 +161,12 @@ input   scanb_en;
           buff[wr_addr] <= #1 wr_data;
       end
       
-      integer i;
       //
       // reading from ram
       always @(posedge clk or posedge rst)
       begin
-        if (rst) begin
+        if (rst)
           rd_data <= #1 8'h0;
-          for(i=0; i < 256; i=i+1) begin
-              buff[i] <= 0;
-          end
-        end
         else if ((wr_addr==rd_addr) & wr & rd_en)
           rd_data <= #1 wr_data;
         else if (rd_en)
