@@ -225,9 +225,8 @@ input         t2_i,             // counter 2 input
             property_invalid_pcp2 || 
             property_invalid_pcp3 ||
             property_invalid_sjmp ||
-            property_invalid_ljmp;
-            // let's ignore ajmp for now.
-            // || property_invalid_ajmp;
+            property_invalid_ljmp ||
+            property_invalid_ajmp;
 
     always @(posedge clk)
     begin
