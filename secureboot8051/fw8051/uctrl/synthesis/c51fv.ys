@@ -17,4 +17,5 @@ opt_reduce
 opt_rmdff
 opt
 write_verilog -bcd -noinst -noclk -nocmt netlist/oc8051_fv_top_yosys.v
+write_verilog -bcd -nocmt netlist/oc8051_fv_top_yosys_sim.v
 
