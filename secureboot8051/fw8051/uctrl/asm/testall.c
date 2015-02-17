@@ -1,10 +1,19 @@
+#include <reg51.h>
+
 // Program tests all instructions except:
 // ACALL, LCALL, MOVX(1-4), NOP, RET,and RETI
 
 
+void quit() {
+    P0 = P1 = P2 = P3 = 0xDE;
+    P0 = P1 = P2 = P3 = 0xAD;
+    P0 = P1 = P2 = P3 = 0x00;
+    while(1);
+}
+
 void main() {
 
-	#pragma asm
+	__asm;
 
 ////////////////   INST 2 ///////////////////////
 
@@ -601,10 +610,10 @@ void main() {
 		MOV  PSW,#0
 
 // DA A (29)
-		MOV  A,#80H
-		ADD  A,#99H
+		MOV  A,#0x80
+		ADD  A,#0x99
 		DA   A
-		SUBB A,#78H	;Will clr ACC if C set
+		SUBB A,#0x78	;Will clr ACC if C set
 		JZ   DONE_29
 		MOV  P1,#29
 		LJMP FAILED		
@@ -870,10 +879,10 @@ void main() {
 		MOV  PSW,#0
 
 // INC DPTR (41)
-		MOV  DPTR,#12FFH
+		MOV  DPTR,#0x12FF
 		INC  DPTR
 		MOV  A,DPH
-		SUBB A,#13H
+		SUBB A,#0x13
 		JZ   DPH_OK_41
 		MOV  P1,#41
 		LJMP FAILED
@@ -898,14 +907,18 @@ void main() {
 
 // JB bit,rel (42)
 		MOV  A,#16
-		JB   ACC.4,DONE_42
+        MOV  P2,#1
+		JB   ACC.4,DONE_42_1
 		MOV  P1,#42
 		LJMP FAILED
-	DONE_42:
-
-
+	DONE_42_1:
+        MOV  P2,#2
+        JB   ACC.5,TEST_42_FAIL
+        SJMP DONE_42_2
+    TEST_42_FAIL:
+        LJMP FAILED
+    DONE_42_2:
 /////////////////  INST 43 //////////////////////
-	
 	// Clear RAM
 		MOV  R0,#128
 	RAM_CLR_43:
@@ -1441,12 +1454,12 @@ void main() {
 		MOV  PSW,#0
 
 // MOVC DPTR,#data (69)
-		MOV  DPTR,#1234H
+		MOV  DPTR,#0x1234
 		MOV  A,DPH
-		SUBB A,#12H
+		SUBB A,#0x12
 		JNZ  ERROR_69
 		MOV  A,DPL
-		SUBB A,#34H
+		SUBB A,#0x34
 		JZ   DONE_69
 	ERROR_69:
 		MOV  P1,#69
@@ -1465,24 +1478,25 @@ void main() {
 		JNZ  RAM_CLR_70
 		MOV  PSW,#0
 
+/*
 // MOVC A,@A+DPTR (70)
 		MOV  DPTR,#DB_TBL
 		MOVC A,@A+DPTR
-		SUBB A,#66H
+		SUBB A,#0x66
 		JNZ  ERROR_70
 		MOV  A,#1
 		MOVC A,@A+DPTR
-		SUBB A,#77H
+		SUBB A,#0x77
 		JZ   DONE_70
 		JNZ  ERROR_70
 	DB_TBL:
-		DB   66H
-		DB   77H
+		DB   0x66
+		DB   0x77
 	ERROR_70:	
 		MOV  P1,#70
 		LJMP FAILED
 	DONE_70:
-
+*/
 
 /////////////////  INST 71 //////////////////////
 
@@ -1495,22 +1509,24 @@ void main() {
 		JNZ  RAM_CLR_71
 		MOV  PSW,#0
 
+/*
 // MOVC A,@A+PC (71)
 		MOV  A,#13
 		MOVC A,@A+PC
-		SUBB A,#66H
+		SUBB A,#0x66
 		JNZ  ERROR_71
 		MOV  A,#7
 		MOVC A,@A+PC
-		SUBB A,#77H
+		SUBB A,#0x77
 		JZ   DONE_71
 		JNZ  ERROR_71
-		DB   66H
-		DB   77H
+		DB   0x66
+		DB   0x77
 	ERROR_71:	
 		MOV  P1,#71
 		LJMP FAILED
 	DONE_71:
+*/
 
 
 ////////////////  INST 76 ///////////////////////
@@ -1527,10 +1543,10 @@ void main() {
 // MUL AB (76)
 		MOV  A,#80
 		MOV  B,#160
-		MUL  AB		; = 3200H
+		MUL  AB		; = 0x3200
 		JNZ  ERROR_76
 		MOV  A,B
-		SUBB A,#32H
+		SUBB A,#0x32
 		JZ   DONE_76
 	ERROR_76:	
 		MOV  P1,#76
@@ -1550,10 +1566,10 @@ void main() {
 		MOV  PSW,#0
 
 // ORL A,Rn (78)
-		MOV  A,#90H
-		MOV  R0,#9H
+		MOV  A,#0x90
+		MOV  R0,#0x9
 		ORL  A,R0
-		SUBB A,#99H
+		SUBB A,#0x99
 		JZ   DONE_78
 		MOV  P1,#78
 		LJMP FAILED
@@ -1571,10 +1587,10 @@ void main() {
 		MOV  PSW,#0
 
 // ORL A,direct (79)
-		MOV  A,#9H
-		MOV  127,#90H
+		MOV  A,#0x9
+		MOV  127,#0x90
 		ORL  A,127
-		SUBB A,#99H
+		SUBB A,#0x99
 		JZ   DONE_79
 		MOV  P1,#79
 		LJMP FAILED
@@ -1592,11 +1608,11 @@ void main() {
 		MOV  PSW,#0
 
 // ORL A,@Ri (80)
-		MOV  A,#90H
+		MOV  A,#0x90
 		MOV  R0,#127
-		MOV  127,#06H
+		MOV  127,#0x06
 		ORL  A,@R0
-		SUBB A,#96H
+		SUBB A,#0x96
 		JZ   DONE_80
 		MOV  P1,#80
 		LJMP FAILED
@@ -1614,9 +1630,9 @@ void main() {
 		MOV  PSW,#0
 
 // ORL A,#data (81)
-		MOV  A,#11H
-		ORL  A,#22H
-		SUBB A,#33H
+		MOV  A,#0x11
+		ORL  A,#0x22
+		SUBB A,#0x33
 		JZ   DONE_81
 		MOV  P1,#81
 		LJMP FAILED
@@ -1634,12 +1650,12 @@ void main() {
 		MOV  PSW,#0
 
 // ORL direct,A (82)
-		MOV  A,#90H
-		MOV  127,#9H
+		MOV  A,#0x90
+		MOV  127,#0x9
 		ORL  127,A
 		CLR  A
 		MOV  A,127
-		SUBB A,#99H
+		SUBB A,#0x99
 		JZ   DONE_82
 		MOV  P1,#82
 		LJMP FAILED
@@ -1657,10 +1673,10 @@ void main() {
 		MOV  PSW,#0
 
 // ORL direct,#data (83)
-		MOV  127,#90H
-		ORL  127,#9H
+		MOV  127,#0x90
+		ORL  127,#0x9
 		MOV  A,127
-		SUBB A,#99H
+		SUBB A,#0x99
 		JZ   DONE_83
 		MOV  P1,#83
 		LJMP FAILED
@@ -1727,13 +1743,13 @@ void main() {
 		MOV  PSW,#0
 
 // PUSH direct (87)
-		MOV  DPTR,#0123H
+		MOV  DPTR,#0x0123
 		MOV  127,#8
 		PUSH DPL
 		PUSH DPH
 		PUSH 127
 		MOV  A,8
-		SUBB A,#23H
+		SUBB A,#0x23
 		JNZ  ERROR_87
 		MOV  A,9
 		SUBB A,#1
@@ -1750,7 +1766,7 @@ void main() {
 		POP  SP
 		POP  100
 		MOV  A,100
-		SUBB A,#23H
+		SUBB A,#0x23
 		JZ   DONE_86
 		MOV  P1,#86
 		LJMP FAILED
@@ -1987,9 +2003,9 @@ void main() {
 		MOV  PSW,#0
 
 // SWAP A (101)
-		MOV  A,#23H
+		MOV  A,#0x23
 		SWAP A
-		SUBB A,#32H
+		SUBB A,#0x32
 		JZ   DONE_101
 		MOV  P1,#101
 		LJMP FAILED
@@ -2083,14 +2099,14 @@ void main() {
 		MOV  PSW,#0
 
 // XCHD A,@Ri (105)
-		MOV  A,#44H
+		MOV  A,#0x44
 		MOV  R0,#127
-		MOV  127,#55H
+		MOV  127,#0x55
 		XCHD A,@R0
-		SUBB A,#45H
+		SUBB A,#0x45
 		JNZ  ERROR_105
 		MOV  A,127
-		SUBB A,#54H
+		SUBB A,#0x54
 		JZ   DONE_105
 	ERROR_105:
 		MOV  P1,#105
@@ -2110,10 +2126,10 @@ void main() {
 		MOV  PSW,#0
 
 // XRL A,Rn (106)
-		MOV  A,#35H
-		MOV  R0,#53H
+		MOV  A,#0x35
+		MOV  R0,#0x53
 		XRL  A,R0
-		SUBB A,#66H
+		SUBB A,#0x66
 		JZ   DONE_106
 		MOV  P1,#106
 		LJMP FAILED
@@ -2131,10 +2147,10 @@ void main() {
 		MOV  PSW,#0
 
 // XRL A,direct (107)
-		MOV  A,#53H
-		MOV  127,#35H
+		MOV  A,#0x53
+		MOV  127,#0x35
 		XRL  A,127
-		SUBB A,#66H
+		SUBB A,#0x66
 		JZ   DONE_107
 		MOV  P1,#107
 		LJMP FAILED
@@ -2153,11 +2169,11 @@ void main() {
 		MOV  PSW,#0
 
 // XRL A,@Ri (108)
-		MOV  A,#35H
+		MOV  A,#0x35
 		MOV  R0,#127
-		MOV  127,#53H
+		MOV  127,#0x53
 		XRL  A,@R0
-		SUBB A,#66H
+		SUBB A,#0x66
 		JZ   DONE_108
 		MOV  P1,#108
 		LJMP FAILED
@@ -2176,9 +2192,9 @@ void main() {
 		MOV  PSW,#0
 
 // XRL A,#data (109)
-		MOV  A,#35H
-		XRL  A,#53H
-		SUBB A,#66H
+		MOV  A,#0x35
+		XRL  A,#0x53
+		SUBB A,#0x66
 		JZ   DONE_109
 		MOV  P1,#109
 		LJMP FAILED
@@ -2197,12 +2213,12 @@ void main() {
 		MOV  PSW,#0
 
 // XRL direct,A (110)
-		MOV  A,#35H
-		MOV  127,#53H
+		MOV  A,#0x35
+		MOV  127,#0x53
 		XRL  127,A
 		CLR  A
 		MOV  A,127
-		SUBB A,#66H
+		SUBB A,#0x66
 		JZ   DONE_110
 		MOV  P1,#110
 		LJMP FAILED
@@ -2221,10 +2237,10 @@ void main() {
 		MOV  PSW,#0
 
 // XRL direct,#data (111)
-		MOV  127,#35H
-		XRL  127,#53H
+		MOV  127,#0x35
+		XRL  127,#0x53
 		MOV  A,127
-		SUBB A,#66H
+		SUBB A,#0x66
 		JZ   DONE_111
 		MOV  P1,#111
 		LJMP FAILED
@@ -2238,9 +2254,9 @@ void main() {
 
 	FAILED:
 
-	#pragma endasm
-		
-	while(1);		  
+	__endasm;
+
+    quit();
 }
 
 
