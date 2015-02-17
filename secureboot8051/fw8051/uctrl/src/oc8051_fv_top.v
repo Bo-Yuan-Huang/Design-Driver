@@ -16,15 +16,19 @@ module oc8051_fv_top(
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
     p0_in,             // port 0 input
+    p0_out,
  `endif
  `ifdef OC8051_PORT1
     p1_in,             // port 1 input
+    p1_out,
  `endif
  `ifdef OC8051_PORT2
     p2_in,             // port 2 input
+    p2_out,
  `endif
  `ifdef OC8051_PORT3
     p3_in,             // port 3 input
+    p3_out,
  `endif
 `endif
 `ifdef OC8051_UART
@@ -40,7 +44,14 @@ module oc8051_fv_top(
     t2_i,             // counter 2 input
     t2ex_i,           //
 `endif
-    property_invalid
+    property_invalid_pcp1,
+    property_invalid_pcp2,
+    property_invalid_pcp3,
+    property_invalid_sjmp,
+    property_invalid_ljmp,
+    property_invalid_ajmp,
+    property_invalid_jc,
+    property_invalid_jnc
 );
     input clk;
     input rst;
@@ -49,15 +60,19 @@ module oc8051_fv_top(
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
     input  [7:0]  p0_in;             // port 0 input
+    output [7:0]  p0_out;
  `endif
  `ifdef OC8051_PORT1
     input  [7:0]  p1_in;             // port 1 input
+    output [7:0]  p1_out;
  `endif
  `ifdef OC8051_PORT2
     input  [7:0]  p2_in;             // port 2 input
+    output [7:0]  p2_out;
  `endif
  `ifdef OC8051_PORT3
     input  [7:0]  p3_in;             // port 3 input
+    output [7:0]  p3_out;
  `endif
 `endif
 
@@ -76,7 +91,14 @@ input         t2_i,             // counter 2 input
 `endif
 
 
-    output property_invalid;
+    output property_invalid_pcp1;
+    output property_invalid_pcp2;
+    output property_invalid_pcp3;
+    output property_invalid_sjmp;
+    output property_invalid_ljmp;
+    output property_invalid_ajmp;
+    output property_invalid_jc;
+    output property_invalid_jnc;
 
     wire int0 = 0;
     wire int1 = 1;
@@ -123,10 +145,12 @@ input         t2_i,             // counter 2 input
     reg  first_instr;
     wire pc_log_change;
     wire [15:0] pc2, pc1;
+    wire cy; // carry flag.
     wire op_valid;
     wire [7:0] op0_out;
     wire [7:0] op1_out;
     wire [7:0] op2_out;
+
 
     // pc_log_change => (pc_log_prev = pc_log + 1).
     wire pcp1 = 
@@ -171,9 +195,12 @@ input         t2_i,             // counter 2 input
         && op0_out[6] && !op0_out[7]) || (op0_out[0] && op0_out[1] && !op0_out[2] &&
         !op0_out[3] && !op0_out[4] && op0_out[6] && !op0_out[7]) || (op0_out[0] && op0_out[1]
         && !op0_out[2] && !op0_out[3] && !op0_out[5] && op0_out[6] && !op0_out[7]);
+
     wire pc_is_sjmp = (op0_out == 8'h80);
     wire pc_is_ljmp = (op0_out == 8'h02) || (op0_out == 8'h12);
     wire pc_is_ajmp = (op0_out[3:0] == 4'h1);
+    wire pc_is_jc   = (op0_out == 8'h40);
+    wire pc_is_jnc  = (op0_out == 8'h50);
 
 
     // need these to compute relative addresses.
@@ -201,32 +228,34 @@ input         t2_i,             // counter 2 input
     // ajmp_pc = Concat(Extract(15, 11, pc_p2), Extract(7, 5, op0), op1)
     wire [15:0] ajmp_pc = {pc1_plus_2[15:11], op0_out[7:5], op1_out};
 
-    wire property_invalid_pcp1 = 
+    // JC
+    wire [15:0] jc_pc = cy_reg ? rpc1 : pc1_plus_2;
+    wire [15:0] jnc_pc = cy_reg ? pc1_plus_2 : rpc1;
+
+    assign property_invalid_pcp1 = 
         (!first_instr && pc_log_change && op_valid && pcp1) && 
         ((pc1+16'd1) != pc2);
-    wire property_invalid_pcp2 = 
+    assign property_invalid_pcp2 = 
         (!first_instr && pc_log_change && op_valid && pcp2) && 
         ((pc1+16'd2) != pc2);
-    wire property_invalid_pcp3 = 
+    assign property_invalid_pcp3 = 
         (!first_instr && pc_log_change && op_valid && pcp3) && 
         ((pc1+16'd3) != pc2);
-    wire property_invalid_sjmp = 
+    assign property_invalid_sjmp = 
         (!first_instr && pc_log_change && op_valid && pc_is_sjmp) && 
         (sjmp_pc != pc2);
-    wire property_invalid_ljmp = 
+    assign property_invalid_ljmp = 
         (!first_instr && pc_log_change && op_valid && pc_is_ljmp) && 
         (ljmp_pc != pc2);
-    wire property_invalid_ajmp = 
+    assign property_invalid_ajmp = 
         (!first_instr && pc_log_change && op_valid && pc_is_ajmp) && 
         (ajmp_pc != pc2);
-
-    wire property_invalid = 
-            property_invalid_pcp1 || 
-            property_invalid_pcp2 || 
-            property_invalid_pcp3 ||
-            property_invalid_sjmp ||
-            property_invalid_ljmp ||
-            property_invalid_ajmp;
+    assign property_invalid_jc = 
+        (!first_instr && pc_log_change && op_valid && pc_is_jc) && 
+        (jc_pc != pc2);
+    assign property_invalid_jnc = 
+        (!first_instr && pc_log_change && op_valid && pc_is_jnc) && 
+        (jnc_pc != pc2);
 
     always @(posedge clk)
     begin
@@ -240,6 +269,21 @@ input         t2_i,             // counter 2 input
         end
     end
 
+    reg pc_log_change_r;
+    always @(posedge clk)
+    begin
+        pc_log_change_r <= pc_log_change;
+    end
+
+    reg cy_reg;
+    always @(posedge clk)
+    begin
+        if (pc_log_change_r) begin
+            cy_reg <= cy;
+        end
+    end
+
+    /*
     oc8051_symbolic_cxrom oc8051_symbolic_cxrom1 ( 
         .clk                  ( clk            ),
         .rst                  ( rst            ),
@@ -253,7 +297,20 @@ input         t2_i,             // counter 2 input
         .op1_out              ( op1_out        ),
         .op2_out              ( op2_out        )
     );
-
+    */
+    oc8051_debug_cxrom oc8051_debug_cxrom1 ( 
+        .clk                  ( clk            ),
+        .rst                  ( rst            ),
+        .word_in              ( word_in        ),
+        .cxrom_addr           ( cxrom_addr     ),
+        .pc1                  ( pc1            ),
+        .pc2                  ( pc2            ),
+        .cxrom_data_out       ( cxrom_data_out ),
+        .op_valid             ( op_valid       ),
+        .op0_out              ( op0_out        ),
+        .op1_out              ( op1_out        ),
+        .op2_out              ( op2_out        )
+    );
 
     oc8051_top oc8051_top_1(
          .wb_rst_i(rst), .wb_clk_i(clk),
@@ -272,6 +329,7 @@ input         t2_i,             // counter 2 input
          .pc_log_change         (pc_log_change),
          .pc_log                (pc2),
          .pc_log_prev           (pc1),
+         .cy                    (cy),
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
