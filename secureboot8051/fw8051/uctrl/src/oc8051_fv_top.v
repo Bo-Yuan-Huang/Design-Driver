@@ -283,7 +283,6 @@ input         t2_i,             // counter 2 input
         end
     end
 
-    /*
     oc8051_symbolic_cxrom oc8051_symbolic_cxrom1 ( 
         .clk                  ( clk            ),
         .rst                  ( rst            ),
@@ -297,7 +296,7 @@ input         t2_i,             // counter 2 input
         .op1_out              ( op1_out        ),
         .op2_out              ( op2_out        )
     );
-    */
+    /*
     oc8051_debug_cxrom oc8051_debug_cxrom1 ( 
         .clk                  ( clk            ),
         .rst                  ( rst            ),
@@ -311,6 +310,7 @@ input         t2_i,             // counter 2 input
         .op1_out              ( op1_out        ),
         .op2_out              ( op2_out        )
     );
+    */
 
     oc8051_top oc8051_top_1(
          .wb_rst_i(rst), .wb_clk_i(clk),
