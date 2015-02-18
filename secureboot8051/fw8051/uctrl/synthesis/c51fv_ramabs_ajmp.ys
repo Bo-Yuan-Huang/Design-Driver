@@ -3,7 +3,7 @@ abstract oc8051_fv_top->oc8051_top_1->oc8051_ram_top1
 abstract oc8051_fv_top->oc8051_top_1->oc8051_alu1->oc8051_mul1
 abstract oc8051_fv_top->oc8051_top_1->oc8051_alu1->oc8051_div1
 cd oc8051_fv_top
-delexcept property_invalid_jc
+delexcept property_invalid_ajmp
 cd ..
 hierarchy -check  -top oc8051_fv_top; 
 proc -global_arst rst 
@@ -22,7 +22,6 @@ opt_muxtree
 opt_reduce
 opt_rmdff
 opt
-write_verilog -bcd -noinst -noclk -nocmt netlist/oc8051_fv_top_yosys_ramabs_jc.v
-write_verilog -bcd -nocmt netlist/oc8051_fv_top_yosys_ramabs_jc_sim.v
-
+write_verilog -bcd -noinst -noclk -nocmt netlist/oc8051_fv_top_yosys_ramabs_ajmp.v
+write_verilog -bcd -nocmt netlist/oc8051_fv_top_yosys_ramabs_ajmp_sim.v
 
