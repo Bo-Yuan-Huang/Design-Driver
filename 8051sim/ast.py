@@ -47,3 +47,67 @@ from z3helper import *
 #               )
 #           )
 # 
+
+class Node(object):
+    """Base class for nodes in the AST."""
+    NODE_TYPE_MIN   = 0
+    BOOL            = 0
+    BITVEC          = 1
+    CHOICE          = 2
+    PLUS            = 3
+    NODE_TYPE_MAX   = 3
+
+    def __init__(self, nodetype):
+        assert nodetype >= Node.NODE_TYPE_MIN
+        assert nodetype <= Node.NODE_TYPE_MAX
+        self.nodetype = nodetype
+
+    def declare(self, prefix='', ctx=None):
+        err_msg = 'Declare not implemented in %s' % self.__class__.__name__
+        raise NotImplementedError, err_msg
+
+class BoolVar(Node):
+    """Boolean variables."""
+    def __init__(self, name):
+        Node.__init__(self, Node.BOOL)
+        self.name = name
+
+    def declare(self, prefix='', ctx=None):
+        prefstr = prefix + '__' if len(prefix) > 0 else ''
+        declname = prefstr + self.name
+        if ctx == None:
+            ctx = z3.main_ctx()
+        return z3.Bool(declname, ctx)
+
+    def __str__(self):
+        return 'bool(%s)' % self.name
+
+class BitVecVar(Node):
+    """Bitvector variables."""
+
+    def __init__(self, name, width):
+        Node.__init__(self, Node.BITVEC)
+        self.name = name
+        self.width = width
+
+    def declare(self, prefix='', ctx=None):
+        prefstr = prefix + '__' if len(prefix) > 0 else ''
+        declname = prefstr + self.name
+        if ctx == None:
+            ctx = z3.main_ctx()
+        return z3.BitVec(declname, self.width, ctx)
+
+    def __str__(self):
+        return 'bitvec(%s, %d)' % (self.name, self.width)
+
+def test_AST():
+    v1 = BoolVar('b1')
+    v2 = BitVecVar('b2', 16)
+    assert str(v1) == 'bool(b1)'
+    assert str(v2) == 'bitvec(b2, 16)'
+    print 'Var assertions passed.'
+
+
+if __name__ == '__main__':
+    test_AST()
+
