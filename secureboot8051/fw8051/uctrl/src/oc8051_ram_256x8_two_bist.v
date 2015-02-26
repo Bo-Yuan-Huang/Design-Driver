@@ -155,6 +155,7 @@ input   scanb_en;
       
       //
       // writing to ram
+      integer i;
       always @(posedge clk)
       begin
        if (wr)
@@ -165,8 +166,15 @@ input   scanb_en;
       // reading from ram
       always @(posedge clk or posedge rst)
       begin
-        if (rst)
+        if (rst) begin
           rd_data <= #1 8'h0;
+`ifdef OC8051_SIMULATION
+          // reset RAM for simulation.
+          for(i=0;i < 256;i=i+1) begin
+              buff[i] = 0;
+          end
+`endif
+        end
         else if ((wr_addr==rd_addr) & wr & rd_en)
           rd_data <= #1 wr_data;
         else if (rd_en)

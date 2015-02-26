@@ -189,7 +189,8 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 ea_in,
                 pc_log_change,
                 pc_log,
-                pc_log_prev
+                pc_log_prev,
+                cy
                 );
 
 
@@ -207,6 +208,7 @@ input         wb_rst_i,         // reset input
 output        pc_log_change;
 output [15:0] pc_log;
 output [15:0] pc_log_prev;
+output        cy;
 
 input [7:0]   wbd_dat_i;        // ram data input
 input [31:0]  wbi_dat_i;        // rom data input

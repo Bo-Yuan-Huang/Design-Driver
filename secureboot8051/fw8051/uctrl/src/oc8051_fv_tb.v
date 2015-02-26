@@ -14,7 +14,12 @@ module oc8051_fv_tb();
 // parameter FREQ  = 20000; // frequency in kHz
 
     reg clk, rst;
-    wire property_invalid;
+    wire property_invalid_pcp1;
+    wire property_invalid_pcp2;
+    wire property_invalid_pcp3;
+    wire property_invalid_sjmp;
+    wire property_invalid_ljmp;
+    wire property_invalid_ajmp;
     reg [31:0] word_in = 32'hffffffff;
 
 
@@ -57,7 +62,7 @@ module oc8051_fv_tb();
       #2001
       rst = 1'b0;
 
-`include "cex_jmp4.v"
+`include "cex_ajmp.v"
 
       #1000
       $display("time ",$time, "; end of time\n");
@@ -101,7 +106,12 @@ module oc8051_fv_tb();
         .t2_i(t2_i),             // counter 2 input
         .t2ex_i(t2ex_i),           //
 `endif
-        .property_invalid(property_invalid)
+        .property_invalid_pcp1  (property_invalid_pcp1  ),
+        .property_invalid_pcp2  (property_invalid_pcp2  ),
+        .property_invalid_pcp3  (property_invalid_pcp3  ),
+        .property_invalid_sjmp  (property_invalid_sjmp  ),
+        .property_invalid_ljmp  (property_invalid_ljmp  ),
+        .property_invalid_ajmp  (property_invalid_ajmp  )
     );
 
 endmodule

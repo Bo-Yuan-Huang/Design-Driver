@@ -1,4 +1,4 @@
-module oc8051_symbolic_cxrom(
+module oc8051_debug_cxrom(
     clk,
     rst,
     word_in,
@@ -7,7 +7,9 @@ module oc8051_symbolic_cxrom(
     pc2,
     cxrom_data_out,
     op_valid,
-    op_out
+    op0_out,
+    op1_out,
+    op2_out
 );
     input clk, rst;
     input [15:0] cxrom_addr;
@@ -17,28 +19,35 @@ module oc8051_symbolic_cxrom(
 
     output [31:0] cxrom_data_out;
     output op_valid;
-    output [7:0] op_out;
+    output [7:0] op0_out;
+    output [7:0] op1_out;
+    output [7:0] op2_out;
 
-    reg [7:0] rombuf[1:0];
-    always @(posedge clk) begin
-        if(rst) begin
-            rombuf[0] = 8'h15;
-            rombuf[1] = 8'hA8;
-        end
-    end
+    wire [15:0] addr;
+    wire [31:0] cxrom_data_out;
 
-    wire [15:0] addr0 = cxrom_addr;
-    wire [15:0] addr1 = cxrom_addr+1;
-    wire [15:0] addr2 = cxrom_addr+2;
-    wire [15:0] addr3 = cxrom_addr+3;
-    wire [7:0] data_o0 = (addr0 < 2) ? rombuf[addr0[1:0]] : 8'h00;
-    wire [7:0] data_o1 = (addr1 < 2) ? rombuf[addr1[1:0]] : 8'h00;
-    wire [7:0] data_o2 = (addr2 < 2) ? rombuf[addr2[1:0]] : 8'h00;
-    wire [7:0] data_o3 = (addr3 < 2) ? rombuf[addr3[1:0]] : 8'h00;
+    `include "../bench/rom/testjc.v"
 
-    assign cxrom_data_out = {data_o3, data_o2, data_o1, data_o0};
+    assign addr = cxrom_addr;
+    assign cxrom_data_out = data_out;
 
-    assign op_valid = 1'b1;
-    assign op_out = pc1 < 2 ? rombuf[pc1[1:0]] : 8'h00;
+    localparam ROMSIZE = 182;
+
+    wire [15:0] pc10 = pc1;
+    wire [15:0] pc11 = pc1 + 1;
+    wire [15:0] pc12 = pc1 + 2;
+    wire [15:0] pc13 = pc1 + 3;
+    wire pc1_valid = (pc10 < ROMSIZE) && (pc11 < ROMSIZE) && (pc12 < ROMSIZE) && (pc13 < ROMSIZE);
+
+    wire [15:0] pc20 = pc2;
+    wire [15:0] pc21 = pc2 + 1;
+    wire [15:0] pc22 = pc2 + 2;
+    wire [15:0] pc23 = pc2 + 3;
+    wire pc2_valid = (pc20 < ROMSIZE) && (pc21 < ROMSIZE) && (pc22 < ROMSIZE) && (pc23 < ROMSIZE);
+
+    assign op_valid = pc1_valid && pc2_valid;
+    assign op0_out = pc10 < ROMSIZE ? buff[pc10] : 8'b0;
+    assign op1_out = pc11 < ROMSIZE ? buff[pc11] : 8'b0;
+    assign op2_out = pc12 < ROMSIZE ? buff[pc12] : 8'b0;
 
 endmodule
