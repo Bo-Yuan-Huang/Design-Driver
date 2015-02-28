@@ -55,8 +55,9 @@ class Node(object):
     BITVECVAR       = 1
     BITVECVAL       = 2
     CHOICE          = 3
-    Z3OP            = 4
-    NODE_TYPE_MAX   = 4
+    EXTRACT         = 4
+    Z3OP            = 5
+    NODE_TYPE_MAX   = 5
 
     def __init__(self, nodetype):
         assert nodetype >= Node.NODE_TYPE_MIN
@@ -144,6 +145,24 @@ class Choice(Node):
                 return self.choices[i].toZ3()
         return createIf(0)
 
+    def __str__(self):
+        return 'Choice(%s, [%s])' % (self.name, ', '.join(str(x) for x in self.choices))
+
+class Extract(Node):
+    """Extract bits from a bitvector."""
+
+    def __init__(self, msb, lsb, bv):
+        Node.__init__(self, Node.EXTRACT)
+        self.bv = bv
+        self.msb = msb
+        self.lsb = lsb
+
+    def _toZ3(self, prefix):
+        return Extract(self.msb, self.lsb, self.bv.toZ3(prefix))
+
+    def __str__(self):
+        return 'Extract(%d, %d, %s)' % (self.msb, self.lsb, str(self.bv))
+
 class Z3Op(Node):
     """Binary operators from Z3."""
     def __init__(self, opname, op, operands):
@@ -158,6 +177,18 @@ class Z3Op(Node):
     def __str__(self):
         return '%s(%s)' % (self.opname, ', '.join(str(x) for x in self.operands))
 
+def And(*operands):
+    return Z3Op('and', z3.And, operands)
+
+def Or(*operands):
+    return Z3Op('or', z3.Or, operands)
+
+def Not(op):
+    return Z3Op('not', z3.Not, [op])
+
+def Xor(op):
+    return Z3Op('xor', z3.Xor, operands)
+
 def Add(*operands):
     return Z3Op('add', BVAdd, operands)
 
@@ -170,35 +201,6 @@ def Neg(operand):
 def Distinct(op1, op2):
     return Z3Op('distinct', z3.Distinct, [op1, op2])
 
-def test_AST():
-    v1 = BoolVar('b1')
-    v2 = BitVecVar('b2', 16)
-    v3 = BitVecVal(2, 16)
-    assert str(v1) == 'bool(b1)'
-    assert str(v2) == 'bitvec(b2, 16)'
-    assert str(v3) == 'bitvec(2, 16)'
-    v4 = Add(v2, v3)
-    v5 = Sub(v2, v3)
-    print v1.toZ3(), v2.toZ3(), v3.toZ3(), v4.toZ3(), v5.toZ3()
-
-    S = z3.Solver()
-    S.add(v4.toZ3() == v5.toZ3())
-    assert S.check() == z3.unsat
-
-    S = z3.Solver()
-    v6 = Neg(v2)
-    S.add(v2.toZ3() == v6.toZ3())
-    assert S.check() == z3.sat
-    m = S.model()
-    print m
-
-    c1 = Choice('choice', None, [v4, v5, v6])
-    print c1.toZ3()
-
-
-    print 'Var assertions passed.'
-
-
-if __name__ == '__main__':
-    test_AST()
+def Equal(op1, op2):
+    return Z3Op('eq', Z3Equal, [op1, op2])
 
