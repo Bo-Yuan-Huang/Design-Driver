@@ -20,6 +20,9 @@ def BVSub(*xs):
 def BVNeg(x):
     return _mkBVUnOp(Z3_mk_bvneg, x)
 
+def Z3Equal(a, b):
+    return BoolRef(Z3_mk_eq(a.ctx_ref(), a.as_ast(), b.as_ast()), a.ctx)
+
 def BVRedAnd(a):
     return BitVecRef(Z3_mk_bvredand(a.ctx_ref(), a.as_ast()), a.ctx)
 
