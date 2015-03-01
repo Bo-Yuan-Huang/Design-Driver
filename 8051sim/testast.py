@@ -1,4 +1,5 @@
 from ast import *
+import z3
 
 def test_AST():
     v1 = BoolVar('b1')
@@ -35,7 +36,8 @@ def test_AST():
     eqy = Equal(xp1, y)
     eqab = Equal(a, b)
     ands = And(a, eqab, eqy)
-    S = Solver()
+
+    S = z3.Solver()
     S.add(ands.toZ3())
     print S.check()
     print S.model()

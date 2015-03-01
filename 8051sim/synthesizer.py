@@ -1,0 +1,124 @@
+import itertools
+import ast
+import z3
+
+class Synthesizer(object):
+    """The Synthesizer class encapsulates the synthesis algorithm."""
+
+    def __init__(self):
+        """Constructor."""
+        self.inputs = {}
+        self.outputs = {}
+        self.constraints = []
+        self.VERBOSITY = 3
+
+    def addInput(self, inp):
+        """Create an input variable. An input variable is a piece of state
+        which is used to compute the values of the state variable."""
+        self.inputs[inp.name] = inp
+        self.inputs[inp.name].is_input = True
+
+    def inp(self, name):
+        """Return the input with this name."""
+        if name not in self.inputs:
+            raise KeyError, "Input '%s' not declared." % name
+        return self.inputs[name]
+
+    def addOutput(self, name, out):
+        """Add an output variable to the synthesizer. An output variable is a 
+        variable whose behavior has to be synthesized."""
+        self.outputs[name] = out
+
+    def addConstraint(self, cnst):
+        """Add a constraint to the solver.  This should only be called on one
+        of the input variables."""
+        self.constraints.append(cnst)
+
+    def synthesize(self, name, cnsts, sim):
+        """Main synthesizer."""
+        if name not in self.outputs:
+            raise KeyError, "No output '%s' is known." % name
+
+        if self.VERBOSITY >= 1:
+            print 'synthesizing output: %s' % name
+
+        # create the expressions for the output variable.
+        out = self.outputs[name]
+        yexp1 = out.toZ3('s1')
+        yexp2 = out.toZ3('s2')
+
+        # input_vars contains the Z3 objects corresponding
+        # to each input variable.
+        input_vars = {}
+        for inp_i in self.inputs:
+            var_i = self.inputs[inp_i].toZ3()
+            input_vars[inp_i] = var_i
+
+        if self.VERBOSITY >= 3:
+            print 'out :', out 
+            print 'exp1:', yexp1
+            print 'exp2:', yexp2
+            print 'input_vars:', input_vars
+
+        # let's create the initial instance.
+        S = z3.Solver()
+        y = z3.Bool('y')
+        S.add(y == (z3.Distinct(yexp1, yexp2)))
+
+        # add any user specified constraints.
+        for i, c in enumerate(itertools.chain(self.constraints, cnsts)):
+            ci = c.toZ3()
+            S.add(ci)
+            if self.VERBOSITY >= 3:
+                print 'cnst%d: %s' % (i, str(ci))
+
+        # now for the actual solution loop.
+        iterations = 0
+        while S.check(y) == z3.sat:
+            iterations += 1
+            m = S.model()
+            if self.VERBOSITY >= 3:
+                print 'model:', m
+            # TODO: might need more work when we model arrays.
+            sim_inputs = {}
+            for inp in self.inputs:
+                if inp in m:
+                    sim_inputs[inp] = m[inp].as_long()
+                else:
+                    sim_inputs[inp] = 0
+
+            sim_outputs = {}
+            sim(sim_inputs, sim_outputs)
+            if self.VERBOSITY >= 3:
+                print 'sim_inputs:', sim_inputs
+                print 'sim_outputs:', sim_outputs
+
+            self._addClauses(S, name, yexp1, input_vars, sim_inputs, sim_outputs)
+            self._addClauses(S, name, yexp2, input_vars, sim_inputs, sim_outputs)
+
+        # and finally we are done.
+        if self.VERBOSITY >= 1:
+            print 'finished after %d iterations' % iterations
+
+        # now we need to extract solution
+        result = S.check(z3.Not(y))
+        assert result == z3.sat
+        m = S.model()
+        return self._extractSolution(m)
+
+    def _addClauses(self, S, out, yexp, ivars, sim_inputs, sim_outputs):
+        """Adds clauses to the instance which encode the fact that the
+           output for this particular input must as specified."""
+        subs = []
+        for inp in self.inputs:
+            assert inp in ivars
+            assert inp in sim_inputs
+            subs.append((ivars[inp], z3.BitVecVal(sim_inputs[inp], ivars[inp].size())))
+        yexp_ = z3.substitute(yexp, subs)
+        cnst = yexp_ == z3.BitVecVal(sim_outputs[out], yexp_.size())
+        if self.VERBOSITY >= 3:
+            print 'new cnst:', cnst
+        S.add(cnst)
+
+    def _extractSolution(self, m):
+        pass

@@ -1,5 +1,5 @@
 import itertools
-from z3 import *
+import z3
 from z3helper import *
 
 
@@ -66,9 +66,11 @@ class Node(object):
         self.z3obj = None
         self.z3prefix = ''
         self.name = 'UnnamedObject'
+        self.is_input = False
 
     def _getName(self, prefix):
-        prefstr = prefix + '__' if len(prefix) > 0 else ''
+        need_prefix = len(prefix) > 0 and (not self.is_input)
+        prefstr = prefix + '__' if need_prefix else ''
         return prefstr + self.name
 
     def _toZ3(self, prefix):
@@ -133,16 +135,16 @@ class Choice(Node):
 
         self.choiceBools = []
         for i in xrange(len(self.choices)-1):
-            boolName = '%s__choice__%d' % (self.name, i)
-            self.choiceBools.append(Bool(boolName))
+            boolName = '%s__%s__choice__%d' % (prefix, self.name, i)
+            self.choiceBools.append(z3.Bool(boolName))
 
         def createIf(i):
             if i < len(self.choiceBools):
                 cvi = self.choiceBools[i]
-                return If(cvi, self.choices[i].toZ3(prefix), createIf(i+1))
+                return z3.If(cvi, self.choices[i].toZ3(prefix), createIf(i+1))
             else:
                 assert i == (len(self.choices) - 1)
-                return self.choices[i].toZ3()
+                return self.choices[i].toZ3(prefix)
         return createIf(0)
 
     def __str__(self):
@@ -158,7 +160,7 @@ class Extract(Node):
         self.lsb = lsb
 
     def _toZ3(self, prefix):
-        return Extract(self.msb, self.lsb, self.bv.toZ3(prefix))
+        return z3.Extract(self.msb, self.lsb, self.bv.toZ3(prefix))
 
     def __str__(self):
         return 'Extract(%d, %d, %s)' % (self.msb, self.lsb, str(self.bv))
