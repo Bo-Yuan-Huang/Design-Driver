@@ -45,7 +45,7 @@ def synthesize():
 
     for opcode in [0]:
         cnst = Equal(op0, BitVecVal(0, 8))
-        syn.synthesize('PC', [cnst], eval8051)
+        print syn.synthesize('PC', [cnst], eval8051)
 
 if __name__ == '__main__':
     synthesize()

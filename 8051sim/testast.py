@@ -35,12 +35,18 @@ def test_AST():
     xp1 = Add(x, one)
     eqy = Equal(xp1, y)
     eqab = Equal(a, b)
-    ands = And(a, eqab, eqy)
+    ands = And(Not(a), eqab, eqy)
 
     S = z3.Solver()
     S.add(ands.toZ3())
     print S.check()
-    print S.model()
+    m = S.model()
+    print m
+    print m[a.toZ3()], dir(m[a.toZ3()])
+    if z3.is_true(m[a.toZ3()]):
+        print 'true'
+    else:
+        print 'false'
 
     print 'Var assertions passed.'
 

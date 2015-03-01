@@ -4,6 +4,9 @@ import z3
 
 class Synthesizer(object):
     """The Synthesizer class encapsulates the synthesis algorithm."""
+    # these two constants are used as prefixes to encode the synthesis variables.
+    P1 = 's1'
+    P2 = 's2'
 
     def __init__(self):
         """Constructor."""
@@ -40,12 +43,12 @@ class Synthesizer(object):
             raise KeyError, "No output '%s' is known." % name
 
         if self.VERBOSITY >= 1:
-            print 'synthesizing output: %s' % name
+            print 'Synthesizing output: %s.' % name
 
         # create the expressions for the output variable.
         out = self.outputs[name]
-        yexp1 = out.toZ3('s1')
-        yexp2 = out.toZ3('s2')
+        yexp1 = out.toZ3(Synthesizer.P1)
+        yexp2 = out.toZ3(Synthesizer.P2)
 
         # input_vars contains the Z3 objects corresponding
         # to each input variable.
@@ -81,11 +84,12 @@ class Synthesizer(object):
                 print 'model:', m
             # TODO: might need more work when we model arrays.
             sim_inputs = {}
-            for inp in self.inputs:
+            for inp_name in self.inputs:
+                inp = self.inputs[inp_name]
                 if inp in m:
-                    sim_inputs[inp] = m[inp].as_long()
+                    sim_inputs[inp_name] = m[inp].as_long()
                 else:
-                    sim_inputs[inp] = 0
+                    sim_inputs[inp_name] = 0
 
             sim_outputs = {}
             sim(sim_inputs, sim_outputs)
@@ -98,13 +102,13 @@ class Synthesizer(object):
 
         # and finally we are done.
         if self.VERBOSITY >= 1:
-            print 'finished after %d iterations' % iterations
+            print 'Finished after %d iteration(s).' % iterations
 
         # now we need to extract solution
         result = S.check(z3.Not(y))
         assert result == z3.sat
         m = S.model()
-        return self._extractSolution(m)
+        return out.simplify(m)
 
     def _addClauses(self, S, out, yexp, ivars, sim_inputs, sim_outputs):
         """Adds clauses to the instance which encode the fact that the
@@ -120,5 +124,3 @@ class Synthesizer(object):
             print 'new cnst:', cnst
         S.add(cnst)
 
-    def _extractSolution(self, m):
-        pass
