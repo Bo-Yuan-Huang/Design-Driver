@@ -2,7 +2,6 @@ import itertools
 import z3
 from z3helper import *
 
-
 # DSL feature set
 #
 # - thin layer over SMT
@@ -62,16 +61,25 @@ class Node(object):
     (d) simplify, this looks at a model from Z3 and returns a simplified
     AST in which the choice variables have been assigned and eliminated
     according to this model. This need not be implemented for "leaf" nodes, 
-    examples of leaf nodes being boolean and bitvector variables."""
+    examples of leaf nodes being boolean and bitvector variables.
+    
+    Additional the following elements are also part of the "contract"
+    for AST Nodes. 
+        
+    (a) obj.width must be defined for BitVector or BitVector like result
+    types. (E.g., Z3Op on bitvectors, Extract and so on.)"""
 
     NODE_TYPE_MIN   = 0
     BOOLVAR         = 0
     BITVECVAR       = 1
     BITVECVAL       = 2
     CHOICE          = 3
-    EXTRACT         = 4
-    Z3OP            = 5
-    NODE_TYPE_MAX   = 5
+    CHOOSECONSEC    = 4
+    EXTRACT         = 5
+    Z3OP            = 6
+    NODE_TYPE_MAX   = 6
+
+    name_index = 0
 
     def __init__(self, nodetype):
         """Constructor."""
@@ -158,8 +166,10 @@ class Choice(Node):
 
         self.choiceBools = []
         for i in xrange(len(self.choices)-1):
-            boolName = '%s__%s__choice__%d' % (prefix, self.name, i)
+            # FIXME: names will repeat
+            boolName = '%s__%s__choice__%d_u%d' % (prefix, self.name, i, Node.name_index)
             self.choiceBools.append(z3.Bool(boolName))
+            Node.name_index += 1
 
         def createIf(i):
             if i < len(self.choiceBools):
@@ -183,14 +193,70 @@ class Choice(Node):
     def __str__(self):
         return 'Choice(%s, [%s])' % (self.name, ', '.join(str(x) for x in self.choices))
 
+class ChooseConsecBits(Node):
+    """Choose k consecutive bits from a bitvector. """
+    def __init__(self, numBits, bitvec):
+        if bitvec.width <= numBits:
+            raise ValueError, 'Bitvector too small!' 
+
+        Node.__init__(self, Node.CHOOSECONSEC)
+        self.bitvec = bitvec
+        self.width = numBits
+
+    def _toZ3(self, prefix):
+        self.choiceBools = []
+        self.rangeStarts = []
+
+        start = self.bitvec.width - 1
+        stop = self.width - 1
+
+        for bi in xrange(start, stop, -1):
+            start_i = bi
+            stop_i = bi - self.width + 1
+            assert start_i <= self.bitvec.width
+            assert stop_i >= 0
+
+            boolName = '%s__chooseconsec__%d_u%d' % (prefix, start_i, Node.name_index)
+            # FIXME: names will repeat
+            self.choiceBools.append(z3.Bool(boolName))
+            self.rangeStarts.append(start_i)
+            Node.name_index += 1
+
+        def createIf(i):
+            if i < len(self.choiceBools):
+                cvi = self.choiceBools[i]
+                starti = self.rangeStarts[i]
+                stopi = starti - self.width + 1
+                assert starti >= stopi
+                expri = z3.Extract(starti, stopi, self.bitvec.toZ3(prefix))
+                return z3.If(cvi, expri, createIf(i+1))
+            else:
+                starti = self.width - 1
+                stopi = 0
+                assert starti >= stopi
+                expri = z3.Extract(starti, stopi, self.bitvec.toZ3(prefix))
+                return expri
+        return createIf(0)
+
+    def simplify(self, m):
+        # TODO
+        pass
+
+    def __str__(self):
+        return 'choose-consec-bits(%d, %s)' % (self.width, str(self.bitvec))
+
 class Extract(Node):
     """Extract bits from a bitvector."""
 
     def __init__(self, msb, lsb, bv):
+        if msb < lsb:
+            raise ValueError, 'MSB must be greater than or equal to LSB.'
+
         Node.__init__(self, Node.EXTRACT)
         self.bv = bv
         self.msb = msb
         self.lsb = lsb
+        self.width = self.msb - self.lsb + 1
 
     def _toZ3(self, prefix):
         return z3.Extract(self.msb, self.lsb, self.bv.toZ3(prefix))
@@ -209,6 +275,22 @@ class Z3Op(Node):
         self.op = op
         self.opname = opname
         self.operands = operands
+
+        width = -1
+        for op in self.operands:
+            try:
+                wi = op.width
+                if width == -1:
+                    width = wi
+                else:
+                    if width != wi:
+                        msg ='Operands have differing widths: %d and %d.' % (width, wi) 
+                        raise ValueError, msg
+            except AttributeError:
+                break
+
+        if width != -1:
+            self.width = width
 
     def _toZ3(self, prefix):
         return self.op(*[x.toZ3(prefix) for x in self.operands])
