@@ -35,10 +35,10 @@ def synthesize():
     syn = Synthesizer()
     create8051Inputs(syn)
 
-    PCp1 = Add(syn.inp('PC'), BitVecVal(1, 16))
-    PCp2 = Add(syn.inp('PC'), BitVecVal(2, 16))
+    PC_plus1 = Add(syn.inp('PC'), BitVecVal(1, 16))
+    PC_plus2 = Add(syn.inp('PC'), BitVecVal(2, 16))
     op0 = Extract(7, 0, syn.inp('opcode'))
-    nPC = Choice('nPC', op0, [PCp1, PCp2])
+    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2])
     syn.addOutput('PC', nPC)
     
     cnst = Equal(op0, BitVecVal(0, 8))
