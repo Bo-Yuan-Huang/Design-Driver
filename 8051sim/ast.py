@@ -85,8 +85,6 @@ class Node(object):
     Z3OP            = 10
     NODE_TYPE_MAX   = 10
 
-    name_index = 0
-
     def __init__(self, nodetype):
         """Constructor."""
         assert nodetype >= Node.NODE_TYPE_MIN
@@ -259,9 +257,8 @@ class Choice(Node):
         self.choiceBools = []
         for i in xrange(len(self.choices)-1):
             # FIXME: names will repeat
-            boolName = '%s__%s__choice__%d_u%d' % (prefix, self.name, i, Node.name_index)
+            boolName = '$choice_%s_%s_%d_' % (prefix, self.name, i)
             self.choiceBools.append(z3.Bool(boolName))
-            Node.name_index += 1
 
         def createIf(i):
             if i < len(self.choiceBools):
@@ -332,11 +329,10 @@ class ChooseConsecBits(Node):
             assert start_i <= self.bitvec.width
             assert stop_i >= 0
 
-            boolName = '%s__chooseconsec__%s__%d_u%d' % (prefix, self.name, start_i, Node.name_index)
+            boolName = '$chooseconsec_%s_%s_%d_' % (prefix, self.name, start_i)
             # FIXME: names will repeat
             self.choiceBools.append(z3.Bool(boolName))
             self.rangeStarts.append(start_i)
-            Node.name_index += 1
 
         def createIf(i):
             if i < len(self.choiceBools):
