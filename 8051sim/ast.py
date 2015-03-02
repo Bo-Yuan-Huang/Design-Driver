@@ -167,7 +167,7 @@ def _determineOpWidth(ops):
 
 def _noWidth(ops):
     """Helper function that is used when the result of an operation has
-    "no" width (i.e., is a boolean)."""
+    "no" width (i.e., it is a boolean)."""
     return -1
 
 class BoolVar(Node):
@@ -309,11 +309,12 @@ class ReadMem(Node):
 
 class ChooseConsecBits(Node):
     """Choose k consecutive bits from a bitvector. """
-    def __init__(self, numBits, bitvec):
+    def __init__(self, name, numBits, bitvec):
         if bitvec.width <= numBits:
             raise ValueError, 'Bitvector too small!' 
 
         Node.__init__(self, Node.CHOOSECONSEC)
+        self.name = name
         self.bitvec = bitvec
         self.width = numBits
 
@@ -330,7 +331,7 @@ class ChooseConsecBits(Node):
             assert start_i <= self.bitvec.width
             assert stop_i >= 0
 
-            boolName = '%s__chooseconsec__%d_u%d' % (prefix, start_i, Node.name_index)
+            boolName = '%s__chooseconsec__%s__%d_u%d' % (prefix, self.name, start_i, Node.name_index)
             # FIXME: names will repeat
             self.choiceBools.append(z3.Bool(boolName))
             self.rangeStarts.append(start_i)

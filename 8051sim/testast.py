@@ -26,7 +26,7 @@ def test_AST():
     c1 = Choice('choice', None, [v4, v5, v6])
     print c1.toZ3()
 
-    c2 = ChooseConsecBits(4, v4)
+    c2 = ChooseConsecBits('v4', 4, v4)
     print c2, c2.toZ3()
 
     c3 = Concat(c1, c2)

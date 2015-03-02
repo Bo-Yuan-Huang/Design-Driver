@@ -58,8 +58,8 @@ def synthesize():
     PC_plus2 = Add(PC, BitVecVal(2, 16))
     PC_ajmp  = Concat(
                     Extract(15, 11, Choice('ajmp', op0, [PC, PC_plus1, PC_plus2])),
-                    ChooseConsecBits(3, opcode), 
-                    ChooseConsecBits(8, opcode))
+                    ChooseConsecBits('ajmp_3bits', 3, opcode), 
+                    ChooseConsecBits('ajmp_8bits', 8, opcode))
     nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_ajmp])
     syn.addOutput('PC', nPC)
     
