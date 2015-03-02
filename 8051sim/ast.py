@@ -93,6 +93,18 @@ class Node(object):
         self.name = 'UnnamedObject'
         self.is_input = False
 
+    def isVar(self):
+        """This is a predicate that returns true if the node is
+        of type variable (BoolVar, BitVecVar etc.)"""
+        return self.nodetype == Node.BOOLVAR or self.nodetype == Node.BITVECVAR
+    def isBitVecVar(self):
+        "Predicate that returns true if the node is a BitVecVar."
+        return self.nodetype == Node.BITVECVAR
+
+    def isBoolVar(self):
+        "Predicate that returns true if the node is a BoolVar."
+        return self.nodetype == Node.BOOLVAR
+
     def _getName(self, prefix):
         """A private function called that prefixes names as required."""
         need_prefix = len(prefix) > 0 and (not self.is_input)
@@ -235,7 +247,7 @@ class Choice(Node):
         return ci_
         
     def __str__(self):
-        return '(choice %s [%s])' % (self.name, ', '.join(str(x) for x in self.choices))
+        return '(choice %s [%s])' % (self.name, ' '.join(str(x) for x in self.choices))
 
 class ChooseConsecBits(Node):
     """Choose k consecutive bits from a bitvector. """
@@ -343,7 +355,7 @@ class Concat(Node):
         return Concat(*bitvecs_)
 
     def __str__(self):
-        return '(concat %s)' % (', '.join(str(bv) for bv in self.bitvecs))
+        return '(concat %s)' % (' '.join(str(bv) for bv in self.bitvecs))
 
 class Z3Op(Node):
     """Binary operators from Z3."""
@@ -376,7 +388,7 @@ class Z3Op(Node):
         return obj_
 
     def __str__(self):
-        return '(%s %s)' % (self.opname, ', '.join(str(x) for x in self.operands))
+        return '(%s %s)' % (self.opname, ' '.join(str(x) for x in self.operands))
 
 def And(*operands):
     return Z3Op('and', z3.And, operands, _noWidth)

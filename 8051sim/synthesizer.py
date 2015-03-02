@@ -86,10 +86,16 @@ class Synthesizer(object):
             # TODO: might need more work when we model arrays.
             sim_inputs = {}
             for inp_name in self.inputs:
-                inp = input_vars[inp_name]
-                m_inp = m[inp]
+                inp_ast = self.inputs[inp_name]
+                inp_z3 = input_vars[inp_name]
+                m_inp = m[inp_z3]
                 if m_inp:
-                    sim_inputs[inp_name] = m_inp.as_long()
+                    if inp_ast.isBoolVar():
+                        sim_inputs[inp_name] = z3.is_true(m[m_inp])
+                    elif inp_ast.isBitVecVar():
+                        sim_inputs[inp_name] = m_inp.as_long()
+                    else:
+                        assert False, 'Unknown node type.'
                 else:
                     sim_inputs[inp_name] = 0
 
