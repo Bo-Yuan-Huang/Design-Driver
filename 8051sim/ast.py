@@ -49,26 +49,27 @@ from z3helper import *
 # 
 
 class Node(object):
-    """Base class for nodes in the AST. When creating a subclass
-    of Node, the methods that need to be implemented are:
+    """Base class for nodes in the AST. When creating a subclass of Node, the
+    methods that need to be implemented are:
     
-    (a) the constructor which will call Node.__init__ with
-        the appropriate nodetype.
+    (a) the constructor which will call Node.__init__ with the appropriate
+    nodetype.
     
     (b) _toZ3, this should convert the node into a Z3 expression.
     
     (c) __str__, this should pretty-print the node.
     
-    (d) simplify, this looks at a model from Z3 and returns a simplified
-    AST in which the choice variables have been assigned and eliminated
-    according to this model. This need not be implemented for "leaf" nodes, 
-    examples of leaf nodes being boolean and bitvector variables.
+    (d) synthesize, this is an AST pass that looks at a model from Z3 and returns
+    a simplified AST in which the choice variables have been assigned and
+    eliminated according to this model. 
     
-    Additional the following elements are also part of the "contract"
-    for AST Nodes. 
+    (d) 
+    
+    Additionally the following elements are also part of the "contract" for AST
+    Nodes. 
         
-    (a) obj.width must be defined for BitVector or BitVector like result
-    types. (E.g., Z3Op on bitvectors, Extract and so on.)"""
+    (a) obj.width must be defined for BitVector or BitVector like result types.
+    (E.g., Z3Op on bitvectors, Extract and so on.)"""
 
     NODE_TYPE_MIN   = 0
     BOOLVAR         = 0
@@ -136,9 +137,9 @@ class Node(object):
             self.z3prefix = prefix
         return self.z3obj
 
-    def simplify(self, m):
+    def synthesize(self, m):
         """Simplify this node according to the Z3 model m."""
-        err_msg = 'simplify not implemented in %s' % self.__class__.__name__
+        err_msg = 'synthesize not implemented in %s' % self.__class__.__name__
         raise NotImplementedError, err_msg
 
 def _determineOpWidth(ops):
@@ -182,7 +183,7 @@ class BoolVar(Node):
     def __str__(self):
         return '(def-bool %s)' % self.name
 
-    def simplify(self, m):
+    def synthesize(self, m):
         return self
 
 class BitVecVar(Node):
@@ -199,7 +200,7 @@ class BitVecVar(Node):
     def __str__(self):
         return '(def-bitvec %s %d)' % (self.name, self.width)
 
-    def simplify(self, m):
+    def synthesize(self, m):
         return self
 
 class BitVecVal(Node):
@@ -215,7 +216,7 @@ class BitVecVal(Node):
     def __str__(self):
         return '(bitvecval %d %d)' % (self.value, self.width)
 
-    def simplify(self, m):
+    def synthesize(self, m):
         return self
 
 class MemVar(Node):
@@ -235,7 +236,7 @@ class MemVar(Node):
         dsize = z3.BitVecSort(self.dwidth)
         return z3.Array(self._getName(prefix), asize, dsize)
     
-    def simplify(self, m):
+    def synthesize(self, m):
         return self
 
     def __str__(self):
@@ -271,14 +272,14 @@ class Choice(Node):
                 return self.choices[i].toZ3(prefix)
         return createIf(0)
 
-    def simplify(self, m):
+    def synthesize(self, m):
         assert len(self.choiceBools) > 0
         for bi, ci in itertools.izip(self.choiceBools, self.choices):
             v = z3.is_true(m[bi])
             if v:
-                ci_ = ci.simplify(m)
+                ci_ = ci.synthesize(m)
                 return ci_
-        ci_ = self.choices[-1].simplify(m)
+        ci_ = self.choices[-1].synthesize(m)
         return ci_
         
     def __str__(self):
@@ -304,8 +305,8 @@ class ReadMem(Node):
     def __str__(self):
         return '(read-mem %s %s)' % (str(self.mem), str(self.addr))
 
-    def simplify(self, m):
-        return ReadMem(self.mem.simplify(m), self.addr.simplify(m))
+    def synthesize(self, m):
+        return ReadMem(self.mem.synthesize(m), self.addr.synthesize(m))
 
 class ChooseConsecBits(Node):
     """Choose k consecutive bits from a bitvector. """
@@ -353,7 +354,7 @@ class ChooseConsecBits(Node):
                 return expri
         return createIf(0)
 
-    def simplify(self, m):
+    def synthesize(self, m):
         # we have to evaluate the choice bits and then return th
         # appropriate extracted subpart.
         assert len(self.choiceBools) > 0
@@ -361,9 +362,9 @@ class ChooseConsecBits(Node):
             v = z3.is_true(m[bi])
             if v:
                 stop_i = start_i - self.width + 1
-                extr_i = Extract(start_i, stop_i, self.bitvec.simplify(m))
+                extr_i = Extract(start_i, stop_i, self.bitvec.synthesize(m))
                 return extr_i
-        extr = Extract(self.width - 1, 0, self.bitvec.simplify(m))
+        extr = Extract(self.width - 1, 0, self.bitvec.synthesize(m))
         return extr
 
     def __str__(self):
@@ -385,8 +386,8 @@ class Extract(Node):
     def _toZ3(self, prefix):
         return z3.Extract(self.msb, self.lsb, self.bv.toZ3(prefix))
 
-    def simplify(self, m):
-        obj_ = Extract(self.msb, self.lsb, self.bv.simplify(m))
+    def synthesize(self, m):
+        obj_ = Extract(self.msb, self.lsb, self.bv.synthesize(m))
         return obj_
 
     def __str__(self):
@@ -409,8 +410,8 @@ class Concat(Node):
     def _toZ3(self, prefix):
         return z3.Concat(*[bv.toZ3(prefix) for bv in self.bitvecs])
 
-    def simplify(self, m):
-        bitvecs_ = [bv.simplify(m) for bv in self.bitvecs]
+    def synthesize(self, m):
+        bitvecs_ = [bv.synthesize(m) for bv in self.bitvecs]
         return Concat(*bitvecs_)
 
     def __str__(self):
@@ -442,8 +443,8 @@ class Z3Op(Node):
     def _toZ3(self, prefix):
         return self.op(*[x.toZ3(prefix) for x in self.operands])
 
-    def simplify(self, m):
-        obj_ = Z3Op(self.opname, self.op, [o.simplify(m) for o in self.operands], self.rwidthFun)
+    def synthesize(self, m):
+        obj_ = Z3Op(self.opname, self.op, [o.synthesize(m) for o in self.operands], self.rwidthFun)
         return obj_
 
     def __str__(self):

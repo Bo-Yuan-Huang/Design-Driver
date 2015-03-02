@@ -130,7 +130,7 @@ class Synthesizer(object):
         if self.VERBOSITY >= 3:
             print 'model:', m
 
-        return out.simplify(m)
+        return out.synthesize(m)
 
     def _addClauses(self, S, out, yexp, ivars, sim_inputs, sim_outputs):
         """Adds clauses to the instance which encode the fact that the
