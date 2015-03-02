@@ -74,12 +74,15 @@ class Node(object):
     BOOLVAR         = 0
     BITVECVAR       = 1
     BITVECVAL       = 2
-    CHOICE          = 3
-    CHOOSECONSEC    = 4
-    EXTRACT         = 5
-    CONCAT          = 6
-    Z3OP            = 7
-    NODE_TYPE_MAX   = 7
+    MEMVAR          = 3
+    CHOICE          = 4
+    CHOOSECONSEC    = 5
+    READMEM         = 6
+    WRITEMEM        = 7
+    EXTRACT         = 8
+    CONCAT          = 9
+    Z3OP            = 10
+    NODE_TYPE_MAX   = 10
 
     name_index = 0
 
@@ -96,7 +99,12 @@ class Node(object):
     def isVar(self):
         """This is a predicate that returns true if the node is
         of type variable (BoolVar, BitVecVar etc.)"""
-        return self.nodetype == Node.BOOLVAR or self.nodetype == Node.BITVECVAR
+        return (
+            self.nodetype == Node.BOOLVAR       or 
+            self.nodetype == Node.BITVECVAR     or
+            self.nodetype == Node.MEMVAR
+        )
+
     def isBitVecVar(self):
         "Predicate that returns true if the node is a BitVecVar."
         return self.nodetype == Node.BITVECVAR
@@ -104,6 +112,10 @@ class Node(object):
     def isBoolVar(self):
         "Predicate that returns true if the node is a BoolVar."
         return self.nodetype == Node.BOOLVAR
+
+    def isMemVar(self):
+        "Predicate that returns true if the node is a MemVar."
+        return self.nodetype == Node.MEMVAR
 
     def _getName(self, prefix):
         """A private function called that prefixes names as required."""
@@ -206,6 +218,29 @@ class BitVecVal(Node):
     def simplify(self, m):
         return self
 
+class MemVar(Node):
+    """A memory abstraction."""
+    def __init__(self, name, awidth, dwidth):
+        """Constructor.
+
+        awidth is the width of the address lines.
+        dwidth is the width of the data lines."""
+        Node.__init__(self, Node.MEMVAR)
+        self.name = name
+        self.awidth = awidth
+        self.dwidth = dwidth
+
+    def _toZ3(self, prefix):
+        asize = z3.BitVecSort(self.awidth)
+        dsize = z3.BitVecSort(self.dwidth)
+        return z3.Array(self._getName(prefix), asize, dsize)
+    
+    def simplify(self, m):
+        return self
+
+    def __str__(self):
+        return '(def-mem %s %d %d)' % (self.name, self.awidth, self.dwidth)
+
 class Choice(Node):
     """A choice between a set of options."""
     def __init__(self, name, choiceVar, choices):
@@ -248,6 +283,29 @@ class Choice(Node):
         
     def __str__(self):
         return '(choice %s [%s])' % (self.name, ' '.join(str(x) for x in self.choices))
+
+class ReadMem(Node):
+    """Read data from a memory."""
+    def __init__(self, mem, addr):
+        if addr.width != mem.dwidth:
+            err_msg = "Address width must be %d. Got %d instead." % (mem.awidth, addr.width)
+            raise ValueError, err_msg
+
+        Node.__init__(self, Node.READMEM)
+        self.mem = mem
+        self.addr = addr
+        self.width = mem.dwidth
+
+    def _toZ3(self, prefix):
+        mz3 = self.mem.toZ3(prefix)
+        az3 = self.addr.toZ3(prefix)
+        return mz3[az3]
+
+    def __str__(self):
+        return '(read-mem %s %s)' % (str(self.mem), str(self.addr))
+
+    def simplify(self, m):
+        return ReadMem(self.mem.simplify(m), self.addr.simplify(m))
 
 class ChooseConsecBits(Node):
     """Choose k consecutive bits from a bitvector. """

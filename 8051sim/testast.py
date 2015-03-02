@@ -54,6 +54,16 @@ def test_AST():
     else:
         print 'false'
 
+    mv1 = MemVar('ram', 8, 8)
+    addr1 = BitVecVar('x', 8)
+    expr = And(Equal(ReadMem(mv1, addr1), Neg(addr1)), Equal(Add(addr1, addr1), Add(addr1, BitVecVal(10, 8))))
+    ez3 = expr.toZ3()
+    print expr, ez3
+    S = z3.Solver()
+    S.add(ez3)
+    print S.check()
+    print S.model()
+
     print 'Var assertions passed.'
 
 if __name__ == '__main__':
