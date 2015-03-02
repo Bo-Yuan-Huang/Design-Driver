@@ -76,8 +76,9 @@ class Node(object):
     CHOICE          = 3
     CHOOSECONSEC    = 4
     EXTRACT         = 5
-    Z3OP            = 6
-    NODE_TYPE_MAX   = 6
+    CONCAT          = 6
+    Z3OP            = 7
+    NODE_TYPE_MAX   = 7
 
     name_index = 0
 
@@ -113,6 +114,35 @@ class Node(object):
     def simplify(self, m):
         """Simplify this node according to the Z3 model m."""
         return self
+
+def _determineOpWidth(ops):
+    """This helper function walks through the array 'ops' and 
+    returns the width of each element in the array. If all the 
+    elements do not have a width attribute, it will just return
+    -1. It raises an exception if all the elements do not have
+    the same width. """
+    width = -1
+    first = True
+    for op in ops:
+        try:
+            wi = op.width
+            if first:
+                width = wi
+            else:
+                if width != wi:
+                    msg ='Operands have differing widths: %d and %d.' % (width, wi) 
+                    raise ValueError, msg
+        except AttributeError:
+            if width != -1:
+                msg ='Operands have differing widths: %d and no width.' % (width) 
+                raise ValueError, msg
+        first = False
+    return width
+
+def _noWidth(ops):
+    """Helper function that is used when the result of an operation has
+    "no" width (i.e., is a boolean)."""
+    return -1
 
 class BoolVar(Node):
     """Boolean variables."""
@@ -159,7 +189,10 @@ class Choice(Node):
         Node.__init__(self, Node.CHOICE)
         self.name = name
         self.choiceVar = choiceVar
-        self.choices = choices
+        self.choices = choices[:]
+        width = _determineOpWidth(self.choices)
+        if width != -1:
+            self.width = width
 
     def _toZ3(self, prefix):
         assert len(self.choices) > 1
@@ -191,7 +224,7 @@ class Choice(Node):
         return ci_
         
     def __str__(self):
-        return 'Choice(%s, [%s])' % (self.name, ', '.join(str(x) for x in self.choices))
+        return 'choice(%s, [%s])' % (self.name, ', '.join(str(x) for x in self.choices))
 
 class ChooseConsecBits(Node):
     """Choose k consecutive bits from a bitvector. """
@@ -266,29 +299,40 @@ class Extract(Node):
         return obj_
 
     def __str__(self):
-        return 'Extract(%d, %d, %s)' % (self.msb, self.lsb, str(self.bv))
+        return 'extract(%d, %d, %s)' % (self.msb, self.lsb, str(self.bv))
+
+class Concat(Node):
+    """Concatenate bitvectors."""
+    def __init__(self, *bitvecs):
+        if len(bitvecs) <= 1:
+            raise ValueError, "Must have at least 2 bitvectors when concatenating."
+        Node.__init__(self, Node.CONCAT)
+        self.bitvecs = bitvecs[:]
+        self.width = 0
+        for bv in self.bitvecs:
+            try:
+                self.width += bv.width
+            except AttributeError:
+                raise AttributeError, 'Expect bitvector-like objects as arguments to Concat.'
+
+    def _toZ3(self, prefix):
+        return z3.Concat(*[bv.toZ3(prefix) for bv in self.bitvecs])
+
+    def simplify(self, m):
+        return Concat(self, *[bv.simplify(m) for bv in self.bitvecs])
+
+    def __str__(self):
+        return 'concat(%s)' % (', '.join(str(bv) for bv in self.bitvecs))
 
 class Z3Op(Node):
     """Binary operators from Z3."""
-    def __init__(self, opname, op, operands):
+    def __init__(self, opname, op, operands, resultWidth):
         Node.__init__(self, Node.Z3OP)
         self.op = op
         self.opname = opname
-        self.operands = operands
+        self.operands = operands[:]
 
-        width = -1
-        for op in self.operands:
-            try:
-                wi = op.width
-                if width == -1:
-                    width = wi
-                else:
-                    if width != wi:
-                        msg ='Operands have differing widths: %d and %d.' % (width, wi) 
-                        raise ValueError, msg
-            except AttributeError:
-                break
-
+        width = resultWidth(self.operands)
         if width != -1:
             self.width = width
 
@@ -303,29 +347,29 @@ class Z3Op(Node):
         return '%s(%s)' % (self.opname, ', '.join(str(x) for x in self.operands))
 
 def And(*operands):
-    return Z3Op('and', z3.And, operands)
+    return Z3Op('and', z3.And, operands, _noWidth)
 
 def Or(*operands):
-    return Z3Op('or', z3.Or, operands)
+    return Z3Op('or', z3.Or, operands, _noWidth)
 
 def Not(op):
-    return Z3Op('not', z3.Not, [op])
+    return Z3Op('not', z3.Not, [op], _noWidth)
 
 def Xor(op):
-    return Z3Op('xor', z3.Xor, operands)
+    return Z3Op('xor', z3.Xor, operands, _noWidth)
 
 def Add(*operands):
-    return Z3Op('add', BVAdd, operands)
+    return Z3Op('add', BVAdd, operands, _determineOpWidth)
 
 def Sub(*operands):
-    return Z3Op('sub', BVSub, operands)
+    return Z3Op('sub', BVSub, operands, _determineOpWidth)
 
 def Neg(operand):
-    return Z3Op('neg', BVNeg, [operand])
+    return Z3Op('neg', BVNeg, [operand], _determineOpWidth)
 
 def Distinct(op1, op2):
-    return Z3Op('distinct', z3.Distinct, [op1, op2])
+    return Z3Op('distinct', z3.Distinct, [op1, op2], _determineOpWidth)
 
 def Equal(op1, op2):
-    return Z3Op('eq', Z3Equal, [op1, op2])
+    return Z3Op('eq', Z3Equal, [op1, op2], _determineOpWidth)
 

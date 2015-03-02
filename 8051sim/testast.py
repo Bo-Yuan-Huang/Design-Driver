@@ -29,6 +29,9 @@ def test_AST():
     c2 = ChooseConsecBits(4, v4)
     print c2, c2.toZ3()
 
+    c3 = Concat(c1, c2)
+    print c3, c3.toZ3()
+
     S = z3.Solver()
     a = BoolVar('a')
     b = BoolVar('b')
