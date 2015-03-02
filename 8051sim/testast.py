@@ -5,9 +5,9 @@ def test_AST():
     v1 = BoolVar('b1')
     v2 = BitVecVar('b2', 16)
     v3 = BitVecVal(2, 16)
-    assert str(v1) == 'bool(b1)'
-    assert str(v2) == 'bitvec(b2, 16)'
-    assert str(v3) == 'bitvec(2, 16)'
+    assert str(v1) == '(def-bool b1)'
+    assert str(v2) == '(def-bitvec b2 16)'
+    assert str(v3) == '(bitvecval 2 16)'
     v4 = Add(v2, v3)
     v5 = Sub(v2, v3)
     print v1.toZ3(), v2.toZ3(), v3.toZ3(), v4.toZ3(), v5.toZ3()

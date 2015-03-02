@@ -154,7 +154,7 @@ class BoolVar(Node):
         return z3.Bool(self._getName(prefix))
 
     def __str__(self):
-        return 'bool(%s)' % self.name
+        return '(def-bool %s)' % self.name
 
 class BitVecVar(Node):
     """Bitvector variables."""
@@ -168,7 +168,7 @@ class BitVecVar(Node):
         return z3.BitVec(self._getName(prefix), self.width)
 
     def __str__(self):
-        return 'bitvec(%s, %d)' % (self.name, self.width)
+        return '(def-bitvec %s %d)' % (self.name, self.width)
 
 class BitVecVal(Node):
     """BitVector Constants."""
@@ -181,7 +181,7 @@ class BitVecVal(Node):
         return z3.BitVecVal(self.value, self.width)
 
     def __str__(self):
-        return 'bitvec(%d, %d)' % (self.value, self.width)
+        return '(bitvecval %d %d)' % (self.value, self.width)
 
 class Choice(Node):
     """A choice between a set of options."""
@@ -224,7 +224,7 @@ class Choice(Node):
         return ci_
         
     def __str__(self):
-        return 'choice(%s, [%s])' % (self.name, ', '.join(str(x) for x in self.choices))
+        return '(choice%s [%s])' % (self.name, ', '.join(str(x) for x in self.choices))
 
 class ChooseConsecBits(Node):
     """Choose k consecutive bits from a bitvector. """
@@ -276,7 +276,7 @@ class ChooseConsecBits(Node):
         pass
 
     def __str__(self):
-        return 'choose-consec-bits(%d, %s)' % (self.width, str(self.bitvec))
+        return '(choose-consec-bits %d %s)' % (self.width, str(self.bitvec))
 
 class Extract(Node):
     """Extract bits from a bitvector."""
@@ -299,7 +299,7 @@ class Extract(Node):
         return obj_
 
     def __str__(self):
-        return 'extract(%d, %d, %s)' % (self.msb, self.lsb, str(self.bv))
+        return '(extract %d %d %s)' % (self.msb, self.lsb, str(self.bv))
 
 class Concat(Node):
     """Concatenate bitvectors."""
@@ -322,7 +322,7 @@ class Concat(Node):
         return Concat(self, *[bv.simplify(m) for bv in self.bitvecs])
 
     def __str__(self):
-        return 'concat(%s)' % (', '.join(str(bv) for bv in self.bitvecs))
+        return '(concat %s)' % (', '.join(str(bv) for bv in self.bitvecs))
 
 class Z3Op(Node):
     """Binary operators from Z3."""
@@ -344,7 +344,7 @@ class Z3Op(Node):
         return obj_
 
     def __str__(self):
-        return '%s(%s)' % (self.opname, ', '.join(str(x) for x in self.operands))
+        return '(%s %s)' % (self.opname, ', '.join(str(x) for x in self.operands))
 
 def And(*operands):
     return Z3Op('and', z3.And, operands, _noWidth)
