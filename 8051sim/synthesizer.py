@@ -1,6 +1,7 @@
 import itertools
 import ast
 import z3
+import pdb
 
 class Synthesizer(object):
     """The Synthesizer class encapsulates the synthesis algorithm."""
@@ -13,7 +14,7 @@ class Synthesizer(object):
         self.inputs = {}
         self.outputs = {}
         self.constraints = []
-        self.VERBOSITY = 3
+        self.VERBOSITY = 1
 
     def addInput(self, inp):
         """Create an input variable. An input variable is a piece of state
@@ -85,9 +86,10 @@ class Synthesizer(object):
             # TODO: might need more work when we model arrays.
             sim_inputs = {}
             for inp_name in self.inputs:
-                inp = self.inputs[inp_name]
-                if inp in m:
-                    sim_inputs[inp_name] = m[inp].as_long()
+                inp = input_vars[inp_name]
+                m_inp = m[inp]
+                if m_inp:
+                    sim_inputs[inp_name] = m_inp.as_long()
                 else:
                     sim_inputs[inp_name] = 0
 
@@ -108,6 +110,9 @@ class Synthesizer(object):
         result = S.check(z3.Not(y))
         assert result == z3.sat
         m = S.model()
+        if self.VERBOSITY >= 3:
+            print 'model:', m
+
         return out.simplify(m)
 
     def _addClauses(self, S, out, yexp, ivars, sim_inputs, sim_outputs):

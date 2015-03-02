@@ -35,16 +35,24 @@ def synthesize():
     syn = Synthesizer()
     create8051Inputs(syn)
 
-    PC_plus1 = Add(syn.inp('PC'), BitVecVal(1, 16))
-    PC_plus2 = Add(syn.inp('PC'), BitVecVal(2, 16))
-    op0 = Extract(7, 0, syn.inp('opcode'))
-    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2])
+    PC = syn.inp('PC')
+    opcode = syn.inp('opcode')
+    op0 = Extract(7, 0, opcode)
+    op1 = Extract(15, 8, opcode)
+
+    PC_plus1 = Add(PC, BitVecVal(1, 16))
+    PC_plus2 = Add(PC, BitVecVal(2, 16))
+    PC_ajmp  = Concat(
+                    Extract(15, 11, Choice('ajmp', op0, [PC, PC_plus1, PC_plus2])),
+                    ChooseConsecBits(3, opcode), 
+                    ChooseConsecBits(8, opcode))
+    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_ajmp])
     syn.addOutput('PC', nPC)
     
     cnst = Equal(op0, BitVecVal(0, 8))
 
-    for opcode in [0]:
-        cnst = Equal(op0, BitVecVal(0, 8))
+    for opcode in [0, 1]:
+        cnst = Equal(op0, BitVecVal(opcode, 8))
         print syn.synthesize('PC', [cnst], eval8051)
 
 if __name__ == '__main__':

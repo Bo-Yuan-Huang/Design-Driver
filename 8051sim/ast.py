@@ -1,5 +1,6 @@
 import itertools
 import z3
+import pdb
 from z3helper import *
 
 # DSL feature set
@@ -106,14 +107,15 @@ class Node(object):
 
     def toZ3(self, prefix=''):
         """Convert this node into a Z3 expression."""
-        if self.z3obj is None or self.z3prefix != prefix:
+        if self.z3obj is None or (self.z3prefix != prefix and (not self.is_input)):
             self.z3obj = self._toZ3(prefix)
             self.z3prefix = prefix
         return self.z3obj
 
     def simplify(self, m):
         """Simplify this node according to the Z3 model m."""
-        return self
+        err_msg = 'simplify not implemented in %s' % self.__class__.__name__
+        raise NotImplementedError, err_msg
 
 def _determineOpWidth(ops):
     """This helper function walks through the array 'ops' and 
@@ -156,6 +158,9 @@ class BoolVar(Node):
     def __str__(self):
         return '(def-bool %s)' % self.name
 
+    def simplify(self, m):
+        return self
+
 class BitVecVar(Node):
     """Bitvector variables."""
 
@@ -170,6 +175,9 @@ class BitVecVar(Node):
     def __str__(self):
         return '(def-bitvec %s %d)' % (self.name, self.width)
 
+    def simplify(self, m):
+        return self
+
 class BitVecVal(Node):
     """BitVector Constants."""
     def __init__(self, value, width):
@@ -182,6 +190,9 @@ class BitVecVal(Node):
 
     def __str__(self):
         return '(bitvecval %d %d)' % (self.value, self.width)
+
+    def simplify(self, m):
+        return self
 
 class Choice(Node):
     """A choice between a set of options."""
@@ -214,7 +225,7 @@ class Choice(Node):
         return createIf(0)
 
     def simplify(self, m):
-        assert len(self.choiceBools)
+        assert len(self.choiceBools) > 0
         for bi, ci in itertools.izip(self.choiceBools, self.choices):
             v = z3.is_true(m[bi])
             if v:
@@ -224,7 +235,7 @@ class Choice(Node):
         return ci_
         
     def __str__(self):
-        return '(choice%s [%s])' % (self.name, ', '.join(str(x) for x in self.choices))
+        return '(choice %s [%s])' % (self.name, ', '.join(str(x) for x in self.choices))
 
 class ChooseConsecBits(Node):
     """Choose k consecutive bits from a bitvector. """
@@ -272,8 +283,17 @@ class ChooseConsecBits(Node):
         return createIf(0)
 
     def simplify(self, m):
-        # TODO
-        pass
+        # we have to evaluate the choice bits and then return th
+        # appropriate extracted subpart.
+        assert len(self.choiceBools) > 0
+        for bi, start_i in itertools.izip(self.choiceBools, self.rangeStarts):
+            v = z3.is_true(m[bi])
+            if v:
+                stop_i = start_i - self.width + 1
+                extr_i = Extract(start_i, stop_i, self.bitvec.simplify(m))
+                return extr_i
+        extr = Extract(self.width - 1, 0, self.bitvec.simplify(m))
+        return extr
 
     def __str__(self):
         return '(choose-consec-bits %d %s)' % (self.width, str(self.bitvec))
@@ -313,26 +333,38 @@ class Concat(Node):
             try:
                 self.width += bv.width
             except AttributeError:
-                raise AttributeError, 'Expect bitvector-like objects as arguments to Concat.'
+                raise AttributeError, 'Expect bitvector-like objects as arguments to Concat. Got %s instead.' % str(bv)
 
     def _toZ3(self, prefix):
         return z3.Concat(*[bv.toZ3(prefix) for bv in self.bitvecs])
 
     def simplify(self, m):
-        return Concat(self, *[bv.simplify(m) for bv in self.bitvecs])
+        bitvecs_ = [bv.simplify(m) for bv in self.bitvecs]
+        return Concat(*bitvecs_)
 
     def __str__(self):
         return '(concat %s)' % (', '.join(str(bv) for bv in self.bitvecs))
 
 class Z3Op(Node):
     """Binary operators from Z3."""
-    def __init__(self, opname, op, operands, resultWidth):
+    def __init__(self, opname, op, operands, rwidthFun):
+        """Constructor.
+        
+        - opname is the name of this operation (used for pretty-printing).
+        - op is the (Z3 or wrapper over Z3) function that performs this 
+          operation.
+        - operands should be self-explanatory.
+        - rwidthFun is the function is used to compute the result-width
+          of this operation."""
+
+
         Node.__init__(self, Node.Z3OP)
         self.op = op
         self.opname = opname
         self.operands = operands[:]
+        self.rwidthFun = rwidthFun
 
-        width = resultWidth(self.operands)
+        width = self.rwidthFun(self.operands)
         if width != -1:
             self.width = width
 
@@ -340,7 +372,7 @@ class Z3Op(Node):
         return self.op(*[x.toZ3(prefix) for x in self.operands])
 
     def simplify(self, m):
-        obj_ = Z3Op(self.opname, self.op, [o.simplify(m) for o in self.operands])
+        obj_ = Z3Op(self.opname, self.op, [o.simplify(m) for o in self.operands], self.rwidthFun)
         return obj_
 
     def __str__(self):
