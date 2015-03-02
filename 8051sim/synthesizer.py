@@ -143,35 +143,16 @@ class Synthesizer(object):
             inp_ast = self.inputs[inp]
             if inp_ast.isBitVecVar():
                 subs.append((ivars[inp], z3.BitVecVal(sim_inputs[inp], ivars[inp].size())))
+            elif inp_ast.isBoolVar():
+                raise NotImplementedError, "Bool variables aren't handled yet."
             elif inp_ast.isMemVar():
-                new_mem_name = self._getUniqName('mem_'+inp_ast.name)
-                asize = z3.BitVecSort(inp_ast.awidth)
-                dsize = z3.BitVecSort(inp_ast.dwidth)
-                new_mem_z3 = z3.Array(new_mem_name, asize, dsize)
-                self._encodeArrayConstraints(S, inp_ast, new_mem_z3, sim_inputs[inp])
-                subs.append((ivars[inp], new_mem_z3))
+                raise NotImplementedError, "Memory variables aren't handled yet."
+            else:
+                raise NotImplementedError, "Unknown variable type."
+
         yexp_ = z3.substitute(yexp, subs)
         cnst = yexp_ == z3.BitVecVal(sim_outputs[out], yexp_.size())
         if self.VERBOSITY >= 3:
             print 'new cnst:', cnst
         S.add(cnst)
 
-    def _encodeArrayConstraints(self, S, inp, mz3, mvals):
-        laddr = self._getUniqName('mem'+inp.name+'addr')
-        z3laddr = z3.BitVec(name, inp.asize)
-        ineqs = []
-
-        for [addr, data] in mvals[:-1]:
-            z3addr = z3.BitVecVal(addr, inp.asize)
-            z3data = z3.BitVecVal(data, inp.dsize)
-            S.add(mz3[z3addr] == z3data)
-            ineqs.append(z3laddr != z3addr)
-        
-        if self.VERBOSITY >= 3:
-            print 'inequalities:', ineqs
-
-        if len(ineqs) > 0:
-            antecedent = z3.Not(z3.And(*ineqs))
-            consequent = (mz3[z3laddr] == z3.BitVeVal(mvals[-1], self.dsize))
-            S.add(z3.Implies(antecedent, consequent))
-        else:

@@ -4,14 +4,15 @@ from sim51 import evalState
 
 def eval8051(inputs, outputs):
     # initialize input state.
-    iram = inputs['IRAM']
-    assert len(iram) >= 1
-    default_iram = iram[-1]
-    regs = [default_iram]*384
-    for [addr,data] in iram[:-1]:
-        assert addr < 256
-        assert data < 256
-        regs[addr] = data
+    # iram = inputs['IRAM']
+    # assert len(iram) >= 1
+    # default_iram = iram[-1]
+    # regs = [default_iram]*384
+    # for [addr,data] in iram[:-1]:
+    #     assert addr < 256
+    #     assert data < 256
+    #     regs[addr] = data
+    regs = [0] * 384
 
     regs[0x160] = inputs['ACC']
     regs[0x101] = inputs['SP']
@@ -38,7 +39,7 @@ def create8051Inputs(syn):
     syn.addInput(BitVecVar('DPH', 8))
     syn.addInput(BitVecVar('PC', 16))
     syn.addInput(BitVecVar('opcode', 24))
-    syn.addInput(MemVar('IRAM', 8, 8))
+    # syn.addInput(MemVar('IRAM', 8, 8))
 
 def synthesize():
     syn = Synthesizer()
@@ -46,7 +47,7 @@ def synthesize():
 
     PC = syn.inp('PC')
     SP = syn.inp('SP')
-    IRAM = syn.inp('IRAM')
+    # IRAM = syn.inp('IRAM')
     SP_plus1 = Add(SP, BitVecVal(1, 8))
     SP_minus1 = Add(SP, BitVecVal(1, 8))
     opcode = syn.inp('opcode')
