@@ -69,6 +69,10 @@ class Node(object):
     a simplified AST in which the choice variables have been assigned and
     eliminated according to this model. 
 
+    (f) childObjects() should be a generator that yields each of the "child" objects
+    of this AST node.
+    
+
     Additionally the following elements are also part of the "contract" for AST
     Nodes. 
         
@@ -137,6 +141,18 @@ class Node(object):
             self.z3objs[prefix] = self._toZ3(prefix)
         return self.z3objs[prefix]
 
+    def clearZ3Cache(self):
+        """Clears the cache of Z3 objects maintained in this node."""
+        self.z3objs = {}
+        for c in self.childObjects():
+            c.clearZ3Cache()
+
+    def childObjects(self):
+        """Returns a generator that walks through each of the child objects of 
+        this AST node."""
+        err_msg = 'childObjects not implemented in %s' % self.__class__.__name__
+        raise NotImplementedError, err_msg
+
     def synthesize(self, m):
         """Simplify this node according to the Z3 model m."""
         err_msg = 'synthesize not implemented in %s' % self.__class__.__name__
@@ -186,6 +202,10 @@ class BoolVar(Node):
     def synthesize(self, m):
         return self
 
+    def childObjects(self):
+        return
+        yield
+
 class BitVecVar(Node):
     """Bitvector variables."""
 
@@ -203,6 +223,10 @@ class BitVecVar(Node):
     def synthesize(self, m):
         return self
 
+    def childObjects(self):
+        return
+        yield
+
 class BitVecVal(Node):
     """BitVector Constants."""
     def __init__(self, value, width):
@@ -218,6 +242,10 @@ class BitVecVal(Node):
 
     def synthesize(self, m):
         return self
+
+    def childObjects(self):
+        return
+        yield
 
 class MemVar(Node):
     """A memory abstraction."""
@@ -241,6 +269,10 @@ class MemVar(Node):
 
     def __str__(self):
         return '(def-mem %s %d %d)' % (self.name, self.awidth, self.dwidth)
+
+    def childObjects(self):
+        return
+        yield
 
 class Choice(Node):
     """A choice between a set of options."""
@@ -284,6 +316,10 @@ class Choice(Node):
     def __str__(self):
         return '(choice %s [%s])' % (self.name, ' '.join(str(x) for x in self.choices))
 
+    def childObjects(self):
+        for c in self.choices:
+            yield c
+
 class ReadMem(Node):
     """Read data from a memory."""
     def __init__(self, mem, addr):
@@ -306,6 +342,10 @@ class ReadMem(Node):
 
     def synthesize(self, m):
         return ReadMem(self.mem.synthesize(m), self.addr.synthesize(m))
+
+    def childObjects(self):
+        yield self.mem
+        yield self.addr
 
 class ChooseConsecBits(Node):
     """Choose k consecutive bits from a bitvector. """
@@ -368,6 +408,9 @@ class ChooseConsecBits(Node):
     def __str__(self):
         return '(choose-consec-bits %d %s)' % (self.width, str(self.bitvec))
 
+    def childObjects(self):
+        yield self.bitvec
+
 class Extract(Node):
     """Extract bits from a bitvector."""
 
@@ -390,6 +433,9 @@ class Extract(Node):
 
     def __str__(self):
         return '(extract %d %d %s)' % (self.msb, self.lsb, str(self.bv))
+
+    def childObjects(self):
+        yield self.bv
 
 class Concat(Node):
     """Concatenate bitvectors."""
@@ -414,6 +460,10 @@ class Concat(Node):
 
     def __str__(self):
         return '(concat %s)' % (' '.join(str(bv) for bv in self.bitvecs))
+
+    def childObjects(self):
+        for bv in self.bitvecs:
+            yield bv
 
 class Z3Op(Node):
     """Binary operators from Z3."""
@@ -447,6 +497,10 @@ class Z3Op(Node):
 
     def __str__(self):
         return '(%s %s)' % (self.opname, ' '.join(str(x) for x in self.operands))
+
+    def childObjects(self):
+        for op in self.operands:
+            yield op
 
 def And(*operands):
     return Z3Op('and', z3.And, operands, _noWidth)
