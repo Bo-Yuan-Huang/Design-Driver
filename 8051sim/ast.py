@@ -388,7 +388,7 @@ class ReadMem(Node):
         awidth = self.mem.awidth
         dwidth = self.mem.dwidth
 
-        az3 = self.addr.toZ3(prefix, m)
+        az3 = self.addr.toZ3Constraints(prefix, m)
         def createIf(i):
             if i == len(mem_values) - 1:
                 return z3.BitVecVal(mem_values[i], dwidth)
@@ -396,8 +396,9 @@ class ReadMem(Node):
                 [addri, datai] = mem_values[i]
                 aiz3 = z3.BitVecVal(addri, awidth)
                 diz3 = z3.BitVecVal(datai, dwidth)
-                return If(aiz3 == az3, diz3, createIf(i+1))
-        return createIf(0)
+                return z3.If(aiz3 == az3, diz3, createIf(i+1))
+        expr = createIf(0)
+        return expr
 
     def __str__(self):
         return '(read-mem %s %s)' % (str(self.mem), str(self.addr))

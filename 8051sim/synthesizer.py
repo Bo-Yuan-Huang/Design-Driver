@@ -14,7 +14,7 @@ class Synthesizer(object):
         self.inputs = {}
         self.outputs = {}
         self.constraints = []
-        self.VERBOSITY = 1
+        self.VERBOSITY = 0
         self.name_id = 1001
 
     def _getUniqName(self, base):
@@ -101,7 +101,7 @@ class Synthesizer(object):
                     elif inp_ast.isBitVecVar():
                         sim_inputs[inp_name] = m_inp.as_long()
                     elif inp_ast.isMemVar():
-                        sim_inputs[inp_name] = m_inp.as_list()
+                        sim_inputs[inp_name] = self.cleanupMemList(m_inp.as_list())
                     else:
                         assert False, 'Unknown node type.'
                 else:
@@ -112,7 +112,7 @@ class Synthesizer(object):
 
             sim_outputs = {}
             sim(sim_inputs, sim_outputs)
-            if self.VERBOSITY >= 3:
+            if self.VERBOSITY >= 2:
                 print 'sim_inputs:', sim_inputs
                 print 'sim_outputs:', sim_outputs
 
@@ -170,4 +170,12 @@ class Synthesizer(object):
         if self.VERBOSITY >= 3:
             print 'new cnst:', cnst
         S.add(cnst)
+
+    def cleanupMemList(self, memvals):        
+        vals = []
+        for [az3, dz3] in memvals[:-1]:
+            vals.append([az3.as_long(), dz3.as_long()])
+        vals.append(memvals[-1].as_long())
+        return vals
+
 
