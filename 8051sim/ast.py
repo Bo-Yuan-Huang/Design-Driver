@@ -55,16 +55,20 @@ class Node(object):
     (a) the constructor which will call Node.__init__ with the appropriate
     nodetype.
     
-    (b) _toZ3, this should convert the node into a Z3 expression.
+    (b) _toZ3, this should convert the node into a Z3 expression. The argument
+    recToZ3() is the function that is called on recursive calls. This layer of
+    indirection makes it easier to implement _toZ3() _toZ3Clauses(m) using the
+    same code.
+
+    (c) _toZ3Constraints(m), is a function that uses the input values to encode 
+    the constraints using the distinguishing input values 'm'.
     
-    (c) __str__, this should pretty-print the node.
+    (d) __str__, this should pretty-print the node.
     
-    (d) synthesize, this is an AST pass that looks at a model from Z3 and returns
+    (e) synthesize, this is an AST pass that looks at a model from Z3 and returns
     a simplified AST in which the choice variables have been assigned and
     eliminated according to this model. 
-    
-    (d) 
-    
+
     Additionally the following elements are also part of the "contract" for AST
     Nodes. 
         
@@ -92,7 +96,7 @@ class Node(object):
         self.nodetype = nodetype
         self.z3obj = None
         self.z3prefix = ''
-        self.name = 'UnnamedObject'
+        self.name = '$UnnamedObject'
         self.is_input = False
 
     def isVar(self):
@@ -122,7 +126,7 @@ class Node(object):
         prefstr = prefix + '__' if need_prefix else ''
         return prefstr + self.name
 
-    def _toZ3(self, prefix):
+    def _toZ3(self, rfun):
         """This method is called by toZ3() to perform the actual conversion
         of a node into a Z3 expression."""
         err_msg = '_toZ3 not implemented in %s' % self.__class__.__name__

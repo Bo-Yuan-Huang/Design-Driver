@@ -1,7 +1,18 @@
-- First we have to get rid of the ugly hack that is Node.name_index.
+- First we have to get rid of the ugly hack that is Node.name_index. 
+
+  [[DONE]]
+
 - Have to make sure names are unique. Should we write some code for this?
   Perhaps an AST pass that walks through fragments of the tree to make sure
   everything is good?
+  
+  INITIAL THOUGHTS: How shall we go about doing this? Create a map [name->int]
+  that counts how many times each name appears. If a name appears more than
+  once, then raise an error. 
+  
+  UPDATED THOUGHTS: This is not as straightforward as I thought because the
+  AST is a DAG and not a tree. So names can be repeated legally.
+
 - We have to write a pass that walks through the AST and replaces each variable
   with its corresponding value from the distinguishing input model. ReadMem
   here will have to handle arrays appropriately. This will replace _addClauses
