@@ -65,7 +65,7 @@ def synthesize():
     
     cnst = Equal(op0, BitVecVal(0, 8))
 
-    for opcode in [0, 1]:
+    for opcode in [0, 1]: 
         cnst = Equal(op0, BitVecVal(opcode, 8))
         print syn.synthesize('PC', [cnst], eval8051)
 

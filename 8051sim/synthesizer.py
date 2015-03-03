@@ -116,8 +116,23 @@ class Synthesizer(object):
                 print 'sim_inputs:', sim_inputs
                 print 'sim_outputs:', sim_outputs
 
-            self._addClauses(S, name, yexp1, input_vars, sim_inputs, sim_outputs)
-            self._addClauses(S, name, yexp2, input_vars, sim_inputs, sim_outputs)
+            out.clearZ3Cache()
+            y1mz3 = out.toZ3Constraints(Synthesizer.P1, sim_inputs)
+            y2mz3 = out.toZ3Constraints(Synthesizer.P2, sim_inputs)
+
+            if self.VERBOSITY >= 3:
+                print 'y1:', y1mz3
+                print 'y2:', y2mz3
+            try:
+                ocnst = z3.BitVecVal(sim_outputs[name], out.width)
+            except AttributeError:
+                ocnst = z3.BoolVal(sim_outputs[name])
+
+            S.add(ocnst == y1mz3)
+            S.add(ocnst == y2mz3)
+
+            #self._addClauses(S, name, yexp1, input_vars, sim_inputs, sim_outputs)
+            #self._addClauses(S, name, yexp2, input_vars, sim_inputs, sim_outputs)
 
         # and finally we are done.
         if self.VERBOSITY >= 1:

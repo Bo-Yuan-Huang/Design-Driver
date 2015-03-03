@@ -77,7 +77,11 @@ class Node(object):
     Nodes. 
         
     (a) obj.width must be defined for BitVector or BitVector like result types.
-    (E.g., Z3Op on bitvectors, Extract and so on.)"""
+    (E.g., Z3Op on bitvectors, Extract and so on.)
+
+    (b) Make sure to clear the cache of Z3 objects (clearZ3Cache) before calling
+    toZ3Constraints with different models.
+    """
 
     NODE_TYPE_MIN   = 0
     BOOLVAR         = 0
@@ -99,6 +103,7 @@ class Node(object):
         assert nodetype <= Node.NODE_TYPE_MAX
         self.nodetype = nodetype
         self.z3objs = {}
+        self.z3cnsts = {}
         self.name = '$UnnamedObject'
         self.is_input = False
 
@@ -135,15 +140,30 @@ class Node(object):
         err_msg = '_toZ3 not implemented in %s' % self.__class__.__name__
         raise NotImplementedError, err_msg
 
+    def _toZ3Constraints(self, prefix, m):
+        """This method is called by toZ3() to perform the actual conversion
+        of a node into a Z3 expression where the inputs are forced to be
+        constants according to the model m."""
+        err_msg = '_toZ3Constraints not implemented in %s' % self.__class__.__name__
+        raise NotImplementedError, err_msg
+
     def toZ3(self, prefix=''):
         """Convert this node into a Z3 expression."""
         if prefix not in self.z3objs:
             self.z3objs[prefix] = self._toZ3(prefix)
         return self.z3objs[prefix]
 
+    def toZ3Constraints(self, prefix, m):
+        """Convert this node into a Z3 expression where the inputs are forced to
+        be the constant values specified in the model m."""
+        if prefix not in self.z3cnsts:
+            self.z3cnsts[prefix] = self._toZ3Constraints(prefix, m)
+        return self.z3cnsts[prefix]
+
     def clearZ3Cache(self):
         """Clears the cache of Z3 objects maintained in this node."""
         self.z3objs = {}
+        self.z3cnsts = {}
         for c in self.childObjects():
             c.clearZ3Cache()
 
@@ -196,6 +216,10 @@ class BoolVar(Node):
     def _toZ3(self, prefix):
         return z3.Bool(self._getName(prefix))
 
+    def _toZ3Constraints(self, prefix, m):
+        value = m[self.name]
+        return z3.BoolVal(value)
+
     def __str__(self):
         return '(def-bool %s)' % self.name
 
@@ -217,6 +241,10 @@ class BitVecVar(Node):
     def _toZ3(self, prefix):
         return z3.BitVec(self._getName(prefix), self.width)
 
+    def _toZ3Constraints(self, prefix, m):
+        value = m[self.name]
+        return z3.BitVecVal(value, self.width)
+
     def __str__(self):
         return '(def-bitvec %s %d)' % (self.name, self.width)
 
@@ -236,6 +264,9 @@ class BitVecVal(Node):
 
     def _toZ3(self, prefix):
         return z3.BitVecVal(self.value, self.width)
+
+    def _toZ3Constraints(self, prefix, m):
+        return self._toZ3(prefix)
 
     def __str__(self):
         return '(bitvecval %d %d)' % (self.value, self.width)
@@ -264,6 +295,9 @@ class MemVar(Node):
         dsize = z3.BitVecSort(self.dwidth)
         return z3.Array(self._getName(prefix), asize, dsize)
     
+    def _toZ3Constraints(self, prefix, m):
+        assert False, "Should never call _toZ3Constraints on MemVar."
+
     def synthesize(self, m):
         return self
 
@@ -285,7 +319,7 @@ class Choice(Node):
         if width != -1:
             self.width = width
 
-    def _toZ3(self, prefix):
+    def _toZ3sHelper(self, prefix, rfun):
         assert len(self.choices) > 1
 
         self.choiceBools = []
@@ -297,11 +331,19 @@ class Choice(Node):
         def createIf(i):
             if i < len(self.choiceBools):
                 cvi = self.choiceBools[i]
-                return z3.If(cvi, self.choices[i].toZ3(prefix), createIf(i+1))
+                return z3.If(cvi, rfun(self.choices[i], prefix), createIf(i+1))
             else:
                 assert i == (len(self.choices) - 1)
-                return self.choices[i].toZ3(prefix)
+                return rfun(self.choices[i], prefix)
         return createIf(0)
+
+    def _toZ3(self, prefix):
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
 
     def synthesize(self, m):
         assert len(self.choiceBools) > 0
@@ -337,6 +379,26 @@ class ReadMem(Node):
         az3 = self.addr.toZ3(prefix)
         return mz3[az3]
 
+    def _toZ3Constraints(self, prefix, m):
+        # we have to walk through the model and create an If-expression
+        # that matches this model.
+        assert self.mem.isMemVar()
+
+        mem_values = m[self.mem.name]
+        awidth = self.mem.awidth
+        dwidth = self.mem.dwidth
+
+        az3 = self.addr.toZ3(prefix, m)
+        def createIf(i):
+            if i == len(mem_values) - 1:
+                return z3.BitVecVal(mem_values[i], dwidth)
+            else:
+                [addri, datai] = mem_values[i]
+                aiz3 = z3.BitVecVal(addri, awidth)
+                diz3 = z3.BitVecVal(datai, dwidth)
+                return If(aiz3 == az3, diz3, createIf(i+1))
+        return createIf(0)
+
     def __str__(self):
         return '(read-mem %s %s)' % (str(self.mem), str(self.addr))
 
@@ -358,7 +420,7 @@ class ChooseConsecBits(Node):
         self.bitvec = bitvec
         self.width = numBits
 
-    def _toZ3(self, prefix):
+    def _toZ3sHelper(self, prefix, rfun):
         self.choiceBools = []
         self.rangeStarts = []
 
@@ -382,15 +444,23 @@ class ChooseConsecBits(Node):
                 starti = self.rangeStarts[i]
                 stopi = starti - self.width + 1
                 assert starti >= stopi
-                expri = z3.Extract(starti, stopi, self.bitvec.toZ3(prefix))
+                expri = z3.Extract(starti, stopi, rfun(self.bitvec, prefix))
                 return z3.If(cvi, expri, createIf(i+1))
             else:
                 starti = self.width - 1
                 stopi = 0
                 assert starti >= stopi
-                expri = z3.Extract(starti, stopi, self.bitvec.toZ3(prefix))
+                expri = z3.Extract(starti, stopi, rfun(self.bitvec, prefix))
                 return expri
         return createIf(0)
+
+    def _toZ3(self, prefix):
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
 
     def synthesize(self, m):
         # we have to evaluate the choice bits and then return th
@@ -424,8 +494,16 @@ class Extract(Node):
         self.lsb = lsb
         self.width = self.msb - self.lsb + 1
 
+    def _toZ3sHelper(self, prefix, rfun):
+        return z3.Extract(self.msb, self.lsb, rfun(self.bv, prefix))
+
     def _toZ3(self, prefix):
-        return z3.Extract(self.msb, self.lsb, self.bv.toZ3(prefix))
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
 
     def synthesize(self, m):
         obj_ = Extract(self.msb, self.lsb, self.bv.synthesize(m))
@@ -451,8 +529,16 @@ class Concat(Node):
             except AttributeError:
                 raise AttributeError, 'Expect bitvector-like objects as arguments to Concat. Got %s instead.' % str(bv)
 
+    def _toZ3sHelper(self, prefix, rfun):
+        return z3.Concat(*[rfun(bv, prefix) for bv in self.bitvecs])
+
     def _toZ3(self, prefix):
-        return z3.Concat(*[bv.toZ3(prefix) for bv in self.bitvecs])
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
 
     def synthesize(self, m):
         bitvecs_ = [bv.synthesize(m) for bv in self.bitvecs]
@@ -488,8 +574,16 @@ class Z3Op(Node):
         if width != -1:
             self.width = width
 
+    def _toZ3sHelper(self, prefix, rfun):
+        return self.op(*[rfun(x, prefix) for x in self.operands])
+
     def _toZ3(self, prefix):
-        return self.op(*[x.toZ3(prefix) for x in self.operands])
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
 
     def synthesize(self, m):
         obj_ = Z3Op(self.opname, self.op, [o.synthesize(m) for o in self.operands], self.rwidthFun)
