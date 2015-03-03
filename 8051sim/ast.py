@@ -94,8 +94,7 @@ class Node(object):
         assert nodetype >= Node.NODE_TYPE_MIN
         assert nodetype <= Node.NODE_TYPE_MAX
         self.nodetype = nodetype
-        self.z3obj = None
-        self.z3prefix = ''
+        self.z3objs = {}
         self.name = '$UnnamedObject'
         self.is_input = False
 
@@ -134,10 +133,9 @@ class Node(object):
 
     def toZ3(self, prefix=''):
         """Convert this node into a Z3 expression."""
-        if self.z3obj is None or (self.z3prefix != prefix and (not self.is_input)):
-            self.z3obj = self._toZ3(prefix)
-            self.z3prefix = prefix
-        return self.z3obj
+        if prefix not in self.z3objs:
+            self.z3objs[prefix] = self._toZ3(prefix)
+        return self.z3objs[prefix]
 
     def synthesize(self, m):
         """Simplify this node according to the Z3 model m."""
