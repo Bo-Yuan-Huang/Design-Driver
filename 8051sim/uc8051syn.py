@@ -72,12 +72,43 @@ def synthesize():
 
     nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_ajmp, PC_ret])
     syn.addOutput('PC', nPC)
-    
-    cnst = Equal(op0, BitVecVal(0, 8))
 
-    for opcode in [0, 1, 0x22, 0x22]: 
+    ACC = syn.inp('ACC')
+    PSW = syn.inp('PSW')
+
+    ACC_RR = RotateRight(ACC)
+    ACC_RL = RotateLeft(ACC)
+    ACC_RRC = Extract(8, 1, RotateRight(Concat(ACC, ChooseConsecBits('PSW_CY_bit', 1, PSW))))
+    ACC_RLC = Extract(7, 0, RotateLeft(Concat(ChooseConsecBits('PSW_CY_bit', 1, PSW), ACC)))
+    ACC_DEC = Sub(ACC, BitVecVal(1, 8))
+    ACC_INC = Add(ACC, BitVecVal(1, 8))
+    OP_IMM1 = Extract(15, 8,  opcode)
+    OP_IMM2 = Extract(23, 16, opcode)
+    ACC_ADD_IMM = Add(ACC, Choice('add_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]))
+    ACC_ADDC_IMM = Add(ACC, Choice('add_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]), ZeroExt(ChooseConsecBits('PSW_CY_bit', 1, PSW), 7))
+    ACC_SUB_IMM = Sub(ACC, Choice('sub_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]))
+    ACC_SUBB_IMM = Sub(Sub(ACC, Choice('sub_acc_imm_choice', op0, [OP_IMM1, OP_IMM2])), ZeroExt(ChooseConsecBits('PSW_CY_bit', 1, PSW), 7))
+
+    nACC = Choice('nACC', op0, [   
+            ACC_RR, 
+            ACC_RL, 
+            ACC_RRC, 
+            ACC_RLC, 
+            ACC_INC, 
+            ACC_DEC, 
+            ACC_ADD_IMM, 
+            ACC_ADDC_IMM,
+            ACC_SUB_IMM,
+            ACC_SUBB_IMM])
+    syn.addOutput('ACC', nACC)
+    
+    for opcode in [0x03, 0x04, 0x14, 0x24, 0x34, 0x13, 0x23, 0x33]:
         cnst = Equal(op0, BitVecVal(opcode, 8))
-        print syn.synthesize('PC', [cnst], eval8051)
+        print syn.synthesize('ACC', [cnst], eval8051)
+
+    #for opcode in [0, 1, 0x22, 0x22]: 
+    #    cnst = Equal(op0, BitVecVal(opcode, 8))
+    #    print syn.synthesize('PC', [cnst], eval8051)
 
 if __name__ == '__main__':
     synthesize()

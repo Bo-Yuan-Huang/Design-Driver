@@ -13,8 +13,12 @@
   UPDATED THOUGHTS: This is not as straightforward as I thought because the
   AST is a DAG and not a tree. So names can be repeated legally.
 
+  <<ABANDONED>>
+
 - We have to write a pass that walks through the AST and replaces each variable
   with its corresponding value from the distinguishing input model. ReadMem
   here will have to handle arrays appropriately. This will replace _addClauses
   in the synthesizer.
+
+  [[DONE]]
 

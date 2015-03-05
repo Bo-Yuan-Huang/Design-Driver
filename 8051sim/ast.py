@@ -624,3 +624,20 @@ def Distinct(op1, op2):
 def Equal(op1, op2):
     return Z3Op('eq', Z3Equal, [op1, op2], _determineOpWidth)
 
+def RotateRight(op):
+    return Z3Op('rr', lambda op: z3.RotateRight(op, 1), [op], _determineOpWidth)
+
+def RotateLeft(op):
+    return Z3Op('rl', lambda op: z3.RotateLeft(op, 1), [op], _determineOpWidth)
+
+def ZeroExt(op, n):
+    def _extWidth(ops):
+        assert len(ops) == 1
+        return op.width + n
+    return Z3Op('zero-ext', lambda op: z3.ZeroExt(n, op), [op], _extWidth)
+
+def SignExt(op, n):
+    def _extWidth(ops):
+        assert len(ops) == 1
+        return op.width + n
+    return Z3Op('sign-ext', lambda op: z3.SignExt(n, op), [op], _extWidth)
