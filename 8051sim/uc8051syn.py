@@ -19,6 +19,7 @@ def eval8051(inputs, outputs):
     regs[0x150] = inputs['PSW']
     regs[0x102] = inputs['DPL']
     regs[0x103] = inputs['DPH']
+
     opcode = inputs['opcode']
     pc = inputs['PC']
     # simulate
@@ -32,14 +33,36 @@ def eval8051(inputs, outputs):
     outputs['DPH']  = newRegs[0x103]
 
 def create8051Inputs(syn):
-    syn.addInput(BitVecVar('PSW', 8))
+    # The "more useful" registers.
     syn.addInput(BitVecVar('ACC', 8))
+    syn.addInput(BitVecVar('B', 8))
+    syn.addInput(BitVecVar('PSW', 8))
     syn.addInput(BitVecVar('SP', 8))
     syn.addInput(BitVecVar('DPL', 8))
     syn.addInput(BitVecVar('DPH', 8))
+    # These two are for the synthesis. 
+    # Need to think about replacing this with a memory abstraction.
     syn.addInput(BitVecVar('PC', 16))
     syn.addInput(BitVecVar('opcode', 24))
+    # IRAM
     syn.addInput(MemVar('IRAM', 8, 8))
+    # ports
+    syn.addInput(BitVecVar('P0', 8))
+    syn.addInput(BitVecVar('P1', 8))
+    syn.addInput(BitVecVar('P2', 8))
+    syn.addInput(BitVecVar('P3', 8))
+    # misc SFRs.
+    syn.addInput(BitVecVar('PCON', 8))
+    syn.addInput(BitVecVar('TCON', 8))
+    syn.addInput(BitVecVar('TMOD', 8))
+    syn.addInput(BitVecVar('TL0', 8))
+    syn.addInput(BitVecVar('TH0', 8))
+    syn.addInput(BitVecVar('TL1', 8))
+    syn.addInput(BitVecVar('TH1', 8))
+    syn.addInput(BitVecVar('SCON', 8))
+    syn.addInput(BitVecVar('SBUF', 8))
+    syn.addInput(BitVecVar('IE', 8))
+    syn.addInput(BitVecVar('IP', 8))
 
 def synthesize():
     syn = Synthesizer()
@@ -85,9 +108,9 @@ def synthesize():
     OP_IMM1 = Extract(15, 8,  opcode)
     OP_IMM2 = Extract(23, 16, opcode)
     ACC_ADD_IMM = Add(ACC, Choice('add_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]))
-    ACC_ADDC_IMM = Add(ACC, Choice('add_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]), ZeroExt(ChooseConsecBits('PSW_CY_bit', 1, PSW), 7))
+    ACC_ADDC_IMM = Add(ACC, Choice('addc_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]), ZeroExt(ChooseConsecBits('PSW_CY_bit', 1, PSW), 7))
     ACC_SUB_IMM = Sub(ACC, Choice('sub_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]))
-    ACC_SUBB_IMM = Sub(Sub(ACC, Choice('sub_acc_imm_choice', op0, [OP_IMM1, OP_IMM2])), ZeroExt(ChooseConsecBits('PSW_CY_bit', 1, PSW), 7))
+    ACC_SUBB_IMM = Sub(Sub(ACC, Choice('subb_acc_imm_choice', op0, [OP_IMM1, OP_IMM2])), ZeroExt(ChooseConsecBits('PSW_CY_bit', 1, PSW), 7))
 
     nACC = Choice('nACC', op0, [   
             ACC_RR, 
@@ -106,9 +129,9 @@ def synthesize():
         cnst = Equal(op0, BitVecVal(opcode, 8))
         print syn.synthesize('ACC', [cnst], eval8051)
 
-    #for opcode in [0, 1, 0x22, 0x22]: 
-    #    cnst = Equal(op0, BitVecVal(opcode, 8))
-    #    print syn.synthesize('PC', [cnst], eval8051)
+    for opcode in [0, 1, 0x22, 0x22]: 
+        cnst = Equal(op0, BitVecVal(opcode, 8))
+        print syn.synthesize('PC', [cnst], eval8051)
 
 if __name__ == '__main__':
     synthesize()
