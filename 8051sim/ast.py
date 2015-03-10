@@ -641,3 +641,10 @@ def SignExt(op, n):
         assert len(ops) == 1
         return op.width + n
     return Z3Op('sign-ext', lambda op: z3.SignExt(n, op), [op], _extWidth)
+
+def If(cond, vthen, velse):
+    def _ifWidth(ops):
+        assert len(ops) == 3
+        return _determineOpWidth(ops[1:])
+    return Z3Op('if', z3.If, [cond, vthen, velse], _ifWidth)
+

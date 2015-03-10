@@ -31,6 +31,22 @@ def eval8051(inputs, outputs):
     outputs['PSW']  = newRegs[0x150]
     outputs['DPL']  = newRegs[0x102]
     outputs['DPH']  = newRegs[0x103]
+    outputs['P0']   = newRegs[0x80 ]
+    outputs['PCON'] = newRegs[0x87 ]
+    outputs['TCON'] = newRegs[0x88 ]
+    outputs['TMOD'] = newRegs[0x89 ]
+    outputs['TL0']  = newRegs[0x8A ]
+    outputs['TH0']  = newRegs[0x8C ]
+    outputs['TL1']  = newRegs[0x8B ]
+    outputs['TH1']  = newRegs[0x8D ]
+    outputs['P1']   = newRegs[0x90 ]
+    outputs['SCON'] = newRegs[0x98 ]
+    outputs['SBUF'] = newRegs[0x99 ]
+    outputs['P2']   = newRegs[0xA0 ]
+    outputs['IE']   = newRegs[0xA8 ]
+    outputs['P3']   = newRegs[0xB0 ]
+    outputs['IP']   = newRegs[0xB8 ]
+    outputs['B']    = newRegs[0xF0 ]
 
 def create8051Inputs(syn):
     # The "more useful" registers.
@@ -64,6 +80,54 @@ def create8051Inputs(syn):
     syn.addInput(BitVecVar('IE', 8))
     syn.addInput(BitVecVar('IP', 8))
 
+def directIRAMRead(syn, addr):
+    IRAM = syn.inp('IRAM')
+    return If(
+        Equal(Extract(7, 7, addr), BitVecVal(0, 1)),
+        ReadMem(IRAM, addr),
+        If(Equal(BitVecVal(0x80, 8), addr), syn.inp('P0'),
+            If(Equal(BitVecVal(0x81, 8), addr), syn.inp('SP'),
+                If(Equal(BitVecVal(0x82, 8), addr), syn.inp('DPL'),
+                    If(Equal(BitVecVal(0x83, 8), addr), syn.inp('DPH'),
+                        If(Equal(BitVecVal(0x87, 8), addr), syn.inp('PCON'),
+                            If(Equal(BitVecVal(0x88, 8), addr), syn.inp('TCON'),
+                                If(Equal(BitVecVal(0x89, 8), addr), syn.inp('TMOD'),
+                                    If(Equal(BitVecVal(0x8A, 8), addr), syn.inp('TL0'),
+                                        If(Equal(BitVecVal(0x8C, 8), addr), syn.inp('TH0'),
+                                            If(Equal(BitVecVal(0x8B, 8), addr), syn.inp('TL1'),
+                                                If(Equal(BitVecVal(0x8D, 8), addr), syn.inp('TH1'),
+                                                    If(Equal(BitVecVal(0x90, 8), addr), syn.inp('P1'),
+                                                        If(Equal(BitVecVal(0x98, 8), addr), syn.inp('SCON'),
+                                                            If(Equal(BitVecVal(0x99, 8), addr), syn.inp('SBUF'),
+                                                                If(Equal(BitVecVal(0xA0, 8), addr), syn.inp('P2'),
+                                                                    If(Equal(BitVecVal(0xA8, 8), addr), syn.inp('IE'),
+                                                                        If(Equal(BitVecVal(0xB0, 8), addr), syn.inp('P3'),
+                                                                            If(Equal(BitVecVal(0xB8, 8), addr), syn.inp('IP'),
+                                                                                If(Equal(BitVecVal(0xD0, 8), addr), syn.inp('PSW'),
+                                                                                    If(Equal(BitVecVal(0xE0, 8), addr), syn.inp('ACC'),
+                                                                                        If(Equal(BitVecVal(0xF0, 8), addr), syn.inp('B'),
+                                                                                            BitVecVal(0, 8)))))))))))))))))))))))
+def ilog2(x):
+    lg = 0
+    while True:
+        x = x >> 1
+        if x == 0: 
+            break
+        lg += 1
+    return lg
+
+def ExtractBit(word, bit):
+    msb = word.width - 1
+    bsz = ilog2(word.width)
+    assert bit.width == bsz
+
+    def createIf(index):
+        if index == msb:
+            return Extract(msb, msb, word)
+        else:
+            return If(Equal(bit, BitVecVal(index, bsz)), Extract(index, index, word), createIf(index+1))
+    return createIf(0)
+
 def synthesize():
     syn = Synthesizer()
     create8051Inputs(syn)
@@ -80,9 +144,14 @@ def synthesize():
     opcode = syn.inp('opcode')
     op0 = Extract(7, 0, opcode)
     op1 = Extract(15, 8, opcode)
+    op2 = Extract(23, 16, opcode)
 
     PC_plus1 = Add(PC, BitVecVal(1, 16))
     PC_plus2 = Add(PC, BitVecVal(2, 16))
+    PC_plus3 = Add(PC, BitVecVal(3, 16))
+    PC_rel1 = Add(Choice('PC_rel1_base', op0, [PC, PC_plus1, PC_plus2, PC_plus3]), SignExt(op1, 8))
+    PC_rel2 = Add(Choice('PC_rel2_base', op0, [PC, PC_plus1, PC_plus2, PC_plus3]), SignExt(op2, 8))
+
     PC_ajmp  = Concat(
                     Extract(15, 11, Choice('ajmp', op0, [PC, PC_plus2])),
                     ChooseConsecBits('ajmp_3bits', 3, opcode), 
@@ -91,9 +160,21 @@ def synthesize():
     PC_ret2 = Concat(mem_SP, mem_SP_plus1)
     PC_ret3 = Concat(mem_SP, mem_SP_minus1)
     PC_ret4 = Concat(mem_SP_plus1, mem_SP)
-    PC_ret = Choice('SP_choice', 'op0', [PC_ret1, PC_ret2, PC_ret3, PC_ret4])
+    PC_ret = Choice('SP_pc', op0, [PC_ret1, PC_ret2, PC_ret3, PC_ret4])
+    PC_ljmp = Choice('LJMP_order', op0, [Concat(op1, op2), Concat(op2, op1)])
+    PC_sjmp = Choice('SJMP_relpc', op0, [PC_rel1, PC_rel2])
+    
+    jb_bit_addr = op1
+    jb_msb_set = Equal(Extract(7, 7, jb_bit_addr), BitVecVal(1, 1))
+    jb_byte_addr = If(jb_msb_set, Concat(Extract(7, 3, jb_bit_addr), BitVecVal(0, 3)), Add(Concat(Extract(7, 3, jb_bit_addr), BitVecVal(0, 3)), BitVecVal(32, 8)))
+    jb_bit_num = Extract(2, 0, jb_bit_addr)
+    jb_bit = ExtractBit(directIRAMRead(syn, jb_byte_addr), jb_bit_num)
+    PC_jb_taken = PC_rel2 # Choice('PC_jb_rel', op0, [PC_rel1, PC_rel2])
+    PC_jb_seq = PC_plus3
+    PC_jb = If(Equal(jb_bit, BitVecVal(1,1)), PC_jb_taken, PC_jb_seq)
 
-    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_ajmp, PC_ret])
+
+    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb])
     syn.addOutput('PC', nPC)
 
     ACC = syn.inp('ACC')
@@ -103,8 +184,17 @@ def synthesize():
     ACC_RL = RotateLeft(ACC)
     ACC_RRC = Extract(8, 1, RotateRight(Concat(ACC, ChooseConsecBits('PSW_CY_bit', 1, PSW))))
     ACC_RLC = Extract(7, 0, RotateLeft(Concat(ChooseConsecBits('PSW_CY_bit', 1, PSW), ACC)))
-    ACC_DEC = Sub(ACC, BitVecVal(1, 8))
-    ACC_INC = Add(ACC, BitVecVal(1, 8))
+
+    ACC_plus1 = Add(ACC, BitVecVal(1, 8))
+    ACC_INC = ACC_plus1
+    ACC_INC_DIR = If(Equal(op1, BitVecVal(0xE0, 8)), ACC_plus1, ACC)
+
+    ACC_minus1 = Sub(ACC, BitVecVal(1, 8))
+    ACC_DEC = ACC_minus1
+    ACC_DEC_DIR = If(Equal(op1, BitVecVal(0xE0, 8)), ACC_minus1, ACC)
+
+    ACC_DIR = directIRAMRead(syn, Choice('acc_dir_addr', op0, [op1, op2])) # read
+
     OP_IMM1 = Extract(15, 8,  opcode)
     OP_IMM2 = Extract(23, 16, opcode)
     ACC_ADD_IMM = Add(ACC, Choice('add_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]))
@@ -113,25 +203,34 @@ def synthesize():
     ACC_SUBB_IMM = Sub(Sub(ACC, Choice('subb_acc_imm_choice', op0, [OP_IMM1, OP_IMM2])), ZeroExt(ChooseConsecBits('PSW_CY_bit', 1, PSW), 7))
 
     nACC = Choice('nACC', op0, [   
+            ACC,
             ACC_RR, 
             ACC_RL, 
             ACC_RRC, 
             ACC_RLC, 
             ACC_INC, 
+            ACC_INC_DIR,
             ACC_DEC, 
             ACC_ADD_IMM, 
             ACC_ADDC_IMM,
             ACC_SUB_IMM,
+            ACC_DIR,
             ACC_SUBB_IMM])
     syn.addOutput('ACC', nACC)
     
-    for opcode in [0x03, 0x04, 0x14, 0x24, 0x34, 0x13, 0x23, 0x33]:
-        cnst = Equal(op0, BitVecVal(opcode, 8))
-        print syn.synthesize('ACC', [cnst], eval8051)
+    #for opcode in [0x03, 0x04, 0x14, 0x24, 0x34, 0x13, 0x23, 0x33]:
+    #    cnst = Equal(op0, BitVecVal(opcode, 8))
+    #    print syn.synthesize('ACC', [cnst], eval8051)
 
-    for opcode in [0, 1, 0x22, 0x22]: 
+    #for opcode in [0, 1, 0x22, 0x22]: 
+    #    cnst = Equal(op0, BitVecVal(opcode, 8))
+    #    print syn.synthesize('PC', [cnst], eval8051)
+    # syn.VERBOSITY = 2
+    for opcode in [0x10]: # range(0x10) + [0xE5]:
         cnst = Equal(op0, BitVecVal(opcode, 8))
-        print syn.synthesize('PC', [cnst], eval8051)
+        # print '%02x %s' % (opcode, syn.synthesize('ACC', [cnst], eval8051))
+        print '%02x %s' % (opcode, syn.synthesize('PC', [cnst], eval8051))
+
 
 if __name__ == '__main__':
     synthesize()

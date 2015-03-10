@@ -113,8 +113,8 @@ class Synthesizer(object):
             sim_outputs = {}
             sim(sim_inputs, sim_outputs)
             if self.VERBOSITY >= 2:
-                print 'sim_inputs:', sim_inputs
-                print 'sim_outputs:', sim_outputs
+                self.print_dict('sim_inputs', sim_inputs)
+                self.print_dict('sim_outputs', sim_outputs)
 
             out.clearZ3Cache()
             y1mz3 = out.toZ3Constraints(Synthesizer.P1, sim_inputs)
@@ -177,5 +177,20 @@ class Synthesizer(object):
             vals.append([az3.as_long(), dz3.as_long()])
         vals.append(memvals[-1].as_long())
         return vals
+
+
+    def str_mem(self, m):
+        s1 = ['%x:%x' % (a,d) for [a,d] in m[:-1]]
+        s2 = ['else:%x' % m[-1]]
+        return '[%s]' % (' '.join(s1+s2))
+
+    def print_dict(self, n, d):
+        vs = []
+        for (k, v) in d.iteritems():
+            try:
+                vs.append('%s:%x' % (k, v))
+            except TypeError:
+                vs.append('%s:%s' % (k, self.str_mem(v)))
+        print n, ' '.join(vs)
 
 
