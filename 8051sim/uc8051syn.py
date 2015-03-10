@@ -183,33 +183,6 @@ class DirectIRAMRead(Node):
         yield self.mem
         yield self.addr
 
-def directIRAMRead(syn, addr):
-    IRAM = syn.inp('IRAM')
-    return If(
-        Equal(Extract(7, 7, addr), BitVecVal(0, 1)),
-        ReadMem(IRAM, addr),
-        If(Equal(BitVecVal(0x80, 8), addr), syn.inp('P0'),
-            If(Equal(BitVecVal(0x81, 8), addr), syn.inp('SP'),
-                If(Equal(BitVecVal(0x82, 8), addr), syn.inp('DPL'),
-                    If(Equal(BitVecVal(0x83, 8), addr), syn.inp('DPH'),
-                        If(Equal(BitVecVal(0x87, 8), addr), syn.inp('PCON'),
-                            If(Equal(BitVecVal(0x88, 8), addr), syn.inp('TCON'),
-                                If(Equal(BitVecVal(0x89, 8), addr), syn.inp('TMOD'),
-                                    If(Equal(BitVecVal(0x8A, 8), addr), syn.inp('TL0'),
-                                        If(Equal(BitVecVal(0x8C, 8), addr), syn.inp('TH0'),
-                                            If(Equal(BitVecVal(0x8B, 8), addr), syn.inp('TL1'),
-                                                If(Equal(BitVecVal(0x8D, 8), addr), syn.inp('TH1'),
-                                                    If(Equal(BitVecVal(0x90, 8), addr), syn.inp('P1'),
-                                                        If(Equal(BitVecVal(0x98, 8), addr), syn.inp('SCON'),
-                                                            If(Equal(BitVecVal(0x99, 8), addr), syn.inp('SBUF'),
-                                                                If(Equal(BitVecVal(0xA0, 8), addr), syn.inp('P2'),
-                                                                    If(Equal(BitVecVal(0xA8, 8), addr), syn.inp('IE'),
-                                                                        If(Equal(BitVecVal(0xB0, 8), addr), syn.inp('P3'),
-                                                                            If(Equal(BitVecVal(0xB8, 8), addr), syn.inp('IP'),
-                                                                                If(Equal(BitVecVal(0xD0, 8), addr), syn.inp('PSW'),
-                                                                                    If(Equal(BitVecVal(0xE0, 8), addr), syn.inp('ACC'),
-                                                                                        If(Equal(BitVecVal(0xF0, 8), addr), syn.inp('B'),
-                                                                                            BitVecVal(0, 8)))))))))))))))))))))))
 def synthesize():
     syn = Synthesizer()
     create8051Inputs(syn)
