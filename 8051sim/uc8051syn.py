@@ -31,22 +31,22 @@ def eval8051(inputs, outputs):
     outputs['PSW']  = newRegs[0x150]
     outputs['DPL']  = newRegs[0x102]
     outputs['DPH']  = newRegs[0x103]
-    outputs['P0']   = newRegs[0x80 ]
-    outputs['PCON'] = newRegs[0x87 ]
-    outputs['TCON'] = newRegs[0x88 ]
-    outputs['TMOD'] = newRegs[0x89 ]
-    outputs['TL0']  = newRegs[0x8A ]
-    outputs['TH0']  = newRegs[0x8C ]
-    outputs['TL1']  = newRegs[0x8B ]
-    outputs['TH1']  = newRegs[0x8D ]
-    outputs['P1']   = newRegs[0x90 ]
-    outputs['SCON'] = newRegs[0x98 ]
-    outputs['SBUF'] = newRegs[0x99 ]
-    outputs['P2']   = newRegs[0xA0 ]
-    outputs['IE']   = newRegs[0xA8 ]
-    outputs['P3']   = newRegs[0xB0 ]
-    outputs['IP']   = newRegs[0xB8 ]
-    outputs['B']    = newRegs[0xF0 ]
+    outputs['P0']   = newRegs[0x80 + 0x80]
+    outputs['PCON'] = newRegs[0x80 + 0x87]
+    outputs['TCON'] = newRegs[0x80 + 0x88]
+    outputs['TMOD'] = newRegs[0x80 + 0x89]
+    outputs['TL0']  = newRegs[0x80 + 0x8A]
+    outputs['TH0']  = newRegs[0x80 + 0x8C]
+    outputs['TL1']  = newRegs[0x80 + 0x8B]
+    outputs['TH1']  = newRegs[0x80 + 0x8D]
+    outputs['P1']   = newRegs[0x80 + 0x90]
+    outputs['SCON'] = newRegs[0x80 + 0x98]
+    outputs['SBUF'] = newRegs[0x80 + 0x99]
+    outputs['P2']   = newRegs[0x80 + 0xA0]
+    outputs['IE']   = newRegs[0x80 + 0xA8]
+    outputs['P3']   = newRegs[0x80 + 0xB0]
+    outputs['IP']   = newRegs[0x80 + 0xB8]
+    outputs['B']    = newRegs[0x80 + 0xF0]
 
 def create8051Inputs(syn):
     # The "more useful" registers.
@@ -80,6 +80,109 @@ def create8051Inputs(syn):
     syn.addInput(BitVecVar('IE', 8))
     syn.addInput(BitVecVar('IP', 8))
 
+class DirectIRAMRead(Node):
+    "Perform a direct read from the 8051 IRAM."
+    DIR_IRAM_READ = Node.NODE_TYPE_MAX+1
+
+    def __init__(self, syn, iram, addr):
+        if addr.width != 8:
+            raise ValueError, "Address width must be 8."
+        if iram.dwidth != 8:
+            raise ValueError, "IRAM width must also be 8."
+
+        Node.__init__(self, self.DIR_IRAM_READ)
+        self.mem = iram
+        self.addr = addr
+        self.width = iram.dwidth
+        self.syn = syn
+         
+    def _toZ3(self, prefix):
+        mz3 = self.mem.toZ3(prefix)
+        az3 = self.addr.toZ3(prefix)
+
+        msb0 = z3.Extract(7, 7, az3) == z3.BitVecVal(0, 1)
+        return z3.If(msb0, mz3[az3],
+            z3.If(az3 == z3.BitVecVal(0x80, 8), self.syn.inp('P0').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x81, 8), self.syn.inp('SP').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x82, 8), self.syn.inp('DPL').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x83, 8), self.syn.inp('DPH').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x87, 8), self.syn.inp('PCON').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x88, 8), self.syn.inp('TCON').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x89, 8), self.syn.inp('TMOD').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x8A, 8), self.syn.inp('TL0').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x8C, 8), self.syn.inp('TH0').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x8B, 8), self.syn.inp('TL1').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x8D, 8), self.syn.inp('TH1').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x90, 8), self.syn.inp('P1').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x98, 8), self.syn.inp('SCON').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0x99, 8), self.syn.inp('SBUF').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0xA0, 8), self.syn.inp('P2').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0xA8, 8), self.syn.inp('IE').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0xB0, 8), self.syn.inp('P3').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0xB8, 8), self.syn.inp('IP').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0xD0, 8), self.syn.inp('PSW').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0xE0, 8), self.syn.inp('ACC').toZ3(prefix),
+            z3.If(az3 == z3.BitVecVal(0xF0, 8), self.syn.inp('B').toZ3(prefix),
+            z3.BitVecVal(0, 8)))))))))))))))))))))))
+
+    def _toZ3Constraints(self, prefix, m):
+        assert self.mem.isMemVar()
+        mem_values_full = m[self.mem.name]
+        awidth = self.mem.awidth
+        dwidth = self.mem.dwidth
+
+        az3 = self.addr.toZ3Constraints(prefix, m)
+        
+        mem_values = []
+        for [a,d] in mem_values_full[:-1]:
+            # test if MSB is set:
+            if (a & 0x80) != 0:
+                mem_values.append([a,d])
+        mem_values.append(mem_values_full[-1])
+        def createIf(i):
+            if i == len(mem_values) - 1:
+                return z3.BitVecVal(mem_values[i], dwidth)
+            else:
+                [addri, datai] = mem_values[i]
+                aiz3 = z3.BitVecVal(addri, awidth)
+                diz3 = z3.BitVecVal(datai, dwidth)
+                return z3.If(aiz3 == az3, diz3, createIf(i+1))
+        expr1 = createIf(0)
+        msb0 = z3.Extract(7, 7, az3) == z3.BitVecVal(0, 1)
+        return z3.If(msb0, expr1,
+            z3.If(az3 == z3.BitVecVal(0x80, 8), self.syn.inp('P0').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x81, 8), self.syn.inp('SP').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x82, 8), self.syn.inp('DPL').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x83, 8), self.syn.inp('DPH').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x87, 8), self.syn.inp('PCON').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x88, 8), self.syn.inp('TCON').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x89, 8), self.syn.inp('TMOD').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x8A, 8), self.syn.inp('TL0').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x8C, 8), self.syn.inp('TH0').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x8B, 8), self.syn.inp('TL1').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x8D, 8), self.syn.inp('TH1').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x90, 8), self.syn.inp('P1').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x98, 8), self.syn.inp('SCON').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0x99, 8), self.syn.inp('SBUF').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0xA0, 8), self.syn.inp('P2').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0xA8, 8), self.syn.inp('IE').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0xB0, 8), self.syn.inp('P3').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0xB8, 8), self.syn.inp('IP').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0xD0, 8), self.syn.inp('PSW').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0xE0, 8), self.syn.inp('ACC').toZ3Constraints(prefix, m),
+            z3.If(az3 == z3.BitVecVal(0xF0, 8), self.syn.inp('B').toZ3Constraints(prefix, m),
+            z3.BitVecVal(0, 8)))))))))))))))))))))))
+
+    def __str__(self):
+        return '(read-direct %s %s)' % (str(self.mem), str(self.addr))
+
+    def synthesize(self, m):
+        return DirectIRAMRead(self.syn, self.mem.synthesize(m), self.addr.synthesize(m))
+
+    def childObjects(self):
+        yield self.mem
+        yield self.addr
+
 def directIRAMRead(syn, addr):
     IRAM = syn.inp('IRAM')
     return If(
@@ -107,27 +210,6 @@ def directIRAMRead(syn, addr):
                                                                                     If(Equal(BitVecVal(0xE0, 8), addr), syn.inp('ACC'),
                                                                                         If(Equal(BitVecVal(0xF0, 8), addr), syn.inp('B'),
                                                                                             BitVecVal(0, 8)))))))))))))))))))))))
-def ilog2(x):
-    lg = 0
-    while True:
-        x = x >> 1
-        if x == 0: 
-            break
-        lg += 1
-    return lg
-
-def ExtractBit(word, bit):
-    msb = word.width - 1
-    bsz = ilog2(word.width)
-    assert bit.width == bsz
-
-    def createIf(index):
-        if index == msb:
-            return Extract(msb, msb, word)
-        else:
-            return If(Equal(bit, BitVecVal(index, bsz)), Extract(index, index, word), createIf(index+1))
-    return createIf(0)
-
 def synthesize():
     syn = Synthesizer()
     create8051Inputs(syn)
@@ -168,7 +250,7 @@ def synthesize():
     jb_msb_set = Equal(Extract(7, 7, jb_bit_addr), BitVecVal(1, 1))
     jb_byte_addr = If(jb_msb_set, Concat(Extract(7, 3, jb_bit_addr), BitVecVal(0, 3)), Add(Concat(Extract(7, 3, jb_bit_addr), BitVecVal(0, 3)), BitVecVal(32, 8)))
     jb_bit_num = Extract(2, 0, jb_bit_addr)
-    jb_bit = ExtractBit(directIRAMRead(syn, jb_byte_addr), jb_bit_num)
+    jb_bit = ExtractBit(DirectIRAMRead(syn, IRAM, jb_byte_addr), jb_bit_num)
     PC_jb_taken = PC_rel2 # Choice('PC_jb_rel', op0, [PC_rel1, PC_rel2])
     PC_jb_seq = PC_plus3
     PC_jb = If(Equal(jb_bit, BitVecVal(1,1)), PC_jb_taken, PC_jb_seq)
@@ -193,7 +275,7 @@ def synthesize():
     ACC_DEC = ACC_minus1
     ACC_DEC_DIR = If(Equal(op1, BitVecVal(0xE0, 8)), ACC_minus1, ACC)
 
-    ACC_DIR = directIRAMRead(syn, Choice('acc_dir_addr', op0, [op1, op2])) # read
+    ACC_DIR = DirectIRAMRead(syn, IRAM, Choice('acc_dir_addr', op0, [op1, op2])) # read
 
     OP_IMM1 = Extract(15, 8,  opcode)
     OP_IMM2 = Extract(23, 16, opcode)

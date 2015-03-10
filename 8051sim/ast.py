@@ -55,10 +55,7 @@ class Node(object):
     (a) the constructor which will call Node.__init__ with the appropriate
     nodetype.
     
-    (b) _toZ3, this should convert the node into a Z3 expression. The argument
-    recToZ3() is the function that is called on recursive calls. This layer of
-    indirection makes it easier to implement _toZ3() _toZ3Clauses(m) using the
-    same code.
+    (b) _toZ3, this should convert the node into a Z3 expression. 
 
     (c) _toZ3Constraints(m), is a function that uses the input values to encode 
     the constraints using the distinguishing input values 'm'.
@@ -83,7 +80,6 @@ class Node(object):
     toZ3Constraints with different models.
     """
 
-    NODE_TYPE_MIN   = 0
     BOOLVAR         = 0
     BITVECVAR       = 1
     BITVECVAL       = 2
@@ -93,14 +89,13 @@ class Node(object):
     READMEM         = 6
     WRITEMEM        = 7
     EXTRACT         = 8
-    CONCAT          = 9
-    Z3OP            = 10
-    NODE_TYPE_MAX   = 10
+    EXTRACTBIT      = 9
+    CONCAT          = 10
+    Z3OP            = 11
+    NODE_TYPE_MAX   = 12
 
     def __init__(self, nodetype):
         """Constructor."""
-        assert nodetype >= Node.NODE_TYPE_MIN
-        assert nodetype <= Node.NODE_TYPE_MAX
         self.nodetype = nodetype
         self.z3objs = {}
         self.z3cnsts = {}
@@ -516,6 +511,57 @@ class Extract(Node):
     def childObjects(self):
         yield self.bv
 
+class ExtractBit(Node):
+    """Extract a particular bit from a word."""
+    def __init__(self, word, bit):
+
+        msb = word.width - 1
+        bsz = ilog2(word.width)
+        if bit.width != bsz:
+            raise ValueError, 'Bit-index width must be %d, is %d instead.' % (bsz, bit.width)
+
+        Node.__init__(self, Node.EXTRACTBIT)
+        self.word = word
+        self.bit = bit
+        self.width = 1
+
+    def _toZ3sHelper(self, prefix, rfun):
+        msb = self.word.width - 1
+        bsz = ilog2(self.word.width)
+
+        wz3 = rfun(self.word, prefix)
+        bz3 = rfun(self.bit, prefix)
+
+        def createIf(index):
+            if index == msb:
+                return z3.Extract(msb, msb, wz3)
+            else:
+                return z3.If(
+                    bz3 == z3.BitVecVal(index, bsz), 
+                    z3.Extract(index, index, wz3), 
+                    createIf(index+1))
+        return createIf(0)
+
+    def _toZ3(self, prefix):
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def synthesize(self, m):
+        word_ = self.word.synthesize(m)
+        bit_ = self.bit.synthesize(m)
+        return ExtractBit(word_, bit_)
+
+    def __str__(self):
+        return '(extract-bit %s %s)' % (str(self.word), str(self.bit))
+
+    def childObjects(self):
+        yield self.word
+        yield self.bit
+
 class Concat(Node):
     """Concatenate bitvectors."""
     def __init__(self, *bitvecs):
@@ -648,3 +694,12 @@ def If(cond, vthen, velse):
         return _determineOpWidth(ops[1:])
     return Z3Op('if', z3.If, [cond, vthen, velse], _ifWidth)
 
+# Stupid utility function.
+def ilog2(x):
+    lg = 0
+    while True:
+        x = x >> 1
+        if x == 0: 
+            break
+        lg += 1
+    return lg

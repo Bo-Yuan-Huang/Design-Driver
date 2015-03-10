@@ -32,6 +32,7 @@ def test_AST():
     c3 = Concat(c1, c2)
     print c3, c3.toZ3()
 
+
     S = z3.Solver()
     a = BoolVar('a')
     b = BoolVar('b')
@@ -63,6 +64,11 @@ def test_AST():
     S.add(ez3)
     print S.check()
     print S.model()
+
+    eb1 = ExtractBit(v2, c2)
+    print eb1
+    print eb1.toZ3()
+
 
     print 'Var assertions passed.'
 
