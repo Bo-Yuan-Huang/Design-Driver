@@ -224,9 +224,9 @@ def synthesize():
     jb_byte_addr = If(jb_msb_set, Concat(Extract(7, 3, jb_bit_addr), BitVecVal(0, 3)), Add(Concat(Extract(7, 3, jb_bit_addr), BitVecVal(0, 3)), BitVecVal(32, 8)))
     jb_bit_num = Extract(2, 0, jb_bit_addr)
     jb_bit = ExtractBit(DirectIRAMRead(syn, IRAM, jb_byte_addr), jb_bit_num)
-    PC_jb_taken = PC_rel2 # Choice('PC_jb_rel', op0, [PC_rel1, PC_rel2])
+    PC_jb_taken = Choice('PC_jb_rel', op0, [PC_rel1, PC_rel2])
     PC_jb_seq = PC_plus3
-    PC_jb = If(Equal(jb_bit, BitVecVal(1,1)), PC_jb_taken, PC_jb_seq)
+    PC_jb = If(Equal(jb_bit, Choice('jb_polarity', op0, [BitVecVal(1,1), BitVecVal(0,1)])), PC_jb_taken, PC_jb_seq)
 
 
     nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb])
@@ -280,7 +280,7 @@ def synthesize():
     #for opcode in [0, 1, 0x22, 0x22]: 
     #    cnst = Equal(op0, BitVecVal(opcode, 8))
     #    print syn.synthesize('PC', [cnst], eval8051)
-    # syn.VERBOSITY = 2
+    syn.VERBOSITY = 2
     for opcode in [0x10]: # range(0x10) + [0xE5]:
         cnst = Equal(op0, BitVecVal(opcode, 8))
         # print '%02x %s' % (opcode, syn.synthesize('ACC', [cnst], eval8051))
