@@ -219,9 +219,9 @@ def synthesize():
     PC_ljmp = Choice('LJMP_order', op0, [Concat(op1, op2), Concat(op2, op1)])
     PC_sjmp = Choice('SJMP_relpc', op0, [PC_rel1, PC_rel2])
     
-    jb_bit_addr = op1
+    jb_bit_addr = Choice('bit_addr_choice', op0, [op1, op2])
     jb_msb_set = Equal(Extract(7, 7, jb_bit_addr), BitVecVal(1, 1))
-    jb_byte_addr = If(jb_msb_set, Concat(Extract(7, 3, jb_bit_addr), BitVecVal(0, 3)), Add(Concat(Extract(7, 3, jb_bit_addr), BitVecVal(0, 3)), BitVecVal(32, 8)))
+    jb_byte_addr = If(jb_msb_set, Concat(Extract(7, 3, jb_bit_addr), BitVecVal(0, 3)), Add(ZeroExt(Extract(7, 3, jb_bit_addr), 3), BitVecVal(32, 8)))
     jb_bit_num = Extract(2, 0, jb_bit_addr)
     jb_bit = ExtractBit(DirectIRAMRead(syn, IRAM, jb_byte_addr), jb_bit_num)
     PC_jb_taken = Choice('PC_jb_rel', op0, [PC_rel1, PC_rel2])
@@ -281,8 +281,8 @@ def synthesize():
     #for opcode in [0, 1, 0x22, 0x22]: 
     #    cnst = Equal(op0, BitVecVal(opcode, 8))
     #    print syn.synthesize('PC', [cnst], eval8051)
-    syn.VERBOSITY = 3
-    syn.MAXITER = 20
+    syn.VERBOSITY = 1
+    syn.MAXITER = 200
     for opcode in [0x10]: # range(0x10) + [0xE5]:
         cnst = Equal(op0, BitVecVal(opcode, 8))
         # print '%02x %s' % (opcode, syn.synthesize('ACC', [cnst], eval8051))

@@ -93,18 +93,21 @@ class Synthesizer(object):
                     print 'e_y1mz3:', m.eval(y1mz3)
                     print 'e_y2mz3:', m.eval(y2mz3)
 
-                subs = []
-                for k in m:
-                    if k.name().startswith('_choice'):
-                        n_k = z3.Bool(k.name())
-                        v_k = z3.is_true(m[k])
-                        subs.append((n_k, z3.BoolVal(v_k)))
+                if self.VERBOSITY >= 4:
+                    subs = []
+                    for k in m:
+                        if k.name().startswith('_choice'):
+                            n_k = z3.Bool(k.name())
+                            v_k = z3.is_true(m[k])
+                            subs.append((n_k, z3.BoolVal(v_k)))
 
-                print subs
-                y1p = z3.simplify(z3.substitute(yexp1, subs))
-                y2p = z3.simplify(z3.substitute(yexp2, subs))
-                print 'y1\':', y1p
-                print 'y2\':', y2p
+                    # opcode = z3.BitVec('opcode', 24)
+                    # subs.append((opcode, z3.BitVecVal(m[opcode].as_long(), 24)))
+                    print subs
+                    y1p = z3.simplify(z3.substitute(yexp1, subs))
+                    y2p = z3.simplify(z3.substitute(yexp2, subs))
+                    print 'y1\':', y1p
+                    print 'y2\':', y2p
 
             # TODO: might need more work when we model arrays.
             sim_inputs = {}
