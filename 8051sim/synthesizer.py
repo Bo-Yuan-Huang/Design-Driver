@@ -17,6 +17,8 @@ class Synthesizer(object):
         self.VERBOSITY = 0
         self.MAXITER = 1000000
         self.name_id = 1001
+        self.debug_objects = []
+        self.unsat_core = False
 
     def addInput(self, inp):
         """Create an input variable. An input variable is a piece of state
@@ -50,6 +52,8 @@ class Synthesizer(object):
 
         # create the expressions for the output variable.
         out = self.outputs[name]
+        out.clearZ3Cache()
+
         yexp1 = out.toZ3(Synthesizer.P1)
         yexp2 = out.toZ3(Synthesizer.P2)
 
@@ -69,14 +73,23 @@ class Synthesizer(object):
         # let's create the initial instance.
         S = z3.Solver()
         y = z3.Bool('y')
-        S.add(y == (z3.Distinct(yexp1, yexp2)))
+
+        if self.unsat_core:
+            S.set(unsat_core=True)
+            S.assert_and_track(y == (z3.Distinct(yexp1, yexp2)), 'prob')
+        else:
+            S.add(y == (z3.Distinct(yexp1, yexp2)))
 
         # add any user specified constraints.
         for i, c in enumerate(itertools.chain(self.constraints, cnsts)):
             ci = c.toZ3()
-            S.add(ci)
+            ci_name = 'cnst%d' % i
+            if self.unsat_core:
+                S.assert_and_track(ci, ci_name)
+            else:
+                S.add(ci)
             if self.VERBOSITY >= 3:
-                print 'cnst%d: %s' % (i, str(ci))
+                print '%s: %s' % (ci_name, str(ci))
 
         # now for the actual solution loop.
         iterations = 0
@@ -101,8 +114,8 @@ class Synthesizer(object):
                             v_k = z3.is_true(m[k])
                             subs.append((n_k, z3.BoolVal(v_k)))
 
-                    # opcode = z3.BitVec('opcode', 24)
-                    # subs.append((opcode, z3.BitVecVal(m[opcode].as_long(), 24)))
+                    opcode = z3.BitVec('opcode', 24)
+                    subs.append((opcode, z3.BitVecVal(m[opcode].as_long(), 24)))
                     print subs
                     y1p = z3.simplify(z3.substitute(yexp1, subs))
                     y2p = z3.simplify(z3.substitute(yexp2, subs))
@@ -145,14 +158,24 @@ class Synthesizer(object):
             except AttributeError:
                 ocnst = z3.BoolVal(sim_outputs[name])
 
-            S.add(ocnst == y1mz3)
-            S.add(ocnst == y2mz3)
+            n1 = 'out1_%d' % iterations
+            n2 = 'out2_%d' % iterations
+            if self.unsat_core:
+                S.assert_and_track(ocnst == y1mz3, n1)
+                S.assert_and_track(ocnst == y2mz3, n2)
+            else:
+                S.add(ocnst == y1mz3)
+                S.add(ocnst == y2mz3)
+                
 
             if self.VERBOSITY >= 3:
                 print '#it:', iterations
                 print 'y1mz3:', y1mz3
                 print 'y2mz3:', y2mz3
                 print 'out:', ocnst
+                for i, o in enumerate(self.debug_objects):
+                    print 'DBG%dA: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P1, sim_inputs)).sexpr())
+                    print 'DBG%dB: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P2, sim_inputs)).sexpr())
 
             if iterations >= self.MAXITER:
                 raise RuntimeError, 'Too many (%d) iterations executed.' % iterations
@@ -171,6 +194,8 @@ class Synthesizer(object):
 
         # now we need to extract solution
         result = S.check(z3.Not(y))
+        if result == z3.unsat and self.unsat_core:
+            print 'UNSAT core:', S.unsat_core()
         assert result == z3.sat
         m = S.model()
         if self.VERBOSITY >= 3:

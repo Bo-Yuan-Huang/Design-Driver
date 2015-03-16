@@ -19,6 +19,22 @@ def eval8051(inputs, outputs):
     regs[0x150] = inputs['PSW']
     regs[0x102] = inputs['DPL']
     regs[0x103] = inputs['DPH']
+    regs[0x80 + 0x80] = inputs['P0']
+    regs[0x80 + 0x87] = inputs['PCON']
+    regs[0x80 + 0x88] = inputs['TCON']
+    regs[0x80 + 0x89] = inputs['TMOD']
+    regs[0x80 + 0x8A] = inputs['TL0'] 
+    regs[0x80 + 0x8C] = inputs['TH0'] 
+    regs[0x80 + 0x8B] = inputs['TL1'] 
+    regs[0x80 + 0x8D] = inputs['TH1'] 
+    regs[0x80 + 0x90] = inputs['P1']  
+    regs[0x80 + 0x98] = inputs['SCON']
+    regs[0x80 + 0x99] = inputs['SBUF']
+    regs[0x80 + 0xA0] = inputs['P2']  
+    regs[0x80 + 0xA8] = inputs['IE']  
+    regs[0x80 + 0xB0] = inputs['P3']  
+    regs[0x80 + 0xB8] = inputs['IP']  
+    regs[0x80 + 0xF0] = inputs['B']   
 
     opcode = inputs['opcode']
     pc = inputs['PC']
@@ -132,11 +148,13 @@ class DirectIRAMRead(Node):
         dwidth = self.mem.dwidth
 
         az3 = self.addr.toZ3Constraints(prefix, m)
+        if self.syn.VERBOSITY >= 4:
+            print 'az3:', z3.simplify(az3).sexpr()
         
         mem_values = []
         for [a,d] in mem_values_full[:-1]:
             # test if MSB is set:
-            if (a & 0x80) != 0:
+            if (a & 0x80) == 0:
                 mem_values.append([a,d])
         mem_values.append(mem_values_full[-1])
         def createIf(i):
@@ -148,8 +166,14 @@ class DirectIRAMRead(Node):
                 diz3 = z3.BitVecVal(datai, dwidth)
                 return z3.If(aiz3 == az3, diz3, createIf(i+1))
         expr1 = createIf(0)
+        if self.syn.VERBOSITY >= 4:
+            print 'mem_values_full:', mem_values_full
+            print 'mem_values:', mem_values
+            print 'expr1_o:', expr1.sexpr()
+            print 'expr1_s:', z3.simplify(expr1).sexpr()
+            print 'p0:', self.syn.inp('P0').toZ3Constraints(prefix, m).sexpr()
         msb0 = z3.Extract(7, 7, az3) == z3.BitVecVal(0, 1)
-        return z3.If(msb0, expr1,
+        expr2 = z3.If(msb0, expr1,
             z3.If(az3 == z3.BitVecVal(0x80, 8), self.syn.inp('P0').toZ3Constraints(prefix, m),
             z3.If(az3 == z3.BitVecVal(0x81, 8), self.syn.inp('SP').toZ3Constraints(prefix, m),
             z3.If(az3 == z3.BitVecVal(0x82, 8), self.syn.inp('DPL').toZ3Constraints(prefix, m),
@@ -172,6 +196,9 @@ class DirectIRAMRead(Node):
             z3.If(az3 == z3.BitVecVal(0xE0, 8), self.syn.inp('ACC').toZ3Constraints(prefix, m),
             z3.If(az3 == z3.BitVecVal(0xF0, 8), self.syn.inp('B').toZ3Constraints(prefix, m),
             z3.BitVecVal(0, 8)))))))))))))))))))))))
+        if self.syn.VERBOSITY >= 4:
+            print 'expr2_s:', z3.simplify(expr2).sexpr()
+        return expr2
 
     def __str__(self):
         return '(read-direct %s %s)' % (str(self.mem), str(self.addr))
@@ -182,6 +209,27 @@ class DirectIRAMRead(Node):
     def childObjects(self):
         yield self.mem
         yield self.addr
+        yield self.syn.inp('P0')
+        yield self.syn.inp('SP')
+        yield self.syn.inp('DPL')
+        yield self.syn.inp('DPH')
+        yield self.syn.inp('PCON')
+        yield self.syn.inp('TCON')
+        yield self.syn.inp('TMOD')
+        yield self.syn.inp('TL0')
+        yield self.syn.inp('TH0')
+        yield self.syn.inp('TL1')
+        yield self.syn.inp('TH1')
+        yield self.syn.inp('P1')
+        yield self.syn.inp('SCON')
+        yield self.syn.inp('SBUF')
+        yield self.syn.inp('P2')
+        yield self.syn.inp('IE')
+        yield self.syn.inp('P3')
+        yield self.syn.inp('IP')
+        yield self.syn.inp('PSW')
+        yield self.syn.inp('ACC')
+        yield self.syn.inp('B')
 
 def synthesize():
     syn = Synthesizer()
@@ -223,14 +271,15 @@ def synthesize():
     jb_msb_set = Equal(Extract(7, 7, jb_bit_addr), BitVecVal(1, 1))
     jb_byte_addr = If(jb_msb_set, Concat(Extract(7, 3, jb_bit_addr), BitVecVal(0, 3)), Add(ZeroExt(Extract(7, 3, jb_bit_addr), 3), BitVecVal(32, 8)))
     jb_bit_num = Extract(2, 0, jb_bit_addr)
-    jb_bit = ExtractBit(DirectIRAMRead(syn, IRAM, jb_byte_addr), jb_bit_num)
+    jb_byte = DirectIRAMRead(syn, IRAM, jb_byte_addr)
+    jb_bit = ExtractBit(jb_byte, jb_bit_num)
     PC_jb_taken = Choice('PC_jb_rel', op0, [PC_rel1, PC_rel2])
     PC_jb_seq = PC_plus3
     PC_jb = If(Equal(jb_bit, Choice('jb_polarity', op0, [BitVecVal(1,1), BitVecVal(0,1)])), PC_jb_taken, PC_jb_seq)
 
 
     # nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb])
-    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ret, PC_jb])
+    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb])
     syn.addOutput('PC', nPC)
 
     ACC = syn.inp('ACC')
@@ -281,9 +330,11 @@ def synthesize():
     #for opcode in [0, 1, 0x22, 0x22]: 
     #    cnst = Equal(op0, BitVecVal(opcode, 8))
     #    print syn.synthesize('PC', [cnst], eval8051)
-    syn.VERBOSITY = 4
+    syn.VERBOSITY = 0
     syn.MAXITER = 200
-    for opcode in [0x10]: # range(0x10) + [0xE5]:
+    syn.unsat_core = False
+    syn.debug_objects += [ PC_jb, jb_byte, jb_bit, jb_byte_addr, jb_bit_addr ]
+    for opcode in range(0x40) + [0x80]:
         cnst = Equal(op0, BitVecVal(opcode, 8))
         # print '%02x %s' % (opcode, syn.synthesize('ACC', [cnst], eval8051))
         print '%02x %s' % (opcode, syn.synthesize('PC', [cnst], eval8051))

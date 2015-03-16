@@ -524,11 +524,10 @@ class ExtractBit(Node):
         self.word = word
         self.bit = bit
         self.width = 1
+        self.bsz = bsz
 
     def _toZ3sHelper(self, prefix, rfun):
         msb = self.word.width - 1
-        bsz = ilog2(self.word.width)
-
         wz3 = rfun(self.word, prefix)
         bz3 = rfun(self.bit, prefix)
 
@@ -537,7 +536,7 @@ class ExtractBit(Node):
                 return z3.Extract(msb, msb, wz3)
             else:
                 return z3.If(
-                    bz3 == z3.BitVecVal(index, bsz), 
+                    bz3 == z3.BitVecVal(index, self.bsz), 
                     z3.Extract(index, index, wz3), 
                     createIf(index+1))
         return createIf(0)
