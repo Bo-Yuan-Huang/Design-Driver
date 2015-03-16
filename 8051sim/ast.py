@@ -667,7 +667,7 @@ def Distinct(op1, op2):
     return Z3Op('distinct', z3.Distinct, [op1, op2], _determineOpWidth)
 
 def Equal(op1, op2):
-    return Z3Op('eq', Z3Equal, [op1, op2], _determineOpWidth)
+    return Z3Op('eq', Z3Equal, [op1, op2], _noWidth)
 
 def RotateRight(op):
     return Z3Op('rr', lambda op: z3.RotateRight(op, 1), [op], _determineOpWidth)

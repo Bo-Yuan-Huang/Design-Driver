@@ -96,6 +96,8 @@ class Synthesizer(object):
         y1mz3 = None
         y2mz3 = None
         while S.check(y) == z3.sat:
+            out.clearZ3Cache()
+
             iterations += 1
             m = S.model()
             if self.VERBOSITY >= 3:
@@ -149,7 +151,6 @@ class Synthesizer(object):
                 self.print_dict('sim_inputs', sim_inputs)
                 self.print_dict('sim_outputs', sim_outputs)
 
-            out.clearZ3Cache()
             y1mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P1, sim_inputs))
             y2mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P2, sim_inputs))
 
