@@ -281,7 +281,7 @@ def synthesize():
     #for opcode in [0, 1, 0x22, 0x22]: 
     #    cnst = Equal(op0, BitVecVal(opcode, 8))
     #    print syn.synthesize('PC', [cnst], eval8051)
-    syn.VERBOSITY = 1
+    syn.VERBOSITY = 4
     syn.MAXITER = 200
     for opcode in [0x10]: # range(0x10) + [0xE5]:
         cnst = Equal(op0, BitVecVal(opcode, 8))
