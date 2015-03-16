@@ -229,7 +229,8 @@ def synthesize():
     PC_jb = If(Equal(jb_bit, Choice('jb_polarity', op0, [BitVecVal(1,1), BitVecVal(0,1)])), PC_jb_taken, PC_jb_seq)
 
 
-    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb])
+    # nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb])
+    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ret, PC_jb])
     syn.addOutput('PC', nPC)
 
     ACC = syn.inp('ACC')
@@ -280,7 +281,8 @@ def synthesize():
     #for opcode in [0, 1, 0x22, 0x22]: 
     #    cnst = Equal(op0, BitVecVal(opcode, 8))
     #    print syn.synthesize('PC', [cnst], eval8051)
-    syn.VERBOSITY = 2
+    syn.VERBOSITY = 3
+    syn.MAXITER = 20
     for opcode in [0x10]: # range(0x10) + [0xE5]:
         cnst = Equal(op0, BitVecVal(opcode, 8))
         # print '%02x %s' % (opcode, syn.synthesize('ACC', [cnst], eval8051))

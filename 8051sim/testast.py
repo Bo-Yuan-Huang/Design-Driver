@@ -44,6 +44,10 @@ def test_AST():
     eqab = Equal(a, b)
     ands = And(Not(a), eqab, eqy)
 
+    eb1 = ExtractBit(v2, c2)
+    print eb1
+    print eb1.toZ3()
+
     S = z3.Solver()
     S.add(ands.toZ3())
     print S.check()
@@ -63,11 +67,12 @@ def test_AST():
     S = z3.Solver()
     S.add(ez3)
     print S.check()
-    print S.model()
+    m = S.model()
+    print m
+    for k in m:
+        print 'key=',k, 'val=',m[k]
+        print k.name()
 
-    eb1 = ExtractBit(v2, c2)
-    print eb1
-    print eb1.toZ3()
 
 
     print 'Var assertions passed.'

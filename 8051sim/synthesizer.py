@@ -15,12 +15,8 @@ class Synthesizer(object):
         self.outputs = {}
         self.constraints = []
         self.VERBOSITY = 0
+        self.MAXITER = 1000000
         self.name_id = 1001
-
-    def _getUniqName(self, base):
-        name = '$uniq_%s_%d__' % (base, self.name_id)
-        self.name_id += 1
-        return name
 
     def addInput(self, inp):
         """Create an input variable. An input variable is a piece of state
@@ -84,11 +80,32 @@ class Synthesizer(object):
 
         # now for the actual solution loop.
         iterations = 0
+        y1mz3 = None
+        y2mz3 = None
         while S.check(y) == z3.sat:
             iterations += 1
             m = S.model()
             if self.VERBOSITY >= 3:
                 print 'model:', m
+                print 'e_y1:', m.eval(yexp1)
+                print 'e_y2:', m.eval(yexp2)
+                if y1mz3:
+                    print 'e_y1mz3:', m.eval(y1mz3)
+                    print 'e_y2mz3:', m.eval(y2mz3)
+
+                subs = []
+                for k in m:
+                    if k.name().startswith('_choice'):
+                        n_k = z3.Bool(k.name())
+                        v_k = z3.is_true(m[k])
+                        subs.append((n_k, z3.BoolVal(v_k)))
+
+                print subs
+                y1p = z3.simplify(z3.substitute(yexp1, subs))
+                y2p = z3.simplify(z3.substitute(yexp2, subs))
+                print 'y1\':', y1p
+                print 'y2\':', y2p
+
             # TODO: might need more work when we model arrays.
             sim_inputs = {}
             for inp_name in self.inputs:
@@ -117,12 +134,9 @@ class Synthesizer(object):
                 self.print_dict('sim_outputs', sim_outputs)
 
             out.clearZ3Cache()
-            y1mz3 = out.toZ3Constraints(Synthesizer.P1, sim_inputs)
-            y2mz3 = out.toZ3Constraints(Synthesizer.P2, sim_inputs)
+            y1mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P1, sim_inputs))
+            y2mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P2, sim_inputs))
 
-            if self.VERBOSITY >= 3:
-                print 'y1:', y1mz3
-                print 'y2:', y2mz3
             try:
                 ocnst = z3.BitVecVal(sim_outputs[name], out.width)
             except AttributeError:
@@ -130,6 +144,20 @@ class Synthesizer(object):
 
             S.add(ocnst == y1mz3)
             S.add(ocnst == y2mz3)
+
+            if self.VERBOSITY >= 3:
+                print '#it:', iterations
+                print 'y1mz3:', y1mz3
+                print 'y2mz3:', y2mz3
+                print 'out:', ocnst
+
+            if iterations >= self.MAXITER:
+                raise RuntimeError, 'Too many (%d) iterations executed.' % iterations
+
+            if self.VERBOSITY >= 4:
+                filename = 'model%d.smt2' % iterations
+                with open(filename, 'wt') as fileobj:
+                    print >> fileobj, S.to_smt2()
 
             #self._addClauses(S, name, yexp1, input_vars, sim_inputs, sim_outputs)
             #self._addClauses(S, name, yexp2, input_vars, sim_inputs, sim_outputs)

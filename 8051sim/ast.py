@@ -99,7 +99,7 @@ class Node(object):
         self.nodetype = nodetype
         self.z3objs = {}
         self.z3cnsts = {}
-        self.name = '$UnnamedObject'
+        self.name = '_UnnamedObject'
         self.is_input = False
 
     def isVar(self):
@@ -320,7 +320,7 @@ class Choice(Node):
         self.choiceBools = []
         for i in xrange(len(self.choices)-1):
             # FIXME: names will repeat
-            boolName = '$choice_%s_%s_%d_' % (prefix, self.name, i)
+            boolName = '_choice_%s_%s_%d_' % (prefix, self.name, i)
             self.choiceBools.append(z3.Bool(boolName))
 
         def createIf(i):
@@ -429,7 +429,7 @@ class ChooseConsecBits(Node):
             assert start_i <= self.bitvec.width
             assert stop_i >= 0
 
-            boolName = '$chooseconsec_%s_%s_%d_' % (prefix, self.name, start_i)
+            boolName = '_chooseconsec_%s_%s_%d_' % (prefix, self.name, start_i)
             # FIXME: names will repeat
             self.choiceBools.append(z3.Bool(boolName))
             self.rangeStarts.append(start_i)
