@@ -5098,8 +5098,8 @@ I8051::InitState(const char* filename) {
     }
     PC = ReadWord(fin);
     ROM[PC] = ReadByte(fin);
-    ROM[PC+1] = ReadByte(fin);
-    ROM[PC+2] = ReadByte(fin);
+    ROM[(PC+1)&0xFFFF] = ReadByte(fin);
+    ROM[(PC+2)&0xFFFF] = ReadByte(fin);
 
     int i=0;
     while(fin) {
