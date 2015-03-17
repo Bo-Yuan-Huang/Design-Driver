@@ -149,7 +149,7 @@ class DirectIRAMRead(Node):
 
         az3 = self.addr.toZ3Constraints(prefix, m)
         if self.syn.VERBOSITY >= 4:
-            print 'az3:', z3.simplify(az3).sexpr()
+            self.syn.log('az3:' + z3.simplify(az3).sexpr())
         
         mem_values = []
         for [a,d] in mem_values_full[:-1]:
@@ -167,11 +167,11 @@ class DirectIRAMRead(Node):
                 return z3.If(aiz3 == az3, diz3, createIf(i+1))
         expr1 = createIf(0)
         if self.syn.VERBOSITY >= 4:
-            print 'mem_values_full:', mem_values_full
-            print 'mem_values:', mem_values
-            print 'expr1_o:', expr1.sexpr()
-            print 'expr1_s:', z3.simplify(expr1).sexpr()
-            print 'p0:', self.syn.inp('P0').toZ3Constraints(prefix, m).sexpr()
+            self.syn.log('mem_values_full:' + repr(mem_values_full))
+            self.syn.log('mem_values:' + repr(mem_values))
+            self.syn.log('expr1_o:' + expr1.sexpr())
+            self.syn.log('expr1_s:' + z3.simplify(expr1).sexpr())
+            self.syn.log('p0:' + self.syn.inp('P0').toZ3Constraints(prefix, m).sexpr())
         msb0 = z3.Extract(7, 7, az3) == z3.BitVecVal(0, 1)
         expr2 = z3.If(msb0, expr1,
             z3.If(az3 == z3.BitVecVal(0x80, 8), self.syn.inp('P0').toZ3Constraints(prefix, m),
@@ -197,7 +197,7 @@ class DirectIRAMRead(Node):
             z3.If(az3 == z3.BitVecVal(0xF0, 8), self.syn.inp('B').toZ3Constraints(prefix, m),
             z3.BitVecVal(0, 8)))))))))))))))))))))))
         if self.syn.VERBOSITY >= 4:
-            print 'expr2_s:', z3.simplify(expr2).sexpr()
+            self.syn.log('expr2_s:' + z3.simplify(expr2).sexpr())
         return expr2
 
     def __str__(self):
@@ -251,6 +251,13 @@ def synthesize():
     DPTR = Concat(DPH, DPL)
 
     CY = ChooseConsecBits('PSW_CY_bit', 1, PSW)
+
+    # registers.
+    Rbank = ChooseConsecBits('Rbank_bits', 2, PSW)
+    Rx = []
+    for i in xrange(8):
+        Rx.append(ReadMem(IRAM, Concat(BitVecVal(0, 3), Rbank, BitVecVal(i, 3))))
+    assert len(Rx) == 8
     
     opcode = syn.inp('opcode')
     op0 = Extract(7, 0, opcode)
@@ -296,9 +303,21 @@ def synthesize():
     PC_jz = If(Choice('jz_polarity', op0, [ACC_zero, ACC_not_zero]), PC_jz_taken, PC_jz_seq)
     PC_jmp = Add(DPTR, SignExt(ACC, 8))
 
+    cjne_src1 = Choice('cjne_src1', op0, [ACC, ReadMem(IRAM, Rx[0]), ReadMem(IRAM, Rx[1])] + Rx)
+    cjne_src2 = Choice('cjne_src2', op0, [op1, op2, DirectIRAMRead(syn, IRAM, Choice('cjne_iram_addr', op0, [op1, op2]))])
+    cjne_taken = Not(Equal(cjne_src1, cjne_src2))
+    PC_cjne_taken = Choice('PC_cjne_taken', op0, [PC_rel1, PC_rel2])
+    PC_cjne_seq = Choice('PC_cjne_seq', op0, [PC_plus2, PC_plus3])
+    PC_cjne = If(cjne_taken, PC_cjne_taken, PC_cjne_seq)
+
+    djnz_src = Choice('djnz_src', op0, [DirectIRAMRead(syn, IRAM, Choice('djnz_iram_src', op0, [op1, op2]))] + Rx)
+    djnz_taken = Not(Equal(djnz_src, BitVecVal(1, 8)))
+    PC_djnz_taken = Choice('PC_djnz_taken', op0, [PC_rel1, PC_rel2])
+    PC_djnz_seq = Choice('PC_djnz_seq', op0, [PC_plus2, PC_plus3])
+    PC_djnz = If(djnz_taken, PC_djnz_taken, PC_djnz_seq)
 
     # nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb])
-    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb, PC_jc, PC_jz, PC_jmp])
+    nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb, PC_jc, PC_jz, PC_jmp, PC_cjne, PC_djnz])
     syn.addOutput('PC', nPC)
 
     ACC_RR = RotateRight(ACC)
@@ -346,14 +365,29 @@ def synthesize():
     #for opcode in [0, 1, 0x22, 0x22]: 
     #    cnst = Equal(op0, BitVecVal(opcode, 8))
     #    print syn.synthesize('PC', [cnst], eval8051)
+
+    # this code is a bit of mess, but oh well.
     syn.VERBOSITY = 0
     syn.MAXITER = 200
-    syn.unsat_core = False
+    # syn.unsat_core = True
     syn.debug_objects += [ PC_jb, jb_byte, jb_bit, jb_byte_addr, jb_bit_addr ]
-    for opcode in range(0xb4):
+    # syn.logfile = open('run.log', 'wt')
+    for opcode in range(0x100):
+        # z3._main_ctx = None
+        # if opcode == 0x73:
+        #     syn.VERBOSITY = 4
+        #     syn.logfile = open('run.log', 'wt')
+
         cnst = Equal(op0, BitVecVal(opcode, 8))
         # print '%02x %s' % (opcode, syn.synthesize('ACC', [cnst], eval8051))
-        print '%02x %s' % (opcode, syn.synthesize('PC', [cnst], eval8051))
+        s =  '%02x %s' % (opcode, syn.synthesize('PC', [cnst], eval8051))
+
+        print s
+        # if opcode == 0x73:
+        #     syn.log(s)
+        #     syn.VERBOSITY = 0
+        #     syn.logfile = None
+
 
 
 if __name__ == '__main__':

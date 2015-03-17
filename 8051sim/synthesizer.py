@@ -19,6 +19,7 @@ class Synthesizer(object):
         self.name_id = 1001
         self.debug_objects = []
         self.unsat_core = False
+        self.logfile = None
 
     def addInput(self, inp):
         """Create an input variable. An input variable is a piece of state
@@ -48,12 +49,13 @@ class Synthesizer(object):
             raise KeyError, "No output '%s' is known." % name
 
         if self.VERBOSITY >= 1:
-            print 'Synthesizing output: %s.' % name
+            self.log('Synthesizing output: %s.' % name)
 
         # create the expressions for the output variable.
         out = self.outputs[name]
-        out.clearZ3Cache()
 
+        # this cache clearing business important, if not done it leads to untold grief.
+        out.clearZ3Cache()
         yexp1 = out.toZ3(Synthesizer.P1)
         yexp2 = out.toZ3(Synthesizer.P2)
 
@@ -61,14 +63,17 @@ class Synthesizer(object):
         # to each input variable.
         input_vars = {}
         for inp_i in self.inputs:
-            var_i = self.inputs[inp_i].toZ3()
+            inp_ast_i = self.inputs[inp_i]
+
+            inp_ast_i.clearZ3Cache()
+            var_i = inp_ast_i.toZ3()
             input_vars[inp_i] = var_i
 
-        if self.VERBOSITY >= 3:
-            print 'out :', out 
-            print 'exp1:', yexp1
-            print 'exp2:', yexp2
-            print 'input_vars:', input_vars
+        if self.VERBOSITY >= 3: 
+            self.log('out :' + str(out))
+            self.log('exp1:' + repr(yexp1))
+            self.log('exp2:' + repr(yexp2))
+            self.log('input_vars:' + repr(input_vars))
 
         # let's create the initial instance.
         S = z3.Solver()
@@ -82,14 +87,16 @@ class Synthesizer(object):
 
         # add any user specified constraints.
         for i, c in enumerate(itertools.chain(self.constraints, cnsts)):
+            c.clearZ3Cache()
             ci = c.toZ3()
+
             ci_name = 'cnst%d' % i
             if self.unsat_core:
                 S.assert_and_track(ci, ci_name)
             else:
                 S.add(ci)
-            if self.VERBOSITY >= 3:
-                print '%s: %s' % (ci_name, str(ci))
+            if self.VERBOSITY >= 3: 
+                self.log('%s: %s' % (ci_name, str(ci)))
 
         # now for the actual solution loop.
         iterations = 0
@@ -100,29 +107,14 @@ class Synthesizer(object):
 
             iterations += 1
             m = S.model()
-            if self.VERBOSITY >= 3:
-                print 'model:', m
-                print 'e_y1:', m.eval(yexp1)
-                print 'e_y2:', m.eval(yexp2)
+            if self.VERBOSITY >= 3: 
+                self.log('model:' + repr(m))
+                self.log('e_y1:' + repr(m.eval(yexp1)))
+                self.log('e_y2:' + repr(m.eval(yexp2)))
                 if y1mz3:
-                    print 'e_y1mz3:', m.eval(y1mz3)
-                    print 'e_y2mz3:', m.eval(y2mz3)
+                    self.log('e_y1mz3:' + repr(m.eval(y1mz3)))
+                    self.log('e_y2mz3:' + repr(m.eval(y2mz3)))
 
-                if self.VERBOSITY >= 4:
-                    subs = []
-                    for k in m:
-                        if k.name().startswith('_choice'):
-                            n_k = z3.Bool(k.name())
-                            v_k = z3.is_true(m[k])
-                            subs.append((n_k, z3.BoolVal(v_k)))
-
-                    opcode = z3.BitVec('opcode', 24)
-                    subs.append((opcode, z3.BitVecVal(m[opcode].as_long(), 24)))
-                    print subs
-                    y1p = z3.simplify(z3.substitute(yexp1, subs))
-                    y2p = z3.simplify(z3.substitute(yexp2, subs))
-                    print 'y1\':', y1p
-                    print 'y2\':', y2p
 
             # TODO: might need more work when we model arrays.
             sim_inputs = {}
@@ -148,8 +140,8 @@ class Synthesizer(object):
             sim_outputs = {}
             sim(sim_inputs, sim_outputs)
             if self.VERBOSITY >= 2:
-                self.print_dict('sim_inputs', sim_inputs)
-                self.print_dict('sim_outputs', sim_outputs)
+                self.log_dict('sim_inputs', sim_inputs)
+                self.log_dict('sim_outputs', sim_outputs)
 
             y1mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P1, sim_inputs))
             y2mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P2, sim_inputs))
@@ -170,13 +162,14 @@ class Synthesizer(object):
                 
 
             if self.VERBOSITY >= 3:
-                print '#it:', iterations
-                print 'y1mz3:', y1mz3
-                print 'y2mz3:', y2mz3
-                print 'out:', ocnst
+                self.log('#it:' + repr(iterations))
+                self.log('y1mz3:' + repr(y1mz3))
+                self.log('y2mz3:' + repr(y2mz3))
+                self.log('out:' + repr(ocnst))
                 for i, o in enumerate(self.debug_objects):
-                    print 'DBG%dA: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P1, sim_inputs)).sexpr())
-                    print 'DBG%dB: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P2, sim_inputs)).sexpr())
+                    o.clearZ3Cache()
+                    self.log('DBG%dA: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P1, sim_inputs)).sexpr()))
+                    self.log('DBG%dB: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P2, sim_inputs)).sexpr()))
 
             if iterations >= self.MAXITER:
                 raise RuntimeError, 'Too many (%d) iterations executed.' % iterations
@@ -186,47 +179,21 @@ class Synthesizer(object):
                 with open(filename, 'wt') as fileobj:
                     print >> fileobj, S.to_smt2()
 
-            #self._addClauses(S, name, yexp1, input_vars, sim_inputs, sim_outputs)
-            #self._addClauses(S, name, yexp2, input_vars, sim_inputs, sim_outputs)
 
         # and finally we are done.
         if self.VERBOSITY >= 1:
-            print 'Finished after %d iteration(s).' % iterations
+            self.log('Finished after %d iteration(s).' % iterations)
 
         # now we need to extract solution
         result = S.check(z3.Not(y))
         if result == z3.unsat and self.unsat_core:
-            print 'UNSAT core:', S.unsat_core()
+            self.log('UNSAT core:', S.unsat_core())
         assert result == z3.sat
         m = S.model()
         if self.VERBOSITY >= 3:
-            print 'model:', m
+            self.log('model:' + repr(m))
 
         return out.synthesize(m)
-
-    def _addClauses(self, S, out, yexp, ivars, sim_inputs, sim_outputs):
-        """Adds clauses to the instance which encode the fact that the
-           output for this particular input must as specified."""
-        subs = []
-        mem_subs = {}
-        for inp in self.inputs:
-            assert inp in ivars
-            assert inp in sim_inputs
-            inp_ast = self.inputs[inp]
-            if inp_ast.isBitVecVar():
-                subs.append((ivars[inp], z3.BitVecVal(sim_inputs[inp], ivars[inp].size())))
-            elif inp_ast.isBoolVar():
-                raise NotImplementedError, "Bool variables aren't handled yet."
-            elif inp_ast.isMemVar():
-                raise NotImplementedError, "Memory variables aren't handled yet."
-            else:
-                raise NotImplementedError, "Unknown variable type."
-
-        yexp_ = z3.substitute(yexp, subs)
-        cnst = yexp_ == z3.BitVecVal(sim_outputs[out], yexp_.size())
-        if self.VERBOSITY >= 3:
-            print 'new cnst:', cnst
-        S.add(cnst)
 
     def cleanupMemList(self, memvals):        
         vals = []
@@ -241,13 +208,16 @@ class Synthesizer(object):
         s2 = ['else:%x' % m[-1]]
         return '[%s]' % (' '.join(s1+s2))
 
-    def print_dict(self, n, d):
+    def log_dict(self, n, d):
         vs = []
         for (k, v) in d.iteritems():
             try:
                 vs.append('%s:%x' % (k, v))
             except TypeError:
                 vs.append('%s:%s' % (k, self.str_mem(v)))
-        print n, ' '.join(vs)
+        self.log(n + ' ' + ' '.join(vs))
 
 
+    def log(self, s):
+        if self.logfile:
+            print >> self.logfile, s
