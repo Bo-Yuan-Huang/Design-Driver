@@ -82,17 +82,19 @@ class Node(object):
 
     BOOLVAR         = 0
     BITVECVAR       = 1
-    BITVECVAL       = 2
-    MEMVAR          = 3
-    CHOICE          = 4
-    CHOOSECONSEC    = 5
-    READMEM         = 6
-    WRITEMEM        = 7
-    EXTRACT         = 8
-    EXTRACTBIT      = 9
-    CONCAT          = 10
-    Z3OP            = 11
-    NODE_TYPE_MAX   = 12
+    BOOLVAL         = 2
+    BITVECVAL       = 3
+    MEMVAR          = 4
+    CHOICE          = 5
+    CHOICEVAR       = 6
+    CHOOSECONSEC    = 7
+    READMEM         = 8
+    WRITEMEM        = 9
+    EXTRACT         = 10
+    EXTRACTBIT      = 11
+    CONCAT          = 12
+    Z3OP            = 13
+    NODE_TYPE_MAX   = 13
 
     def __init__(self, nodetype):
         """Constructor."""
@@ -122,6 +124,18 @@ class Node(object):
     def isMemVar(self):
         "Predicate that returns true if the node is a MemVar."
         return self.nodetype == Node.MEMVAR
+
+    def isBoolVal(self):
+        "Predicate that returns true if the node is a BoolVal."
+        return self.nodetype == Node.BOOLVAL
+
+    def isBoolFalse(self):
+        "Similar to isBoolVal but also checks if the value is true."
+        return self.isBoolVal() and (not self.value)
+
+    def isBoolTrue(self):
+        "Similar to isBoolVal but also checks if the value is false."
+        return self.isBoolVal() and (self.value)
 
     def _getName(self, prefix):
         """A private function called that prefixes names as required."""
@@ -250,6 +264,29 @@ class BitVecVar(Node):
         return
         yield
 
+class BoolVal(Node):
+    """Boolean constants."""
+    def __init__(self, value):
+        Node.__init__(self, Node.BOOLVAL)
+        self.value = value
+        self.width = -1
+
+    def _toZ3(self, prefix):
+        return z3.BoolVal(self.value)
+
+    def _toZ3Constraints(self, prefix, m):
+        return self._toZ3(prefix)
+
+    def __str__(self):
+        return 'true' if self.value else 'false'
+
+    def synthesize(self, m):
+        return self
+                
+    def childObjects(self):
+        return
+        yield
+
 class BitVecVal(Node):
     """BitVector Constants."""
     def __init__(self, value, width):
@@ -303,6 +340,9 @@ class MemVar(Node):
         return
         yield
 
+def _choiceBoolName(obj, prefix, i):
+    return '_choice_%s_%s_%d_' % (prefix, obj.name, i)
+
 class Choice(Node):
     """A choice between a set of options."""
     def __init__(self, name, choiceVar, choices):
@@ -320,8 +360,7 @@ class Choice(Node):
         self.choiceBools = []
         for i in xrange(len(self.choices)-1):
             # FIXME: names will repeat
-            boolName = '_choice_%s_%s_%d_' % (prefix, self.name, i)
-            self.choiceBools.append(z3.Bool(boolName))
+            self.choiceBools.append(z3.Bool(_choiceBoolName(self, prefix, i)))
 
         def createIf(i):
             if i < len(self.choiceBools):
@@ -356,6 +395,42 @@ class Choice(Node):
     def childObjects(self):
         for c in self.choices:
             yield c
+
+class ChoiceVar(Node):
+    """A way to access the results of a choice."""
+    def __init__(self, name, choiceVar, index):
+        Node.__init__(self, Node.CHOICEVAR)
+        self.name = name
+        self.choiceVar = choiceVar
+        self.index = index
+        width = -1
+
+    def _toZ3(self, prefix):
+        self.boolName = _choiceBoolName(self, prefix, self.index)
+        return z3.Bool(self.boolName)
+
+    def _modelValue(self, prefix, m):
+        boolName = _choiceBoolName(self, prefix, self.index)
+        if boolName in m:
+            return z3.is_true(m[boolName])
+        else:
+            return False
+
+    def _toZ3Constraints(self, prefix, m):
+        return self._modelValue(prefix, m)
+
+    def __str__(self):
+        return '(choice-var %s %d)' % (self.name, self.index)
+
+    def synthesize(self, m):
+        if self.boolName in m:
+            return BoolVal(z3.is_true(m[boolName]))
+        else:
+            return BoolVal(False)
+
+    def childObjects(self):
+        return
+        yield
 
 class ReadMem(Node):
     """Read data from a memory."""
@@ -608,7 +683,6 @@ class Z3Op(Node):
         - operands should be self-explanatory.
         - rwidthFun is the function is used to compute the result-width
           of this operation."""
-
 
         Node.__init__(self, Node.Z3OP)
         self.op = op

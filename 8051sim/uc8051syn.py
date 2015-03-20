@@ -1,6 +1,7 @@
 from synthesizer import Synthesizer
 from ast import *
 from sim51 import evalState
+import sys
 
 def eval8051(inputs, outputs):
     # initialize input state.
@@ -320,42 +321,48 @@ def synthesize():
     nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb, PC_jc, PC_jz, PC_jmp, PC_cjne, PC_djnz])
     syn.addOutput('PC', nPC)
 
-    ACC_RR = RotateRight(ACC)
-    ACC_RL = RotateLeft(ACC)
-    ACC_RRC = Extract(8, 1, RotateRight(Concat(ACC, CY)))
-    ACC_RLC = Extract(7, 0, RotateLeft(Concat(CY, ACC)))
+#     ACC_RR = RotateRight(ACC)
+#     ACC_RL = RotateLeft(ACC)
+#     ACC_RRC = Extract(8, 1, RotateRight(Concat(ACC, CY)))
+#     ACC_RLC = Extract(7, 0, RotateLeft(Concat(CY, ACC)))
+# 
+#     ACC_plus1 = Add(ACC, BitVecVal(1, 8))
+#     ACC_INC = ACC_plus1
+#     ACC_INC_DIR = If(Equal(op1, BitVecVal(0xE0, 8)), ACC_plus1, ACC)
+# 
+#     ACC_minus1 = Sub(ACC, BitVecVal(1, 8))
+#     ACC_DEC = ACC_minus1
+#     ACC_DEC_DIR = If(Equal(op1, BitVecVal(0xE0, 8)), ACC_minus1, ACC)
+# 
+#     ACC_DIR = DirectIRAMRead(syn, IRAM, Choice('acc_dir_addr', op0, [op1, op2])) # read
+# 
+#     OP_IMM1 = Extract(15, 8,  opcode)
+#     OP_IMM2 = Extract(23, 16, opcode)
+#     ACC_ADD_IMM = Add(ACC, Choice('add_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]))
+#     ACC_ADDC_IMM = Add(ACC, Choice('addc_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]), ZeroExt(CY, 7))
+#     ACC_SUB_IMM = Sub(ACC, Choice('sub_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]))
+#     ACC_SUBB_IMM = Sub(Sub(ACC, Choice('subb_acc_imm_choice', op0, [OP_IMM1, OP_IMM2])), ZeroExt(CY, 7))
 
-    ACC_plus1 = Add(ACC, BitVecVal(1, 8))
-    ACC_INC = ACC_plus1
-    ACC_INC_DIR = If(Equal(op1, BitVecVal(0xE0, 8)), ACC_plus1, ACC)
+    ACC_SRC1_DIR_ADDR = op1
+    ACC_SRC1_DIR = DirectIRAMRead(syn, IRAM, ACC_SRC1_DIR_ADDR)
+    ACC_SRC1 = Choice('ACC_SRC1', op0, [ACC, ACC_SRC1_DIR])
 
-    ACC_minus1 = Sub(ACC, BitVecVal(1, 8))
-    ACC_DEC = ACC_minus1
-    ACC_DEC_DIR = If(Equal(op1, BitVecVal(0xE0, 8)), ACC_minus1, ACC)
+    ACC_SRC2_DIR_ADDR = Choice('ACC_SRC_DIR_ADDR', op0, [op1, op2]) # NORPT
+    ACC_SRC2_INDIR_ADDR = Choice('ACC_SRC2_INDIR', op0, [ReadMem(IRAM, Rx[0]), ReadMem(IRAM, Rx[1])])
+    ACC_SRC2_DIR = DirectIRAMRead(syn, IRAM, ACC_SRC2_DIR_ADDR)
+    ACC_SRC2_INDIR = ReadMem(IRAM, ACC_SRC2_INDIR_ADDR)
+    ACC_SRC2_Rx = Choice('ACC_SRC2_Rx', op0, Rx)
+    ACC_SRC2 = Choice('ACC_SRC2', op0, [ACC, ACC_SRC2_DIR, ACC_SRC2_INDIR, ACC_SRC2_Rx])
 
-    ACC_DIR = DirectIRAMRead(syn, IRAM, Choice('acc_dir_addr', op0, [op1, op2])) # read
+    ACC_RR = RotateRight(ACC_SRC1)
+    ACC_INC = Add(ACC_SRC1, BitVecVal(1, 8))
+    ACC_RES = Choice('ACC_RESULT', op0, [ACC_RR, ACC_INC])
+    ACC_DIR = If(
+        And(Not(ChoiceVar('ACC_SRC1', op0, 0)), Equal(ACC_SRC1_DIR_ADDR, BitVecVal(0xE0, 8))),
+        ACC_RES,
+        ACC)
+    nACC =  Choice('nACC', op0, [ACC_RES, ACC_DIR, ACC])
 
-    OP_IMM1 = Extract(15, 8,  opcode)
-    OP_IMM2 = Extract(23, 16, opcode)
-    ACC_ADD_IMM = Add(ACC, Choice('add_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]))
-    ACC_ADDC_IMM = Add(ACC, Choice('addc_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]), ZeroExt(CY, 7))
-    ACC_SUB_IMM = Sub(ACC, Choice('sub_acc_imm_choice', op0, [OP_IMM1, OP_IMM2]))
-    ACC_SUBB_IMM = Sub(Sub(ACC, Choice('subb_acc_imm_choice', op0, [OP_IMM1, OP_IMM2])), ZeroExt(CY, 7))
-
-    nACC = Choice('nACC', op0, [   
-            ACC,
-            ACC_RR, 
-            ACC_RL, 
-            ACC_RRC, 
-            ACC_RLC, 
-            ACC_INC, 
-            ACC_INC_DIR,
-            ACC_DEC, 
-            ACC_ADD_IMM, 
-            ACC_ADDC_IMM,
-            ACC_SUB_IMM,
-            ACC_DIR,
-            ACC_SUBB_IMM])
     syn.addOutput('ACC', nACC)
     
     #for opcode in [0x03, 0x04, 0x14, 0x24, 0x34, 0x13, 0x23, 0x33]:
@@ -367,22 +374,23 @@ def synthesize():
     #    print syn.synthesize('PC', [cnst], eval8051)
 
     # this code is a bit of mess, but oh well.
-    syn.VERBOSITY = 0
+    syn.VERBOSITY = 3
     syn.MAXITER = 200
     # syn.unsat_core = True
-    syn.debug_objects += [ PC_jb, jb_byte, jb_bit, jb_byte_addr, jb_bit_addr ]
-    # syn.logfile = open('run.log', 'wt')
-    for opcode in range(0x100):
+    # syn.debug_objects += [ PC_jb, jb_byte, jb_bit, jb_byte_addr, jb_bit_addr ]
+    syn.debug_objects += [ ACC_DIR, ACC_RES ]
+    syn.logfile = sys.stdout # open('run.log', 'wt')
+    for opcode in [0x05]: # range(0x6):
         # z3._main_ctx = None
         # if opcode == 0x73:
         #     syn.VERBOSITY = 4
         #     syn.logfile = open('run.log', 'wt')
 
         cnst = Equal(op0, BitVecVal(opcode, 8))
-        # print '%02x %s' % (opcode, syn.synthesize('ACC', [cnst], eval8051))
-        s =  '%02x %s' % (opcode, syn.synthesize('PC', [cnst], eval8051))
+        print '%02x %s' % (opcode, syn.synthesize('ACC', [cnst], eval8051))
+        # s =  '%02x %s' % (opcode, syn.synthesize('PC', [cnst], eval8051))
 
-        print s
+        # print s
         # if opcode == 0x73:
         #     syn.log(s)
         #     syn.VERBOSITY = 0
