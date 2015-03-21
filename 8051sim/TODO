@@ -1,4 +1,14 @@
 The next(PC) computation is complete. Computing the next(ACC) is trickier/messier that I expected. I am
 considering whether we should compute all state updates at the same time, using a single large formula.
 
+Suppose we write:
+
+SRC1 = Choice(...)
+SRC2 = Choice(...)
+RES_RR = ...
+RES_INC = ...
+
+What we want is destination choice:
+  WriteChoice('inc_result', op0, RES_INC,
+    [ACC, 'IRAM
 

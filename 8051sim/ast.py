@@ -233,7 +233,7 @@ class BoolVar(Node):
         return '(def-bool %s)' % self.name
 
     def synthesize(self, m):
-        return self
+        return BoolVar(self.name)
 
     def childObjects(self):
         return
@@ -258,7 +258,7 @@ class BitVecVar(Node):
         return '(def-bitvec %s %d)' % (self.name, self.width)
 
     def synthesize(self, m):
-        return self
+        return BitVecVar(self.name, self.width)
 
     def childObjects(self):
         return
@@ -281,7 +281,7 @@ class BoolVal(Node):
         return 'true' if self.value else 'false'
 
     def synthesize(self, m):
-        return self
+        return BoolVal(self.value)
                 
     def childObjects(self):
         return
@@ -304,11 +304,21 @@ class BitVecVal(Node):
         return '(bitvecval %d %d)' % (self.value, self.width)
 
     def synthesize(self, m):
-        return self
+        return BitVecVal(self.value, self.width)
 
     def childObjects(self):
         return
         yield
+
+def createConstantArray(awidth, dwidth, mem_values):
+    asize = z3.BitVecSort(awidth)
+    arr = z3.K(asize, z3.BitVecVal(mem_values[-1], dwidth))
+
+    for [a, d] in mem_values[:-1]:
+        az3 = z3.BitVecVal(a, awidth)
+        dz3 = z3.BitVecVal(d, dwidth)
+        arr = z3.Update(arr, az3, dz3)
+    return arr
 
 class MemVar(Node):
     """A memory abstraction."""
@@ -328,10 +338,10 @@ class MemVar(Node):
         return z3.Array(self._getName(prefix), asize, dsize)
     
     def _toZ3Constraints(self, prefix, m):
-        assert False, "Should never call _toZ3Constraints on MemVar."
+        return createConstantArray(self.awidth, self.dwidth, m[self.name])
 
     def synthesize(self, m):
-        return self
+        return MemVar(self.name, self.awidth, self.dwidth)
 
     def __str__(self):
         return '(def-mem %s %d %d)' % (self.name, self.awidth, self.dwidth)
@@ -444,31 +454,18 @@ class ReadMem(Node):
         self.addr = addr
         self.width = mem.dwidth
 
-    def _toZ3(self, prefix):
-        mz3 = self.mem.toZ3(prefix)
-        az3 = self.addr.toZ3(prefix)
+    def _toZ3sHelper(self, prefix, rfun):
+        mz3 = rfun(self.mem, prefix)
+        az3 = rfun(self.addr, prefix)
         return mz3[az3]
 
+    def _toZ3(self, prefix):
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
     def _toZ3Constraints(self, prefix, m):
-        # we have to walk through the model and create an If-expression
-        # that matches this model.
-        assert self.mem.isMemVar()
-
-        mem_values = m[self.mem.name]
-        awidth = self.mem.awidth
-        dwidth = self.mem.dwidth
-
-        az3 = self.addr.toZ3Constraints(prefix, m)
-        def createIf(i):
-            if i == len(mem_values) - 1:
-                return z3.BitVecVal(mem_values[i], dwidth)
-            else:
-                [addri, datai] = mem_values[i]
-                aiz3 = z3.BitVecVal(addri, awidth)
-                diz3 = z3.BitVecVal(datai, dwidth)
-                return z3.If(aiz3 == az3, diz3, createIf(i+1))
-        expr = createIf(0)
-        return expr
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
 
     def __str__(self):
         return '(read-mem %s %s)' % (str(self.mem), str(self.addr))
@@ -479,6 +476,52 @@ class ReadMem(Node):
     def childObjects(self):
         yield self.mem
         yield self.addr
+
+class WriteMem(Node):
+    """Write data to a memory."""
+    def __init__(self, mem, addr, data):
+        if addr.width != mem.dwidth:
+            err_msg = "Address width must be %d. Got %d instead." % (mem.awidth, addr.width)
+            raise ValueError, err_msg
+        if data.width != mem.awidth:
+            err_msg = "Data width must be %d. Got %d instead." % (mem.dwidth, data.width)
+            raise ValueError, err_msg
+        
+        Node.__init__(self, Node.READMEM)
+        self.mem = mem
+        self.addr = addr
+        self.data = data
+        self.awidth = self.mem.awidth
+        self.dwidth = self.mem.dwidth
+
+    def _toZ3sHelper(self, prefix, rfun):
+        mz3 = rfun(self.mem, prefix)
+        az3 = rfun(self.addr, prefix)
+        dz3 = rfun(self.data, prefix)
+
+        return z3.Update(mz3, az3, dz3)
+
+    def _toZ3(self, prefix):
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def synthesize(self, m):
+        mem = self.mem.synthesize(m)
+        addr = self.addr.synthesize(m)
+        data = self.data.synthesize(m)
+        return WriteMem(mem, addr, data)
+
+    def __str__(self):
+        return '(write-mem %s %s %s)' % (self.mem, self.addr, self.data)
+
+    def childObjects(self):
+        yield self.mem
+        yield self.addr
+        yield self.data
 
 class ChooseConsecBits(Node):
     """Choose k consecutive bits from a bitvector. """

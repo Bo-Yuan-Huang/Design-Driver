@@ -2,6 +2,8 @@ from synthesizer import Synthesizer
 from ast import *
 from sim51 import evalState
 import sys
+from uc8051ast import DirectIRAMRead, DirectIRAMWrite
+from collections import defaultdict
 
 def eval8051(inputs, outputs):
     # initialize input state.
@@ -41,6 +43,8 @@ def eval8051(inputs, outputs):
     pc = inputs['PC']
     # simulate
     newPC, newRegs = evalState(pc, opcode, regs)
+    outputs['IRAM'] = extractIRAM(newRegs)
+
     # read output state
     outputs['PC'] = newPC
     outputs['ACC']  = newRegs[0x160]
@@ -64,6 +68,25 @@ def eval8051(inputs, outputs):
     outputs['P3']   = newRegs[0x80 + 0xB0]
     outputs['IP']   = newRegs[0x80 + 0xB8]
     outputs['B']    = newRegs[0x80 + 0xF0]
+
+def extractIRAM(regs):
+    numCounts = defaultdict(int)
+    for i in xrange(0, 256):
+        numCounts[regs[i]] += 1
+
+    maxCnt = 0
+    maxKey = 0
+    for k,c in numCounts.iteritems():
+        if c > maxCnt:
+            maxCnt = c
+            maxKey = k
+
+    ram = []
+    for i in xrange(0, 256):
+        if regs[i] != maxKey:
+            ram.append([i,regs[i]])
+    ram.append(maxKey)
+    return ram
 
 def create8051Inputs(syn):
     # The "more useful" registers.
@@ -96,141 +119,6 @@ def create8051Inputs(syn):
     syn.addInput(BitVecVar('SBUF', 8))
     syn.addInput(BitVecVar('IE', 8))
     syn.addInput(BitVecVar('IP', 8))
-
-class DirectIRAMRead(Node):
-    "Perform a direct read from the 8051 IRAM."
-    DIR_IRAM_READ = Node.NODE_TYPE_MAX+1
-
-    def __init__(self, syn, iram, addr):
-        if addr.width != 8:
-            raise ValueError, "Address width must be 8."
-        if iram.dwidth != 8:
-            raise ValueError, "IRAM width must also be 8."
-
-        Node.__init__(self, self.DIR_IRAM_READ)
-        self.mem = iram
-        self.addr = addr
-        self.width = iram.dwidth
-        self.syn = syn
-         
-    def _toZ3(self, prefix):
-        mz3 = self.mem.toZ3(prefix)
-        az3 = self.addr.toZ3(prefix)
-
-        msb0 = z3.Extract(7, 7, az3) == z3.BitVecVal(0, 1)
-        return z3.If(msb0, mz3[az3],
-            z3.If(az3 == z3.BitVecVal(0x80, 8), self.syn.inp('P0').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x81, 8), self.syn.inp('SP').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x82, 8), self.syn.inp('DPL').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x83, 8), self.syn.inp('DPH').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x87, 8), self.syn.inp('PCON').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x88, 8), self.syn.inp('TCON').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x89, 8), self.syn.inp('TMOD').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x8A, 8), self.syn.inp('TL0').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x8C, 8), self.syn.inp('TH0').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x8B, 8), self.syn.inp('TL1').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x8D, 8), self.syn.inp('TH1').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x90, 8), self.syn.inp('P1').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x98, 8), self.syn.inp('SCON').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0x99, 8), self.syn.inp('SBUF').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0xA0, 8), self.syn.inp('P2').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0xA8, 8), self.syn.inp('IE').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0xB0, 8), self.syn.inp('P3').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0xB8, 8), self.syn.inp('IP').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0xD0, 8), self.syn.inp('PSW').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0xE0, 8), self.syn.inp('ACC').toZ3(prefix),
-            z3.If(az3 == z3.BitVecVal(0xF0, 8), self.syn.inp('B').toZ3(prefix),
-            z3.BitVecVal(0, 8)))))))))))))))))))))))
-
-    def _toZ3Constraints(self, prefix, m):
-        assert self.mem.isMemVar()
-        mem_values_full = m[self.mem.name]
-        awidth = self.mem.awidth
-        dwidth = self.mem.dwidth
-
-        az3 = self.addr.toZ3Constraints(prefix, m)
-        if self.syn.VERBOSITY >= 4:
-            self.syn.log('az3:' + z3.simplify(az3).sexpr())
-        
-        mem_values = []
-        for [a,d] in mem_values_full[:-1]:
-            # test if MSB is set:
-            if (a & 0x80) == 0:
-                mem_values.append([a,d])
-        mem_values.append(mem_values_full[-1])
-        def createIf(i):
-            if i == len(mem_values) - 1:
-                return z3.BitVecVal(mem_values[i], dwidth)
-            else:
-                [addri, datai] = mem_values[i]
-                aiz3 = z3.BitVecVal(addri, awidth)
-                diz3 = z3.BitVecVal(datai, dwidth)
-                return z3.If(aiz3 == az3, diz3, createIf(i+1))
-        expr1 = createIf(0)
-        if self.syn.VERBOSITY >= 4:
-            self.syn.log('mem_values_full:' + repr(mem_values_full))
-            self.syn.log('mem_values:' + repr(mem_values))
-            self.syn.log('expr1_o:' + expr1.sexpr())
-            self.syn.log('expr1_s:' + z3.simplify(expr1).sexpr())
-            self.syn.log('p0:' + self.syn.inp('P0').toZ3Constraints(prefix, m).sexpr())
-        msb0 = z3.Extract(7, 7, az3) == z3.BitVecVal(0, 1)
-        expr2 = z3.If(msb0, expr1,
-            z3.If(az3 == z3.BitVecVal(0x80, 8), self.syn.inp('P0').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x81, 8), self.syn.inp('SP').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x82, 8), self.syn.inp('DPL').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x83, 8), self.syn.inp('DPH').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x87, 8), self.syn.inp('PCON').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x88, 8), self.syn.inp('TCON').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x89, 8), self.syn.inp('TMOD').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x8A, 8), self.syn.inp('TL0').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x8C, 8), self.syn.inp('TH0').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x8B, 8), self.syn.inp('TL1').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x8D, 8), self.syn.inp('TH1').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x90, 8), self.syn.inp('P1').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x98, 8), self.syn.inp('SCON').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0x99, 8), self.syn.inp('SBUF').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0xA0, 8), self.syn.inp('P2').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0xA8, 8), self.syn.inp('IE').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0xB0, 8), self.syn.inp('P3').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0xB8, 8), self.syn.inp('IP').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0xD0, 8), self.syn.inp('PSW').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0xE0, 8), self.syn.inp('ACC').toZ3Constraints(prefix, m),
-            z3.If(az3 == z3.BitVecVal(0xF0, 8), self.syn.inp('B').toZ3Constraints(prefix, m),
-            z3.BitVecVal(0, 8)))))))))))))))))))))))
-        if self.syn.VERBOSITY >= 4:
-            self.syn.log('expr2_s:' + z3.simplify(expr2).sexpr())
-        return expr2
-
-    def __str__(self):
-        return '(read-direct %s %s)' % (str(self.mem), str(self.addr))
-
-    def synthesize(self, m):
-        return DirectIRAMRead(self.syn, self.mem.synthesize(m), self.addr.synthesize(m))
-
-    def childObjects(self):
-        yield self.mem
-        yield self.addr
-        yield self.syn.inp('P0')
-        yield self.syn.inp('SP')
-        yield self.syn.inp('DPL')
-        yield self.syn.inp('DPH')
-        yield self.syn.inp('PCON')
-        yield self.syn.inp('TCON')
-        yield self.syn.inp('TMOD')
-        yield self.syn.inp('TL0')
-        yield self.syn.inp('TH0')
-        yield self.syn.inp('TL1')
-        yield self.syn.inp('TH1')
-        yield self.syn.inp('P1')
-        yield self.syn.inp('SCON')
-        yield self.syn.inp('SBUF')
-        yield self.syn.inp('P2')
-        yield self.syn.inp('IE')
-        yield self.syn.inp('P3')
-        yield self.syn.inp('IP')
-        yield self.syn.inp('PSW')
-        yield self.syn.inp('ACC')
-        yield self.syn.inp('B')
 
 def synthesize():
     syn = Synthesizer()
@@ -319,7 +207,7 @@ def synthesize():
 
     # nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb])
     nPC = Choice('nPC', op0, [PC_plus1, PC_plus2, PC_plus3, PC_ajmp, PC_ret, PC_ljmp, PC_sjmp, PC_jb, PC_jc, PC_jz, PC_jmp, PC_cjne, PC_djnz])
-    syn.addOutput('PC', nPC)
+    syn.addOutput('PC', nPC, Synthesizer.BITVEC)
 
 #     ACC_RR = RotateRight(ACC)
 #     ACC_RL = RotateLeft(ACC)
@@ -363,7 +251,11 @@ def synthesize():
         ACC)
     nACC =  Choice('nACC', op0, [ACC_RES, ACC_DIR, ACC])
 
-    syn.addOutput('ACC', nACC)
+    syn.addOutput('ACC', nACC, Synthesizer.BITVEC)
+
+    IMM1 = op1
+    IRAM_MOV_AT_R0 = WriteMem(IRAM, Rx[0], IMM1)
+    syn.addOutput('IRAM', IRAM_MOV_AT_R0, Synthesizer.MEM)
     
     #for opcode in [0x03, 0x04, 0x14, 0x24, 0x34, 0x13, 0x23, 0x33]:
     #    cnst = Equal(op0, BitVecVal(opcode, 8))
@@ -374,20 +266,25 @@ def synthesize():
     #    print syn.synthesize('PC', [cnst], eval8051)
 
     # this code is a bit of mess, but oh well.
-    syn.VERBOSITY = 3
-    syn.MAXITER = 200
+    syn.VERBOSITY = 0
+    # syn.MAXITER = 200
     # syn.unsat_core = True
     # syn.debug_objects += [ PC_jb, jb_byte, jb_bit, jb_byte_addr, jb_bit_addr ]
-    syn.debug_objects += [ ACC_DIR, ACC_RES ]
-    syn.logfile = sys.stdout # open('run.log', 'wt')
-    for opcode in [0x05]: # range(0x6):
+    # syn.debug_objects += [ ACC_DIR, ACC_RES ]
+    # syn.logfile = sys.stdout # open('run.log', 'wt')
+    # for opcode in range(0x100): # [0x05]: # range(0x6):
+    syn.logfile = sys.stdout
+    # for opcode in [0x76]:
+    for opcode in range(0x100):
         # z3._main_ctx = None
         # if opcode == 0x73:
         #     syn.VERBOSITY = 4
         #     syn.logfile = open('run.log', 'wt')
 
         cnst = Equal(op0, BitVecVal(opcode, 8))
-        print '%02x %s' % (opcode, syn.synthesize('ACC', [cnst], eval8051))
+        # print '%02x %s' % (opcode, syn.synthesize('ACC', [cnst], eval8051))
+        # print '%02x %s' % (opcode, syn.synthesize('IRAM', [cnst], eval8051))
+        print '%02x %s' % (opcode, syn.synthesize('PC', [cnst], eval8051))
         # s =  '%02x %s' % (opcode, syn.synthesize('PC', [cnst], eval8051))
 
         # print s

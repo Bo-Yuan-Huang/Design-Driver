@@ -74,8 +74,22 @@ def test_AST():
         print k.name()
 
 
+    test_mem()
 
     print 'Var assertions passed.'
+
+def test_mem():
+    mem = MemVar('ram', 8, 8)
+    addr = BitVecVal(10, 8)
+    data = BitVecVar('x', 8)
+
+    wr = WriteMem(mem, addr, data)
+    rd = ReadMem(wr, addr)
+
+    S = z3.Solver()
+    S.add(Not(Equal(rd, data)).toZ3())
+
+    print S.check()
 
 if __name__ == '__main__':
     test_AST()

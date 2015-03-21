@@ -9,10 +9,15 @@ class Synthesizer(object):
     P1 = 's1'
     P2 = 's2'
 
+    BOOL    = 1
+    BITVEC  = 2
+    MEM     = 3
+
     def __init__(self):
         """Constructor."""
         self.inputs = {}
         self.outputs = {}
+        self.outputTypes = {}
         self.constraints = []
         self.VERBOSITY = 0
         self.MAXITER = 1000000
@@ -33,10 +38,11 @@ class Synthesizer(object):
             raise KeyError, "Input '%s' not declared." % name
         return self.inputs[name]
 
-    def addOutput(self, name, out):
+    def addOutput(self, name, out, t):
         """Add an output variable to the synthesizer. An output variable is a 
         variable whose behavior has to be synthesized."""
         self.outputs[name] = out
+        self.outputTypes[name] = t
 
     def addConstraint(self, cnst):
         """Add a constraint to the solver.  This should only be called on one
@@ -103,7 +109,6 @@ class Synthesizer(object):
         y1mz3 = None
         y2mz3 = None
         while S.check(y) == z3.sat:
-            out.clearZ3Cache()
 
             iterations += 1
             m = S.model()
@@ -143,29 +148,59 @@ class Synthesizer(object):
                 self.log_dict('sim_inputs', sim_inputs)
                 self.log_dict('sim_outputs', sim_outputs)
 
+            out.clearZ3Cache()
             y1mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P1, sim_inputs))
+
+            out.clearZ3Cache()
             y2mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P2, sim_inputs))
-
-            try:
-                ocnst = z3.BitVecVal(sim_outputs[name], out.width)
-            except AttributeError:
-                ocnst = z3.BoolVal(sim_outputs[name])
-
-            n1 = 'out1_%d' % iterations
-            n2 = 'out2_%d' % iterations
-            if self.unsat_core:
-                S.assert_and_track(ocnst == y1mz3, n1)
-                S.assert_and_track(ocnst == y2mz3, n2)
-            else:
-                S.add(ocnst == y1mz3)
-                S.add(ocnst == y2mz3)
-                
 
             if self.VERBOSITY >= 3:
                 self.log('#it:' + repr(iterations))
                 self.log('y1mz3:' + repr(y1mz3))
                 self.log('y2mz3:' + repr(y2mz3))
-                self.log('out:' + repr(ocnst))
+
+            def assertEquality(ocnst):
+                n1 = 'out1_%d' % iterations
+                n2 = 'out2_%d' % iterations
+
+                if self.unsat_core:
+                    S.assert_and_track(ocnst == y1mz3, n1)
+                    S.assert_and_track(ocnst == y2mz3, n2)
+                else:
+                    S.add(ocnst == y1mz3)
+                    S.add(ocnst == y2mz3)
+                
+                if self.VERBOSITY >= 3:
+                    self.log('out:' + repr(ocnst))
+
+            if self.outputTypes[name] == Synthesizer.BITVEC:
+                assertEquality(z3.BitVecVal(sim_outputs[name], out.width))
+            elif self.outputTypes[name] == Synthesizer.BOOL:
+                assertEquality(z3.BoolVal(sim_outputs[name]))
+            else:
+                assert False
+                out_data = sim_outputs[name]
+                data = {}
+                for [a,d] in out_data[:-1]:
+                    data[a] = d
+                default = out_data[-1]
+                cnsts = []
+                for i in xrange(1 << out.awidth):
+                    if i in data:
+                        c1 = z3.simplify(y1mz3[z3.BitVecVal(i, out.awidth)] == z3.BitVecVal(data[i], out.dwidth))
+                        c2 = z3.simplify(y2mz3[z3.BitVecVal(i, out.awidth)] == z3.BitVecVal(data[i], out.dwidth))
+                    else:
+                        c1 = z3.simplify(y1mz3[z3.BitVecVal(i, out.awidth)] == z3.BitVecVal(default, out.dwidth))
+                        c2 = z3.simplify(y2mz3[z3.BitVecVal(i, out.awidth)] == z3.BitVecVal(default, out.dwidth))
+                        
+                    cnsts.append(c1)
+                    cnsts.append(c2)
+                c = z3.simplify(z3.And(*cnsts))
+                S.add(c)
+                if self.VERBOSITY >= 3:
+                    self.log('out:' + repr(c))
+
+            if self.VERBOSITY >= 3:
                 for i, o in enumerate(self.debug_objects):
                     o.clearZ3Cache()
                     self.log('DBG%dA: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P1, sim_inputs)).sexpr()))
