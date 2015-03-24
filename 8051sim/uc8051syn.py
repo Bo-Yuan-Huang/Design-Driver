@@ -134,7 +134,7 @@ def synthesize():
     # for opcode in [0x76]:
     # for opc in [0x04, 0x05, 0x6, 0x7] + range(0x08, 0x10): # range(0x100):
 
-    for opc in xrange(0x10):
+    for opc in xrange(0, 0x10):
         cnst = Equal(op0, BitVecVal(opc, 8))
         [pc, acc, iram] = syn.synthesize(['PC', 'ACC', 'IRAM'], [cnst], eval8051)
         print '%02x\n%s\n%s\n%s\n' % (opc, str(pc), str(acc), str(iram))

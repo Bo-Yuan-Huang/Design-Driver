@@ -691,28 +691,26 @@ class If(Node):
         cz3 = cm.toZ3()
 
         S = z3.Solver()
-
-        S.push()
         S.add(cz3)
         if S.check() == z3.unsat:
+            fm.clearZ3Cache()
             return fm
-        S.pop()
 
-        S.push()
+        S = z3.Solver()
         S.add(z3.Not(cz3))
         if S.check() == z3.unsat:
+            tm.clearZ3Cache()
             return tm
-        S.pop()
 
-        S.push()
+        S = z3.Solver()
         tm.clearZ3Cache()
         fm.clearZ3Cache()
         tz3 = tm.toZ3()
         fz3 = fm.toZ3()
         S.add(z3.Distinct(tz3, fz3))
         if S.check() == z3.unsat:
+            tm.clearZ3Cache()
             return tm
-        S.pop()
 
         obj_ = If(cm, tm, fm)
         return obj_
