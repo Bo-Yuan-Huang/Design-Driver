@@ -91,10 +91,11 @@ class Node(object):
     READMEM         = 8
     WRITEMEM        = 9
     EXTRACT         = 10
-    EXTRACTBIT      = 11
-    CONCAT          = 12
-    Z3OP            = 13
-    NODE_TYPE_MAX   = 13
+    IF              = 11
+    EXTRACTBIT      = 12
+    CONCAT          = 13
+    Z3OP            = 14
+    NODE_TYPE_MAX   = 14
 
     def __init__(self, nodetype):
         """Constructor."""
@@ -651,6 +652,67 @@ class Extract(Node):
     def childObjects(self):
         yield self.bv
 
+class If(Node):
+    """Conditional."""
+
+    def __init__(self, cond, exptrue, expfalse):
+        Node.__init__(self, Node.IF)
+        self.cond = cond
+        self.exptrue = exptrue
+        self.expfalse = expfalse
+        width = _determineOpWidth([exptrue, expfalse])
+        if width != -1:
+            self.width = width
+        awidth, dwidth = _determineMemWidth([exptrue, expfalse])
+        if awidth != -1:
+            self.awidth = awidth
+            self.dwidth = dwidth
+
+    def _toZ3sHelper(self, prefix, rfun):
+        cz3 = rfun(self.cond, prefix)
+        tz3 = rfun(self.exptrue, prefix)
+        fz3 = rfun(self.expfalse, prefix)
+        return z3.If(cz3, tz3, fz3)
+
+    def _toZ3(self, prefix):
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def synthesize(self, m):
+        cm = self.cond.synthesize(m)
+        tm = self.exptrue.synthesize(m)
+        fm = self.expfalse.synthesize(m)
+
+        cm.clearZ3Cache()
+        cz3 = cm.toZ3()
+
+        S = z3.Solver()
+
+        S.push()
+        S.add(cz3)
+        if S.check() == z3.unsat:
+            return fm
+        S.pop()
+
+        S.add(z3.Not(cz3))
+        if S.check() == z3.unsat:
+            return tm
+
+        obj_ = If(cm, tm, fm)
+        return obj_
+
+    def __str__(self):
+        return '(if %s %s %s)' % (str(self.cond), str(self.exptrue), str(self.expfalse))
+
+    def childObjects(self):
+        yield self.cond
+        yield self.exptrue
+        yield self.expfalse
+
 class ExtractBit(Node):
     """Extract a particular bit from a word."""
     def __init__(self, word, bit):
@@ -833,15 +895,15 @@ def SignExt(op, n):
         return op.width + n
     return Z3Op('sign-ext', lambda op: z3.SignExt(n, op), [op], _extWidth)
 
-def If(cond, vthen, velse):
-    def _ifWidth(ops):
-        assert len(ops) == 3
-        return _determineOpWidth(ops[1:])
-    def _ifMemWidth(ops):
-        assert len(ops) == 3
-        return _determineMemWidth(ops[1:])
-
-    return Z3Op('if', z3.If, [cond, vthen, velse], _ifWidth, _ifMemWidth)
+#def If(cond, vthen, velse):
+#    def _ifWidth(ops):
+#        assert len(ops) == 3
+#        return _determineOpWidth(ops[1:])
+#    def _ifMemWidth(ops):
+#        assert len(ops) == 3
+#        return _determineMemWidth(ops[1:])
+#
+#    return Z3Op('if', z3.If, [cond, vthen, velse], _ifWidth, _ifMemWidth)
 
 # Stupid utility function.
 def ilog2(x):

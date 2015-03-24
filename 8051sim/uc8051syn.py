@@ -96,15 +96,19 @@ def synthesize():
 
     INC_SRC1_ADDR = Choice('INC_SRC1_ADDR', op0, [op1, op2] + Rxaddr)
     INC_SRC1_ADDR_msb0 = Equal(Extract(7, 7, INC_SRC1_ADDR), BitVecVal(0, 1))
+    INC_SRC1_INDIR_ADDR = Choice('INC_SRC1_INDIR_ADDR', op0, [Rx[0], Rx[1]])
+    INC_SRC1_INDIR = ReadMem(ctx.IRAM, INC_SRC1_INDIR_ADDR)
+
     INC_SRC1_DIR = DirectIRAMRead(ctx, INC_SRC1_ADDR)
-    INC_SRC1 = Choice('INC_SRC1', op0, [INC_SRC1_DIR, ctx.ACC])
+    INC_SRC1 = Choice('INC_SRC1', op0, [INC_SRC1_DIR, INC_SRC1_INDIR, ctx.ACC])
 
     INC_RES = Add(INC_SRC1, BitVecVal(1, 8))
-    INC_IRAM = If(INC_SRC1_ADDR_msb0, WriteMem(ctx.IRAM, INC_SRC1_ADDR, INC_RES), ctx.IRAM)
+    INC_IRAM_DIR = If(INC_SRC1_ADDR_msb0, WriteMem(ctx.IRAM, INC_SRC1_ADDR, INC_RES), ctx.IRAM)
+    INC_IRAM_INDIR = WriteMem(ctx.IRAM, INC_SRC1_INDIR_ADDR, INC_RES)
     INC_DIR_ACC = If(Equal(INC_SRC1_ADDR, BitVecVal(0xE0, 8)), INC_RES, ctx.ACC)
 
     nACC = Choice('nACC', op0, [INC_DIR_ACC, INC_RES, ctx.ACC])
-    nIRAM = Choice('nIRAM', op0, [ctx.IRAM, INC_IRAM])
+    nIRAM = Choice('nIRAM', op0, [ctx.IRAM, INC_IRAM_DIR, INC_IRAM_INDIR])
 
     syn.addOutput('ACC', nACC, Synthesizer.BITVEC)
     syn.addOutput('IRAM', nIRAM, Synthesizer.MEM)
@@ -113,10 +117,10 @@ def synthesize():
     # syn.unsat_core = True
     # syn.logfile = sys.stdout # open('debug.log', 'wt')
     # for opcode in [0x76]:
-    for opc in [0x04, 0x05] + range(0x08, 0x10): # range(0x100):
+    for opc in [0x04, 0x05, 0x6, 0x7] + range(0x08, 0x10): # range(0x100):
         cnst = Equal(op0, BitVecVal(opc, 8))
         [pc, acc, iram] = syn.synthesize(['PC', 'ACC', 'IRAM'], [cnst], eval8051)
-        print '%02x %s; %s; %s' % (opc, pc, acc, iram)
+        print '%02x\n%s\n%s\n%s\n' % (opc, pc, acc, iram)
 
 
 if __name__ == '__main__':
