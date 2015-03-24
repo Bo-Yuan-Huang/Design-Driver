@@ -211,6 +211,23 @@ def _determineOpWidth(ops):
         first = False
     return width
 
+def _determineMemWidth(args):
+    try:
+        awidth = args[0].awidth
+        dwidth = args[0].dwidth
+
+        for a in args[1:]:
+            try: 
+                if a.awidth != awidth:
+                    raise ValueError, 'Mismatch in address widths.'
+                if a.dwidth != dwidth:
+                    raise ValueError, 'Mismatch in data widths.'
+            except AttributeError:
+                raise ValueError, 'Could not find awidth and dwidth!'
+        return awidth, dwidth
+    except AttributeError:
+        return -1, -1
+
 def _noWidth(ops):
     """Helper function that is used when the result of an operation has
     "no" width (i.e., it is a boolean)."""
@@ -363,6 +380,11 @@ class Choice(Node):
         width = _determineOpWidth(self.choices)
         if width != -1:
             self.width = width
+
+        awidth, dwidth = _determineMemWidth(self.choices)
+        if awidth != -1:
+            self.awidth = awidth
+            self.dwidth = dwidth
 
     def _toZ3sHelper(self, prefix, rfun):
         assert len(self.choices) > 1
@@ -717,7 +739,7 @@ class Concat(Node):
 
 class Z3Op(Node):
     """Binary operators from Z3."""
-    def __init__(self, opname, op, operands, rwidthFun):
+    def __init__(self, opname, op, operands, rwidthFun, mwidthFun = None):
         """Constructor.
         
         - opname is the name of this operation (used for pretty-printing).
@@ -732,10 +754,17 @@ class Z3Op(Node):
         self.opname = opname
         self.operands = operands[:]
         self.rwidthFun = rwidthFun
+        self.mwidthFun = mwidthFun
 
         width = self.rwidthFun(self.operands)
         if width != -1:
             self.width = width
+
+        if self.mwidthFun:
+            awidth, dwidth = self.mwidthFun(self.operands)
+            if awidth != -1:
+                self.awidth = awidth
+                self.dwidth = dwidth
 
     def _toZ3sHelper(self, prefix, rfun):
         return self.op(*[rfun(x, prefix) for x in self.operands])
@@ -749,7 +778,7 @@ class Z3Op(Node):
         return self._toZ3sHelper(prefix, rfun)
 
     def synthesize(self, m):
-        obj_ = Z3Op(self.opname, self.op, [o.synthesize(m) for o in self.operands], self.rwidthFun)
+        obj_ = Z3Op(self.opname, self.op, [o.synthesize(m) for o in self.operands], self.rwidthFun, self.mwidthFun)
         return obj_
 
     def __str__(self):
@@ -808,7 +837,11 @@ def If(cond, vthen, velse):
     def _ifWidth(ops):
         assert len(ops) == 3
         return _determineOpWidth(ops[1:])
-    return Z3Op('if', z3.If, [cond, vthen, velse], _ifWidth)
+    def _ifMemWidth(ops):
+        assert len(ops) == 3
+        return _determineMemWidth(ops[1:])
+
+    return Z3Op('if', z3.If, [cond, vthen, velse], _ifWidth, _ifMemWidth)
 
 # Stupid utility function.
 def ilog2(x):

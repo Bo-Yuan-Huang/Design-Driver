@@ -49,22 +49,38 @@ class Synthesizer(object):
         of the input variables."""
         self.constraints.append(cnst)
 
-    def synthesize(self, name, cnsts, sim):
-        """Main synthesizer."""
-        if name not in self.outputs:
-            raise KeyError, "No output '%s' is known." % name
+    def addExpr(self, S, expr, name):
+        if self.unsat_core:
+            S.assert_and_track(expr, name)
+        else:
+            S.add(expr)
 
-        if self.VERBOSITY >= 1:
-            self.log('Synthesizing output: %s.' % name)
+    def createOutputExpressions(self, outputs):
+        outs = []
+        y1s = []
+        y2s = []
+        for i, name in enumerate(outputs):
+            if name not in self.outputs:
+                raise KeyError, "No output '%s' is known." % name
+            out = self.outputs[name]
+            outs.append( self.outputs[name] )
 
-        # create the expressions for the output variable.
-        out = self.outputs[name]
+            # this cache clearing business is important, if not done it leads to untold grief.
+            out.clearZ3Cache()
+            y1 = out.toZ3(Synthesizer.P1)
+            y2 = out.toZ3(Synthesizer.P2)
 
-        # this cache clearing business important, if not done it leads to untold grief.
-        out.clearZ3Cache()
-        yexp1 = out.toZ3(Synthesizer.P1)
-        yexp2 = out.toZ3(Synthesizer.P2)
+            y1s.append( y1 )
+            y2s.append( y2 )
 
+            if self.VERBOSITY >= 3: 
+                self.log('out :' + str(out))
+                self.log('exp1[%d]:%s' % (i, y1.sexpr()))
+                self.log('exp2[%d]:%s' % (i, y2.sexpr()))
+        
+        return outs, y1s, y2s
+
+    def createInputVars(self):
         # input_vars contains the Z3 objects corresponding
         # to each input variable.
         input_vars = {}
@@ -74,90 +90,100 @@ class Synthesizer(object):
             inp_ast_i.clearZ3Cache()
             var_i = inp_ast_i.toZ3()
             input_vars[inp_i] = var_i
-
+        
         if self.VERBOSITY >= 3: 
-            self.log('out :' + str(out))
-            self.log('exp1:' + repr(yexp1))
-            self.log('exp2:' + repr(yexp2))
             self.log('input_vars:' + repr(input_vars))
+        return input_vars
 
-        # let's create the initial instance.
-        S = z3.Solver()
-        y = z3.Bool('y')
-
-        if self.unsat_core:
-            S.set(unsat_core=True)
-            S.assert_and_track(y == (z3.Distinct(yexp1, yexp2)), 'prob')
-        else:
-            S.add(y == (z3.Distinct(yexp1, yexp2)))
-
+    def addConstraints(self, S, cnsts):
         # add any user specified constraints.
         for i, c in enumerate(itertools.chain(self.constraints, cnsts)):
             c.clearZ3Cache()
             ci = c.toZ3()
 
             ci_name = 'cnst%d' % i
-            if self.unsat_core:
-                S.assert_and_track(ci, ci_name)
-            else:
-                S.add(ci)
+            self.addExpr(S, ci, ci_name)
             if self.VERBOSITY >= 3: 
-                self.log('%s: %s' % (ci_name, str(ci)))
+                self.log('%s: %s' % (ci_name, ci.sexpr()))
+
+
+    def extractInputsFromModel(self, m, input_vars):
+        sim_inputs = {}
+        for inp_name in self.inputs:
+            inp_ast = self.inputs[inp_name]
+            inp_z3 = input_vars[inp_name]
+            m_inp = m[inp_z3]
+            if m_inp:
+                if inp_ast.isBoolVar():
+                    sim_inputs[inp_name] = z3.is_true(m[m_inp])
+                elif inp_ast.isBitVecVar():
+                    sim_inputs[inp_name] = m_inp.as_long()
+                elif inp_ast.isMemVar():
+                    sim_inputs[inp_name] = self.cleanupMemList(m_inp.as_list())
+                else:
+                    assert False, 'Unknown node type.'
+            else:
+                if inp_ast.isMemVar():
+                    sim_inputs[inp_name] = [0]
+                else:
+                    sim_inputs[inp_name] = 0
+        return sim_inputs
+
+    def dumpModel(self, m, y1s, y2s):
+        if self.VERBOSITY >= 3: 
+            self.log('model:' + repr(m))
+            # FIXME
+            # self.log('e_y1:' + repr(m.eval(yexp1)))
+            # self.log('e_y2:' + repr(m.eval(yexp2)))
+            # if y1mz3:
+            #     self.log('e_y1mz3:' + repr(m.eval(y1mz3)))
+            #     self.log('e_y2mz3:' + repr(m.eval(y2mz3)))
+
+
+    def synthesize(self, outputNames, cnsts, sim):
+        """Main synthesizer."""
+
+        outs, y1s, y2s = self.createOutputExpressions(outputNames)
+        input_vars = self.createInputVars()
+
+        # let's create the initial instance.
+        S = z3.Solver()
+
+        # do we want unsat cores?
+        if self.unsat_core: S.set(unsat_core=True)
+
+        # constraints.
+        self.addConstraints(S, cnsts)
+
+        # let's now create the expression that states one of the outputs must be different.
+        ys = []
+        for i, (y1, y2) in enumerate(itertools.izip(y1s, y2s)):
+            yi = z3.Bool('y%d' % i)
+            self.addExpr(S, yi == z3.Distinct(y1, y2), 'prob%d' % i)
+            ys.append(yi)
+        y = z3.Bool('y')
+        self.addExpr(S, y == z3.Or(*ys), 'prob')
 
         # now for the actual solution loop.
         iterations = 0
-        y1mz3 = None
-        y2mz3 = None
+        # FIXME
+        # y1mz3 = None
+        # y2mz3 = None
         while S.check(y) == z3.sat:
 
             iterations += 1
             m = S.model()
-            if self.VERBOSITY >= 3: 
-                self.log('model:' + repr(m))
-                self.log('e_y1:' + repr(m.eval(yexp1)))
-                self.log('e_y2:' + repr(m.eval(yexp2)))
-                if y1mz3:
-                    self.log('e_y1mz3:' + repr(m.eval(y1mz3)))
-                    self.log('e_y2mz3:' + repr(m.eval(y2mz3)))
+            self.dumpModel(m, y1s, y2s)
 
-
-            # TODO: might need more work when we model arrays.
-            sim_inputs = {}
-            for inp_name in self.inputs:
-                inp_ast = self.inputs[inp_name]
-                inp_z3 = input_vars[inp_name]
-                m_inp = m[inp_z3]
-                if m_inp:
-                    if inp_ast.isBoolVar():
-                        sim_inputs[inp_name] = z3.is_true(m[m_inp])
-                    elif inp_ast.isBitVecVar():
-                        sim_inputs[inp_name] = m_inp.as_long()
-                    elif inp_ast.isMemVar():
-                        sim_inputs[inp_name] = self.cleanupMemList(m_inp.as_list())
-                    else:
-                        assert False, 'Unknown node type.'
-                else:
-                    if inp_ast.isMemVar():
-                        sim_inputs[inp_name] = [0]
-                    else:
-                        sim_inputs[inp_name] = 0
-
+            sim_inputs = self.extractInputsFromModel(m, input_vars)
             sim_outputs = {}
+
+            # FIXME sim signature.
             sim(sim_inputs, sim_outputs)
+
             if self.VERBOSITY >= 2:
                 self.log_dict('sim_inputs', sim_inputs)
                 self.log_dict('sim_outputs', sim_outputs)
-
-            out.clearZ3Cache()
-            y1mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P1, sim_inputs))
-
-            out.clearZ3Cache()
-            y2mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P2, sim_inputs))
-
-            if self.VERBOSITY >= 3:
-                self.log('#it:' + repr(iterations))
-                self.log('y1mz3:' + repr(y1mz3))
-                self.log('y2mz3:' + repr(y2mz3))
 
             def assertEquality(ocnst):
                 n1 = 'out1_%d' % iterations
@@ -173,32 +199,28 @@ class Synthesizer(object):
                 if self.VERBOSITY >= 3:
                     self.log('out:' + repr(ocnst))
 
-            if self.outputTypes[name] == Synthesizer.BITVEC:
-                assertEquality(z3.BitVecVal(sim_outputs[name], out.width))
-            elif self.outputTypes[name] == Synthesizer.BOOL:
-                assertEquality(z3.BoolVal(sim_outputs[name]))
-            else:
-                assert False
-                out_data = sim_outputs[name]
-                data = {}
-                for [a,d] in out_data[:-1]:
-                    data[a] = d
-                default = out_data[-1]
-                cnsts = []
-                for i in xrange(1 << out.awidth):
-                    if i in data:
-                        c1 = z3.simplify(y1mz3[z3.BitVecVal(i, out.awidth)] == z3.BitVecVal(data[i], out.dwidth))
-                        c2 = z3.simplify(y2mz3[z3.BitVecVal(i, out.awidth)] == z3.BitVecVal(data[i], out.dwidth))
-                    else:
-                        c1 = z3.simplify(y1mz3[z3.BitVecVal(i, out.awidth)] == z3.BitVecVal(default, out.dwidth))
-                        c2 = z3.simplify(y2mz3[z3.BitVecVal(i, out.awidth)] == z3.BitVecVal(default, out.dwidth))
-                        
-                    cnsts.append(c1)
-                    cnsts.append(c2)
-                c = z3.simplify(z3.And(*cnsts))
-                S.add(c)
+            y1z3s, y2z3s = [], []
+            for name, out in itertools.izip(outputNames, outs):
+                out.clearZ3Cache()
+                y1mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P1, sim_inputs))
+                out.clearZ3Cache()
+                y2mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P2, sim_inputs))
+
+                y1z3s.append(y1mz3)
+                y2z3s.append(y2mz3)
+
                 if self.VERBOSITY >= 3:
-                    self.log('out:' + repr(c))
+                    self.log('#it:' + repr(iterations))
+                    self.log('y1mz3:' + y1mz3.sexpr())
+                    self.log('y2mz3:' + y2mz3.sexpr())
+
+                if self.outputTypes[name] == Synthesizer.BITVEC:
+                    assertEquality(z3.BitVecVal(sim_outputs[name], out.width))
+                elif self.outputTypes[name] == Synthesizer.BOOL:
+                    assertEquality(z3.BoolVal(sim_outputs[name]))
+                else:
+                    assert self.outputTypes[name] == Synthesizer.MEM
+                    assertEquality(ast.createConstantArray(out.awidth, out.dwidth, sim_outputs[name]))
 
             if self.VERBOSITY >= 3:
                 for i, o in enumerate(self.debug_objects):
@@ -222,13 +244,17 @@ class Synthesizer(object):
         # now we need to extract solution
         result = S.check(z3.Not(y))
         if result == z3.unsat and self.unsat_core:
-            self.log('UNSAT core:', S.unsat_core())
+            self.log('UNSAT core: ' + repr(S.unsat_core()))
+            S.add(z3.Not(y))
+            with open('model_unsat.smt2', 'wt') as fobj:
+                print >> fobj, S.to_smt2()
+
         assert result == z3.sat
         m = S.model()
         if self.VERBOSITY >= 3:
             self.log('model:' + repr(m))
 
-        return out.synthesize(m)
+        return [out.synthesize(m) for out in outs]
 
     def cleanupMemList(self, memvals):        
         vals = []
