@@ -64,6 +64,11 @@ class Ctx8051(object):
         self._RxAddr = [Concat(BitVecVal(0, 3), self._Rbank, BitVecVal(i, 3)) for i in xrange(8)]
         self._Rx = [ReadMem(self.IRAM, RxAddr_i) for RxAddr_i in self._RxAddr]
 
+    def clone(self):
+        return Ctx8051(self.PC, self.opcode, self.IRAM, self.P0, self.SP, self.DPL, self.DPH, self.PCON, 
+        self.TCON, self.TMOD, self.TL0, self.TH0, self.TL1, self.TH1, self.P1, self.SCON, 
+        self.SBUF, self.P2, self.IE, self.P3, self.IP, self.PSW, self.ACC, self.B)
+            
     def CY(self):
         return self._CY
 
@@ -115,97 +120,65 @@ class Ctx8051(object):
         bit = ExtractBit(byte, bitindex)
         return bit
 
+    def writeDirect(self, addr, data):
+        ctxp = self.clone()
+        ctxp.IRAM = If(Equal(Extract(7, 7, addr), BitVecVal(0, 1)), 
+            WriteMem(self.IRAM, addr, data), self.IRAM)
+        ctxp.P0   = If(Equal(addr, BitVecVal(0x80, 8)), data, self.P0)
+        ctxp.SP   = If(Equal(addr, BitVecVal(0x81, 8)), data, self.SP)
+        ctxp.DPL  = If(Equal(addr, BitVecVal(0x82, 8)), data, self.DPL)
+        ctxp.DPH  = If(Equal(addr, BitVecVal(0x83, 8)), data, self.DPH)
+        ctxp.PCON = If(Equal(addr, BitVecVal(0x87, 8)), data, self.PCON)
+        ctxp.TCON = If(Equal(addr, BitVecVal(0x88, 8)), data, self.TCON)
+        ctxp.TMOD = If(Equal(addr, BitVecVal(0x89, 8)), data, self.TMOD)
+        ctxp.TL0  = If(Equal(addr, BitVecVal(0x8A, 8)), data, self.TL0)
+        ctxp.TH0  = If(Equal(addr, BitVecVal(0x8C, 8)), data, self.TH0)
+        ctxp.TL1  = If(Equal(addr, BitVecVal(0x8B, 8)), data, self.TL1)
+        ctxp.TH1  = If(Equal(addr, BitVecVal(0x8D, 8)), data, self.TH1)
+        ctxp.P1   = If(Equal(addr, BitVecVal(0x90, 8)), data, self.P1)
+        ctxp.SCON = If(Equal(addr, BitVecVal(0x98, 8)), data, self.SCON)
+        ctxp.SBUF = If(Equal(addr, BitVecVal(0x99, 8)), data, self.SBUF)
+        ctxp.P2   = If(Equal(addr, BitVecVal(0xA0, 8)), data, self.P2)
+        ctxp.IE   = If(Equal(addr, BitVecVal(0xA8, 8)), data, self.IE)
+        ctxp.P3   = If(Equal(addr, BitVecVal(0xB0, 8)), data, self.P3)
+        ctxp.IP   = If(Equal(addr, BitVecVal(0xB8, 8)), data, self.IP)
+        ctxp.PSW  = If(Equal(addr, BitVecVal(0xD0, 8)), data, self.PSW)
+        ctxp.ACC  = If(Equal(addr, BitVecVal(0xE0, 8)), data, self.ACC)
+        ctxp.B    = If(Equal(addr, BitVecVal(0xF0, 8)), data, self.B)
+        return ctxp
+
+    
+def CtxChoice(name, op, ctxs):
+    PC = Choice(name, op, [c.PC for c in ctxs])
+    opcode = Choice(name, op, [c.opcode for c in ctxs])
+    IRAM = Choice(name, op, [c.IRAM for c in ctxs])
+    P0 = Choice(name, op, [c.P0 for c in ctxs])
+    SP = Choice(name, op, [c.SP for c in ctxs])
+    DPL = Choice(name, op, [c.DPL for c in ctxs])
+    DPH = Choice(name, op, [c.DPH for c in ctxs])
+    PCON = Choice(name, op, [c.PCON for c in ctxs])
+    TCON = Choice(name, op, [c.TCON for c in ctxs])
+    TMOD = Choice(name, op, [c.TMOD for c in ctxs])
+    TL0 = Choice(name, op, [c.TL0 for c in ctxs])
+    TH0 = Choice(name, op, [c.TH0 for c in ctxs])
+    TL1 = Choice(name, op, [c.TL1 for c in ctxs])
+    TH1 = Choice(name, op, [c.TH1 for c in ctxs])
+    P1 = Choice(name, op, [c.P1 for c in ctxs])
+    SCON = Choice(name, op, [c.SCON for c in ctxs])
+    SBUF = Choice(name, op, [c.SBUF for c in ctxs])
+    P2 = Choice(name, op, [c.P2 for c in ctxs])
+    IE = Choice(name, op, [c.IE for c in ctxs])
+    P3 = Choice(name, op, [c.P3 for c in ctxs])
+    IP = Choice(name, op, [c.IP for c in ctxs])
+    PSW = Choice(name, op, [c.PSW for c in ctxs])
+    ACC = Choice(name, op, [c.ACC for c in ctxs])
+    B = Choice(name, op, [c.B for c in ctxs])
+    return Ctx8051(PC, opcode, IRAM, P0, SP, DPL, DPH, PCON, TCON, TMOD, 
+        TL0, TH0, TL1, TH1, P1, SCON, SBUF, P2, IE, P3, IP, PSW, ACC, B)
+    
 def Ctx8051FromSyn(syn):
     return Ctx8051( syn.inp('PC'), syn.inp('opcode'), syn.inp('IRAM'), syn.inp('P0'), syn.inp('SP'), 
         syn.inp('DPL'), syn.inp('DPH'), syn.inp('PCON'), syn.inp('TCON'), syn.inp('TMOD'), 
         syn.inp('TL0'), syn.inp('TH0'), syn.inp('TL1'), syn.inp('TH1'), syn.inp('P1'), syn.inp('SCON'), 
         syn.inp('SBUF'), syn.inp('P2'), syn.inp('IE'), syn.inp('P3'), syn.inp('IP'), syn.inp('PSW'), 
         syn.inp('ACC'), syn.inp('B') )
-
-class DirectIRAMWrite(Node):
-    """Perform on a direct write from the 8051 IRAM. This might 
-       modify one of the SFRs."""
-
-    DIR_IRAM_WRITE = Node.NODE_TYPE_MAX+2
-    
-    def __init__(self, ctx, addr, data):
-        if addr.width != 8:
-            raise ValueError, "Address width must be 8."
-        if ctx.IRAM.dwidth != 8:
-            raise ValueError, "IRAM width must also be 8."
-
-        Node.__init__(self, self.DIR_IRAM_WRITE)
-        self.addr = addr
-        self.data = data
-        self.width = ctx.IRAM.dwidth
-        self.ctx = ctx
-
-         
-    def _toZ3sHelper(self, prefix, rfun):
-        mz3 = rfun(self.ctx.IRAM, prefix)
-        az3 = rfun(self.addr, prefix)
-        dz3 = rfun(self.data, prefix)
-
-        msb0 = z3.Extract(7, 7, az3) == z3.BitVecVal(0, 1)
-        self.ctx.IRAM = z3.If(msb0, Update(ctx.IRAM, az3, dz3), self.ctx.IRAM)
-        self.ctx.P0   = z3.If(az3 == z3.BitVecVal(0x80, 8), dz3, self.ctx.P0)
-        self.ctx.SP   = z3.If(az3 == z3.BitVecVal(0x81, 8), dz3, self.ctx.SP)
-        self.ctx.DPL  = z3.If(az3 == z3.BitVecVal(0x82, 8), dz3, self.ctx.DPL)
-        self.ctx.DPH  = z3.If(az3 == z3.BitVecVal(0x83, 8), dz3, self.ctx.DPH)
-        self.ctx.PCON = z3.If(az3 == z3.BitVecVal(0x87, 8), dz3, self.ctx.PCON)
-        self.ctx.TCON = z3.If(az3 == z3.BitVecVal(0x88, 8), dz3, self.ctx.TCON)
-        self.ctx.TMOD = z3.If(az3 == z3.BitVecVal(0x89, 8), dz3, self.ctx.TMOD)
-        self.ctx.TL0  = z3.If(az3 == z3.BitVecVal(0x8A, 8), dz3, self.ctx.TL0)
-        self.ctx.TH0  = z3.If(az3 == z3.BitVecVal(0x8C, 8), dz3, self.ctx.TH0)
-        self.ctx.TL1  = z3.If(az3 == z3.BitVecVal(0x8B, 8), dz3, self.ctx.TL1)
-        self.ctx.TH1  = z3.If(az3 == z3.BitVecVal(0x8D, 8), dz3, self.ctx.TH1)
-        self.ctx.P1   = z3.If(az3 == z3.BitVecVal(0x90, 8), dz3, self.ctx.P1)
-        self.ctx.SCON = z3.If(az3 == z3.BitVecVal(0x98, 8), dz3, self.ctx.SCON)
-        self.ctx.SBUF = z3.If(az3 == z3.BitVecVal(0x99, 8), dz3, self.ctx.SBUF)
-        self.ctx.P2   = z3.If(az3 == z3.BitVecVal(0xA0, 8), dz3, self.ctx.P2)
-        self.ctx.IE   = z3.If(az3 == z3.BitVecVal(0xA8, 8), dz3, self.ctx.IE)
-        self.ctx.P3   = z3.If(az3 == z3.BitVecVal(0xB0, 8), dz3, self.ctx.P3)
-        self.ctx.IP   = z3.If(az3 == z3.BitVecVal(0xB8, 8), dz3, self.ctx.IP)
-        self.ctx.PSW  = z3.If(az3 == z3.BitVecVal(0xD0, 8), dz3, self.ctx.PSW)
-        self.ctx.ACC  = z3.If(az3 == z3.BitVecVal(0xE0, 8), dz3, self.ctx.ACC)
-        self.ctx.B    = z3.If(az3 == z3.BitVecVal(0xF0, 8), dz3, self.ctx.B)
-
-    def _toZ3(self, prefix):
-        rfun = lambda n, prefix : n.toZ3(prefix)
-        return self._toZ3sHelper(prefix, rfun)
-
-    def _toZ3Constraints(self, prefix, m):
-        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
-        return self._toZ3sHelper(prefix, rfun)
-
-    def __str__(self):
-        return '(write-direct %s %s %s)' % (str(self.ctx.IRAM), str(self.addr), str(self.data))
-
-    def synthesize(self, m):
-        return DirectIRAMRead(self.ctx, self.addr.synthesize(m))
-
-    def childObjects(self):
-        yield self.ctx.IRAM
-        yield self.addr
-        yield self.ctx.P0
-        yield self.ctx.SP
-        yield self.ctx.DPL
-        yield self.ctx.DPH
-        yield self.ctx.PCON
-        yield self.ctx.TCON
-        yield self.ctx.TMOD
-        yield self.ctx.TL0
-        yield self.ctx.TH0
-        yield self.ctx.TL1
-        yield self.ctx.TH1
-        yield self.ctx.P1
-        yield self.ctx.SCON
-        yield self.ctx.SBUF
-        yield self.ctx.P2
-        yield self.ctx.IE
-        yield self.ctx.P3
-        yield self.ctx.IP
-        yield self.ctx.PSW
-        yield self.ctx.ACC
-        yield self.ctx.B
-
