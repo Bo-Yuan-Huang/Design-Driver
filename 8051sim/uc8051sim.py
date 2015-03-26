@@ -6,7 +6,7 @@ def eval8051(inputs, outputs):
     iram = inputs['IRAM']
     assert len(iram) >= 1
     default_iram = iram[-1]
-    regs = [default_iram]*384
+    regs = ([default_iram]*256) + ([0]*128)
     for [addr,data] in iram[:-1]:
         assert addr < 256
         assert data < 256

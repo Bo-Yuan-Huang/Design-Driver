@@ -918,13 +918,13 @@ def BVAnd(op1, op2):
     return Z3Op('bvand', lambda op1, op2: op1 & op2, [op1, op2], _determineOpWidth)
 
 def BVOr(op1, op2):
-    return Z3Op('bvand', lambda op1, op2: op1 | op2, [op1, op2], _determineOpWidth)
+    return Z3Op('bvor', lambda op1, op2: op1 | op2, [op1, op2], _determineOpWidth)
 
 def BVXor(op1, op2):
-    return Z3Op('bvand', lambda op1, op2: op1 ^ op2, [op1, op2], _determineOpWidth)
+    return Z3Op('bvxor', lambda op1, op2: op1 ^ op2, [op1, op2], _determineOpWidth)
 
 def BVXnor(op1, op2):
-    return Z3Op('bvand', lambda op1, op2: ~(op1 ^ op2), [op1, op2], _determineOpWidth)
+    return Z3Op('bvxnor', lambda op1, op2: ~(op1 ^ op2), [op1, op2], _determineOpWidth)
 
 #def If(cond, vthen, velse):
 #    def _ifWidth(ops):

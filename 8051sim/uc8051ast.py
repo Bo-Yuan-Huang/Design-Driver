@@ -60,6 +60,8 @@ class Ctx8051(object):
         self.B = B
 
         self._CY = Extract(7, 7, self.PSW)
+        self._AC = Extract(6, 6, self.PSW)
+        self._OV = Extract(2, 2, self.PSW)
         self._Rbank = Extract(4, 3, self.PSW)
         self._RxAddr = [Concat(BitVecVal(0, 3), self._Rbank, BitVecVal(i, 3)) for i in xrange(8)]
         self._Rx = [ReadMem(self.IRAM, RxAddr_i) for RxAddr_i in self._RxAddr]
@@ -69,8 +71,9 @@ class Ctx8051(object):
         self.TCON, self.TMOD, self.TL0, self.TH0, self.TL1, self.TH1, self.P1, self.SCON, 
         self.SBUF, self.P2, self.IE, self.P3, self.IP, self.PSW, self.ACC, self.B)
             
-    def CY(self):
-        return self._CY
+    def CY(self): return self._CY
+    def AC(self): return self._AC
+    def OV(self): return self._OV
 
     def RxAddr(self, i):
         return self._RxAddr[i]

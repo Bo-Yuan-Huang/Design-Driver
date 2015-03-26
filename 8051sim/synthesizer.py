@@ -277,7 +277,8 @@ class Synthesizer(object):
 
     def log_dict(self, n, d):
         vs = []
-        for (k, v) in d.iteritems():
+        for k in sorted(d.keys()):
+            v = d[k]
             try:
                 vs.append('%s:%x' % (k, v))
             except TypeError:
