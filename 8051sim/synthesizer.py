@@ -2,6 +2,7 @@ import itertools
 import ast
 import z3
 import pdb
+import sys
 
 class Synthesizer(object):
     """The Synthesizer class encapsulates the synthesis algorithm."""
@@ -289,3 +290,9 @@ class Synthesizer(object):
     def log(self, s):
         if self.logfile:
             print >> self.logfile, s
+
+    def debug(self, verbosity=2, logfile=sys.stdout):
+        self.VERBOSITY = verbosity
+        self.logfile = logfile
+        # self.unsat_core = True
+
