@@ -191,9 +191,9 @@ class Synthesizer(object):
                 self.log_dict('sim_inputs', sim_inputs)
                 self.log_dict('sim_outputs', sim_outputs)
 
-            def assertEquality(ocnst):
-                n1 = 'out1_%d' % iterations
-                n2 = 'out2_%d' % iterations
+            def assertEquality(ocnst, name):
+                n1 = 'out_%s_1_%d' % (name, iterations)
+                n2 = 'out_%s_2_%d' % (name, iterations)
 
                 if self.unsat_core:
                     S.assert_and_track(ocnst == y1mz3, n1)
@@ -221,12 +221,12 @@ class Synthesizer(object):
                     self.log('y2mz3:' + y2mz3.sexpr())
 
                 if self.outputTypes[name] == Synthesizer.BITVEC:
-                    assertEquality(z3.BitVecVal(sim_outputs[name], out.width))
+                    assertEquality(z3.BitVecVal(sim_outputs[name], out.width), name)
                 elif self.outputTypes[name] == Synthesizer.BOOL:
-                    assertEquality(z3.BoolVal(sim_outputs[name]))
+                    assertEquality(z3.BoolVal(sim_outputs[name]), name)
                 else:
                     assert self.outputTypes[name] == Synthesizer.MEM
-                    assertEquality(ast.createConstantArray(out.awidth, out.dwidth, sim_outputs[name]))
+                    assertEquality(ast.createConstantArray(out.awidth, out.dwidth, sim_outputs[name]), name)
 
             if self.VERBOSITY >= 3:
                 for i, o in enumerate(self.debug_objects):
