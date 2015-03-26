@@ -1,6 +1,5 @@
 from synthesizer import Synthesizer
 from ast import *
-from sim51 import evalState
 import sys
 from uc8051ast import Ctx8051, Ctx8051FromSyn, create8051Inputs, CtxChoice
 from uc8051sim import eval8051
@@ -16,89 +15,85 @@ def synthesize(opcs):
     mem_SP_minus1 = ReadMem(ctx.IRAM, Sub(ctx.SP, BitVecVal(1, 8)))
     DPTR = Concat(ctx.DPH, ctx.DPL)
 
-    op0 = Extract(7, 0, ctx.opcode)
-    op1 = Extract(15, 8, ctx.opcode)
-    op2 = Extract(23, 16, ctx.opcode)
-
     PC_plus1 = Add(ctx.PC, BitVecVal(1, 16))
     PC_plus2 = Add(ctx.PC, BitVecVal(2, 16))
     PC_plus3 = Add(ctx.PC, BitVecVal(3, 16))
-    PC_rel1 = Add(Choice('PC_rel1_base', op0, [ctx.PC, PC_plus1, PC_plus2, PC_plus3]), SignExt(op1, 8))
-    PC_rel2 = Add(Choice('PC_rel2_base', op0, [ctx.PC, PC_plus1, PC_plus2, PC_plus3]), SignExt(op2, 8))
+    PC_rel1 = Add(Choice('PC_rel1_base', ctx.op0, [ctx.PC, PC_plus1, PC_plus2, PC_plus3]), SignExt(ctx.op1, 8))
+    PC_rel2 = Add(Choice('PC_rel2_base', ctx.op0, [ctx.PC, PC_plus1, PC_plus2, PC_plus3]), SignExt(ctx.op2, 8))
 
-    PC_ajmp  = Concat(Extract(15, 11, Choice('ajmp', op0, [ctx.PC, PC_plus2])),
+    PC_ajmp  = Concat(Extract(15, 11, Choice('ajmp', ctx.op0, [ctx.PC, PC_plus2])),
                       ChooseConsecBits('ajmp_3bits', 3, ctx.opcode), 
                       ChooseConsecBits('ajmp_8bits', 8, ctx.opcode))
     PC_ret1 = Concat(mem_SP_minus1, mem_SP)
     PC_ret2 = Concat(mem_SP, mem_SP_plus1)
     PC_ret3 = Concat(mem_SP, mem_SP_minus1)
     PC_ret4 = Concat(mem_SP_plus1, mem_SP)
-    PC_ret = Choice('ctx.SP_pc', op0, [PC_ret1, PC_ret2, PC_ret3, PC_ret4])
-    PC_ljmp = Choice('LJMP_order', op0, [Concat(op1, op2), Concat(op2, op1)])
-    PC_sjmp = Choice('SJMP_relpc', op0, [PC_rel1, PC_rel2])
+    PC_ret = Choice('ctx.SP_pc', ctx.op0, [PC_ret1, PC_ret2, PC_ret3, PC_ret4])
+    PC_ljmp = Choice('LJMP_order', ctx.op0, [Concat(ctx.op1, ctx.op2), Concat(ctx.op2, ctx.op1)])
+    PC_sjmp = Choice('SJMP_relpc', ctx.op0, [PC_rel1, PC_rel2])
     
     
-    jb_bitaddr = Choice('jb_bit_addr_choice', op0, [op1, op2])
+    jb_bitaddr = Choice('jb_bit_addr_choice', ctx.op0, [ctx.op1, ctx.op2])
     jb_bit = ctx.readBit(jb_bitaddr)
-    PC_jb_taken = Choice('PC_jb_rel', op0, [PC_rel1, PC_rel2])
-    PC_jb_seq = Choice('PC_jb_seq', op0, [PC_plus2, PC_plus3])
-    PC_jb = If(Equal(jb_bit, Choice('jb_polarity', op0, [BitVecVal(1,1), BitVecVal(0,1)])), 
+    PC_jb_taken = Choice('PC_jb_rel', ctx.op0, [PC_rel1, PC_rel2])
+    PC_jb_seq = Choice('PC_jb_seq', ctx.op0, [PC_plus2, PC_plus3])
+    PC_jb = If(Equal(jb_bit, Choice('jb_polarity', ctx.op0, [BitVecVal(1,1), BitVecVal(0,1)])), 
         PC_jb_taken, 
         PC_jb_seq)
 
-    PC_jc_taken = Choice('PC_jc_rel', op0, [PC_rel1, PC_rel2])
-    PC_jc_seq = Choice('PC_jc_seq', op0, [PC_plus2, PC_plus3])
-    PC_jc = If(Equal(ctx.CY(), Choice('jc_polarity', op0, [BitVecVal(1,1), BitVecVal(0,1)])), 
+    PC_jc_taken = Choice('PC_jc_rel', ctx.op0, [PC_rel1, PC_rel2])
+    PC_jc_seq = Choice('PC_jc_seq', ctx.op0, [PC_plus2, PC_plus3])
+    PC_jc = If(Equal(ctx.CY(), Choice('jc_polarity', ctx.op0, [BitVecVal(1,1), BitVecVal(0,1)])), 
         PC_jc_taken, 
         PC_jc_seq)
 
-    PC_jz_taken = Choice('PC_jz_rel', op0, [PC_rel1, PC_rel2])
-    PC_jz_seq = Choice('PC_jz_seq', op0, [PC_plus2, PC_plus3])
+    PC_jz_taken = Choice('PC_jz_rel', ctx.op0, [PC_rel1, PC_rel2])
+    PC_jz_seq = Choice('PC_jz_seq', ctx.op0, [PC_plus2, PC_plus3])
     ACC_zero = Equal(ctx.ACC, BitVecVal(0, 8))
     ACC_not_zero = Not(ACC_zero)
-    PC_jz = If(Choice('jz_polarity', op0, [ACC_zero, ACC_not_zero]), PC_jz_taken, PC_jz_seq)
+    PC_jz = If(Choice('jz_polarity', ctx.op0, [ACC_zero, ACC_not_zero]), PC_jz_taken, PC_jz_seq)
     PC_jmp = Add(DPTR, ZeroExt(ctx.ACC, 8))
 
-    cjne_src1 = Choice('cjne_src1', op0, 
+    cjne_src1 = Choice('cjne_src1', ctx.op0, 
         [ctx.ACC, ReadMem(ctx.IRAM, ctx.Rx(0)), ReadMem(ctx.IRAM, ctx.Rx(1))] + ctx.Rxs())
-    cjne_src2 = Choice('cjne_src2', op0, 
-        [op1, op2, ctx.readDirect(Choice('cjne_iram_addr', op0, [op1, op2]))])
+    cjne_src2 = Choice('cjne_src2', ctx.op0, 
+        [ctx.op1, ctx.op2, ctx.readDirect(Choice('cjne_iram_addr', ctx.op0, [ctx.op1, ctx.op2]))])
     cjne_taken = Not(Equal(cjne_src1, cjne_src2))
-    PC_cjne_taken = Choice('PC_cjne_taken', op0, [PC_rel1, PC_rel2])
-    PC_cjne_seq = Choice('PC_cjne_seq', op0, [PC_plus2, PC_plus3])
+    PC_cjne_taken = Choice('PC_cjne_taken', ctx.op0, [PC_rel1, PC_rel2])
+    PC_cjne_seq = Choice('PC_cjne_seq', ctx.op0, [PC_plus2, PC_plus3])
     PC_cjne = If(cjne_taken, PC_cjne_taken, PC_cjne_seq)
 
-    djnz_src = Choice('djnz_src', op0, 
-        [ctx.readDirect(Choice('djnz_iram_src', op0, [op1, op2]))] + ctx.Rxs())
+    djnz_src = Choice('djnz_src', ctx.op0, 
+        [ctx.readDirect(Choice('djnz_iram_src', ctx.op0, [ctx.op1, ctx.op2]))] + ctx.Rxs())
     djnz_taken = Not(Equal(djnz_src, BitVecVal(1, 8)))
-    PC_djnz_taken = Choice('PC_djnz_taken', op0, [PC_rel1, PC_rel2])
-    PC_djnz_seq = Choice('PC_djnz_seq', op0, [PC_plus2, PC_plus3])
+    PC_djnz_taken = Choice('PC_djnz_taken', ctx.op0, [PC_rel1, PC_rel2])
+    PC_djnz_seq = Choice('PC_djnz_seq', ctx.op0, [PC_plus2, PC_plus3])
     PC_djnz = If(djnz_taken, PC_djnz_taken, PC_djnz_seq)
 
-    nextPC = Choice('nextPC', op0, [
+    nextPC = Choice('nextPC', ctx.op0, [
         PC_plus1, PC_plus2, PC_plus3, PC_ajmp, 
         PC_ret, PC_ljmp, PC_sjmp, PC_jb, 
         PC_jc, PC_jz, PC_jmp, PC_cjne, PC_djnz])
 
-    # IMM1 = op1
+    # IMM1 = ctx.op1
     # IRAM_MOV_AT_R0 = WriteMem(ctx.IRAM, Rx[0], IMM1)
     # syn.addOutput('IRAM', IRAM_MOV_AT_R0, Synthesizer.MEM)
 
-    # INC_SRC1_INDIR_ADDR = Choice('INC_SRC1_INDIR', op0, [Rx[0], Rx[1]])
+    # INC_SRC1_INDIR_ADDR = Choice('INC_SRC1_INDIR', ctx.op0, [Rx[0], Rx[1]])
     # INC_SRC1_INDIR = ReadMem(ctx.IRAM, INC_SRC1_INDIR_ADDR)
 
     ctxNOP = ctx.clone()
     ctxNOP.PC = nextPC
     # SP can be incremented, decrement or stay the same
-    ctxNOP.SP = Choice('SP_CALL', op0, [ctx.SP, Add(ctx.SP, BitVecVal(2, 8)), Sub(ctx.SP, BitVecVal(2, 8))])
+    ctxNOP.SP = Choice('SP_CALL', ctx.op0, [ctx.SP, Add(ctx.SP, BitVecVal(2, 8)), Sub(ctx.SP, BitVecVal(2, 8))])
 
     # SRC2 for instructions which modify accumulator.
-    ACC_SRC2_DIR_ADDR = Choice('ACC_SRC2_DIR_ADDR', op0, [op1, op2] + ctx.RxAddrs())
+    ACC_SRC2_DIR_ADDR = Choice('ACC_SRC2_DIR_ADDR', ctx.op0, [ctx.op1, ctx.op2] + ctx.RxAddrs())
     ACC_SRC2_DIR = ctx.readDirect(ACC_SRC2_DIR_ADDR)
-    ACC_SRC2_INDIR_ADDR = Choice('ACC_SRC2_INDIR_ADDR', op0, [ctx.Rx(0), ctx.Rx(1)])
+    ACC_SRC2_INDIR_ADDR = Choice('ACC_SRC2_INDIR_ADDR', ctx.op0, [ctx.Rx(0), ctx.Rx(1)])
     ACC_SRC2_INDIR = ReadMem(ctx.IRAM, ACC_SRC2_INDIR_ADDR)
-    SRC2_IMM = Choice('SRC2_IMM', op0, [op1, op2])
-    ACC_SRC2 = Choice('ACC_SRC2', op0, [ACC_SRC2_DIR, ACC_SRC2_INDIR, SRC2_IMM])
+    SRC2_IMM = Choice('SRC2_IMM', ctx.op0, [ctx.op1, ctx.op2])
+    ACC_SRC2 = Choice('ACC_SRC2', ctx.op0, [ACC_SRC2_DIR, ACC_SRC2_INDIR, SRC2_IMM])
 
     # Instructions which modify the accumulator.
     ACC_RR  = RotateRight(ctx.ACC)
@@ -116,10 +111,10 @@ def synthesize(opcs):
 
     # final acc value.
     ctxACC = ctxNOP.clone()
-    ctxACC.ACC = Choice('ACC_RES', op0, [ACC_RR, ACC_RL, ACC_RRC, ACC_RLC, ACC_INC, ACC_DEC, ACC_ADD, ACC_ADDC, ACC_ORL, ACC_ANL, ACC_XRL, ACC_MOV])
+    ctxACC.ACC = Choice('ACC_RES', ctx.op0, [ACC_RR, ACC_RL, ACC_RRC, ACC_RLC, ACC_INC, ACC_DEC, ACC_ADD, ACC_ADDC, ACC_ORL, ACC_ANL, ACC_XRL, ACC_MOV])
     
     # compute the CY/AC/OV flags
-    ALU_CY_IN = Choice('ALU_CY_IN', op0, [ctx.CY(), BitVecVal(0, 1)])
+    ALU_CY_IN = Choice('ALU_CY_IN', ctx.op0, [ctx.CY(), BitVecVal(0, 1)])
 
     ALU_SRC1 = ctx.ACC
     ALU_SRC1_LO = Extract(3, 0, ALU_SRC1)
@@ -135,18 +130,18 @@ def synthesize(opcs):
     ALU_SRC1_ZEXT = ZeroExt(ALU_SRC1, 1)
     ALU_SRC2_ZEXT = ZeroExt(ALU_SRC2, 1)
 
-    ALU_SRC1_FOR_CY = Choice('ALU_SRC_FOR_CY', op0, [ALU_SRC1_SEXT, ALU_SRC1_ZEXT])
-    ALU_SRC2_FOR_CY = Choice('ALU_SRC_FOR_CY', op0, [ALU_SRC2_SEXT, ALU_SRC2_ZEXT])
+    ALU_SRC1_FOR_CY = Choice('ALU_SRC_FOR_CY', ctx.op0, [ALU_SRC1_SEXT, ALU_SRC1_ZEXT])
+    ALU_SRC2_FOR_CY = Choice('ALU_SRC_FOR_CY', ctx.op0, [ALU_SRC2_SEXT, ALU_SRC2_ZEXT])
     ALU_CY = Extract(8, 8, Add(ALU_SRC1_FOR_CY, Add(ALU_SRC2_FOR_CY, ZeroExt(ALU_CY_IN, 8))))
 
-    ALU_SRC1_FOR_OV = Choice('ALU_SRC_FOR_OV', op0, [ALU_SRC1_SEXT, ALU_SRC1_ZEXT])
-    ALU_SRC2_FOR_OV = Choice('ALU_SRC_FOR_OV', op0, [ALU_SRC2_SEXT, ALU_SRC2_ZEXT])
+    ALU_SRC1_FOR_OV = Choice('ALU_SRC_FOR_OV', ctx.op0, [ALU_SRC1_SEXT, ALU_SRC1_ZEXT])
+    ALU_SRC2_FOR_OV = Choice('ALU_SRC_FOR_OV', ctx.op0, [ALU_SRC2_SEXT, ALU_SRC2_ZEXT])
     ALU_OV_CY = Extract(8, 8, Add(ALU_SRC2_FOR_OV, Add(ALU_SRC1_FOR_OV, ZeroExt(ALU_CY_IN, 8))))
     ALU_OV = If(Equal(ALU_OV_CY, Extract(7, 7, ctxACC.ACC)), BitVecVal(0, 1), BitVecVal(1, 1))
 
-    ACC_CY = Choice('ACC_CY', op0, [ctx.CY(), Extract(0, 0, ctx.ACC), Extract(7, 7, ctx.ACC), ALU_CY])
-    ACC_AC = Choice('ACC_AC', op0, [ctx.AC(), ALU_AC])
-    ACC_OV = Choice('ACC_OV', op0, [ctx.OV(), ALU_OV])
+    ACC_CY = Choice('ACC_CY', ctx.op0, [ctx.CY(), Extract(0, 0, ctx.ACC), Extract(7, 7, ctx.ACC), ALU_CY])
+    ACC_AC = Choice('ACC_AC', ctx.op0, [ctx.AC(), ALU_AC])
+    ACC_OV = Choice('ACC_OV', ctx.op0, [ctx.OV(), ALU_OV])
 
     ctxACC.PSW = Concat(ACC_CY, ACC_AC, Extract(5, 3, ctx.PSW), ACC_OV, Extract(1, 0, ctx.PSW))
 
@@ -155,18 +150,18 @@ def synthesize(opcs):
 
     # call type instructions push the PC onto the stack.
     ctxCALL = ctxNOP.clone()
-    PC_topush = Choice('PC_topush', op0, [ctx.PC, PC_plus1, PC_plus2, PC_plus3])
+    PC_topush = Choice('PC_topush', ctx.op0, [ctx.PC, PC_plus1, PC_plus2, PC_plus3])
     PC_topush_lo = Extract(7, 0, PC_topush)
     PC_topush_hi = Extract(15, 8, PC_topush)
-    PC_topush_0 = Choice('PC_topush_endianess', op0, [PC_topush_lo, PC_topush_hi])
-    PC_topush_1 = Choice('PC_topush_endianess', op0, [PC_topush_hi, PC_topush_lo])
-    PC_push_addr = Choice('PC_push_addr', op0, [ctx.SP, Add(ctx.SP, BitVecVal(1, 8))])
+    PC_topush_0 = Choice('PC_topush_endianess', ctx.op0, [PC_topush_lo, PC_topush_hi])
+    PC_topush_1 = Choice('PC_topush_endianess', ctx.op0, [PC_topush_hi, PC_topush_lo])
+    PC_push_addr = Choice('PC_push_addr', ctx.op0, [ctx.SP, Add(ctx.SP, BitVecVal(1, 8))])
     ctxCALL.IRAM = WriteMem(WriteMem(ctx.IRAM, PC_push_addr, PC_topush_0), Add(PC_push_addr, BitVecVal(1, 8)), PC_topush_1)
 
     # instructions where the result is a direct iram address
-    SRC1_DIR_ADDR = Choice('SRC1_DIR', op0, [op1, op2] + ctx.RxAddrs())
+    SRC1_DIR_ADDR = Choice('SRC1_DIR', ctx.op0, [ctx.op1, ctx.op2] + ctx.RxAddrs())
     SRC1_DIR = ctx.readDirect(SRC1_DIR_ADDR)
-    SRC2_DIR = Choice('SRC2_DIR', op0, [op1, op2, ctx.ACC])
+    SRC2_DIR = Choice('SRC2_DIR', ctx.op0, [ctx.op1, ctx.op2, ctx.ACC])
     DIR_INC = Add(SRC1_DIR, BitVecVal(1, 8))
     DIR_DEC = Sub(SRC1_DIR, BitVecVal(1, 8))
     DIR_ORL = BVOr(SRC1_DIR, SRC2_DIR)
@@ -174,30 +169,33 @@ def synthesize(opcs):
     DIR_XRL = BVXor(SRC1_DIR, SRC2_DIR)
     DIR_MOV = SRC2_DIR
 
-    DIR_RESULT = Choice('DIR_RESULT', op0, [DIR_INC, DIR_DEC, DIR_ORL, DIR_ANL, DIR_XRL, DIR_MOV])
+    DIR_RESULT = Choice('DIR_RESULT', ctx.op0, [DIR_INC, DIR_DEC, DIR_ORL, DIR_ANL, DIR_XRL, DIR_MOV])
     ctxDIR = ctxNOP.writeDirect(SRC1_DIR_ADDR, DIR_RESULT)
 
     # instructions where the result is an indirect iram address
-    SRC1_INDIR_ADDR = Choice('SRC1_INDIR_ADDR', op0, [ctx.Rx(0), ctx.Rx(1)])
+    SRC1_INDIR_ADDR = Choice('SRC1_INDIR_ADDR', ctx.op0, [ctx.Rx(0), ctx.Rx(1)])
     SRC1_INDIR = ReadMem(ctx.IRAM, SRC1_INDIR_ADDR)
-    SRC2_INDIR = Choice('SRC2_INDIR', op0, [op1, op2])
+    SRC2_INDIR = Choice('SRC2_INDIR', ctx.op0, [ctx.op1, ctx.op2])
     SRC1_INDIR_INC = Add(SRC1_INDIR, BitVecVal(1, 8))
     SRC1_INDIR_DEC = Sub(SRC1_INDIR, BitVecVal(1, 8))
     SRC1_INDIR_MOV = SRC2_INDIR
-    SRC1_INDIR_RESULT = Choice('SRC1_INDIR_RESULT', op0, [SRC1_INDIR_INC, SRC1_INDIR_DEC, SRC1_INDIR_MOV])
+    SRC1_INDIR_RESULT = Choice('SRC1_INDIR_RESULT', ctx.op0, [SRC1_INDIR_INC, SRC1_INDIR_DEC, SRC1_INDIR_MOV])
     ctxINDIR = ctxNOP.clone()
     ctxINDIR.IRAM = WriteMem(ctx.IRAM, SRC1_INDIR_ADDR, SRC1_INDIR_RESULT)
 
     # instructions which write to specific bit addressable registers.
     ctxBIT = ctxNOP.clone()
-    BIT_SRC1_ADDR = Choice('BIT_SRC1_ADDR', op0, [op1, op2])
+    BIT_SRC1_ADDR = Choice('BIT_SRC1_ADDR', ctx.op0, [ctx.op1, ctx.op2])
     BIT_SRC1 = ctx.readBit(BIT_SRC1_ADDR)
     CY_ORL = BVOr(ctx.CY(), BIT_SRC1)
-    BIT_CY = Choice('BIT_CY', op0, [ctx.CY(), CY_ORL])
+    CY_ORLC = BVOr(ctx.CY(), Complement(BIT_SRC1))
+    CY_ANL = BVAnd(ctx.CY(), BIT_SRC1)
+    CY_ANLC = BVAnd(ctx.CY(), Complement(BIT_SRC1))
+    BIT_CY = Choice('BIT_CY', ctx.op0, [ctx.CY(), CY_ORL, CY_ANL, CY_ORLC, CY_ANLC])
     ctxBIT.PSW = Concat(BIT_CY, Extract(6, 0, ctx.PSW))
 
     # final result.
-    ctxFINAL = CtxChoice('CTX3', op0, [ctxNOP, ctxACC, ctxDIR, ctxINDIR, ctxJBC, ctxCALL, ctxBIT])
+    ctxFINAL = CtxChoice('CTX3', ctx.op0, [ctxNOP, ctxACC, ctxDIR, ctxINDIR, ctxJBC, ctxCALL, ctxBIT])
     syn.addOutput('PC', ctxFINAL.PC, Synthesizer.BITVEC)
     syn.addOutput('ACC', ctxFINAL.ACC, Synthesizer.BITVEC)
     syn.addOutput('IRAM', ctxFINAL.IRAM, Synthesizer.MEM)
@@ -207,11 +205,11 @@ def synthesize(opcs):
     # syn.debug()
     for opc in opcs:
         z3._main_ctx = None
-        cnst = Equal(op0, BitVecVal(opc, 8))
+        cnst = Equal(ctx.op0, BitVecVal(opc, 8))
         r = syn.synthesize(['PC', 'ACC', 'IRAM', 'PSW', 'SP'], [cnst], eval8051)
         fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'
         print fmt % tuple([opc] + r)
 
 if __name__ == '__main__':
-    synthesize(xrange(0x80))
+    synthesize(xrange(0x00, 0x83))
 

@@ -105,6 +105,7 @@ class I8051
     static int ReadByte(std::istream& in);
     static int ReadWord(std::istream& in);
     void WriteState();
+    void ReadMem(std::istream& in, char* ROM, int len);
 
   private:
     void PrintHex(unsigned char byte, std::ostream* os = &std::cout);

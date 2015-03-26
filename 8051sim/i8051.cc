@@ -5090,6 +5090,22 @@ I8051::Stop()
 
 //-----------------------------------------------------------------------------
 void
+I8051::ReadMem(std::istream& in, char* mem, int len) {
+    int num_non_default, default_val, addr, val;
+    in >> std::dec >> num_non_default;
+    default_val = ReadByte(in);
+    for(int i=0; i < len; i++) {
+        mem[i] = default_val;
+    }
+    for(int i=0; i < num_non_default; i++) {
+        addr = ReadWord(in);
+        val = ReadByte(in);
+        mem[addr] = val;
+    }
+}
+
+//-----------------------------------------------------------------------------
+void
 I8051::InitState(const char* filename) {
     std::ifstream fin(filename);
     if(!fin) {
@@ -5097,9 +5113,10 @@ I8051::InitState(const char* filename) {
         exit(0);
     }
     PC = ReadWord(fin);
-    ROM[PC] = ReadByte(fin);
-    ROM[(PC+1)&0xFFFF] = ReadByte(fin);
-    ROM[(PC+2)&0xFFFF] = ReadByte(fin);
+    ReadMem(fin, ROM, RomSize);
+    //ROM[PC] = ReadByte(fin);
+    //ROM[(PC+1)&0xFFFF] = ReadByte(fin);
+    //ROM[(PC+2)&0xFFFF] = ReadByte(fin);
 
     int i=0;
     while(fin) {

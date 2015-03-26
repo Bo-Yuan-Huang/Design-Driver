@@ -2,7 +2,8 @@ from ast import *
 
 def create8051Inputs(syn):
     syn.addInput(BitVecVar('PC', 16))
-    syn.addInput(BitVecVar('opcode', 24))
+    # code memory.
+    syn.addInput(MemVar('ROM', 16, 8))
     # IRAM
     syn.addInput(MemVar('IRAM', 8, 8))
     # main SFRs
@@ -31,11 +32,16 @@ def create8051Inputs(syn):
     syn.addInput(BitVecVar('IP', 8))
 
 class Ctx8051(object):
-    def __init__( self, PC, opcode, IRAM, P0, SP, DPL, DPH, PCON, TCON, TMOD, 
+    def __init__( self, PC, ROM, IRAM, P0, SP, DPL, DPH, PCON, TCON, TMOD, 
         TL0, TH0, TL1, TH1, P1, SCON, SBUF, P2, IE, P3, IP, PSW, ACC, B):
 
         self.PC = PC
-        self.opcode = opcode
+        self.ROM = ROM
+        self.op0 = ReadMem(self.ROM, self.PC)
+        self.op1 = ReadMem(self.ROM, Add(self.PC, BitVecVal(1, 16)))
+        self.op2 = ReadMem(self.ROM, Add(self.PC, BitVecVal(2, 16)))
+        self.opcode = Concat(self.op2, self.op1, self.op0)
+
         self.IRAM = IRAM
         self.P0 = P0
         self.SP = SP
@@ -67,7 +73,7 @@ class Ctx8051(object):
         self._Rx = [ReadMem(self.IRAM, RxAddr_i) for RxAddr_i in self._RxAddr]
 
     def clone(self):
-        return Ctx8051(self.PC, self.opcode, self.IRAM, self.P0, self.SP, self.DPL, self.DPH, self.PCON, 
+        return Ctx8051(self.PC, self.ROM, self.IRAM, self.P0, self.SP, self.DPL, self.DPH, self.PCON, 
         self.TCON, self.TMOD, self.TL0, self.TH0, self.TL1, self.TH1, self.P1, self.SCON, 
         self.SBUF, self.P2, self.IE, self.P3, self.IP, self.PSW, self.ACC, self.B)
             
@@ -167,7 +173,7 @@ class Ctx8051(object):
     
 def CtxChoice(name, op, ctxs):
     PC = Choice(name, op, [c.PC for c in ctxs])
-    opcode = Choice(name, op, [c.opcode for c in ctxs])
+    ROM = ctxs[0].ROM
     IRAM = Choice(name, op, [c.IRAM for c in ctxs])
     P0 = Choice(name, op, [c.P0 for c in ctxs])
     SP = Choice(name, op, [c.SP for c in ctxs])
@@ -190,11 +196,11 @@ def CtxChoice(name, op, ctxs):
     PSW = Choice(name, op, [c.PSW for c in ctxs])
     ACC = Choice(name, op, [c.ACC for c in ctxs])
     B = Choice(name, op, [c.B for c in ctxs])
-    return Ctx8051(PC, opcode, IRAM, P0, SP, DPL, DPH, PCON, TCON, TMOD, 
+    return Ctx8051(PC, ROM, IRAM, P0, SP, DPL, DPH, PCON, TCON, TMOD, 
         TL0, TH0, TL1, TH1, P1, SCON, SBUF, P2, IE, P3, IP, PSW, ACC, B)
     
 def Ctx8051FromSyn(syn):
-    return Ctx8051( syn.inp('PC'), syn.inp('opcode'), syn.inp('IRAM'), syn.inp('P0'), syn.inp('SP'), 
+    return Ctx8051( syn.inp('PC'), syn.inp('ROM'), syn.inp('IRAM'), syn.inp('P0'), syn.inp('SP'), 
         syn.inp('DPL'), syn.inp('DPH'), syn.inp('PCON'), syn.inp('TCON'), syn.inp('TMOD'), 
         syn.inp('TL0'), syn.inp('TH0'), syn.inp('TL1'), syn.inp('TH1'), syn.inp('P1'), syn.inp('SCON'), 
         syn.inp('SBUF'), syn.inp('P2'), syn.inp('IE'), syn.inp('P3'), syn.inp('IP'), syn.inp('PSW'), 

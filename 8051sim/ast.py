@@ -468,7 +468,7 @@ class ChoiceVar(Node):
 class ReadMem(Node):
     """Read data from a memory."""
     def __init__(self, mem, addr):
-        if addr.width != mem.dwidth:
+        if addr.width != mem.awidth:
             err_msg = "Address width must be %d. Got %d instead." % (mem.awidth, addr.width)
             raise ValueError, err_msg
 

@@ -35,10 +35,10 @@ def eval8051(inputs, outputs):
     regs[0x80 + 0xB8] = inputs['IP']  
     regs[0x80 + 0xF0] = inputs['B']   
 
-    opcode = inputs['opcode']
+    rom = inputs['ROM']
     pc = inputs['PC']
     # simulate
-    newPC, newRegs = evalState(pc, opcode, regs)
+    newPC, newRegs = evalState(pc, rom, regs)
     outputs['IRAM'] = extractIRAM(newRegs)
 
     # read output state
