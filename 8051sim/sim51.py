@@ -30,7 +30,7 @@ def evalState(pc, rom, regs):
     with tempfile.NamedTemporaryFile() as fileobject:
         dumpState(fileobject, pc, rom, regs)
 
-        print subprocess.check_output(['cat', fileobject.name])
+        # print subprocess.check_output(['cat', fileobject.name])
         # print subprocess.check_output(['wc', fileobject.name])
         # print subprocess.check_output(['./8051syn', fileobject.name])
         state = subprocess.check_output(['./8051syn', fileobject.name])
