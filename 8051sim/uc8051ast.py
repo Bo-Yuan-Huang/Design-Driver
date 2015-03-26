@@ -120,6 +120,20 @@ class Ctx8051(object):
         bit = ExtractBit(byte, bitindex)
         return bit
 
+    def writeBit(self, bitaddr, bitval):
+        msb1 = Equal(Extract(7, 7, bitaddr), BitVecVal(1, 1))
+        byteaddr = If(msb1, 
+            Concat(Extract(7, 3, bitaddr), BitVecVal(0, 3)), 
+            Add(ZeroExt(Extract(7, 3, bitaddr), 3), BitVecVal(32, 8)))
+        byte = self.readDirect(byteaddr)
+        bitindex = ZeroExt(Extract(2, 0, bitaddr), 5)
+        # put a 0 in the right position with 1s elsewhere.
+        mask1 = Complement(LShift(BitVecVal(1, 8), bitindex))
+        # put the bit value in the correct position with 0s elsewhere
+        mask2 = LShift(ZeroExt(bitval, 7), bitindex)
+        byte_p = BVOr(BVAnd(mask1, byte), mask2)
+        return self.writeDirect(byteaddr, byte_p)
+
     def writeDirect(self, addr, data):
         ctxp = self.clone()
         ctxp.IRAM = If(Equal(Extract(7, 7, addr), BitVecVal(0, 1)), 

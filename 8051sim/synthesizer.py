@@ -25,6 +25,8 @@ class Synthesizer(object):
         self.debug_objects = []
         self.unsat_core = False
         self.logfile = None
+        self.DUMP_SMT2 = False
+        self.DEBUG = False
 
     def addInput(self, inp):
         """Create an input variable. An input variable is a piece of state
@@ -181,7 +183,11 @@ class Synthesizer(object):
             # FIXME sim signature.
             sim(sim_inputs, sim_outputs)
 
+            if self.DEBUG:
+                pass
+
             if self.VERBOSITY >= 2:
+                self.log('\niteration #%d' % iterations)
                 self.log_dict('sim_inputs', sim_inputs)
                 self.log_dict('sim_outputs', sim_outputs)
 
@@ -231,7 +237,7 @@ class Synthesizer(object):
             if iterations >= self.MAXITER:
                 raise RuntimeError, 'Too many (%d) iterations executed.' % iterations
 
-            if self.VERBOSITY >= 4:
+            if self.VERBOSITY >= 4 or self.DUMP_SMT2:
                 filename = 'model%d.smt2' % iterations
                 with open(filename, 'wt') as fileobj:
                     print >> fileobj, S.to_smt2()

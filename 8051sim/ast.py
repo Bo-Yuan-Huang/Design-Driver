@@ -905,6 +905,27 @@ def SignExt(op, n):
         return op.width + n
     return Z3Op('sign-ext', lambda op: z3.SignExt(n, op), [op], _extWidth)
 
+def LShift(op1, op2):
+    return Z3Op('lshift', lambda op1, op2: op1 << op2, [op1, op2], _determineOpWidth)
+
+def RShift(op1, op2):
+    return Z3Op('rshift', lambda op1, op2: op1 >> op2, [op1, op2], _determineOpWidth)
+
+def Complement(op):
+    return Z3Op('cpl', lambda op: ~op, [op], _determineOpWidth)
+
+def BVAnd(op1, op2):
+    return Z3Op('bvand', lambda op1, op2: op1 & op2, [op1, op2], _determineOpWidth)
+
+def BVOr(op1, op2):
+    return Z3Op('bvand', lambda op1, op2: op1 | op2, [op1, op2], _determineOpWidth)
+
+def BVXor(op1, op2):
+    return Z3Op('bvand', lambda op1, op2: op1 ^ op2, [op1, op2], _determineOpWidth)
+
+def BVXnor(op1, op2):
+    return Z3Op('bvand', lambda op1, op2: ~(op1 ^ op2), [op1, op2], _determineOpWidth)
+
 #def If(cond, vthen, velse):
 #    def _ifWidth(ops):
 #        assert len(ops) == 3

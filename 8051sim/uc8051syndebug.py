@@ -25,9 +25,7 @@ def synthesize():
     PC_rel1 = Add(Choice('PC_rel1_base', op0, [ctx.PC, PC_plus1, PC_plus2, PC_plus3]), SignExt(op1, 8))
     PC_rel2 = Add(Choice('PC_rel2_base', op0, [ctx.PC, PC_plus1, PC_plus2, PC_plus3]), SignExt(op2, 8))
 
-    PC_ajmp  = Concat(Extract(15, 11, Choice('ajmp', op0, [ctx.PC, PC_plus2])),
-                      ChooseConsecBits('ajmp_3bits', 3, ctx.opcode), 
-                      ChooseConsecBits('ajmp_8bits', 8, ctx.opcode))
+    PC_ajmp  = Concat(Extract(15, 11, PC_plus2), ChooseConsecBits('ajmp_3bits', 3, op0), op1)
     PC_ret1 = Concat(mem_SP_minus1, mem_SP)
     PC_ret2 = Concat(mem_SP, mem_SP_plus1)
     PC_ret3 = Concat(mem_SP, mem_SP_minus1)
@@ -74,10 +72,7 @@ def synthesize():
     PC_djnz_seq = Choice('PC_djnz_seq', op0, [PC_plus2, PC_plus3])
     PC_djnz = If(djnz_taken, PC_djnz_taken, PC_djnz_seq)
 
-    nextPC = Choice('nextPC', op0, [
-        PC_plus1, PC_plus2, PC_plus3, PC_ajmp, 
-        PC_ret, PC_ljmp, PC_sjmp, PC_jb, 
-        PC_jc, PC_jz, PC_jmp, PC_cjne, PC_djnz])
+    nextPC = Choice('nextPC', op0, [PC_plus1, PC_ajmp])
 
     # IMM1 = op1
     # IRAM_MOV_AT_R0 = WriteMem(ctx.IRAM, Rx[0], IMM1)
@@ -93,10 +88,9 @@ def synthesize():
     ACC_RR  = RotateRight(ctxNOP.ACC)
     ACC_RRC = Extract(8, 1, RotateRight(Concat(ctxNOP.ACC, ctx.CY())))
     ACC_INC = Add(ctxNOP.ACC, BitVecVal(1, 8))
-    ACC_DEC = Sub(ctxNOP.ACC, BitVecVal(1, 8))
 
     ctxACC = ctxNOP.clone()
-    ctxACC.ACC = Choice('ACC_RES', op0, [ACC_RR, ACC_RRC, ACC_INC, ACC_DEC])
+    ctxACC.ACC = Choice('ACC_RES', op0, [ACC_RR, ACC_INC])
     ACC_CY = Choice('ACC_CY', op0, [ctxNOP.CY(), Extract(0, 0, ctxNOP.ACC)])
     ctxACC.PSW = Concat(ACC_CY, Extract(6, 0, ctx.PSW))
 
@@ -116,29 +110,34 @@ def synthesize():
     SRC1_DIR_ADDR = Choice('SRC1_DIR', op0, [op1, op2] + ctxNOP.RxAddrs())
     SRC1_DIR = ctxNOP.readDirect(SRC1_DIR_ADDR)
     SRC1_DIR_INC = Add(SRC1_DIR, BitVecVal(1, 8))
-    SRC1_DIR_DEC = Sub(SRC1_DIR, BitVecVal(1, 8))
-    SRC1_DIR_RESULT = Choice('SRC1_DIR_RESULT', op0, [SRC1_DIR_INC, SRC1_DIR_DEC])
-    ctxDIR = ctxNOP.writeDirect(SRC1_DIR_ADDR, SRC1_DIR_RESULT)
+    ctxDIR = ctxNOP.writeDirect(SRC1_DIR_ADDR, SRC1_DIR_INC)
 
     SRC1_INDIR_ADDR = Choice('SRC1_INDIR_ADDR', op0, [ctxNOP.Rx(0), ctxNOP.Rx(1)])
     SRC1_INDIR = ReadMem(ctxNOP.IRAM, SRC1_INDIR_ADDR)
     SRC1_INDIR_INC = Add(SRC1_INDIR, BitVecVal(1, 8))
-    SRC1_INDIR_DEC = Sub(SRC1_INDIR, BitVecVal(1, 8))
-    SRC1_INDIR_RESULT = Choice('SRC1_INDIR_RESULT', op0, [SRC1_INDIR_INC, SRC1_INDIR_DEC])
     ctxINDIR = ctxNOP.clone()
-    ctxINDIR.IRAM = WriteMem(ctxNOP.IRAM, SRC1_INDIR_ADDR, SRC1_INDIR_RESULT)
+    ctxINDIR.IRAM = WriteMem(ctxNOP.IRAM, SRC1_INDIR_ADDR, SRC1_INDIR_INC)
 
     ctxFINAL = CtxChoice('CTX3', op0, [ctxNOP, ctxACC, ctxDIR, ctxINDIR, ctxJBC, ctxCALL])
-    syn.addOutput('PC', ctxFINAL.PC, Synthesizer.BITVEC)
-    syn.addOutput('ACC', ctxFINAL.ACC, Synthesizer.BITVEC)
-    syn.addOutput('IRAM', ctxFINAL.IRAM, Synthesizer.MEM)
-    syn.addOutput('PSW', ctxFINAL.PSW, Synthesizer.BITVEC)
+    syn.addOutput('PC', ctxNOP.PC, Synthesizer.BITVEC)
 
-    # syn.logfile = sys.stdout # open('debug.log', 'wt')
-    for opc in xrange(0x0, 0x20):
+    syn.logfile = sys.stdout # open('debug.log', 'wt')
+    for opc in xrange(1, 2):
         cnst = Equal(op0, BitVecVal(opc, 8))
-        [pc, acc, iram, psw] = syn.synthesize(['PC', 'ACC', 'IRAM', 'PSW'], [cnst], eval8051)
-        print '%02x\n%s\n%s\n%s\n%s\n' % (opc, str(pc), str(acc), str(iram), str(psw))
+        if opc == 1:
+            syn.DEBUG = True
+            syn.VERBOSITY = 2
+        [pc] = syn.synthesize(['PC'], [cnst], eval8051)
+        print '%02x\n%s\n' % (opc, str(pc))
+
+        # [acc] = syn.synthesize(['ACC'], [cnst], eval8051)
+        # [pc] = syn.synthesize(['PC'], [cnst], eval8051)
+        # print '%02x\n%s\n' % (opc, str(pc))
+        # print '%02x\n%s\n' % (opc, str(acc))
+        # print '%02x\n%s\n%s\n' % (opc, str(pc), str(acc))
+        # [pc, acc, iram] = syn.synthesize(['PC', 'ACC', 'IRAM'], [cnst], eval8051)
+        # print '%02x\n%s\n%s\n%s\n' % (opc, pc, acc, iram)
+
 
 if __name__ == '__main__':
     synthesize()
