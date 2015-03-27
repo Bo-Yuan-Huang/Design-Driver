@@ -1,0 +1,4 @@
+* CJNE (todo)
+* AJMP (todo)
+* divide must be unsigned
+* div/0 needs to match RTL.
