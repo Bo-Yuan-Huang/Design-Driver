@@ -249,7 +249,8 @@ def synthesize(opcs):
         # r = syn.synthesize(['PC', 'ACC', 'IRAM', 'PSW', 'SP'], [cnst], eval8051)
         # r = syn.synthesize(['ACC', 'PSW'], [cnst], eval8051)
         # r = syn.synthesize(['ACC', 'IRAM'], [cnst], eval8051)
-        r = syn.synthesize(['PSW'], [cnst], eval8051)
+        # r = syn.synthesize(['PSW'], [cnst], eval8051)
+        r = syn.synthesize(['IRAM'], [cnst], eval8051)
         fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'
         print fmt % tuple([opc] + r)
 
@@ -261,5 +262,5 @@ if __name__ == '__main__':
         elif (i & 0xF) in [0x2, 0x3]:
             ops.append(i)
             
-    synthesize(ops)
+    synthesize([0x05])
 

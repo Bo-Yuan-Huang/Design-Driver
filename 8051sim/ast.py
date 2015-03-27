@@ -74,7 +74,8 @@ class Node(object):
     Nodes. 
         
     (a) obj.width must be defined for BitVector or BitVector like result types.
-    (E.g., Z3Op on bitvectors, Extract and so on.)
+    (E.g., Z3Op on bitvectors, Extract and so on.) obj.awidth and obj.dwidth
+    must be defined on Memory like types.
 
     (b) Make sure to clear the cache of Z3 objects (clearZ3Cache) before calling
     toZ3Constraints with different models.
@@ -808,6 +809,37 @@ class Concat(Node):
     def childObjects(self):
         for bv in self.bitvecs:
             yield bv
+
+class Macro(Node):
+    """This is a wrapper node that enhances readability when the AST's are
+    pretty printed."""
+    def __init__(self, typename, expr, inputs):
+        self.typename = typename
+        self.expr = expr
+        self.inputs = inputs[:]
+        try:
+            self.width = expr.width
+            self.awidth = expr.awidth
+            self.dwidth = expr.dwidth
+        except AttributeError:
+            pass
+
+    def _toZ3(self, prefix):
+        return self.expr.toZ3(prefix)
+
+    def _toZ3Constraints(self, prefix, m):
+        return self.expr.toZ3Constraints(prefix, m)
+
+    def synthesize(self, m):
+        syn_inputs = [inp.synthesize(m) for inp in self.inputs]
+        return Macro(self.typename, self.expr.synthesize(m), syn_inputs)
+
+    def __str__(self):
+        args = ' '.join(str(i) for i in self.inputs)
+        return '(%s %s)' % (self.typename, args)
+
+    def childObjects(self):
+        yield self.expr
 
 class Z3Op(Node):
     """Binary operators from Z3."""

@@ -93,9 +93,17 @@ class Ctx8051(object):
     def Rxs(self):
         return self._Rx
 
+    def _directInputs(self):
+        return [self.IRAM, self.P0, self.SP,
+            self.DPL, self.DPH, self.PCON, self.TCON,
+            self.TMOD, self.TL0, self.TH0, self.TL1,
+            self.TH1, self.P1, self.SCON, self.SBUF,
+            self.P2, self.IE, self.P3, self.IP, self.PSW,
+            self.ACC, self.B]
+
     def readDirect(self, addr):
         msb0 = Equal(Extract(7, 7, addr), BitVecVal(0, 1))
-        return If(msb0, ReadMem(self.IRAM, addr),
+        expr = If(msb0, ReadMem(self.IRAM, addr),
             If(Equal(addr, BitVecVal(0x80, 8)), self.P0,
             If(Equal(addr, BitVecVal(0x81, 8)), self.SP,
             If(Equal(addr, BitVecVal(0x82, 8)), self.DPL,
@@ -119,6 +127,8 @@ class Ctx8051(object):
             If(Equal(addr, BitVecVal(0xF0, 8)), self.B,
             BitVecVal(0, 8)))))))))))))))))))))))
 
+        return Macro('read-direct', expr, [addr] + self._directInputs())
+
     def readBit(self, bitaddr):
         msb1 = Equal(Extract(7, 7, bitaddr), BitVecVal(1, 1))
         byteaddr = If(msb1, 
@@ -127,7 +137,7 @@ class Ctx8051(object):
         bitindex = Extract(2, 0, bitaddr)
         byte = self.readDirect(byteaddr)
         bit = ExtractBit(byte, bitindex)
-        return bit
+        return Macro('read-bit', bit, [bitaddr] + self._directInputs())
 
     def writeBit(self, bitaddr, bitval):
         msb1 = Equal(Extract(7, 7, bitaddr), BitVecVal(1, 1))
