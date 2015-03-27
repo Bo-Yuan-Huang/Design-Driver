@@ -292,5 +292,5 @@ class Synthesizer(object):
     def debug(self, verbosity=2, logfile=sys.stdout):
         self.VERBOSITY = verbosity
         self.logfile = logfile
-        self.unsat_core = True
+        self.unsat_core = False
 

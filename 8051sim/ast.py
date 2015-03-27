@@ -248,7 +248,7 @@ class BoolVar(Node):
         return z3.BoolVal(value)
 
     def __str__(self):
-        return '(def-bool %s)' % self.name
+        return '%s' % self.name
 
     def synthesize(self, m):
         return BoolVar(self.name)
@@ -273,7 +273,7 @@ class BitVecVar(Node):
         return z3.BitVecVal(value, self.width)
 
     def __str__(self):
-        return '(def-bitvec %s %d)' % (self.name, self.width)
+        return '%s' % (self.name)
 
     def synthesize(self, m):
         return BitVecVar(self.name, self.width)
@@ -319,7 +319,7 @@ class BitVecVal(Node):
         return self._toZ3(prefix)
 
     def __str__(self):
-        return '(bitvecval %d %d)' % (self.value, self.width)
+        return '(bv %d %d)' % (self.value, self.width)
 
     def synthesize(self, m):
         return BitVecVal(self.value, self.width)
@@ -362,7 +362,7 @@ class MemVar(Node):
         return MemVar(self.name, self.awidth, self.dwidth)
 
     def __str__(self):
-        return '(def-mem %s %d %d)' % (self.name, self.awidth, self.dwidth)
+        return '%s' % (self.name)
 
     def childObjects(self):
         return
@@ -925,6 +925,15 @@ def BVXor(op1, op2):
 
 def BVXnor(op1, op2):
     return Z3Op('bvxnor', lambda op1, op2: ~(op1 ^ op2), [op1, op2], _determineOpWidth)
+
+def BVDiv(op1, op2):
+    return Z3Op('bvdiv', lambda op1, op2: z3.UDiv(op1, op2), [op1, op2], _determineOpWidth)
+
+def BVRem(op1, op2):
+    return Z3Op('bvrem', lambda op1, op2: z3.URem(op1, op2), [op1, op2], _determineOpWidth)
+
+def BVMul(op1, op2):
+    return Z3Op('bvmul', lambda op1, op2: op1 * op2, [op1, op2], _determineOpWidth);
 
 #def If(cond, vthen, velse):
 #    def _ifWidth(ops):

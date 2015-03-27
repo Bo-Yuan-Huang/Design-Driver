@@ -1077,11 +1077,14 @@ I8051::SynSim(const char* filename)
             #endif
             if( RAM[B] == 0x00 ) {
                 SetBit(RAM[PSW], OV);
+                RAM[B] = RAM[ACC];
+                RAM[ACC] = 0xFF;
             }
             else {
                 ClearBit(RAM[PSW], OV);
                 tempACC = RAM[ACC];
-                RAM[ACC] = tempACC/RAM[B];
+                // RAM[ACC] = tempACC/RAM[B];
+                RAM[ACC] = tempACC/((unsigned char)RAM[B]);
                 RAM[B] = tempACC%RAM[B];
             }               
             ClearBit(RAM[PSW], CY);
