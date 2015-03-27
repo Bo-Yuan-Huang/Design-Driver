@@ -94,6 +94,7 @@ def synthesize(opcs):
     ACC_SRC2_INDIR = ReadMem(ctx.IRAM, ACC_SRC2_INDIR_ADDR)
     SRC2_IMM = Choice('SRC2_IMM', ctx.op0, [ctx.op1, ctx.op2])
     ACC_SRC2 = Choice('ACC_SRC2', ctx.op0, [ACC_SRC2_DIR, ACC_SRC2_INDIR, SRC2_IMM])
+    ACC_ROM_OFFSET = Choice('ACC_ROM_OFFSET', ctx.op0, [DPTR, ctx.PC])
 
     # Instructions which modify the accumulator.
     ACC_RR  = RotateRight(ctx.ACC)
@@ -108,10 +109,11 @@ def synthesize(opcs):
     ACC_ANL = BVAnd(ctx.ACC, ACC_SRC2)
     ACC_XRL = BVXor(ctx.ACC, ACC_SRC2)
     ACC_MOV = ACC_SRC2
+    ACC_ROM = ReadMem(ctx.ROM, Add(ZeroExt(ctx.ACC, 8), ACC_ROM_OFFSET))
 
     # final acc value.
     ctxACC = ctxNOP.clone()
-    ctxACC.ACC = Choice('ACC_RES', ctx.op0, [ACC_RR, ACC_RL, ACC_RRC, ACC_RLC, ACC_INC, ACC_DEC, ACC_ADD, ACC_ADDC, ACC_ORL, ACC_ANL, ACC_XRL, ACC_MOV])
+    ctxACC.ACC = Choice('ACC_RES', ctx.op0, [ACC_RR, ACC_RL, ACC_RRC, ACC_RLC, ACC_INC, ACC_DEC, ACC_ADD, ACC_ADDC, ACC_ORL, ACC_ANL, ACC_XRL, ACC_MOV, ACC_ROM])
     
     # compute the CY/AC/OV flags
     ALU_CY_IN = Choice('ALU_CY_IN', ctx.op0, [ctx.CY(), BitVecVal(0, 1)])
@@ -211,5 +213,5 @@ def synthesize(opcs):
         print fmt % tuple([opc] + r)
 
 if __name__ == '__main__':
-    synthesize(xrange(0x00, 0x83))
+    synthesize(xrange(0x80, 0x84))
 

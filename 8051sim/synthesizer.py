@@ -253,8 +253,6 @@ class Synthesizer(object):
         if result == z3.unsat and self.unsat_core:
             self.log('UNSAT core: ' + repr(S.unsat_core()))
             S.add(z3.Not(y))
-            with open('model_unsat.smt2', 'wt') as fobj:
-                print >> fobj, S.to_smt2()
 
         assert result == z3.sat
         m = S.model()
@@ -294,5 +292,5 @@ class Synthesizer(object):
     def debug(self, verbosity=2, logfile=sys.stdout):
         self.VERBOSITY = verbosity
         self.logfile = logfile
-        # self.unsat_core = True
+        self.unsat_core = True
 
