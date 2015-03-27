@@ -62,7 +62,7 @@ class Node(object):
     
     (d) __str__, this should pretty-print the node.
     
-    (e) synthesize, this is an AST pass that looks at a model from Z3 and returns
+    (e) _synthesize, this is an AST pass that looks at a model from Z3 and returns
     a simplified AST in which the choice variables have been assigned and
     eliminated according to this model. 
 
@@ -103,6 +103,7 @@ class Node(object):
         self.nodetype = nodetype
         self.z3objs = {}
         self.z3cnsts = {}
+        self.synMemo = None
         self.name = '_UnnamedObject'
         self.is_input = False
 
@@ -171,10 +172,16 @@ class Node(object):
             self.z3cnsts[prefix] = self._toZ3Constraints(prefix, m)
         return self.z3cnsts[prefix]
 
+    def synthesize(self, m):
+        if self.synMemo is None:
+            self.synMemo = self._synthesize(m)
+        return self.synMemo
+        
     def clearZ3Cache(self):
         """Clears the cache of Z3 objects maintained in this node."""
         self.z3objs = {}
         self.z3cnsts = {}
+        self.synMemo = None
         for c in self.childObjects():
             c.clearZ3Cache()
 
@@ -184,9 +191,9 @@ class Node(object):
         err_msg = 'childObjects not implemented in %s' % self.__class__.__name__
         raise NotImplementedError, err_msg
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         """Simplify this node according to the Z3 model m."""
-        err_msg = 'synthesize not implemented in %s' % self.__class__.__name__
+        err_msg = '_synthesize not implemented in %s' % self.__class__.__name__
         raise NotImplementedError, err_msg
 
 def _determineOpWidth(ops):
@@ -251,7 +258,7 @@ class BoolVar(Node):
     def __str__(self):
         return '%s' % self.name
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         return BoolVar(self.name)
 
     def childObjects(self):
@@ -276,7 +283,7 @@ class BitVecVar(Node):
     def __str__(self):
         return '%s' % (self.name)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         return BitVecVar(self.name, self.width)
 
     def childObjects(self):
@@ -299,7 +306,7 @@ class BoolVal(Node):
     def __str__(self):
         return 'true' if self.value else 'false'
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         return BoolVal(self.value)
                 
     def childObjects(self):
@@ -322,7 +329,7 @@ class BitVecVal(Node):
     def __str__(self):
         return '(bv %d %d)' % (self.value, self.width)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         return BitVecVal(self.value, self.width)
 
     def childObjects(self):
@@ -359,7 +366,7 @@ class MemVar(Node):
     def _toZ3Constraints(self, prefix, m):
         return createConstantArray(self.awidth, self.dwidth, m[self.name])
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         return MemVar(self.name, self.awidth, self.dwidth)
 
     def __str__(self):
@@ -413,7 +420,7 @@ class Choice(Node):
         rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
         return self._toZ3sHelper(prefix, rfun)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         assert len(self.choiceBools) > 0
         for bi, ci in itertools.izip(self.choiceBools, self.choices):
             v = z3.is_true(m[bi])
@@ -456,7 +463,7 @@ class ChoiceVar(Node):
     def __str__(self):
         return '(choice-var %s %d)' % (self.name, self.index)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         if self.boolName in m:
             return BoolVal(z3.is_true(m[boolName]))
         else:
@@ -494,7 +501,7 @@ class ReadMem(Node):
     def __str__(self):
         return '(read-mem %s %s)' % (str(self.mem), str(self.addr))
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         return ReadMem(self.mem.synthesize(m), self.addr.synthesize(m))
 
     def childObjects(self):
@@ -533,7 +540,7 @@ class WriteMem(Node):
         rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
         return self._toZ3sHelper(prefix, rfun)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         mem = self.mem.synthesize(m)
         addr = self.addr.synthesize(m)
         data = self.data.synthesize(m)
@@ -600,7 +607,7 @@ class ChooseConsecBits(Node):
         rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
         return self._toZ3sHelper(prefix, rfun)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         # we have to evaluate the choice bits and then return th
         # appropriate extracted subpart.
         assert len(self.choiceBools) > 0
@@ -643,7 +650,7 @@ class Extract(Node):
         rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
         return self._toZ3sHelper(prefix, rfun)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         obj_ = Extract(self.msb, self.lsb, self.bv.synthesize(m))
         return obj_
 
@@ -683,7 +690,7 @@ class If(Node):
         rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
         return self._toZ3sHelper(prefix, rfun)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         cm = self.cond.synthesize(m)
         tm = self.exptrue.synthesize(m)
         fm = self.expfalse.synthesize(m)
@@ -762,7 +769,7 @@ class ExtractBit(Node):
         rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
         return self._toZ3sHelper(prefix, rfun)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         word_ = self.word.synthesize(m)
         bit_ = self.bit.synthesize(m)
         return ExtractBit(word_, bit_)
@@ -799,7 +806,7 @@ class Concat(Node):
         rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
         return self._toZ3sHelper(prefix, rfun)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         bitvecs_ = [bv.synthesize(m) for bv in self.bitvecs]
         return Concat(*bitvecs_)
 
@@ -830,7 +837,7 @@ class Macro(Node):
     def _toZ3Constraints(self, prefix, m):
         return self.expr.toZ3Constraints(prefix, m)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         syn_inputs = [inp.synthesize(m) for inp in self.inputs]
         return Macro(self.typename, self.expr.synthesize(m), syn_inputs)
 
@@ -881,7 +888,7 @@ class Z3Op(Node):
         rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
         return self._toZ3sHelper(prefix, rfun)
 
-    def synthesize(self, m):
+    def _synthesize(self, m):
         obj_ = Z3Op(self.opname, self.op, [o.synthesize(m) for o in self.operands], self.rwidthFun, self.mwidthFun)
         return obj_
 
