@@ -37,9 +37,9 @@ class Ctx8051(object):
 
         self.PC = PC
         self.ROM = ROM
-        self.op0 = ReadMem(self.ROM, self.PC)
-        self.op1 = ReadMem(self.ROM, Add(self.PC, BitVecVal(1, 16)))
-        self.op2 = ReadMem(self.ROM, Add(self.PC, BitVecVal(2, 16)))
+        self.op0 = Macro('op0', ReadMem(self.ROM, self.PC), [self.ROM, self.PC])
+        self.op1 = Macro('op1', ReadMem(self.ROM, Add(self.PC, BitVecVal(1, 16))), [self.ROM, self.PC])
+        self.op2 = Macro('op2', ReadMem(self.ROM, Add(self.PC, BitVecVal(2, 16))), [self.ROM, self.PC])
         self.opcode = Concat(self.op2, self.op1, self.op0)
 
         self.IRAM = IRAM

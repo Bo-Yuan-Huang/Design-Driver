@@ -1,4 +1,5 @@
-memoize synthesize
+memoize synthesize [done]
+eliminate equivalent choices [done]
 eliminate spurious if's in synthesize
 figure out how to reuse simulation results.
 figure out story of modularization

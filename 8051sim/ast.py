@@ -3,51 +3,6 @@ import z3
 import pdb
 from z3helper import *
 
-# DSL feature set
-#
-# - thin layer over SMT
-# - clean way of representing both variables and formulas
-# - choice operator
-# - bit-select-operator
-# - what else?
-# - Must extract the solution once the synthesis
-#   is done. Means we need our own AST!
-
-
-# How do we define our AST in Python?
-# 
-# What we want to write:
-#
-# Opcode = Input('Opcode', 24)
-# Op0 = Extract(Opcode,  0,  7)
-# Op1 = Extract(Opcode,  8, 15)
-# Op2 = Extract(Opcode, 16, 23)
-# PC = Input('PC', 16)
-# A  = Input('ACC', 8)
-# PSW = Input('PSW', 8)
-# ...
-# RAM = InputArray('RAM', 8, 256)
-#
-# PCp1 = Add(PC, 1)
-# ...
-# RPC1 = Add(PC, SignExt(Op1, 16))
-# ...
-# CarryBit = ChooseBit(PSW)
-# JC_PC = If(CarryBit, Choice(Op0, RPC1, RPC2), Choice(Op0, PCp1, PCp2))
-# ...
-# Output = Choice(
-#               Op0,
-#               Choices(
-#                   PCp1, 
-#                   PCp2,
-#                   PCp3,
-#                   LJMP_PC,
-#                   JC_PC,
-#                   ...
-#               )
-#           )
-# 
-
 class Node(object):
     """Base class for nodes in the AST. When creating a subclass of Node, the
     methods that need to be implemented are:
@@ -64,7 +19,8 @@ class Node(object):
     
     (e) _synthesize, this is an AST pass that looks at a model from Z3 and returns
     a simplified AST in which the choice variables have been assigned and
-    eliminated according to this model. 
+    eliminated according to this model. It also gets a set of Z3 clauses which
+    are the conditions under which node is being evaluated.
 
     (f) childObjects() should be a generator that yields each of the "child" objects
     of this AST node.
@@ -77,8 +33,11 @@ class Node(object):
     (E.g., Z3Op on bitvectors, Extract and so on.) obj.awidth and obj.dwidth
     must be defined on Memory like types.
 
-    (b) Make sure to clear the cache of Z3 objects (clearZ3Cache) before calling
+    (b) Make sure to clear the cache of Z3 objects (clearCache) before calling
     toZ3Constraints with different models.
+
+    (c) Nodes are IMMUTABLE. Don't change their fields after they are created,
+    instead create new nodes.
     """
 
     BOOLVAR         = 0
@@ -96,7 +55,8 @@ class Node(object):
     EXTRACTBIT      = 12
     CONCAT          = 13
     Z3OP            = 14
-    NODE_TYPE_MAX   = 14
+    MACRO           = 15
+    NODE_TYPE_MAX   = 15
 
     def __init__(self, nodetype):
         """Constructor."""
@@ -177,13 +137,31 @@ class Node(object):
             self.synMemo = self._synthesize(m)
         return self.synMemo
         
-    def clearZ3Cache(self):
+    def clearCache(self):
         """Clears the cache of Z3 objects maintained in this node."""
         self.z3objs = {}
         self.z3cnsts = {}
         self.synMemo = None
         for c in self.childObjects():
-            c.clearZ3Cache()
+            c.clearCache()
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            for c1, c2 in itertools.izip(self.childObjects(), other.childObjects()):
+                if c1 != c2:
+                    return False
+            return True
+        return NotImplemented
+
+    def __ne__(self, other):
+        if isinstance(other, self.__class__):
+            return not self.__eq__(other)
+        return NotImplemented
+
+    def __hash__(self):
+        return hash( (self.nodetype,) + tuple(hash(ci) for ci in self.childObjects()))
 
     def childObjects(self):
         """Returns a generator that walks through each of the child objects of 
@@ -381,7 +359,15 @@ def _choiceBoolName(obj, prefix, i):
 
 class Choice(Node):
     """A choice between a set of options."""
-    def __init__(self, name, choiceVar, choices):
+    def __init__(self, name, choiceVar, choices_):
+        if len(choices_) == 0:
+            raise ValueError, 'Must have at least one choice!'
+
+        choices = []
+        for c in choices_:
+            if c not in choices:
+                choices.append(c)
+        
         Node.__init__(self, Node.CHOICE)
         self.name = name
         self.choiceVar = choiceVar
@@ -396,7 +382,7 @@ class Choice(Node):
             self.dwidth = dwidth
 
     def _toZ3sHelper(self, prefix, rfun):
-        assert len(self.choices) > 1
+        assert len(self.choices) >= 1
 
         self.choiceBools = []
         for i in xrange(len(self.choices)-1):
@@ -421,7 +407,6 @@ class Choice(Node):
         return self._toZ3sHelper(prefix, rfun)
 
     def _synthesize(self, m):
-        assert len(self.choiceBools) > 0
         for bi, ci in itertools.izip(self.choiceBools, self.choices):
             v = z3.is_true(m[bi])
             if v:
@@ -436,42 +421,6 @@ class Choice(Node):
     def childObjects(self):
         for c in self.choices:
             yield c
-
-class ChoiceVar(Node):
-    """A way to access the results of a choice."""
-    def __init__(self, name, choiceVar, index):
-        Node.__init__(self, Node.CHOICEVAR)
-        self.name = name
-        self.choiceVar = choiceVar
-        self.index = index
-        width = -1
-
-    def _toZ3(self, prefix):
-        self.boolName = _choiceBoolName(self, prefix, self.index)
-        return z3.Bool(self.boolName)
-
-    def _modelValue(self, prefix, m):
-        boolName = _choiceBoolName(self, prefix, self.index)
-        if boolName in m:
-            return z3.is_true(m[boolName])
-        else:
-            return False
-
-    def _toZ3Constraints(self, prefix, m):
-        return self._modelValue(prefix, m)
-
-    def __str__(self):
-        return '(choice-var %s %d)' % (self.name, self.index)
-
-    def _synthesize(self, m):
-        if self.boolName in m:
-            return BoolVal(z3.is_true(m[boolName]))
-        else:
-            return BoolVal(False)
-
-    def childObjects(self):
-        return
-        yield
 
 class ReadMem(Node):
     """Read data from a memory."""
@@ -695,29 +644,29 @@ class If(Node):
         tm = self.exptrue.synthesize(m)
         fm = self.expfalse.synthesize(m)
 
-        cm.clearZ3Cache()
+        cm.clearCache()
         cz3 = cm.toZ3()
 
         S = z3.Solver()
         S.add(cz3)
         if S.check() == z3.unsat:
-            fm.clearZ3Cache()
+            fm.clearCache()
             return fm
 
         S = z3.Solver()
         S.add(z3.Not(cz3))
         if S.check() == z3.unsat:
-            tm.clearZ3Cache()
+            tm.clearCache()
             return tm
 
         S = z3.Solver()
-        tm.clearZ3Cache()
-        fm.clearZ3Cache()
+        tm.clearCache()
+        fm.clearCache()
         tz3 = tm.toZ3()
         fz3 = fm.toZ3()
         S.add(z3.Distinct(tz3, fz3))
         if S.check() == z3.unsat:
-            tm.clearZ3Cache()
+            tm.clearCache()
             return tm
 
         obj_ = If(cm, tm, fm)
@@ -821,6 +770,7 @@ class Macro(Node):
     """This is a wrapper node that enhances readability when the AST's are
     pretty printed."""
     def __init__(self, typename, expr, inputs):
+        Node.__init__(self, Node.MACRO)
         self.typename = typename
         self.expr = expr
         self.inputs = inputs[:]

@@ -69,7 +69,7 @@ class Synthesizer(object):
             outs.append( self.outputs[name] )
 
             # this cache clearing business is important, if not done it leads to untold grief.
-            out.clearZ3Cache()
+            out.clearCache()
             y1 = out.toZ3(Synthesizer.P1)
             y2 = out.toZ3(Synthesizer.P2)
 
@@ -90,7 +90,7 @@ class Synthesizer(object):
         for inp_i in self.inputs:
             inp_ast_i = self.inputs[inp_i]
 
-            inp_ast_i.clearZ3Cache()
+            inp_ast_i.clearCache()
             var_i = inp_ast_i.toZ3()
             input_vars[inp_i] = var_i
         
@@ -101,7 +101,7 @@ class Synthesizer(object):
     def addConstraints(self, S, cnsts):
         # add any user specified constraints.
         for i, c in enumerate(itertools.chain(self.constraints, cnsts)):
-            c.clearZ3Cache()
+            c.clearCache()
             ci = c.toZ3()
 
             ci_name = 'cnst%d' % i
@@ -208,9 +208,9 @@ class Synthesizer(object):
 
             y1z3s, y2z3s = [], []
             for name, out in itertools.izip(outputNames, outs):
-                out.clearZ3Cache()
+                out.clearCache()
                 y1mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P1, sim_inputs))
-                out.clearZ3Cache()
+                out.clearCache()
                 y2mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P2, sim_inputs))
 
                 y1z3s.append(y1mz3)
@@ -231,7 +231,7 @@ class Synthesizer(object):
 
             if self.VERBOSITY >= 3:
                 for i, o in enumerate(self.debug_objects):
-                    o.clearZ3Cache()
+                    o.clearCache()
                     self.log('DBG%dA: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P1, sim_inputs)).sexpr()))
                     self.log('DBG%dB: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P2, sim_inputs)).sexpr()))
 
@@ -259,6 +259,7 @@ class Synthesizer(object):
         if self.VERBOSITY >= 3:
             self.log('model:' + repr(m))
 
+        out.clearCache()
         return [out.synthesize(m) for out in outs]
 
     def cleanupMemList(self, memvals):        

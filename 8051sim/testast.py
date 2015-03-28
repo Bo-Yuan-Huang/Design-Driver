@@ -5,9 +5,9 @@ def test_AST():
     v1 = BoolVar('b1')
     v2 = BitVecVar('b2', 16)
     v3 = BitVecVal(2, 16)
-    assert str(v1) == '(def-bool b1)'
-    assert str(v2) == '(def-bitvec b2 16)'
-    assert str(v3) == '(bitvecval 2 16)'
+    assert str(v1) == 'b1'
+    assert str(v2) == 'b2'
+    assert str(v3) == '(bv 2 16)'
     v4 = Add(v2, v3)
     v5 = Sub(v2, v3)
     print v1.toZ3(), v2.toZ3(), v3.toZ3(), v4.toZ3(), v5.toZ3()
@@ -86,10 +86,16 @@ def test_mem():
     wr = WriteMem(mem, addr, data)
     rd = ReadMem(wr, addr)
 
+    expr = Not(Equal(rd, data))
+    d = {}
+    d[expr] = 1
+
     S = z3.Solver()
-    S.add(Not(Equal(rd, data)).toZ3())
+    S.add(expr.toZ3())
 
     print S.check()
+
+    print d
 
 if __name__ == '__main__':
     test_AST()
