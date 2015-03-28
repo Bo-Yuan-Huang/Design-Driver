@@ -242,15 +242,16 @@ def synthesize(opcs):
     syn.addOutput('SP', ctxFINAL.SP, Synthesizer.BITVEC)
     syn.addOutput('B', ctxFINAL.B, Synthesizer.BITVEC)
 
-    # syn.debug()
+    # syn.debug(4)
     for opc in opcs:
         z3._main_ctx = None
         cnst = Equal(ctx.op0, BitVecVal(opc, 8))
-        # r = syn.synthesize(['PC', 'ACC', 'IRAM', 'PSW', 'SP'], [cnst], eval8051)
-        # r = syn.synthesize(['ACC', 'PSW'], [cnst], eval8051)
-        # r = syn.synthesize(['ACC', 'IRAM'], [cnst], eval8051)
-        # r = syn.synthesize(['PSW'], [cnst], eval8051)
-        r = syn.synthesize(['IRAM'], [cnst], eval8051)
+        r = syn.synthesize(['PC'], [cnst], eval8051)
+        r += syn.synthesize(['ACC'], [cnst], eval8051)
+        r += syn.synthesize(['PSW'], [cnst], eval8051)
+        r += syn.synthesize(['SP'], [cnst], eval8051)
+        r += syn.synthesize(['IRAM'], [cnst], eval8051)
+
         fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'
         print fmt % tuple([opc] + r)
 
@@ -262,5 +263,5 @@ if __name__ == '__main__':
         elif (i & 0xF) in [0x2, 0x3]:
             ops.append(i)
             
-    synthesize([0x05])
+    synthesize(xrange(0x93,-1,-1))
 

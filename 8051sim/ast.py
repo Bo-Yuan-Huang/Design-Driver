@@ -38,6 +38,8 @@ class Node(object):
 
     (c) Nodes are IMMUTABLE. Don't change their fields after they are created,
     instead create new nodes.
+
+    (d) Override __eq__ and __hash__ as appropriate.
     """
 
     BOOLVAR         = 0
@@ -161,7 +163,7 @@ class Node(object):
         return NotImplemented
 
     def __hash__(self):
-        return hash( (self.nodetype,) + tuple(hash(ci) for ci in self.childObjects()))
+        return hash( (self.nodetype, self.name) + tuple(hash(ci) for ci in self.childObjects()))
 
     def childObjects(self):
         """Returns a generator that walks through each of the child objects of 
@@ -236,6 +238,13 @@ class BoolVar(Node):
     def __str__(self):
         return '%s' % self.name
 
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            return self.name == other.name
+        return NotImplemented
+
     def _synthesize(self, m):
         return BoolVar(self.name)
 
@@ -261,6 +270,13 @@ class BitVecVar(Node):
     def __str__(self):
         return '%s' % (self.name)
 
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            return self.name == other.name and self.width == other.width
+        return NotImplemented
+
     def _synthesize(self, m):
         return BitVecVar(self.name, self.width)
 
@@ -284,6 +300,16 @@ class BoolVal(Node):
     def __str__(self):
         return 'true' if self.value else 'false'
 
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            return self.value == other.value
+        return NotImplemented
+
+    def __hash__(self):
+        return hash((self.nodetype, self.value))
+
     def _synthesize(self, m):
         return BoolVal(self.value)
                 
@@ -306,6 +332,16 @@ class BitVecVal(Node):
 
     def __str__(self):
         return '(bv %d %d)' % (self.value, self.width)
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            return self.value == other.value and self.width == other.width
+        return NotImplemented
+
+    def __hash__(self):
+        return hash((self.nodetype, self.value, self.width))
 
     def _synthesize(self, m):
         return BitVecVal(self.value, self.width)
@@ -346,6 +382,19 @@ class MemVar(Node):
 
     def _synthesize(self, m):
         return MemVar(self.name, self.awidth, self.dwidth)
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            if self.name != other.name:
+                return False
+            if self.awidth != other.awidth:
+                return False
+            if self.dwidth != other.dwidth:
+                return False
+            return True
+        return NotImplemented
 
     def __str__(self):
         return '%s' % (self.name)

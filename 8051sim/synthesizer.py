@@ -259,7 +259,8 @@ class Synthesizer(object):
         if self.VERBOSITY >= 3:
             self.log('model:' + repr(m))
 
-        out.clearCache()
+        for out in outs:
+            out.clearCache()
         return [out.synthesize(m) for out in outs]
 
     def cleanupMemList(self, memvals):        
@@ -293,5 +294,5 @@ class Synthesizer(object):
     def debug(self, verbosity=2, logfile=sys.stdout):
         self.VERBOSITY = verbosity
         self.logfile = logfile
-        self.unsat_core = False
+        self.unsat_core = True
 
