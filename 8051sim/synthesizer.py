@@ -76,7 +76,7 @@ class Synthesizer(object):
             y1s.append( y1 )
             y2s.append( y2 )
 
-            if self.VERBOSITY >= 3: 
+            if self.VERBOSITY >= 4: 
                 self.log('out :' + str(out))
                 self.log('exp1[%d]:%s' % (i, y1.sexpr()))
                 self.log('exp2[%d]:%s' % (i, y2.sexpr()))
@@ -203,7 +203,7 @@ class Synthesizer(object):
                     S.add(ocnst == y1mz3)
                     S.add(ocnst == y2mz3)
                 
-                if self.VERBOSITY >= 3:
+                if self.VERBOSITY >= 4:
                     self.log('out:' + repr(ocnst))
 
             y1z3s, y2z3s = [], []
@@ -216,7 +216,7 @@ class Synthesizer(object):
                 y1z3s.append(y1mz3)
                 y2z3s.append(y2mz3)
 
-                if self.VERBOSITY >= 3:
+                if self.VERBOSITY >= 4:
                     self.log('#it:' + repr(iterations))
                     self.log('y1mz3:' + y1mz3.sexpr())
                     self.log('y2mz3:' + y2mz3.sexpr())
