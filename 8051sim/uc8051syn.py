@@ -213,7 +213,9 @@ def synthesize(opcs):
     # instructions where the result is an indirect iram address
     SRC1_INDIR_ADDR = Choice('SRC1_INDIR_ADDR', ctx.op0, [ctx.Rx(0), ctx.Rx(1)])
     SRC1_INDIR = ReadMem(ctx.IRAM, SRC1_INDIR_ADDR)
-    SRC2_INDIR = Choice('SRC2_INDIR', ctx.op0, [ctx.op1, ctx.op2])
+    SRC2_INDIR_DIR_ADDR = Choice('SRC2_INDIR_DIR_ADDR', ctx.op0, [ctx.op1, ctx.op2])
+    SRC2_INDIR_DIR = ctx.readDirect(SRC2_INDIR_DIR_ADDR)
+    SRC2_INDIR = Choice('SRC2_INDIR', ctx.op0, [ctx.op1, ctx.op2, SRC2_INDIR_DIR])
     SRC1_INDIR_INC = Add(SRC1_INDIR, BitVecVal(1, 8))
     SRC1_INDIR_DEC = Sub(SRC1_INDIR, BitVecVal(1, 8))
     SRC1_INDIR_MOV = SRC2_INDIR
@@ -268,7 +270,8 @@ def synthesize(opcs):
     syn.addOutput('DPL', ctxFINAL.DPL, Synthesizer.BITVEC)
     syn.addOutput('DPH', ctxFINAL.DPH, Synthesizer.BITVEC)
 
-    # syn.debug()
+    lf = open('dptr.log', 'wt')
+    syn.debug(vb=2, lf=lf, uc=False)
     for opc in opcs:
         z3._main_ctx = None
         cnst = Equal(ctx.op0, BitVecVal(opc, 8))
@@ -285,8 +288,5 @@ def synthesize(opcs):
 
 if __name__ == '__main__':
     ops = []
-    for r in [0x90, 0x30, 0x20]:
-        for c in xrange(4, 0x10):
-            ops.append(r | c)
     synthesize(xrange(0x100))
 
