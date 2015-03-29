@@ -248,8 +248,16 @@ def synthesize(opcs):
     WRBIT_DATA = Choice('WRBIT_DATA', ctx.op0, [WRBIT_CY, WRBIT_CPL, BIT_CNST0, BIT_CNST1])
     ctxWRBIT = ctxNOP.writeBit(BIT_SRC1_ADDR, WRBIT_DATA)
 
+    # DPTR
+    ctxDPTR = ctxNOP.clone()
+    MOV_DPTR = Choice('MOV_DPTR', ctx.op0, [Concat(ctx.op1, ctx.op2), Concat(ctx.op2, ctx.op1)])
+    INC_DPTR = Add(DPTR, BitVecVal(1, 16))
+    ctxDPTR.DPTR = Choice('NEXT_DPTR', ctx.op0, [MOV_DPTR, INC_DPTR])
+    ctxDPTR.DPL = Extract(7, 0, ctxDPTR.DPTR)
+    ctxDPTR.DPH = Extract(15, 8, ctxDPTR.DPTR)
+
     # final result.
-    ctxFINAL = CtxChoice('CTX3', ctx.op0, [ctxNOP, ctxACC, ctxDIR, 
+    ctxFINAL = CtxChoice('CTX3', ctx.op0, [ctxNOP, ctxACC, ctxDIR, ctxDPTR,
                 ctxINDIR, ctxCALL, ctxBIT, ctxMUL, ctxDIV, ctxWRBIT])
     syn.addOutput('PC', ctxFINAL.PC, Synthesizer.BITVEC)
     syn.addOutput('ACC', ctxFINAL.ACC, Synthesizer.BITVEC)
@@ -257,17 +265,20 @@ def synthesize(opcs):
     syn.addOutput('PSW', ctxFINAL.PSW, Synthesizer.BITVEC)
     syn.addOutput('SP', ctxFINAL.SP, Synthesizer.BITVEC)
     syn.addOutput('B', ctxFINAL.B, Synthesizer.BITVEC)
+    syn.addOutput('DPL', ctxFINAL.DPL, Synthesizer.BITVEC)
+    syn.addOutput('DPH', ctxFINAL.DPH, Synthesizer.BITVEC)
 
-    syn.debug()
+    # syn.debug()
     for opc in opcs:
         z3._main_ctx = None
         cnst = Equal(ctx.op0, BitVecVal(opc, 8))
         r = []
         #r += syn.synthesize(['PC'], [cnst], eval8051)
-        # r += syn.synthesize(['ACC'], [cnst], eval8051)
-        r += syn.synthesize(['PSW'], [cnst], eval8051)
+        #r += syn.synthesize(['ACC'], [cnst], eval8051)
+        #r += syn.synthesize(['PSW'], [cnst], eval8051)
         #r += syn.synthesize(['SP'], [cnst], eval8051)
         #r += syn.synthesize(['IRAM'], [cnst], eval8051)
+        r += syn.synthesize(['DPL', 'DPH'], [cnst], eval8051)
 
         fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'
         print fmt % tuple([opc] + r)
@@ -277,5 +288,5 @@ if __name__ == '__main__':
     for r in [0x90, 0x30, 0x20]:
         for c in xrange(4, 0x10):
             ops.append(r | c)
-    synthesize(ops)
+    synthesize(xrange(0x100))
 
