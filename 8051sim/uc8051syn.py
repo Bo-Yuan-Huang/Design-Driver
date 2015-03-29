@@ -270,7 +270,7 @@ def synthesize(opcs):
     syn.addOutput('DPL', ctxFINAL.DPL, Synthesizer.BITVEC)
     syn.addOutput('DPH', ctxFINAL.DPH, Synthesizer.BITVEC)
 
-    lf = open('dptr.log', 'wt')
+    lf = open('iram.log', 'wt')
     syn.debug(vb=2, lf=lf, uc=False)
     for opc in opcs:
         z3._main_ctx = None
@@ -280,13 +280,13 @@ def synthesize(opcs):
         #r += syn.synthesize(['ACC'], [cnst], eval8051)
         #r += syn.synthesize(['PSW'], [cnst], eval8051)
         #r += syn.synthesize(['SP'], [cnst], eval8051)
-        #r += syn.synthesize(['IRAM'], [cnst], eval8051)
-        r += syn.synthesize(['DPL', 'DPH'], [cnst], eval8051)
+        r += syn.synthesize(['IRAM'], [cnst], eval8051)
+        #r += syn.synthesize(['DPL', 'DPH'], [cnst], eval8051)
 
         fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'
         print fmt % tuple([opc] + r)
 
 if __name__ == '__main__':
     ops = []
-    synthesize(xrange(0x100))
+    synthesize(xrange(0x00, 0xB0))
 
