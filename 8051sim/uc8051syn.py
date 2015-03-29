@@ -1,11 +1,14 @@
-from synthesizer import Synthesizer
+#! /usr/bin/python2.7
+
 from ast import *
 import sys
+import argparse
+
+from synthesizer import Synthesizer
 from uc8051ast import Ctx8051, Ctx8051FromSyn, create8051Inputs, CtxChoice
 from uc8051sim import eval8051
-from multiprocessing import Pool
 
-def synthesize(opcs):
+def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     syn = Synthesizer()
     create8051Inputs(syn)
     ctx = Ctx8051FromSyn(syn)
@@ -85,7 +88,12 @@ def synthesize(opcs):
     ctxNOP = ctx.clone()
     ctxNOP.PC = nextPC
     # SP can be incremented, decrement or stay the same
-    ctxNOP.SP = Choice('SP_CALL', ctx.op0, [ctx.SP, Add(ctx.SP, BitVecVal(2, 8)), Sub(ctx.SP, BitVecVal(2, 8))])
+    ctxNOP.SP = Choice('SP_CALL', ctx.op0, [
+        ctx.SP, 
+        Add(ctx.SP, BitVecVal(2, 8)), 
+        Sub(ctx.SP, BitVecVal(2, 8)),
+        Add(ctx.SP, BitVecVal(1, 8)),
+        Sub(ctx.SP, BitVecVal(1, 8))])
 
     # SRC2 for instructions which modify accumulator.
     ACC_SRC2_DIR_ADDR = Choice('ACC_SRC2_DIR_ADDR', ctx.op0, [ctx.op1, ctx.op2] + ctx.RxAddrs())
@@ -270,25 +278,44 @@ def synthesize(opcs):
     syn.addOutput('DPL', ctxFINAL.DPL, Synthesizer.BITVEC)
     syn.addOutput('DPH', ctxFINAL.DPH, Synthesizer.BITVEC)
 
-    lf = open('dptr.log', 'wt')
-    syn.debug(vb=2, lf=lf, uc=False)
-    for opc in opcs:
-        z3._main_ctx = None
-        cnst = Equal(ctx.op0, BitVecVal(opc, 8))
-        if lf: print >> lf, 'opcode: %02x\n' % opc
-        r = []
-        #r += syn.synthesize(['PC'], [cnst], eval8051)
-        #r += syn.synthesize(['ACC'], [cnst], eval8051)
-        #r += syn.synthesize(['PSW'], [cnst], eval8051)
-        #r += syn.synthesize(['SP'], [cnst], eval8051)
-        r += syn.synthesize(['IRAM'], [cnst], eval8051)
-        #r += syn.synthesize(['DPL', 'DPH'], [cnst], eval8051)
+    if logfilename:
+        lf = open(logfilename, 'wt')
+        syn.debug(vb=verbosity, lf=lf, uc=unsat_core)
+    else:
+        lf = None
 
-        fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'
-        print fmt % tuple([opc] + r)
-        if lf: print >> lf, fmt % tuple([opc] + r)
+    cnst = Equal(ctx.op0, BitVecVal(opc, 8))
+    # log
+    if lf: 
+        print >> lf, 'opcode: %02x' % opc
+
+    # synthesize
+    r = syn.synthesize(regs, [cnst], eval8051)
+    # print
+    fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'
+    print fmt % tuple([opc] + r)
+    # log again
+    if lf: 
+        print >> lf, fmt % tuple([opc] + r)
+
+    if lf:
+        lf.close()
+
+def auto_int(x):
+    return int(x, 0)
+
+def main():
+    parser = argparse.ArgumentParser(description='8051 AST synthesizer')
+    parser.add_argument("--log", help="log file name")
+    parser.add_argument("--verbosity", help="verbosity", type=int, default=0)
+    parser.add_argument("--unsat_core", help="generate UNSAT core?", type=int, default=0)
+    parser.add_argument("opcode", help="opcode", type=auto_int)
+    parser.add_argument("state", help="state", nargs="+")
+    args = parser.parse_args()
+    print 'opcode : 0x%x' % args.opcode
+    print 'state  : %s' % (', '.join(args.state))
+    synthesize(args.opcode, args.state, args.log, args.verbosity, args.unsat_core)
 
 if __name__ == '__main__':
-    ops = []
-    synthesize(xrange(0x00, 0xB0))
+    main()
 
