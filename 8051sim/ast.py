@@ -408,14 +408,16 @@ def _choiceBoolName(obj, prefix, i):
 
 class Choice(Node):
     """A choice between a set of options."""
-    def __init__(self, name, choiceVar, choices_):
-        if len(choices_) == 0:
-            raise ValueError, 'Must have at least one choice!'
-
-        choices = []
-        for c in choices_:
-            if c not in choices:
-                choices.append(c)
+    def __init__(self, name, choiceVar, choices):
+        # this bit of code eliminates spurious choices.
+        # apparently it's not very useful.
+        #if len(choices_) == 0:
+        #    raise ValueError, 'Must have at least one choice!'
+        #
+        #choices = []
+        #for c in choices_:
+        #    if c not in choices:
+        #        choices.append(c)
         
         Node.__init__(self, Node.CHOICE)
         self.name = name
@@ -910,26 +912,38 @@ def Not(op):
 def Xor(op):
     return Z3Op('xor', z3.Xor, operands, _noWidth)
 
-def Add(*operands):
-    return Z3Op('add', BVAdd, operands, _determineOpWidth)
+def Add(op1, op2):
+    return Z3Op('add', lambda op1, op2: op1 + op2, [op1, op2], _determineOpWidth)
 
-def Sub(*operands):
-    return Z3Op('sub', BVSub, operands, _determineOpWidth)
+def Sub(op1, op2):
+    return Z3Op('sub', lambda op1, op2: op1 - op2, [op1, op2], _determineOpWidth)
 
-def Neg(operand):
-    return Z3Op('neg', BVNeg, [operand], _determineOpWidth)
+def Neg(op):
+    return Z3Op('neg', lambda op: -op, [op], _determineOpWidth)
 
 def Distinct(op1, op2):
     return Z3Op('distinct', z3.Distinct, [op1, op2], _determineOpWidth)
 
 def Equal(op1, op2):
-    return Z3Op('eq', Z3Equal, [op1, op2], _noWidth)
+    return Z3Op('eq', lambda op1, op2: op1 == op2, [op1, op2], _noWidth)
 
 def RotateRight(op):
     return Z3Op('rr', lambda op: z3.RotateRight(op, 1), [op], _determineOpWidth)
 
 def RotateLeft(op):
     return Z3Op('rl', lambda op: z3.RotateLeft(op, 1), [op], _determineOpWidth)
+
+def SLT(op1, op2):
+    return Z3Op('slt', lambda op1, op2: op1 < op2, [op1, op2], _determineOpWidth)
+
+def SGT(op1, op2):
+    return Z3Op('sgt', lambda op1, op2: op1 > op2, [op1, op2], _determineOpWidth)
+
+def ULT(op1, op2):
+    return Z3Op('slt', lambda op1, op2: z3.ULT(op1, op2), [op1, op2], _determineOpWidth)
+
+def UGT(op1, op2):
+    return Z3Op('sgt', lambda op1, op2: z3.UGT(op1, op2), [op1, op2], _determineOpWidth)
 
 def ZeroExt(op, n):
     def _extWidth(ops):

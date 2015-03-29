@@ -272,7 +272,7 @@ class Synthesizer(object):
 
 
     def str_mem(self, m):
-        s1 = ['%x:%x' % (a,d) for [a,d] in m[:-1]]
+        s1 = ['%x:%x' % (a,d) for [a,d] in sorted(m[:-1])]
         s2 = ['else:%x' % m[-1]]
         return '[%s]' % (' '.join(s1+s2))
 
@@ -291,8 +291,8 @@ class Synthesizer(object):
         if self.logfile:
             print >> self.logfile, s
 
-    def debug(self, verbosity=2, logfile=sys.stdout):
-        self.VERBOSITY = verbosity
-        self.logfile = logfile
-        self.unsat_core = True
+    def debug(self, vb=2, lf=sys.stdout, uc=True):
+        self.VERBOSITY = vb
+        self.logfile = lf
+        self.unsat_core = uc
 

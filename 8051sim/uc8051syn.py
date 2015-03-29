@@ -108,6 +108,7 @@ def synthesize(opcs):
     ACC_ORL = BVOr(ctx.ACC, ACC_SRC2)
     ACC_ANL = BVAnd(ctx.ACC, ACC_SRC2)
     ACC_XRL = BVXor(ctx.ACC, ACC_SRC2)
+    ACC_SUBB = Add(Sub(ctx.ACC, ACC_SRC2), SignExt(ctx.CY(), 7))
     ACC_MOV = ACC_SRC2
     ACC_CPL = Complement(ctx.ACC)
     ACC_ROM = ReadMem(ctx.ROM, Add(ZeroExt(ctx.ACC, 8), ACC_ROM_OFFSET))
@@ -116,7 +117,7 @@ def synthesize(opcs):
     ctxACC = ctxNOP.clone()
     ctxACC.ACC = Choice('ACC_RES', ctx.op0, [
         ACC_RR, ACC_RL, ACC_RRC, ACC_RLC, ACC_INC, ACC_DEC, ACC_ADD, 
-        ACC_ADDC, ACC_ORL, ACC_ANL, ACC_XRL, ACC_MOV, ACC_ROM])
+        ACC_ADDC, ACC_ORL, ACC_ANL, ACC_XRL, ACC_MOV, ACC_ROM, ACC_SUBB])
     
     # compute the CY/AC/OV flags
     ALU_CY_IN = Choice('ALU_CY_IN', ctx.op0, [ctx.CY(), BitVecVal(0, 1)])
@@ -128,21 +129,36 @@ def synthesize(opcs):
     ALU_SRC2 = ACC_SRC2
     ALU_SRC2_LO = Extract(3, 0, ALU_SRC2)
     ALU_SRC2_HI = Extract(7, 4, ALU_SRC2)
-    ALU_AC = Extract(4, 4, Add(ZeroExt(ALU_SRC1_LO, 1), Add(ZeroExt(ALU_SRC2_LO, 1), ZeroExt(ALU_CY_IN, 4))))
+    ALU_CY_5B = Choice('ALU_CY_5B', ctx.op0, [ZeroExt(ALU_CY_IN, 4), SignExt(ALU_CY_IN, 4)])
+
+    ALU_SRC1_LO_5B = ZeroExt(ALU_SRC1_LO, 1)
+    ALU_SRC2_LO_5B = ZeroExt(ALU_SRC2_LO, 1)
+    ALU_AC_ADD = Extract(4, 4, Add(ALU_SRC1_LO_5B, Add(ALU_SRC2_LO_5B, ALU_CY_5B)))
+    ALU_AC_SUB = If(ULT(ALU_SRC1_LO_5B, Add(ALU_SRC2_LO_5B, ALU_CY_5B)), BitVecVal(1, 1), BitVecVal(0, 1))
+    ALU_AC = Choice('ALU_AC', ctx.op0, [ALU_AC_ADD, ALU_AC_SUB])
 
     ALU_SRC1_SEXT = SignExt(ALU_SRC1, 1)
     ALU_SRC2_SEXT = SignExt(ALU_SRC2, 1)
     ALU_SRC1_ZEXT = ZeroExt(ALU_SRC1, 1)
     ALU_SRC2_ZEXT = ZeroExt(ALU_SRC2, 1)
+    ALU_CY_9B_SEXT = SignExt(ALU_CY_IN, 8)
+    ALU_CY_9B_ZEXT = ZeroExt(ALU_CY_IN, 8)
+    ALU_CY_9B = Choice('ALU_CY_9B', ctx.op0, [ALU_CY_9B_ZEXT, ALU_CY_9B_SEXT])
 
-    ALU_SRC1_FOR_CY = Choice('ALU_SRC_FOR_CY', ctx.op0, [ALU_SRC1_SEXT, ALU_SRC1_ZEXT])
-    ALU_SRC2_FOR_CY = Choice('ALU_SRC_FOR_CY', ctx.op0, [ALU_SRC2_SEXT, ALU_SRC2_ZEXT])
-    ALU_CY = Extract(8, 8, Add(ALU_SRC1_FOR_CY, Add(ALU_SRC2_FOR_CY, ZeroExt(ALU_CY_IN, 8))))
+    ALU_ZEXT_9B_SUM = Add(ALU_SRC1_ZEXT, Add(ALU_SRC2_ZEXT, ALU_CY_9B))
+    ALU_CY_ADD = Extract(8, 8, ALU_ZEXT_9B_SUM)
+    ALU_CY_SUB = If(ULT(ALU_SRC1_ZEXT, Add(ALU_SRC2_ZEXT, ALU_CY_9B)), BitVecVal(1, 1), BitVecVal(0, 1))
+    ALU_CY = Choice('ALU_CY', ctx.op0, [ALU_CY_ADD, ALU_CY_SUB])
 
-    ALU_SRC1_FOR_OV = Choice('ALU_SRC_FOR_OV', ctx.op0, [ALU_SRC1_SEXT, ALU_SRC1_ZEXT])
-    ALU_SRC2_FOR_OV = Choice('ALU_SRC_FOR_OV', ctx.op0, [ALU_SRC2_SEXT, ALU_SRC2_ZEXT])
-    ALU_OV_CY = Extract(8, 8, Add(ALU_SRC2_FOR_OV, Add(ALU_SRC1_FOR_OV, ZeroExt(ALU_CY_IN, 8))))
-    ALU_OV = If(Equal(ALU_OV_CY, Extract(7, 7, ctxACC.ACC)), BitVecVal(0, 1), BitVecVal(1, 1))
+    ALU_OV_9B_SRC1 = Choice('ALU_OV_9B_SRC1', ctx.op0, [ALU_SRC1_SEXT, ALU_SRC1_ZEXT])
+    ALU_OV_9B_SRC2 = Choice('ALU_OV_9B_SRC2', ctx.op0, [ALU_SRC2_SEXT, ALU_SRC2_ZEXT])
+
+    ALU_9B_ADD = Add(ALU_OV_9B_SRC1, Add(ALU_OV_9B_SRC2, ALU_CY_9B))
+    ALU_9B_SUB = Sub(ALU_OV_9B_SRC1, Add(ALU_OV_9B_SRC2, ALU_CY_9B))
+    ALU_9B_RES = Choice('ALU_9B_RES', ctx.op0, [ALU_9B_ADD, ALU_9B_SUB])
+    ALU_OV = If(Not(Equal(Extract(8, 8, ALU_9B_RES), Extract(7, 7, ALU_9B_RES))),
+                BitVecVal(1, 1),
+                BitVecVal(0, 1))
 
     ACC_CY = Choice('ACC_CY', ctx.op0, [ctx.CY(), Extract(0, 0, ctx.ACC), Extract(7, 7, ctx.ACC), ALU_CY])
     ACC_AC = Choice('ACC_AC', ctx.op0, [ctx.AC(), ALU_AC])
@@ -242,26 +258,24 @@ def synthesize(opcs):
     syn.addOutput('SP', ctxFINAL.SP, Synthesizer.BITVEC)
     syn.addOutput('B', ctxFINAL.B, Synthesizer.BITVEC)
 
-    # syn.debug(4)
+    syn.debug()
     for opc in opcs:
         z3._main_ctx = None
         cnst = Equal(ctx.op0, BitVecVal(opc, 8))
-        r = syn.synthesize(['PC'], [cnst], eval8051)
-        r += syn.synthesize(['ACC'], [cnst], eval8051)
+        r = []
+        #r += syn.synthesize(['PC'], [cnst], eval8051)
+        # r += syn.synthesize(['ACC'], [cnst], eval8051)
         r += syn.synthesize(['PSW'], [cnst], eval8051)
-        r += syn.synthesize(['SP'], [cnst], eval8051)
-        r += syn.synthesize(['IRAM'], [cnst], eval8051)
+        #r += syn.synthesize(['SP'], [cnst], eval8051)
+        #r += syn.synthesize(['IRAM'], [cnst], eval8051)
 
         fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'
         print fmt % tuple([opc] + r)
 
 if __name__ == '__main__':
     ops = []
-    for i in xrange(0x255):
-        if i <= 0x92:
-            ops.append(i)
-        elif (i & 0xF) in [0x2, 0x3]:
-            ops.append(i)
-            
-    synthesize(xrange(0x93,-1,-1))
+    for r in [0x90, 0x30, 0x20]:
+        for c in xrange(4, 0x10):
+            ops.append(r | c)
+    synthesize(ops)
 
