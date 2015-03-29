@@ -244,12 +244,13 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     CY_ANL = BVAnd(ctx.CY(), BIT_SRC1)
     CY_ANLC = BVAnd(ctx.CY(), Complement(BIT_SRC1))
     CY_MOV = BIT_SRC1
-    CY_CPL = Complement(BIT_SRC1)
+    CY_CPL_BIT = Complement(BIT_SRC1)
+    CY_CPL_C = Complement(ctx.CY())
     BIT_CNST1 = BitVecVal(1,1)
     BIT_CNST0 = BitVecVal(0,1)
     BIT_CY = Choice('BIT_CY', ctx.op0, 
-            [CY_ORL, CY_ANL, CY_ORLC, CY_ANLC, 
-            CY_MOV, CY_CPL, BIT_CNST1, BIT_CNST0])
+            [CY_ORL, CY_ANL, CY_ORLC, CY_ANLC, CY_CPL_C,
+            CY_MOV, CY_CPL_BIT, BIT_CNST1, BIT_CNST0])
 
     ctxBIT.PSW = Concat(BIT_CY, Extract(6, 0, ctx.PSW))
 
