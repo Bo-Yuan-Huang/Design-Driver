@@ -4,7 +4,6 @@ import sys
 import os
 import stat
 import argparse
-from uc8051syn import auto_int
 
 from string import Template
 
@@ -30,6 +29,9 @@ def create_scripts(start, stop, name, state):
 
         os.chmod(script_name, stat.S_IREAD + stat.S_IWRITE + stat.S_IEXEC)
     
+def auto_int(x):
+    return int(x, 0)
+
 def main():
     parser = argparse.ArgumentParser(description='8051 synthesis job script')
     parser.add_argument("start_opcode", help="start opcode", type=auto_int)
