@@ -2,3 +2,9 @@
 * AJMP (todo)
 * divide must be unsigned
 * div/0 needs to match RTL.
+* DA fiasco
+-                tempAdd = RAM[ACC] + 0x60;
+-                RAM[ACC] = (char)tempAdd;
++                tempAdd = (unsigned char) RAM[ACC] + 0x60;
++                RAM[ACC] = (unsigned char)tempAdd;
+

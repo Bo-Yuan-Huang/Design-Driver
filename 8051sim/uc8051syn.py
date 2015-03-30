@@ -91,9 +91,7 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     ctxNOP.SP = Choice('SP_CALL', ctx.op0, [
         ctx.SP, 
         Add(ctx.SP, BitVecVal(2, 8)), 
-        Sub(ctx.SP, BitVecVal(2, 8)),
-        Add(ctx.SP, BitVecVal(1, 8)),
-        Sub(ctx.SP, BitVecVal(1, 8))])
+        Sub(ctx.SP, BitVecVal(2, 8))])
 
     # SRC2 for instructions which modify accumulator.
     ACC_SRC2_DIR_ADDR = Choice('ACC_SRC2_DIR_ADDR', ctx.op0, [ctx.op1, ctx.op2] + ctx.RxAddrs())
@@ -103,6 +101,31 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     SRC2_IMM = Choice('SRC2_IMM', ctx.op0, [ctx.op1, ctx.op2])
     ACC_SRC2 = Choice('ACC_SRC2', ctx.op0, [ACC_SRC2_DIR, ACC_SRC2_INDIR, SRC2_IMM])
     ACC_ROM_OFFSET = Choice('ACC_ROM_OFFSET', ctx.op0, [DPTR, ctx.PC, PC_plus1, PC_plus2, PC_plus3])
+
+    # The decimal adjust instruction. This is a bit of mess.
+    # First, deal with the lower nibble
+    ACC_DA_LO = Extract(3, 0, ctx.ACC)
+    ACC_ADD_6  = Or(Equal(ctx.AC(), BitVecVal(1,1)), 
+                    UGT(ACC_DA_LO, BitVecVal(9, 4)))
+    ACC_DA_stage1 = If(ACC_ADD_6, 
+                        Add(ZeroExt(ctx.ACC,1), BitVecVal(0x6, 9)), 
+                        ZeroExt(ctx.ACC,1))
+    ACC_DA_CY1 = Extract(8, 8, ACC_DA_stage1)
+
+    # and then the upper nibble
+    ACC_DA_HI = Extract(7, 4, ACC_DA_stage1)
+    ACC_ADD_60 = Or(Equal(BVOr(ACC_DA_CY1, ctx.CY()), BitVecVal(1,1)), 
+                    UGT(ACC_DA_HI, BitVecVal(9, 4)))
+    ACC_DA_stage2 = If(ACC_ADD_60, 
+                        Add(ACC_DA_stage1, BitVecVal(0x60, 9)), 
+                        ACC_DA_stage1)
+    ACC_DA = Extract(7, 0, ACC_DA_stage2)
+    ACC_DA_CY2 = Extract(8, 8, ACC_DA_stage2)
+
+    ACC_DA_CY = BVOr(ACC_DA_CY2, BVOr(ACC_DA_CY1, ctx.CY()))
+    ctxDA = ctxNOP.clone()
+    ctxDA.ACC = ACC_DA
+    ctxDA.PSW = Concat(ACC_DA_CY, Extract(6, 0, ctx.PSW))
 
     # Instructions which modify the accumulator.
     ACC_RR  = RotateRight(ctx.ACC)
@@ -119,13 +142,15 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     ACC_SUBB = Add(Sub(ctx.ACC, ACC_SRC2), SignExt(ctx.CY(), 7))
     ACC_MOV = ACC_SRC2
     ACC_CPL = Complement(ctx.ACC)
+    ACC_CLR = BitVecVal(0, 8)
     ACC_ROM = ReadMem(ctx.ROM, Add(ZeroExt(ctx.ACC, 8), ACC_ROM_OFFSET))
 
     # final acc value.
     ctxACC = ctxNOP.clone()
     ctxACC.ACC = Choice('ACC_RES', ctx.op0, [
         ACC_RR, ACC_RL, ACC_RRC, ACC_RLC, ACC_INC, ACC_DEC, ACC_ADD, 
-        ACC_ADDC, ACC_ORL, ACC_ANL, ACC_XRL, ACC_MOV, ACC_ROM, ACC_SUBB])
+        ACC_ADDC, ACC_ORL, ACC_ANL, ACC_XRL, ACC_MOV, ACC_ROM, ACC_CLR,
+        ACC_SUBB])
     
     # compute the CY/AC/OV flags
     ALU_CY_IN = Choice('ALU_CY_IN', ctx.op0, [ctx.CY(), BitVecVal(0, 1)])
@@ -231,6 +256,24 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     ctxINDIR = ctxNOP.clone()
     ctxINDIR.IRAM = WriteMem(ctx.IRAM, SRC1_INDIR_ADDR, SRC1_INDIR_RESULT)
 
+    # push/pop instructions
+    STK_SP = Choice('STK_SP', ctx.op0, [Add(ctx.SP, BitVecVal(1, 8)),
+        Sub(ctx.SP, BitVecVal(1, 8))])
+    STK_IRAM_ADDR = Choice('STK_IRAM_ADDR', ctx.op0, [
+                        ctx.SP, 
+                        Add(ctx.SP, BitVecVal(1, 8)),
+                        Sub(ctx.SP, BitVecVal(1, 8))])
+    STK_SRC_DIR_ADDR = Choice('STK_SRC_DIR_ADDR', ctx.op0, [ctx.op1, ctx.op2])
+    STK_SRC_DIR = ctx.readDirect(STK_SRC_DIR_ADDR)
+    STK_SRC = Choice('STK_SRC', ctx.op0, [STK_SRC_DIR, ctx.ACC])
+    ctxPUSH = ctxNOP.clone()
+    ctxPUSH.SP = STK_SP
+    ctxPUSH.IRAM = WriteMem(ctx.IRAM, STK_IRAM_ADDR, STK_SRC)
+
+    STK_DATA = Choice('STK_DATA', ctx.op0, [mem_SP, mem_SP_plus1, mem_SP_minus1])
+    ctxPOP = ctxNOP.writeDirect(STK_SRC_DIR_ADDR, STK_DATA)
+    ctxPOP.SP = Choice('POP_SP', ctx.op0, [STK_SP, ctxPOP.SP])
+
     # JBC is a weird instruction by itself.
     # ctxJBC = ctxNOP.writeBit(jb_bitaddr, BitVecVal(0, 1))
 
@@ -268,8 +311,9 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     ctxDPTR.DPH = Extract(15, 8, ctxDPTR.DPTR)
 
     # final result.
-    ctxFINAL = CtxChoice('CTX3', ctx.op0, [ctxNOP, ctxACC, ctxDIR, ctxDPTR,
-                ctxINDIR, ctxCALL, ctxBIT, ctxMUL, ctxDIV, ctxWRBIT])
+    ctxFINAL = CtxChoice('CTX3', ctx.op0, [ctxNOP, ctxACC, ctxDIR, ctxDPTR, 
+                ctxPOP, ctxINDIR, ctxCALL, ctxBIT, ctxMUL, ctxDIV, ctxWRBIT, 
+                ctxPUSH, ctxDA])
     syn.addOutput('PC', ctxFINAL.PC, Synthesizer.BITVEC)
     syn.addOutput('ACC', ctxFINAL.ACC, Synthesizer.BITVEC)
     syn.addOutput('IRAM', ctxFINAL.IRAM, Synthesizer.MEM)
@@ -291,6 +335,12 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
         print >> lf, 'opcode: %02x' % opc
 
     # synthesize
+    syn.debug_objects.append(('ACC_DA', ACC_DA))
+    syn.debug_objects.append(('ACC_DA_stage1', ACC_DA_stage1))
+    syn.debug_objects.append(('ACC_DA_stage2', ACC_DA_stage2))
+    syn.debug_objects.append(('ACC_DA_CY1', ACC_DA_CY1))
+    syn.debug_objects.append(('ACC_DA_CY2', ACC_DA_CY2))
+    syn.debug_objects.append(('ACC_DA_CY', ACC_DA_CY))
     r = syn.synthesize(regs, [cnst], eval8051)
     # print
     fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'

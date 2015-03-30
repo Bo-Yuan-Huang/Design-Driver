@@ -135,6 +135,11 @@ class Synthesizer(object):
     def dumpModel(self, m, y1s, y2s):
         if self.VERBOSITY >= 3: 
             self.log('model:' + repr(m))
+        if self.VERBOSITY >= 2:
+            for n, d in self.debug_objects:
+                d.clearCache()
+                dz3 = d.toZ3(Synthesizer.P1)
+                self.log('%s:%s' % (n, hex(m.eval(dz3).as_long())))
             # FIXME
             # self.log('e_y1:' + repr(m.eval(yexp1)))
             # self.log('e_y2:' + repr(m.eval(yexp2)))
@@ -176,8 +181,11 @@ class Synthesizer(object):
 
             iterations += 1
             m = S.model()
-            self.dumpModel(m, y1s, y2s)
 
+            if self.VERBOSITY >= 2:
+                self.log('\niteration #%d' % iterations)
+
+            self.dumpModel(m, y1s, y2s)
             sim_inputs = self.extractInputsFromModel(m, input_vars)
             sim_outputs = {}
 
@@ -188,7 +196,6 @@ class Synthesizer(object):
                 pass
 
             if self.VERBOSITY >= 2:
-                self.log('\niteration #%d' % iterations)
                 self.log_dict('sim_inputs', sim_inputs)
                 self.log_dict('sim_outputs', sim_outputs)
 
@@ -228,12 +235,6 @@ class Synthesizer(object):
                 else:
                     assert self.outputTypes[name] == Synthesizer.MEM
                     assertEquality(ast.createConstantArray(out.awidth, out.dwidth, sim_outputs[name]), name)
-
-            if self.VERBOSITY >= 3:
-                for i, o in enumerate(self.debug_objects):
-                    o.clearCache()
-                    self.log('DBG%dA: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P1, sim_inputs)).sexpr()))
-                    self.log('DBG%dB: %s' % (i, z3.simplify(o.toZ3Constraints(Synthesizer.P2, sim_inputs)).sexpr()))
 
             if iterations >= self.MAXITER:
                 raise RuntimeError, 'Too many (%d) iterations executed.' % iterations

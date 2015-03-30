@@ -856,16 +856,16 @@ I8051::SynSim(const char* filename)
             #endif
             if( (RAM[ACC] & 0x0F) > 9 || 
                 GetBit(RAM[PSW], AC) == 0x01 ) {
-                tempAdd = RAM[ACC] + 0x06;
-                RAM[ACC] = (char)tempAdd;
+                tempAdd = (unsigned char) RAM[ACC] + 0x06;
+                RAM[ACC] = (unsigned char)tempAdd;
                 if( ((unsigned char*)&tempAdd)[1] != 0 ) {
                     SetBit(RAM[PSW], CY);
                 }
             }
             if( ((RAM[ACC] & 0xF0) >> 4) > 9 || 
                 GetBit(RAM[PSW], CY) == 0x01 ) {
-                tempAdd = RAM[ACC] + 0x60;
-                RAM[ACC] = (char)tempAdd;
+                tempAdd = (unsigned char) RAM[ACC] + 0x60;
+                RAM[ACC] = (unsigned char)tempAdd;
                 if( ((unsigned char*)&tempAdd)[1] != 0 ) {
                     SetBit(RAM[PSW], CY);
                 }

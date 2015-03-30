@@ -934,16 +934,16 @@ def RotateLeft(op):
     return Z3Op('rl', lambda op: z3.RotateLeft(op, 1), [op], _determineOpWidth)
 
 def SLT(op1, op2):
-    return Z3Op('slt', lambda op1, op2: op1 < op2, [op1, op2], _determineOpWidth)
+    return Z3Op('slt', lambda op1, op2: op1 < op2, [op1, op2], _noWidth)
 
 def SGT(op1, op2):
-    return Z3Op('sgt', lambda op1, op2: op1 > op2, [op1, op2], _determineOpWidth)
+    return Z3Op('sgt', lambda op1, op2: op1 > op2, [op1, op2], _noWidth)
 
 def ULT(op1, op2):
-    return Z3Op('slt', lambda op1, op2: z3.ULT(op1, op2), [op1, op2], _determineOpWidth)
+    return Z3Op('ult', lambda op1, op2: z3.ULT(op1, op2), [op1, op2], _noWidth)
 
 def UGT(op1, op2):
-    return Z3Op('sgt', lambda op1, op2: z3.UGT(op1, op2), [op1, op2], _determineOpWidth)
+    return Z3Op('ugt', lambda op1, op2: z3.UGT(op1, op2), [op1, op2], _noWidth)
 
 def ZeroExt(op, n):
     def _extWidth(ops):
