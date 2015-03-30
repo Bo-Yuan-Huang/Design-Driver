@@ -3,6 +3,8 @@ eliminate equivalent choices [done]
 eliminate spurious if's in synthesize
 figure out how to reuse simulation results.
 figure out story of modularization
+write the simulation based checker
+write the property generator
 
 DPTR - problematic opcodes:
 48, 4b
