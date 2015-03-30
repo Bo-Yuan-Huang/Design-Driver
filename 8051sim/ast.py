@@ -511,10 +511,10 @@ class ReadMem(Node):
 class WriteMem(Node):
     """Write data to a memory."""
     def __init__(self, mem, addr, data):
-        if addr.width != mem.dwidth:
+        if addr.width != mem.awidth:
             err_msg = "Address width must be %d. Got %d instead." % (mem.awidth, addr.width)
             raise ValueError, err_msg
-        if data.width != mem.awidth:
+        if data.width != mem.dwidth:
             err_msg = "Data width must be %d. Got %d instead." % (mem.dwidth, data.width)
             raise ValueError, err_msg
         

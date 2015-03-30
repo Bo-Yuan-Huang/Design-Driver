@@ -37,11 +37,13 @@ def eval8051(inputs, outputs):
 
     rom = inputs['ROM']
     pc = inputs['PC']
+    xram = inputs['XRAM']
     # simulate
-    newPC, newRegs = evalState(pc, rom, regs)
+    newPC, newRegs, newXRAM = evalState(pc, rom, xram, regs)
 
     # read output state
     outputs['IRAM'] = extractIRAM(newRegs)
+    outputs['XRAM'] = newXRAM
     outputs['PC'] = newPC
     outputs['ACC']  = newRegs[0x160]
     outputs['SP']   = newRegs[0x101]

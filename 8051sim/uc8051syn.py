@@ -144,13 +144,14 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     ACC_CPL = Complement(ctx.ACC)
     ACC_CLR = BitVecVal(0, 8)
     ACC_ROM = ReadMem(ctx.ROM, Add(ZeroExt(ctx.ACC, 8), ACC_ROM_OFFSET))
+    ACC_SWAP = Concat(Extract(3, 0, ctx.ACC), Extract(7, 4, ctx.ACC))
 
     # final acc value.
     ctxACC = ctxNOP.clone()
     ctxACC.ACC = Choice('ACC_RES', ctx.op0, [
         ACC_RR, ACC_RL, ACC_RRC, ACC_RLC, ACC_INC, ACC_DEC, ACC_ADD, 
         ACC_ADDC, ACC_ORL, ACC_ANL, ACC_XRL, ACC_MOV, ACC_ROM, ACC_CLR,
-        ACC_SUBB])
+        ACC_SUBB, ACC_SWAP, ACC_CPL])
     
     # compute the CY/AC/OV flags
     ALU_CY_IN = Choice('ALU_CY_IN', ctx.op0, [ctx.CY(), BitVecVal(0, 1)])
@@ -248,7 +249,7 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     SRC1_INDIR = ReadMem(ctx.IRAM, SRC1_INDIR_ADDR)
     SRC2_INDIR_DIR_ADDR = Choice('SRC2_INDIR_DIR_ADDR', ctx.op0, [ctx.op1, ctx.op2])
     SRC2_INDIR_DIR = ctx.readDirect(SRC2_INDIR_DIR_ADDR)
-    SRC2_INDIR = Choice('SRC2_INDIR', ctx.op0, [ctx.op1, ctx.op2, SRC2_INDIR_DIR])
+    SRC2_INDIR = Choice('SRC2_INDIR', ctx.op0, [ctx.op1, ctx.op2, ctx.ACC, SRC2_INDIR_DIR])
     SRC1_INDIR_INC = Add(SRC1_INDIR, BitVecVal(1, 8))
     SRC1_INDIR_DEC = Sub(SRC1_INDIR, BitVecVal(1, 8))
     SRC1_INDIR_MOV = SRC2_INDIR
@@ -274,13 +275,11 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     ctxPOP = ctxNOP.writeDirect(STK_SRC_DIR_ADDR, STK_DATA)
     ctxPOP.SP = Choice('POP_SP', ctx.op0, [STK_SP, ctxPOP.SP])
 
-    # JBC is a weird instruction by itself.
-    # ctxJBC = ctxNOP.writeBit(jb_bitaddr, BitVecVal(0, 1))
-
     # instructions which write to specific bit addressable registers.
     ctxBIT = ctxNOP.clone()
     BIT_SRC1_ADDR = Choice('BIT_SRC1_ADDR', ctx.op0, [ctx.op1, ctx.op2])
     BIT_SRC1 = ctx.readBit(BIT_SRC1_ADDR)
+
     # some instructions write their result to the carry flag; which is also the first operand.
     CY_ORL = BVOr(ctx.CY(), BIT_SRC1)
     CY_ORLC = BVOr(ctx.CY(), Complement(BIT_SRC1))
@@ -310,13 +309,36 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     ctxDPTR.DPL = Extract(7, 0, ctxDPTR.DPTR)
     ctxDPTR.DPH = Extract(15, 8, ctxDPTR.DPTR)
 
+    # exchange instructions.
+    XCHG_SRC2_DIR_ADDR = Choice('XCHG_SRC2_DIR_ADDR', ctx.op0, 
+        [ctx.op1, ctx.op2] + ctx.RxAddrs())
+    XCHG_SRC2_DIR = ctx.readDirect(XCHG_SRC2_DIR_ADDR)
+    ctxXCHG_DIR = ctx.writeDirect(XCHG_SRC2_DIR_ADDR, ctx.ACC)
+    ctxXCHG_DIR.ACC = XCHG_SRC2_DIR
+
+    XCHG_SRC2_INDIR_ADDR = Choice('XCHG_SRC2_INDIR_ADDR', ctx.op0, [ctx.Rx(0), ctx.Rx(1)])
+    XCHG_SRC2_INDIR = ReadMem(ctx.IRAM, XCHG_SRC2_INDIR_ADDR)
+    ctxXCHG_INDIR = ctxNOP.clone()
+    ctxXCHG_INDIR.IRAM = WriteMem(ctx.IRAM, XCHG_SRC2_INDIR_ADDR, ctx.ACC)
+    ctxXCHG_INDIR.ACC = XCHG_SRC2_INDIR
+
+    # XRAM reads and writes
+    XRAM_ADDR_Rx = Concat(Choice('MSB_XRAM_ADDR', ctx.op0, [ctx.P0, ctx.P2]),
+                          Choice('LSB_XRAM_ADDR', ctx.op0, [ctx.Rx(0), ctx.Rx(1)]))
+    XRAM_ADDR = Choice('XRAM_ADDR', ctx.op0, [XRAM_ADDR_Rx, DPTR])
+    ctxWRX = ctxNOP.clone()
+    ctxWRX.XRAM = WriteMem(ctx.XRAM, XRAM_ADDR, ctx.ACC)
+    ctxRDX = ctxNOP.clone()
+    ctxRDX.ACC = ReadMem(ctx.XRAM, XRAM_ADDR)
+    
     # final result.
     ctxFINAL = CtxChoice('CTX3', ctx.op0, [ctxNOP, ctxACC, ctxDIR, ctxDPTR, 
                 ctxPOP, ctxINDIR, ctxCALL, ctxBIT, ctxMUL, ctxDIV, ctxWRBIT, 
-                ctxPUSH, ctxDA])
+                ctxPUSH, ctxDA, ctxXCHG_DIR, ctxXCHG_INDIR, ctxWRX, ctxRDX])
     syn.addOutput('PC', ctxFINAL.PC, Synthesizer.BITVEC)
     syn.addOutput('ACC', ctxFINAL.ACC, Synthesizer.BITVEC)
     syn.addOutput('IRAM', ctxFINAL.IRAM, Synthesizer.MEM)
+    syn.addOutput('XRAM', ctxFINAL.XRAM, Synthesizer.MEM)
     syn.addOutput('PSW', ctxFINAL.PSW, Synthesizer.BITVEC)
     syn.addOutput('SP', ctxFINAL.SP, Synthesizer.BITVEC)
     syn.addOutput('B', ctxFINAL.B, Synthesizer.BITVEC)
@@ -335,12 +357,6 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
         print >> lf, 'opcode: %02x' % opc
 
     # synthesize
-    syn.debug_objects.append(('ACC_DA', ACC_DA))
-    syn.debug_objects.append(('ACC_DA_stage1', ACC_DA_stage1))
-    syn.debug_objects.append(('ACC_DA_stage2', ACC_DA_stage2))
-    syn.debug_objects.append(('ACC_DA_CY1', ACC_DA_CY1))
-    syn.debug_objects.append(('ACC_DA_CY2', ACC_DA_CY2))
-    syn.debug_objects.append(('ACC_DA_CY', ACC_DA_CY))
     r = syn.synthesize(regs, [cnst], eval8051)
     # print
     fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'

@@ -20,6 +20,8 @@
 #include <time.h>
 #include <string.h>
 #include <assert.h>
+#include <map>
+#include <vector>
 
 #include "i8051.h"
 
@@ -1859,7 +1861,9 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            RAM[ACC] = XRAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
+            ((unsigned char*)&tempDPTR)[0] = RAM[GetRegisterBank()+regNum];
+            ((unsigned char*)&tempDPTR)[1] = RAM[P2];
+            RAM[ACC] = XRAM[tempDPTR];
             cycleCount += 24;
             break;
 
@@ -1886,7 +1890,9 @@ I8051::SynSim(const char* filename)
             #endif
             #endif
             regNum = IR & 0x01;
-            XRAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = RAM[ACC];
+            ((unsigned char*)&tempDPTR)[0] = RAM[GetRegisterBank()+regNum];
+            ((unsigned char*)&tempDPTR)[1] = RAM[P2];
+            XRAM[tempDPTR] = RAM[ACC];
             cycleCount += 24;
             break;
           
@@ -4364,7 +4370,9 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    RAM[ACC] = XRAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]];
+                    ((unsigned char*)&tempDPTR)[0] = RAM[GetRegisterBank()+regNum];
+                    ((unsigned char*)&tempDPTR)[1] = RAM[P2];
+                    RAM[ACC] = XRAM[tempDPTR];
                     cycleCount += 24;
                     break;
 
@@ -4391,7 +4399,9 @@ I8051::Simulate(const char* inFile, const char* outFile)
                     #endif
                     #endif
                     regNum = IR & 0x01;
-                    XRAM[(int)(unsigned char)RAM[GetRegisterBank()+regNum]] = RAM[ACC];
+                    ((unsigned char*)&tempDPTR)[0] = RAM[GetRegisterBank()+regNum];
+                    ((unsigned char*)&tempDPTR)[1] = RAM[P2];
+                    XRAM[tempDPTR] = RAM[ACC];
                     cycleCount += 24;
                     break;
                   
@@ -5107,6 +5117,39 @@ I8051::ReadMem(std::istream& in, char* mem, int len) {
     }
 }
 
+void
+I8051::WriteMem(std::ostream& out, char* mem, int len) {
+    std::map<int, int> counts;
+    for(int i=0; i < len; i++) {
+        counts[(int) (unsigned char)mem[i]] += 1;
+    }
+    // find the most common element.
+    int max_count = 0;
+    int max_elem;
+    for (
+        std::map<int, int>::iterator it = counts.begin(); 
+        it != counts.end(); 
+        it++
+    ) 
+    {
+        if(it->second > max_count) {
+            max_count = it->second;
+            max_elem = it->first;
+        }
+    }
+    std::vector<std::pair<int, int> > values;
+    for(int i=0; i < len; i++) {
+        int val = (int)(unsigned char)mem[i];
+        if(val != max_elem) {
+            values.push_back(std::pair<int,int>(i, val));
+        }
+    }
+    out << std::dec << values.size() << " ";
+    for(unsigned i=0; i != values.size(); i++) {
+        out << std::hex << values[i].first << " " << std::hex << values[i].second << " ";
+    }
+    out << std::hex << max_elem << std::endl;
+}
 //-----------------------------------------------------------------------------
 void
 I8051::InitState(const char* filename) {
@@ -5117,6 +5160,7 @@ I8051::InitState(const char* filename) {
     }
     PC = ReadWord(fin);
     ReadMem(fin, ROM, RomSize);
+    ReadMem(fin, XRAM, XRamSize);
     //ROM[PC] = ReadByte(fin);
     //ROM[(PC+1)&0xFFFF] = ReadByte(fin);
     //ROM[(PC+2)&0xFFFF] = ReadByte(fin);
@@ -5136,6 +5180,7 @@ I8051::InitState(const char* filename) {
 void
 I8051::WriteState() {
     std::cout << std::hex << std::setw(4) << PC << std::endl;
+    WriteMem(std::cout, XRAM, XRamSize);
     for(unsigned i=0; i < RamSize; i++) {
         std::cout << std::hex << std::setw(2) << (int) (unsigned char) RAM[i] << " ";
         if(i > 0 && (i+1) % 16 == 0) {
