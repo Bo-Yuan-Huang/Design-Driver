@@ -12,19 +12,72 @@ void set_aes_addr(int value)
     top->v__DOT__aes_top_i__DOT__aes_reg_opaddr = value;
 }
 
+int get_aes_addr()
+{
+    return top->v__DOT__aes_top_i__DOT__aes_reg_opaddr;
+}
+
 void set_aes_len(int value)
 {
     top->v__DOT__aes_top_i__DOT__aes_reg_oplen = value;
 }
 
-void set_aes_ctr(uint8_t* ctr)
+int get_aes_len()
+{
+    return top->v__DOT__aes_top_i__DOT__aes_reg_oplen;
+}
+
+void set_aes_ctr(const uint8_t* ctr)
 {
     setWData(top->v__DOT__aes_top_i__DOT__aes_reg_ctr, ctr, 16);
 }
 
-void set_aes_key(uint8_t* ctr)
+void get_aes_ctr(uint8_t* ctr)
+{
+    getWData(top->v__DOT__aes_top_i__DOT__aes_reg_ctr, ctr, 16);
+}
+
+void set_aes_key(const uint8_t* ctr)
 {
     setWData(top->v__DOT__aes_top_i__DOT__aes_reg_key0, ctr, 16);
+}
+
+void get_aes_key(uint8_t* ctr)
+{
+    getWData(top->v__DOT__aes_top_i__DOT__aes_reg_key0, ctr, 16);
+}
+
+void set_aes_num_op_bytes(int value)
+{
+    top->v__DOT__aes_top_i__DOT__operated_bytes_count = value;
+}
+
+int get_aes_num_op_bytes()
+{
+    return top->v__DOT__aes_top_i__DOT__operated_bytes_count;
+}
+
+void eval_aes_state(
+    AES_OP op,
+    int addrin,
+    int datain,
+    int& dataout,
+    const aes_state_t& state_in,
+    aes_state_t& state_out
+)
+{
+    if (op == AES_RD || op == AES_WR) {
+        top->proc_wr = (op == AES_WR) ? 1 : 0; 
+        top->proc_stb = 1; 
+        top->proc_addr = addrin; 
+        top->proc_data_in = datain;
+        do {
+            incrtime(10);
+        } while(top->proc_ack == 0);
+        top->proc_stb = 0; top->proc_wr = 0;
+
+        dataout = top->proc_data_out;
+    }
 }
 
 int test_aes_harness() {

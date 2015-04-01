@@ -19,7 +19,7 @@ include Voc8051_xiommu.mk
 #######################################################################
 # Compile flags
 
-CPPFLAGS += -DVL_DEBUG=1
+CPPFLAGS += -DVL_DEBUG=1 --std=c++0x
 ifeq ($(CFG_WITH_CCWARN),yes)	# Local... Else don't burden users
 CPPFLAGS += -DVL_THREADED=1
 CPPFLAGS += -W -Werror -Wall

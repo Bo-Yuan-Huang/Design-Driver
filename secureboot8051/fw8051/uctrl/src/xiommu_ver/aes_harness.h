@@ -17,9 +17,40 @@
   */
 
 void set_aes_addr(int value);
+int get_aes_addr();
+
 void set_aes_len(int value);
-void set_aes_ctr(uint8_t* ctr);
-void set_aes_key(uint8_t* ctr);
+int get_aes_len();
+
+void set_aes_ctr(const uint8_t* ctr);
+void get_aes_ctr(uint8_t* ctr);
+
+void set_aes_key(const uint8_t* ctr);
+void get_aes_key(uint8_t* ctr);
+
+void set_aes_num_op_bytes(int value);
+int get_aes_num_op_bytes();
+
+enum AES_OP { AES_NOP, AES_RD, AES_WR };
+
+struct aes_state_t {
+    int reg_state;
+    int reg_addr;
+    int reg_len;
+    int reg_num_op_bytes;
+
+    uint8_t reg_ctr[16];
+    uint8_t reg_key[16];
+};
+
+void eval_aes_state(
+    AES_OP op,
+    int addrin,
+    int datain,
+    int& dataout,
+    const aes_state_t& state_in,
+    aes_state_t& state_out
+);
 
 int test_aes_harness();
 
