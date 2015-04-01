@@ -82,10 +82,10 @@ wire sel_reg_len      = {addr[15:1], 1'b0} == SHA_REG_LEN;
 wire start_op         = sel_reg_start && data_in[0] && stb;
 
 // The current state of the AES module.
-localparam SHA_STATE_IDLE       = 3'd0;
-localparam SHA_STATE_READ_DATA  = 3'd1;
-localparam SHA_STATE_OPERATE    = 3'd2;
-localparam SHA_STATE_WRITE_DATA = 3'd3;
+localparam SHA_STATE_IDLE       = 2'd0;
+localparam SHA_STATE_READ_DATA  = 2'd1;
+localparam SHA_STATE_OPERATE    = 2'd2;
+localparam SHA_STATE_WRITE_DATA = 2'd3;
 
 // state register.
 reg [1:0]  sha_reg_state;
@@ -228,7 +228,7 @@ wire writing_last_byte = byte_counter == 6'd19;
 wire write_last_byte_acked = writing_last_byte && xram_ack;
 
 // allow the processor to read the current state.
-wire [7:0] data_out = sel_reg_state ? sha_reg_state : 8'dz;
+wire [7:0] data_out = sel_reg_state ? {6'd0, sha_reg_state} : 8'dz;
 
 // rd address register.
 wire [15:0] sha_reg_rd_addr;
@@ -302,8 +302,8 @@ sha1_core sha1_core_i (
 );
 
 // XRAM interface.
-assign xram_addr = sha_state_read_data  ? sha_reg_rd_addr + byte_counter + block_counter :
-                   sha_state_write_data ? sha_reg_wr_addr + byte_counter                 : 16'bx;
+assign xram_addr = sha_state_read_data  ? sha_reg_rd_addr + {10'b0, byte_counter} + block_counter :
+                   sha_state_write_data ? sha_reg_wr_addr + {10'b0, byte_counter}                 : 16'bx;
 assign xram_data_out = 
     byte_counter == 0  ? sha_reg_digest[7   : 0]   : 
     byte_counter == 1  ? sha_reg_digest[15  : 8]   : 

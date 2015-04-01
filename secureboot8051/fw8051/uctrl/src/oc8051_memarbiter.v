@@ -123,7 +123,7 @@ wire arbiter_state_idle_next  =
 // Next state of the arbiter.
 wire arbiter_state_next = 
         (arbiter_state == STATE_IDLE)  ? arbiter_state_idle_next  :
-        (arbiter_state == STATE_INUSE) ? arbiter_state_inuse_next : 2'bX;
+        (arbiter_state == STATE_INUSE) ? arbiter_state_inuse_next : 1'bX;
 
 // Do we select a new winner for the arbitration? Answer is yes if we are
 // currently idle and won't be idle in the next cycle.

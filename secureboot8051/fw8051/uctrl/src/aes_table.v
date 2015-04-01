@@ -45,8 +45,10 @@ endmodule
 module T (clk, in, out);
     input         clk;
     input  [7:0]  in;
+    /* verilator lint_off UNOPTFLAT */
     output [31:0] out;
     
+    /* verilator lint_off UNOPTFLAT */
     S
         s0 (clk, in, out[31:24]);
     assign out[23:16] = out[31:24];

@@ -86,14 +86,14 @@ wire sel_reg_key1  = {addr[15:4], 4'b0} == AES_REG_KEY1;
 wire start_op = sel_reg_start && data_in[0] && stb;
 
 // The current state of the AES module.
-localparam AES_STATE_IDLE       = 3'd0;
-localparam AES_STATE_READ_DATA  = 3'd1;
-localparam AES_STATE_OPERATE    = 3'd2;
-localparam AES_STATE_WRITE_DATA = 3'd3;
+localparam AES_STATE_IDLE       = 2'd0;
+localparam AES_STATE_READ_DATA  = 2'd1;
+localparam AES_STATE_OPERATE    = 2'd2;
+localparam AES_STATE_WRITE_DATA = 2'd3;
 
 // state register.
 reg [1:0]  aes_reg_state;
-wire [7:0] data_out = sel_reg_state ? aes_reg_state : 8'dz;
+wire [7:0] data_out = sel_reg_state ? {6'b0, aes_reg_state} : 8'dz;
 
 // address register.
 wire [15:0] aes_reg_opaddr;
@@ -187,7 +187,7 @@ wire more_blocks = last_byte_acked && aes_state_write_data &&
                    (operated_bytes_count_next < aes_reg_oplen);
 
 // XRAM interface signals: all but xram_data_out which is calculated below.
-wire [15:0] xram_addr = aes_reg_opaddr + block_counter + byte_counter;
+wire [15:0] xram_addr = aes_reg_opaddr + block_counter + {12'b0, byte_counter};
 wire xram_stb = (aes_state_read_data || aes_state_write_data);
 wire xram_wr  = (aes_state_write_data);
 
@@ -236,7 +236,7 @@ assign mem_data_buf_next[119 : 112 ] =  ( xram_ack && byte_counter == 14 )  ? xr
 assign mem_data_buf_next[127 : 120 ] =  ( xram_ack && byte_counter == 15 )  ? xram_data_in : mem_data_buf[127 : 120 ];
 
 // Actual encryption happens here.
-wire [127:0] aes_ctr = aes_reg_ctr + block_counter;
+wire [127:0] aes_ctr = aes_reg_ctr + {112'b0, block_counter};
 wire [127:0] aes_out;
 wire [127:0] encrypted_data = aes_out ^ mem_data_buf;
 aes_128 aes_128_i (
