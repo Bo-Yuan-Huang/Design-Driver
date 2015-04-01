@@ -73,22 +73,30 @@ localparam SHA_ADDR_END    = 16'hfe10;
 wire in_addr_range = addr >= SHA_ADDR_START && addr < SHA_ADDR_END;
 wire ack = stb && in_addr_range;
 
+// state register.
+reg [1:0]  sha_reg_state;
+
+// state predicates.
+wire sha_state_idle       = sha_reg_state == SHA_STATE_IDLE;
+wire sha_state_read_data  = sha_reg_state == SHA_STATE_READ_DATA;
+wire sha_state_operate    = sha_reg_state == SHA_STATE_OPERATE;
+wire sha_state_write_data = sha_reg_state == SHA_STATE_WRITE_DATA;
+
 // register selector predicates.
 wire sel_reg_start = addr == SHA_REG_START;
 wire sel_reg_state = addr == SHA_REG_STATE;
 wire sel_reg_rd_addr  = {addr[15:1], 1'b0} == SHA_REG_RD_ADDR;
 wire sel_reg_wr_addr  = {addr[15:1], 1'b0} == SHA_REG_WR_ADDR;
 wire sel_reg_len      = {addr[15:1], 1'b0} == SHA_REG_LEN;
-wire start_op         = sel_reg_start && data_in[0] && stb;
+wire wren = wr && sha_state_idle;
+
+wire start_op         = sel_reg_start && data_in[0] && stb && wren;
 
 // The current state of the AES module.
 localparam SHA_STATE_IDLE       = 2'd0;
 localparam SHA_STATE_READ_DATA  = 2'd1;
 localparam SHA_STATE_OPERATE    = 2'd2;
 localparam SHA_STATE_WRITE_DATA = 2'd3;
-
-// state register.
-reg [1:0]  sha_reg_state;
 
 // BEGIN: next state computation
 wire [1:0] sha_state_next;
@@ -97,11 +105,6 @@ wire [1:0] sha_state_next_idle;
 wire [1:0] sha_state_next_read_data;
 wire [1:0] sha_state_next_operate;
 wire [1:0] sha_state_next_write_data;
-
-wire sha_state_idle       = sha_reg_state == SHA_STATE_IDLE;
-wire sha_state_read_data  = sha_reg_state == SHA_STATE_READ_DATA;
-wire sha_state_operate    = sha_reg_state == SHA_STATE_OPERATE;
-wire sha_state_write_data = sha_reg_state == SHA_STATE_WRITE_DATA;
 
 assign sha_state_next = 
     sha_state_idle       ? sha_state_next_idle       : 
@@ -236,7 +239,7 @@ reg2byte sha_reg_rd_addr_i(
     .clk        (clk),
     .rst        (rst),
     .en         (sel_reg_rd_addr),
-    .wr         (sel_reg_rd_addr && wr),
+    .wr         (sel_reg_rd_addr && wren),
     .addr       (addr[0]),
     .data_in    (data_in),
     .data_out   (data_out),
@@ -249,7 +252,7 @@ reg2byte sha_reg_wr_addr_i(
     .clk        (clk),
     .rst        (rst),
     .en         (sel_reg_wr_addr),
-    .wr         (sel_reg_wr_addr && wr),
+    .wr         (sel_reg_wr_addr && wren),
     .addr       (addr[0]),
     .data_in    (data_in),
     .data_out   (data_out),
@@ -262,7 +265,7 @@ reg2byte sha_reg_len_i(
     .clk        (clk),
     .rst        (rst),
     .en         (sel_reg_len),
-    .wr         (sel_reg_len && wr),
+    .wr         (sel_reg_len && wren),
     .addr       (addr[0]),
     .data_in    (data_in),
     .data_out   (data_out),
