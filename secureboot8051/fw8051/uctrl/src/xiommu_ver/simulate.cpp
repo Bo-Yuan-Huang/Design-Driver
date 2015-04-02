@@ -34,22 +34,12 @@ void incrtime(int nsteps) {
 
 void setWData(WDataOutP reg, const uint8_t* data, int len)
 {
-    for(unsigned i=0; i != len; i++) {
-        int dword = i >> 2; // div 4
-        int byte = i & 3;
-        uint32_t mask = ~((uint32_t) 0xFF <<  byte);
-        reg[dword] &= mask;
-        reg[dword] |= (data[i] << byte);
-    }
+    memcpy(reg, data, len);
 }
 
-void getWData(WDataOutP reg, uint8_t* data, int len)
+void getWData(WDataInP reg, uint8_t* data, int len)
 {
-    for(unsigned i=0; i != len; i++) {
-        int dword = i >> 2; // div 4
-        int byte = i & 3;
-        data[i] = (reg[dword] >> byte);
-    }
+    memcpy(data, reg, len);
 }
 
 int read_addr(uint16_t addr)
@@ -107,22 +97,60 @@ void get_xram_val(xram_val_t& xv)
     for(auto it=counts.begin(); it != counts.end(); it++) {
         if(it->second > max_count) {
             max_val = it->first;
+            max_count = it->second;
         }
     }
     assert (max_val != -1);
     xv.def = max_val;
     for(int i=0; i != XRAM_SIZE; i++) {
-        auto p = std::pair<int,int>(i, get_xram_val(i));
-        xv.others.push_back(p);
+        int vi = get_xram_val(i);
+        if(vi != xv.def) {
+            auto p = std::pair<int,int>(i, vi);
+            xv.others.push_back(p);
+        }
     }
+}
+
+std::ostream& operator<<(std::ostream& out, const xram_val_t& xram)
+{
+    out << std::hex << xram.others.size() << " ";
+    out << std::hex << xram.def << " ";
+    for (unsigned i=0; i != xram.others.size(); i++) {
+        out << std::hex << xram.others[i].first << " "
+            << std::hex << xram.others[i].second << " ";
+    }
+    return (out << std::dec);
+}
+
+std::istream& operator>>(std::istream& in, xram_val_t& xram)
+{
+    unsigned sz;
+    in >> std::hex >> sz >> std::hex >> xram.def;
+
+    xram.others.clear();
+    for(unsigned i=0; i != sz; i++) {
+        auto p = std::pair<int, int>(0,0);
+        in >> std::hex >> p.first >> std::hex >> p.second;
+        xram.others.push_back(p);
+    }
+    assert(xram.others.size() == sz);
+
+    in >> std::dec;
+    return in;
 }
 
 int main(int argc, char* argv[])
 {
     Verilated::commandArgs(argc, argv);
+    if (argc != 3 || strcmp(argv[1], "aes") != 0) {
+        std::cerr << "Syntax error. " << std::endl;
+        std::cerr << "Usage:  " << argv[0]  << " aes <state-file>" << std::endl;
+        return 1;
+    }
     top = new Voc8051_xiommu;
-    
-    test_aes_harness();
+    aes_simulate(argv[2]);
+    // test_aes_harness();
+
     top->final();
     delete top;
 }

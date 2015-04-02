@@ -1,6 +1,7 @@
 #ifndef _SIMULATE_H_DEFINED_
 #define _SIMULATE_H_DEFINED_
 
+#include <iostream>
 #include <vector>
 
 #include <stdint.h>
@@ -17,12 +18,15 @@ struct xram_val_t {
     std::vector< std::pair<int,int> > others;
 };
 
+std::ostream& operator<<(std::ostream& out, const xram_val_t& xram);
+std::istream& operator>>(std::istream& in, xram_val_t& xram);
+
 double sc_time_stamp();
 void incrtime(int nsteps);
 
 // utility functions.
 void setWData(WDataOutP reg, const uint8_t* data, int len);
-void getWData(WDataOutP reg, uint8_t* data, int len);
+void getWData(WDataInP reg, uint8_t* data, int len);
 
 // read and write functions.
 int read_addr(uint16_t addr);

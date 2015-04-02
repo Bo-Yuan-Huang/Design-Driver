@@ -58,5 +58,6 @@ void eval_aes_state(
 
 int test_aes_harness();
 void test_aes_state_fns();
+void aes_simulate(const char* filename);
 
 #endif

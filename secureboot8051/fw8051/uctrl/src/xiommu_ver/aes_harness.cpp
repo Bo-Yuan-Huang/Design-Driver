@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include <stdint.h>
 
 #include <verilated.h>
@@ -119,9 +120,20 @@ void eval_aes_state(
         top->proc_data_in = datain;
 
         aes_init_state(state_in);
-        do {
+        bool rpt_state = false;
+        int orig_state = get_aes_state();
+        while(1) {
             incrtime(10);
-        } while(get_aes_state() == state_in.reg_state);
+            int st = get_aes_state();
+
+            if (st == 0) {
+                break;
+            } else if (rpt_state && st == orig_state) {
+                break;
+            } else if (st != orig_state) {
+                rpt_state = true;
+            }
+        } 
 
         dataout = top->proc_data_out;
         aes_read_state(state_out);
@@ -240,3 +252,59 @@ void test_aes_state_fns()
     std::cout << "len=" << state_in.reg_num_op_bytes << std::endl;
 }
 
+void aes_simulate(const char* filename)
+{
+    std::ifstream in(filename);
+    if(!in) {
+        std::cerr << "Unable to open file " << filename << "." << std::endl;
+        return;
+    }
+
+    aes_state_t state_in, state_out;
+    // initialize state.
+    in >> std::hex >> state_in.reg_state;
+    in >> std::hex >> state_in.reg_addr;
+    in >> std::hex >> state_in.reg_len;
+    in >> std::hex >> state_in.reg_num_op_bytes;
+    for(unsigned i=0; i != 16; i++) {
+        int c;
+        in >> std::hex >> c;
+        state_in.reg_ctr[i] = c;
+    }
+    for(unsigned i=0; i != 16; i++) {
+        int c;
+        in >> std::hex >> c;
+        state_in.reg_key[i] = c;
+    }
+    in >> state_in.xram;
+
+    // read in op, addr and data in.
+    int op;
+    int addr, data_in, data_out;
+    in >> std::hex >> op;
+    in >> std::hex >> addr;
+    in >> std::hex >> data_in;
+    in >> std::dec;
+
+    // run AES module.
+    top->rst = 1; incrtime(50);
+    top->rst = 0; incrtime(21);
+    eval_aes_state((AES_OP) op, addr, data_in, data_out, state_in, state_out);
+
+    // now output state.
+    std::cout << std::hex << data_out << std::endl;
+    std::cout << std::hex << state_out.reg_state << " ";
+    std::cout << std::hex << state_out.reg_addr << " ";
+    std::cout << std::hex << state_out.reg_len << " ";
+    std::cout << std::hex << state_out.reg_num_op_bytes << std::endl;
+    for(unsigned i=0; i != 16; i++) {
+        std::cout << std::hex << (unsigned) state_out.reg_ctr[i] << " ";
+    }
+    std::cout << std::endl;
+    for(unsigned i=0; i != 16; i++) {
+        std::cout << std::hex << (unsigned) state_out.reg_key[i] << " ";
+    }
+    std::cout << std::endl;
+    // xram.
+    std::cout << state_out.xram << std::endl;
+}
