@@ -238,5 +238,4 @@ class Voc8051_xiommu__Syms : public VerilatedSyms {
     inline bool getClearActivity() { bool r=__Vm_activity; __Vm_activity=false; return r;}
     
 } VL_ATTR_ALIGNED(64);
-
 #endif  /*guard*/

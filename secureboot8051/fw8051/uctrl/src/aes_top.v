@@ -92,6 +92,12 @@ wire sel_reg_key1  = {addr[15:4], 4'b0} == AES_REG_KEY1;
 // state register.
 reg [1:0]  aes_reg_state;
 wire [7:0] data_out = sel_reg_state ? {6'b0, aes_reg_state} : 8'dz;
+// default data out.
+assign data_out = (!sel_reg_state   && !sel_reg_state   &&
+                   !sel_reg_addr    && !sel_reg_len     &&
+                   !sel_reg_ctr     && !sel_reg_key0    &&
+                   !sel_reg_key1    && in_addr_range) 
+                ? 8'd0 : 8'dz;
 
 // state predicates.
 wire aes_state_idle = aes_reg_state == AES_STATE_IDLE;
