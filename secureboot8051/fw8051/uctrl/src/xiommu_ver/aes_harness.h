@@ -16,6 +16,9 @@
   * localparam AES_REG_KEY0    = 16'hff20;
   */
 
+void set_aes_state(int value);
+int get_aes_state();
+
 void set_aes_addr(int value);
 int get_aes_addr();
 
@@ -41,6 +44,7 @@ struct aes_state_t {
 
     uint8_t reg_ctr[16];
     uint8_t reg_key[16];
+    xram_val_t xram;
 };
 
 void eval_aes_state(
@@ -53,5 +57,6 @@ void eval_aes_state(
 );
 
 int test_aes_harness();
+void test_aes_state_fns();
 
 #endif

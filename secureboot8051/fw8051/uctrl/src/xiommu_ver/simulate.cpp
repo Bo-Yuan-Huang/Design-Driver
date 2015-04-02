@@ -123,4 +123,6 @@ int main(int argc, char* argv[])
     top = new Voc8051_xiommu;
     
     test_aes_harness();
+    top->final();
+    delete top;
 }
