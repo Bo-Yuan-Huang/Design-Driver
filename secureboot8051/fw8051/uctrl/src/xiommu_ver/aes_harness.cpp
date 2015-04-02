@@ -192,7 +192,7 @@ void test_aes_state_fns()
     aes_state_t state_in, state_out;
     state_in.reg_state = 0;
     state_in.reg_addr = 0x2000;
-    state_in.reg_len = 0x10;
+    state_in.reg_len = 0x20;
     state_in.reg_num_op_bytes = 0;
     state_in.xram.def = 32;
 
@@ -201,46 +201,42 @@ void test_aes_state_fns()
     eval_aes_state( AES_WR, 0xFF00, 1, data_out, state_in, state_out);
     std::cout << state_out.reg_state << std::endl;
     state_in = state_out;
+    std::cout << "bytes=" << state_in.reg_num_op_bytes << std::endl;
 
-    eval_aes_state( AES_NOP, 0, 0, data_out, state_in, state_out);
-    std::cout << state_out.reg_state << std::endl;
-    state_in = state_out;
+    do {
+        eval_aes_state( AES_NOP, 0, 0, data_out, state_in, state_out);
+        std::cout << state_out.reg_state << std::endl;
+        state_in = state_out;
+        std::cout << "bytes=" << state_in.reg_num_op_bytes << std::endl;
+    } while(state_in.reg_state != 0);
 
-    eval_aes_state( AES_NOP, 0, 0, data_out, state_in, state_out);
-    std::cout << state_out.reg_state << std::endl;
-    state_in = state_out;
-
-    eval_aes_state( AES_NOP, 0, 0, data_out, state_in, state_out);
-    std::cout << state_out.reg_state << std::endl;
-    state_in = state_out;
-
-    for(int i=0x2000; i < 0x2000+16; i++) {
+    for(int i=0x2000; i < 0x2000+32; i++) {
         std::cout << std::hex << std::setw(2) << get_xram_val(i) << " ";
     }
     std::cout << std::endl;
+    std::cout << "bytes=" << state_in.reg_num_op_bytes << std::endl;
+    std::cout << "len=" << state_in.reg_num_op_bytes << std::endl;
 
     state_in.reg_state = 0; state_in.reg_addr = 0x2000;
-    state_in.reg_len = 0x10; state_in.reg_num_op_bytes = 0;
+    state_in.reg_len = 0x20; state_in.reg_num_op_bytes = 0;
 
     eval_aes_state( AES_WR, 0xFF00, 1, data_out, state_in, state_out);
     std::cout << state_out.reg_state << std::endl;
     state_in = state_out;
+    std::cout << "bytes=" << state_in.reg_num_op_bytes << std::endl;
 
-    eval_aes_state( AES_NOP, 0, 0, data_out, state_in, state_out);
-    std::cout << state_out.reg_state << std::endl;
-    state_in = state_out;
+    do {
+        eval_aes_state( AES_NOP, 0, 0, data_out, state_in, state_out);
+        std::cout << state_out.reg_state << std::endl;
+        state_in = state_out;
+        std::cout << "bytes=" << state_in.reg_num_op_bytes << std::endl;
+    } while(state_in.reg_state != 0);
 
-    eval_aes_state( AES_NOP, 0, 0, data_out, state_in, state_out);
-    std::cout << state_out.reg_state << std::endl;
-    state_in = state_out;
-
-    eval_aes_state( AES_NOP, 0, 0, data_out, state_in, state_out);
-    std::cout << state_out.reg_state << std::endl;
-    state_in = state_out;
-
-    for(int i=0x2000; i < 0x2000+16; i++) {
+    for(int i=0x2000; i < 0x2000+32; i++) {
         std::cout << std::hex << std::setw(2) << get_xram_val(i) << " ";
     }
     std::cout << std::endl;
+    std::cout << "bytes=" << state_in.reg_num_op_bytes << std::endl;
+    std::cout << "len=" << state_in.reg_num_op_bytes << std::endl;
 }
 
