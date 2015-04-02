@@ -34,6 +34,9 @@ void get_aes_key(uint8_t* ctr);
 void set_aes_num_op_bytes(int value);
 int get_aes_num_op_bytes();
 
+void set_aes_block_ctr(int value);
+int get_aes_block_ctr();
+
 enum AES_OP { AES_NOP, AES_RD, AES_WR };
 
 struct aes_state_t {
@@ -41,6 +44,7 @@ struct aes_state_t {
     int reg_addr;
     int reg_len;
     int reg_num_op_bytes;
+    int reg_block_ctr;
 
     uint8_t reg_ctr[16];
     uint8_t reg_key[16];

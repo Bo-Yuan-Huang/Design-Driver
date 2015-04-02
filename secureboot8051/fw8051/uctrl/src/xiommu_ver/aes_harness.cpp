@@ -38,6 +38,16 @@ int get_aes_len()
     return top->v__DOT__aes_top_i__DOT__aes_reg_oplen;
 }
 
+void set_aes_block_ctr(int value)
+{
+    top->v__DOT__aes_top_i__DOT__block_counter = value;
+}
+
+int get_aes_block_ctr()
+{
+    return top->v__DOT__aes_top_i__DOT__block_counter;
+}
+
 void set_aes_ctr(const uint8_t* ctr)
 {
     setWData(top->v__DOT__aes_top_i__DOT__aes_reg_ctr, ctr, 16);
@@ -74,6 +84,7 @@ void aes_init_state(const aes_state_t& state)
     set_aes_addr(state.reg_addr);
     set_aes_len(state.reg_len);
     set_aes_num_op_bytes(state.reg_num_op_bytes);
+    set_aes_block_ctr(state.reg_block_ctr);
     set_aes_ctr(state.reg_ctr);
     set_aes_key(state.reg_key);
     set_xram_val(state.xram);
@@ -85,6 +96,7 @@ void aes_read_state(aes_state_t& state)
     state.reg_addr = get_aes_addr();
     state.reg_len = get_aes_len();
     state.reg_num_op_bytes = get_aes_num_op_bytes();
+    state.reg_block_ctr = get_aes_block_ctr();
     get_aes_ctr(state.reg_ctr);
     get_aes_key(state.reg_key);
     get_xram_val(state.xram);
@@ -266,6 +278,7 @@ void aes_simulate(const char* filename)
     in >> std::hex >> state_in.reg_addr;
     in >> std::hex >> state_in.reg_len;
     in >> std::hex >> state_in.reg_num_op_bytes;
+    in >> std::hex >> state_in.reg_block_ctr;
     for(unsigned i=0; i != 16; i++) {
         int c;
         in >> std::hex >> c;
@@ -296,7 +309,8 @@ void aes_simulate(const char* filename)
     std::cout << std::hex << state_out.reg_state << " ";
     std::cout << std::hex << state_out.reg_addr << " ";
     std::cout << std::hex << state_out.reg_len << " ";
-    std::cout << std::hex << state_out.reg_num_op_bytes << std::endl;
+    std::cout << std::hex << state_out.reg_num_op_bytes << " ";
+    std::cout << std::hex << state_out.reg_block_ctr << std::endl;
     for(unsigned i=0; i != 16; i++) {
         std::cout << std::hex << (unsigned) state_out.reg_ctr[i] << " ";
     }
