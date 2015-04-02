@@ -22,8 +22,14 @@ def to_byte_array(l, num_bytes):
     data = []
     for i in xrange(num_bytes):
         n = (l >> (i*8)) & 0xFF
-        data.append(i)
+        data.append(n)
     return data
+
+def from_byte_array(bs):
+    n = 0
+    for b in bs:
+        n = (n << 8) | b
+    return n
 
 def evalAES(sim_inputs, sim_outputs):
     inputs = {}
@@ -34,10 +40,24 @@ def evalAES(sim_inputs, sim_outputs):
             inputs[k] = v
 
     sin = AesState(**inputs)
-    print sin
     data_out, sout = eval_aes(sin)
-    print data_out
-    sim_outputs['addr'] = sout.addr
+
+    for k in sout._fields:
+        v = getattr(sout, k)
+        if k == 'ctr' or k == 'key':
+            sim_outputs[k] = from_byte_array(v)
+        else:
+            sim_outputs[k] = v
+
+def write2byteReg(wr, addr, reg, REG_ADDR, data_in):
+    addr16 = Concat(Extract(15, 1, addr), BitVecVal(0, 1))
+    hi_byte = Equal(Extract(0, 0, addr), BitVecVal(1, 1))
+
+    reg_out = If(And(wr, Equal(addr16, REG_ADDR)),
+                    If(hi_byte, Concat(data_in, Extract(7, 0, reg)),
+                                Concat(Extract(15, 8, reg), data_in)),
+                    reg)
+    return reg_out                
 
 def synAES(st):
     syn = Synthesizer()
@@ -57,31 +77,24 @@ def synAES(st):
 
     addrlist = [BitVecVal(x, 16) for x in [0xFF00, 0xFF01, 0xFF02, 0xFF04, 0xFF10, 0xFF20]]
 
+    REG_LEN_ADDR = Choice('REG_LEN_ADDR', state, addrlist)
     REG_ADDR_ADDR = Choice('REG_ADDR_ADDR', state, addrlist)
-
-    can_write = Choice('can_write', state, [BoolVal(0), BoolVal(1)])
-    addr_8b = addr
-    addr_16b = Concat(Extract(15, 1, addr), BitVecVal(0, 1))
-    addr_128b = Concat(Extract(15, 4, addr), BitVecVal(0, 4))
 
     nop = Equal(op, BitVecVal(0, 2))
     rd = Equal(op, BitVecVal(1, 2))
+    can_write = Choice('can_write', state, [BoolVal(0), BoolVal(1)])
     wr = And(can_write, Equal(op, BitVecVal(2, 2)))
 
-    lo_byte = Equal(Extract(0, 0, addr), BitVecVal(0, 1))
-    hi_byte = Equal(Extract(0, 0, addr), BitVecVal(1, 1))
-
-    addr_out = If(And(wr, And(lo_byte, Equal(addr_16b, REG_ADDR_ADDR))),
-                    Concat(Extract(15, 8, addr), data_in), 
-                    If(And(wr, And(hi_byte, Equal(addr_16b, REG_ADDR_ADDR))),
-                        Concat(data_in, Extract(7, 0, data_in)),
-                        addr))
+    addr_out = write2byteReg(wr, addr_in, addr, REG_ADDR_ADDR, data_in)
+    length_out = write2byteReg(wr, addr_in, length, REG_LEN_ADDR, data_in)
                   
     syn.addOutput('addr', addr_out, Synthesizer.BITVEC)
-    cnst = Equal(state, BitVecVal(st, 1))
-    return syn.synthesize(['addr'], [cnst], evalAES)
+    syn.addOutput('length', length_out, Synthesizer.BITVEC)
 
-[data_out_0] = synAES(0)
-[data_out_1] = synAES(1)
-print str(data_out_0)
-print str(data_out_1)
+    cnst = Equal(state, BitVecVal(st, 1))
+    return syn.synthesize(['addr', 'length'], [cnst], evalAES)
+
+for st in xrange(2):
+    r = synAES(st)
+    print 'state: %d' % st
+    print '\n'.join(str(s) for s in r), '\n'

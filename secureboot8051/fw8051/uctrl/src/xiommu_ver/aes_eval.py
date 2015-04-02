@@ -24,7 +24,6 @@ def dump_aes_state(fileobject, s_in):
     print >> fileobject, hexstr(len(xram[:-1])), hexstr(xram[-1])
     for [a,d] in xram[:-1]:
         print >> fileobject, hexstr(a), hexstr(d), 
-    print
 
     s4 = [hexstr(x) for x in [s_in.op, s_in.addr_in, s_in.data_in]]
     print >> fileobject, ' '.join(s4)
@@ -35,9 +34,9 @@ def eval_aes(s_in):
     with tempfile.NamedTemporaryFile() as fileobject:
         dump_aes_state(fileobject, s_in)
 
-        # print subprocess.check_output(['cat', fileobject.name])
+        #print subprocess.check_output(['cat', fileobject.name])
         state = subprocess.check_output(['./simulate', 'aes', fileobject.name])
-        # print 'output:', state
+        #print 'output:', state
 
         hex_int = lambda x: int(x, 16)
         words = state.split()
