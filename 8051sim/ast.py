@@ -44,21 +44,22 @@ class Node(object):
 
     BOOLVAR         = 0
     BITVECVAR       = 1
-    BOOLVAL         = 2
-    BITVECVAL       = 3
-    MEMVAR          = 4
-    CHOICE          = 5
-    CHOICEVAR       = 6
-    CHOOSECONSEC    = 7
-    READMEM         = 8
-    WRITEMEM        = 9
-    EXTRACT         = 10
-    IF              = 11
-    EXTRACTBIT      = 12
-    CONCAT          = 13
-    Z3OP            = 14
-    MACRO           = 15
-    NODE_TYPE_MAX   = 15
+    FUNCVAR         = 2
+    BOOLVAL         = 3
+    BITVECVAL       = 4
+    MEMVAR          = 5
+    CHOICE          = 6
+    CHOICEVAR       = 7
+    CHOOSECONSEC    = 8
+    READMEM         = 9
+    WRITEMEM        = 10
+    EXTRACT         = 11
+    IF              = 12
+    EXTRACTBIT      = 13
+    CONCAT          = 14
+    Z3OP            = 15
+    MACRO           = 16
+    NODE_TYPE_MAX   = 16
 
     def __init__(self, nodetype):
         """Constructor."""
@@ -89,6 +90,10 @@ class Node(object):
     def isMemVar(self):
         "Predicate that returns true if the node is a MemVar."
         return self.nodetype == Node.MEMVAR
+
+    def isFuncVar(self):
+        "Predicate that returns true if the node is a FuncVar."
+        return self.nodetype == Node.FUNCVAR
 
     def isBoolVal(self):
         "Predicate that returns true if the node is a BoolVal."
@@ -284,6 +289,44 @@ class BitVecVar(Node):
         return
         yield
 
+class FuncVar(Node):
+    """Uninterpreted functions."""
+    def __init__(self, name, iwidth, owidth):
+        Node.__init__(self, Node.FUNCVAR)
+        self.name = name
+        self.iwidth = iwidth
+        self.owidth = owidth
+
+    def _toZ3sHelper(self, prefix, rfun):
+        isort = z3.BitVecSort(self.iwidth)
+        osort = z3.BitVecSort(self.owidth)
+        return z3.Function(self._getName(prefix), isort, osort)
+
+    def _toZ3(self, prefix):
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            return self.name == other.name and self.iwidth == other.iwidth and self.owidth == other.width
+        return NotImplemented
+
+    def __str__(self):
+        return '(func %d %d)' % (self.iwidth, self.owidth)
+
+    def _synthesize(self, m):
+        return FuncVar(self.name, self.iwidth, self.owidth)
+
+    def childObjects(self):
+        return
+        yield
+
 class BoolVal(Node):
     """Boolean constants."""
     def __init__(self, value):
@@ -472,6 +515,35 @@ class Choice(Node):
     def childObjects(self):
         for c in self.choices:
             yield c
+
+class Apply(Node):
+    def __init__(self, fun, arg):
+        self.fun = fun
+        self.arg = arg
+        self.width = self.fun.owidth
+    
+    def _toZ3sHelper(self, prefix, rfun):
+        fz3 = rfun(self.fun, prefix)
+        az3 = rfun(self.arg, prefix)
+        return fz3(az3)
+
+    def _toZ3(self, prefix):
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def __str__(self):
+        return '(apply %s %s)' % (str(self.fun), str(self.arg))
+
+    def _synthesize(self, m):
+        return Apply(self.fun.synthesize(m), self.arg.synthesize(m))
+
+    def childObjects(self):
+        yield self.fun
+        yield self.arg
 
 class ReadMem(Node):
     """Read data from a memory."""

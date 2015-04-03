@@ -123,6 +123,9 @@ class Synthesizer(object):
                     sim_inputs[inp_name] = m_inp.as_long()
                 elif inp_ast.isMemVar():
                     sim_inputs[inp_name] = self.cleanupMemList(m_inp.as_list())
+                elif inp_ast.isFuncVar():
+                    # nothing to do
+                    pass
                 else:
                     assert False, 'Unknown node type.'
             else:
