@@ -88,7 +88,6 @@
 
 
 module oc8051_decoder (clk, rst, 
-  irom_out_of_rst, new_valid_pc,
   op_in, op1_c,
   ram_rd_sel_o, ram_wr_sel_o,
   bit_addr, wr_o, wr_sfr_o,
@@ -100,7 +99,6 @@ module oc8051_decoder (clk, rst,
 //
 // clk          (in)  clock
 // rst          (in)  reset
-// irom_out_of_rst 
 //              (in) has the IROM started producing useful instructions? 
 //                   this goes high some number of cycles after reset and stays high forever.
 // op_in        (in)  operation code [oc8051_op_select.op1]
@@ -127,8 +125,6 @@ module oc8051_decoder (clk, rst,
 input clk, rst, eq, mem_wait, wait_data;
 input [7:0] op_in;
 
-input irom_out_of_rst;
-output new_valid_pc;
 
 output wr_o, bit_addr, pc_wr, rmw, istb, src_sel3;
 output [1:0] psw_set, cy_sel, wr_sfr_o, src_sel2, comp_sel;
@@ -162,8 +158,6 @@ assign state_dec = wait_data ? 2'b00 : state;
 assign op_cur = mem_wait ? 8'h00
                 : (state[0] || state[1] || mem_wait || wait_data) ? op : op_in;
 //assign op_cur = (state[0] || state[1] || mem_wait || wait_data) ? op : op_in;
-
-wire new_valid_pc = (!mem_wait && !(state[0] || state[1] || mem_wait || wait_data)) && irom_out_of_rst;
 
 assign op1_c = op_cur[2:0];
 

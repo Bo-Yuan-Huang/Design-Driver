@@ -64,7 +64,7 @@ module oc8051_fv_tb();
 
 `include "cex_ajmp.v"
 
-      #1000
+      #700000
       $display("time ",$time, "; end of time\n");
       $finish;
     end

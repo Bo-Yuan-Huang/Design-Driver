@@ -128,9 +128,6 @@ module oc8051_memory_interface (clk, rst,
      op2_out, 
      op3_out,
      out_of_rst,
-     decoder_new_valid_pc,
-     pc_log,
-     pc_log_prev,
 
 //internal
      idat_onchip,
@@ -165,7 +162,10 @@ module oc8051_memory_interface (clk, rst,
      sp_w, 
      rn, 
      acc, 
-     reti
+     reti,
+
+// verification signals.
+     pc_change
    );
 
 
@@ -190,9 +190,6 @@ output        bit_out,
 output [7:0]  iram_out,
               wr_dat;
 output        out_of_rst;
-input         decoder_new_valid_pc;
-output [15:0] pc_log;
-output [15:0] pc_log_prev;
 
 reg           bit_out,
               reti;
@@ -310,6 +307,11 @@ input [2:0]   pc_wr_sel;
 
 input         pc_wr;
 output [15:0] pc;
+
+////////////////////////////
+// verification.
+////////////////////////////
+output pc_change;
 
 reg [15:0]    pc;
 
@@ -553,18 +555,20 @@ begin
   end
 end
 
-reg [3:0] out_of_rst_cycles;
+// out_of_rst goes high after we fetch two blocks after reset.
+reg [1:0] inc_pc_count;
 reg out_of_rst;
-
 always @(posedge clk or posedge rst)
 begin
   if (rst) begin
     out_of_rst         <= 0;
-    out_of_rst_cycles   = 0;
+    inc_pc_count        = 0;
   end
   else begin
-    out_of_rst_cycles = out_of_rst_cycles < 4'd12 ? out_of_rst_cycles + 1 : out_of_rst_cycles;
-    out_of_rst       <= out_of_rst_cycles == 4'd12;
+    if (inc_pc && !out_of_rst) begin
+        inc_pc_count = inc_pc_count + 2'd1;
+        out_of_rst  <= (inc_pc_count == 2'd2);
+    end
   end 
 end
 
@@ -938,6 +942,7 @@ end
 //assign pc = pc_buf - 16'h8 + {13'h0, op_pos}; ////******???
 //assign pc = pc_buf - 16'h8 + {13'h0, op_pos} + {14'h0, op_length};
 
+
 always @(posedge clk or posedge rst)
 begin
   if (rst)
@@ -947,6 +952,7 @@ begin
   else if (rd & !int_ack_t)
     pc <= #1 pc_buf - 16'h8 + {13'h0, op_pos} + {14'h0, op_length};
 end
+wire pc_change = pc_wr_r2 | (rd & !int_ack_t);
 
 
 // spramod added pc_for_ajmp
@@ -1176,21 +1182,5 @@ always @(posedge clk or posedge rst)
   end else if (istb) begin
     inc_pc_r  <= #1 inc_pc;
   end
-
-reg [15:0] pc_log;
-reg [15:0] pc_log_prev;
-always @(posedge clk)
-begin
-    if (rst) begin
-        pc_log      <= 0;
-        pc_log_prev <= 0;
-    end
-    else begin
-        if (decoder_new_valid_pc) begin
-            pc_log  <= pc;
-            pc_log_prev <= pc_log;
-        end
-    end
-end
 
 endmodule

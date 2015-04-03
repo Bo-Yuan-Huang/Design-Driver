@@ -187,9 +187,10 @@ module oc8051_top (wb_rst_i, wb_clk_i,
 `endif
 // external access (active low)
                 ea_in,
-                pc_log_change,
-                pc_log,
-                pc_log_prev,
+// verif outputs
+                out_of_rst,
+                pc_change,
+                pc,
                 cy
                 );
 
@@ -205,9 +206,9 @@ input         wb_rst_i,         // reset input
               wbd_err_i,        // data error
               wbi_err_i;        // instruction error
 
-output        pc_log_change;
-output [15:0] pc_log;
-output [15:0] pc_log_prev;
+output        out_of_rst;
+output        pc_change;
+output [15:0] pc;
 output        cy;
 
 input [7:0]   wbd_dat_i;        // ram data input
@@ -297,6 +298,7 @@ wire [7:0]  dptr_hi,
 
 wire [31:0] idat_onchip;
 
+wire pc_change;
 wire [15:0] pc;
 
 assign wbd_cyc_o = wbd_stb_o;
@@ -353,12 +355,9 @@ wire [2:0]  pc_wr_sel;  //program counter write select (from decoder to pc)
 wire [7:0]  op1_n, //from memory_interface to decoder
             op2_n,
             op3_n;
-wire        irom_out_of_rst;
+wire        out_of_rst;
 wire        new_pc_log;
-wire        pc_log_change;
 wire        decoder_new_valid_pc;
-wire [15:0] pc_log;
-wire [15:0] pc_log_prev;
 
 wire [1:0]  comp_sel;   //select source1 and source2 to compare
 wire        eq,         //result (from comp1 to decoder)
@@ -383,14 +382,11 @@ wire        iack_i,
 wire [31:0] idat_i;
 wire [15:0] iadr_o;
 
-assign pc_log_change = decoder_new_valid_pc;
 
 //
 // decoder
 oc8051_decoder oc8051_decoder1(.clk(wb_clk_i), 
                                .rst(wb_rst_i), 
-                               .irom_out_of_rst(irom_out_of_rst),
-                               .new_valid_pc(decoder_new_valid_pc),
                                .op_in(op1_n), 
                                .op1_c(op1_cur),
                                .ram_rd_sel_o(ram_rd_sel), 
@@ -570,10 +566,7 @@ oc8051_memory_interface oc8051_memory_interface1(.clk(wb_clk_i),
                        .iadr_o(iadr_o),
                        .idat_i(idat_i),
                        .istb_o(istb_o),
-                       .out_of_rst(irom_out_of_rst),
-                       .decoder_new_valid_pc(decoder_new_valid_pc),
-                       .pc_log(pc_log),
-                       .pc_log_prev(pc_log_prev),
+                       .out_of_rst(out_of_rst),
 
 // internal instruction rom
                        .idat_onchip(idat_onchip),
@@ -621,7 +614,9 @@ oc8051_memory_interface oc8051_memory_interface1(.clk(wb_clk_i),
                        .dptr({dptr_hi, dptr_lo}),
                        .ri(ri), 
                        .acc(acc),
-                       .sp(sp)
+                       .sp(sp),
+// verif
+                       .pc_change(pc_change)
                        );
 
 

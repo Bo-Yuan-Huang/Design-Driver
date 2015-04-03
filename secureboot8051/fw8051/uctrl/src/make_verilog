@@ -1,4 +1,5 @@
 iverilog -o oc8051              \
+-Wno-timescale                  \
 -D OC8051_SIMULATION            \
 oc8051_tb.v                     \
 oc8051_xram.v                   \

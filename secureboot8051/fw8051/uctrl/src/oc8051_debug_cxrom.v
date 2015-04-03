@@ -26,12 +26,12 @@ module oc8051_debug_cxrom(
     wire [15:0] addr;
     wire [31:0] cxrom_data_out;
 
-    `include "../bench/rom/testjc.v"
+    `include "../bench/rom/aes_test.v"
 
     assign addr = cxrom_addr;
     assign cxrom_data_out = data_out;
 
-    localparam ROMSIZE = 182;
+    localparam ROMSIZE = 386;
 
     wire [15:0] pc10 = pc1;
     wire [15:0] pc11 = pc1 + 1;

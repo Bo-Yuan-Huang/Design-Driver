@@ -142,16 +142,18 @@ input         t2_i,             // counter 2 input
     wire [31:0] cxrom_data_out;
     wire [15:0] wbi_adr_o;
 
-    reg  first_instr;
-    wire pc_log_change;
-    wire [15:0] pc2, pc1;
+    wire out_of_rst;
+    wire pc_change;
+    wire [15:0] pc;
     wire cy; // carry flag.
+    reg [15:0] pc_prev;
+    reg cy_prev;
+
+
     wire op_valid;
     wire [7:0] op0_out;
     wire [7:0] op1_out;
     wire [7:0] op2_out;
-
-
     // pc_log_change => (pc_log_prev = pc_log + 1).
     wire pcp1 = 
         (op0_out[1] && op0_out[2] && !op0_out[4] && op0_out[6]) || (op0_out[1] && op0_out[2]
@@ -204,106 +206,86 @@ input         t2_i,             // counter 2 input
 
 
     // need these to compute relative addresses.
-    wire [15:0] pc1_plus_2 = pc1 + 16'h2;
-    wire [15:0] pc1_plus_3 = pc1 + 16'h3;
+    wire [15:0] pc_prev_plus_2 = pc_prev + 16'h2;
+    wire [15:0] pc_prev_plus_3 = pc_prev + 16'h3;
 
     // relative addresses for jumps.
-    wire [15:0] reladdr1, reladdr2, rpc1, rpc2;
+    wire [15:0] reladdr1, reladdr2, rpc_prev, rpc2;
 
     // sign-extend
     assign reladdr1[15:8] = op1_out[7] ? 8'hFF : 8'h00;
     assign reladdr2[15:8] = op2_out[7] ? 8'hFF : 8'h00;
     assign reladdr1[7:0]  = op1_out;
     assign reladdr2[7:0]  = op2_out;
-    assign rpc1 = (pc1_plus_2) + reladdr1;
-    assign rpc2 = (pc1_plus_3) + reladdr2;
+    assign rpc_prev = (pc_prev_plus_2) + reladdr1;
+    assign rpc2 = (pc_prev_plus_3) + reladdr2;
 
     // SJMP.
-    wire [15:0] sjmp_pc = rpc1;
+    wire [15:0] sjmp_pc = rpc_prev;
 
     // absolute address jumps.
     wire [15:0] ljmp_pc = {op1_out, op2_out};
 
     // The following is derived from this SMT expression.
     // ajmp_pc = Concat(Extract(15, 11, pc_p2), Extract(7, 5, op0), op1)
-    wire [15:0] ajmp_pc = {pc1_plus_2[15:11], op0_out[7:5], op1_out};
+    wire [15:0] ajmp_pc = {pc_prev_plus_2[15:11], op0_out[7:5], op1_out};
 
     // JC
-    wire [15:0] jc_pc = cy_reg ? rpc1 : pc1_plus_2;
-    wire [15:0] jnc_pc = cy_reg ? pc1_plus_2 : rpc1;
+    wire [15:0] jc_pc = cy_prev ? rpc_prev : pc_prev_plus_2;
+    wire [15:0] jnc_pc = cy_prev ? pc_prev_plus_2 : rpc_prev;
 
     assign property_invalid_pcp1 = 
-        (!first_instr && pc_log_change && op_valid && pcp1) && 
-        ((pc1+16'd1) != pc2);
+        (out_of_rst && pc_change_r && op_valid && pcp1) && 
+        ((pc_prev+16'd1) != pc);
     assign property_invalid_pcp2 = 
-        (!first_instr && pc_log_change && op_valid && pcp2) && 
-        ((pc1+16'd2) != pc2);
+        (out_of_rst && pc_change_r && op_valid && pcp2) && 
+        ((pc_prev+16'd2) != pc);
     assign property_invalid_pcp3 = 
-        (!first_instr && pc_log_change && op_valid && pcp3) && 
-        ((pc1+16'd3) != pc2);
+        (out_of_rst && pc_change_r && op_valid && pcp3) && 
+        ((pc_prev+16'd3) != pc);
     assign property_invalid_sjmp = 
-        (!first_instr && pc_log_change && op_valid && pc_is_sjmp) && 
-        (sjmp_pc != pc2);
+        (out_of_rst && pc_change_r && op_valid && pc_is_sjmp) && 
+        (sjmp_pc != pc);
     assign property_invalid_ljmp = 
-        (!first_instr && pc_log_change && op_valid && pc_is_ljmp) && 
-        (ljmp_pc != pc2);
+        (out_of_rst && pc_change_r && op_valid && pc_is_ljmp) && 
+        (ljmp_pc != pc);
     assign property_invalid_ajmp = 
-        (!first_instr && pc_log_change && op_valid && pc_is_ajmp) && 
-        (ajmp_pc != pc2);
+        (out_of_rst && pc_change_r && op_valid && pc_is_ajmp) && 
+        (ajmp_pc != pc);
     assign property_invalid_jc = 
-        (!first_instr && pc_log_change && op_valid && pc_is_jc) && 
-        (jc_pc != pc2);
+        (out_of_rst && pc_change_r && op_valid && pc_is_jc) && 
+        (jc_pc != pc);
     assign property_invalid_jnc = 
-        (!first_instr && pc_log_change && op_valid && pc_is_jnc) && 
-        (jnc_pc != pc2);
+        (out_of_rst && pc_change_r && op_valid && pc_is_jnc) && 
+        (jnc_pc != pc);
+
+    reg pc_change_r;
 
     always @(posedge clk)
     begin
         if (rst) begin
-            first_instr <= 1;
+            pc_change_r <= 0;
+            pc_prev     <= 0;
+            cy_prev     <= 0;
         end
         else begin
-            if(pc_log_change && first_instr) begin
-                first_instr <= 0;
+            pc_change_r <= pc_change;
+            if (pc_change_r) begin
+                // here is where the rest of the state updates will go.
+                pc_prev <= pc;
+                cy_prev <= cy;
             end
         end
     end
 
-    reg pc_log_change_r;
-    always @(posedge clk)
-    begin
-        pc_log_change_r <= pc_log_change;
-    end
-
-    reg cy_reg;
-    always @(posedge clk)
-    begin
-        if (pc_log_change_r) begin
-            cy_reg <= cy;
-        end
-    end
-
+    /*
     oc8051_symbolic_cxrom oc8051_symbolic_cxrom1 ( 
         .clk                  ( clk            ),
         .rst                  ( rst            ),
         .word_in              ( word_in        ),
         .cxrom_addr           ( cxrom_addr     ),
-        .pc1                  ( pc1            ),
-        .pc2                  ( pc2            ),
-        .cxrom_data_out       ( cxrom_data_out ),
-        .op_valid             ( op_valid       ),
-        .op0_out              ( op0_out        ),
-        .op1_out              ( op1_out        ),
-        .op2_out              ( op2_out        )
-    );
-    /*
-    oc8051_debug_cxrom oc8051_debug_cxrom1 ( 
-        .clk                  ( clk            ),
-        .rst                  ( rst            ),
-        .word_in              ( word_in        ),
-        .cxrom_addr           ( cxrom_addr     ),
-        .pc1                  ( pc1            ),
-        .pc2                  ( pc2            ),
+        .pc1                  ( pc_prev        ),
+        .pc2                  ( pc            ),
         .cxrom_data_out       ( cxrom_data_out ),
         .op_valid             ( op_valid       ),
         .op0_out              ( op0_out        ),
@@ -311,6 +293,19 @@ input         t2_i,             // counter 2 input
         .op2_out              ( op2_out        )
     );
     */
+    oc8051_debug_cxrom oc8051_debug_cxrom1 ( 
+        .clk                  ( clk            ),
+        .rst                  ( rst            ),
+        .word_in              ( word_in        ),
+        .cxrom_addr           ( cxrom_addr     ),
+        .pc1                  ( pc_prev        ),
+        .pc2                  ( pc             ),
+        .cxrom_data_out       ( cxrom_data_out ),
+        .op_valid             ( op_valid       ),
+        .op0_out              ( op0_out        ),
+        .op1_out              ( op1_out        ),
+        .op2_out              ( op2_out        )
+    );
 
     oc8051_top oc8051_top_1(
          .wb_rst_i(rst), .wb_clk_i(clk),
@@ -326,10 +321,10 @@ input         t2_i,             // counter 2 input
          .cxrom_addr            ( cxrom_addr     ),
          .cxrom_data_out        ( cxrom_data_out ),
 
-         .pc_log_change         (pc_log_change),
-         .pc_log                (pc2),
-         .pc_log_prev           (pc1),
-         .cy                    (cy),
+         .out_of_rst            ( out_of_rst     ),
+         .pc_change             ( pc_change      ),
+         .pc                    ( pc             ),
+         .cy                    ( cy             ),
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
