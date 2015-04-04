@@ -952,7 +952,7 @@ begin
   else if (rd & !int_ack_t)
     pc <= #1 pc_buf - 16'h8 + {13'h0, op_pos} + {14'h0, op_length};
 end
-wire pc_change = pc_wr_r2 | (rd & !int_ack_t);
+wire pc_change = pc_wr_r2 || ((rd & !int_ack_t) && !pc_wr_r2 && !pc_wr_r);
 
 
 // spramod added pc_for_ajmp

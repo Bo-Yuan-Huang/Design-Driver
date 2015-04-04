@@ -146,6 +146,8 @@ input         t2_i,             // counter 2 input
     wire pc_change;
     wire [15:0] pc;
     wire cy; // carry flag.
+    reg out_of_rst_r, out_of_rst_r2;
+    reg pc_change_r;
     reg [15:0] pc_prev;
     reg cy_prev;
 
@@ -235,42 +237,45 @@ input         t2_i,             // counter 2 input
     wire [15:0] jnc_pc = cy_prev ? pc_prev_plus_2 : rpc_prev;
 
     assign property_invalid_pcp1 = 
-        (out_of_rst && pc_change_r && op_valid && pcp1) && 
+        (out_of_rst_r2 && pc_change && op_valid && pcp1) && 
         ((pc_prev+16'd1) != pc);
     assign property_invalid_pcp2 = 
-        (out_of_rst && pc_change_r && op_valid && pcp2) && 
+        (out_of_rst_r2 && pc_change && op_valid && pcp2) && 
         ((pc_prev+16'd2) != pc);
     assign property_invalid_pcp3 = 
-        (out_of_rst && pc_change_r && op_valid && pcp3) && 
+        (out_of_rst_r2 && pc_change && op_valid && pcp3) && 
         ((pc_prev+16'd3) != pc);
     assign property_invalid_sjmp = 
-        (out_of_rst && pc_change_r && op_valid && pc_is_sjmp) && 
+        (out_of_rst_r2 && pc_change && op_valid && pc_is_sjmp) && 
         (sjmp_pc != pc);
     assign property_invalid_ljmp = 
-        (out_of_rst && pc_change_r && op_valid && pc_is_ljmp) && 
+        (out_of_rst_r2 && pc_change && op_valid && pc_is_ljmp) && 
         (ljmp_pc != pc);
     assign property_invalid_ajmp = 
-        (out_of_rst && pc_change_r && op_valid && pc_is_ajmp) && 
+        (out_of_rst_r2 && pc_change && op_valid && pc_is_ajmp) && 
         (ajmp_pc != pc);
     assign property_invalid_jc = 
-        (out_of_rst && pc_change_r && op_valid && pc_is_jc) && 
+        (out_of_rst_r2 && pc_change && op_valid && pc_is_jc) && 
         (jc_pc != pc);
     assign property_invalid_jnc = 
-        (out_of_rst && pc_change_r && op_valid && pc_is_jnc) && 
+        (out_of_rst_r2 && pc_change && op_valid && pc_is_jnc) && 
         (jnc_pc != pc);
 
-    reg pc_change_r;
 
     always @(posedge clk)
     begin
         if (rst) begin
-            pc_change_r <= 0;
-            pc_prev     <= 0;
-            cy_prev     <= 0;
+            pc_change_r     <= 0;
+            out_of_rst_r    <= 0;
+            out_of_rst_r2   <= 0;
+            pc_prev         <= 0;
+            cy_prev         <= 0;
         end
         else begin
-            pc_change_r <= pc_change;
-            if (pc_change_r) begin
+            pc_change_r  <= pc_change;
+            out_of_rst_r <= out_of_rst;
+            out_of_rst_r2 <= out_of_rst_r;
+            if (pc_change) begin
                 // here is where the rest of the state updates will go.
                 pc_prev <= pc;
                 cy_prev <= cy;
@@ -278,7 +283,6 @@ input         t2_i,             // counter 2 input
         end
     end
 
-    /*
     oc8051_symbolic_cxrom oc8051_symbolic_cxrom1 ( 
         .clk                  ( clk            ),
         .rst                  ( rst            ),
@@ -292,7 +296,7 @@ input         t2_i,             // counter 2 input
         .op1_out              ( op1_out        ),
         .op2_out              ( op2_out        )
     );
-    */
+    /*
     oc8051_debug_cxrom oc8051_debug_cxrom1 ( 
         .clk                  ( clk            ),
         .rst                  ( rst            ),
@@ -306,6 +310,7 @@ input         t2_i,             // counter 2 input
         .op1_out              ( op1_out        ),
         .op2_out              ( op2_out        )
     );
+    */
 
     oc8051_top oc8051_top_1(
          .wb_rst_i(rst), .wb_clk_i(clk),

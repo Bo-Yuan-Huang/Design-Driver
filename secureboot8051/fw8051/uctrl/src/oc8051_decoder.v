@@ -94,7 +94,7 @@ module oc8051_decoder (clk, rst,
   src_sel1, src_sel2, src_sel3,
   alu_op_o, psw_set, eq, cy_sel, comp_sel,
   pc_wr, pc_sel, rd, rmw, istb, mem_act, mem_wait,
-  wait_data);
+  wait_data, pc_change);
 
 //
 // clk          (in)  clock
@@ -131,6 +131,7 @@ output [1:0] psw_set, cy_sel, wr_sfr_o, src_sel2, comp_sel;
 output [2:0] mem_act, src_sel1, ram_rd_sel_o, ram_wr_sel_o, pc_sel, op1_c;
 output [3:0] alu_op_o;
 output rd;
+output pc_change;
 
 reg rmw;
 reg src_sel3, wr,  bit_addr, pc_wr;
@@ -158,6 +159,7 @@ assign state_dec = wait_data ? 2'b00 : state;
 assign op_cur = mem_wait ? 8'h00
                 : (state[0] || state[1] || mem_wait || wait_data) ? op : op_in;
 //assign op_cur = (state[0] || state[1] || mem_wait || wait_data) ? op : op_in;
+wire pc_change  = !state[0] && !state[1] && !mem_wait && !wait_data;
 
 assign op1_c = op_cur[2:0];
 
@@ -2637,6 +2639,46 @@ always @(posedge clk or posedge rst)
   if (rst) op <= #1 2'b00;
   else if (state==2'b00) op <= #1 op_in;
 
+/*
+reg next_state_0;
+always @(op_in)
+begin
+  casex (op_in) 
+    `OC8051_ACALL   : next_state_0 = 0;
+    `OC8051_AJMP    : next_state_0 = 0;
+    `OC8051_CJNE_R  : next_state_0 = 0;
+    `OC8051_CJNE_I  : next_state_0 = 0;
+    `OC8051_CJNE_D  : next_state_0 = 0;
+    `OC8051_CJNE_C  : next_state_0 = 0;
+    `OC8051_LJMP    : next_state_0 = 0;
+    `OC8051_DJNZ_R  : next_state_0 = 0;
+    `OC8051_DJNZ_D  : next_state_0 = 0;
+    `OC8051_LCALL   : next_state_0 = 0;
+    `OC8051_MOVC_DP : next_state_0 = 0;
+    `OC8051_MOVC_PC : next_state_0 = 0;
+    `OC8051_MOVX_IA : next_state_0 = 0;
+    `OC8051_MOVX_AI : next_state_0 = 0;
+    `OC8051_MOVX_PA : next_state_0 = 0;
+    `OC8051_MOVX_AP : next_state_0 = 0;
+    `OC8051_RET     : next_state_0 = 0;
+    `OC8051_RETI    : next_state_0 = 0;
+    `OC8051_SJMP    : next_state_0 = 0;
+    `OC8051_JB      : next_state_0 = 0;
+    `OC8051_JBC     : next_state_0 = 0;
+    `OC8051_JC      : next_state_0 = 0;
+    `OC8051_JMP_D   : next_state_0 = 0;
+    `OC8051_JNC     : next_state_0 = 0;
+    `OC8051_JNB     : next_state_0 = 0;
+    `OC8051_JNZ     : next_state_0 = 0;
+    `OC8051_JZ      : next_state_0 = 0;
+    `OC8051_DIV     : next_state_0 = 0;
+    `OC8051_MUL     : next_state_0 = 0;
+    default         : next_state_0 = 1;
+  endcase
+end
+*/
+
+//wire pc_change  = (state == 2'b01) || (state == 2'b00 && next_state_0);
 //
 // in case of instructions that needs more than one clock set state
 always @(posedge clk or posedge rst)

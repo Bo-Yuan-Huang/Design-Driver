@@ -411,7 +411,8 @@ oc8051_decoder oc8051_decoder1(.clk(wb_clk_i),
                                .istb(istb),
                                .mem_act(mem_act),
                                .mem_wait(mem_wait),
-                               .wait_data(wait_data));
+                               .wait_data(wait_data),
+                               .pc_change(pc_change));
 
 
 wire [7:0] sub_result;
@@ -616,7 +617,7 @@ oc8051_memory_interface oc8051_memory_interface1(.clk(wb_clk_i),
                        .acc(acc),
                        .sp(sp),
 // verif
-                       .pc_change(pc_change)
+                       .pc_change()
                        );
 
 
