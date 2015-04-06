@@ -16,19 +16,15 @@ module oc8051_fv_top(
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
     p0_in,             // port 0 input
-    p0_out,
  `endif
  `ifdef OC8051_PORT1
     p1_in,             // port 1 input
-    p1_out,
  `endif
  `ifdef OC8051_PORT2
     p2_in,             // port 2 input
-    p2_out,
  `endif
  `ifdef OC8051_PORT3
     p3_in,             // port 3 input
-    p3_out,
  `endif
 `endif
 `ifdef OC8051_UART
@@ -60,19 +56,19 @@ module oc8051_fv_top(
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
     input  [7:0]  p0_in;             // port 0 input
-    output [7:0]  p0_out;
+    wire [7:0]  p0_out;
  `endif
  `ifdef OC8051_PORT1
     input  [7:0]  p1_in;             // port 1 input
-    output [7:0]  p1_out;
+    wire [7:0]  p1_out;
  `endif
  `ifdef OC8051_PORT2
     input  [7:0]  p2_in;             // port 2 input
-    output [7:0]  p2_out;
+    wire [7:0]  p2_out;
  `endif
  `ifdef OC8051_PORT3
     input  [7:0]  p3_in;             // port 3 input
-    output [7:0]  p3_out;
+    wire [7:0]  p3_out;
  `endif
 `endif
 
@@ -102,21 +98,6 @@ input         t2_i,             // counter 2 input
 
     wire int0 = 0;
     wire int1 = 1;
-
-`ifdef OC8051_PORTS
- `ifdef OC8051_PORT0
-    wire [7:0]  p0_out;             // port 0 output
- `endif
- `ifdef OC8051_PORT1
-    wire [7:0]  p1_out;             // port 1 output
- `endif
- `ifdef OC8051_PORT2
-    wire [7:0]  p2_out;             // port 2 output
- `endif
- `ifdef OC8051_PORT3
-    wire [7:0]  p3_out;             // port 3 output
- `endif
-`endif
 
 `ifdef OC8051_UART
     wire        txd_o;            // transnmit

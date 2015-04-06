@@ -20,6 +20,8 @@ module oc8051_fv_tb();
     wire property_invalid_sjmp;
     wire property_invalid_ljmp;
     wire property_invalid_ajmp;
+    wire property_invalid_jc;
+    wire property_invalid_jnc;
     reg [31:0] word_in = 32'hffffffff;
 
 
@@ -181,7 +183,9 @@ module oc8051_fv_tb();
         .property_invalid_pcp3  (property_invalid_pcp3  ),
         .property_invalid_sjmp  (property_invalid_sjmp  ),
         .property_invalid_ljmp  (property_invalid_ljmp  ),
-        .property_invalid_ajmp  (property_invalid_ajmp  )
+        .property_invalid_ajmp  (property_invalid_ajmp  ),
+        .property_invalid_jc    (property_invalid_jc    ),
+        .property_invalid_jnc   (property_invalid_jnc   )
     );
 
 endmodule

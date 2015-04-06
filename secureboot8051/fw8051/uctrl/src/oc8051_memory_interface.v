@@ -557,18 +557,17 @@ end
 
 // out_of_rst goes high after we fetch two blocks after reset.
 reg [1:0] inc_pc_count;
-reg out_of_rst;
+wire [1:0] inc_pc_count_next = (inc_pc_count == 2'd2 ? 2'd2 :
+                                inc_pc ? inc_pc_count+1 : inc_pc);
+wire out_of_rst = (inc_pc_count == 2'd2);
+
 always @(posedge clk or posedge rst)
 begin
   if (rst) begin
-    out_of_rst         <= 0;
-    inc_pc_count        = 0;
+    inc_pc_count <= 0;
   end
   else begin
-    if (inc_pc && !out_of_rst) begin
-        inc_pc_count = inc_pc_count + 2'd1;
-        out_of_rst  <= (inc_pc_count == 2'd2);
-    end
+    inc_pc_count <= inc_pc_count_next;
   end 
 end
 
