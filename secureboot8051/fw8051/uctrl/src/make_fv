@@ -1,4 +1,4 @@
-iverilog -o oc8051_fv -Wall -D OC8051_SIMULATION    \
+iverilog -o oc8051_fv -Wall -Wno-timescale -D OC8051_SIMULATION    \
 oc8051_fv_tb.v                  \
 oc8051_fv_top.v                 \
 oc8051_top.v                    \
@@ -29,4 +29,5 @@ oc8051_rom.v                    \
 oc8051_cache_ram.v              \
 oc8051_ram_256x8_two_bist.v     \
 oc8051_ram_64x32_dual_bist.v    \
-oc8051_symbolic_cxrom.v
+oc8051_symbolic_cxrom.v         \
+oc8051_debug_cxrom.v

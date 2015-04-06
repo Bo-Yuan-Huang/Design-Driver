@@ -10,4 +10,3 @@ abc -liberty abcv2.lib
 opt
 write_verilog -bcd -noinst -noclk -nocmt netlist/oc8051_fv_top_yosys_all.v
 write_verilog -bcd -nocmt                netlist/oc8051_fv_top_yosys_all_sim.v
-

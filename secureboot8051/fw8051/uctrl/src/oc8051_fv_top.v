@@ -13,6 +13,20 @@ module oc8051_fv_top(
     clk,
     rst,
     word_in,
+`ifdef OC8051_PORTS
+ `ifdef OC8051_PORT0
+    p0_in,             // port 0 input
+ `endif
+ `ifdef OC8051_PORT1
+    p1_in,             // port 1 input
+ `endif
+ `ifdef OC8051_PORT2
+    p2_in,             // port 2 input
+ `endif
+ `ifdef OC8051_PORT3
+    p3_in,             // port 3 input
+ `endif
+`endif
 `ifdef OC8051_UART
     rxd_i,            // receive
 `endif
@@ -26,7 +40,14 @@ module oc8051_fv_top(
     t2_i,             // counter 2 input
     t2ex_i,           //
 `endif
-    property_invalid
+    property_invalid_pcp1,
+    property_invalid_pcp2,
+    property_invalid_pcp3,
+    property_invalid_sjmp,
+    property_invalid_ljmp,
+    property_invalid_ajmp,
+    property_invalid_jc,
+    property_invalid_jnc
 );
     input clk;
     input rst;
@@ -34,19 +55,19 @@ module oc8051_fv_top(
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
-    wire  [7:0]  p0_in = 0;             // port 0 input
+    input  [7:0]  p0_in;             // port 0 input
     wire [7:0]  p0_out;
  `endif
  `ifdef OC8051_PORT1
-    wire  [7:0]  p1_in = 0;             // port 1 input
+    input  [7:0]  p1_in;             // port 1 input
     wire [7:0]  p1_out;
  `endif
  `ifdef OC8051_PORT2
-    wire  [7:0]  p2_in = 0;             // port 2 input
+    input  [7:0]  p2_in;             // port 2 input
     wire [7:0]  p2_out;
  `endif
  `ifdef OC8051_PORT3
-    wire  [7:0]  p3_in = 0;             // port 3 input
+    input  [7:0]  p3_in;             // port 3 input
     wire [7:0]  p3_out;
  `endif
 `endif
@@ -66,43 +87,17 @@ input         t2_i,             // counter 2 input
 `endif
 
 
-    output property_invalid;
-
-    wire property_invalid_pcp1;
-    wire property_invalid_pcp2;
-    wire property_invalid_pcp3;
-    wire property_invalid_sjmp;
-    wire property_invalid_ljmp;
-    wire property_invalid_ajmp;
-    wire property_invalid_jc;
-    wire property_invalid_jnc;
-
-    assign property_invalid = property_invalid_pcp1 ||
-                              property_invalid_pcp2 ||
-                              property_invalid_pcp3 ||
-                              property_invalid_sjmp ||
-                              property_invalid_ljmp ||
-                              property_invalid_ajmp ||
-                              property_invalid_jc   ||
-                              property_invalid_jnc;
+    output property_invalid_pcp1;
+    output property_invalid_pcp2;
+    output property_invalid_pcp3;
+    output property_invalid_sjmp;
+    output property_invalid_ljmp;
+    output property_invalid_ajmp;
+    output property_invalid_jc;
+    output property_invalid_jnc;
 
     wire int0 = 0;
     wire int1 = 1;
-
-`ifdef OC8051_PORTS
- `ifdef OC8051_PORT0
-    wire [7:0]  p0_out;             // port 0 output
- `endif
- `ifdef OC8051_PORT1
-    wire [7:0]  p1_out;             // port 1 output
- `endif
- `ifdef OC8051_PORT2
-    wire [7:0]  p2_out;             // port 2 output
- `endif
- `ifdef OC8051_PORT3
-    wire [7:0]  p3_out;             // port 3 output
- `endif
-`endif
 
 `ifdef OC8051_UART
     wire        txd_o;            // transnmit
