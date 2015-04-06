@@ -187,7 +187,7 @@ module oc8051_top (wb_rst_i, wb_clk_i,
 `endif
 // external access (active low)
                 ea_in,
-                pc_log_change,
+                pc_change,
                 pc_log,
                 pc_log_prev,
                 cy
@@ -205,7 +205,7 @@ input         wb_rst_i,         // reset input
               wbd_err_i,        // data error
               wbi_err_i;        // instruction error
 
-output        pc_log_change;
+output        pc_change;
 output [15:0] pc_log;
 output [15:0] pc_log_prev;
 output        cy;
@@ -355,7 +355,7 @@ wire [7:0]  op1_n, //from memory_interface to decoder
             op3_n;
 wire        irom_out_of_rst;
 wire        new_pc_log;
-wire        pc_log_change;
+wire        pc_change;
 wire        decoder_new_valid_pc;
 wire [15:0] pc_log;
 wire [15:0] pc_log_prev;
@@ -383,7 +383,7 @@ wire        iack_i,
 wire [31:0] idat_i;
 wire [15:0] iadr_o;
 
-assign pc_log_change = decoder_new_valid_pc;
+assign pc_change = decoder_new_valid_pc;
 
 //
 // decoder
@@ -572,7 +572,7 @@ oc8051_memory_interface oc8051_memory_interface1(.clk(wb_clk_i),
                        .istb_o(istb_o),
                        .out_of_rst(irom_out_of_rst),
                        .decoder_new_valid_pc(decoder_new_valid_pc),
-                       .pc_log(pc_log),
+                       .pc2(pc_log),
                        .pc_log_prev(pc_log_prev),
 
 // internal instruction rom

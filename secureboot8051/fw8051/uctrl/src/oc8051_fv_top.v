@@ -124,7 +124,7 @@ input         t2_i,             // counter 2 input
     wire [15:0] wbi_adr_o;
 
     reg  first_instr;
-    wire pc_log_change;
+    wire pc_change;
     wire [15:0] pc2, pc1;
     wire cy; // carry flag.
     wire op_valid;
@@ -133,7 +133,7 @@ input         t2_i,             // counter 2 input
     wire [7:0] op2_out;
 
 
-    // pc_log_change => (pc_log_prev = pc_log + 1).
+    // pc_change => (pc_log_prev = pc_log + 1).
     wire pcp1 = 
         (op0_out[1] && op0_out[2] && !op0_out[4] && op0_out[6]) || (op0_out[1] && op0_out[2]
         && !op0_out[3] && op0_out[4] && !op0_out[5]) || (op0_out[0] && op0_out[1] &&
@@ -214,28 +214,28 @@ input         t2_i,             // counter 2 input
     wire [15:0] jnc_pc = cy_reg ? pc1_plus_2 : rpc1;
 
     assign property_invalid_pcp1 = 
-        (!first_instr && pc_log_change && op_valid && pcp1) && 
+        (!first_instr && pc_change && op_valid && pcp1) && 
         ((pc1+16'd1) != pc2);
     assign property_invalid_pcp2 = 
-        (!first_instr && pc_log_change && op_valid && pcp2) && 
+        (!first_instr && pc_change && op_valid && pcp2) && 
         ((pc1+16'd2) != pc2);
     assign property_invalid_pcp3 = 
-        (!first_instr && pc_log_change && op_valid && pcp3) && 
+        (!first_instr && pc_change && op_valid && pcp3) && 
         ((pc1+16'd3) != pc2);
     assign property_invalid_sjmp = 
-        (!first_instr && pc_log_change && op_valid && pc_is_sjmp) && 
+        (!first_instr && pc_change && op_valid && pc_is_sjmp) && 
         (sjmp_pc != pc2);
     assign property_invalid_ljmp = 
-        (!first_instr && pc_log_change && op_valid && pc_is_ljmp) && 
+        (!first_instr && pc_change && op_valid && pc_is_ljmp) && 
         (ljmp_pc != pc2);
     assign property_invalid_ajmp = 
-        (!first_instr && pc_log_change && op_valid && pc_is_ajmp) && 
+        (!first_instr && pc_change && op_valid && pc_is_ajmp) && 
         (ajmp_pc != pc2);
     assign property_invalid_jc = 
-        (!first_instr && pc_log_change && op_valid && pc_is_jc) && 
+        (!first_instr && pc_change && op_valid && pc_is_jc) && 
         (jc_pc != pc2);
     assign property_invalid_jnc = 
-        (!first_instr && pc_log_change && op_valid && pc_is_jnc) && 
+        (!first_instr && pc_change && op_valid && pc_is_jnc) && 
         (jnc_pc != pc2);
 
     always @(posedge clk)
@@ -244,22 +244,22 @@ input         t2_i,             // counter 2 input
             first_instr <= 1;
         end
         else begin
-            if(pc_log_change && first_instr) begin
+            if(pc_change && first_instr) begin
                 first_instr <= 0;
             end
         end
     end
 
-    reg pc_log_change_r;
+    reg pc_change_r;
     always @(posedge clk)
     begin
-        pc_log_change_r <= pc_log_change;
+        pc_change_r <= pc_change;
     end
 
     reg cy_reg;
     always @(posedge clk)
     begin
-        if (pc_log_change_r) begin
+        if (pc_change_r) begin
             cy_reg <= cy;
         end
     end
@@ -307,7 +307,7 @@ input         t2_i,             // counter 2 input
          .cxrom_addr            ( cxrom_addr     ),
          .cxrom_data_out        ( cxrom_data_out ),
 
-         .pc_log_change         (pc_log_change),
+         .pc_change             (pc_change),
          .pc_log                (pc2),
          .pc_log_prev           (pc1),
          .cy                    (cy),
