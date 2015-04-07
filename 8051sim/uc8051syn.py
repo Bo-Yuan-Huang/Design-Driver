@@ -304,16 +304,24 @@ def synthesize(opc, regs, logfilename, outputfilename, verbosity, unsat_core):
     ctxDPTR.DPH = Extract(15, 8, ctxDPTR.DPTR)
 
     # exchange instructions.
+    # first we deal with the direct addressed exchanges.
     XCHG_SRC2_DIR_ADDR = Choice('XCHG_SRC2_DIR_ADDR', ctx.op0, 
         [ctx.op1, ctx.op2] + ctx.RxAddrs())
     XCHG_SRC2_DIR = ctx.readDirect(XCHG_SRC2_DIR_ADDR)
     ctxXCHG_DIR = ctx.writeDirect(XCHG_SRC2_DIR_ADDR, ctx.ACC)
     ctxXCHG_DIR.ACC = XCHG_SRC2_DIR
 
+    # and now with the indirect addressed exchanges.
+    # note we can have both a 'full' write and a 'half' write which only
+    # modifes the lower nibble
     XCHG_SRC2_INDIR_ADDR = Choice('XCHG_SRC2_INDIR_ADDR', ctx.op0, [ctx.Rx(0), ctx.Rx(1)])
-    XCHG_SRC2_INDIR = ReadMem(ctx.IRAM, XCHG_SRC2_INDIR_ADDR)
+    XCHG_SRC2_FULL_INDIR = ReadMem(ctx.IRAM, XCHG_SRC2_INDIR_ADDR)
+    XCHG_SRC2_HALF_INDIR = Concat(Extract(7, 4, ctx.ACC), Extract(3, 0, XCHG_SRC2_FULL_INDIR))
+    XCHG_SRC2_INDIR = Choice('XCHG_SRC2_INDIR', ctx.op0, [XCHG_SRC2_FULL_INDIR, XCHG_SRC2_HALF_INDIR])
+    XCHG_SRC1_HALF_INDIR = Concat(Extract(7, 4, XCHG_SRC2_FULL_INDIR), Extract(3, 0, ctx.ACC))
+    XCHG_SRC1_INDIR = Choice('XCHG_SRC1', ctx.op0, [XCHG_SRC1_HALF_INDIR, ctx.ACC])
     ctxXCHG_INDIR = ctxNOP.clone()
-    ctxXCHG_INDIR.IRAM = WriteMem(ctx.IRAM, XCHG_SRC2_INDIR_ADDR, ctx.ACC)
+    ctxXCHG_INDIR.IRAM = WriteMem(ctx.IRAM, XCHG_SRC2_INDIR_ADDR, XCHG_SRC1_INDIR)
     ctxXCHG_INDIR.ACC = XCHG_SRC2_INDIR
 
     # XRAM reads and writes
