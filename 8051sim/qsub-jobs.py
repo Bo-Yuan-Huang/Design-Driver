@@ -16,10 +16,17 @@ script = Template("""#PBS -l walltime=36:00:00
 cd $curdir
 ./uc8051syn.py $op $state >& $out""")
 
+all_state = [
+    'PC', 'ACC', 'IRAM', 'XRAM', 'PSW', 'SP',
+    'B', 'DPL', 'DPH', 'P0', 'P1', 'P2', 'P3',
+    'PCON', 'TCON', 'TMOD', 'TL0', 'TH0', 'TL1',
+    'TH1', 'SCON', 'SBUF', 'IE', 'IP',
+]
+
 def create_scripts(start, stop, name, state):
     for op in xrange(start, stop):
-        script_name = 'syn51_%s_%02x.sh' % (name, op)
-        output = 'syn51_%02x.%s' % (op, name)
+        script_name = 'syn8051_%s_%02x.sh' % (name, op)
+        output = 'output/syn8051_%02x.%s' % (op, name)
         with open(script_name, 'wt') as fileobj:
             print >> fileobj, script.substitute(
                                 curdir=os.getcwd(),
@@ -37,9 +44,14 @@ def main():
     parser.add_argument("start_opcode", help="start opcode", type=auto_int)
     parser.add_argument("stop_opcode", help="stop opcode", type=auto_int)
     parser.add_argument("name", help="job name")
-    parser.add_argument("state", help="state", nargs="+")
+    parser.add_argument("state", help="state (use '<all>' to synthesize everything", nargs="+")
     args = parser.parse_args()
-    create_scripts(args.start_opcode, args.stop_opcode, args.name, args.state)
+    if state == ['<all>']:
+        for s in all_state:
+            name = args.name + '_' + s
+            create_scripts(args.start_opcode, args.stop_opcode, name, [s])
+    else:
+        create_scripts(args.start_opcode, args.stop_opcode, args.name, args.state)
 
 if __name__ == '__main__':
     main()

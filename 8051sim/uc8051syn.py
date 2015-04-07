@@ -344,6 +344,23 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
     syn.addOutput('B', ctxFINAL.B, Synthesizer.BITVEC)
     syn.addOutput('DPL', ctxFINAL.DPL, Synthesizer.BITVEC)
     syn.addOutput('DPH', ctxFINAL.DPH, Synthesizer.BITVEC)
+    # ports
+    syn.addOutput('P0', ctxFINAL.P0, Synthesizer.BITVEC)
+    syn.addOutput('P1', ctxFINAL.P1, Synthesizer.BITVEC)
+    syn.addOutput('P2', ctxFINAL.P2, Synthesizer.BITVEC)
+    syn.addOutput('P3', ctxFINAL.P3, Synthesizer.BITVEC)
+    # misc SFRs.
+    syn.addOutput('PCON', ctxFINAL.PCON, Synthesizer.BITVEC)
+    syn.addOutput('TCON', ctxFINAL.TCON, Synthesizer.BITVEC)
+    syn.addOutput('TMOD', ctxFINAL.TMOD, Synthesizer.BITVEC)
+    syn.addOutput('TL0', ctxFINAL.TL0, Synthesizer.BITVEC)
+    syn.addOutput('TH0', ctxFINAL.TH0, Synthesizer.BITVEC)
+    syn.addOutput('TL1', ctxFINAL.TL1, Synthesizer.BITVEC)
+    syn.addOutput('TH1', ctxFINAL.TH1, Synthesizer.BITVEC)
+    syn.addOutput('SCON', ctxFINAL.SCON, Synthesizer.BITVEC)
+    syn.addOutput('SBUF', ctxFINAL.SBUF, Synthesizer.BITVEC)
+    syn.addOutput('IE', ctxFINAL.IE, Synthesizer.BITVEC)
+    syn.addOutput('IP', ctxFINAL.IP, Synthesizer.BITVEC)
 
     if logfilename:
         lf = open(logfilename, 'wt')
