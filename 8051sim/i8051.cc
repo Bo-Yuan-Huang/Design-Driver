@@ -1087,7 +1087,7 @@ I8051::SynSim(const char* filename)
                 tempACC = RAM[ACC];
                 // RAM[ACC] = tempACC/RAM[B];
                 RAM[ACC] = tempACC/((unsigned char)RAM[B]);
-                RAM[B] = tempACC%RAM[B];
+                RAM[B] = tempACC%((unsigned char)RAM[B]);
             }               
             ClearBit(RAM[PSW], CY);
             cycleCount += 48;
