@@ -46,7 +46,7 @@ def main():
     parser.add_argument("name", help="job name")
     parser.add_argument("state", help="state (use '<all>' to synthesize everything", nargs="+")
     args = parser.parse_args()
-    if state == ['<all>']:
+    if args.state == ['<all>']:
         for s in all_state:
             name = args.name + '_' + s
             create_scripts(args.start_opcode, args.stop_opcode, name, [s])
