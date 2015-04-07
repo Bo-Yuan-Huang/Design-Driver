@@ -265,7 +265,10 @@ class Synthesizer(object):
 
         for out in outs:
             out.clearCache()
-        return [out.synthesize(m) for out in outs]
+        rs = [out.synthesize(m) for out in outs]
+        for r in rs:
+            r.clearCache()
+        return rs
 
     def cleanupMemList(self, memvals):        
         vals = []

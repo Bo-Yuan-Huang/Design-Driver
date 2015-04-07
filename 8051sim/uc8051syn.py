@@ -7,8 +7,9 @@ import argparse
 from synthesizer import Synthesizer
 from uc8051ast import Ctx8051, Ctx8051FromSyn, create8051Inputs, CtxChoice
 from uc8051sim import eval8051
+from cPickle import Pickler
 
-def synthesize(opc, regs, logfilename, verbosity, unsat_core):
+def synthesize(opc, regs, logfilename, outputfilename, verbosity, unsat_core):
     syn = Synthesizer()
     create8051Inputs(syn)
     ctx = Ctx8051FromSyn(syn)
@@ -77,13 +78,6 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
         PC_plus1, PC_plus2, PC_plus3, PC_ajmp, 
         PC_ret, PC_ljmp, PC_sjmp, PC_jb, 
         PC_jc, PC_jz, PC_jmp, PC_cjne, PC_djnz])
-
-    # IMM1 = ctx.op1
-    # IRAM_MOV_AT_R0 = WriteMem(ctx.IRAM, Rx[0], IMM1)
-    # syn.addOutput('IRAM', IRAM_MOV_AT_R0, Synthesizer.MEM)
-
-    # INC_SRC1_INDIR_ADDR = Choice('INC_SRC1_INDIR', ctx.op0, [Rx[0], Rx[1]])
-    # INC_SRC1_INDIR = ReadMem(ctx.IRAM, INC_SRC1_INDIR_ADDR)
 
     ctxNOP = ctx.clone()
     ctxNOP.PC = nextPC
@@ -375,12 +369,20 @@ def synthesize(opc, regs, logfilename, verbosity, unsat_core):
 
     # synthesize
     r = syn.synthesize(regs, [cnst], eval8051)
-    # print
-    fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'
-    print fmt % tuple([opc] + r)
-    # log again
-    if lf: 
-        print >> lf, fmt % tuple([opc] + r)
+    if len(outputfilename):
+        with open(outputfilename, 'wb') as f:
+            pk = Pickler(f, -1)
+            pk.dump(opc)
+            for name, ast in itertools.izip(regs, r):
+                pk.dump(name)
+                pk.dump(ast)
+    else:
+        # print
+        fmt = '%02x\n' + ('\n'.join(['%s'] * len(r))) + '\n'
+        print fmt % tuple([opc] + r)
+        # log again
+        if lf: 
+            print >> lf, fmt % tuple([opc] + r)
 
     if lf:
         lf.close()
@@ -393,12 +395,13 @@ def main():
     parser.add_argument("--log", help="log file name")
     parser.add_argument("--verbosity", help="verbosity", type=int, default=0)
     parser.add_argument("--unsat_core", help="generate UNSAT core?", type=int, default=0)
+    parser.add_argument("--output", help='Pickled AST output.', default='')
     parser.add_argument("opcode", help="opcode", type=auto_int)
     parser.add_argument("state", help="state", nargs="+")
     args = parser.parse_args()
     print 'opcode : 0x%x' % args.opcode
     print 'state  : %s' % (', '.join(args.state))
-    synthesize(args.opcode, args.state, args.log, args.verbosity, args.unsat_core)
+    synthesize(args.opcode, args.state, args.log, args.output, args.verbosity, args.unsat_core)
 
 if __name__ == '__main__':
     main()
