@@ -1,7 +1,7 @@
 import itertools
 import z3
 import pdb
-from z3helper import *
+import z3helper
 
 class Node(object):
     """Base class for nodes in the AST. When creating a subclass of Node, the
@@ -923,24 +923,40 @@ class Macro(Node):
 
 class Z3Op(Node):
     """Binary operators from Z3."""
-    def __init__(self, opname, op, operands, rwidthFun, mwidthFun = None):
+    def __init__(self, opname, op, operands, rwidthFun, mwidthFun = None, params = None):
         """Constructor.
         
         - opname is the name of this operation (used for pretty-printing).
         - op is the (Z3 or wrapper over Z3) function that performs this 
           operation.
-        - operands should be self-explanatory.
+        - params are parameters passed to the function op before the
+          real operands. (see below for an explanation of the difference
+          between params and operands).
+        - operands should be self-explanatory. 
         - rwidthFun is the function is used to compute the result-width
-          of this operation."""
+          of this operation.
+        
+        DIFFERENCE between params and operands:   
+         
+          - when defining a function like Add(op1, op2): op1 and op2 are
+          operands and there are no parameters.
+          - but suppose we want to define SignExt(5, op1); 5 is a parameter
+            while op1 is the operand. 
+          """
 
         Node.__init__(self, Node.Z3OP)
         self.op = op
         self.opname = opname
+        self.params = params
         self.operands = operands[:]
         self.rwidthFun = rwidthFun
         self.mwidthFun = mwidthFun
 
-        width = self.rwidthFun(self.operands)
+        if self.params:
+            width = self.rwidthFun(self.params, self.operands)
+        else:
+            width = self.rwidthFun(self.operands)
+
         if width != -1:
             self.width = width
 
@@ -951,7 +967,11 @@ class Z3Op(Node):
                 self.dwidth = dwidth
 
     def _toZ3sHelper(self, prefix, rfun):
-        return self.op(*[rfun(x, prefix) for x in self.operands])
+        args = [rfun(x, prefix) for x in self.operands]
+        if self.params:
+            return self.op(*(self.params + args))
+        else:
+            return self.op(*args)
 
     def _toZ3(self, prefix):
         rfun = lambda n, prefix : n.toZ3(prefix)
@@ -962,11 +982,29 @@ class Z3Op(Node):
         return self._toZ3sHelper(prefix, rfun)
 
     def _synthesize(self, m):
-        obj_ = Z3Op(self.opname, self.op, [o.synthesize(m) for o in self.operands], self.rwidthFun, self.mwidthFun)
+        obj_ = Z3Op(self.opname, self.op, [o.synthesize(m) for o in self.operands], self.rwidthFun, self.mwidthFun, self.params)
         return obj_
 
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            if self.opname != other.opname:
+                return False
+            if self.params != other.params:
+                return False
+            if self.operands != other.operands:
+                return False
+            return True
+        return NotImplemented
+
     def __str__(self):
-        return '(%s %s)' % (self.opname, ' '.join(str(x) for x in self.operands))
+        argstr = ' '.join(str(x) for x in self.operands)
+        if self.params:
+            paramstr = ' '.join(str(x) for x in self.params)
+            return '(%s %s %s)' % (self.opname, paramstr, argstr)
+        else:
+            return '(%s %s)' % (self.opname, argstr)
 
     def childObjects(self):
         for op in self.operands:
@@ -985,91 +1023,81 @@ def Xor(op):
     return Z3Op('xor', z3.Xor, operands, _noWidth)
 
 def Add(op1, op2):
-    return Z3Op('add', lambda op1, op2: op1 + op2, [op1, op2], _determineOpWidth)
+    return Z3Op('add', z3helper.z3Add, [op1, op2], _determineOpWidth)
 
 def Sub(op1, op2):
-    return Z3Op('sub', lambda op1, op2: op1 - op2, [op1, op2], _determineOpWidth)
+    return Z3Op('sub', z3helper.z3Sub, [op1, op2], _determineOpWidth)
 
 def Neg(op):
-    return Z3Op('neg', lambda op: -op, [op], _determineOpWidth)
+    return Z3Op('neg', z3helper.z3Neg, [op], _determineOpWidth)
 
 def Distinct(op1, op2):
     return Z3Op('distinct', z3.Distinct, [op1, op2], _determineOpWidth)
 
 def Equal(op1, op2):
-    return Z3Op('eq', lambda op1, op2: op1 == op2, [op1, op2], _noWidth)
+    return Z3Op('eq', z3helper.z3Eq, [op1, op2], _noWidth)
 
 def RotateRight(op):
-    return Z3Op('rr', lambda op: z3.RotateRight(op, 1), [op], _determineOpWidth)
+    return Z3Op('rr', z3helper.z3RR, [op], _determineOpWidth)
 
 def RotateLeft(op):
-    return Z3Op('rl', lambda op: z3.RotateLeft(op, 1), [op], _determineOpWidth)
+    return Z3Op('rl', z3helper.z3RL, [op], _determineOpWidth)
 
 def SLT(op1, op2):
-    return Z3Op('slt', lambda op1, op2: op1 < op2, [op1, op2], _noWidth)
+    return Z3Op('slt', z3helper.z3SLT, [op1, op2], _noWidth)
 
 def SGT(op1, op2):
-    return Z3Op('sgt', lambda op1, op2: op1 > op2, [op1, op2], _noWidth)
+    return Z3Op('sgt', z3helper.z3SGT, [op1, op2], _noWidth)
 
 def ULT(op1, op2):
-    return Z3Op('ult', lambda op1, op2: z3.ULT(op1, op2), [op1, op2], _noWidth)
+    return Z3Op('ult', z3.ULT, [op1, op2], _noWidth)
 
 def UGT(op1, op2):
-    return Z3Op('ugt', lambda op1, op2: z3.UGT(op1, op2), [op1, op2], _noWidth)
+    return Z3Op('ugt', z3.UGT, [op1, op2], _noWidth)
+
+def _extendWidth(params, ops):
+    assert len(params) == 1
+    assert len(ops) == 1
+    [n], [op] = params, ops
+    return op.width + n
 
 def ZeroExt(op, n):
-    def _extWidth(ops):
-        assert len(ops) == 1
-        return op.width + n
-    return Z3Op('zero-ext', lambda op: z3.ZeroExt(n, op), [op], _extWidth)
+    return Z3Op('zero-ext', z3.ZeroExt, [op], _extendWidth, params=[n])
 
 def SignExt(op, n):
-    def _extWidth(ops):
-        assert len(ops) == 1
-        return op.width + n
-    return Z3Op('sign-ext', lambda op: z3.SignExt(n, op), [op], _extWidth)
+    return Z3Op('sign-ext', z3.SignExt, [op], _extendWidth, params=[n])
 
 def LShift(op1, op2):
-    return Z3Op('lshift', lambda op1, op2: op1 << op2, [op1, op2], _determineOpWidth)
+    return Z3Op('lshift', z3helper.z3LShift, [op1, op2], _determineOpWidth)
 
 def RShift(op1, op2):
-    return Z3Op('rshift', lambda op1, op2: op1 >> op2, [op1, op2], _determineOpWidth)
+    return Z3Op('rshift', z3helper.z3RShift, [op1, op2], _determineOpWidth)
 
 def Complement(op):
-    return Z3Op('cpl', lambda op: ~op, [op], _determineOpWidth)
+    return Z3Op('cpl', z3helper.z3Complement, [op], _determineOpWidth)
 
 def BVAnd(op1, op2):
-    return Z3Op('bvand', lambda op1, op2: op1 & op2, [op1, op2], _determineOpWidth)
+    return Z3Op('bvand', z3helper.z3BVAnd, [op1, op2], _determineOpWidth)
 
 def BVOr(op1, op2):
-    return Z3Op('bvor', lambda op1, op2: op1 | op2, [op1, op2], _determineOpWidth)
+    return Z3Op('bvor', z3helper.z3BVOr, [op1, op2], _determineOpWidth)
 
 def BVXor(op1, op2):
-    return Z3Op('bvxor', lambda op1, op2: op1 ^ op2, [op1, op2], _determineOpWidth)
+    return Z3Op('bvxor', z3helper.z3BVXor, [op1, op2], _determineOpWidth)
 
 def BVXnor(op1, op2):
-    return Z3Op('bvxnor', lambda op1, op2: ~(op1 ^ op2), [op1, op2], _determineOpWidth)
+    return Z3Op('bvxnor', z3helper.z3BVXnor, [op1, op2], _determineOpWidth)
 
 def BVDiv(op1, op2):
-    return Z3Op('bvdiv', lambda op1, op2: z3.UDiv(op1, op2), [op1, op2], _determineOpWidth)
+    return Z3Op('bvdiv', z3.UDiv, [op1, op2], _determineOpWidth)
 
 def BVRem(op1, op2):
-    return Z3Op('bvrem', lambda op1, op2: z3.URem(op1, op2), [op1, op2], _determineOpWidth)
+    return Z3Op('bvrem', z3.URem, [op1, op2], _determineOpWidth)
 
 def BVMul(op1, op2):
-    return Z3Op('bvmul', lambda op1, op2: op1 * op2, [op1, op2], _determineOpWidth);
+    return Z3Op('bvmul', z3helper.z3Mul, [op1, op2], _determineOpWidth);
 
-#def If(cond, vthen, velse):
-#    def _ifWidth(ops):
-#        assert len(ops) == 3
-#        return _determineOpWidth(ops[1:])
-#    def _ifMemWidth(ops):
-#        assert len(ops) == 3
-#        return _determineMemWidth(ops[1:])
-#
-#    return Z3Op('if', z3.If, [cond, vthen, velse], _ifWidth, _ifMemWidth)
-
-# Stupid utility function.
+# Utility function.
 def ilog2(x):
     lg = 0
     while True:
