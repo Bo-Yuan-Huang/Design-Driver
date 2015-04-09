@@ -1,0 +1,37 @@
+ÄKu.ÄUSPq.Äcast
+If
+q)Åq}q(Uexpfalseqcast
+BitVecVar
+q)Åq}q(Unodetypeq	KUz3cnstsq
+}UwidthqKUz3objsq}Uis_inputqâUsynMemoqNUnameqUSPqubh	Kh
+}Uexptrueqcast
+Macro
+q)Åq}q(Uinputsq]q(cast
+MemVar
+q)Åq}q(UawidthqKh	Kh
+}h}hâhNUdwidthqKhUROMqubh)Åq}q(h	Kh
+}hKh}hâhNhUPCqubeh	Kh
+}Utypenameq Uop2q!h}hâUexprq"cast
+ReadMem
+q#)Åq$}q%(Uaddrq&cast
+Z3Op
+q')Åq(}q)(h	Kh
+}Uoperandsq*]q+(hcast
+BitVecVal
+q,)Åq-}q.(h	Kh
+}hKh}Uvalueq/KhâhNhU_UnnamedObjectq0ubehKh}U	mwidthFunq1NhâUparamsq2NUopq3cz3helper
+z3Add
+q4Uopnameq5Uaddq6hNU	rwidthFunq7cast
+_determineOpWidth
+q8hh0ubh	K	h
+}hKUmemq9hh}hâhNhh0ubhNhKhh0ubhKh}hâUcondq:h')Åq;}q<(h	Kh
+}h*]q=(h)Åq>}q?(h]q@(hheh	Kh
+}h Uop1qAh}hâh"h#)ÅqB}qC(h&h')ÅqD}qE(h	Kh
+}h*]qF(hh,)ÅqG}qH(h	Kh
+}hKh}h/KhâhNhh0ubehKh}h1Nhâh2Nh3h4h5h6hNh7h8hh0ubh	K	h
+}hKh9hh}hâhNhh0ubhNhKhh0ubh,)ÅqI}qJ(h	Kh
+}hKh}h/KÅhâhNhh0ubeh}h1Nhâh2Nh3cz3helper
+z3Eq
+qKh5UeqqLhNh7cast
+_noWidth
+qMhh0ubhNhh0ub.

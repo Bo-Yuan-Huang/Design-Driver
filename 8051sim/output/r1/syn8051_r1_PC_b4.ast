@@ -1,0 +1,47 @@
+ÄK¥.ÄUPCq.Äcast
+If
+q)Åq}q(Uexpfalseqcast
+Z3Op
+q)Åq}q(Unodetypeq	KUz3cnstsq
+}Uoperandsq]q(cast
+BitVecVar
+q)Åq}q(h	Kh
+}UwidthqKUz3objsq}Uis_inputqâUsynMemoqNUnameqUPCqubcast
+BitVecVal
+q)Åq}q(h	Kh
+}hKh}UvalueqKhâhNhU_UnnamedObjectqubehKh}U	mwidthFunqNhâUparamsqNUopqcz3helper
+z3Add
+qUopnameqUaddq hNU	rwidthFunq!cast
+_determineOpWidth
+q"hhubh	Kh
+}Uexptrueq#h)Åq$}q%(h	Kh
+}h]q&(hh)Åq'}q((h	Kh
+}h]q)cast
+Macro
+q*)Åq+}q,(Uinputsq-]q.(cast
+MemVar
+q/)Åq0}q1(Uawidthq2Kh	Kh
+}h}hâhNUdwidthq3KhUROMq4ubheh	Kh
+}Utypenameq5Uop2q6h}hâUexprq7cast
+ReadMem
+q8)Åq9}q:(Uaddrq;h)Åq<}q=(h	Kh
+}h]q>(hh)Åq?}q@(h	Kh
+}hKh}hKhâhNhhubehKh}hNhâhNhhhh hNh!h"hhubh	K	h
+}hKUmemqAh0h}hâhNhhubhNhKhhubahKh}hNhâh]qBKahcz3
+SignExt
+qChUsign-extqDhNh!cast
+_extendWidth
+qEhhubehKh}hNhâhNhhhh hNh!h"hhubhKh}hâUcondqFh)ÅqG}qH(h	Kh
+}h]qIh)ÅqJ}qK(h	Kh
+}h]qL(h)ÅqM}qN(h	Kh
+}hKh}hâhNhUACCqOubh*)ÅqP}qQ(h-]qR(h0heh	Kh
+}h5Uop1qSh}hâh7h8)ÅqT}qU(h;h)ÅqV}qW(h	Kh
+}h]qX(hh)ÅqY}qZ(h	Kh
+}hKh}hKhâhNhhubehKh}hNhâhNhhhh hNh!h"hhubh	K	h
+}hKhAh0h}hâhNhhubhNhKhhubeh}hNhâhNhcz3helper
+z3Eq
+q[hUeqq\hNh!cast
+_noWidth
+q]hhubah}hNhâhNhcz3
+Not
+q^hUnotq_hNh!h]hhubhNhhub.
