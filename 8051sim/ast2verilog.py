@@ -83,7 +83,7 @@ def bitvecval2verilog(node, ctx):
 def memvar2verilog(node, ctx):
     assert node.nodetype == ast.Node.MEMVAR
     sz = 1 << node.awidth
-    ctx.add_mem(name, sz, node.dwidth)
+    ctx.addMem(name, sz, node.dwidth)
     return node
 
 def readmem2verilog(node, ctx):
@@ -126,6 +126,90 @@ def macro2verilog(node, ctx):
     return ctx.getExpr(node.expr)
 
 def z3op2verilog(node, ctx):
+    assert node.nodetype == ast.Node.Z3OP
+    ops = [ctx.getExpr(op) for op in node.operands]
+    params = [ctx.getExpr(p) for p in node.params]
+    if node.opname == 'and':
+        return '( %s )' % (' && '.join(ops)
+    elif node.opname == 'or':
+        return '( %s )' % (' || '.join(ops)
+    elif node.opname == 'not':
+        assert len(ops) == 1
+        return '!( %s )' % str(ops[0])
+    elif node.opname == 'xor':
+        return '( %s )' % (' ^ '.join(ops)
+    elif node.opname == 'add':
+        return '( %s )' % (' + '.join(ops)
+    elif node.opname == 'sub':
+        assert len(ops) == 2
+        return '( %s )' % (' - '.join(ops)
+    elif node.opname == 'distinct':
+        assert len(ops) == 2
+        return '( %s )' % (' != '.join(ops)
+    elif node.opname == 'eq':
+        assert len(ops) == 2
+        return '( %s )' % (' == '.join(ops)
+    elif node.opname == 'rr':
+        assert len(ops) == 1
+        w = node.width
+        return '{ %s[0], %s[%d:1] }' % (ops[0], ops[0], w-1)
+    elif node.opname == 'rl':
+        assert len(ops) == 1
+        w = node.width
+        return '{ %s[%d:0], %s[%d] }' % (ops[0], w-2, ops[0], w-1)
+    elif node.opname == 'slt':
+        sops = ['$signed(%s)' % ctx.getExpr(op) for op in node.operands]
+        assert len(sops) == 2
+        return '( %s )' % (' < '.join(sops)
+    elif node.opname == 'sgt':
+        sops = ['$signed(%s)' % ctx.getExpr(op) for op in node.operands]
+        assert len(sops) == 2
+        return '( %s )' % (' > '.join(sops)
+    elif node.opname == 'ult':
+        return '( %s )' % (' < '.join(ops)
+    elif node.opname == 'ugt':
+        return '( %s )' % (' > '.join(ops)
+    elif node.opname == 'zero-ext':
+        assert len(ops) == 1
+        assert len(params) == 1
+        w = node.operands[0].width
+        return '{ %s{1\'b0}, %s }' % (params[0], ops[0])
+    elif node.opname == 'sign-ext':
+        assert len(ops) == 1
+        assert len(params) == 1
+        w = node.operands[0].width
+        return '{ %s{%s}, %s }' % (params[0], ops[0], ops[0])
+    elif node.opname == 'lshift':
+        assert len(ops) == 2
+        return '( %s )' % (' << '.join(ops)
+    elif node.opname == 'rshift':
+        assert len(ops) == 2
+        return '( %s )' % (' >> '.join(ops)
+    elif node.opname == 'cpl':
+        assert len(ops) == 1
+        return '~( %s )' % str(ops[0])
+    elif node.opname == 'bvand':
+        assert len(ops) == 2
+        return '( %s )' % (' & '.join(ops)
+    elif node.opname == 'bvor':
+        assert len(ops) == 2
+        return '( %s )' % (' | '.join(ops)
+    elif node.opname == 'bvxor':
+        assert len(ops) == 2
+        return '( %s )' % (' ^ '.join(ops)
+    elif node.opname == 'bvxnor':
+        assert len(ops) == 2
+        return '~( %s )' % (' ^ '.join(ops)
+    elif node.opname == 'bvdiv':
+        assert len(ops) == 2
+        return '( %s )' % (' / '.join(ops)
+    elif node.opname == 'bvrem':
+        assert len(ops) == 2
+        return '( %s )' % (' % '.join(ops)
+    elif node.opname == 'bvmul':
+        assert len(ops) == 2
+        return '( %s )' % (' * '.join(ops)
+
 
 if __name__ == '__main__':
     asts = readAllASTs(sys.argv[1])
