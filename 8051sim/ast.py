@@ -91,6 +91,15 @@ class Node(object):
         "Predicate that returns true if the node is a MemVar."
         return self.nodetype == Node.MEMVAR
 
+    def isMem(self):
+        "Predicate that returns true if the node is a memory."
+        # This seems a bit ugly but is apparently the Python way
+        try:
+            w = self.awidth
+            return True
+        except AttributeError:
+            return False
+
     def isFuncVar(self):
         "Predicate that returns true if the node is a FuncVar."
         return self.nodetype == Node.FUNCVAR
@@ -475,6 +484,19 @@ class Choice(Node):
             self.awidth = awidth
             self.dwidth = dwidth
 
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            if self.name != other.name:
+                return False
+            if self.choiceVar != other.choiceVar:
+                return False
+            if self.choices != other.choices:
+                return False
+            return True
+        return NotImplemented
+
     def _toZ3sHelper(self, prefix, rfun):
         assert len(self.choices) >= 1
 
@@ -637,6 +659,19 @@ class ChooseConsecBits(Node):
         self.bitvec = bitvec
         self.width = numBits
 
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            if self.name != other.name:
+                return False
+            if self.bitvec != other.bitvec:
+                return False
+            if self.width != other.width:
+                return False
+            return True
+        return NotImplemented
+
     def _toZ3sHelper(self, prefix, rfun):
         self.choiceBools = []
         self.rangeStarts = []
@@ -710,6 +745,19 @@ class Extract(Node):
         self.msb = msb
         self.lsb = lsb
         self.width = self.msb - self.lsb + 1
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            if self.bv != other.bv:
+                return False
+            if self.msb != other.msb:
+                return False
+            if self.lsb != other.lsb:
+                return False
+            return True
+        return NotImplemented
 
     def _toZ3sHelper(self, prefix, rfun):
         return z3.Extract(self.msb, self.lsb, rfun(self.bv, prefix))

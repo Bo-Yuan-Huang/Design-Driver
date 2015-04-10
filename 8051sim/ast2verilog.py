@@ -46,12 +46,12 @@ class VerilogContext(object):
 
     def _getName(self):
         self.nameCtr += 1
-        return 'n%05d' % self.nameCtr
+        return 'n%04d' % self.nameCtr
 
     def addInput(self, node, width):
         if node not in self.objects:
-            self.inputs.append((name, width))
-            self.objects[node] = name
+            self.inputs.append((node.name, width))
+            self.objects[node] = node.name
     
     def addMem(self, node):
         sz = 1 << node.awidth
@@ -62,27 +62,47 @@ class VerilogContext(object):
         assert mem in self.objects
         self.memwrites.append((mem, addr, data))
 
-    def addWire(self, node, name, width):
+    def getWidth(self, node):
+        try:
+            w = node.width
+            width = (w-1, 0)
+        except AttributeError:
+            width = None
+        return width
+
+    def addWire(self, node, name):
         assert node not in self.objects
-        self.wires.append((name, width))
-        self.objects[node] = name
+        self.wires.append((name, self.getWidth(node)))
+
+    def addAssignment(self, node, exp, name = None):
+        if name is None:
+            name = self._getName()
+            self.addWire(node, name)
+        else:
+            self.wires.append((name, self.getWidth(node)))
+        stmt = 'assign %s = %s;' % (name, exp)
+        self.statements.append(stmt)
+        return name
 
     def getExpr(self, node):
         if node not in self.objects:
-            try:
-                w = node.width
-                width = (w-1, 0)
-            except AttributeError:
-                width = None
-
-            name = self._getName()
-            self.addWire(node, name, width)
             obj = node2verilog(node, self)
             self.objects[node] = obj
         return self.objects[node]
 
     def dump(self, f):
-        pass
+        for inp, width in self.inputs:
+            if width:
+                print >> f, 'input [%d:%d] %s;' % (width[0], width[1], inp)
+            else:
+                print >> f, 'input %s;' % inp
+        for wire, width in self.wires:
+            if width:
+                print >> f, 'wire [%d:%d] %s;' % (width[0], width[1], wire)
+            else:
+                print >> f, 'wire %s;' % wire
+        for s in self.statements:
+            print s
 
 def node2verilog(node, ctx):
     if node.nodetype == ast.Node.BOOLVAR:
@@ -139,9 +159,9 @@ def memvar2verilog(node, ctx):
 
 def readmem2verilog(node, ctx):
     assert node.nodetype == ast.Node.READMEM
-    mem = ctx.getExpr(node.mem)
+    mem = node.mem.name
     addr = ctx.getExpr(node.addr)
-    return '%s[%s]' % (mem, addr)
+    return ctx.addAssignment(node, '%s[%s]' % (mem, addr))
 
 def writemem2verilog(node, ctx):
     assert node.nodetype == ast.Node.WRITEMEM
@@ -154,25 +174,25 @@ def writemem2verilog(node, ctx):
 def extract2verilog(node, ctx):
     assert node.nodetype == ast.Node.EXTRACT
     bv = ctx.getExpr(node.bv)
-    return '%s[%d:%d]' % (bv, node.msb, node.lsb)
+    return ctx.addAssignment(node, '%s[%d:%d]' % (bv, node.msb, node.lsb))
 
 def extractbit2verilog(node, ctx):
     assert node.nodetype == ast.Node.EXTRACTBIT
     word = ctx.getExpr(node.word)
     bit = ctx.getExpr(node.bit)
-    return '%s[%s]' % (word, bit)
+    return ctx.addAssignment(node, '%s[%s]' % (word, bit))
 
 def if2verilog(node, ctx):
     assert node.nodetype == ast.Node.IF
     cond = ctx.getExpr(node.cond)
     et = ctx.getExpr(node.exptrue)
     ef = ctx.getExpr(node.expfalse)
-    return '%s ? %s : %s' % (cond, et, ef)
+    return ctx.addAssignment(node, '( %s ) ? ( %s ) : ( %s )' % (cond, et, ef))
     
 def concat2verilog(node, ctx):
     assert node.nodetype == ast.Node.CONCAT
     bvs = ['( %s )' % ctx.getExpr(bv) for bv in node.bitvecs]
-    return '{ %s }' % (', '.join(bvs))
+    return ctx.addAssignment(node, '{ %s }' % (', '.join(bvs)))
 
 def macro2verilog(node, ctx):
     assert node.nodetype == ast.Node.MACRO
@@ -187,95 +207,102 @@ def z3op2verilog(node, ctx):
         params = []
 
     if node.opname == 'and':
-        return '( %s )' % (' && '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' && '.join(ops)))
     elif node.opname == 'or':
-        return '( %s )' % (' || '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' || '.join(ops)))
     elif node.opname == 'not':
         assert len(ops) == 1
-        return '!( %s )' % str(ops[0])
+        return ctx.addAssignment(node, '!( %s )' % str(ops[0]))
     elif node.opname == 'xor':
-        return '( %s )' % (' ^ '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' ^ '.join(ops)))
     elif node.opname == 'add':
-        return '( %s )' % (' + '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' + '.join(ops)))
     elif node.opname == 'sub':
         assert len(ops) == 2
-        return '( %s )' % (' - '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' - '.join(ops)))
     elif node.opname == 'distinct':
         assert len(ops) == 2
-        return '( %s )' % (' != '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' != '.join(ops)))
     elif node.opname == 'eq':
         assert len(ops) == 2
-        return '( %s )' % (' == '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' == '.join(ops)))
     elif node.opname == 'rr':
         assert len(ops) == 1
         w = node.width
-        return '{ %s[0], %s[%d:1] }' % (ops[0], ops[0], w-1)
+        return ctx.addAssignment(node, '{ %s[0], %s[%d:1] }' % (ops[0], ops[0], w-1))
     elif node.opname == 'rl':
         assert len(ops) == 1
         w = node.width
-        return '{ %s[%d:0], %s[%d] }' % (ops[0], w-2, ops[0], w-1)
+        return ctx.addAssignment(node, '{ %s[%d:0], %s[%d] }' % (ops[0], w-2, ops[0], w-1))
     elif node.opname == 'slt':
         sops = ['$signed(%s)' % ctx.getExpr(op) for op in node.operands]
         assert len(sops) == 2
-        return '( %s )' % (' < '.join(sops))
+        return ctx.addAssignment(node, '( %s )' % (' < '.join(sops)))
     elif node.opname == 'sgt':
         sops = ['$signed(%s)' % ctx.getExpr(op) for op in node.operands]
         assert len(sops) == 2
-        return '( %s )' % (' > '.join(sops))
+        return ctx.addAssignment(node, '( %s )' % (' > '.join(sops)))
     elif node.opname == 'ult':
-        return '( %s )' % (' < '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' < '.join(ops)))
     elif node.opname == 'ugt':
-        return '( %s )' % (' > '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' > '.join(ops)))
     elif node.opname == 'zero-ext':
         assert len(ops) == 1
         assert len(params) == 1
         w = node.operands[0].width
-        return '{ %s{1\'b0}, %s }' % (params[0], ops[0])
+        return ctx.addAssignment(node, '{ %s{1\'b0}, %s }' % (params[0], ops[0]))
     elif node.opname == 'sign-ext':
         assert len(ops) == 1
         assert len(params) == 1
         w = node.operands[0].width
-        return '{ %s{%s}, %s }' % (params[0], ops[0], ops[0])
+        return ctx.addAssignment(node, '{ %s{%s}, %s }' % (params[0], ops[0], ops[0]))
     elif node.opname == 'lshift':
         assert len(ops) == 2
-        return '( %s )' % (' << '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' << '.join(ops)))
     elif node.opname == 'rshift':
         assert len(ops) == 2
-        return '( %s )' % (' >> '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' >> '.join(ops)))
     elif node.opname == 'cpl':
         assert len(ops) == 1
-        return '~( %s )' % str(ops[0])
+        return ctx.addAssignment(node, '~( %s )' % str(ops[0]))
     elif node.opname == 'bvand':
         assert len(ops) == 2
-        return '( %s )' % (' & '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' & '.join(ops)))
     elif node.opname == 'bvor':
         assert len(ops) == 2
-        return '( %s )' % (' | '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' | '.join(ops)))
     elif node.opname == 'bvxor':
         assert len(ops) == 2
-        return '( %s )' % (' ^ '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' ^ '.join(ops)))
     elif node.opname == 'bvxnor':
         assert len(ops) == 2
-        return '~( %s )' % (' ^ '.join(ops))
+        return ctx.addAssignment(node, '~( %s )' % (' ^ '.join(ops)))
     elif node.opname == 'bvdiv':
         assert len(ops) == 2
-        return '( %s )' % (' / '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' / '.join(ops)))
     elif node.opname == 'bvrem':
         assert len(ops) == 2
-        return '( %s )' % (' % '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' % '.join(ops)))
     elif node.opname == 'bvmul':
         assert len(ops) == 2
-        return '( %s )' % (' * '.join(ops))
+        return ctx.addAssignment(node, '( %s )' % (' * '.join(ops)))
 
 
-if __name__ == '__main__':
+def main():
     asts = readAllASTs(sys.argv[1])
     vctx = VerilogContext()
     assert len(asts) == 0x100
-    for astdict in asts:
+    opcodes_to_exclude = [0xF0, 0xF2, 0xF3, 0xE0, 0xE2, 0xE3]
+    for opcode, astdict in enumerate(asts):
         assert len(astdict) == 24
+        if opcode in opcodes_to_exclude:
+            continue
         for k, v in astdict.iteritems():
-            vctx.getExpr(v)
+            name = '%s_%02x' % (k, opcode)
+            if v.isMem():
+                continue
+            vctx.addAssignment(v, vctx.getExpr(v), name)
+    vctx.dump(sys.stdout)
 
-
-    print 'all good!'
+if __name__ == '__main__':
+    main()
