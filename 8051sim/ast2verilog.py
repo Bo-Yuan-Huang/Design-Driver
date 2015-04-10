@@ -74,6 +74,10 @@ class VerilogContext(object):
         assert node not in self.objects
         self.wires.append((name, self.getWidth(node)))
 
+    def addComment(self, cmt):
+        stmt = '// %s' % cmt
+        self.statements.append(stmt)
+
     def addAssignment(self, node, exp, name = None):
         if name is None:
             name = self._getName()
@@ -150,7 +154,7 @@ def boolvar2verilog(node, ctx):
 
 def bitvecval2verilog(node, ctx):
     assert node.nodetype == ast.Node.BITVECVAL
-    return "%d\'x%x" % (node.width, node.value)
+    return "%d\'h%x" % (node.width, node.value)
 
 def memvar2verilog(node, ctx):
     assert node.nodetype == ast.Node.MEMVAR
@@ -293,15 +297,24 @@ def main():
     vctx = VerilogContext()
     assert len(asts) == 0x100
     opcodes_to_exclude = [0xF0, 0xF2, 0xF3, 0xE0, 0xE2, 0xE3]
+    state_changes = {}
     for opcode, astdict in enumerate(asts):
         assert len(astdict) == 24
         if opcode in opcodes_to_exclude:
             continue
-        for k, v in astdict.iteritems():
-            name = '%s_%02x' % (k, opcode)
-            if v.isMem():
+        vctx.addComment('Opcode: %02x' % opcode)
+        for st, v in astdict.iteritems():
+            name = '%s_%02x' % (st, opcode)
+            # ignore the case where nothing changes.
+            if v.isVar() and v.name == st: continue
+            # we know something changes.
+            if v.isMem(): 
+                print v
                 continue
             vctx.addAssignment(v, vctx.getExpr(v), name)
+            if st not in state_changes:
+                state_changes[st] = []
+            state_changes[st].append((opcode, name))
     vctx.dump(sys.stdout)
 
 if __name__ == '__main__':
