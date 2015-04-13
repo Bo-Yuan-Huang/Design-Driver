@@ -366,8 +366,10 @@ def main():
             # we know something changes.
             if v.isMem(): 
                 mw = vctx.getMemWrite(st, v)
-                if mw:
-                    print str(mw)
+                if mw != None:
+                    if st not in vctx.memwrites:
+                        vctx.memwrites[st] = []
+                    vctx.memwrites[st].append((opcode, mw))
             else:
                 vctx.addAssignment(v, vctx.getExpr(v), name)
                 if st not in state_changes:
