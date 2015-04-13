@@ -4,6 +4,12 @@ import ast
 import z3
 from cPickle import Unpickler
 
+def readCnst(filename):
+    with open(filename, 'rb') as f:
+        pk = Unpickler(f)
+        cnst = pk.load()
+        return cnst
+
 def readAST(filename):
     with open(filename, 'rb') as f:
         pk = Unpickler(f)
@@ -48,12 +54,36 @@ class MemWrite(object):
             self.addr = args['addr']
             self.data = args['data']
 
+    def toVerilog(self):
+        stmts = []
+        if self.writetype == MemWrite.COND:
+            if self.etrue == None:
+                assert self.efalse != None
+                stmts.append('if(!%s) begin' % self.cond)
+                stmts += ['  ' + s for s in self.efalse.toVerilog()]
+                stmts.append('end')
+            elif self.efalse == None:
+                assert self.etrue != None
+                stmts.append('if(%s) begin' % self.cond)
+                stmts += ['  ' + s for s in self.etrue.toVerilog()]
+                stmts.append('end')
+            else:
+                stmts.append('if(%s) begin' % self.cond)
+                stmts += ['  ' + s for s in self.etrue.toVerilog()]
+                stmts.append('end')
+                stmts.append('else begin')
+                stmts += ['  ' + s for s in self.efalse.toVerilog()]
+                stmts.append('end')
+        else:
+            stmts.append('%s[%s] <= %s' % (self.mem.name, self.addr, self.data))
+        return stmts
+
     def __str__(self):
         if self.writetype == MemWrite.COND:
             if self.etrue == None:
                 assert self.efalse != None
                 return 'if(!%s) %s; ' % (self.cond, str(self.efalse))
-            if self.efalse == None:
+            elif self.efalse == None:
                 assert self.etrue != None
                 return 'if(%s) %s; ' % (self.cond, str(self.etrue))
             else:
@@ -67,13 +97,17 @@ class MemWrite(object):
 class VerilogContext(object):
     def __init__(self):
         self.inputs     = []
+        self.outputs    = []
         self.mems       = []
         self.wires      = []
         self.outputs    = []
-        self.memwrites  = {}
         self.statements = []
+        self.always_stmts = []
         self.objects    = {}
         self.nameCtr    = 0
+
+        self.memwrites  = {}
+        self.statechanges = {}
 
 
     def _getName(self):
@@ -84,7 +118,27 @@ class VerilogContext(object):
         if node not in self.objects:
             self.inputs.append((node.name, width))
             self.objects[node] = node.name
-    
+
+    def addNext(self, name):
+        for iname, iwidth in self.inputs:
+            if iname == name:
+                nxtname = iname + '_next'
+                self.wires.append((nxtname, iwidth))
+                self.outputs.append((iname, iwidth))
+                self.outputs.append((nxtname, iwidth))
+                return nxtname
+        raise KeyError, 'Input %s not found to create next variable!' % name
+
+    def addStateChange(self, st, opcode, name):
+        if st not in self.statechanges:
+            self.statechanges[st] = []
+        self.statechanges[st].append((opcode, name))
+
+    def addMemWrite(self, st, opcode, mw):
+        if st not in self.memwrites:
+            self.memwrites[st] = []
+        self.memwrites[st].append((opcode, mw))
+
     def addMem(self, node):
         sz = 1 << node.awidth
         self.mems.append(node)
@@ -143,19 +197,83 @@ class VerilogContext(object):
             self.objects[node] = obj
         return self.objects[node]
 
-    def dump(self, f):
+    def dumpWire(self, f, name, width, wtype):
+        if width:
+            print >> f, '%s [%d:%d] %s;' % (wtype, width[0], width[1], name)
+        else:
+            print >> f, '%s %s;' % (wtype, name)
+
+    def dump(self, f, name):
+        self.inputs.sort()
+        self.wires.sort()
+
+        print >> f, 'module %s('
+        print >> f,'  clk,\n  rst,\n  step,';
+        print >> f,',\n'.join(['  %s' % o for o,w in self.outputs])
+        print >> f,');'
+
+        print >> f, 'input clk, rst, step';
+        for inp, width in self.inputs:
+            self.dumpWire(f, inp, width, 'reg')
+        print >> f
+
+        for wire, width in self.outputs:
+            self.dumpWire(f, wire, width, 'output')
+        print >> f
+
+        for wire, width in self.wires:
+            self.dumpWire(f, wire, width, 'wire')
+        print >> f
+
+        for m in self.mems:
+            sz = 1 << m.awidth
+            print >> f, 'reg [%d:0] %s[%d:0];' % (m.dwidth-1, m.name, sz-1)
+        print >> f
+
+        for s in self.statements:
+            print >> f, s
+        
+        print >> f, 'always @posedge (clk) begin'
+        print >> f, '  if (rst) begin'
         for inp, width in self.inputs:
             if width:
-                print >> f, 'reg [%d:%d] %s;' % (width[0], width[1], inp)
+                print >> f, '    %s <= %d\'b0;' % (inp, width[0]-width[1]+1)
             else:
-                print >> f, 'reg %s;' % inp
-        for wire, width in self.wires:
-            if width:
-                print >> f, 'wire [%d:%d] %s;' % (width[0], width[1], wire)
-            else:
-                print >> f, 'wire %s;' % wire
-        for s in self.statements:
-            print s
+                print >> f, '    %s <= 0;' % inp
+        print >> f, '  end'
+        print >> f, '  else begin'
+        print >> f, '    if (step) begin'
+        for s in self.always_stmts:
+            print >> f, '      ' + s
+        print >> f, '    end'
+        print >> f, '  end'
+        print >> f, 'end'
+        print >> f, 'endmodule'
+
+    def setCnst(self, c):
+        self.cnst = c
+
+    def addOutputs(self):
+        for out, exprs in self.statechanges.iteritems():
+            outnext = self.addNext(out)
+            expr = 'assign %s = \n' % outnext;
+            for opcode, exp in exprs:
+                opast = ast.BitVecVal(opcode, self.cnst.width)
+                eqast = ast.Equal(self.cnst, opast)
+                eqexp = self.getExpr(eqast)
+                expr += '  ( %s ) ? %s : \n' % (eqexp, exp)
+            expr += '  ( %s );' % out;
+            self.statements.append(expr);
+            self.always_stmts.append('%s <= %s;' % (out, outnext))
+
+    def addMems(self):
+        for st, mws in self.memwrites.iteritems():
+            for opcode, mw in mws:
+                opast = ast.BitVecVal(opcode, self.cnst.width)
+                eqast = ast.Equal(self.cnst, opast)
+                self.always_stmts.append('if ( %s ) begin' % self.getExpr(eqast))
+                self.always_stmts += ['  '+ s for s in mw.toVerilog()]
+                self.always_stmts.append('end')
 
 def node2verilog(node, ctx):
     if node.nodetype == ast.Node.BOOLVAR:
@@ -345,37 +463,39 @@ def z3op2verilog(node, ctx):
 
 def main():
     asts = readAllASTs(sys.argv[1])
+    cnst = readCnst(sys.argv[2])
+
     vctx = VerilogContext()
     assert len(asts) == 0x100
     opcodes_to_exclude = [0xF0, 0xF2, 0xF3, 0xE0, 0xE2, 0xE3]
-    state_changes = {}
     for opcode, astdict in enumerate(asts):
         assert len(astdict) == 24
-        if opcode in opcodes_to_exclude:
-            continue
-        # for debug
-        if opcode != 0x05:
-            continue
-        vctx.addComment('Opcode: %02x' % opcode)
-        for st, v in astdict.iteritems():
-            if st != 'IRAM': continue
+        if opcode in opcodes_to_exclude: continue
 
+        # for debug
+        if opcode not in [0x04, 0x05]:
+            continue
+
+        vctx.addComment('')
+        vctx.addComment('Opcode: %02x' % opcode)
+        vctx.addComment('')
+        for st, v in astdict.iteritems():
             name = '%s_%02x' % (st, opcode)
             # ignore the case where nothing changes.
             if v.isVar() and v.name == st: continue
-            # we know something changes.
+
             if v.isMem(): 
                 mw = vctx.getMemWrite(st, v)
-                if mw != None:
-                    if st not in vctx.memwrites:
-                        vctx.memwrites[st] = []
-                    vctx.memwrites[st].append((opcode, mw))
+                if mw != None: vctx.addMemWrite(st, opcode, mw)
             else:
                 vctx.addAssignment(v, vctx.getExpr(v), name)
-                if st not in state_changes:
-                    state_changes[st] = []
-                state_changes[st].append((opcode, name))
-    vctx.dump(sys.stdout)
+                vctx.addStateChange(st, opcode, name)
+
+    vctx.setCnst(cnst)
+    vctx.addOutputs()
+    vctx.addMems()
+
+    vctx.dump(sys.stdout, 'uc8051golden')
 
 if __name__ == '__main__':
     main()
