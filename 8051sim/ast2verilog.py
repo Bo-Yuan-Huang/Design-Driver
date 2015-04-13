@@ -75,7 +75,7 @@ class MemWrite(object):
                 stmts += ['  ' + s for s in self.efalse.toVerilog()]
                 stmts.append('end')
         else:
-            stmts.append('%s[%s] <= %s' % (self.mem.name, self.addr, self.data))
+            stmts.append('%s[%s] <= %s;' % (self.mem.name, self.addr, self.data))
         return stmts
 
     def __str__(self):
@@ -207,18 +207,18 @@ class VerilogContext(object):
         self.inputs.sort()
         self.wires.sort()
 
-        print >> f, 'module %s('
+        print >> f, 'module %s(' % name
         print >> f,'  clk,\n  rst,\n  step,';
         print >> f,',\n'.join(['  %s' % o for o,w in self.outputs])
         print >> f,');'
 
-        print >> f, 'input clk, rst, step';
-        for inp, width in self.inputs:
-            self.dumpWire(f, inp, width, 'reg')
-        print >> f
-
         for wire, width in self.outputs:
             self.dumpWire(f, wire, width, 'output')
+        print >> f
+
+        print >> f, 'input clk, rst, step;';
+        for inp, width in self.inputs:
+            self.dumpWire(f, inp, width, 'reg')
         print >> f
 
         for wire, width in self.wires:
@@ -233,7 +233,8 @@ class VerilogContext(object):
         for s in self.statements:
             print >> f, s
         
-        print >> f, 'always @posedge (clk) begin'
+        print >> f
+        print >> f, 'always @(posedge clk) begin'
         print >> f, '  if (rst) begin'
         for inp, width in self.inputs:
             if width:
@@ -248,6 +249,7 @@ class VerilogContext(object):
         print >> f, '    end'
         print >> f, '  end'
         print >> f, 'end'
+        print >> f
         print >> f, 'endmodule'
 
     def setCnst(self, c):
@@ -330,9 +332,9 @@ def memvar2verilog(node, ctx):
 
 def readmem2verilog(node, ctx):
     assert node.nodetype == ast.Node.READMEM
-    mem = node.mem.name
+    mem = ctx.getExpr(node.mem)
     addr = ctx.getExpr(node.addr)
-    return ctx.addAssignment(node, '%s[%s]' % (mem, addr))
+    return ctx.addAssignment(node, '%s[%s]' % (mem.name, addr))
 
 def writemem2verilog(node, ctx):
     assert node.nodetype == ast.Node.WRITEMEM
@@ -472,10 +474,6 @@ def main():
         assert len(astdict) == 24
         if opcode in opcodes_to_exclude: continue
 
-        # for debug
-        if opcode not in [0x04, 0x05]:
-            continue
-
         vctx.addComment('')
         vctx.addComment('Opcode: %02x' % opcode)
         vctx.addComment('')
@@ -495,7 +493,9 @@ def main():
     vctx.addOutputs()
     vctx.addMems()
 
-    vctx.dump(sys.stdout, 'uc8051golden')
+    with open(sys.argv[3], 'wt') as f:
+        vctx.dump(f, 'uc8051golden')
+
 
 if __name__ == '__main__':
     main()
