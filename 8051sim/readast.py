@@ -17,5 +17,7 @@ def readAST(filename):
             except EOFError:
                 break
 
+        return opcode, ast
+
 if __name__ == '__main__':
     readAST(sys.argv[1])
