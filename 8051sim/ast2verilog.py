@@ -42,6 +42,7 @@ class MemWrite(object):
             self.cond = args['cond']
             self.etrue = args['etrue']
             self.efalse = args['efalse']
+            assert self.etrue != None or self.efalse != None 
         else:
             self.mem = args['mem']
             self.addr = args['addr']
@@ -90,11 +91,11 @@ class VerilogContext(object):
         self.objects[node] = node.name
 
     def getMemWrite(self, outname, exp):
-        assert exp.nodetype == ast.Node.IF or exp.nodetype == ast.Node.WRITEMEM or exp.nodetype == ast.Node.MEMVAR, exp
+        assert exp.nodetype == ast.Node.IF or exp.nodetype == ast.Node.WRITEMEM or exp.nodetype == ast.Node.MEMVAR, (exp, exp.nodetype)
         if exp.nodetype == ast.Node.IF:
             cond = self.getExpr(exp.cond)
             etrue = self.getMemWrite(outname, exp.exptrue)
-            efalse = getMemWrite(outname, exp.expfalse)
+            efalse = self.getMemWrite(outname, exp.expfalse)
             mw = MemWrite(MemWrite.COND, cond=cond, etrue=etrue, efalse=efalse)
             return mw
         elif exp.nodetype == ast.Node.WRITEMEM:
@@ -104,7 +105,10 @@ class VerilogContext(object):
             addr = self.getExpr(exp.addr)
             data = self.getExpr(exp.data)
             mw = MemWrite(MemWrite.WRITE, mem=mem, addr=addr, data=data)
+            return mw
         else:
+            if exp.name != outname:
+                raise NotImplementedError, 'Full memory write is not supported (yet).'
             return None
 
     def getWidth(self, node):
