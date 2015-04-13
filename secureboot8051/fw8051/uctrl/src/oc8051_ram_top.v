@@ -83,7 +83,8 @@ module oc8051_ram_top (clk,
 		       wr_data, 
 		       wr, 
 		       bit_data_in, 
-		       bit_data_out
+		       bit_data_out,
+                       iram,
 `ifdef OC8051_BIST
          ,
          scanb_rst,
@@ -115,6 +116,8 @@ input [7:0] wr_data;
 input [7:0] rd_addr, wr_addr;
 output bit_data_out;
 output [7:0] rd_data;
+
+output [2047:0] iram;
 
 `ifdef OC8051_BIST
 input   scanb_rst;
@@ -153,7 +156,8 @@ oc8051_ram_256x8_two_bist oc8051_idata(
 			   .wr_addr ( wr_addr_m  ),
 			   .wr_data ( wr_data_m  ),
 			   .wr_en   ( 1'b1       ),
-			   .wr      ( wr         )
+			   .wr      ( wr         ),
+                           .iram    ( iram       )
 `ifdef OC8051_BIST
          ,
          .scanb_rst(scanb_rst),

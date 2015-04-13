@@ -297,6 +297,7 @@ class Synthesizer(object):
     def log(self, s):
         if self.logfile:
             print >> self.logfile, s
+            self.logfile.flush()
 
     def debug(self, vb=2, lf=sys.stdout, uc=True):
         self.VERBOSITY = vb

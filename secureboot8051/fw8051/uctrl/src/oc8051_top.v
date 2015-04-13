@@ -188,9 +188,12 @@ module oc8051_top (wb_rst_i, wb_clk_i,
 // external access (active low)
                 ea_in,
                 pc_change,
+                pc,
                 pc_log,
                 pc_log_prev,
-                cy
+                psw,
+                acc,
+                iram,
                 );
 
 
@@ -206,9 +209,12 @@ input         wb_rst_i,         // reset input
               wbi_err_i;        // instruction error
 
 output        pc_change;
+output [15:0] pc;
 output [15:0] pc_log;
 output [15:0] pc_log_prev;
-output        cy;
+output [7:0]  psw;
+output [7:0]  acc;
+output [2047:0] iram;
 
 input [7:0]   wbd_dat_i;        // ram data input
 input [31:0]  wbi_dat_i;        // rom data input
@@ -448,6 +454,7 @@ oc8051_ram_top oc8051_ram_top1(.clk(wb_clk_i),
                                .bit_addr(bit_addr_o),
                                .wr_data(wr_dat),
                                .wr(wr_o && (!wr_addr[7] || wr_ind)),
+                               .iram(iram),
                                .bit_data_in(desCy),
                                .bit_data_out(bit_data)
 `ifdef OC8051_BIST
@@ -572,7 +579,7 @@ oc8051_memory_interface oc8051_memory_interface1(.clk(wb_clk_i),
                        .istb_o(istb_o),
                        .out_of_rst(irom_out_of_rst),
                        .decoder_new_valid_pc(decoder_new_valid_pc),
-                       .pc2(pc_log),
+                       .pc_log(pc_log),
                        .pc_log_prev(pc_log_prev),
 
 // internal instruction rom
@@ -657,6 +664,7 @@ oc8051_sfr oc8051_sfr1(.rst(wb_rst_i),
                        .psw_set(psw_set),
                        .srcAc(srcAc), 
                        .cy(cy),
+                       .psw(psw),
 // ports
                        .rmw(rmw),
 

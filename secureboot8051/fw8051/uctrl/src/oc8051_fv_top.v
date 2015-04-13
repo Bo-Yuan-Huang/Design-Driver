@@ -40,6 +40,8 @@ module oc8051_fv_top(
     t2_i,             // counter 2 input
     t2ex_i,           //
 `endif
+    property_invalid_inc_dir_iram,
+    property_invalid_inc_acc,
     property_invalid_pcp1,
     property_invalid_pcp2,
     property_invalid_pcp3,
@@ -87,6 +89,8 @@ input         t2_i,             // counter 2 input
 `endif
 
 
+    output property_invalid_inc_dir_iram;
+    output property_invalid_inc_acc;
     output property_invalid_pcp1;
     output property_invalid_pcp2;
     output property_invalid_pcp3;
@@ -126,12 +130,23 @@ input         t2_i,             // counter 2 input
     reg  first_instr;
     wire pc_change;
     wire [15:0] pc2, pc1;
-    wire cy; // carry flag.
+    wire [7:0] psw;
+    wire [7:0] acc;
     wire op_valid;
     wire [7:0] op0_out;
     wire [7:0] op1_out;
     wire [7:0] op2_out;
+    wire [2047:0] iram_flat;
+    wire [7:0] iram [255:0];
 
+    genvar i;
+    generate for (i=0; i < 256; i = i+1) begin:iramout
+      assign iram[i] = iram_flat[i*8+7 : i*8];
+    end endgenerate
+
+    wire cy = psw[7];
+    reg [7:0] iram_op1;
+    reg [7:0] op0_out_r, op1_out_r, op2_out_r;
 
     // pc_change => (pc_log_prev = pc_log + 1).
     wire pcp1 = 
@@ -182,7 +197,12 @@ input         t2_i,             // counter 2 input
     wire pc_is_ajmp = (op0_out[3:0] == 4'h1);
     wire pc_is_jc   = (op0_out == 8'h40);
     wire pc_is_jnc  = (op0_out == 8'h50);
+    wire pc_inc_acc = (op0_out == 8'h04);
+    wire pc_inc_dir = (op0_out == 8'h05);
 
+    reg pc_change_r, pc_change_r2;
+    reg pc_inc_acc_r;
+    reg pc_inc_dir_r;
 
     // need these to compute relative addresses.
     wire [15:0] pc1_plus_2 = pc1 + 16'h2;
@@ -213,6 +233,16 @@ input         t2_i,             // counter 2 input
     wire [15:0] jc_pc = cy_reg ? rpc1 : pc1_plus_2;
     wire [15:0] jnc_pc = cy_reg ? pc1_plus_2 : rpc1;
 
+    wire [7:0] acc_reg_inc = acc_reg + 1;
+    wire [7:0] iram_op1_reg_inc = iram_op1_reg + 1;
+
+    assign property_invalid_inc_dir_iram = 
+        (!first_instr && pc_change_r && op_valid && pc_inc_dir_r && !op1_out_r[7]) &&
+        (iram_op1_reg_inc != iram[op1_out_r]);
+
+    assign property_invalid_inc_acc =
+        (!first_instr && pc_change_r && op_valid && pc_inc_acc_r) &&
+        (acc_reg_inc != acc);
     assign property_invalid_pcp1 = 
         (!first_instr && pc_change && op_valid && pcp1) && 
         ((pc1+16'd1) != pc2);
@@ -231,10 +261,10 @@ input         t2_i,             // counter 2 input
     assign property_invalid_ajmp = 
         (!first_instr && pc_change && op_valid && pc_is_ajmp) && 
         (ajmp_pc != pc2);
-    assign property_invalid_jc = 
+    assign property_invalid_jc =
         (!first_instr && pc_change && op_valid && pc_is_jc) && 
         (jc_pc != pc2);
-    assign property_invalid_jnc = 
+    assign property_invalid_jnc =
         (!first_instr && pc_change && op_valid && pc_is_jnc) && 
         (jnc_pc != pc2);
 
@@ -250,17 +280,51 @@ input         t2_i,             // counter 2 input
         end
     end
 
-    reg pc_change_r;
     always @(posedge clk)
     begin
-        pc_change_r <= pc_change;
+        if (rst) begin
+            pc_change_r <= 0;
+            pc_change_r2 <= 0;
+            pc_inc_acc_r <= 0;
+            pc_inc_dir_r <= 0;
+        end
+        else begin
+            pc_change_r <= pc_change;
+            pc_change_r2 <= pc_change_r;
+            pc_inc_acc_r <= pc_inc_acc;
+            pc_inc_dir_r <= pc_inc_dir;
+        end
     end
 
     reg cy_reg;
+    reg [7:0] acc_reg;
+    reg [7:0] iram_op1_reg;
     always @(posedge clk)
     begin
-        if (pc_change_r) begin
-            cy_reg <= cy;
+        if (rst) begin
+            cy_reg <= 0;
+            acc_reg <= 0;
+            op0_out_r <= 0;
+            op1_out_r <= 0;
+            op2_out_r <= 0;
+            iram_op1_reg <= 0;
+            iram_op1 <= 0;
+        end
+        else begin
+            if (pc_change) begin
+                iram_op1_reg <= iram_op1;
+                iram_op1 <= iram[op1_out];
+                
+                op0_out_r <= op0_out;
+                op1_out_r <= op1_out;
+                op2_out_r <= op2_out;
+            end
+            if (pc_change_r) begin
+                acc_reg <= acc;
+                cy_reg <= cy;
+            end
+            //if (pc_change_r2) begin
+            //end
         end
     end
 
@@ -308,9 +372,11 @@ input         t2_i,             // counter 2 input
          .cxrom_data_out        ( cxrom_data_out ),
 
          .pc_change             (pc_change),
-         .pc_log                (pc2),
-         .pc_log_prev           (pc1),
-         .cy                    (cy),
+         .pc                    (pc2),
+         .pc_log                (pc1),
+         .psw                   (psw),
+         .acc                   (acc),
+         .iram                  (iram_flat),
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0

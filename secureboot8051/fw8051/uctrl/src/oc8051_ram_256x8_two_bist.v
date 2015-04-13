@@ -65,7 +65,8 @@ module oc8051_ram_256x8_two_bist (
 		     wr_addr,
 		     wr_data,
 		     wr_en,
-		     wr
+		     wr,
+                     iram
 `ifdef OC8051_BIST
 	 ,
          scanb_rst,
@@ -86,6 +87,7 @@ input  [7:0]  wr_data;
 input  [7:0]  rd_addr,
               wr_addr;
 output [7:0]  rd_data;
+output [2047:0] iram;
 
 `ifdef OC8051_BIST
 input   scanb_rst;
@@ -162,6 +164,11 @@ input   scanb_en;
           buff[wr_addr] <= #1 wr_data;
       end
       
+      wire [2047:0] iram;
+      genvar j;
+      generate for (j=0; j < 256; j = j+1) begin:iramout
+        assign iram[j*8+7 : j*8] = buff[j];
+      end endgenerate
       //
       // reading from ram
       always @(posedge clk or posedge rst)
@@ -169,7 +176,6 @@ input   scanb_en;
         if (rst) begin
           rd_data <= #1 8'h0;
 `ifdef OC8051_SIMULATION
-          // reset RAM for simulation.
           for(i=0;i < 256;i=i+1) begin
               buff[i] = 0;
           end

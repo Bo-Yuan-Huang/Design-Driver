@@ -87,6 +87,11 @@ def synthesize(opc, regs, logfilename, outputfilename, verbosity, unsat_core):
         Add(ctx.SP, BitVecVal(2, 8)), 
         Sub(ctx.SP, BitVecVal(2, 8))])
 
+    # CJNE sets the carry flag
+    ctxCJNE = ctxNOP.clone()
+    CJNE_CY = If(ULT(cjne_src1, cjne_src2), BitVecVal(1, 1), BitVecVal(0, 1))
+    ctxCJNE.PSW = Concat(CJNE_CY, Extract(6, 0, ctx.PSW))
+
     # SRC2 for instructions which modify accumulator.
     ACC_SRC2_DIR_ADDR = Choice('ACC_SRC2_DIR_ADDR', ctx.op0, [ctx.op1, ctx.op2] + ctx.RxAddrs())
     ACC_SRC2_DIR = ctx.readDirect(ACC_SRC2_DIR_ADDR)
@@ -336,7 +341,9 @@ def synthesize(opc, regs, logfilename, outputfilename, verbosity, unsat_core):
     # final result.
     ctxFINAL = CtxChoice('CTX3', ctx.op0, [ctxNOP, ctxACC, ctxDIR, ctxDPTR, 
                 ctxPOP, ctxINDIR, ctxCALL, ctxBIT, ctxMUL, ctxDIV, ctxWRBIT, 
-                ctxPUSH, ctxDA, ctxXCHG_DIR, ctxXCHG_INDIR, ctxWRX, ctxRDX])
+                ctxPUSH, ctxDA, ctxXCHG_DIR, ctxXCHG_INDIR, ctxWRX, ctxRDX,
+                ctxCJNE])
+
     syn.addOutput('PC', ctxFINAL.PC, Synthesizer.BITVEC)
     syn.addOutput('ACC', ctxFINAL.ACC, Synthesizer.BITVEC)
     syn.addOutput('IRAM', ctxFINAL.IRAM, Synthesizer.MEM)
