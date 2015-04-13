@@ -41,18 +41,24 @@ def readAllASTs(d):
 class MemWrite(object):
     COND  = 0
     WRITE = 1
+    LIST  = 2
     def __init__(self, writetype, **args):
-        assert writetype == MemWrite.COND or writetype == MemWrite.WRITE
+        assert writetype == MemWrite.COND or writetype == MemWrite.WRITE or writetype == MemWrite.LIST
         self.writetype = writetype
         if self.writetype == MemWrite.COND:
             self.cond = args['cond']
             self.etrue = args['etrue']
             self.efalse = args['efalse']
             assert self.etrue != None or self.efalse != None 
-        else:
+        elif self.writetype == MemWrite.WRITE:
             self.mem = args['mem']
             self.addr = args['addr']
             self.data = args['data']
+        elif self.writetype == MemWrite.LIST:
+            self.mem = args['mem']
+            self.addrs = args['addrs']
+            self.datas = args['datas']
+            assert len(self.addrs) == len(self.datas)
 
     def toVerilog(self):
         stmts = []
@@ -74,8 +80,17 @@ class MemWrite(object):
                 stmts.append('else begin')
                 stmts += ['  ' + s for s in self.efalse.toVerilog()]
                 stmts.append('end')
-        else:
+        elif self.writetype == MemWrite.WRITE:
             stmts.append('%s[%s] <= %s;' % (self.mem.name, self.addr, self.data))
+        else:
+            for i in xrange(len(self.addrs)):
+                arest = self.addrs[i+1:]
+                ai = self.addrs[i]
+                if len(arest):
+                    condition = ' && '.join(['((%s) != (%s))' % (ai, aj) for aj in arest])
+                    stmts += ['if (%s) %s[%s] <= %s;' % (condition, self.mem.name, ai, self.datas[i])]
+                else:
+                    stmts += ['%s[%s] <= %s;' % (self.mem.name, ai, self.datas[i])]
         return stmts
 
     def __str__(self):
@@ -90,9 +105,19 @@ class MemWrite(object):
                 assert self.efalse != None
                 assert self.etrue != None
                 return 'if(%s) %s; else %s;' % (self.cond, str(self.etrue), str(self.efalse))
+        elif self.writeype == MemWrite.WRITE:
+            return '%s[%s] <= %s;' % (self.mem.name, self.addr, self.data)
         else:
-            return '%s[%s] <= %s' % (self.mem.name, self.addr, self.data)
-
+            stmts = []
+            for i in xrange(len(self.addrs)):
+                arest = self.addrs[i+1:]
+                ai = self.addrs[i]
+                if len(arest):
+                    condition = ' && '.join(['((%s) != (%s))' % (ai, aj) for aj in arest])
+                    stmts += 'if (%s) %s[%s] <= %s;' % (self.mem.name, ai, self.datas[i])
+                else:
+                    stmts += '%s[%s] <= %s;' % (self.mem.name, ai, self.datas[i])
+            return '; '.join(stmts)
 
 class VerilogContext(object):
     def __init__(self):
@@ -153,13 +178,27 @@ class VerilogContext(object):
             mw = MemWrite(MemWrite.COND, cond=cond, etrue=etrue, efalse=efalse)
             return mw
         elif exp.nodetype == ast.Node.WRITEMEM:
-            mem = self.getExpr(exp.mem)
-            if mem.name != outname:
-                raise NotImplementedError, 'Full memory write is not supported (yet).'
-            addr = self.getExpr(exp.addr)
-            data = self.getExpr(exp.data)
-            mw = MemWrite(MemWrite.WRITE, mem=mem, addr=addr, data=data)
-            return mw
+            if exp.mem.isMemVar():
+                mem = self.getExpr(exp.mem)
+                if mem.name != outname:
+                    raise NotImplementedError, 'Full memory write is not supported (yet).'
+                addr = self.getExpr(exp.addr)
+                data = self.getExpr(exp.data)
+                mw = MemWrite(MemWrite.WRITE, mem=mem, addr=addr, data=data)
+                return mw
+            else:
+                assert exp.mem.nodetype == ast.Node.WRITEMEM
+                mvs = self.getMemWrite(outname, exp.mem)
+                addr = self.getExpr(exp.addr)
+                data = self.getExpr(exp.data)
+                if mvs.writetype == MemWrite.WRITE:
+                    addrs = [mvs.addr, addr]
+                    datas = [mvs.data, data]
+                else:
+                    addrs = mvs.addrs + [addr]
+                    datas = mvs.datas + [data]
+                mw = MemWrite(MemWrite.LIST, mem=mvs.mem, addrs=addrs, datas=datas)
+                return mw
         else:
             if exp.name != outname:
                 raise NotImplementedError, 'Full memory write is not supported (yet).'
@@ -322,8 +361,9 @@ def boolvar2verilog(node, ctx):
     return str(node.value)
 
 def bitvecval2verilog(node, ctx):
-    assert node.nodetype == ast.Node.BITVECVAL
-    return "%d\'h%x" % (node.width, node.value)
+    s = "%d\'h%x" % (node.width, node.value)
+    return ctx.addAssignment(node, s)
+    
 
 def memvar2verilog(node, ctx):
     assert node.nodetype == ast.Node.MEMVAR
@@ -425,12 +465,14 @@ def z3op2verilog(node, ctx):
         assert len(ops) == 1
         assert len(params) == 1
         w = node.operands[0].width
-        return ctx.addAssignment(node, '{ %s{1\'b0}, %s }' % (params[0], ops[0]))
+        return ctx.addAssignment(node, '{ %s\'b0, %s }' % (params[0], ops[0]))
     elif node.opname == 'sign-ext':
         assert len(ops) == 1
         assert len(params) == 1
         w = node.operands[0].width
-        return ctx.addAssignment(node, '{ %s{%s}, %s }' % (params[0], ops[0], ops[0]))
+        p = int(params[0])
+        onestr = ', '.join(['%s[%d]' % (ops[0], w-1)] * p)
+        return ctx.addAssignment(node, '{ %s, %s }' % (onestr, ops[0]))
     elif node.opname == 'lshift':
         assert len(ops) == 2
         return ctx.addAssignment(node, '( %s )' % (' << '.join(ops)))
