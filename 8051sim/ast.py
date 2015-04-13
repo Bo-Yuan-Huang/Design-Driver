@@ -49,7 +49,6 @@ class Node(object):
     BITVECVAL       = 4
     MEMVAR          = 5
     CHOICE          = 6
-    CHOICEVAR       = 7
     CHOOSECONSEC    = 8
     READMEM         = 9
     WRITEMEM        = 10
@@ -612,7 +611,7 @@ class WriteMem(Node):
             err_msg = "Data width must be %d. Got %d instead." % (mem.dwidth, data.width)
             raise ValueError, err_msg
         
-        Node.__init__(self, Node.READMEM)
+        Node.__init__(self, Node.WRITEMEM)
         self.mem = mem
         self.addr = addr
         self.data = data

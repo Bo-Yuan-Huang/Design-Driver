@@ -32,13 +32,44 @@ def readAllASTs(d):
 
     return asts
 
+class MemWrite(object):
+    COND  = 0
+    WRITE = 1
+    def __init__(self, writetype, **args):
+        assert writetype == MemWrite.COND or writetype == MemWrite.WRITE
+        self.writetype = writetype
+        if self.writetype == MemWrite.COND:
+            self.cond = args['cond']
+            self.etrue = args['etrue']
+            self.efalse = args['efalse']
+        else:
+            self.mem = args['mem']
+            self.addr = args['addr']
+            self.data = args['data']
+
+    def __str__(self):
+        if self.writetype == MemWrite.COND:
+            if self.etrue == None:
+                assert self.efalse != None
+                return 'if(!%s) %s; ' % (self.cond, str(self.efalse))
+            if self.efalse == None:
+                assert self.etrue != None
+                return 'if(%s) %s; ' % (self.cond, str(self.etrue))
+            else:
+                assert self.efalse != None
+                assert self.etrue != None
+                return 'if(%s) %s; else %s;' % (self.cond, str(self.etrue), str(self.efalse))
+        else:
+            return '%s[%s] <= %s' % (self.mem.name, self.addr, self.data)
+
+
 class VerilogContext(object):
     def __init__(self):
         self.inputs     = []
         self.mems       = []
         self.wires      = []
         self.outputs    = []
-        self.memwrites  = []
+        self.memwrites  = {}
         self.statements = []
         self.objects    = {}
         self.nameCtr    = 0
@@ -58,9 +89,23 @@ class VerilogContext(object):
         self.mems.append(node)
         self.objects[node] = node.name
 
-    def writeMem(self, mem, addr, data):
-        assert mem in self.objects
-        self.memwrites.append((mem, addr, data))
+    def getMemWrite(self, outname, exp):
+        assert exp.nodetype == ast.Node.IF or exp.nodetype == ast.Node.WRITEMEM or exp.nodetype == ast.Node.MEMVAR, exp
+        if exp.nodetype == ast.Node.IF:
+            cond = self.getExpr(exp.cond)
+            etrue = self.getMemWrite(outname, exp.exptrue)
+            efalse = getMemWrite(outname, exp.expfalse)
+            mw = MemWrite(MemWrite.COND, cond=cond, etrue=etrue, efalse=efalse)
+            return mw
+        elif exp.nodetype == ast.Node.WRITEMEM:
+            mem = self.getExpr(exp.mem)
+            if mem.name != outname:
+                raise NotImplementedError, 'Full memory write is not supported (yet).'
+            addr = self.getExpr(exp.addr)
+            data = self.getExpr(exp.data)
+            mw = MemWrite(MemWrite.WRITE, mem=mem, addr=addr, data=data)
+        else:
+            return None
 
     def getWidth(self, node):
         try:
@@ -97,9 +142,9 @@ class VerilogContext(object):
     def dump(self, f):
         for inp, width in self.inputs:
             if width:
-                print >> f, 'input [%d:%d] %s;' % (width[0], width[1], inp)
+                print >> f, 'reg [%d:%d] %s;' % (width[0], width[1], inp)
             else:
-                print >> f, 'input %s;' % inp
+                print >> f, 'reg %s;' % inp
         for wire, width in self.wires:
             if width:
                 print >> f, 'wire [%d:%d] %s;' % (width[0], width[1], wire)
@@ -171,9 +216,11 @@ def writemem2verilog(node, ctx):
     assert node.nodetype == ast.Node.WRITEMEM
     assert node.mem.nodetype == ast.Node.MEMVAR
 
-    addr = ctx.getExpr(node.addr)
-    data = ctx.getExpr(node.data)
-    ctx.writeMem(node.mem, addr, data)
+    assert False, 'This method should not be called.'
+
+    #addr = ctx.getExpr(node.addr)
+    #data = ctx.getExpr(node.data)
+    #ctx.writeMem(node.mem, addr, data)
 
 def extract2verilog(node, ctx):
     assert node.nodetype == ast.Node.EXTRACT
@@ -302,19 +349,26 @@ def main():
         assert len(astdict) == 24
         if opcode in opcodes_to_exclude:
             continue
+        # for debug
+        if opcode != 0x05:
+            continue
         vctx.addComment('Opcode: %02x' % opcode)
         for st, v in astdict.iteritems():
+            if st != 'IRAM': continue
+
             name = '%s_%02x' % (st, opcode)
             # ignore the case where nothing changes.
             if v.isVar() and v.name == st: continue
             # we know something changes.
             if v.isMem(): 
-                print v
-                continue
-            vctx.addAssignment(v, vctx.getExpr(v), name)
-            if st not in state_changes:
-                state_changes[st] = []
-            state_changes[st].append((opcode, name))
+                mw = vctx.getMemWrite(st, v)
+                if mw:
+                    print str(mw)
+            else:
+                vctx.addAssignment(v, vctx.getExpr(v), name)
+                if st not in state_changes:
+                    state_changes[st] = []
+                state_changes[st].append((opcode, name))
     vctx.dump(sys.stdout)
 
 if __name__ == '__main__':
