@@ -1,42 +1,6 @@
-import os
-import sys
+#! /usr/bin/python2.7
+
 import ast
-import z3
-from cPickle import Unpickler
-
-def readCnst(filename):
-    with open(filename, 'rb') as f:
-        pk = Unpickler(f)
-        cnst = pk.load()
-        return cnst
-
-def readAST(filename):
-    with open(filename, 'rb') as f:
-        pk = Unpickler(f)
-        opcode = pk.load()
-        asts = {}
-        while True:
-            try:
-                name = pk.load()
-                ast = pk.load()
-                asts[(name, opcode)] = ast
-            except EOFError:
-                break
-        return asts
-
-def readAllASTs(d):
-    astfiles = [os.path.join(d, f) for f in os.listdir(d) if f.endswith('.ast')]
-
-    asts = []
-    for i in xrange(0x100): asts.append({})
-
-    for f in astfiles:
-        ast = readAST(f)
-        for (name, opcode), tree in ast.iteritems():
-            assert opcode < 0x100 and opcode >= 0
-            asts[opcode][name] = tree
-
-    return asts
 
 class MemWrite(object):
     COND  = 0
@@ -503,41 +467,6 @@ def z3op2verilog(node, ctx):
     elif node.opname == 'bvmul':
         assert len(ops) == 2
         return ctx.addAssignment(node, '( %s )' % (' * '.join(ops)))
+    else:
+        raise NotImplementedError, 'Unknown operator: %s' % node.opname
 
-
-def main():
-    asts = readAllASTs(sys.argv[1])
-    cnst = readCnst(sys.argv[2])
-
-    vctx = VerilogContext()
-    assert len(asts) == 0x100
-    opcodes_to_exclude = [0xF0, 0xF2, 0xF3, 0xE0, 0xE2, 0xE3]
-    for opcode, astdict in enumerate(asts):
-        assert len(astdict) == 24
-        if opcode in opcodes_to_exclude: continue
-
-        vctx.addComment('')
-        vctx.addComment('Opcode: %02x' % opcode)
-        vctx.addComment('')
-        for st, v in astdict.iteritems():
-            name = '%s_%02x' % (st, opcode)
-            # ignore the case where nothing changes.
-            if v.isVar() and v.name == st: continue
-
-            if v.isMem(): 
-                mw = vctx.getMemWrite(st, v)
-                if mw != None: vctx.addMemWrite(st, opcode, mw)
-            else:
-                vctx.addAssignment(v, vctx.getExpr(v), name)
-                vctx.addStateChange(st, opcode, name)
-
-    vctx.setCnst(cnst)
-    vctx.addOutputs()
-    vctx.addMems()
-
-    with open(sys.argv[3], 'wt') as f:
-        vctx.dump(f, 'uc8051golden')
-
-
-if __name__ == '__main__':
-    main()

@@ -1,4 +1,4 @@
-module uc8051golden(
+module oc8051_golden_model(
   clk,
   rst,
   step,
