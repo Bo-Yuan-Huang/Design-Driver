@@ -48,18 +48,26 @@ def main(argv):
         return 1
 
     asts = readAllASTs(argv[1])
-    cnst = readCnst(argv[2])
+    assert len(asts) == 0x100
+
 
     vctx = VerilogContext()
-    assert len(asts) == 0x100
+
+
+    cnst = readCnst(argv[2])
+    vctx.setCnst(cnst)
+
     opcodes_to_exclude = [0xF0, 0xF2, 0xF3, 0xE0, 0xE2, 0xE3]
     for opcode, astdict in enumerate(asts):
-        assert len(astdict) == 24
         if opcode in opcodes_to_exclude: continue
+        assert len(astdict) == 24
 
+
+        # prepare for generating this opcode.
         vctx.addComment('')
         vctx.addComment('Opcode: %02x' % opcode)
         vctx.addComment('')
+
         for st, v in astdict.iteritems():
             name = '%s_%02x' % (st, opcode)
             # ignore the case where nothing changes.
@@ -71,8 +79,11 @@ def main(argv):
             else:
                 vctx.addAssignment(v, vctx.getExpr(v), name)
                 vctx.addStateChange(st, opcode, name)
+        
+        if 'IRAM' in vctx.currentMemReads:
+            print '%02x %3d' % (opcode, len(vctx.currentMemReads['IRAM']))
+        vctx.currentMemReads = {}
 
-    vctx.setCnst(cnst)
     vctx.addOutputs()
     vctx.addMems()
 
