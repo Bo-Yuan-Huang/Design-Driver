@@ -1,8 +1,11 @@
 #! /usr/bin/python2.7
 
-from ast import *
+import ast
 from cPickle import Pickler, Unpickler
 import sys
+import z3
+import os
+
 
 def readAST(filename):
     with open(filename, 'rb') as f:
@@ -24,13 +27,35 @@ def writeAST(filename, opcode, name, ast):
         pk.dump(name)
         pk.dump(ast)
 
-def rewriteAST(n):
-    if isinstance(n, WriteMem):
-        n.nodetype = Node.WRITEMEM
-    for c in n.childObjects():        
-        rewriteAST(c)
+def rewriteAST(name, n):
+    if 'width' in n.__dict__:
+        inp = ast.BitVecVar(name, n.width)
+        if inp == n:
+            return n
+        else:
+            S = z3.Solver()
+            y = z3.Bool('y')
+            S.add(y == z3.Distinct(inp.toZ3(), n.toZ3()))
+            if S.check(y) == z3.unsat:
+                inp.clearCache()
+                return inp
+            else:
+                n.clearCache()
+                return n
+    else:
+        return n
+
+def main(argv):
+    files = [os.path.join(argv[1], f) for f in os.listdir(argv[1]) if f.startswith('syn8051_r1')]
+
+    for f in files:
+        opcode, name, ast = readAST(f)
+        ast_p = rewriteAST(name, ast)
+        if ast_p != ast:
+            print hex(opcode), name
+            print 'ast:', ast
+            print 'ast\':', ast_p
+            writeAST(f, opcode, name, ast_p)
 
 if __name__ == '__main__':
-    opcode, name, ast = readAST(sys.argv[1])
-    rewriteAST(ast)
-    writeAST(sys.argv[1], opcode, name, ast)
+    main(sys.argv)
