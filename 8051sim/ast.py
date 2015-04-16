@@ -24,6 +24,9 @@ class Node(object):
 
     (f) childObjects() should be a generator that yields each of the "child" objects
     of this AST node.
+
+    (g) rewrite() must be implemented to replace one of the child objects with
+    an equivalent node.
     
 
     Additionally the following elements are also part of the "contract" for AST
@@ -184,6 +187,16 @@ class Node(object):
         err_msg = 'childObjects not implemented in %s' % self.__class__.__name__
         raise NotImplementedError, err_msg
 
+    def apply(self, f):
+        "Apply transformation f to this node and all its children."
+        err_msg = 'apply not implemented in %s' % self.__class__.__name__
+        raise NotImplementedError, err_msg
+
+    def rewrite(self, child, replacement):
+        "Replace child node child with replacement."
+        err_msg = 'rewrite not implemented in %s' % self.__class__.__name__
+        raise NotImplementedError, err_msg
+
     def _synthesize(self, m):
         """Simplify this node according to the Z3 model m."""
         err_msg = '_synthesize not implemented in %s' % self.__class__.__name__
@@ -261,9 +274,16 @@ class BoolVar(Node):
     def _synthesize(self, m):
         return BoolVar(self.name)
 
+    def apply(self, f):
+        return f(BoolVar(self.name))
+
     def childObjects(self):
         return
         yield
+
+    def rewrite(self, child, replacement):
+        # Nothing to replace.
+        return
 
 class BitVecVar(Node):
     """Bitvector variables."""
@@ -293,9 +313,16 @@ class BitVecVar(Node):
     def _synthesize(self, m):
         return BitVecVar(self.name, self.width)
 
+    def apply(self, f):
+        return f(BitVecVar(self.name, self.width))
+
     def childObjects(self):
         return
         yield
+
+    def rewrite(self, child, replacement):
+        # Nothing to replace.
+        return
 
 class FuncVar(Node):
     """Uninterpreted functions."""
@@ -331,9 +358,16 @@ class FuncVar(Node):
     def _synthesize(self, m):
         return FuncVar(self.name, self.iwidth, self.owidth)
 
+    def apply(self, f):
+        return f(FuncVar(self.name, self.iwidth, self.owidth))
+
     def childObjects(self):
         return
         yield
+
+    def rewrite(self, child, replacement):
+        # Nothing to replace.
+        return
 
 class BoolVal(Node):
     """Boolean constants."""
@@ -364,9 +398,16 @@ class BoolVal(Node):
     def _synthesize(self, m):
         return BoolVal(self.value)
                 
+    def apply(self, f):
+        return f(BoolVal(self.value))
+
     def childObjects(self):
         return
         yield
+
+    def rewrite(self, child, replacement):
+        # Nothing to replace.
+        return
 
 class BitVecVal(Node):
     """BitVector Constants."""
@@ -397,9 +438,16 @@ class BitVecVal(Node):
     def _synthesize(self, m):
         return BitVecVal(self.value, self.width)
 
+    def apply(self, f):
+        return f(BitVecVal(self.value, self.width))
+
     def childObjects(self):
         return
         yield
+
+    def rewrite(self, child, replacement):
+        # Nothing to replace.
+        return
 
 def createConstantArray(awidth, dwidth, mem_values):
     asize = z3.BitVecSort(awidth)
@@ -434,6 +482,9 @@ class MemVar(Node):
     def _synthesize(self, m):
         return MemVar(self.name, self.awidth, self.dwidth)
 
+    def apply(self, f):
+        return f(MemVar(self.name, self.awidth, self.dwidth))
+
     def __eq__(self, other):
         if isinstance(other, self.__class__):
             if self.nodetype != other.nodetype:
@@ -453,6 +504,10 @@ class MemVar(Node):
     def childObjects(self):
         return
         yield
+
+    def rewrite(self, child, replacement):
+        # Nothing to replace.
+        return
 
 def _choiceBoolName(obj, prefix, i):
     return '_choice_%s_%s_%d_' % (prefix, obj.name, i)
@@ -530,12 +585,24 @@ class Choice(Node):
         ci_ = self.choices[-1].synthesize(m)
         return ci_
         
+    def apply(self, f):
+        f_choices = [c.apply(f) for c in self.choices]
+        return f(Choice(self.name, self.choiceVar, f_choices))
+
     def __str__(self):
         return '(choice %s [%s])' % (self.name, ' '.join(str(x) for x in self.choices))
 
     def childObjects(self):
         for c in self.choices:
             yield c
+
+    def rewrite(self, child, replacement):
+        choices = []
+        for c in self.choices:
+            if c == child:
+                c = replacement
+            choices.append(c)
+        self.choices = choices
 
 class Apply(Node):
     def __init__(self, fun, arg):
@@ -562,9 +629,18 @@ class Apply(Node):
     def _synthesize(self, m):
         return Apply(self.fun.synthesize(m), self.arg.synthesize(m))
 
+    def apply(self, f):
+        return f(Apply(self.fun.apply(f), self.arg.apply(f)))
+
     def childObjects(self):
         yield self.fun
         yield self.arg
+
+    def rewrite(self, child, replacement):
+        if self.fun == child:
+            self.fun = replacement
+        if self.arg == child:
+            self.arg = replacement
 
 class ReadMem(Node):
     """Read data from a memory."""
@@ -597,9 +673,18 @@ class ReadMem(Node):
     def _synthesize(self, m):
         return ReadMem(self.mem.synthesize(m), self.addr.synthesize(m))
 
+    def apply(self, f):
+        return f(ReadMem(self.mem.apply(f), self.addr.apply(f)))
+
     def childObjects(self):
         yield self.mem
         yield self.addr
+
+    def rewrite(self, child, replacement):
+        if self.mem == child:
+            self.mem = replacement
+        if self.addr == child:
+            self.addr = replacement
 
 class WriteMem(Node):
     """Write data to a memory."""
@@ -639,6 +724,10 @@ class WriteMem(Node):
         data = self.data.synthesize(m)
         return WriteMem(mem, addr, data)
 
+    def apply(self, f):
+        return f(WriteMem(self.mem.apply(f), self.addr.apply(f), self.data.apply(f)))
+
+
     def __str__(self):
         return '(write-mem %s %s %s)' % (self.mem, self.addr, self.data)
 
@@ -646,6 +735,14 @@ class WriteMem(Node):
         yield self.mem
         yield self.addr
         yield self.data
+
+    def rewrite(self, child, replacement):
+        if self.mem == child:
+            self.mem = replacement
+        if self.addr == child:
+            self.addr = replacement
+        if self.data == child:
+            self.data = replacement
 
 class ChooseConsecBits(Node):
     """Choose k consecutive bits from a bitvector. """
@@ -726,11 +823,18 @@ class ChooseConsecBits(Node):
         extr = Extract(self.width - 1, 0, self.bitvec.synthesize(m))
         return extr
 
+    def apply(self, f):
+        return f(ChooseConsecBits(self.name, self.width, self.bitvec.apply(f)))
+
     def __str__(self):
         return '(choose-consec-bits %d %s)' % (self.width, str(self.bitvec))
 
     def childObjects(self):
         yield self.bitvec
+
+    def rewrite(self, child, replacement):
+        if self.bitvec == child:
+            self.bitvec = replacement
 
 class Extract(Node):
     """Extract bits from a bitvector."""
@@ -773,11 +877,19 @@ class Extract(Node):
         obj_ = Extract(self.msb, self.lsb, self.bv.synthesize(m))
         return obj_
 
+    def apply(self, f):
+        return f(Extract(self.msb, self.lsb, self.bv.apply(f)))
+
     def __str__(self):
         return '(extract %d %d %s)' % (self.msb, self.lsb, str(self.bv))
 
     def childObjects(self):
         yield self.bv
+
+
+    def rewrite(self, child, replacement):
+        if self.bv == child:
+            self.bv = replacement
 
 class If(Node):
     """Conditional."""
@@ -842,6 +954,9 @@ class If(Node):
         obj_ = If(cm, tm, fm)
         return obj_
 
+    def apply(self, f):
+        return f(If(self.cond.apply(f), self.exptrue.apply(f), self.expfalse.apply(f)))
+
     def __str__(self):
         return '(if %s %s %s)' % (str(self.cond), str(self.exptrue), str(self.expfalse))
 
@@ -849,6 +964,15 @@ class If(Node):
         yield self.cond
         yield self.exptrue
         yield self.expfalse
+
+    def rewrite(self, child, replacement):
+        if self.cond == child:
+            self.cond = replacement
+        if self.exptrue == child:
+            self.exptrue = replacement
+        if self.expfalse == child:
+            self.expfalse = replacement
+
 
 class ExtractBit(Node):
     """Extract a particular bit from a word."""
@@ -893,12 +1017,21 @@ class ExtractBit(Node):
         bit_ = self.bit.synthesize(m)
         return ExtractBit(word_, bit_)
 
+    def apply(self, f):
+        return f(ExtractBit(self.word.apply(f), self.bit.apply(f)))
+
     def __str__(self):
         return '(extract-bit %s %s)' % (str(self.word), str(self.bit))
 
     def childObjects(self):
         yield self.word
         yield self.bit
+
+    def rewrite(self, child, replacement):
+        if self.word == child:
+            self.word = replacement
+        if self.bit == child:
+            self.bit = replacement
 
 class Concat(Node):
     """Concatenate bitvectors."""
@@ -929,12 +1062,26 @@ class Concat(Node):
         bitvecs_ = [bv.synthesize(m) for bv in self.bitvecs]
         return Concat(*bitvecs_)
 
+    def apply(self, f):
+        f_bvs = [bv.apply(f) for bv in self.bitvecs]
+        return f(Concat(*f_bvs))
+
     def __str__(self):
         return '(concat %s)' % (' '.join(str(bv) for bv in self.bitvecs))
 
     def childObjects(self):
         for bv in self.bitvecs:
             yield bv
+
+    def rewrite(self, child, replacement):
+        bitvecs = []
+        for bv in self.bitvecs:
+            if bv == child:
+                bitvecs.append(replacement)
+            else:
+                bitvecs.append(bv)
+        self.bitvecs = bitvecs
+
 
 class Macro(Node):
     """This is a wrapper node that enhances readability when the AST's are
@@ -961,12 +1108,19 @@ class Macro(Node):
         syn_inputs = [inp.synthesize(m) for inp in self.inputs]
         return Macro(self.typename, self.expr.synthesize(m), syn_inputs)
 
+    def apply(self, f):
+        return f(Macro(self.typename, self.expr.apply(f), self.inputs))
+
     def __str__(self):
         args = ' '.join(str(i) for i in self.inputs)
         return '(%s %s)' % (self.typename, args)
 
     def childObjects(self):
         yield self.expr
+
+    def rewrite(self, child, replacement):
+        if self.expr == child:
+            self.expr = replacement
 
 class Z3Op(Node):
     """Binary operators from Z3."""
@@ -1032,6 +1186,10 @@ class Z3Op(Node):
         obj_ = Z3Op(self.opname, self.op, [o.synthesize(m) for o in self.operands], self.rwidthFun, self.mwidthFun, self.params)
         return obj_
 
+    def apply(self, f):
+        f_ops = [op.apply(f) for op in self.operands]
+        return Z3Op(self.opname, self.op, f_ops, self.rwidthFun, self.mwidthFun, self.params)
+
     def __eq__(self, other):
         if isinstance(other, self.__class__):
             if self.nodetype != other.nodetype:
@@ -1056,6 +1214,14 @@ class Z3Op(Node):
     def childObjects(self):
         for op in self.operands:
             yield op
+
+    def rewrite(self, child, replacement):
+        operands = []
+        for op in self.operands:
+            if op == child:
+                operands.append(replacement)
+            else:
+                operands.append(op)
 
 def And(*operands):
     return Z3Op('and', z3.And, operands, _noWidth)

@@ -3,9 +3,11 @@
 import os
 import sys
 import ast
+import z3
 
 from cPickle import Unpickler
 from ast2verilog import VerilogContext
+import ast2verilog
 
 def readCnst(filename):
     with open(filename, 'rb') as f:
@@ -57,11 +59,42 @@ def main(argv):
     cnst = readCnst(argv[2])
     vctx.setCnst(cnst)
 
+
     opcodes_to_exclude = [0xF0, 0xF2, 0xF3, 0xE0, 0xE2, 0xE3]
+
+    allReadPorts = {}
+    # first compute the read ports accessed.
+    asts_p = []
     for opcode, astdict in enumerate(asts):
+        astdict_p = []
+        for st, v in astdict.iteritems():
+            v_p = ast2verilog.stripMacros(v)
+            astdict_p.append((st, v_p))
+        asts_p.append(astdict_p)
+
+    # first compute the read ports accessed.
+    for opcode, astdict in enumerate(asts_p):
         if opcode in opcodes_to_exclude: continue
         assert len(astdict) == 24
 
+        readPorts = {}
+        ast2verilog.collectReadPorts(cnst, readPorts)
+
+        print 'opcode: %02x' % opcode
+        for st, v in astdict:
+            # ignore the case where nothing changes.
+            if v.isVar() and v.name == st: continue
+            # collect read ports.
+            ast2verilog.collectReadPorts(v, readPorts)
+        allReadPorts[opcode] = readPorts
+
+        for mem, ports in readPorts.iteritems():
+            print mem.name + ':' + ', '.join([str(a) for a in ports])
+    return
+
+    for opcode, astdict in enumerate(asts):
+        if opcode in opcodes_to_exclude: continue
+        assert len(astdict) == 24
 
         # prepare for generating this opcode.
         vctx.addComment('')
@@ -80,9 +113,6 @@ def main(argv):
                 vctx.addAssignment(v, vctx.getExpr(v), name)
                 vctx.addStateChange(st, opcode, name)
         
-        if 'IRAM' in vctx.currentMemReads:
-            print '%02x %3d' % (opcode, len(vctx.currentMemReads['IRAM']))
-        vctx.currentMemReads = {}
 
     vctx.addOutputs()
     vctx.addMems()

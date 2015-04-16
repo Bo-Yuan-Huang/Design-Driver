@@ -470,3 +470,24 @@ def z3op2verilog(node, ctx):
     else:
         raise NotImplementedError, 'Unknown operator: %s' % node.opname
 
+
+def collectReadPorts(n, readPorts):
+    for c in n.childObjects():
+        collectReadPorts(c, readPorts)
+
+    if n.nodetype == ast.Node.READMEM:
+        if not n.mem.isMemVar():
+            raise NotImplementedError, 'Reading from modified memories not supported yet!'
+        if n.mem not in readPorts:
+            readPorts[n.mem] = []
+        if n.addr not in readPorts[n.mem]:
+            readPorts[n.mem].append(n.addr)
+
+def stripMacros(top):
+    def f(n):
+        if n.nodetype == ast.Node.MACRO:
+            return n.expr
+        else:
+            return n
+    return top.apply(f)
+
