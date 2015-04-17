@@ -4,6 +4,7 @@ import os
 import sys
 import ast
 import z3
+import copy
 
 from cPickle import Unpickler
 from ast2verilog import VerilogContext
@@ -43,6 +44,17 @@ def readAllASTs(d):
 
     return asts
 
+def addPort(R, mem, addr, opcode):
+    k = (mem, addr)
+    if k not in R:
+        R[k] = []
+
+    if opcode == -1:
+        R[k] = [-1]
+    else:
+        if R[k] != [-1]:
+            R[k].append(opcode)
+
 def main(argv):
     if len(argv) != 4:
         print 'Syntax error.'
@@ -53,8 +65,7 @@ def main(argv):
     assert len(asts) == 0x100
 
 
-    vctx = VerilogContext()
-
+    vctx = VerilogContext() 
 
     cnst = readCnst(argv[2])
     vctx.setCnst(cnst)
@@ -62,7 +73,6 @@ def main(argv):
 
     opcodes_to_exclude = [0xF0, 0xF2, 0xF3, 0xE0, 0xE2, 0xE3]
 
-    allReadPorts = {}
     # first compute the read ports accessed.
     asts_p = []
     for opcode, astdict in enumerate(asts):
@@ -72,18 +82,19 @@ def main(argv):
             astdict_p.append((st, v_p))
         asts_p.append(astdict_p)
 
+    # first compute the read ports accessed.
     cnstReadPorts = {}
     ast2verilog.collectReadPorts(cnst, cnstReadPorts)
 
-    # first compute the read ports accessed.
+    allReadPorts = {}
     for opcode, astdict in enumerate(asts_p):
         if opcode in opcodes_to_exclude: continue
         assert len(astdict) == 24
 
-        readPorts = cnstReadPorts.copy()
+        readPorts = copy.deepcopy(cnstReadPorts)
         ast2verilog.collectReadPorts(cnst, readPorts)
 
-        #print 'opcode: %02x' % opcode
+        print 'opcode: %02x' % opcode
         for st, v in astdict:
             # ignore the case where nothing changes.
             if v.isVar() and v.name == st: continue
@@ -94,7 +105,28 @@ def main(argv):
         for mem, ports in readPorts.iteritems():
             print mem.name + ':' + ', '.join([str(a) for a in ports])
 
-    return
+    # We have to create a mapping data structure that keeps track of what ports
+    # have been assigned to what addresses under what opcodes.
+    #
+    # d : [(mem, addr) -> port]
+    # port : (name, opcodes)
+    #R = {}
+    #for k, vs in cnstReadPorts.iteritems():
+    #    print k, '->', ', '.join([str(v) for v in vs])
+    #return
+#
+#    for mem, ports in cnstReadPorts.iteritems():
+#        for p in ports:
+#            addPort(R, mem, p, -1)
+#
+#    for opcode, readPorts in allReadPorts.iteritems():
+#        for mem, ports in readPorts.iteritems():
+#            for p in ports:
+#                addPort(R, mem, p, opcode)
+#
+#    for (mem, addr), opcodes in R.iteritems():
+#        print mem.name, str(addr), ' '.join([hex(op) for op in opcodes])
+#    return
 
     for opcode, astdict in enumerate(asts):
         if opcode in opcodes_to_exclude: continue
