@@ -273,10 +273,11 @@ class VerilogContext(object):
 
     def addMems(self):
         for st, mws in self.memwrites.iteritems():
-            for opcode, mw in mws:
+            for i, (opcode, mw) in enumerate(mws):
                 opast = ast.BitVecVal(opcode, self.cnst.width)
                 eqast = ast.Equal(self.cnst, opast)
-                self.always_stmts.append('if ( %s ) begin' % self.getExpr(eqast))
+                st = 'if' if i == 0 else 'else if'
+                self.always_stmts.append('%s ( %s ) begin' % (st, self.getExpr(eqast)))
                 self.always_stmts += ['  '+ s for s in mw.toVerilog()]
                 self.always_stmts.append('end')
 
@@ -490,4 +491,33 @@ def stripMacros(top):
         else:
             return n
     return top.apply(f)
+
+def createSelect(mem, exprs, cnst, all_params):
+    subs = []
+    exprlist = []
+    for expr, param_set in exprs.iteritems():
+        exprlist.append((expr, param_set))
+    
+    if len(exprlist) == 1:
+        expr = ast.ReadMem(mem, exprlist[0][0])
+        for p in exprlist[0][1]:
+            subs.append((p, expr))
+        return expr, subs
+    else:
+        for expr, paramset in exprlist:
+            for p in paramset:
+                subs.append((p, expr))
+
+        def createExpr(i):
+            if i == len(exprlist) - 1:
+                return exprlist[-1][0]
+            else:
+                params = list(exprlist[i][1])
+                params.sort()
+                if len(params) == 1:
+                    equals = ast.Equal(cnst, ast.BitVecVal(params[0], cnst.width))
+                else:
+                    equals = ast.Or(*[ast.Equal(cnst, ast.BitVecVal(p, cnst.width)) for p in params])
+                return ast.If(equals, exprlist[i][0], createExpr(i+1))
+        return ast.ReadMem(mem, createExpr(0)), subs
 

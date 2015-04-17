@@ -192,6 +192,14 @@ class Node(object):
         err_msg = 'apply not implemented in %s' % self.__class__.__name__
         raise NotImplementedError, err_msg
 
+    def substitute(self, n, n_p):
+        def f(n_x):
+            if n_x == n:
+                return n_p
+            else:
+                return n_x
+        return self.apply(f)
+
     def rewrite(self, child, replacement):
         "Replace child node child with replacement."
         err_msg = 'rewrite not implemented in %s' % self.__class__.__name__
@@ -1189,6 +1197,7 @@ class Z3Op(Node):
     def apply(self, f):
         f_ops = [op.apply(f) for op in self.operands]
         return Z3Op(self.opname, self.op, f_ops, self.rwidthFun, self.mwidthFun, self.params)
+
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):
