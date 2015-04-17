@@ -72,15 +72,18 @@ def main(argv):
             astdict_p.append((st, v_p))
         asts_p.append(astdict_p)
 
+    cnstReadPorts = {}
+    ast2verilog.collectReadPorts(cnst, cnstReadPorts)
+
     # first compute the read ports accessed.
     for opcode, astdict in enumerate(asts_p):
         if opcode in opcodes_to_exclude: continue
         assert len(astdict) == 24
 
-        readPorts = {}
+        readPorts = cnstReadPorts.copy()
         ast2verilog.collectReadPorts(cnst, readPorts)
 
-        print 'opcode: %02x' % opcode
+        #print 'opcode: %02x' % opcode
         for st, v in astdict:
             # ignore the case where nothing changes.
             if v.isVar() and v.name == st: continue
@@ -90,16 +93,12 @@ def main(argv):
 
         for mem, ports in readPorts.iteritems():
             print mem.name + ':' + ', '.join([str(a) for a in ports])
+
     return
 
     for opcode, astdict in enumerate(asts):
         if opcode in opcodes_to_exclude: continue
         assert len(astdict) == 24
-
-        # prepare for generating this opcode.
-        vctx.addComment('')
-        vctx.addComment('Opcode: %02x' % opcode)
-        vctx.addComment('')
 
         for st, v in astdict.iteritems():
             name = '%s_%02x' % (st, opcode)
