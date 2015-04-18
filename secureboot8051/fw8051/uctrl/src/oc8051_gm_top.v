@@ -126,7 +126,7 @@ input         t2_i,             // counter 2 input
     assign op2_out = 8'b0;
 
     wire [15:0] PC_next;
-    uc8051golden uc8051golden_1(
+    oc8051_golden_model uc8051golden_1(
         .clk        (clk),
         .rst        (rst),
         .step       (inst_finished),

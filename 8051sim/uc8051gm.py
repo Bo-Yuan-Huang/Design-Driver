@@ -63,29 +63,34 @@ def main(argv):
 
     asts = readAllASTs(argv[1])
     assert len(asts) == 0x100
-
-
-    vctx = VerilogContext() 
-
-    cnst = readCnst(argv[2])
-    vctx.setCnst(cnst)
-
-
     opcodes_to_exclude = [0xF0, 0xF2, 0xF3, 0xE0, 0xE2, 0xE3]
 
+    vctx = VerilogContext() 
+    cnst = readCnst(argv[2])
+
     subs = ast2verilog.AddrSubs()
-    cnst_p = ast2verilog.rewriteMemReads(cnst, subs)
-    print cnst_p
-    subs.dump()
-    return
+    cnst_p = ast2verilog.rewriteMemReads(-1, cnst, subs)
+    vctx.setCnst(cnst_p)
 
     asts_p = []
     for opcode, astdict in enumerate(asts):
+        if opcode in opcodes_to_exclude: continue
         astdict_p = []
         for st, v in astdict.iteritems():
-            v_p = ast2verilog.stripMacros(v)
+            v_p1 = ast2verilog.stripMacros(v)
+            v_p = ast2verilog.rewriteMemReads(opcode, v_p1, subs)
             astdict_p.append((st, v_p))
         asts_p.append(astdict_p)
+
+    ports = subs.getReadPorts()
+    for m, s in ports:
+        vctx.addComment("port: " + m.name + "->" + str(s))
+        vctx.createWire(s)
+
+    for m, s in ports:
+        expr = subs.getExpr(cnst_p, m, s)
+        vctx.addComment(s.name + "=" + str(expr))
+        vctx.addAssignment(expr, vctx.getExpr(expr), s.name)
 
     for opcode, astdict in enumerate(asts_p):
         if opcode in opcodes_to_exclude: continue
@@ -95,6 +100,7 @@ def main(argv):
             # ignore the case where nothing changes.
             if v.isVar() and v.name == st: continue
 
+            # some comments to show what is going on.
             vctx.addComment('')
             vctx.addComment('%s_%02x' % (st, opcode))
             vctx.addComment('')
@@ -103,6 +109,7 @@ def main(argv):
                 mw = vctx.getMemWrite(st, v)
                 if mw != None: vctx.addMemWrite(st, opcode, mw)
             else:
+                name = '%s_%02x' % (st, opcode)
                 vctx.addAssignment(v, vctx.getExpr(v), name)
                 vctx.addStateChange(st, opcode, name)
         

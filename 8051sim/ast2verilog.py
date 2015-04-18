@@ -24,6 +24,38 @@ class MemWrite(object):
             self.datas = args['datas']
             assert len(self.addrs) == len(self.datas)
 
+    def toVerilog_(self, cond):
+        stmts = []
+        if self.writetype == MemWrite.COND:
+            if self.etrue == None:
+                assert self.efalse != None
+                ncond = '(%s) && (!%s)' % (cond, self.cond)
+                stmts = self.efalse.toVerilog_(ncond)
+            elif self.efalse == None:
+                assert self.etrue != None
+                ncond = '(%s) && (%s)' % (cond, self.cond)
+                stmts = self.etrue.toVerilog_(ncond)
+            else:
+                # true
+                ncond = '(%s) && (%s)' % (cond, self.cond)
+                stmts = self.etrue.toVerilog_(ncond)
+                # false
+                ncond = '(%s) && (!%s)' % (cond, self.cond)
+                stmts += self.efalse.toVerilog_(ncond)
+        elif self.writetype == MemWrite.WRITE:
+            stmts.append((cond, self.mem, self.addr, self.data))
+        else:
+            for i in xrange(len(self.addrs)):
+                arest = self.addrs[i+1:]
+                ai = self.addrs[i]
+                if len(arest):
+                    cond_i = ' && '.join(['((%s) != (%s))' % (ai, aj) for aj in arest])
+                    ncond = '(%s) && (%s)' % (cond, cond_i)
+                    stmts.append((ncond, self.mem, ai, self.datas[i]))
+                else:
+                    stmts.append((cond, self.mem, ai, self.datas[i]))
+        return stmts
+
     def toVerilog(self):
         stmts = []
         if self.writetype == MemWrite.COND:
@@ -108,6 +140,11 @@ class VerilogContext(object):
             self.inputs.append((node.name, width))
             self.objects[node] = node.name
 
+    def createWire(self, node):
+        assert node not in self.objects
+        self.addWire(node, node.name)
+        self.objects[node] = node.name
+
     def addNext(self, name):
         for iname, iwidth in self.inputs:
             if iname == name:
@@ -178,7 +215,8 @@ class VerilogContext(object):
 
     def addWire(self, node, name):
         assert node not in self.objects
-        self.wires.append((name, self.getWidth(node)))
+        w = self.getWidth(node)
+        if (name, w) not in self.wires: self.wires.append((name, w))
 
     def addComment(self, cmt):
         stmt = '// %s' % cmt
@@ -189,7 +227,8 @@ class VerilogContext(object):
             name = self._getName()
             self.addWire(node, name)
         else:
-            self.wires.append((name, self.getWidth(node)))
+            w = self.getWidth(node)
+            if (name, w) not in self.wires: self.wires.append((name, w))
         stmt = 'assign %s = %s;' % (name, exp)
         self.statements.append(stmt)
         return name
@@ -272,14 +311,105 @@ class VerilogContext(object):
             self.always_stmts.append('%s <= %s;' % (out, outnext))
 
     def addMems(self):
+        writes = {}
         for st, mws in self.memwrites.iteritems():
             for i, (opcode, mw) in enumerate(mws):
                 opast = ast.BitVecVal(opcode, self.cnst.width)
                 eqast = ast.Equal(self.cnst, opast)
-                st = 'if' if i == 0 else 'else if'
-                self.always_stmts.append('%s ( %s ) begin' % (st, self.getExpr(eqast)))
-                self.always_stmts += ['  '+ s for s in mw.toVerilog()]
-                self.always_stmts.append('end')
+                cond = self.getExpr(eqast)
+                stmts = mw.toVerilog_(cond)
+
+                mem = None 
+                for s in stmts:
+                    [c, m, a, d] = s
+                    if mem == None:
+                        mem = m
+                    else:
+                        assert mem == m
+                    print '%02x: if (%s) %s[%s] <= %s' % (opcode, c, m.name, a, d)
+                if mem not in writes:
+                    writes[mem] = {}
+                if opcode not in writes[mem]:
+                    writes[mem][opcode] = []
+                writes[mem][opcode] += stmts
+
+        for mem, memwrites in writes.iteritems():
+            self.writeMem(mem, memwrites)
+
+    def writeMem(self, mem, writes):
+        wrports = WritePorts()
+        for opcode, stmts in writes.iteritems():
+            for i, [c, m, a, d] in enumerate(stmts):
+                assert m == mem
+                wrports.addWrite(i, c, a, d)
+
+        print mem.name, 'num ports:', wrports.numPorts
+        for i in xrange(wrports.numPorts):
+            addrport = 'WR_ADDR_%d_%s' % (i, mem.name)
+            dataport = 'WR_DATA_%d_%s' % (i, mem.name)
+            condport = 'WR_COND_%d_%s' % (i, mem.name)
+            addr = ast.BitVecVar(addrport, mem.awidth)
+            self.createWire(addr)
+            data = ast.BitVecVar(dataport, mem.dwidth)
+            self.createWire(data)
+            cond = ast.BoolVar(condport)
+            self.createWire(cond)
+
+            self.addAssignment(addr, wrports.addrExpr(i), addr.name)
+            self.addAssignment(data, wrports.dataExpr(i), data.name)
+            self.addAssignment(cond, wrports.condExpr(i), cond.name)
+
+            self.always_stmts.append('if (%s) %s[%s] <= %s;' % (condport, mem.name, addrport, dataport))
+
+
+class WritePorts(object):
+    def __init__(self):
+        self.numPorts = 0
+        self.conds = []
+        self.addrs = []
+        self.datas = []
+
+    def addWrite(self, i, c, a, d):
+        if i >= self.numPorts:
+            self.conds.append([c])
+            self.addrs.append([a])
+            self.datas.append([d])
+            self.numPorts += 1
+        else:
+            self.conds[i].append(c)
+            self.addrs[i].append(a)
+            self.datas[i].append(d)
+
+        assert len(self.conds) == self.numPorts
+        assert len(self.addrs) == self.numPorts
+        assert len(self.datas) == self.numPorts
+    
+    def condExpr(self, i):
+        return ' || '.join('(%s)' % c for c in self.conds[i])
+
+    def addrExpr(self, i):
+        conds = self.conds[i]
+        addrs = self.addrs[i]
+        assert len(conds) == len(addrs)
+
+        def createIf(i):
+            if i == len(conds) - 1:
+                return addrs[i]
+            else:
+                return '(%s) ? (%s) : (%s)' % (conds[i], addrs[i], createIf(i+1))
+        return createIf(0)
+
+    def dataExpr(self, i):
+        conds = self.conds[i]
+        datas = self.datas[i]
+        assert len(conds) == len(datas)
+
+        def createIf(i):
+            if i == len(conds) - 1:
+                return datas[i]
+            else:
+                return '(%s) ? (%s) : (%s)' % (conds[i], datas[i], createIf(i+1))
+        return createIf(0)
 
 def node2verilog(node, ctx):
     if node.nodetype == ast.Node.BOOLVAR:
@@ -476,52 +606,78 @@ class AddrSubs(object):
     def __init__(self):
         self.subs = []
 
-    def getSub(self, mem, addr):
-        for m, a, s in self.subs:
-            if m == mem and a == addr:
+    def count(self, param, mem):
+        cnt = 0
+        for p, m, a, s in self.subs:
+            if (p == param or p == -1) and m == mem:
+                cnt += 1
+        return cnt
+
+    def getSub(self, param, mem, addr):
+        for p, m, a, s in self.subs:
+            if (p == param or p == -1) and m == mem and a == addr:
                 return s
         return None
 
-    def addSub(self, mem, addr, v):
-        assert self.getSub(mem, addr) == None
-        self.subs.append((mem, addr, v))
+    def addSub(self, param, mem, addr, v):
+        assert self.getSub(param, mem, addr) == None
+        self.subs.append((param, mem, addr, v))
+
+    def getReadPorts(self):
+        ports = []
+        for p, m, a, s in self.subs:
+            port = (m, s)
+            if port not in ports:
+                ports.append(port)
+        ports.sort(key=lambda p: p[0].name)
+        return ports
+
+    def getExpr(self, cnst, mem, sub):
+        exprs = []
+        all_same = False
+        for p, m, a, s in self.subs:
+            if mem == m and sub == s:
+                exprs.append((p, a))
+                if p == -1:
+                    all_same = True
+
+        assert len(exprs) >= 1
+        if all_same: assert len(exprs) == 1
+
+        def createIf(i):
+            [p, a] = exprs[i]
+            if i == len(exprs) - 1:
+                return a
+            else:
+                return ast.If(ast.Equal(cnst, ast.BitVecVal(p, mem.awidth)), a, createIf(i+1))
+        return ast.ReadMem(mem, createIf(0))
 
     def dump(self):
-        for m, a, s in self.subs:
-            print '%s/%s/%s' % (m.name, str(a), str(s))
+        for p, m, a, s in self.subs:
+            print '%2x/%s/%s/%s' % (p, m.name, str(a), str(s))
+
+    def sort(self):
+        self.subs.sort()
 
     def __len__(self):
         return len(self.subs)
 
-def rewriteMemReads(n_top, subs):
+def rewriteMemReads(param, n_top, subs):
     def f(n):
         if n.nodetype == ast.Node.READMEM:
             if not n.mem.isMemVar():
                 err_msg = 'Reading from modified memories not supported yet.'
                 raise NotImplementedError
-            s = subs.getSub(n.mem, n.addr)
+            s = subs.getSub(param, n.mem, n.addr)
             if not s:
-                name = 'RD_%s_%d' % (n.mem.name, len(subs))
-                s = ast.BitVecVar(name, n.mem.awidth)
-                subs.addSub(n.mem, n.addr, s)
-            return ast.ReadMem(n.mem, s)
+                name = 'RD_%s_%d' % (n.mem.name, subs.count(param, n.mem))
+                s = ast.BitVecVar(name, n.mem.dwidth)
+                subs.addSub(param, n.mem, n.addr, s)
+            return s
         else:
             return n
     return n_top.apply(f)
 
-
-
-def collectReadPorts(n, readPorts):
-    for c in n.childObjects():
-        collectReadPorts(c, readPorts)
-
-    if n.nodetype == ast.Node.READMEM:
-        if not n.mem.isMemVar():
-            raise NotImplementedError, 'Reading from modified memories not supported yet!'
-        if n.mem not in readPorts:
-            readPorts[n.mem] = []
-        if n.addr not in readPorts[n.mem]:
-            readPorts[n.mem].append(n.addr)
 
 def stripMacros(top):
     def f(n):
@@ -530,33 +686,4 @@ def stripMacros(top):
         else:
             return n
     return top.apply(f)
-
-def createSelect(mem, exprs, cnst, all_params):
-    subs = []
-    exprlist = []
-    for expr, param_set in exprs.iteritems():
-        exprlist.append((expr, param_set))
-    
-    if len(exprlist) == 1:
-        expr = ast.ReadMem(mem, exprlist[0][0])
-        for p in exprlist[0][1]:
-            subs.append((p, expr))
-        return expr, subs
-    else:
-        for expr, paramset in exprlist:
-            for p in paramset:
-                subs.append((p, expr))
-
-        def createExpr(i):
-            if i == len(exprlist) - 1:
-                return exprlist[-1][0]
-            else:
-                params = list(exprlist[i][1])
-                params.sort()
-                if len(params) == 1:
-                    equals = ast.Equal(cnst, ast.BitVecVal(params[0], cnst.width))
-                else:
-                    equals = ast.Or(*[ast.Equal(cnst, ast.BitVecVal(p, cnst.width)) for p in params])
-                return ast.If(equals, exprlist[i][0], createExpr(i+1))
-        return ast.ReadMem(mem, createExpr(0)), subs
 
