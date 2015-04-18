@@ -472,6 +472,45 @@ def z3op2verilog(node, ctx):
         raise NotImplementedError, 'Unknown operator: %s' % node.opname
 
 
+class AddrSubs(object):
+    def __init__(self):
+        self.subs = []
+
+    def getSub(self, mem, addr):
+        for m, a, s in self.subs:
+            if m == mem and a == addr:
+                return s
+        return None
+
+    def addSub(self, mem, addr, v):
+        assert self.getSub(mem, addr) == None
+        self.subs.append((mem, addr, v))
+
+    def dump(self):
+        for m, a, s in self.subs:
+            print '%s/%s/%s' % (m.name, str(a), str(s))
+
+    def __len__(self):
+        return len(self.subs)
+
+def rewriteMemReads(n_top, subs):
+    def f(n):
+        if n.nodetype == ast.Node.READMEM:
+            if not n.mem.isMemVar():
+                err_msg = 'Reading from modified memories not supported yet.'
+                raise NotImplementedError
+            s = subs.getSub(n.mem, n.addr)
+            if not s:
+                name = 'RD_%s_%d' % (n.mem.name, len(subs))
+                s = ast.BitVecVar(name, n.mem.awidth)
+                subs.addSub(n.mem, n.addr, s)
+            return ast.ReadMem(n.mem, s)
+        else:
+            return n
+    return n_top.apply(f)
+
+
+
 def collectReadPorts(n, readPorts):
     for c in n.childObjects():
         collectReadPorts(c, readPorts)
