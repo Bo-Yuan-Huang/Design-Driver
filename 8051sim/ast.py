@@ -242,7 +242,7 @@ def _determineMemWidth(args):
         for a in args[1:]:
             try: 
                 if a.awidth != awidth:
-                    raise ValueError, 'Mismatch in address widths.'
+                    raise ValueError, 'Mismatch in address widths: %s' % ('; '.join([str(m) for m in args]))
                 if a.dwidth != dwidth:
                     raise ValueError, 'Mismatch in data widths.'
             except AttributeError:
@@ -651,9 +651,11 @@ class Apply(Node):
             self.arg = replacement
 
 class ReadMem(Node):
+    VALIDATE_SIZE = True
+
     """Read data from a memory."""
     def __init__(self, mem, addr):
-        if addr.width != mem.awidth:
+        if ReadMem.VALIDATE_SIZE and addr.width != mem.awidth:
             err_msg = "Address width must be %d. Got %d instead." % (mem.awidth, addr.width)
             raise ValueError, err_msg
 
@@ -682,7 +684,9 @@ class ReadMem(Node):
         return ReadMem(self.mem.synthesize(m), self.addr.synthesize(m))
 
     def apply(self, f):
-        return f(ReadMem(self.mem.apply(f), self.addr.apply(f)))
+        m_f = self.mem.apply(f)
+        a_f = self.addr.apply(f)
+        return f(ReadMem(m_f, a_f))
 
     def childObjects(self):
         yield self.mem
@@ -697,7 +701,7 @@ class ReadMem(Node):
 class WriteMem(Node):
     """Write data to a memory."""
     def __init__(self, mem, addr, data):
-        if addr.width != mem.awidth:
+        if ReadMem.VALIDATE_SIZE and addr.width != mem.awidth:
             err_msg = "Address width must be %d. Got %d instead." % (mem.awidth, addr.width)
             raise ValueError, err_msg
         if data.width != mem.dwidth:
@@ -706,6 +710,7 @@ class WriteMem(Node):
         
         Node.__init__(self, Node.WRITEMEM)
         self.mem = mem
+        self.name = mem.name
         self.addr = addr
         self.data = data
         self.awidth = self.mem.awidth

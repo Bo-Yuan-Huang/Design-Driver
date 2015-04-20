@@ -86,11 +86,20 @@ def main(argv):
     for m, s in ports:
         vctx.addComment("port: " + m.name + "->" + str(s))
         vctx.createWire(s)
+        if m.name == 'ROM':
+            vctx.cinputs.append((s, vctx.getWidth(s)))
+            vctx.objects[s] = s.name;
 
     for m, s in ports:
-        expr = subs.getExpr(cnst_p, m, s)
-        vctx.addComment(s.name + "=" + str(expr))
-        vctx.addAssignment(expr, vctx.getExpr(expr), s.name)
+        addr_expr = subs.getExpr(cnst_p, m, s)
+        addr_name = s.name + "_ADDR"
+        vctx.addComment(addr_name + "=" + str(addr_expr))
+        vctx.addAssignment(addr_expr, vctx.getExpr(addr_expr), addr_name)
+        if(m.name != 'ROM'):
+            rd_expr = ast2verilog.resizeMem(ast.ReadMem(m, addr_expr), 'IRAM', 4)
+            vctx.addAssignment(rd_expr, vctx.getExpr(rd_expr), s.name)
+        else:
+            vctx.outputs.append((addr_name, vctx.getWidth(addr_expr)))
 
     for opcode, astdict in enumerate(asts_p):
         if opcode in opcodes_to_exclude: continue
@@ -106,7 +115,7 @@ def main(argv):
             vctx.addComment('')
 
             if v.isMem(): 
-                mw = vctx.getMemWrite(st, v)
+                mw = vctx.getMemWrite(st, ast2verilog.resizeMem(v, 'IRAM', 4))
                 if mw != None: vctx.addMemWrite(st, opcode, mw)
             else:
                 name = '%s_%02x' % (st, opcode)

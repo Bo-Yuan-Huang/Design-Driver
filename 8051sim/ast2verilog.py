@@ -85,6 +85,7 @@ class MemWrite(object):
 class VerilogContext(object):
     def __init__(self):
         self.inputs     = []
+        self.cinputs    = []
         self.outputs    = []
         self.mems       = []
         self.wires      = []
@@ -218,7 +219,7 @@ class VerilogContext(object):
 
         print >> f, 'module %s(' % name
         print >> f,'  clk,\n  rst,\n  step,';
-        print >> f,',\n'.join(['  %s' % o for o,w in self.outputs])
+        print >> f,',\n'.join(['  %s' % o for o,w in self.outputs + self.cinputs])
         print >> f,');'
 
         for wire, width in self.outputs:
@@ -226,6 +227,11 @@ class VerilogContext(object):
         print >> f
 
         print >> f, 'input clk, rst, step;';
+
+        for inp, width in self.cinputs:
+            self.dumpWire(f, inp, width, 'input')
+        print >> f
+
         for inp, width in self.inputs:
             self.dumpWire(f, inp, width, 'reg')
         print >> f
@@ -617,7 +623,7 @@ class AddrSubs(object):
                 return a
             else:
                 return ast.If(ast.Equal(cnst, ast.BitVecVal(p, mem.awidth)), a, createIf(i+1))
-        return ast.ReadMem(mem, createIf(0))
+        return createIf(0)
 
     def dump(self):
         for p, m, a, s in self.subs:
@@ -653,4 +659,19 @@ def stripMacros(top):
         else:
             return n
     return top.apply(f)
+
+def resizeMem(top, name, sz):
+    ast.ReadMem.VALIDATE_SIZE = 0
+    def f(n):
+        if n.nodetype == ast.Node.MEMVAR and n.name == name:
+            return ast.MemVar(n.name, sz, n.dwidth)
+        elif n.nodetype == ast.Node.READMEM and n.mem.name == name:
+            return ast.ReadMem(n.mem, ast.Extract(sz-1, 0, n.addr))
+        elif n.nodetype == ast.Node.WRITEMEM and n.mem.name == name:
+            return ast.WriteMem(n.mem, ast.Extract(sz-1, 0, n.addr), n.data)
+        else:
+            return n
+    top_ = top.apply(f)
+    ast.ReadMem.VALIDATE_SIZE = 1
+    return top_
 
