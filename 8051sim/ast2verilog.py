@@ -24,24 +24,24 @@ class MemWrite(object):
             self.datas = args['datas']
             assert len(self.addrs) == len(self.datas)
 
-    def toVerilog_(self, cond):
+    def toVerilog(self, cond):
         stmts = []
         if self.writetype == MemWrite.COND:
             if self.etrue == None:
                 assert self.efalse != None
                 ncond = '(%s) && (!%s)' % (cond, self.cond)
-                stmts = self.efalse.toVerilog_(ncond)
+                stmts = self.efalse.toVerilog(ncond)
             elif self.efalse == None:
                 assert self.etrue != None
                 ncond = '(%s) && (%s)' % (cond, self.cond)
-                stmts = self.etrue.toVerilog_(ncond)
+                stmts = self.etrue.toVerilog(ncond)
             else:
                 # true
                 ncond = '(%s) && (%s)' % (cond, self.cond)
-                stmts = self.etrue.toVerilog_(ncond)
+                stmts = self.etrue.toVerilog(ncond)
                 # false
                 ncond = '(%s) && (!%s)' % (cond, self.cond)
-                stmts += self.efalse.toVerilog_(ncond)
+                stmts += self.efalse.toVerilog(ncond)
         elif self.writetype == MemWrite.WRITE:
             stmts.append((cond, self.mem, self.addr, self.data))
         else:
@@ -54,39 +54,6 @@ class MemWrite(object):
                     stmts.append((ncond, self.mem, ai, self.datas[i]))
                 else:
                     stmts.append((cond, self.mem, ai, self.datas[i]))
-        return stmts
-
-    def toVerilog(self):
-        stmts = []
-        if self.writetype == MemWrite.COND:
-            if self.etrue == None:
-                assert self.efalse != None
-                stmts.append('if(!%s) begin' % self.cond)
-                stmts += ['  ' + s for s in self.efalse.toVerilog()]
-                stmts.append('end')
-            elif self.efalse == None:
-                assert self.etrue != None
-                stmts.append('if(%s) begin' % self.cond)
-                stmts += ['  ' + s for s in self.etrue.toVerilog()]
-                stmts.append('end')
-            else:
-                stmts.append('if(%s) begin' % self.cond)
-                stmts += ['  ' + s for s in self.etrue.toVerilog()]
-                stmts.append('end')
-                stmts.append('else begin')
-                stmts += ['  ' + s for s in self.efalse.toVerilog()]
-                stmts.append('end')
-        elif self.writetype == MemWrite.WRITE:
-            stmts.append('%s[%s] <= %s;' % (self.mem.name, self.addr, self.data))
-        else:
-            for i in xrange(len(self.addrs)):
-                arest = self.addrs[i+1:]
-                ai = self.addrs[i]
-                if len(arest):
-                    condition = ' && '.join(['((%s) != (%s))' % (ai, aj) for aj in arest])
-                    stmts += ['if (%s) %s[%s] <= %s;' % (condition, self.mem.name, ai, self.datas[i])]
-                else:
-                    stmts += ['%s[%s] <= %s;' % (self.mem.name, ai, self.datas[i])]
         return stmts
 
     def __str__(self):
@@ -317,7 +284,7 @@ class VerilogContext(object):
                 opast = ast.BitVecVal(opcode, self.cnst.width)
                 eqast = ast.Equal(self.cnst, opast)
                 cond = self.getExpr(eqast)
-                stmts = mw.toVerilog_(cond)
+                stmts = mw.toVerilog(cond)
 
                 mem = None 
                 for s in stmts:
