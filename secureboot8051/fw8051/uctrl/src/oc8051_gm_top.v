@@ -41,6 +41,8 @@ module oc8051_gm_top(
     t2ex_i,           //
 `endif
     property_invalid_pc,
+    property_invalid_acc,
+    property_invalid_iram
 );
     input clk;
     input rst;
@@ -81,6 +83,8 @@ input         t2_i,             // counter 2 input
 
 
     output property_invalid_pc;
+    output property_invalid_acc;
+    output property_invalid_iram;
 
     wire int0 = 0;
     wire int1 = 1;
@@ -116,8 +120,11 @@ input         t2_i,             // counter 2 input
     wire [7:0] acc;
 
     wire [15:0] PC_next;
+    wire [7:0] ACC_gm;
     wire [15:0] rd_rom_0_addr, rd_rom_1_addr, rd_rom_2_addr;
     wire [7:0]  rd_rom_0, rd_rom_1, rd_rom_2;
+    wire [3:0] rd_iram_addr = word_in[3:0];
+    wire [7:0] rd_iram_data;
 
     oc8051_gm_cxrom oc8051_gm_cxrom_1(
         .clk            (clk),
@@ -134,7 +141,7 @@ input         t2_i,             // counter 2 input
     );
 
 
-    oc8051_golden_model uc8051golden_1(
+    oc8051_golden_model oc8051_golden_model_1(
         .clk            (clk),
         .rst            (rst),
         .step           (inst_finished),
@@ -144,23 +151,53 @@ input         t2_i,             // counter 2 input
         .RD_ROM_0       (rd_rom_0),
         .RD_ROM_1       (rd_rom_1),
         .RD_ROM_2       (rd_rom_2),
-        .PC_next        (PC_next)
+        .PC_next        (PC_next),
+        .ACC            (ACC_gm),
+        .RD_IRAM_ADDR   (rd_iram_addr),
+        .RD_IRAM_DATA   (rd_iram_data)
     );
 
     reg op0_cnst;
+    reg inst_finished_r;
+
     // if we see a non-zero op, property is always valid.
     wire op0_cnst_next = op0_cnst ? (rd_rom_0 < 8'h10) : 0;
     assign property_invalid_pc = op0_cnst && op0_cnst_next && inst_finished && (PC_next != pc2);
+    assign property_invalid_acc = op0_cnst && inst_finished_r && (ACC_gm != acc);
+    assign property_invalid_iram = op0_cnst && inst_finished_r && (rd_iram_data != iram_rd_data);
 
     always @(posedge clk) begin
         if (rst) begin
             op0_cnst <= 1;
+            inst_finished_r <= 0;
         end
         else begin
             op0_cnst <= op0_cnst_next;
+            inst_finished_r <= inst_finished;
         end
     end
 
+
+    wire [2047:0] iram_full;
+    wire [127:0] iram = iram_full[127:0];
+    wire [7:0] iram_data [15:0];
+    assign iram_data[0] = iram[7:0];
+    assign iram_data[1] = iram[15:8];
+    assign iram_data[2] = iram[23:16];
+    assign iram_data[3] = iram[31:24];
+    assign iram_data[4] = iram[39:32];
+    assign iram_data[5] = iram[47:40];
+    assign iram_data[6] = iram[55:48];
+    assign iram_data[7] = iram[63:56];
+    assign iram_data[8] = iram[71:64];
+    assign iram_data[9] = iram[79:72];
+    assign iram_data[10] = iram[87:80];
+    assign iram_data[11] = iram[95:88];
+    assign iram_data[12] = iram[103:96];
+    assign iram_data[13] = iram[111:104];
+    assign iram_data[14] = iram[119:112];
+    assign iram_data[15] = iram[127:120];
+    wire [7:0] iram_rd_data = iram_data[rd_iram_addr];
 
     oc8051_top oc8051_top_1(
          .wb_rst_i(rst), .wb_clk_i(clk),
@@ -181,7 +218,7 @@ input         t2_i,             // counter 2 input
          .pc_log                (pc1),
          .psw                   (psw),
          .acc                   (acc),
-         .iram                  (),
+         .iram                  (iram_full),
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0

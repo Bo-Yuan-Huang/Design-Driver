@@ -91,12 +91,15 @@ module oc8051_gm_tb();
       t1_i = 1;
       t2_i = 1;
       t2ex_i = 1;
-      word_in = 128'h0;
+      // word_in = 128'h04E00504E00504E00504E00504E00504; // INC ACC, INC E0
+      // word_in = 128'h05050505050505050505050505050505; // INC 00
+      word_in = 128'b1;
     
       #2001
       rst = 1'b0;
 
-`include "cexGM0.v"
+// `include "cexGM0.v"
+    `include "cexGM1.v"
 
       #8000
       $display("time ",$time, "; end of time\n");

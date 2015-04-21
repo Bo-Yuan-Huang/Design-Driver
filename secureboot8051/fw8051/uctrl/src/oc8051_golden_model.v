@@ -2,6 +2,8 @@ module oc8051_golden_model(
   clk,
   rst,
   step,
+  RD_IRAM_ADDR,
+  RD_IRAM_DATA,
   RD_ROM_0_ADDR,
   RD_ROM_1_ADDR,
   RD_ROM_2_ADDR,
@@ -105,6 +107,8 @@ input clk, rst, step;
 input [7:0] RD_ROM_0;
 input [7:0] RD_ROM_1;
 input [7:0] RD_ROM_2;
+input [3:0] RD_IRAM_ADDR;
+output [7:0] RD_IRAM_DATA;
 
 reg [7:0] ACC;
 reg [7:0] B;
@@ -3140,6 +3144,18 @@ wire [7:0] n1982;
 wire n1983;
 
 reg [7:0] IRAM[15:0];
+
+`ifdef OC8051_SIMULATION
+integer i;
+always @(posedge clk or posedge rst)
+begin
+    if (rst) begin
+        for(i=0;i < 256;i=i+1) begin
+            IRAM[i] = 0;
+        end
+    end
+end
+`endif
 
 // port: IRAM->RD_IRAM_0
 // port: IRAM->RD_IRAM_1
@@ -10504,5 +10520,7 @@ always @(posedge clk) begin
     end
   end
 end
+
+assign RD_IRAM_DATA = IRAM[RD_IRAM_ADDR];
 
 endmodule

@@ -48,7 +48,12 @@ output [2047:0] iram;
           buff[wr_addr0] <= #1 wr_data;
       end
       
-      wire [2047:0] iram = 2048'b0;
+      wire [127:0] iram_small;
+      genvar j;
+      generate for (j=0; j < 16; j = j+1) begin:iramout
+        assign iram_small[j*8+7 : j*8] = buff[j];
+      end endgenerate
+      wire [2047:0] iram = {1920'b0, iram_small};
 
       //
       // reading from ram
