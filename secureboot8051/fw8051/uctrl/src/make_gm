@@ -23,12 +23,9 @@ oc8051_uart.v                   \
 oc8051_int.v                    \
 oc8051_tc.v                     \
 oc8051_tc2.v                    \
-oc8051_icache.v                 \
 oc8051_wb_iinterface.v          \
 oc8051_sfr.v                    \
 oc8051_rom.v                    \
 oc8051_cache_ram.v              \
-oc8051_ram_256x8_two_bist.v     \
-oc8051_ram_64x32_dual_bist.v    \
-oc8051_symbolic_cxrom.v         \
-oc8051_debug_cxrom.v
+oc8051_gm_ram_256x8_two_bist.v  \
+oc8051_gm_cxrom.v               \

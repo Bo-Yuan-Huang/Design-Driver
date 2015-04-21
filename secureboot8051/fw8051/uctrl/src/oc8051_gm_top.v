@@ -44,7 +44,7 @@ module oc8051_gm_top(
 );
     input clk;
     input rst;
-    input [31:0] word_in;
+    input [127:0] word_in;
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
@@ -114,26 +114,53 @@ input         t2_i,             // counter 2 input
     wire [15:0] pc2, pc1;
     wire [7:0] psw;
     wire [7:0] acc;
-    wire op_valid;
-    wire [7:0] op0_out;
-    wire [7:0] op1_out;
-    wire [7:0] op2_out;
-
-    assign cxrom_data_out = 32'b0;
-    assign op_valid = 1;
-    assign op0_out = 8'b0;
-    assign op1_out = 8'b0;
-    assign op2_out = 8'b0;
 
     wire [15:0] PC_next;
-    oc8051_golden_model uc8051golden_1(
-        .clk        (clk),
-        .rst        (rst),
-        .step       (inst_finished),
-        .PC_next    (PC_next)
+    wire [15:0] rd_rom_0_addr, rd_rom_1_addr, rd_rom_2_addr;
+    wire [7:0]  rd_rom_0, rd_rom_1, rd_rom_2;
+
+    oc8051_gm_cxrom oc8051_gm_cxrom_1(
+        .clk            (clk),
+        .rst            (rst),
+        .word_in        (word_in),
+        .cxrom_addr     (cxrom_addr),
+        .cxrom_data_out (cxrom_data_out),
+        .rd_addr_0      (rd_rom_0_addr),
+        .rd_addr_1      (rd_rom_1_addr),
+        .rd_addr_2      (rd_rom_2_addr),
+        .rd_data_0      (rd_rom_0),
+        .rd_data_1      (rd_rom_1),
+        .rd_data_2      (rd_rom_2)
     );
 
-    assign property_invalid_pc = inst_finished && (PC_next != pc2);
+
+    oc8051_golden_model uc8051golden_1(
+        .clk            (clk),
+        .rst            (rst),
+        .step           (inst_finished),
+        .RD_ROM_0_ADDR  (rd_rom_0_addr),
+        .RD_ROM_1_ADDR  (rd_rom_1_addr),
+        .RD_ROM_2_ADDR  (rd_rom_2_addr),
+        .RD_ROM_0       (rd_rom_0),
+        .RD_ROM_1       (rd_rom_1),
+        .RD_ROM_2       (rd_rom_2),
+        .PC_next        (PC_next)
+    );
+
+    reg op0_cnst;
+    // if we see a non-zero op, property is always valid.
+    wire op0_cnst_next = op0_cnst ? (rd_rom_0 < 8'h10) : 0;
+    assign property_invalid_pc = op0_cnst && op0_cnst_next && inst_finished && (PC_next != pc2);
+
+    always @(posedge clk) begin
+        if (rst) begin
+            op0_cnst <= 1;
+        end
+        else begin
+            op0_cnst <= op0_cnst_next;
+        end
+    end
+
 
     oc8051_top oc8051_top_1(
          .wb_rst_i(rst), .wb_clk_i(clk),
