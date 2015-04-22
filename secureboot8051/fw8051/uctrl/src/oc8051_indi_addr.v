@@ -82,6 +82,15 @@ reg wr_bit_r;
 
 reg [7:0] buff [0:7];
 
+wire [7:0] buff0 = buff[0];
+wire [7:0] buff1 = buff[1];
+wire [7:0] buff2 = buff[2];
+wire [7:0] buff3 = buff[3];
+wire [7:0] buff4 = buff[4];
+wire [7:0] buff5 = buff[5];
+wire [7:0] buff6 = buff[6];
+wire [7:0] buff7 = buff[7];
+
 //
 //write to buffer
 always @(posedge clk or posedge rst)

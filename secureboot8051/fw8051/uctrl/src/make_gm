@@ -16,7 +16,7 @@ oc8051_sp.v                     \
 oc8051_dptr.v                   \
 oc8051_cy_select.v              \
 oc8051_psw.v                    \
-oc8051_indi_addr.v              \
+oc8051_gm_indi_addr.v              \
 oc8051_ports.v                  \
 oc8051_b_register.v             \
 oc8051_uart.v                   \
