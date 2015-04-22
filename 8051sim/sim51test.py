@@ -5,7 +5,7 @@ from uc8051syn import eval8051
 #TL0:0 TL1:0 TMOD:0 XRAM:[else:0]
 
 sim_inputs = {
-    'ACC':0x11, 
+    'ACC':0x0, 
     'B':0, 
     'DPH':0x0, 
     'DPL':0x0, 
@@ -20,7 +20,7 @@ sim_inputs = {
     'PC':0, 
     'PCON':0, 
     'PSW':0, 
-    'ROM':[[0,0xf5], 0x6b],
+    'ROM':[[0,0x05], [1, 0x00], [2, 0x06], 0x00],
     'SBUF':0, 
     'SCON':0, 
     'SP':0, 
@@ -36,3 +36,10 @@ sim_outputs = {}
 
 eval8051(sim_inputs, sim_outputs)
 print sim_outputs
+
+sim_inputs['IRAM'] = sim_outputs['IRAM']
+sim_inputs['PC'] = sim_outputs['PC']
+
+eval8051(sim_inputs, sim_outputs)
+print sim_outputs
+
