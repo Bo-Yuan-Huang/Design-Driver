@@ -22,6 +22,18 @@ void main() {
         NOP
         NOP
 
+        MOV     R0, #0
+        MOV     0x40, #0
+        MOV     R1, #0
+        NOP
+        NOP
+
+        INC     0x0
+        INC     @R0
+        NOP
+        NOP
+        NOP
+
     DONE:
 	__endasm;
 
