@@ -98,11 +98,11 @@ begin
     buff[3'b011] <= #1 8'h00;
   end else begin
     if ((wr) & !(wr_bit_r)) begin
-      case (wr_addr[3:0]) 
-        4'h0: buff[3'b000] <= #1 data_in;
-        4'h1: buff[3'b001] <= #1 data_in;
-        4'h8: buff[3'b010] <= #1 data_in;
-        4'h9: buff[3'b011] <= #1 data_in;
+      case ({wr_addr[7], wr_addr[3:0]}) 
+        5'h0: buff[3'b000] <= #1 data_in;
+        5'h1: buff[3'b001] <= #1 data_in;
+        5'h8: buff[3'b010] <= #1 data_in;
+        5'h9: buff[3'b011] <= #1 data_in;
       endcase
     end
   end
@@ -113,7 +113,7 @@ end
 
 wire [7:0] ri_addr = {3'b000, bank, 2'b00, sel};
 wire [7:0] buff_out = buff[{bank[0], sel}];
-assign ri_out = ((ri_addr[3:0]==wr_addr[3:0]) & (wr) & !wr_bit_r) ?
+assign ri_out = ((ri_addr[3:0]==wr_addr[3:0]) & (wr_addr[7] == 1'b0) & (wr) & !wr_bit_r) ?
                  data_in : buff_out;
 
 
