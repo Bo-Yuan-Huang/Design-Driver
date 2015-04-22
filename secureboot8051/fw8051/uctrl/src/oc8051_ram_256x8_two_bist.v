@@ -190,4 +190,8 @@ input   scanb_en;
   `endif    //OC8051_RAM_VIRTUALSILICON  
 `endif      //OC8051_RAM_XILINX
 
+wire [7:0] buf40 = buff[8'h40];
+wire [7:0] buf00 = buff[8'h00];
+wire [7:0] buf01 = buff[8'h01];
+
 endmodule
