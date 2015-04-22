@@ -55,6 +55,9 @@ output [2047:0] iram;
       end endgenerate
       wire [2047:0] iram = {1920'b0, iram_small};
 
+      wire [7:0] iram0 = buff[0];
+      wire [7:0] iram1 = buff[1];
+
       //
       // reading from ram
       always @(posedge clk or posedge rst)
