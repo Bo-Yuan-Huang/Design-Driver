@@ -55,6 +55,21 @@ def addPort(R, mem, addr, opcode):
         if R[k] != [-1]:
             R[k].append(opcode)
 
+def rewritePortsAsInputs(st, v):
+    port_names = ['P0', 'P1', 'P2', 'P3']
+    def f(n):
+        if n.nodetype == ast.Node.BITVECVAR and n.name in port_names:
+            assert n.width == 8
+            n_p = ast.BitVecVar(n.name + 'IN', n.width)
+            return n_p
+        else:
+            return n
+
+    if st not in port_names:
+        return v.apply(f)
+    else:
+        return v
+                
 def main(argv):
     if len(argv) != 4:
         print 'Syntax error.'
@@ -72,13 +87,19 @@ def main(argv):
     cnst_p = ast2verilog.rewriteMemReads(-1, cnst, subs)
     vctx.setCnst(cnst_p)
 
+    for i in xrange(4):
+        pi = 'P%dIN' % i
+        vctx.cinputs.append((pi, (7,0)))
+        vctx.objects[ast.BitVecVar(pi, 8)] = pi
+
     asts_p = []
     for opcode, astdict in enumerate(asts):
         if opcode in opcodes_to_exclude: continue
         astdict_p = []
         for st, v in astdict.iteritems():
             v_p1 = ast2verilog.stripMacros(v)
-            v_p = ast2verilog.rewriteMemReads(opcode, v_p1, subs)
+            v_p2 = ast2verilog.rewriteMemReads(opcode, v_p1, subs)
+            v_p = rewritePortsAsInputs(st, v_p2)
             astdict_p.append((st, v_p))
         asts_p.append(astdict_p)
 
