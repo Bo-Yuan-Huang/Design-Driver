@@ -126,6 +126,13 @@ input         t2_i,             // counter 2 input
     wire [3:0] rd_iram_addr = word_in[3:0];
     wire [7:0] rd_iram_data;
 
+    reg [7:0] p0in_reg, p1in_reg, p2in_reg, p3in_reg;
+
+    wire [7:0] p0in_model = inst_finished ? p0_in : p0in_reg;
+    wire [7:0] p1in_model = inst_finished ? p1_in : p1in_reg;
+    wire [7:0] p2in_model = inst_finished ? p2_in : p2in_reg;
+    wire [7:0] p3in_model = inst_finished ? p3_in : p3in_reg;
+
     oc8051_gm_cxrom oc8051_gm_cxrom_1(
         .clk            (clk),
         .rst            (rst),
@@ -154,14 +161,18 @@ input         t2_i,             // counter 2 input
         .PC_next        (PC_next),
         .ACC            (ACC_gm),
         .RD_IRAM_ADDR   (rd_iram_addr),
-        .RD_IRAM_DATA   (rd_iram_data)
+        .RD_IRAM_DATA   (rd_iram_data),
+        .P0IN           (p0in_model),
+        .P1IN           (p1in_model),
+        .P2IN           (p2in_model),
+        .P3IN           (p3in_model)
     );
 
     reg op0_cnst;
     reg inst_finished_r;
 
     // if we see a non-zero op, property is always valid.
-    wire op0_cnst_next = op0_cnst ? (rd_rom_0 < 8'h10) : 0;
+    wire op0_cnst_next = op0_cnst ? (rd_rom_0 <= 8'h10) : 0;
     assign property_invalid_pc = op0_cnst && op0_cnst_next && inst_finished && (PC_next != pc2);
     assign property_invalid_acc = op0_cnst && inst_finished_r && (ACC_gm != acc);
     assign property_invalid_iram = op0_cnst && inst_finished_r && (rd_iram_data != iram_rd_data);
@@ -170,10 +181,20 @@ input         t2_i,             // counter 2 input
         if (rst) begin
             op0_cnst <= 1;
             inst_finished_r <= 0;
+            p0in_reg <= 8'b0;
+            p1in_reg <= 8'b0;
+            p2in_reg <= 8'b0;
+            p3in_reg <= 8'b0;
         end
         else begin
             op0_cnst <= op0_cnst_next;
             inst_finished_r <= inst_finished;
+            if (inst_finished) begin
+                p0in_reg <= p0_in;
+                p1in_reg <= p1_in;
+                p2in_reg <= p2_in;
+                p3in_reg <= p3_in;
+            end
         end
     end
 
@@ -222,19 +243,19 @@ input         t2_i,             // counter 2 input
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
-         .p0_i(p0_in),
+         .p0_i(p0in_model),
          .p0_o(p0_out),
  `endif
  `ifdef OC8051_PORT1
-         .p1_i(p1_in),
+         .p1_i(p1in_model),
          .p1_o(p1_out),
  `endif
  `ifdef OC8051_PORT2
-         .p2_i(p2_in),
+         .p2_i(p2in_model),
          .p2_o(p2_out),
  `endif
  `ifdef OC8051_PORT3
-         .p3_i(p3_in),
+         .p3_i(p3in_model),
          .p3_o(p3_out),
  `endif
 `endif
