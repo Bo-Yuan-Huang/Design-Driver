@@ -10479,6 +10479,7 @@ always @(posedge clk) begin
     TL0 <= 8'h0;
     TL1 <= 8'h0;
     TMOD <= 8'h0;
+`ifdef OC8051_SIMULATION
     IRAM[0] = 8'b0;
     IRAM[1] = 8'b0;
     IRAM[2] = 8'b0;
@@ -10495,6 +10496,7 @@ always @(posedge clk) begin
     IRAM[13] = 8'b0;
     IRAM[14] = 8'b0;
     IRAM[15] = 8'b0;
+`endif
   end
   else begin
     if (step) begin

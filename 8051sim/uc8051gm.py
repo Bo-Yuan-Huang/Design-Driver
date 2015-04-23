@@ -133,6 +133,7 @@ def main(argv):
     vctx.setRst('P2', 'ff')
     vctx.setRst('P3', 'ff')
 
+    vctx.init_mem_guard = 'OC8051_SIMULATION'
     with open(argv[3], 'wt') as f:
         vctx.dump(f, 'oc8051_golden_model')
 

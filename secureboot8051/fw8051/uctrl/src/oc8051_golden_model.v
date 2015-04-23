@@ -2,8 +2,6 @@ module oc8051_golden_model(
   clk,
   rst,
   step,
-  RD_IRAM_ADDR,
-  RD_IRAM_DATA,
   RD_ROM_0_ADDR,
   RD_ROM_1_ADDR,
   RD_ROM_2_ADDR,
@@ -51,9 +49,11 @@ module oc8051_golden_model(
   SBUF_next,
   PSW,
   PSW_next,
+  RD_IRAM_DATA,
   RD_ROM_0,
   RD_ROM_1,
-  RD_ROM_2
+  RD_ROM_2,
+  RD_IRAM_ADDR
 );
 output [15:0] RD_ROM_0_ADDR;
 output [15:0] RD_ROM_1_ADDR;
@@ -102,13 +102,13 @@ output [7:0] SBUF;
 output [7:0] SBUF_next;
 output [7:0] PSW;
 output [7:0] PSW_next;
+output [7:0] RD_IRAM_DATA;
 
 input clk, rst, step;
 input [7:0] RD_ROM_0;
 input [7:0] RD_ROM_1;
 input [7:0] RD_ROM_2;
 input [3:0] RD_IRAM_ADDR;
-output [7:0] RD_IRAM_DATA;
 
 reg [7:0] ACC;
 reg [7:0] B;
@@ -3144,18 +3144,6 @@ wire [7:0] n1982;
 wire n1983;
 
 reg [7:0] IRAM[15:0];
-
-`ifdef OC8051_SIMULATION
-integer i;
-always @(posedge clk or posedge rst)
-begin
-    if (rst) begin
-        for(i=0;i < 256;i=i+1) begin
-            IRAM[i] = 0;
-        end
-    end
-end
-`endif
 
 // port: IRAM->RD_IRAM_0
 // port: IRAM->RD_IRAM_1
@@ -10465,31 +10453,50 @@ assign WR_COND_0_IRAM = ((n0002) && (n0999)) || (n0004) || (n0009) || (n0013) ||
 assign WR_ADDR_1_IRAM = (n1909) ? (n1140) : ((n1911) ? (n1140) : ((n1915) ? (n1140) : ((n1923) ? (n1140) : ((n1931) ? (n1140) : ((n1953) ? (n1140) : ((n1959) ? (n1140) : ((n1969) ? (n1140) : (n1140))))))));
 assign WR_DATA_1_IRAM = (n1909) ? (n1141) : ((n1911) ? (n1145) : ((n1915) ? (n1141) : ((n1923) ? (n1141) : ((n1931) ? (n1141) : ((n1953) ? (n1141) : ((n1959) ? (n1141) : ((n1969) ? (n1141) : (n1141))))))));
 assign WR_COND_1_IRAM = (n1909) || (n1911) || (n1915) || (n1923) || (n1931) || (n1953) || (n1959) || (n1969) || (n0375);
+assign RD_IRAM_DATA = IRAM[RD_IRAM_ADDR];
 
 always @(posedge clk) begin
   if (rst) begin
-    ACC <= 8'b0;
-    B <= 8'b0;
-    DPH <= 8'b0;
-    DPL <= 8'b0;
-    IE <= 8'b0;
-    IP <= 8'b0;
+    ACC <= 8'h0;
+    B <= 8'h0;
+    DPH <= 8'h0;
+    DPL <= 8'h0;
+    IE <= 8'h0;
+    IP <= 8'h0;
     P0 <= 8'hff;
     P1 <= 8'hff;
     P2 <= 8'hff;
     P3 <= 8'hff;
-    PC <= 16'b0;
-    PCON <= 8'b0;
-    PSW <= 8'b0;
-    SBUF <= 8'b0;
-    SCON <= 8'b0;
-    SP <= 8'b0;
-    TCON <= 8'b0;
-    TH0 <= 8'b0;
-    TH1 <= 8'b0;
-    TL0 <= 8'b0;
-    TL1 <= 8'b0;
-    TMOD <= 8'b0;
+    PC <= 16'h0;
+    PCON <= 8'h0;
+    PSW <= 8'h0;
+    SBUF <= 8'h0;
+    SCON <= 8'h0;
+    SP <= 8'h0;
+    TCON <= 8'h0;
+    TH0 <= 8'h0;
+    TH1 <= 8'h0;
+    TL0 <= 8'h0;
+    TL1 <= 8'h0;
+    TMOD <= 8'h0;
+`ifdef OC8051_SIMULATION
+    IRAM[0] = 8'b0;
+    IRAM[1] = 8'b0;
+    IRAM[2] = 8'b0;
+    IRAM[3] = 8'b0;
+    IRAM[4] = 8'b0;
+    IRAM[5] = 8'b0;
+    IRAM[6] = 8'b0;
+    IRAM[7] = 8'b0;
+    IRAM[8] = 8'b0;
+    IRAM[9] = 8'b0;
+    IRAM[10] = 8'b0;
+    IRAM[11] = 8'b0;
+    IRAM[12] = 8'b0;
+    IRAM[13] = 8'b0;
+    IRAM[14] = 8'b0;
+    IRAM[15] = 8'b0;
+`endif
   end
   else begin
     if (step) begin
@@ -10520,7 +10527,5 @@ always @(posedge clk) begin
     end
   end
 end
-
-assign RD_IRAM_DATA = IRAM[RD_IRAM_ADDR];
 
 endmodule

@@ -98,6 +98,7 @@ class VerilogContext(object):
         self.memwrites  = {}
         self.statechanges = {}
         self.rsts = {}
+        self.init_mem_guard = ''
 
     def _getName(self):
         self.nameCtr += 1
@@ -258,8 +259,10 @@ class VerilogContext(object):
                 print >> f, '    %s <= %s;' % (inp, self.getRst(inp))
         for m in self.mems:
             sz = 1 << m.awidth
+            if len(self.init_mem_guard): print >> f, '`ifdef %s' % self.init_mem_guard
             for i in xrange(sz):
                 print >> f,'    %s[%d] = %d\'b0;' % (m.name, i, m.dwidth)
+            if len(self.init_mem_guard): print >> f, '`endif'
 
         print >> f, '  end'
         print >> f, '  else begin'
