@@ -97,7 +97,7 @@ class VerilogContext(object):
 
         self.memwrites  = {}
         self.statechanges = {}
-
+        self.rsts = {}
 
     def _getName(self):
         self.nameCtr += 1
@@ -253,9 +253,14 @@ class VerilogContext(object):
         print >> f, '  if (rst) begin'
         for inp, width in self.inputs:
             if width:
-                print >> f, '    %s <= %d\'b0;' % (inp, width[0]-width[1]+1)
+                print >> f, '    %s <= %d\'h%s;' % (inp, width[0]-width[1]+1, self.getRst(inp))
             else:
-                print >> f, '    %s <= 0;' % inp
+                print >> f, '    %s <= %s;' % (inp, self.getRst(inp))
+        for m in self.mems:
+            sz = 1 << m.awidth
+            for i in xrange(sz):
+                print >> f,'    %s[%d] = %d\'b0;' % (m.name, i, m.dwidth)
+
         print >> f, '  end'
         print >> f, '  else begin'
         print >> f, '    if (step) begin'
@@ -266,6 +271,15 @@ class VerilogContext(object):
         print >> f, 'end'
         print >> f
         print >> f, 'endmodule'
+
+    def getRst(self, n):
+        if n in self.rsts:
+            return self.rsts[n]
+        else:
+            return '0'
+
+    def setRst(self, n, v):
+        self.rsts[n] = v
 
     def setCnst(self, c):
         self.cnst = c

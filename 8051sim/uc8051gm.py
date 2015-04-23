@@ -125,6 +125,13 @@ def main(argv):
 
     vctx.addOutputs()
     vctx.addMems()
+    vctx.cinputs.append(('RD_IRAM_ADDR', (3,0)))
+    vctx.outputs.append(('RD_IRAM_DATA', (7,0)))
+    vctx.statements.append('assign RD_IRAM_DATA = IRAM[RD_IRAM_ADDR];')
+    vctx.setRst('P0', 'ff')
+    vctx.setRst('P1', 'ff')
+    vctx.setRst('P2', 'ff')
+    vctx.setRst('P3', 'ff')
 
     with open(argv[3], 'wt') as f:
         vctx.dump(f, 'oc8051_golden_model')
