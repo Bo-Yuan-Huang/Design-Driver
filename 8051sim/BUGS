@@ -12,7 +12,10 @@
 * AJMP in RTL
 
 
-* many bugs in the forwarding of bit addressable instructions (oc8051_sfr.v)
+* many bugs in the forwarding of SFRs (oc8051_sfr.v)
+
+These bugs are because many items of state can be addressed in different ways. E.g., PSW
+as addr D0, through RRC, through bit addressable instructions etc.
 
 -  else if (
 -          ((adr1[7:3]==adr0[7:3]) & (~&adr1[2:0]) &  we & !wr_bit_r) |
@@ -59,7 +62,7 @@
                wr <= #1 1'b1;
 
 
-* something wrong with forwarding when RR (rotate right) is immediately followed by JBC which addresses the accumulator.
+* undefined SFR addresses return garbage (last value stored in a latch).
 
 * 
 
