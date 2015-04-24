@@ -60,7 +60,7 @@ def rewritePortsAsInputs(st, v):
     def f(n):
         if n.nodetype == ast.Node.BITVECVAR and n.name in port_names:
             assert n.width == 8
-            n_p = ast.BitVecVar(n.name + 'IN', n.width)
+            n_p = ast.BitVecVar(n.name + 'INREG', n.width)
             return n_p
         else:
             return n
@@ -89,18 +89,39 @@ def main(argv):
 
     for i in xrange(4):
         pi = 'P%dIN' % i
+        pireg = 'P%dINREG' % i
         vctx.cinputs.append((pi, (7,0)))
-        vctx.objects[ast.BitVecVar(pi, 8)] = pi
+        vctx.always_stmts.append('%s <= %s;' % (pireg, pi))
 
     asts_p = []
     for opcode, astdict in enumerate(asts):
         if opcode in opcodes_to_exclude: continue
         astdict_p = []
+        acc_v = None
         for st, v in astdict.iteritems():
             v_p1 = ast2verilog.stripMacros(v)
             v_p2 = ast2verilog.rewriteMemReads(opcode, v_p1, subs)
             v_p = rewritePortsAsInputs(st, v_p2)
             astdict_p.append((st, v_p))
+            if st == 'ACC':
+                acc_v = v_p
+
+        assert acc_v != None
+        acc_p = ast.BVXor(ast.Extract(7, 7, acc_v),
+                ast.BVXor(ast.Extract(6, 6, acc_v),
+                ast.BVXor(ast.Extract(5, 5, acc_v),
+                ast.BVXor(ast.Extract(4, 4, acc_v),
+                ast.BVXor(ast.Extract(3, 3, acc_v),
+                ast.BVXor(ast.Extract(2, 2, acc_v),
+                ast.BVXor(ast.Extract(1, 1, acc_v), 
+                ast.Extract(0, 0, acc_v))))))))
+        for i in xrange(len(astdict_p)):
+            st = astdict_p[i][0]
+            v = astdict_p[i][1]
+            if st == 'PSW':
+                v_p = ast.Concat(ast.Extract(7, 1, v), acc_p)
+                astdict_p[i] = (st, v_p)
+
         asts_p.append(astdict_p)
 
     ports = subs.getReadPorts()
