@@ -7129,50 +7129,51 @@ assign ACC_43 = n1734;
 assign n1735 = ( n1056 ) ? ( n1733 ) : ( PCON );
 assign PCON_43 = n1735;
 // 
-// B_43
+// P1_43
 // 
-assign n1736 = ( n1073 ) ? ( n1733 ) : ( B );
-assign B_43 = n1736;
+assign n1736 = ( n1117 | RD_ROM_2 );
+assign n1737 = ( n1064 ) ? ( n1736 ) : ( P1 );
+assign P1_43 = n1737;
 // 
 // TMOD_43
 // 
-assign n1737 = ( n1058 ) ? ( n1733 ) : ( TMOD );
-assign TMOD_43 = n1737;
+assign n1738 = ( n1058 ) ? ( n1733 ) : ( TMOD );
+assign TMOD_43 = n1738;
 // 
 // DPL_43
 // 
-assign n1738 = ( n1053 ) ? ( n1733 ) : ( DPL );
-assign DPL_43 = n1738;
+assign n1739 = ( n1053 ) ? ( n1733 ) : ( DPL );
+assign DPL_43 = n1739;
 // 
 // DPH_43
 // 
-assign n1739 = ( n1055 ) ? ( n1733 ) : ( DPH );
-assign DPH_43 = n1739;
+assign n1740 = ( n1055 ) ? ( n1733 ) : ( DPH );
+assign DPH_43 = n1740;
 // 
 // TL1_43
 // 
-assign n1740 = ( n1061 ) ? ( n1733 ) : ( TL1 );
-assign TL1_43 = n1740;
+assign n1741 = ( n1061 ) ? ( n1733 ) : ( TL1 );
+assign TL1_43 = n1741;
 // 
 // TL0_43
 // 
-assign n1741 = ( n1059 ) ? ( n1733 ) : ( TL0 );
-assign TL0_43 = n1741;
+assign n1742 = ( n1059 ) ? ( n1733 ) : ( TL0 );
+assign TL0_43 = n1742;
 // 
 // IE_43
 // 
-assign n1742 = ( n1068 ) ? ( n1733 ) : ( IE );
-assign IE_43 = n1742;
+assign n1743 = ( n1068 ) ? ( n1733 ) : ( IE );
+assign IE_43 = n1743;
 // 
 // TH1_43
 // 
-assign n1743 = ( n1062 ) ? ( n1733 ) : ( TH1 );
-assign TH1_43 = n1743;
+assign n1744 = ( n1062 ) ? ( n1733 ) : ( TH1 );
+assign TH1_43 = n1744;
 // 
 // TH0_43
 // 
-assign n1744 = ( n1060 ) ? ( n1733 ) : ( TH0 );
-assign TH0_43 = n1744;
+assign n1745 = ( n1060 ) ? ( n1733 ) : ( TH0 );
+assign TH0_43 = n1745;
 // 
 // PC_43
 // 
@@ -7180,24 +7181,23 @@ assign PC_43 = n1216;
 // 
 // P2_43
 // 
-assign n1745 = ( n1117 | RD_ROM_2 );
-assign n1746 = ( n1067 ) ? ( n1745 ) : ( P2 );
+assign n1746 = ( n1067 ) ? ( n1736 ) : ( P2 );
 assign P2_43 = n1746;
 // 
 // P3_43
 // 
-assign n1747 = ( n1069 ) ? ( n1745 ) : ( P3 );
+assign n1747 = ( n1069 ) ? ( n1736 ) : ( P3 );
 assign P3_43 = n1747;
 // 
 // P0_43
 // 
-assign n1748 = ( n1050 ) ? ( n1745 ) : ( P0 );
+assign n1748 = ( n1050 ) ? ( n1736 ) : ( P0 );
 assign P0_43 = n1748;
 // 
-// P1_43
+// B_43
 // 
-assign n1749 = ( n1064 ) ? ( n1745 ) : ( P1 );
-assign P1_43 = n1749;
+assign n1749 = ( n1073 ) ? ( n1733 ) : ( B );
+assign B_43 = n1749;
 // 
 // IRAM_43
 // 
@@ -7608,50 +7608,51 @@ assign ACC_53 = n1868;
 assign n1869 = ( n1056 ) ? ( n1867 ) : ( PCON );
 assign PCON_53 = n1869;
 // 
-// B_53
+// P1_53
 // 
-assign n1870 = ( n1073 ) ? ( n1867 ) : ( B );
-assign B_53 = n1870;
+assign n1870 = ( n1117 & RD_ROM_2 );
+assign n1871 = ( n1064 ) ? ( n1870 ) : ( P1 );
+assign P1_53 = n1871;
 // 
 // TMOD_53
 // 
-assign n1871 = ( n1058 ) ? ( n1867 ) : ( TMOD );
-assign TMOD_53 = n1871;
+assign n1872 = ( n1058 ) ? ( n1867 ) : ( TMOD );
+assign TMOD_53 = n1872;
 // 
 // DPL_53
 // 
-assign n1872 = ( n1053 ) ? ( n1867 ) : ( DPL );
-assign DPL_53 = n1872;
+assign n1873 = ( n1053 ) ? ( n1867 ) : ( DPL );
+assign DPL_53 = n1873;
 // 
 // DPH_53
 // 
-assign n1873 = ( n1055 ) ? ( n1867 ) : ( DPH );
-assign DPH_53 = n1873;
+assign n1874 = ( n1055 ) ? ( n1867 ) : ( DPH );
+assign DPH_53 = n1874;
 // 
 // TL1_53
 // 
-assign n1874 = ( n1061 ) ? ( n1867 ) : ( TL1 );
-assign TL1_53 = n1874;
+assign n1875 = ( n1061 ) ? ( n1867 ) : ( TL1 );
+assign TL1_53 = n1875;
 // 
 // TL0_53
 // 
-assign n1875 = ( n1059 ) ? ( n1867 ) : ( TL0 );
-assign TL0_53 = n1875;
+assign n1876 = ( n1059 ) ? ( n1867 ) : ( TL0 );
+assign TL0_53 = n1876;
 // 
 // IE_53
 // 
-assign n1876 = ( n1068 ) ? ( n1867 ) : ( IE );
-assign IE_53 = n1876;
+assign n1877 = ( n1068 ) ? ( n1867 ) : ( IE );
+assign IE_53 = n1877;
 // 
 // TH1_53
 // 
-assign n1877 = ( n1062 ) ? ( n1867 ) : ( TH1 );
-assign TH1_53 = n1877;
+assign n1878 = ( n1062 ) ? ( n1867 ) : ( TH1 );
+assign TH1_53 = n1878;
 // 
 // TH0_53
 // 
-assign n1878 = ( n1060 ) ? ( n1867 ) : ( TH0 );
-assign TH0_53 = n1878;
+assign n1879 = ( n1060 ) ? ( n1867 ) : ( TH0 );
+assign TH0_53 = n1879;
 // 
 // PC_53
 // 
@@ -7659,24 +7660,23 @@ assign PC_53 = n1216;
 // 
 // P2_53
 // 
-assign n1879 = ( n1117 & RD_ROM_2 );
-assign n1880 = ( n1067 ) ? ( n1879 ) : ( P2 );
+assign n1880 = ( n1067 ) ? ( n1870 ) : ( P2 );
 assign P2_53 = n1880;
 // 
 // P3_53
 // 
-assign n1881 = ( n1069 ) ? ( n1879 ) : ( P3 );
+assign n1881 = ( n1069 ) ? ( n1870 ) : ( P3 );
 assign P3_53 = n1881;
 // 
 // P0_53
 // 
-assign n1882 = ( n1050 ) ? ( n1879 ) : ( P0 );
+assign n1882 = ( n1050 ) ? ( n1870 ) : ( P0 );
 assign P0_53 = n1882;
 // 
-// P1_53
+// B_53
 // 
-assign n1883 = ( n1064 ) ? ( n1879 ) : ( P1 );
-assign P1_53 = n1883;
+assign n1883 = ( n1073 ) ? ( n1867 ) : ( B );
+assign B_53 = n1883;
 // 
 // IRAM_53
 // 
@@ -8001,10 +8001,10 @@ assign TL1_62 = n1986;
 assign n1987 = ( n1059 ) ? ( n1979 ) : ( TL0 );
 assign TL0_62 = n1987;
 // 
-// TCON_62
+// IE_62
 // 
-assign n1988 = ( n1057 ) ? ( n1979 ) : ( TCON );
-assign TCON_62 = n1988;
+assign n1988 = ( n1068 ) ? ( n1979 ) : ( IE );
+assign IE_62 = n1988;
 // 
 // TH1_62
 // 
@@ -8048,10 +8048,10 @@ assign B_62 = n1994;
 assign n1995 = ( n1070 ) ? ( n1979 ) : ( IP );
 assign IP_62 = n1995;
 // 
-// IE_62
+// TCON_62
 // 
-assign n1996 = ( n1068 ) ? ( n1979 ) : ( IE );
-assign IE_62 = n1996;
+assign n1996 = ( n1057 ) ? ( n1979 ) : ( TCON );
+assign TCON_62 = n1996;
 // 
 // SCON_62
 // 
@@ -8132,10 +8132,10 @@ assign TL1_63 = n2026;
 assign n2027 = ( n1059 ) ? ( n2018 ) : ( TL0 );
 assign TL0_63 = n2027;
 // 
-// IE_63
+// TCON_63
 // 
-assign n2028 = ( n1068 ) ? ( n2018 ) : ( IE );
-assign IE_63 = n2028;
+assign n2028 = ( n1057 ) ? ( n2018 ) : ( TCON );
+assign TCON_63 = n2028;
 // 
 // TH1_63
 // 
@@ -8179,10 +8179,10 @@ assign B_63 = n2034;
 assign n2035 = ( n1070 ) ? ( n2018 ) : ( IP );
 assign IP_63 = n2035;
 // 
-// TCON_63
+// IE_63
 // 
-assign n2036 = ( n1057 ) ? ( n2018 ) : ( TCON );
-assign TCON_63 = n2036;
+assign n2036 = ( n1068 ) ? ( n2018 ) : ( IE );
+assign IE_63 = n2036;
 // 
 // SCON_63
 // 
@@ -8517,10 +8517,10 @@ assign ACC_75 = n2149;
 assign n2150 = ( n1056 ) ? ( RD_ROM_2 ) : ( PCON );
 assign PCON_75 = n2150;
 // 
-// B_75
+// P1_75
 // 
-assign n2151 = ( n1073 ) ? ( RD_ROM_2 ) : ( B );
-assign B_75 = n2151;
+assign n2151 = ( n1064 ) ? ( RD_ROM_2 ) : ( P1 );
+assign P1_75 = n2151;
 // 
 // TMOD_75
 // 
@@ -8581,10 +8581,10 @@ assign P3_75 = n2161;
 assign n2162 = ( n1050 ) ? ( RD_ROM_2 ) : ( P0 );
 assign P0_75 = n2162;
 // 
-// P1_75
+// B_75
 // 
-assign n2163 = ( n1064 ) ? ( RD_ROM_2 ) : ( P1 );
-assign P1_75 = n2163;
+assign n2163 = ( n1073 ) ? ( RD_ROM_2 ) : ( B );
+assign B_75 = n2163;
 // 
 // IRAM_75
 // 
@@ -8913,10 +8913,10 @@ assign TL1_85 = n2268;
 assign n2269 = ( n1059 ) ? ( n2261 ) : ( TL0 );
 assign TL0_85 = n2269;
 // 
-// TCON_85
+// IE_85
 // 
-assign n2270 = ( n1057 ) ? ( n2261 ) : ( TCON );
-assign TCON_85 = n2270;
+assign n2270 = ( n1068 ) ? ( n2261 ) : ( IE );
+assign IE_85 = n2270;
 // 
 // TH1_85
 // 
@@ -8978,10 +8978,10 @@ assign P1_85 = n2294;
 assign n2295 = ( n1070 ) ? ( n2261 ) : ( IP );
 assign IP_85 = n2295;
 // 
-// IE_85
+// TCON_85
 // 
-assign n2296 = ( n1068 ) ? ( n2261 ) : ( IE );
-assign IE_85 = n2296;
+assign n2296 = ( n1057 ) ? ( n2261 ) : ( TCON );
+assign TCON_85 = n2296;
 // 
 // SCON_85
 // 
@@ -9280,10 +9280,10 @@ assign TL1_88 = n2362;
 assign n2363 = ( n1059 ) ? ( RD_IRAM_0 ) : ( TL0 );
 assign TL0_88 = n2363;
 // 
-// IE_88
+// TCON_88
 // 
-assign n2364 = ( n1068 ) ? ( RD_IRAM_0 ) : ( IE );
-assign IE_88 = n2364;
+assign n2364 = ( n1057 ) ? ( RD_IRAM_0 ) : ( TCON );
+assign TCON_88 = n2364;
 // 
 // TH1_88
 // 
@@ -9327,10 +9327,10 @@ assign P1_88 = n2370;
 assign n2371 = ( n1070 ) ? ( RD_IRAM_0 ) : ( IP );
 assign IP_88 = n2371;
 // 
-// TCON_88
+// IE_88
 // 
-assign n2372 = ( n1057 ) ? ( RD_IRAM_0 ) : ( TCON );
-assign TCON_88 = n2372;
+assign n2372 = ( n1068 ) ? ( RD_IRAM_0 ) : ( IE );
+assign IE_88 = n2372;
 // 
 // SCON_88
 // 
@@ -9403,7 +9403,7 @@ assign TL0_89 = n2363;
 // 
 // IE_89
 // 
-assign IE_89 = n2364;
+assign IE_89 = n2372;
 // 
 // TH1_89
 // 
@@ -9442,7 +9442,7 @@ assign IP_89 = n2371;
 // 
 // TCON_89
 // 
-assign TCON_89 = n2372;
+assign TCON_89 = n2364;
 // 
 // SCON_89
 // 
@@ -9494,7 +9494,7 @@ assign TL0_8a = n2363;
 // 
 // TCON_8a
 // 
-assign TCON_8a = n2372;
+assign TCON_8a = n2364;
 // 
 // TH1_8a
 // 
@@ -9533,7 +9533,7 @@ assign IP_8a = n2371;
 // 
 // IE_8a
 // 
-assign IE_8a = n2364;
+assign IE_8a = n2372;
 // 
 // SCON_8a
 // 
@@ -9585,7 +9585,7 @@ assign TL0_8b = n2363;
 // 
 // IE_8b
 // 
-assign IE_8b = n2364;
+assign IE_8b = n2372;
 // 
 // TH1_8b
 // 
@@ -9624,7 +9624,7 @@ assign IP_8b = n2371;
 // 
 // TCON_8b
 // 
-assign TCON_8b = n2372;
+assign TCON_8b = n2364;
 // 
 // SCON_8b
 // 
@@ -9650,9 +9650,9 @@ assign ACC_8c = n2356;
 // 
 assign PCON_8c = n2357;
 // 
-// P1_8c
+// B_8c
 // 
-assign P1_8c = n2370;
+assign B_8c = n2358;
 // 
 // TMOD_8c
 // 
@@ -9676,7 +9676,7 @@ assign TL0_8c = n2363;
 // 
 // IE_8c
 // 
-assign IE_8c = n2364;
+assign IE_8c = n2372;
 // 
 // TH1_8c
 // 
@@ -9702,9 +9702,9 @@ assign P3_8c = n2368;
 // 
 assign P0_8c = n2369;
 // 
-// B_8c
+// P1_8c
 // 
-assign B_8c = n2358;
+assign P1_8c = n2370;
 // 
 // IRAM_8c
 // 
@@ -9715,7 +9715,7 @@ assign IP_8c = n2371;
 // 
 // TCON_8c
 // 
-assign TCON_8c = n2372;
+assign TCON_8c = n2364;
 // 
 // SCON_8c
 // 
@@ -9767,7 +9767,7 @@ assign TL0_8d = n2363;
 // 
 // IE_8d
 // 
-assign IE_8d = n2364;
+assign IE_8d = n2372;
 // 
 // TH1_8d
 // 
@@ -9806,7 +9806,7 @@ assign IP_8d = n2371;
 // 
 // TCON_8d
 // 
-assign TCON_8d = n2372;
+assign TCON_8d = n2364;
 // 
 // SCON_8d
 // 
@@ -9858,7 +9858,7 @@ assign TL0_8e = n2363;
 // 
 // IE_8e
 // 
-assign IE_8e = n2364;
+assign IE_8e = n2372;
 // 
 // TH1_8e
 // 
@@ -9897,7 +9897,7 @@ assign IP_8e = n2371;
 // 
 // TCON_8e
 // 
-assign TCON_8e = n2372;
+assign TCON_8e = n2364;
 // 
 // SCON_8e
 // 
@@ -9949,7 +9949,7 @@ assign TL0_8f = n2363;
 // 
 // IE_8f
 // 
-assign IE_8f = n2364;
+assign IE_8f = n2372;
 // 
 // TH1_8f
 // 
@@ -9988,7 +9988,7 @@ assign IP_8f = n2371;
 // 
 // TCON_8f
 // 
-assign TCON_8f = n2372;
+assign TCON_8f = n2364;
 // 
 // SCON_8f
 // 
@@ -10046,15 +10046,16 @@ assign n2397 = ( n1196 | n2396 );
 assign n2398 = ( n1167 ) ? ( n2397 ) : ( ACC );
 assign ACC_92 = n2398;
 // 
-// B_92
+// P1_92
 // 
-assign n2399 = ( n1183 ) ? ( n2397 ) : ( B );
-assign B_92 = n2399;
+assign n2399 = ( n1209 | n2396 );
+assign n2400 = ( n1176 ) ? ( n2399 ) : ( P1 );
+assign P1_92 = n2400;
 // 
-// IE_92
+// TCON_92
 // 
-assign n2400 = ( n1179 ) ? ( n2397 ) : ( IE );
-assign IE_92 = n2400;
+assign n2401 = ( n1175 ) ? ( n2397 ) : ( TCON );
+assign TCON_92 = n2401;
 // 
 // PC_92
 // 
@@ -10062,24 +10063,23 @@ assign PC_92 = n0598;
 // 
 // P2_92
 // 
-assign n2401 = ( n1209 | n2396 );
-assign n2402 = ( n1178 ) ? ( n2401 ) : ( P2 );
+assign n2402 = ( n1178 ) ? ( n2399 ) : ( P2 );
 assign P2_92 = n2402;
 // 
 // P3_92
 // 
-assign n2403 = ( n1180 ) ? ( n2401 ) : ( P3 );
+assign n2403 = ( n1180 ) ? ( n2399 ) : ( P3 );
 assign P3_92 = n2403;
 // 
 // P0_92
 // 
-assign n2404 = ( n1174 ) ? ( n2401 ) : ( P0 );
+assign n2404 = ( n1174 ) ? ( n2399 ) : ( P0 );
 assign P0_92 = n2404;
 // 
-// P1_92
+// B_92
 // 
-assign n2405 = ( n1176 ) ? ( n2401 ) : ( P1 );
-assign P1_92 = n2405;
+assign n2405 = ( n1183 ) ? ( n2397 ) : ( B );
+assign B_92 = n2405;
 // 
 // IRAM_92
 // 
@@ -10089,10 +10089,10 @@ assign P1_92 = n2405;
 assign n2406 = ( n1181 ) ? ( n2397 ) : ( IP );
 assign IP_92 = n2406;
 // 
-// TCON_92
+// IE_92
 // 
-assign n2407 = ( n1175 ) ? ( n2397 ) : ( TCON );
-assign TCON_92 = n2407;
+assign n2407 = ( n1179 ) ? ( n2397 ) : ( IE );
+assign IE_92 = n2407;
 // 
 // SCON_92
 // 
@@ -10456,14 +10456,14 @@ assign n2560 = ( n0701 * n2559 );
 assign n2561 = n2560[7:0];
 assign ACC_a4 = n2561;
 // 
+// PC_a4
+// 
+assign PC_a4 = n0600;
+// 
 // B_a4
 // 
 assign n2562 = n2560[15:8];
 assign B_a4 = n2562;
-// 
-// PC_a4
-// 
-assign PC_a4 = n0600;
 // 
 // PSW_a4
 // 
@@ -11325,9 +11325,9 @@ assign TL1_d0 = n2362;
 // 
 assign TL0_d0 = n2363;
 // 
-// IE_d0
+// TCON_d0
 // 
-assign IE_d0 = n2364;
+assign TCON_d0 = n2364;
 // 
 // TH1_d0
 // 
@@ -11364,9 +11364,9 @@ assign P1_d0 = n2370;
 // 
 assign IP_d0 = n2371;
 // 
-// TCON_d0
+// IE_d0
 // 
-assign TCON_d0 = n2372;
+assign IE_d0 = n2372;
 // 
 // SCON_d0
 // 
@@ -11407,15 +11407,16 @@ assign n2754 = ( n1196 | n2753 );
 assign n2755 = ( n1167 ) ? ( n2754 ) : ( ACC );
 assign ACC_d2 = n2755;
 // 
-// B_d2
+// P1_d2
 // 
-assign n2756 = ( n1183 ) ? ( n2754 ) : ( B );
-assign B_d2 = n2756;
+assign n2756 = ( n1209 | n2753 );
+assign n2757 = ( n1176 ) ? ( n2756 ) : ( P1 );
+assign P1_d2 = n2757;
 // 
-// TCON_d2
+// IE_d2
 // 
-assign n2757 = ( n1175 ) ? ( n2754 ) : ( TCON );
-assign TCON_d2 = n2757;
+assign n2758 = ( n1179 ) ? ( n2754 ) : ( IE );
+assign IE_d2 = n2758;
 // 
 // PC_d2
 // 
@@ -11423,24 +11424,23 @@ assign PC_d2 = n0598;
 // 
 // P2_d2
 // 
-assign n2758 = ( n1209 | n2753 );
-assign n2759 = ( n1178 ) ? ( n2758 ) : ( P2 );
+assign n2759 = ( n1178 ) ? ( n2756 ) : ( P2 );
 assign P2_d2 = n2759;
 // 
 // P3_d2
 // 
-assign n2760 = ( n1180 ) ? ( n2758 ) : ( P3 );
+assign n2760 = ( n1180 ) ? ( n2756 ) : ( P3 );
 assign P3_d2 = n2760;
 // 
 // P0_d2
 // 
-assign n2761 = ( n1174 ) ? ( n2758 ) : ( P0 );
+assign n2761 = ( n1174 ) ? ( n2756 ) : ( P0 );
 assign P0_d2 = n2761;
 // 
-// P1_d2
+// B_d2
 // 
-assign n2762 = ( n1176 ) ? ( n2758 ) : ( P1 );
-assign P1_d2 = n2762;
+assign n2762 = ( n1183 ) ? ( n2754 ) : ( B );
+assign B_d2 = n2762;
 // 
 // IRAM_d2
 // 
@@ -11450,10 +11450,10 @@ assign P1_d2 = n2762;
 assign n2763 = ( n1181 ) ? ( n2754 ) : ( IP );
 assign IP_d2 = n2763;
 // 
-// IE_d2
+// TCON_d2
 // 
-assign n2764 = ( n1179 ) ? ( n2754 ) : ( IE );
-assign IE_d2 = n2764;
+assign n2764 = ( n1175 ) ? ( n2754 ) : ( TCON );
+assign TCON_d2 = n2764;
 // 
 // SCON_d2
 // 
@@ -11984,9 +11984,9 @@ assign TL1_ef = n2688;
 // 
 assign TL0_ef = n2689;
 // 
-// TCON_ef
+// IE_ef
 // 
-assign TCON_ef = n2690;
+assign IE_ef = n2698;
 // 
 // TH1_ef
 // 
@@ -12023,9 +12023,9 @@ assign B_ef = n2696;
 // 
 assign IP_ef = n2697;
 // 
-// IE_ef
+// TCON_ef
 // 
-assign IE_ef = n2698;
+assign TCON_ef = n2690;
 // 
 // SCON_ef
 // 
@@ -13460,8 +13460,8 @@ always @(posedge clk) begin
     PSW <= 8'h0;
     SBUF <= 8'h0;
     SCON <= 8'h0;
-    SP <= 8'h0;
-    TCON <= 8'h0;
+    SP <= 8'h7;
+    TCON <= 8'h2;
     TH0 <= 8'h0;
     TH1 <= 8'h0;
     TL0 <= 8'h0;

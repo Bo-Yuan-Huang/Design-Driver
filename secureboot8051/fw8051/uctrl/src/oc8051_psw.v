@@ -70,7 +70,7 @@
 
 
 module oc8051_psw (clk, rst, wr_addr, data_in, wr, wr_bit, data_out, p,
-                cy_in, ac_in, ov_in, set, bank_sel);
+                cy_in, ac_in, ov_in, set, bank_sel, psw_next);
 //
 // clk          (in)  clock
 // rst          (in)  reset
@@ -92,6 +92,7 @@ input [7:0] wr_addr, data_in;
 
 output [1:0] bank_sel;
 output [7:0] data_out;
+output [7:0] psw_next;
 
 reg [7:1] data;
 wire wr_psw;
@@ -100,6 +101,44 @@ assign wr_psw = (wr & (wr_addr==`OC8051_SFR_PSW) && !wr_bit);
 
 assign bank_sel = wr_psw ? data_in[4:3]:data[4:3];
 assign data_out = {data[7:1], p};
+
+reg [7:1] psw_next_i;
+wire [7:0] psw_next = {psw_next_i, p};
+
+// spramod added this always block to resolve forwarding issues in the PSW.
+always @(data or wr or wr_bit or wr_addr or cy_in or data_in or set or ov_in or ac_in)
+begin
+    psw_next_i = data;
+
+    if (wr & (wr_bit==1'b0) & (wr_addr==`OC8051_SFR_PSW))
+      psw_next_i[7:1] = data_in[7:1];
+//
+// write to psw (bit addressable)
+    else if (wr & wr_bit & (wr_addr[7:3]==`OC8051_SFR_B_PSW))
+      psw_next_i[wr_addr[2:0]] = cy_in;
+    else begin
+      case (set) 
+        `OC8051_PS_CY: begin
+//
+//write carry
+          psw_next_i[7] = cy_in;
+        end
+        `OC8051_PS_OV: begin
+//
+//write carry and overflov
+          psw_next_i[7] = cy_in;
+          psw_next_i[2] = ov_in;
+        end
+        `OC8051_PS_AC:begin
+//
+//write carry, overflov and ac
+          psw_next_i[7] = cy_in;
+          psw_next_i[6] = ac_in;
+          psw_next_i[2] = ov_in;
+        end
+      endcase
+    end
+end
 
 //
 //case writing to psw

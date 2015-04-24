@@ -174,6 +174,8 @@ def main(argv):
     vctx.setRst('P1', 'ff')
     vctx.setRst('P2', 'ff')
     vctx.setRst('P3', 'ff')
+    vctx.setRst('TCON', '2')
+    vctx.setRst('SP', '7')
 
     vctx.init_mem_guard = 'OC8051_SIMULATION'
     with open(argv[3], 'wt') as f:

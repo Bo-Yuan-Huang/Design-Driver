@@ -307,7 +307,7 @@ initial begin
   rst= 1'b1;
   p0_in = 8'h00;
   p1_in = 8'h00;
-  p2_in = 8'h00;
+  p2_in = 8'hff;
 #2000
   rst = 1'b0;
 

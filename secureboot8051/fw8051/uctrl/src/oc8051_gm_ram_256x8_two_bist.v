@@ -57,6 +57,20 @@ output [2047:0] iram;
 
       wire [7:0] iram0 = buff[0];
       wire [7:0] iram1 = buff[1];
+      wire [7:0] iram2 = buff[2];
+      wire [7:0] iram3 = buff[3];
+      wire [7:0] iram4 = buff[4];
+      wire [7:0] iram5 = buff[5];
+      wire [7:0] iram6 = buff[6];
+      wire [7:0] iram7 = buff[7];
+      wire [7:0] iram8 = buff[8];
+      wire [7:0] iram9 = buff[9];
+      wire [7:0] iram10 = buff[10];
+      wire [7:0] iram11 = buff[11];
+      wire [7:0] iram12 = buff[12];
+      wire [7:0] iram13 = buff[13];
+      wire [7:0] iram14 = buff[14];
+      wire [7:0] iram15 = buff[15];
 
       //
       // reading from ram
@@ -65,7 +79,7 @@ output [2047:0] iram;
         if (rst) begin
           rd_data <= #1 8'h0;
 `ifdef OC8051_SIMULATION
-          for(i=0;i < 256;i=i+1) begin
+          for(i=0;i < 16;i=i+1) begin
               buff[i] = 0;
           end
 `endif

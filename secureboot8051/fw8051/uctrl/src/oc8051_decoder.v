@@ -95,7 +95,7 @@ module oc8051_decoder (clk, rst,
   src_sel1, src_sel2, src_sel3,
   alu_op_o, psw_set, eq, cy_sel, comp_sel,
   pc_wr, pc_sel, rd, rmw, istb, mem_act, mem_wait,
-  wait_data);
+  wait_data, state);
 
 //
 // clk          (in)  clock
@@ -129,6 +129,8 @@ input [7:0] op_in;
 
 input irom_out_of_rst;
 output new_valid_pc;
+output [1:0] state;
+
 
 output wr_o, bit_addr, pc_wr, rmw, istb, src_sel3;
 output [1:0] psw_set, cy_sel, wr_sfr_o, src_sel2, comp_sel;
@@ -293,14 +295,14 @@ begin
               bit_addr = 1'b0;
             end
           `OC8051_JB : begin
-              ram_rd_sel = `OC8051_RRS_DC;
+              ram_rd_sel = `OC8051_RRS_D;
               pc_wr = eq;
               pc_sel = `OC8051_PIS_SO2;
               comp_sel =  `OC8051_CSS_BIT;
               bit_addr = 1'b0;
             end
           `OC8051_JBC : begin
-              ram_rd_sel = `OC8051_RRS_DC;
+              ram_rd_sel = `OC8051_RRS_D;
               pc_wr = eq;
               pc_sel = `OC8051_PIS_SO2;
               comp_sel =  `OC8051_CSS_BIT;
@@ -1328,7 +1330,7 @@ begin
             end
           `OC8051_JBC : begin
               ram_wr_sel <= #1 `OC8051_RWS_D;
-              src_sel1 <= #1 `OC8051_AS1_DC;
+              src_sel1 <= #1 `OC8051_AS1_RAM;
               src_sel2 <= #1 `OC8051_AS2_DC;
               alu_op <= #1 `OC8051_ALU_NOP;
               wr <= #1 1'b1;

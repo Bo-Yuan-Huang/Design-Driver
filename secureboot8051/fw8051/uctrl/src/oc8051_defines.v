@@ -48,9 +48,9 @@
 //
 // oc8051 pherypherals
 //
-`define OC8051_UART
-`define OC8051_TC01
-`define OC8051_TC2
+//`define OC8051_UART
+//`define OC8051_TC01
+//`define OC8051_TC2
 `define OC8051_PORTS  //ports global enable
 `define OC8051_PORT0
 `define OC8051_PORT1
@@ -134,7 +134,7 @@
 
 
 `define OC8051_SFR_IE 8'ha8 // interrupt enable
-`define OC8051_SFR_IP 8'hb7 // interrupt priority
+`define OC8051_SFR_IP 8'hb8 // interrupt priority
 
 `define OC8051_SFR_RCAP2H 8'hcb // timer 2 capture high
 `define OC8051_SFR_RCAP2L 8'hca // timer 2 capture low

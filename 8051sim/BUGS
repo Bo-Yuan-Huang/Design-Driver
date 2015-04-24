@@ -2,9 +2,65 @@
 * AJMP (todo)
 * divide must be unsigned
 * div/0 needs to match RTL.
+
 * DA fiasco
 -                tempAdd = RAM[ACC] + 0x60;
 -                RAM[ACC] = (char)tempAdd;
 +                tempAdd = (unsigned char) RAM[ACC] + 0x60;
 +                RAM[ACC] = (unsigned char)tempAdd;
+
+* AJMP in RTL
+
+
+* many bugs in the forwarding of bit addressable instructions (oc8051_sfr.v)
+
+-  else if (
+-          ((adr1[7:3]==adr0[7:3]) & (~&adr1[2:0]) &  we & !wr_bit_r) |
+-          ((wr_sfr==`OC8051_WRS_ACC1) & (adr0[7:3]==`OC8051_SFR_B_ACC)) 	//write to acc
+-	  )
+-
++  else if ((adr1[7:3]==adr0[7:3]) & (~|adr1[2:0]) &  we & !wr_bit_r & (!port_rd | rmw) & valid_sfr)
+     bit_out <= #1 dat1[adr0[2:0]];
+-  else if ((adr1==adr0) & we & wr_bit_r)
++  else if ((wr_sfr==`OC8051_WRS_ACC1) & (adr0[7:3]==`OC8051_SFR_B_ACC)) 	//write to acc
++    bit_out <= #1 acc_cur[adr0[2:0]];
++  else if ((adr1==adr0) & we & wr_bit_r & valid_sfr)
+
+-      `OC8051_SFR_B_PSW:   bit_out <= #1 psw[adr0[2:0]];
++      `OC8051_SFR_B_PSW:   bit_out <= #1 psw_next[adr0[2:0]];
+
+* incorrect decoding of JBC and JB (oc8051_decoder.v): they read data from memory.
+
+@@ -293,14 +295,14 @@
+               bit_addr = 1'b0;
+             end
+           `OC8051_JB : begin
+-              ram_rd_sel = `OC8051_RRS_DC;
++              ram_rd_sel = `OC8051_RRS_D;
+               pc_wr = eq;
+               pc_sel = `OC8051_PIS_SO2;
+               comp_sel =  `OC8051_CSS_BIT;
+               bit_addr = 1'b0;
+             end
+           `OC8051_JBC : begin
+-              ram_rd_sel = `OC8051_RRS_DC;
++              ram_rd_sel = `OC8051_RRS_D;
+               pc_wr = eq;
+               pc_sel = `OC8051_PIS_SO2;
+               comp_sel =  `OC8051_CSS_BIT;
+@@ -1328,7 +1330,7 @@
+             end
+           `OC8051_JBC : begin
+               ram_wr_sel <= #1 `OC8051_RWS_D;
+-              src_sel1 <= #1 `OC8051_AS1_DC;
++              src_sel1 <= #1 `OC8051_AS1_RAM;
+               src_sel2 <= #1 `OC8051_AS2_DC;
+               alu_op <= #1 `OC8051_ALU_NOP;
+               wr <= #1 1'b1;
+
+
+* something wrong with forwarding when RR (rotate right) is immediately followed by JBC which addresses the accumulator.
+
+* 
+
 

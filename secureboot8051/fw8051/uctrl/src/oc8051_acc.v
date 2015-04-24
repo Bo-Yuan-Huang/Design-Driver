@@ -76,7 +76,7 @@
 
 module oc8051_acc (clk, rst, 
                  bit_in, data_in, data2_in, 
-		 data_out,
+		 data_out, data_out_cur,
 		 wr, wr_bit, wr_addr,
 		 p, wr_sfr);
 
@@ -87,6 +87,7 @@ input [7:0] wr_addr, data_in, data2_in;
 
 output p;
 output [7:0] data_out;
+output [7:0] data_out_cur;
 
 reg [7:0] data_out;
 reg [7:0] acc;
@@ -95,6 +96,7 @@ wire wr_acc, wr2_acc, wr_bit_acc;
 //
 //calculates parity
 assign p = ^acc;
+assign data_out_cur = acc;
 
 assign wr_acc     = (wr_sfr==`OC8051_WRS_ACC1) | (wr & !wr_bit & (wr_addr==`OC8051_SFR_ACC));
 assign wr2_acc    = (wr_sfr==`OC8051_WRS_ACC2);

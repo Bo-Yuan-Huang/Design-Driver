@@ -86,11 +86,16 @@ module oc8051_gm_tb();
       p3_in[6] = 1;
       p3_in[7] = 1;
       rst = 1;
+`ifdef OC8051_UART
       rxd_i = 1;
       t0_i = 1;
       t1_i = 1;
+`endif
+
+`ifdef OC8051_TC2
       t2_i = 1;
       t2ex_i = 1;
+`endif
       // word_in = 128'h04E00504E00504E00504E00504E00504; // INC ACC, INC E0
       // word_in = 128'h05050505050505050505050505050505; // INC 00
       word_in = 128'b1;
@@ -102,7 +107,11 @@ module oc8051_gm_tb();
 //  `include "cexGM1.v"
 //  `include "cexGM2.v"
 //  `include "cexGM3.v"
-    `include "cexGM4.v"
+//  `include "cexGM4.v"
+//  `include "cexGM5.v"
+//  `include "cexGM6.v"
+//  `include "cexGM7.v"
+    `include "cexGM11.v"
 
       #8000
       $display("time ",$time, "; end of time\n");

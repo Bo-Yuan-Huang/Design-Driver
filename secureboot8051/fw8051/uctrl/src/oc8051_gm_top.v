@@ -119,8 +119,20 @@ input         t2_i,             // counter 2 input
     wire [7:0] psw;
     wire [7:0] acc;
 
-    wire [15:0] PC_next;
+    wire [15:0] PC_gm_next;
     wire [7:0] ACC_gm;
+    wire [7:0] SBUF_gm, SBUF_gm_next;
+    wire [7:0] SCON_gm, SCON_gm_next;
+    wire [7:0] PCON_gm, PCON_gm_next;
+    wire [7:0] TCON_gm, TCON_gm_next;
+    wire [7:0] TL0_gm, TL0_gm_next;
+    wire [7:0] TL1_gm, TL1_gm_next;
+    wire [7:0] TH0_gm, TH0_gm_next;
+    wire [7:0] TH1_gm, TH1_gm_next;
+    wire [7:0] TMOD_gm, TMOD_gm_next;
+    wire [7:0] IE_gm, IE_gm_next;
+    wire [7:0] IP_gm, IP_gm_next;
+
     wire [15:0] rd_rom_0_addr, rd_rom_1_addr, rd_rom_2_addr;
     wire [7:0]  rd_rom_0, rd_rom_1, rd_rom_2;
     wire [3:0] rd_iram_addr = word_in[3:0];
@@ -158,24 +170,61 @@ input         t2_i,             // counter 2 input
         .RD_ROM_0       (rd_rom_0),
         .RD_ROM_1       (rd_rom_1),
         .RD_ROM_2       (rd_rom_2),
-        .PC_next        (PC_next),
+        .PC_next        (PC_gm_next),
         .ACC            (ACC_gm),
         .RD_IRAM_ADDR   (rd_iram_addr),
         .RD_IRAM_DATA   (rd_iram_data),
         .P0IN           (p0in_model),
         .P1IN           (p1in_model),
         .P2IN           (p2in_model),
-        .P3IN           (p3in_model)
+        .P3IN           (p3in_model),
+        .SBUF           (SBUF_gm),
+        .SBUF_next      (SBUF_gm_next),
+        .SCON           (SCON_gm),
+        .SCON_next      (SCON_gm_next),
+        .PCON           (PCON_gm),
+        .PCON_next      (PCON_gm_next),
+        .TCON           (TCON_gm),
+        .TCON_next      (TCON_gm_next),
+        .TL0            (TL0_gm),
+        .TL0_next       (TL0_gm_next),
+        .TL1            (TL1_gm),
+        .TL1_next       (TL1_gm_next),
+        .TH0            (TH0_gm),
+        .TH0_next       (TH0_gm_next),
+        .TH1            (TH1_gm),
+        .TH1_next       (TH1_gm_next),
+        .TMOD           (TMOD_gm),
+        .TMOD_next      (TMOD_gm_next),
+        .IE             (IE_gm),
+        .IE_next        (IE_gm_next),
+        .IP             (IP_gm),
+        .IP_next        (IP_gm_next)
     );
 
     reg op0_cnst;
     reg inst_finished_r;
 
     // if we see a non-zero op, property is always valid.
-    wire op0_cnst_next = op0_cnst ? (rd_rom_0 <= 8'h10) : 0;
-    assign property_invalid_pc = op0_cnst && op0_cnst_next && inst_finished && (PC_next != pc2);
-    assign property_invalid_acc = op0_cnst && inst_finished_r && (ACC_gm != acc);
-    assign property_invalid_iram = op0_cnst && inst_finished_r && (rd_iram_data != iram_rd_data);
+    wire regs_zero = 
+        SBUF_gm == 8'b0 && SBUF_gm_next == 8'b0 && 
+        SCON_gm == 8'b0 && SCON_gm_next == 8'b0 && 
+        PCON_gm == 8'b0 && PCON_gm_next == 8'b0 && 
+        TCON_gm == 8'h2 && TCON_gm_next == 8'h2 && 
+        TL0_gm == 8'b0 && TL0_gm_next == 8'b0 && 
+        TL1_gm == 8'b0 && TL1_gm_next == 8'b0 && 
+        TH0_gm == 8'b0 && TH0_gm_next == 8'b0 && 
+        TH1_gm == 8'b0 && TH1_gm_next == 8'b0 && 
+        TMOD_gm == 8'b0 && TMOD_gm_next == 8'b0 && 
+        IE_gm == 8'b0 && IE_gm_next == 8'b0 && 
+        IP_gm == 8'b0 && IP_gm_next == 8'b0;
+        
+    wire op0_cnst_next = op0_cnst ? ((rd_rom_0 <= 8'h30) && regs_zero) : 0;
+    wire cnst_valid = op0_cnst && op0_cnst_next;
+
+    assign property_invalid_pc = cnst_valid && inst_finished && (PC_gm_next != pc2);
+    assign property_invalid_acc = cnst_valid && inst_finished_r && (ACC_gm != acc);
+    assign property_invalid_iram = cnst_valid && inst_finished_r && (rd_iram_data != iram_rd_data_impl);
 
     always @(posedge clk) begin
         if (rst) begin
@@ -199,26 +248,27 @@ input         t2_i,             // counter 2 input
     end
 
 
-    wire [2047:0] iram_full;
-    wire [127:0] iram = iram_full[127:0];
-    wire [7:0] iram_data [15:0];
-    assign iram_data[0] = iram[7:0];
-    assign iram_data[1] = iram[15:8];
-    assign iram_data[2] = iram[23:16];
-    assign iram_data[3] = iram[31:24];
-    assign iram_data[4] = iram[39:32];
-    assign iram_data[5] = iram[47:40];
-    assign iram_data[6] = iram[55:48];
-    assign iram_data[7] = iram[63:56];
-    assign iram_data[8] = iram[71:64];
-    assign iram_data[9] = iram[79:72];
-    assign iram_data[10] = iram[87:80];
-    assign iram_data[11] = iram[95:88];
-    assign iram_data[12] = iram[103:96];
-    assign iram_data[13] = iram[111:104];
-    assign iram_data[14] = iram[119:112];
-    assign iram_data[15] = iram[127:120];
-    wire [7:0] iram_rd_data = iram_data[rd_iram_addr];
+    wire [2047:0] iram_impl_flat;
+    wire [127:0] iram_impl = iram_impl_flat[127:0];
+    wire [7:0] iram_impl_data [15:0];
+    assign iram_impl_data[0] = iram_impl[7:0];
+    assign iram_impl_data[1] = iram_impl[15:8];
+    assign iram_impl_data[2] = iram_impl[23:16];
+    assign iram_impl_data[3] = iram_impl[31:24];
+    assign iram_impl_data[4] = iram_impl[39:32];
+    assign iram_impl_data[5] = iram_impl[47:40];
+    assign iram_impl_data[6] = iram_impl[55:48];
+    assign iram_impl_data[7] = iram_impl[63:56];
+    assign iram_impl_data[8] = iram_impl[71:64];
+    assign iram_impl_data[9] = iram_impl[79:72];
+    assign iram_impl_data[10] = iram_impl[87:80];
+    assign iram_impl_data[11] = iram_impl[95:88];
+    assign iram_impl_data[12] = iram_impl[103:96];
+    assign iram_impl_data[13] = iram_impl[111:104];
+    assign iram_impl_data[14] = iram_impl[119:112];
+    assign iram_impl_data[15] = iram_impl[127:120];
+    wire [7:0] iram_rd_data_impl = iram_impl_data[rd_iram_addr];
+    wire [7:0] ie_impl;
 
     oc8051_top oc8051_top_1(
          .wb_rst_i(rst), .wb_clk_i(clk),
@@ -239,7 +289,8 @@ input         t2_i,             // counter 2 input
          .pc_log                (pc1),
          .psw                   (psw),
          .acc                   (acc),
-         .iram                  (iram_full),
+         .iram                  (iram_impl_flat),
+         .ie                    (ie_impl),
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0

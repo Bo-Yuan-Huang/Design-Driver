@@ -194,6 +194,8 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 psw,
                 acc,
                 iram,
+                ie,
+                decoder_state
                 );
 
 
@@ -215,6 +217,7 @@ output [15:0] pc_log_prev;
 output [7:0]  psw;
 output [7:0]  acc;
 output [2047:0] iram;
+output [7:0]  ie;
 
 input [7:0]   wbd_dat_i;        // ram data input
 input [31:0]  wbi_dat_i;        // rom data input
@@ -232,6 +235,7 @@ output [15:0] wbd_adr_o,        // data address
 
 output [15:0] cxrom_addr;       // code xrom.
 input  [31:0] cxrom_data_out;   // data and addr.
+output [1:0] decoder_state;
 
 `ifdef OC8051_PORTS
 
@@ -388,6 +392,8 @@ wire        iack_i,
             icyc_o;
 wire [31:0] idat_i;
 wire [15:0] iadr_o;
+
+wire [1:0] decoder_state;
 
 assign pc_change = decoder_new_valid_pc;
 
@@ -652,6 +658,7 @@ oc8051_sfr oc8051_sfr1(.rst(wb_rst_i),
                        .wr_sfr(wr_sfr),
                        .comp_sel(comp_sel),
                        .comp_wait(comp_wait),
+                       .ie(ie),
 // acc
                        .acc(acc),
 // sp

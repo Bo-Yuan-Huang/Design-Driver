@@ -153,6 +153,7 @@ module oc8051_sfr (rst, clk,
   `ifdef OC8051_TC2
        t2, t2ex,
   `endif
+        ie,
 
        dptr_hi, dptr_lo,
        wait_data);
@@ -226,6 +227,7 @@ wire   [7:0] p3_data;
 
 `endif
 
+output [7:0] ie;
 
 // serial interface
 `ifdef OC8051_UART
@@ -305,7 +307,7 @@ reg [3:0]  prescaler;
 assign cy = psw[7];
 assign srcAc = psw [6];
 
-
+wire [7:0] acc_cur, psw_next;
 
 //
 // accumulator
@@ -320,6 +322,7 @@ oc8051_acc oc8051_acc1(.clk(clk),
 		       .wr_sfr(wr_sfr),
 		       .wr_addr(adr1),
 		       .data_out(acc),
+               .data_out_cur(acc_cur),
 		       .p(p));
 
 
@@ -379,6 +382,7 @@ oc8051_psw oc8051_psw1 (.clk(clk),
 			.ac_in(desAc), 
 			.ov_in(desOv), 
 			.set(psw_set), 
+                        .psw_next(psw_next),
 			.bank_sel(bank_sel));
 
 //
@@ -645,7 +649,7 @@ begin
       `OC8051_SFR_T2CON:  	dat0 <= #1 t2con;
 `endif
 
-//      default: 			dat0 <= #1 8'h00;
+      default: 			dat0 <= #1 8'h00;
     endcase
     wait_data <= #1 1'b0;
   end
@@ -655,22 +659,34 @@ end
 //
 //set output in case of address (bit)
 
+wire port_rd = ( adr0[7:3] == `OC8051_SFR_B_P0 ||
+                 adr0[7:3] == `OC8051_SFR_B_P1 ||
+                 adr0[7:3] == `OC8051_SFR_B_P2 ||
+                 adr0[7:3] == `OC8051_SFR_B_P3 );
+
+wire valid_sfr = ( adr0[7:3] == `OC8051_SFR_B_ACC   ||
+                   adr0[7:3] == `OC8051_SFR_B_PSW   ||
+                   adr0[7:3] == `OC8051_SFR_B_B     ||
+                   adr0[7:3] == `OC8051_SFR_B_IP    ||
+                   adr0[7:3] == `OC8051_SFR_B_IE    ||
+                   adr0[7:3] == `OC8051_SFR_B_SCON  ||
+                   adr0[7:3] == `OC8051_SFR_B_TCON  ||
+                   port_rd );
+
 always @(posedge clk or posedge rst)
 begin
   if (rst)
     bit_out <= #1 1'h0;
-  else if (
-          ((adr1[7:3]==adr0[7:3]) & (~&adr1[2:0]) &  we & !wr_bit_r) |
-          ((wr_sfr==`OC8051_WRS_ACC1) & (adr0[7:3]==`OC8051_SFR_B_ACC)) 	//write to acc
-	  )
-
+  else if ((adr1[7:3]==adr0[7:3]) & (~|adr1[2:0]) &  we & !wr_bit_r & (!port_rd | rmw) & valid_sfr)
     bit_out <= #1 dat1[adr0[2:0]];
-  else if ((adr1==adr0) & we & wr_bit_r)
+  else if ((wr_sfr==`OC8051_WRS_ACC1) & (adr0[7:3]==`OC8051_SFR_B_ACC)) 	//write to acc
+    bit_out <= #1 acc_cur[adr0[2:0]];
+  else if ((adr1==adr0) & we & wr_bit_r & valid_sfr)
     bit_out <= #1 bit_in;
   else
     case (adr0[7:3]) 
       `OC8051_SFR_B_ACC:   bit_out <= #1 acc[adr0[2:0]];
-      `OC8051_SFR_B_PSW:   bit_out <= #1 psw[adr0[2:0]];
+      `OC8051_SFR_B_PSW:   bit_out <= #1 psw_next[adr0[2:0]];
 
 `ifdef OC8051_PORTS
   `ifdef OC8051_PORT0
@@ -703,7 +719,7 @@ begin
       `OC8051_SFR_B_T2CON: bit_out <= #1 t2con[adr0[2:0]];
 `endif
 
-//      default:             bit_out <= #1 1'b0;
+      default:             bit_out <= #1 1'b0;
     endcase
 end
 

@@ -145,7 +145,7 @@ assign bit_data_out = rd_data[bit_select];
 
 
 assign rd_data = rd_en_r ? wr_data_r: rd_data_m;
-assign rd_en   = (rd_addr_m == wr_addr_m) & wr;
+assign rd_en   = (rd_addr_m[3:0] == wr_addr_m[3:0]) & wr;
 
 oc8051_ram_256x8_two_bist oc8051_idata(
                            .clk     ( clk        ),
