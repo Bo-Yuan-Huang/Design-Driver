@@ -61,7 +61,7 @@
 // synopsys translate_on
 
 
-module oc8051_indi_addr (clk, rst, wr_addr, data_in, wr, wr_bit, ri_out, sel, bank);
+module oc8051_indi_addr (clk, rst, wr_addr, data_in, wr, wr_bit, ri_out, sel, bank, iram0, iram1, iram8, iram9);
 //
 
 
@@ -73,6 +73,7 @@ input        clk,	// clock
 input  [1:0] bank;	// select register bank
 input  [7:0] data_in;	// data input
 input  [7:0] wr_addr;	// write address
+input  [7:0] iram0, iram1, iram8, iram9;
 
 output [7:0] ri_out;
 
@@ -80,40 +81,19 @@ output [7:0] ri_out;
 reg wr_bit_r;
 
 
-reg [7:0] buff [0:3];
+wire [7:0] buff [0:3];
 
-wire [7:0] buff0 = buff[0];
-wire [7:0] buff1 = buff[1];
-wire [7:0] buff2 = buff[2];
-wire [7:0] buff3 = buff[3];
-
-//
-//write to buffer
-always @(posedge clk or posedge rst)
-begin
-  if (rst) begin
-    buff[3'b000] <= #1 8'h00;
-    buff[3'b001] <= #1 8'h00;
-    buff[3'b010] <= #1 8'h00;
-    buff[3'b011] <= #1 8'h00;
-  end else begin
-    if ((wr) & !(wr_bit_r)) begin
-      case ({wr_addr[7], wr_addr[3:0]}) 
-        5'h0: buff[3'b000] <= #1 data_in;
-        5'h1: buff[3'b001] <= #1 data_in;
-        5'h8: buff[3'b010] <= #1 data_in;
-        5'h9: buff[3'b011] <= #1 data_in;
-      endcase
-    end
-  end
-end
+assign buff[0] = iram0;
+assign buff[1] = iram1;
+assign buff[2] = iram8;
+assign buff[3] = iram9;
 
 //
 //read from buffer
 
 wire [7:0] ri_addr = {3'b000, bank, 2'b00, sel};
 wire [7:0] buff_out = buff[{bank[0], sel}];
-assign ri_out = ((ri_addr[3:0]==wr_addr[3:0]) & (wr_addr[7] == 1'b0) & (wr) & !wr_bit_r) ?
+assign ri_out = ((ri_addr[3:0]==wr_addr[3:0]) & (wr) & !wr_bit_r) ?
                  data_in : buff_out;
 
 

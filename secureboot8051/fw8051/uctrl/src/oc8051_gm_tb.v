@@ -111,7 +111,7 @@ module oc8051_gm_tb();
 //  `include "cexGM5.v"
 //  `include "cexGM6.v"
 //  `include "cexGM7.v"
-    `include "cexGM11.v"
+    `include "cexGM12.v"
 
       #8000
       $display("time ",$time, "; end of time\n");

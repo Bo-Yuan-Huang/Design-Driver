@@ -55,7 +55,20 @@ def addPort(R, mem, addr, opcode):
         if R[k] != [-1]:
             R[k].append(opcode)
 
-def rewritePortsAsInputs(st, v):
+rmw_opcodes = set([
+    0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc, 
+    0xd, 0xe, 0xf, 0x15, 0x16, 0x17, 0x18, 
+    0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 
+    0x42, 0x43, 0x45, 0x46, 0x47, 0x48, 0x49, 
+    0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x52, 
+    0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 
+    0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f, 0x62, 
+    0x63, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 
+    0x6b, 0x6c, 0x6d, 0x6e, 0x6f, 0x72, 0x82, 
+    0xa0, 0xb0, 0xb2, 0xc2, 0xd2, 0xd5, 0xd8, 
+    0xd9, 0xda, 0xdb, 0xdc, 0xdd, 0xde, 0xdf])
+
+def rewritePortsAsInputs(opcode, st, v):
     port_names = ['P0', 'P1', 'P2', 'P3']
     def f(n):
         if n.nodetype == ast.Node.BITVECVAR and n.name in port_names:
@@ -65,7 +78,7 @@ def rewritePortsAsInputs(st, v):
         else:
             return n
 
-    if st not in port_names:
+    if (opcode not in rmw_opcodes) and (st not in port_names):
         return v.apply(f)
     else:
         return v
@@ -93,6 +106,7 @@ def main(argv):
         vctx.cinputs.append((pi, (7,0)))
         vctx.always_stmts.append('%s <= %s;' % (pireg, pi))
 
+
     asts_p = []
     for opcode, astdict in enumerate(asts):
         if opcode in opcodes_to_exclude: continue
@@ -101,7 +115,7 @@ def main(argv):
         for st, v in astdict.iteritems():
             v_p1 = ast2verilog.stripMacros(v)
             v_p2 = ast2verilog.rewriteMemReads(opcode, v_p1, subs)
-            v_p = rewritePortsAsInputs(st, v_p2)
+            v_p = rewritePortsAsInputs(opcode, st, v_p2)
             astdict_p.append((st, v_p))
             if st == 'ACC':
                 acc_v = v_p

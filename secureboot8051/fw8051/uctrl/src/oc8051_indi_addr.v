@@ -61,7 +61,7 @@
 // synopsys translate_on
 
 
-module oc8051_indi_addr (clk, rst, wr_addr, data_in, wr, wr_bit, ri_out, sel, bank);
+module oc8051_indi_addr (clk, rst, wr_addr, data_in, wr, wr_bit, ri_out, sel, bank, iram0, iram1, iram8, iram9);
 //
 
 
@@ -73,6 +73,7 @@ input        clk,	// clock
 input  [1:0] bank;	// select register bank
 input  [7:0] data_in;	// data input
 input  [7:0] wr_addr;	// write address
+input  [7:0] iram0, iram1, iram8, iram9;
 
 output [7:0] ri_out;
 
