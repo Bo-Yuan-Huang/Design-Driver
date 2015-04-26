@@ -109,7 +109,6 @@ def main(argv):
 
     asts_p = []
     for opcode, astdict in enumerate(asts):
-        if opcode in opcodes_to_exclude: continue
         astdict_p = []
         acc_v = None
         for st, v in astdict.iteritems():
@@ -177,7 +176,7 @@ def main(argv):
                 name = '%s_%02x' % (st, opcode)
                 vctx.addAssignment(v, vctx.getExpr(v), name)
                 vctx.addStateChange(st, opcode, name)
-        
+
 
     vctx.addOutputs()
     vctx.addMems()
