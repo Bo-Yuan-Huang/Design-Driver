@@ -181,9 +181,8 @@ def main(argv):
 
     vctx.addOutputs()
     vctx.addMems()
-    vctx.cinputs.append(('RD_IRAM_ADDR', (3,0)))
-    vctx.outputs.append(('RD_IRAM_DATA', (7,0)))
-    vctx.statements.append('assign RD_IRAM_DATA = IRAM[RD_IRAM_ADDR];')
+    vctx.outputs.append(('IRAM_full', (127,0)))
+    vctx.statements.append('assign IRAM_full = {IRAM[15], IRAM[14], IRAM[13], IRAM[12], IRAM[11], IRAM[10], IRAM[9], IRAM[8], IRAM[7], IRAM[6], IRAM[5], IRAM[4], IRAM[3], IRAM[2], IRAM[1], IRAM[0]} ;')
     vctx.setRst('P0', 'ff')
     vctx.setRst('P1', 'ff')
     vctx.setRst('P2', 'ff')

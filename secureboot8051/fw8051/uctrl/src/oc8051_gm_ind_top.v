@@ -41,17 +41,6 @@ module oc8051_gm_top(
     t2ex_i,           //
 `endif
     property_invalid_pc,
-    property_invalid_acc,
-    property_invalid_b_reg,
-    property_invalid_dpl,
-    property_invalid_dph,
-    property_invalid_iram,
-    property_invalid_p0,
-    property_invalid_p1,
-    property_invalid_p2,
-    property_invalid_p3,
-    property_invalid_psw,
-    property_invalid_sp
 );
     input clk;
     input rst;
@@ -92,17 +81,6 @@ input         t2_i,             // counter 2 input
 
 
     output property_invalid_pc;
-    output property_invalid_acc;
-    output property_invalid_b_reg;
-    output property_invalid_dpl;
-    output property_invalid_dph;
-    output property_invalid_iram;
-    output property_invalid_p0;
-    output property_invalid_p1;
-    output property_invalid_p2;
-    output property_invalid_p3;
-    output property_invalid_psw;
-    output property_invalid_sp;
 
     wire int0 = 0;
     wire int1 = 1;
@@ -256,26 +234,46 @@ input         t2_i,             // counter 2 input
     wire op0_cnst_next = op0_cnst ? ((rd_rom_0 <= 8'h80) && regs_zero) : 0;
     wire cnst_valid = op0_cnst && op0_cnst_next;
 
-    assign property_invalid_pc = cnst_valid && inst_finished && (PC_gm_next != pc2);
-    assign property_invalid_acc = cnst_valid && inst_finished_r && (ACC_gm != acc_impl);
-    assign property_invalid_b_reg = cnst_valid & inst_finished_r && (B_gm != b_reg_impl);
-    assign property_invalid_dpl = cnst_valid & inst_finished_r && (DPL_gm != dptr_impl[7:0]);
-    assign property_invalid_dph = cnst_valid & inst_finished_r && (DPH_gm != dptr_impl[15:8]);
-    assign property_invalid_iram = cnst_valid && inst_finished_r && (IRAM_gm != iram_impl);
-    assign property_invalid_p0 = cnst_valid && inst_finished_r && (P0_gm != p0_out);
-    assign property_invalid_p1 = cnst_valid && inst_finished_r && (P1_gm != p1_out);
-    assign property_invalid_p2 = cnst_valid && inst_finished_r && (P2_gm != p2_out);
-    assign property_invalid_p3 = cnst_valid && inst_finished_r && (P3_gm != p3_out);
+    wire property_valid_pc_1 = (PC_gm_next == pc2);
+    wire property_valid_acc_2 = (ACC_gm == acc_impl);
+    wire property_valid_b_reg_2 = (B_gm == b_reg_impl);
+    wire property_valid_dpl_2 = (DPL_gm == dptr_impl[7:0]);
+    wire property_valid_dph_2 = (DPH_gm == dptr_impl[15:8]);
+    wire property_valid_iram_2 = (IRAM_gm == iram_impl);
+    wire property_valid_p0_2 = (P0_gm == p0_out);
+    wire property_valid_p1_2 = (P1_gm == p1_out);
+    wire property_valid_p2_2 = (P2_gm == p2_out);
+    wire property_valid_p3_2 = (P3_gm == p3_out);
 
-    wire property_invalid_psw_1 = cnst_valid && inst_finished && (PSW_gm_next[7:1] != psw_impl[7:1]);
-    wire property_invalid_psw_2 = cnst_valid && inst_finished_r && (PSW_gm[7:1] != psw_impl[7:1]);
-    reg property_invalid_psw_1_r;
-    assign property_invalid_psw = property_invalid_psw_1_r && property_invalid_psw_2;
+    reg property_valid_psw_1_r;
+    wire property_valid_psw_1 = (PSW_gm_next[7:1] == psw_impl[7:1]);
+    wire property_valid_psw_2o = (PSW_gm[7:1] == psw_impl[7:1]);
+    wire property_valid_psw_2 = property_valid_psw_1_r || property_valid_psw_2o;
 
-    wire property_invalid_sp_1 = cnst_valid && inst_finished && (SP_gm_next != sp_impl);
-    wire property_invalid_sp_2 = cnst_valid && inst_finished_r && (SP_gm != sp_impl);
-    reg property_invalid_sp_1_r;
-    assign property_invalid_sp = property_invalid_sp_1_r && property_invalid_sp_2;
+    reg property_valid_sp_1_r;
+    wire property_valid_sp_1 = (SP_gm_next == sp_impl);
+    wire property_valid_sp_2o = (SP_gm == sp_impl);
+    wire property_valid_sp_2 = property_valid_sp_1_r || property_valid_sp_2o;
+
+    reg p1_valid_r;
+    wire p1_valid = property_valid_pc_1 && cnst_valid && inst_finished;
+    wire p2_valid = 
+        ( property_valid_acc_2      &&
+          property_valid_b_reg_2    &&
+          property_valid_dpl_2      &&
+          property_valid_dph_2      &&
+          property_valid_iram_2     &&
+          property_valid_p0_2       &&
+          property_valid_p1_2       &&
+          property_valid_p2_2       &&
+          property_valid_p3_2       &&
+          property_valid_psw_2      &&
+          property_valid_sp_2 )     && cnst_valid && inst_finished_r;
+
+    wire p12_equal = p1_valid_r && p2_valid;
+    reg eq_state;
+
+    wire property_invalid_pc = eq_state && (rd_rom_0 == 8'h05) && inst_finished && !property_valid_pc_1;
 
     always @(posedge clk) begin
         if (rst) begin
@@ -285,20 +283,24 @@ input         t2_i,             // counter 2 input
             p1in_reg <= 8'b0;
             p2in_reg <= 8'b0;
             p3in_reg <= 8'b0;
-            property_invalid_psw_1_r <= 0;
-            property_invalid_sp_1_r <= 0;
+            property_valid_psw_1_r <= 0;
+            property_valid_sp_1_r <= 0;
+            p1_valid_r <= 0;
+            eq_state <= 0;
         end
         else begin
             op0_cnst <= op0_cnst_next;
             inst_finished_r <= inst_finished;
-            property_invalid_psw_1_r <= property_invalid_psw_1;
-            property_invalid_sp_1_r <= property_invalid_sp_1;
+            property_valid_psw_1_r <= property_valid_psw_1;
+            property_valid_sp_1_r <= property_valid_sp_1;
+            p1_valid_r <= p1_valid;
             if (inst_finished) begin
                 p0in_reg <= p0_in;
                 p1in_reg <= p1_in;
                 p2in_reg <= p2_in;
                 p3in_reg <= p3_in;
             end
+            eq_state <= word_in[0] && p12_equal;
         end
     end
 

@@ -49,15 +49,14 @@ module oc8051_golden_model(
   SBUF_next,
   PSW,
   PSW_next,
-  RD_IRAM_DATA,
+  IRAM_full,
   P0IN,
   P1IN,
   P2IN,
   P3IN,
   RD_ROM_0,
   RD_ROM_1,
-  RD_ROM_2,
-  RD_IRAM_ADDR
+  RD_ROM_2
 );
 output [15:0] RD_ROM_0_ADDR;
 output [15:0] RD_ROM_1_ADDR;
@@ -106,7 +105,7 @@ output [7:0] SBUF;
 output [7:0] SBUF_next;
 output [7:0] PSW;
 output [7:0] PSW_next;
-output [7:0] RD_IRAM_DATA;
+output [127:0] IRAM_full;
 
 input clk, rst, step;
 input [7:0] P0IN;
@@ -116,7 +115,6 @@ input [7:0] P3IN;
 input [7:0] RD_ROM_0;
 input [7:0] RD_ROM_1;
 input [7:0] RD_ROM_2;
-input [3:0] RD_IRAM_ADDR;
 
 reg [7:0] ACC;
 reg [7:0] B;
@@ -13459,7 +13457,7 @@ assign WR_COND_0_IRAM = ((n0002) && (n1048)) || (n0004) || (n0009) || (n0013) ||
 assign WR_ADDR_1_IRAM = (n2944) ? (n1233) : ((n2946) ? (n1233) : ((n2950) ? (n1233) : ((n2958) ? (n1233) : ((n2966) ? (n1233) : ((n2988) ? (n1233) : ((n2994) ? (n1233) : ((n3004) ? (n1233) : (n1233))))))));
 assign WR_DATA_1_IRAM = (n2944) ? (n1234) : ((n2946) ? (n1238) : ((n2950) ? (n1234) : ((n2958) ? (n1234) : ((n2966) ? (n1234) : ((n2988) ? (n1234) : ((n2994) ? (n1234) : ((n3004) ? (n1234) : (n1234))))))));
 assign WR_COND_1_IRAM = (n2944) || (n2946) || (n2950) || (n2958) || (n2966) || (n2988) || (n2994) || (n3004) || (n0375);
-assign RD_IRAM_DATA = IRAM[RD_IRAM_ADDR];
+assign IRAM_full = {IRAM[15], IRAM[14], IRAM[13], IRAM[12], IRAM[11], IRAM[10], IRAM[9], IRAM[8], IRAM[7], IRAM[6], IRAM[5], IRAM[4], IRAM[3], IRAM[2], IRAM[1], IRAM[0]} ;
 
 always @(posedge clk) begin
   if (rst) begin
