@@ -316,7 +316,7 @@ class VerilogContext(object):
                         mem = m
                     else:
                         assert mem == m
-                    print '%02x: if (%s) %s[%s] <= %s' % (opcode, c, m.name, a, d)
+                    # print '%02x: if (%s) %s[%s] <= %s' % (opcode, c, m.name, a, d)
                 if mem not in writes:
                     writes[mem] = {}
                 if opcode not in writes[mem]:
@@ -333,7 +333,7 @@ class VerilogContext(object):
                 assert m == mem
                 wrports.addWrite(i, c, a, d)
 
-        print mem.name, 'num ports:', wrports.numPorts
+        # print mem.name, 'num ports:', wrports.numPorts
         for i in xrange(wrports.numPorts):
             addrport = 'WR_ADDR_%d_%s' % (i, mem.name)
             dataport = 'WR_DATA_%d_%s' % (i, mem.name)
