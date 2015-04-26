@@ -101,7 +101,7 @@ module oc8051_sfr (rst, clk,
        des_acc,
        we, wr_bit,
        bit_out,
-       wr_sfr, acc, 
+       wr_sfr, acc, b_reg,
        ram_wr_sel, ram_rd_sel, 
        sp, sp_w, 
        bank_sel, 
@@ -194,6 +194,7 @@ output [7:0] dat0,	//data output
 	     dptr_hi,
 	     dptr_lo,
 	     acc,
+             b_reg,
              psw;
 output [7:0] sp,
              sp_w;

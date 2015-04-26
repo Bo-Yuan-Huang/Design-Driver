@@ -42,7 +42,16 @@ module oc8051_gm_top(
 `endif
     property_invalid_pc,
     property_invalid_acc,
-    property_invalid_iram
+    property_invalid_b_reg,
+    property_invalid_dpl,
+    property_invalid_dph,
+    property_invalid_iram,
+    property_invalid_p0,
+    property_invalid_p1,
+    property_invalid_p2,
+    property_invalid_p3,
+    property_invalid_psw,
+    property_invalid_sp
 );
     input clk;
     input rst;
@@ -84,7 +93,16 @@ input         t2_i,             // counter 2 input
 
     output property_invalid_pc;
     output property_invalid_acc;
+    output property_invalid_b_reg;
+    output property_invalid_dpl;
+    output property_invalid_dph;
     output property_invalid_iram;
+    output property_invalid_p0;
+    output property_invalid_p1;
+    output property_invalid_p2;
+    output property_invalid_p3;
+    output property_invalid_psw;
+    output property_invalid_sp;
 
     wire int0 = 0;
     wire int1 = 1;
@@ -116,22 +134,29 @@ input         t2_i,             // counter 2 input
     reg  first_instr;
     wire inst_finished;
     wire [15:0] pc2, pc1;
-    wire [7:0] psw;
-    wire [7:0] acc;
+    wire [7:0] psw_impl;
+    wire [7:0] sp_impl;
+    wire [7:0] acc_impl, b_reg_impl;
+    wire [15:0] dptr_impl;
 
     wire [15:0] PC_gm_next;
     wire [7:0] ACC_gm;
-    wire [7:0] SBUF_gm, SBUF_gm_next;
-    wire [7:0] SCON_gm, SCON_gm_next;
-    wire [7:0] PCON_gm, PCON_gm_next;
-    wire [7:0] TCON_gm, TCON_gm_next;
-    wire [7:0] TL0_gm, TL0_gm_next;
-    wire [7:0] TL1_gm, TL1_gm_next;
-    wire [7:0] TH0_gm, TH0_gm_next;
-    wire [7:0] TH1_gm, TH1_gm_next;
-    wire [7:0] TMOD_gm, TMOD_gm_next;
+    wire [7:0] B_gm;
+    wire [7:0] DPL_gm, DPH_gm;
     wire [7:0] IE_gm, IE_gm_next;
     wire [7:0] IP_gm, IP_gm_next;
+    wire [7:0] P0_gm, P1_gm, P2_gm, P3_gm;
+    wire [7:0] PCON_gm, PCON_gm_next;
+    wire [7:0] PSW_gm, PSW_gm_next;
+    wire [7:0] SBUF_gm, SBUF_gm_next;
+    wire [7:0] SCON_gm, SCON_gm_next;
+    wire [7:0] SP_gm, SP_gm_next;
+    wire [7:0] TCON_gm, TCON_gm_next;
+    wire [7:0] TH0_gm, TH0_gm_next;
+    wire [7:0] TH1_gm, TH1_gm_next;
+    wire [7:0] TL0_gm, TL0_gm_next;
+    wire [7:0] TL1_gm, TL1_gm_next;
+    wire [7:0] TMOD_gm, TMOD_gm_next;
 
     wire [15:0] rd_rom_0_addr, rd_rom_1_addr, rd_rom_2_addr;
     wire [7:0]  rd_rom_0, rd_rom_1, rd_rom_2;
@@ -170,36 +195,47 @@ input         t2_i,             // counter 2 input
         .RD_ROM_0       (rd_rom_0),
         .RD_ROM_1       (rd_rom_1),
         .RD_ROM_2       (rd_rom_2),
-        .PC_next        (PC_gm_next),
         .ACC            (ACC_gm),
-        .RD_IRAM_ADDR   (rd_iram_addr),
-        .RD_IRAM_DATA   (rd_iram_data),
+        .B              (B_gm),
+        .DPL            (DPL_gm),
+        .DPH            (DPH_gm),
+        .IE             (IE_gm),
+        .IE_next        (IE_gm_next),
+        .IP             (IP_gm),
+        .IP_next        (IP_gm_next),
         .P0IN           (p0in_model),
         .P1IN           (p1in_model),
         .P2IN           (p2in_model),
         .P3IN           (p3in_model),
-        .SBUF           (SBUF_gm),
-        .SBUF_next      (SBUF_gm_next),
-        .SCON           (SCON_gm),
-        .SCON_next      (SCON_gm_next),
-        .PCON           (PCON_gm),
+        .P0             (P0_gm),
+        .P1             (P1_gm),
+        .P2             (P2_gm),
+        .P3             (P3_gm),
+        .PC_next        (PC_gm_next),
         .PCON_next      (PCON_gm_next),
-        .TCON           (TCON_gm),
+        .PSW            (PSW_gm),
+        .PSW_next       (PSW_gm_next),
+        .PCON           (PCON_gm),
+        .RD_IRAM_ADDR   (rd_iram_addr),
+        .RD_IRAM_DATA   (rd_iram_data),
+        .SBUF_next      (SBUF_gm_next),
+        .SBUF           (SBUF_gm),
+        .SCON_next      (SCON_gm_next),
+        .SCON           (SCON_gm),
+        .SP             (SP_gm),
+        .SP_next        (SP_gm_next),
         .TCON_next      (TCON_gm_next),
-        .TL0            (TL0_gm),
-        .TL0_next       (TL0_gm_next),
-        .TL1            (TL1_gm),
-        .TL1_next       (TL1_gm_next),
-        .TH0            (TH0_gm),
+        .TCON           (TCON_gm),
         .TH0_next       (TH0_gm_next),
-        .TH1            (TH1_gm),
+        .TH0            (TH0_gm),
         .TH1_next       (TH1_gm_next),
-        .TMOD           (TMOD_gm),
+        .TH1            (TH1_gm),
+        .TL0_next       (TL0_gm_next),
+        .TL0            (TL0_gm),
+        .TL1_next       (TL1_gm_next),
+        .TL1            (TL1_gm),
         .TMOD_next      (TMOD_gm_next),
-        .IE             (IE_gm),
-        .IE_next        (IE_gm_next),
-        .IP             (IP_gm),
-        .IP_next        (IP_gm_next)
+        .TMOD           (TMOD_gm)
     );
 
     reg op0_cnst;
@@ -219,12 +255,29 @@ input         t2_i,             // counter 2 input
         IE_gm == 8'b0 && IE_gm_next == 8'b0 && 
         IP_gm == 8'b0 && IP_gm_next == 8'b0;
         
-    wire op0_cnst_next = op0_cnst ? ((rd_rom_0 <= 8'h60) && regs_zero) : 0;
+    wire op0_cnst_next = op0_cnst ? ((rd_rom_0 <= 8'h80) && regs_zero) : 0;
     wire cnst_valid = op0_cnst && op0_cnst_next;
 
     assign property_invalid_pc = cnst_valid && inst_finished && (PC_gm_next != pc2);
-    assign property_invalid_acc = cnst_valid && inst_finished_r && (ACC_gm != acc);
+    assign property_invalid_acc = cnst_valid && inst_finished_r && (ACC_gm != acc_impl);
+    assign property_invalid_b_reg = cnst_valid & inst_finished_r && (B_gm != b_reg_impl);
+    assign property_invalid_dpl = cnst_valid & inst_finished_r && (DPL_gm != dptr_impl[7:0]);
+    assign property_invalid_dph = cnst_valid & inst_finished_r && (DPH_gm != dptr_impl[15:8]);
     assign property_invalid_iram = cnst_valid && inst_finished_r && (rd_iram_data != iram_rd_data_impl);
+    assign property_invalid_p0 = cnst_valid && inst_finished_r && (P0_gm != p0_out);
+    assign property_invalid_p1 = cnst_valid && inst_finished_r && (P1_gm != p1_out);
+    assign property_invalid_p2 = cnst_valid && inst_finished_r && (P2_gm != p2_out);
+    assign property_invalid_p3 = cnst_valid && inst_finished_r && (P3_gm != p3_out);
+
+    wire property_invalid_psw_1 = cnst_valid && inst_finished && (PSW_gm_next[7:1] != psw_impl[7:1]);
+    wire property_invalid_psw_2 = cnst_valid && inst_finished_r && (PSW_gm[7:1] != psw_impl[7:1]);
+    reg property_invalid_psw_1_r;
+    assign property_invalid_psw = property_invalid_psw_1_r && property_invalid_psw_2;
+
+    wire property_invalid_sp_1 = cnst_valid && inst_finished && (SP_gm_next != sp_impl);
+    wire property_invalid_sp_2 = cnst_valid && inst_finished_r && (SP_gm_next != sp_impl);
+    reg property_invalid_sp_1_r;
+    assign property_invalid_sp = property_invalid_sp_1_r && property_invalid_sp_2;
 
     always @(posedge clk) begin
         if (rst) begin
@@ -234,10 +287,14 @@ input         t2_i,             // counter 2 input
             p1in_reg <= 8'b0;
             p2in_reg <= 8'b0;
             p3in_reg <= 8'b0;
+            property_invalid_psw_1_r <= 0;
+            property_invalid_sp_1_r <= 0;
         end
         else begin
             op0_cnst <= op0_cnst_next;
             inst_finished_r <= inst_finished;
+            property_invalid_psw_1_r <= property_invalid_psw_1;
+            property_invalid_sp_1_r <= property_invalid_sp_1;
             if (inst_finished) begin
                 p0in_reg <= p0_in;
                 p1in_reg <= p1_in;
@@ -287,8 +344,11 @@ input         t2_i,             // counter 2 input
          .pc_change             (inst_finished),
          .pc                    (pc2),
          .pc_log                (pc1),
-         .psw                   (psw),
-         .acc                   (acc),
+         .psw                   (psw_impl),
+         .sp                    (sp_impl),
+         .acc                   (acc_impl),
+         .b_reg                 (b_reg_impl),
+         .dptr                  (dptr_impl),
          .iram                  (iram_impl_flat),
          .ie                    (ie_impl),
 

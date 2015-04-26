@@ -191,10 +191,13 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 pc,
                 pc_log,
                 pc_log_prev,
-                psw,
                 acc,
-                iram,
+                b_reg,
+                dptr,
                 ie,
+                iram,
+                psw,
+                sp,
                 decoder_state
                 );
 
@@ -215,7 +218,10 @@ output [15:0] pc;
 output [15:0] pc_log;
 output [15:0] pc_log_prev;
 output [7:0]  psw;
+output [7:0]  sp;
 output [7:0]  acc;
+output [7:0]  b_reg;
+output [15:0] dptr;
 output [2047:0] iram;
 output [7:0]  ie;
 
@@ -290,6 +296,8 @@ input   scanb_en;
 wire    scanb_soi;
 `endif
 
+
+wire [15:0] dptr;
 wire [7:0]  dptr_hi,
             dptr_lo, 
             ri, 
@@ -298,6 +306,7 @@ wire [7:0]  dptr_hi,
             op2,
             op3,
             acc,
+            b_reg,
             p0_out,
             p1_out,
             p2_out,
@@ -670,6 +679,7 @@ oc8051_sfr oc8051_sfr1(.rst(wb_rst_i),
                        .ie(ie),
 // acc
                        .acc(acc),
+                       .b_reg(b_reg),
 // sp
                        .sp(sp), 
                        .sp_w(sp_w),
@@ -738,5 +748,6 @@ oc8051_sfr oc8051_sfr1(.rst(wb_rst_i),
                        );
 
 
+assign dptr = {dptr_hi, dptr_lo};
 
 endmodule
