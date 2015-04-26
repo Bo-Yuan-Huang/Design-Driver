@@ -41,6 +41,17 @@ module oc8051_gm_top(
     t2ex_i,           //
 `endif
     property_invalid_pc,
+    property_invalid_acc,
+    property_invalid_b_reg,
+    property_invalid_dpl,
+    property_invalid_dph,
+    property_invalid_iram,
+    property_invalid_p0,
+    property_invalid_p1,
+    property_invalid_p2,
+    property_invalid_p3,
+    property_invalid_psw,
+    property_invalid_sp
 );
     input clk;
     input rst;
@@ -81,6 +92,17 @@ input         t2_i,             // counter 2 input
 
 
     output property_invalid_pc;
+    output property_invalid_acc;
+    output property_invalid_b_reg;
+    output property_invalid_dpl;
+    output property_invalid_dph;
+    output property_invalid_iram;
+    output property_invalid_p0;
+    output property_invalid_p1;
+    output property_invalid_p2;
+    output property_invalid_p3;
+    output property_invalid_psw;
+    output property_invalid_sp;
 
     wire int0 = 0;
     wire int1 = 1;
@@ -230,9 +252,16 @@ input         t2_i,             // counter 2 input
         TMOD_gm == 8'b0 && TMOD_gm_next == 8'b0 && 
         IE_gm == 8'b0 && IE_gm_next == 8'b0 && 
         IP_gm == 8'b0 && IP_gm_next == 8'b0;
-        
-    wire op0_cnst_next = op0_cnst ? ((rd_rom_0 <= 8'h80) && regs_zero) : 0;
-    wire cnst_valid = op0_cnst && op0_cnst_next;
+
+    reg regs_always_zero;
+    wire regs_always_zero_next = (regs_always_zero ? regs_zero : 0);
+    wire rz_cnst = regs_always_zero && regs_always_zero_next;
+
+    wire [7:0] opcode = rd_rom_0;
+    reg opcode_r;
+
+    wire op_cnst = opcode == 8'h04;
+    wire op_cnst_r = opcode_r == 8'h04;
 
     wire property_valid_pc_1 = (PC_gm_next == pc2);
     wire property_valid_acc_2 = (ACC_gm == acc_impl);
@@ -256,7 +285,7 @@ input         t2_i,             // counter 2 input
     wire property_valid_sp_2 = property_valid_sp_1_r || property_valid_sp_2o;
 
     reg p1_valid_r;
-    wire p1_valid = property_valid_pc_1 && cnst_valid && inst_finished;
+    wire p1_valid = property_valid_pc_1 && inst_finished && rz_cnst;
     wire p2_valid = 
         ( property_valid_acc_2      &&
           property_valid_b_reg_2    &&
@@ -268,16 +297,28 @@ input         t2_i,             // counter 2 input
           property_valid_p2_2       &&
           property_valid_p3_2       &&
           property_valid_psw_2      &&
-          property_valid_sp_2 )     && cnst_valid && inst_finished_r;
+          property_valid_sp_2 )     && inst_finished_r && rz_cnst;
 
     wire p12_equal = p1_valid_r && p2_valid;
-    reg eq_state;
 
-    wire property_invalid_pc = eq_state && (rd_rom_0 == 8'h05) && inst_finished && !property_valid_pc_1;
+    reg eq_state;
+    wire property_invalid_pc = eq_state && op_cnst && inst_finished && !property_valid_pc_1;
+    wire property_invalid_acc = eq_state && op_cnst_r && inst_finished_r && !property_valid_acc_2;
+    wire property_invalid_b_reg = eq_state && op_cnst_r && inst_finished_r && !property_valid_b_reg_2; 
+    wire property_invalid_dpl = eq_state && op_cnst_r && inst_finished_r && !property_valid_dpl_2; 
+    wire property_invalid_dph = eq_state && op_cnst_r && inst_finished_r && !property_valid_dph_2; 
+    wire property_invalid_iram = eq_state && op_cnst_r && inst_finished_r && !property_valid_iram_2; 
+    wire property_invalid_p0 = eq_state && op_cnst_r && inst_finished_r && !property_valid_p0_2; 
+    wire property_invalid_p1 = eq_state && op_cnst_r && inst_finished_r && !property_valid_p1_2; 
+    wire property_invalid_p2 = eq_state && op_cnst_r && inst_finished_r && !property_valid_p2_2; 
+    wire property_invalid_p3 = eq_state && op_cnst_r && inst_finished_r && !property_valid_p3_2; 
+    wire property_invalid_psw = eq_state && op_cnst_r && inst_finished_r && !property_valid_psw_2; 
+    wire property_invalid_sp = eq_state && op_cnst_r && inst_finished_r && !property_valid_sp_2; 
 
     always @(posedge clk) begin
         if (rst) begin
             op0_cnst <= 1;
+            regs_always_zero <= 1;
             inst_finished_r <= 0;
             p0in_reg <= 8'b0;
             p1in_reg <= 8'b0;
@@ -286,10 +327,14 @@ input         t2_i,             // counter 2 input
             property_valid_psw_1_r <= 0;
             property_valid_sp_1_r <= 0;
             p1_valid_r <= 0;
-            eq_state <= 0;
+            eq_state <= 1;
+            opcode_r <= 8'b0;
         end
         else begin
             op0_cnst <= op0_cnst_next;
+            regs_always_zero <= regs_always_zero_next;
+            opcode_r <= opcode;
+
             inst_finished_r <= inst_finished;
             property_valid_psw_1_r <= property_valid_psw_1;
             property_valid_sp_1_r <= property_valid_sp_1;
@@ -300,7 +345,7 @@ input         t2_i,             // counter 2 input
                 p2in_reg <= p2_in;
                 p3in_reg <= p3_in;
             end
-            eq_state <= word_in[0] && p12_equal;
+            eq_state <= p12_equal;
         end
     end
 
