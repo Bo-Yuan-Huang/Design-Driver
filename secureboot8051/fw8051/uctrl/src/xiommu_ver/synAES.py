@@ -36,7 +36,9 @@ def from_byte_array(bs):
 def evalAES(sim_inputs, sim_outputs):
     inputs = {}
     for (k,v) in sim_inputs.iteritems():
-        if k == 'ctr' or k == 'key':
+        if k.startswith('AES'):
+            continue
+        elif k == 'ctr' or k == 'key':
             inputs[k] = to_byte_array(v, 16)
         else:
             inputs[k] = v
@@ -218,8 +220,8 @@ def synAES(st):
         And(UGT(addr_in, BitVecVal(0xFF00-1, 16)), ULT(addr_in, BitVecVal(0xFF40, 16)))
     ]
     outputs = ['addr', 'length', 'ctr', 'key', 'num_op_bytes', 'block_ctr', 'state']
-    syn.debug()
-    return syn.synthesize(['xram'], cnsts, evalAES)
+    # syn.debug()
+    return syn.synthesize(['addr'], cnsts, evalAES)
 
 for st in xrange(2):
     r = synAES(st)

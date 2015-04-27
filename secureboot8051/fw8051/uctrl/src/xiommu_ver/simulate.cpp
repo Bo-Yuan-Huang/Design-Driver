@@ -7,6 +7,7 @@
 #include <verilated.h>
 #include "Voc8051_xiommu.h"
 #include "aes_harness.h"
+#include "sha_harness.h"
 
 #include <vector>
 #include <map>
@@ -142,14 +143,18 @@ std::istream& operator>>(std::istream& in, xram_val_t& xram)
 int main(int argc, char* argv[])
 {
     Verilated::commandArgs(argc, argv);
-    if (argc != 3 || strcmp(argv[1], "aes") != 0) {
+    if (argc != 3 || (strcmp(argv[1], "aes") != 0 && strcmp(argv[1], "sha") != 0)) {
         std::cerr << "Syntax error. " << std::endl;
-        std::cerr << "Usage:  " << argv[0]  << " aes <state-file>" << std::endl;
+        std::cerr << "Usage:  " << argv[0]  << " <aes|sha> <state-file>" << std::endl;
         return 1;
     }
     top = new Voc8051_xiommu;
-    aes_simulate(argv[2]);
-    // test_aes_harness();
+    if(strcmp(argv[1], "aes") == 0) {
+        aes_simulate(argv[2]);
+        // test_aes_harness();
+    } else {
+        test_sha_harness();
+    }
 
     top->final();
     delete top;
