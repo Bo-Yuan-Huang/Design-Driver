@@ -41,6 +41,7 @@ module oc8051_gm_top(
     t2ex_i,           //
 `endif
     property_invalid_rom_pc,
+    property_invalid_dec_rom_pc,
     property_invalid_pc,
     property_invalid_acc,
     property_invalid_b_reg,
@@ -93,6 +94,7 @@ input         t2_i,             // counter 2 input
 
 
     output property_invalid_rom_pc;
+    output property_invalid_dec_rom_pc;
     output property_invalid_pc;
     output property_invalid_acc;
     output property_invalid_b_reg;
@@ -310,6 +312,8 @@ input         t2_i,             // counter 2 input
     wire [15:0] pc_impl_p2 = pc_impl + 16'd2;
 
     wire [7:0] op1_impl, op2_impl, op3_impl;
+    wire [7:0] op1_d_impl = oc8051_top_1.oc8051_decoder1.op_cur;
+
     wire [7:0] op1_gm   = rd_rom_0;
     wire [7:0] op2_gm   = rd_rom_1;
     wire [7:0] op3_gm   = rd_rom_2;
@@ -318,6 +322,8 @@ input         t2_i,             // counter 2 input
                                      (op1_gm != op1_impl)   && (rd_rom_0_addr == pc_impl)       &&
                                      (op2_gm != op2_impl)   && (rd_rom_1_addr == pc_impl_p1)    &&
                                      (op3_gm != op3_impl)   && (rd_rom_2_addr == pc_impl_p2);
+
+    assign property_invalid_dec_rom_pc = inst_finished_r && (op1_gm != op1_d_impl) && (rd_rom_0_addr == pc_impl);
 
     wire [2047:0] iram_impl_flat;
     wire [127:0] iram_impl = iram_impl_flat[127:0];
