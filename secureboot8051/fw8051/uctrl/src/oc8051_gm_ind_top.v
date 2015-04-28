@@ -299,7 +299,7 @@ input         t2_i,             // counter 2 input
           property_valid_psw_2      &&
           property_valid_sp_2 )     && inst_finished_r && rz_cnst;
 
-    wire p12_equal = p1_valid_r && p2_valid;
+    wire p12_equal = p1_valid_r; // && p2_valid;
 
     reg eq_state;
     wire property_invalid_pc = eq_state && op_cnst && inst_finished && !property_valid_pc_1;

@@ -143,7 +143,7 @@ input         t2_i,             // counter 2 input
     wire [7:0] acc_impl, b_reg_impl;
     wire [15:0] dptr_impl;
 
-    wire [15:0] PC_gm_next;
+    wire [15:0] PC_gm, PC_gm_next;
     wire [7:0] ACC_gm;
     wire [7:0] B_gm;
     wire [7:0] DPL_gm, DPH_gm;
@@ -214,6 +214,7 @@ input         t2_i,             // counter 2 input
         .P1             (P1_gm),
         .P2             (P2_gm),
         .P3             (P3_gm),
+        .PC             (PC_gm),
         .PC_next        (PC_gm_next),
         .PCON_next      (PCON_gm_next),
         .PSW            (PSW_gm),
@@ -312,7 +313,7 @@ input         t2_i,             // counter 2 input
     wire [15:0] pc_impl_p2 = pc_impl + 16'd2;
 
     wire [7:0] op1_impl, op2_impl, op3_impl;
-    wire [7:0] op1_d_impl = oc8051_top_1.oc8051_decoder1.op_cur;
+    wire [7:0] op1_d_impl;
 
     wire [7:0] op1_gm   = rd_rom_0;
     wire [7:0] op2_gm   = rd_rom_1;
@@ -323,7 +324,7 @@ input         t2_i,             // counter 2 input
                                      (op2_gm != op2_impl)   && (rd_rom_1_addr == pc_impl_p1)    &&
                                      (op3_gm != op3_impl)   && (rd_rom_2_addr == pc_impl_p2);
 
-    assign property_invalid_dec_rom_pc = inst_finished_r && (op1_gm != op1_d_impl) && (rd_rom_0_addr == pc_impl);
+    assign property_invalid_dec_rom_pc = 0; // inst_finished_r && (op1_gm != op1_d_impl) && (rd_rom_0_addr == PC_gm);
 
     wire [2047:0] iram_impl_flat;
     wire [127:0] iram_impl = iram_impl_flat[127:0];
@@ -351,6 +352,7 @@ input         t2_i,             // counter 2 input
          .dptr                  (dptr_impl),
          .iram                  (iram_impl_flat),
          .op1                   (op1_impl),
+         .op1_d                 (op1_d_impl),
          .op2                   (op2_impl),
          .op3                   (op3_impl),
 

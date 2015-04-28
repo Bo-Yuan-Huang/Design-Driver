@@ -51,6 +51,7 @@
 //`define OC8051_UART
 //`define OC8051_TC01
 //`define OC8051_TC2
+//`define OC8051_ENABLE_INT
 `define OC8051_PORTS  //ports global enable
 `define OC8051_PORT0
 `define OC8051_PORT1

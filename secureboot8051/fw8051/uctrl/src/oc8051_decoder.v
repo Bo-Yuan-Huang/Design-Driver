@@ -89,6 +89,7 @@
 
 module oc8051_decoder (clk, rst, 
   irom_out_of_rst, new_valid_pc,
+  op_cur,
   op_in, op1_c,
   ram_rd_sel_o, ram_wr_sel_o,
   bit_addr, wr_o, wr_sfr_o,
@@ -129,6 +130,7 @@ input [7:0] op_in;
 
 input irom_out_of_rst;
 output new_valid_pc;
+output [7:0] op_cur;
 output [1:0] state;
 
 

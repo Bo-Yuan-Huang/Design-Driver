@@ -97,8 +97,10 @@ output [7:0] int_vec,
 	     tcon,
 	     ip;
 
-reg [7:0] ip, ie, int_vec;
 
+`ifdef OC8051_ENABLE_INT
+
+reg [7:0] ip, ie, int_vec;
 reg [3:0] tcon_s;
 reg tcon_tf1, tcon_tf0, tcon_ie1, tcon_ie0;
 
@@ -357,5 +359,13 @@ always @(posedge clk or posedge rst)
     ie0_buff <= #1 ie0;
     ie1_buff <= #1 ie1;
   end
-
+`else
+    wire tr0  = 1'b0;
+    wire tr1  = 1'b0;
+    wire intr = 1'b0;
+    reg [7:0] int_vec = 8'b0;
+    wire [7:0] ie = 8'b0;
+    wire [7:0] ip = 8'b0;
+    wire [7:0] tcon = 8'b0;
+`endif
 endmodule

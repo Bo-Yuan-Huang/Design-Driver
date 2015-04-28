@@ -668,10 +668,14 @@ wire port_rd = ( adr0[7:3] == `OC8051_SFR_B_P0 ||
 wire valid_sfr = ( adr0[7:3] == `OC8051_SFR_B_ACC   ||
                    adr0[7:3] == `OC8051_SFR_B_PSW   ||
                    adr0[7:3] == `OC8051_SFR_B_B     ||
+`ifdef OC8051_ENABLE_INT
                    adr0[7:3] == `OC8051_SFR_B_IP    ||
                    adr0[7:3] == `OC8051_SFR_B_IE    ||
-                   adr0[7:3] == `OC8051_SFR_B_SCON  ||
                    adr0[7:3] == `OC8051_SFR_B_TCON  ||
+`endif
+`ifdef OC8051_UART
+                   adr0[7:3] == `OC8051_SFR_B_SCON  ||
+`endif
                    port_rd );
 
 always @(posedge clk or posedge rst)

@@ -13645,7 +13645,7 @@ always @(posedge clk) begin
     SBUF <= 8'h0;
     SCON <= 8'h0;
     SP <= 8'h7;
-    TCON <= 8'h2;
+    TCON <= 8'h0;
     TH0 <= 8'h0;
     TH1 <= 8'h0;
     TL0 <= 8'h0;
