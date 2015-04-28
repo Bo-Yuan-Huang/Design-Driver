@@ -68,6 +68,24 @@ rmw_opcodes = set([
     0xa0, 0xb0, 0xb2, 0xc2, 0xd2, 0xd5, 0xd8, 
     0xd9, 0xda, 0xdb, 0xdc, 0xdd, 0xde, 0xdf])
 
+zero_regs = [
+    'SBUF', 'SCON', 'PCON', 'TCON', 
+    'TL0', 'TL1', 'TH0', 'TH1', 
+    'TMOD', 'IE', 'IP'
+]
+
+def forceRegsToZero(st, v):
+    if st in zero_regs:
+        return ast.BitVecVar(st, 8)
+    return v
+
+def addZeroRegs(vctx):
+    for r in zero_regs:
+        vctx.outputs.append((r, (7,0)))
+        vctx.wires.append((r+'_next', (7,0)))
+        vctx.outputs.append((r+'_next', (7,0)))
+        vctx.statements.append('assign %s_next = %s;' % (r, r))
+
 def rewritePortsAsInputs(opcode, st, v):
     port_names = ['P0', 'P1', 'P2', 'P3']
     def f(n):
@@ -114,7 +132,8 @@ def main(argv):
         for st, v in astdict.iteritems():
             v_p1 = ast2verilog.stripMacros(v)
             v_p2 = ast2verilog.rewriteMemReads(opcode, v_p1, subs)
-            v_p = rewritePortsAsInputs(opcode, st, v_p2)
+            v_p3 = forceRegsToZero(st, v_p2)
+            v_p = rewritePortsAsInputs(opcode, st, v_p3)
             astdict_p.append((st, v_p))
             if st == 'ACC':
                 acc_v = v_p
@@ -186,8 +205,9 @@ def main(argv):
     vctx.setRst('P1', 'ff')
     vctx.setRst('P2', 'ff')
     vctx.setRst('P3', 'ff')
-    vctx.setRst('TCON', '2')
+    vctx.setRst('TCON', '0')
     vctx.setRst('SP', '7')
+    addZeroRegs(vctx)
 
     vctx.init_mem_guard = 'OC8051_SIMULATION'
     with open(argv[3], 'wt') as f:

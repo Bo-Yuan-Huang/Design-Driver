@@ -7,49 +7,49 @@ module oc8051_golden_model(
   RD_ROM_2_ADDR,
   ACC,
   ACC_next,
-  PCON,
-  PCON_next,
-  B,
-  B_next,
-  TMOD,
-  TMOD_next,
-  DPL,
-  DPL_next,
-  DPH,
-  DPH_next,
-  TL1,
-  TL1_next,
-  TL0,
-  TL0_next,
-  TCON,
-  TCON_next,
-  TH1,
-  TH1_next,
-  TH0,
-  TH0_next,
-  PC,
-  PC_next,
   P2,
   P2_next,
-  P3,
-  P3_next,
   P0,
   P0_next,
   P1,
   P1_next,
-  IP,
-  IP_next,
-  IE,
-  IE_next,
-  SCON,
-  SCON_next,
+  P3,
+  P3_next,
   SP,
   SP_next,
-  SBUF,
-  SBUF_next,
+  PC,
+  PC_next,
+  B,
+  B_next,
+  DPL,
+  DPL_next,
   PSW,
   PSW_next,
+  DPH,
+  DPH_next,
   IRAM_full,
+  SBUF,
+  SBUF_next,
+  SCON,
+  SCON_next,
+  PCON,
+  PCON_next,
+  TCON,
+  TCON_next,
+  TL0,
+  TL0_next,
+  TL1,
+  TL1_next,
+  TH0,
+  TH0_next,
+  TH1,
+  TH1_next,
+  TMOD,
+  TMOD_next,
+  IE,
+  IE_next,
+  IP,
+  IP_next,
   P0IN,
   P1IN,
   P2IN,
@@ -63,49 +63,49 @@ output [15:0] RD_ROM_1_ADDR;
 output [15:0] RD_ROM_2_ADDR;
 output [7:0] ACC;
 output [7:0] ACC_next;
-output [7:0] PCON;
-output [7:0] PCON_next;
-output [7:0] B;
-output [7:0] B_next;
-output [7:0] TMOD;
-output [7:0] TMOD_next;
-output [7:0] DPL;
-output [7:0] DPL_next;
-output [7:0] DPH;
-output [7:0] DPH_next;
-output [7:0] TL1;
-output [7:0] TL1_next;
-output [7:0] TL0;
-output [7:0] TL0_next;
-output [7:0] TCON;
-output [7:0] TCON_next;
-output [7:0] TH1;
-output [7:0] TH1_next;
-output [7:0] TH0;
-output [7:0] TH0_next;
-output [15:0] PC;
-output [15:0] PC_next;
 output [7:0] P2;
 output [7:0] P2_next;
-output [7:0] P3;
-output [7:0] P3_next;
 output [7:0] P0;
 output [7:0] P0_next;
 output [7:0] P1;
 output [7:0] P1_next;
-output [7:0] IP;
-output [7:0] IP_next;
-output [7:0] IE;
-output [7:0] IE_next;
-output [7:0] SCON;
-output [7:0] SCON_next;
+output [7:0] P3;
+output [7:0] P3_next;
 output [7:0] SP;
 output [7:0] SP_next;
-output [7:0] SBUF;
-output [7:0] SBUF_next;
+output [15:0] PC;
+output [15:0] PC_next;
+output [7:0] B;
+output [7:0] B_next;
+output [7:0] DPL;
+output [7:0] DPL_next;
 output [7:0] PSW;
 output [7:0] PSW_next;
+output [7:0] DPH;
+output [7:0] DPH_next;
 output [127:0] IRAM_full;
+output [7:0] SBUF;
+output [7:0] SBUF_next;
+output [7:0] SCON;
+output [7:0] SCON_next;
+output [7:0] PCON;
+output [7:0] PCON_next;
+output [7:0] TCON;
+output [7:0] TCON_next;
+output [7:0] TL0;
+output [7:0] TL0_next;
+output [7:0] TL1;
+output [7:0] TL1_next;
+output [7:0] TH0;
+output [7:0] TH0_next;
+output [7:0] TH1;
+output [7:0] TH1_next;
+output [7:0] TMOD;
+output [7:0] TMOD_next;
+output [7:0] IE;
+output [7:0] IE_next;
+output [7:0] IP;
+output [7:0] IP_next;
 
 input clk, rst, step;
 input [7:0] P0IN;
@@ -366,65 +366,7 @@ wire [7:0] DPL_d0;
 wire [7:0] DPL_d5;
 wire [7:0] DPL_f5;
 wire [7:0] DPL_next;
-wire [7:0] IE_05;
-wire [7:0] IE_10;
-wire [7:0] IE_15;
-wire [7:0] IE_42;
-wire [7:0] IE_43;
-wire [7:0] IE_52;
-wire [7:0] IE_53;
-wire [7:0] IE_62;
-wire [7:0] IE_63;
-wire [7:0] IE_75;
-wire [7:0] IE_85;
-wire [7:0] IE_86;
-wire [7:0] IE_87;
-wire [7:0] IE_88;
-wire [7:0] IE_89;
-wire [7:0] IE_8a;
-wire [7:0] IE_8b;
-wire [7:0] IE_8c;
-wire [7:0] IE_8d;
-wire [7:0] IE_8e;
-wire [7:0] IE_8f;
-wire [7:0] IE_92;
-wire [7:0] IE_b2;
-wire [7:0] IE_c2;
-wire [7:0] IE_c5;
-wire [7:0] IE_d0;
-wire [7:0] IE_d2;
-wire [7:0] IE_d5;
-wire [7:0] IE_f5;
 wire [7:0] IE_next;
-wire [7:0] IP_05;
-wire [7:0] IP_10;
-wire [7:0] IP_15;
-wire [7:0] IP_42;
-wire [7:0] IP_43;
-wire [7:0] IP_52;
-wire [7:0] IP_53;
-wire [7:0] IP_62;
-wire [7:0] IP_63;
-wire [7:0] IP_75;
-wire [7:0] IP_85;
-wire [7:0] IP_86;
-wire [7:0] IP_87;
-wire [7:0] IP_88;
-wire [7:0] IP_89;
-wire [7:0] IP_8a;
-wire [7:0] IP_8b;
-wire [7:0] IP_8c;
-wire [7:0] IP_8d;
-wire [7:0] IP_8e;
-wire [7:0] IP_8f;
-wire [7:0] IP_92;
-wire [7:0] IP_b2;
-wire [7:0] IP_c2;
-wire [7:0] IP_c5;
-wire [7:0] IP_d0;
-wire [7:0] IP_d2;
-wire [7:0] IP_d5;
-wire [7:0] IP_f5;
 wire [7:0] IP_next;
 wire [7:0] P0_05;
 wire [7:0] P0_10;
@@ -547,30 +489,6 @@ wire [7:0] P3_d2;
 wire [7:0] P3_d5;
 wire [7:0] P3_f5;
 wire [7:0] P3_next;
-wire [7:0] PCON_05;
-wire [7:0] PCON_15;
-wire [7:0] PCON_42;
-wire [7:0] PCON_43;
-wire [7:0] PCON_52;
-wire [7:0] PCON_53;
-wire [7:0] PCON_62;
-wire [7:0] PCON_63;
-wire [7:0] PCON_75;
-wire [7:0] PCON_85;
-wire [7:0] PCON_86;
-wire [7:0] PCON_87;
-wire [7:0] PCON_88;
-wire [7:0] PCON_89;
-wire [7:0] PCON_8a;
-wire [7:0] PCON_8b;
-wire [7:0] PCON_8c;
-wire [7:0] PCON_8d;
-wire [7:0] PCON_8e;
-wire [7:0] PCON_8f;
-wire [7:0] PCON_c5;
-wire [7:0] PCON_d0;
-wire [7:0] PCON_d5;
-wire [7:0] PCON_f5;
 wire [7:0] PCON_next;
 wire [15:0] PC_00;
 wire [15:0] PC_01;
@@ -1086,60 +1004,7 @@ wire [7:0] RD_ROM_2;
 wire [15:0] RD_ROM_2_ADDR;
 wire [7:0] RD_XRAM_0;
 wire [15:0] RD_XRAM_0_ADDR;
-wire [7:0] SBUF_05;
-wire [7:0] SBUF_15;
-wire [7:0] SBUF_42;
-wire [7:0] SBUF_43;
-wire [7:0] SBUF_52;
-wire [7:0] SBUF_53;
-wire [7:0] SBUF_62;
-wire [7:0] SBUF_63;
-wire [7:0] SBUF_75;
-wire [7:0] SBUF_85;
-wire [7:0] SBUF_86;
-wire [7:0] SBUF_87;
-wire [7:0] SBUF_88;
-wire [7:0] SBUF_89;
-wire [7:0] SBUF_8a;
-wire [7:0] SBUF_8b;
-wire [7:0] SBUF_8c;
-wire [7:0] SBUF_8d;
-wire [7:0] SBUF_8e;
-wire [7:0] SBUF_8f;
-wire [7:0] SBUF_c5;
-wire [7:0] SBUF_d0;
-wire [7:0] SBUF_d5;
-wire [7:0] SBUF_f5;
 wire [7:0] SBUF_next;
-wire [7:0] SCON_05;
-wire [7:0] SCON_10;
-wire [7:0] SCON_15;
-wire [7:0] SCON_42;
-wire [7:0] SCON_43;
-wire [7:0] SCON_52;
-wire [7:0] SCON_53;
-wire [7:0] SCON_62;
-wire [7:0] SCON_63;
-wire [7:0] SCON_75;
-wire [7:0] SCON_85;
-wire [7:0] SCON_86;
-wire [7:0] SCON_87;
-wire [7:0] SCON_88;
-wire [7:0] SCON_89;
-wire [7:0] SCON_8a;
-wire [7:0] SCON_8b;
-wire [7:0] SCON_8c;
-wire [7:0] SCON_8d;
-wire [7:0] SCON_8e;
-wire [7:0] SCON_8f;
-wire [7:0] SCON_92;
-wire [7:0] SCON_b2;
-wire [7:0] SCON_c2;
-wire [7:0] SCON_c5;
-wire [7:0] SCON_d0;
-wire [7:0] SCON_d2;
-wire [7:0] SCON_d5;
-wire [7:0] SCON_f5;
 wire [7:0] SCON_next;
 wire [7:0] SP_05;
 wire [7:0] SP_11;
@@ -1178,160 +1043,11 @@ wire [7:0] SP_d5;
 wire [7:0] SP_f1;
 wire [7:0] SP_f5;
 wire [7:0] SP_next;
-wire [7:0] TCON_05;
-wire [7:0] TCON_10;
-wire [7:0] TCON_15;
-wire [7:0] TCON_42;
-wire [7:0] TCON_43;
-wire [7:0] TCON_52;
-wire [7:0] TCON_53;
-wire [7:0] TCON_62;
-wire [7:0] TCON_63;
-wire [7:0] TCON_75;
-wire [7:0] TCON_85;
-wire [7:0] TCON_86;
-wire [7:0] TCON_87;
-wire [7:0] TCON_88;
-wire [7:0] TCON_89;
-wire [7:0] TCON_8a;
-wire [7:0] TCON_8b;
-wire [7:0] TCON_8c;
-wire [7:0] TCON_8d;
-wire [7:0] TCON_8e;
-wire [7:0] TCON_8f;
-wire [7:0] TCON_92;
-wire [7:0] TCON_b2;
-wire [7:0] TCON_c2;
-wire [7:0] TCON_c5;
-wire [7:0] TCON_d0;
-wire [7:0] TCON_d2;
-wire [7:0] TCON_d5;
-wire [7:0] TCON_f5;
 wire [7:0] TCON_next;
-wire [7:0] TH0_05;
-wire [7:0] TH0_15;
-wire [7:0] TH0_42;
-wire [7:0] TH0_43;
-wire [7:0] TH0_52;
-wire [7:0] TH0_53;
-wire [7:0] TH0_62;
-wire [7:0] TH0_63;
-wire [7:0] TH0_75;
-wire [7:0] TH0_85;
-wire [7:0] TH0_86;
-wire [7:0] TH0_87;
-wire [7:0] TH0_88;
-wire [7:0] TH0_89;
-wire [7:0] TH0_8a;
-wire [7:0] TH0_8b;
-wire [7:0] TH0_8c;
-wire [7:0] TH0_8d;
-wire [7:0] TH0_8e;
-wire [7:0] TH0_8f;
-wire [7:0] TH0_c5;
-wire [7:0] TH0_d0;
-wire [7:0] TH0_d5;
-wire [7:0] TH0_f5;
 wire [7:0] TH0_next;
-wire [7:0] TH1_05;
-wire [7:0] TH1_15;
-wire [7:0] TH1_42;
-wire [7:0] TH1_43;
-wire [7:0] TH1_52;
-wire [7:0] TH1_53;
-wire [7:0] TH1_62;
-wire [7:0] TH1_63;
-wire [7:0] TH1_75;
-wire [7:0] TH1_85;
-wire [7:0] TH1_86;
-wire [7:0] TH1_87;
-wire [7:0] TH1_88;
-wire [7:0] TH1_89;
-wire [7:0] TH1_8a;
-wire [7:0] TH1_8b;
-wire [7:0] TH1_8c;
-wire [7:0] TH1_8d;
-wire [7:0] TH1_8e;
-wire [7:0] TH1_8f;
-wire [7:0] TH1_c5;
-wire [7:0] TH1_d0;
-wire [7:0] TH1_d5;
-wire [7:0] TH1_f5;
 wire [7:0] TH1_next;
-wire [7:0] TL0_05;
-wire [7:0] TL0_15;
-wire [7:0] TL0_42;
-wire [7:0] TL0_43;
-wire [7:0] TL0_52;
-wire [7:0] TL0_53;
-wire [7:0] TL0_62;
-wire [7:0] TL0_63;
-wire [7:0] TL0_75;
-wire [7:0] TL0_85;
-wire [7:0] TL0_86;
-wire [7:0] TL0_87;
-wire [7:0] TL0_88;
-wire [7:0] TL0_89;
-wire [7:0] TL0_8a;
-wire [7:0] TL0_8b;
-wire [7:0] TL0_8c;
-wire [7:0] TL0_8d;
-wire [7:0] TL0_8e;
-wire [7:0] TL0_8f;
-wire [7:0] TL0_c5;
-wire [7:0] TL0_d0;
-wire [7:0] TL0_d5;
-wire [7:0] TL0_f5;
 wire [7:0] TL0_next;
-wire [7:0] TL1_05;
-wire [7:0] TL1_15;
-wire [7:0] TL1_42;
-wire [7:0] TL1_43;
-wire [7:0] TL1_52;
-wire [7:0] TL1_53;
-wire [7:0] TL1_62;
-wire [7:0] TL1_63;
-wire [7:0] TL1_75;
-wire [7:0] TL1_85;
-wire [7:0] TL1_86;
-wire [7:0] TL1_87;
-wire [7:0] TL1_88;
-wire [7:0] TL1_89;
-wire [7:0] TL1_8a;
-wire [7:0] TL1_8b;
-wire [7:0] TL1_8c;
-wire [7:0] TL1_8d;
-wire [7:0] TL1_8e;
-wire [7:0] TL1_8f;
-wire [7:0] TL1_c5;
-wire [7:0] TL1_d0;
-wire [7:0] TL1_d5;
-wire [7:0] TL1_f5;
 wire [7:0] TL1_next;
-wire [7:0] TMOD_05;
-wire [7:0] TMOD_15;
-wire [7:0] TMOD_42;
-wire [7:0] TMOD_43;
-wire [7:0] TMOD_52;
-wire [7:0] TMOD_53;
-wire [7:0] TMOD_62;
-wire [7:0] TMOD_63;
-wire [7:0] TMOD_75;
-wire [7:0] TMOD_85;
-wire [7:0] TMOD_86;
-wire [7:0] TMOD_87;
-wire [7:0] TMOD_88;
-wire [7:0] TMOD_89;
-wire [7:0] TMOD_8a;
-wire [7:0] TMOD_8b;
-wire [7:0] TMOD_8c;
-wire [7:0] TMOD_8d;
-wire [7:0] TMOD_8e;
-wire [7:0] TMOD_8f;
-wire [7:0] TMOD_c5;
-wire [7:0] TMOD_d0;
-wire [7:0] TMOD_d5;
-wire [7:0] TMOD_f5;
 wire [7:0] TMOD_next;
 wire [3:0] WR_ADDR_0_IRAM;
 wire [3:0] WR_ADDR_1_IRAM;
@@ -2464,65 +2180,65 @@ wire [7:0] n1122;
 wire [7:0] n1123;
 wire [7:0] n1124;
 wire [7:0] n1125;
-wire [7:0] n1126;
+wire [3:0] n1126;
 wire [7:0] n1127;
 wire [7:0] n1128;
-wire [7:0] n1129;
-wire [7:0] n1130;
-wire [7:0] n1131;
-wire [7:0] n1132;
-wire [3:0] n1133;
-wire [7:0] n1134;
-wire [7:0] n1135;
-wire [7:0] n1136;
-wire [7:0] n1137;
-wire [7:0] n1138;
-wire [7:0] n1139;
-wire [6:0] n1140;
+wire [6:0] n1129;
+wire [0:0] n1130;
+wire [0:0] n1131;
+wire [0:0] n1132;
+wire [0:0] n1133;
+wire [0:0] n1134;
+wire [0:0] n1135;
+wire [0:0] n1136;
+wire [0:0] n1137;
+wire [0:0] n1138;
+wire [0:0] n1139;
+wire [0:0] n1140;
 wire [0:0] n1141;
 wire [0:0] n1142;
 wire [0:0] n1143;
 wire [0:0] n1144;
-wire [0:0] n1145;
-wire [0:0] n1146;
-wire [0:0] n1147;
-wire [0:0] n1148;
-wire [0:0] n1149;
-wire [0:0] n1150;
-wire [0:0] n1151;
-wire [0:0] n1152;
-wire [0:0] n1153;
-wire [0:0] n1154;
-wire [0:0] n1155;
-wire [7:0] n1156;
-wire [3:0] n1157;
-wire [7:0] n1158;
-wire [3:0] n1159;
+wire [7:0] n1145;
+wire [3:0] n1146;
+wire [7:0] n1147;
+wire [3:0] n1148;
+wire [7:0] n1149;
+wire [3:0] n1150;
+wire [3:0] n1151;
+wire [3:0] n1152;
+wire [3:0] n1153;
+wire [3:0] n1154;
+wire [3:0] n1155;
+wire [3:0] n1156;
+wire n1157;
+wire [2:0] n1158;
+wire [7:0] n1159;
 wire [7:0] n1160;
-wire [3:0] n1161;
-wire [3:0] n1162;
-wire [3:0] n1163;
-wire [3:0] n1164;
-wire [3:0] n1165;
-wire [3:0] n1166;
-wire [3:0] n1167;
+wire [7:0] n1161;
+wire [0:0] n1162;
+wire n1163;
+wire n1164;
+wire n1165;
+wire n1166;
+wire n1167;
 wire n1168;
-wire [2:0] n1169;
-wire [7:0] n1170;
-wire [7:0] n1171;
-wire [7:0] n1172;
-wire [0:0] n1173;
-wire n1174;
-wire n1175;
-wire n1176;
-wire n1177;
-wire n1178;
-wire n1179;
-wire n1180;
-wire n1181;
-wire n1182;
-wire n1183;
-wire n1184;
+wire n1169;
+wire n1170;
+wire n1171;
+wire n1172;
+wire n1173;
+wire [7:0] n1174;
+wire [7:0] n1175;
+wire [7:0] n1176;
+wire [7:0] n1177;
+wire [7:0] n1178;
+wire [7:0] n1179;
+wire [7:0] n1180;
+wire [7:0] n1181;
+wire [7:0] n1182;
+wire [7:0] n1183;
+wire [7:0] n1184;
 wire [7:0] n1185;
 wire [7:0] n1186;
 wire [7:0] n1187;
@@ -2540,75 +2256,75 @@ wire [7:0] n1198;
 wire [7:0] n1199;
 wire [7:0] n1200;
 wire [7:0] n1201;
-wire [7:0] n1202;
-wire [7:0] n1203;
-wire [7:0] n1204;
-wire [7:0] n1205;
-wire [7:0] n1206;
-wire [7:0] n1207;
-wire [7:0] n1208;
+wire [0:0] n1202;
+wire n1203;
+wire [15:0] n1204;
+wire [15:0] n1205;
+wire [15:0] n1206;
+wire [15:0] n1207;
+wire [15:0] n1208;
 wire [7:0] n1209;
 wire [7:0] n1210;
 wire [7:0] n1211;
 wire [7:0] n1212;
-wire [7:0] n1213;
-wire [0:0] n1214;
-wire n1215;
-wire [15:0] n1216;
-wire [15:0] n1217;
-wire [15:0] n1218;
-wire [15:0] n1219;
-wire [15:0] n1220;
-wire [7:0] n1221;
-wire [7:0] n1222;
-wire [7:0] n1223;
-wire [7:0] n1224;
-wire [3:0] n1225;
-wire [7:0] n1226;
-wire [7:0] n1227;
-wire [7:0] n1228;
-wire [7:0] n1229;
-wire [6:0] n1230;
-wire [0:0] n1231;
-wire [0:0] n1232;
-wire [0:0] n1233;
-wire [0:0] n1234;
-wire [0:0] n1235;
-wire [0:0] n1236;
-wire [0:0] n1237;
-wire [0:0] n1238;
-wire [0:0] n1239;
-wire [0:0] n1240;
-wire [0:0] n1241;
-wire [0:0] n1242;
-wire [0:0] n1243;
+wire [3:0] n1213;
+wire [7:0] n1214;
+wire [6:0] n1215;
+wire [0:0] n1216;
+wire [0:0] n1217;
+wire [0:0] n1218;
+wire [0:0] n1219;
+wire [0:0] n1220;
+wire [0:0] n1221;
+wire [0:0] n1222;
+wire [0:0] n1223;
+wire [0:0] n1224;
+wire [0:0] n1225;
+wire [0:0] n1226;
+wire [0:0] n1227;
+wire [0:0] n1228;
+wire [0:0] n1229;
+wire [0:0] n1230;
+wire [7:0] n1231;
+wire [2:0] n1232;
+wire [15:0] n1233;
+wire [7:0] n1234;
+wire [3:0] n1235;
+wire [7:0] n1236;
+wire [7:0] n1237;
+wire [3:0] n1238;
+wire [7:0] n1239;
+wire [7:0] n1240;
+wire [7:0] n1241;
+wire [7:0] n1242;
+wire [7:0] n1243;
 wire [0:0] n1244;
-wire [0:0] n1245;
-wire [7:0] n1246;
-wire [2:0] n1247;
-wire [15:0] n1248;
-wire [7:0] n1249;
-wire [3:0] n1250;
-wire [7:0] n1251;
+wire [8:0] n1245;
+wire [8:0] n1246;
+wire [7:0] n1247;
+wire [0:0] n1248;
+wire [2:0] n1249;
+wire [0:0] n1250;
+wire [1:0] n1251;
 wire [7:0] n1252;
-wire [3:0] n1253;
-wire [7:0] n1254;
-wire [7:0] n1255;
-wire [7:0] n1256;
-wire [7:0] n1257;
-wire [7:0] n1258;
+wire [6:0] n1253;
+wire [0:0] n1254;
+wire [0:0] n1255;
+wire [0:0] n1256;
+wire [0:0] n1257;
+wire [0:0] n1258;
 wire [0:0] n1259;
-wire [8:0] n1260;
-wire [8:0] n1261;
-wire [7:0] n1262;
+wire [0:0] n1260;
+wire [0:0] n1261;
+wire [0:0] n1262;
 wire [0:0] n1263;
-wire [2:0] n1264;
+wire [0:0] n1264;
 wire [0:0] n1265;
-wire [1:0] n1266;
-wire [7:0] n1267;
-wire [6:0] n1268;
-wire [0:0] n1269;
-wire [0:0] n1270;
+wire [0:0] n1266;
+wire [0:0] n1267;
+wire [0:0] n1268;
+wire [7:0] n1269;
+wire [7:0] n1270;
 wire [0:0] n1271;
 wire [0:0] n1272;
 wire [0:0] n1273;
@@ -2622,47 +2338,47 @@ wire [0:0] n1280;
 wire [0:0] n1281;
 wire [0:0] n1282;
 wire [0:0] n1283;
-wire [7:0] n1284;
-wire [7:0] n1285;
-wire [0:0] n1286;
-wire [0:0] n1287;
-wire [0:0] n1288;
-wire [0:0] n1289;
-wire [0:0] n1290;
-wire [0:0] n1291;
-wire [0:0] n1292;
-wire [0:0] n1293;
-wire [0:0] n1294;
-wire [0:0] n1295;
-wire [0:0] n1296;
-wire [0:0] n1297;
-wire [0:0] n1298;
+wire [0:0] n1284;
+wire [0:0] n1285;
+wire [7:0] n1286;
+wire [7:0] n1287;
+wire [7:0] n1288;
+wire [7:0] n1289;
+wire [7:0] n1290;
+wire [7:0] n1291;
+wire [7:0] n1292;
+wire [7:0] n1293;
+wire [7:0] n1294;
+wire [7:0] n1295;
+wire [7:0] n1296;
+wire [7:0] n1297;
+wire [6:0] n1298;
 wire [0:0] n1299;
 wire [0:0] n1300;
-wire [7:0] n1301;
-wire [7:0] n1302;
-wire [7:0] n1303;
-wire [7:0] n1304;
-wire [7:0] n1305;
-wire [7:0] n1306;
-wire [7:0] n1307;
-wire [7:0] n1308;
-wire [7:0] n1309;
-wire [7:0] n1310;
-wire [7:0] n1311;
-wire [7:0] n1312;
-wire [7:0] n1313;
+wire [0:0] n1301;
+wire [0:0] n1302;
+wire [0:0] n1303;
+wire [0:0] n1304;
+wire [0:0] n1305;
+wire [0:0] n1306;
+wire [0:0] n1307;
+wire [0:0] n1308;
+wire [0:0] n1309;
+wire [0:0] n1310;
+wire [0:0] n1311;
+wire [0:0] n1312;
+wire [0:0] n1313;
 wire [7:0] n1314;
 wire [7:0] n1315;
 wire [7:0] n1316;
-wire [7:0] n1317;
+wire [15:0] n1317;
 wire [7:0] n1318;
 wire [7:0] n1319;
-wire [7:0] n1320;
-wire [7:0] n1321;
-wire [7:0] n1322;
-wire [7:0] n1323;
-wire [6:0] n1324;
+wire [0:0] n1320;
+wire [0:0] n1321;
+wire [0:0] n1322;
+wire [0:0] n1323;
+wire [0:0] n1324;
 wire [0:0] n1325;
 wire [0:0] n1326;
 wire [0:0] n1327;
@@ -2673,286 +2389,286 @@ wire [0:0] n1331;
 wire [0:0] n1332;
 wire [0:0] n1333;
 wire [0:0] n1334;
-wire [0:0] n1335;
-wire [0:0] n1336;
-wire [0:0] n1337;
-wire [0:0] n1338;
-wire [0:0] n1339;
-wire [7:0] n1340;
-wire [7:0] n1341;
-wire [7:0] n1342;
-wire [15:0] n1343;
-wire [7:0] n1344;
-wire [7:0] n1345;
-wire [0:0] n1346;
-wire [0:0] n1347;
-wire [0:0] n1348;
+wire [7:0] n1335;
+wire [7:0] n1336;
+wire [8:0] n1337;
+wire [8:0] n1338;
+wire [8:0] n1339;
+wire [8:0] n1340;
+wire [8:0] n1341;
+wire [0:0] n1342;
+wire [3:0] n1343;
+wire [4:0] n1344;
+wire [4:0] n1345;
+wire [4:0] n1346;
+wire [4:0] n1347;
+wire [4:0] n1348;
 wire [0:0] n1349;
-wire [0:0] n1350;
-wire [0:0] n1351;
-wire [0:0] n1352;
-wire [0:0] n1353;
+wire [8:0] n1350;
+wire [8:0] n1351;
+wire [8:0] n1352;
+wire [8:0] n1353;
 wire [0:0] n1354;
 wire [0:0] n1355;
-wire [0:0] n1356;
-wire [0:0] n1357;
+wire n1356;
+wire n1357;
 wire [0:0] n1358;
-wire [0:0] n1359;
-wire [0:0] n1360;
-wire [7:0] n1361;
-wire [7:0] n1362;
-wire [8:0] n1363;
-wire [8:0] n1364;
-wire [8:0] n1365;
-wire [8:0] n1366;
-wire [8:0] n1367;
+wire [7:0] n1359;
+wire [6:0] n1360;
+wire [0:0] n1361;
+wire [0:0] n1362;
+wire [0:0] n1363;
+wire [0:0] n1364;
+wire [0:0] n1365;
+wire [0:0] n1366;
+wire [0:0] n1367;
 wire [0:0] n1368;
-wire [3:0] n1369;
-wire [4:0] n1370;
-wire [4:0] n1371;
-wire [4:0] n1372;
-wire [4:0] n1373;
-wire [4:0] n1374;
+wire [0:0] n1369;
+wire [0:0] n1370;
+wire [0:0] n1371;
+wire [0:0] n1372;
+wire [0:0] n1373;
+wire [0:0] n1374;
 wire [0:0] n1375;
-wire [8:0] n1376;
-wire [8:0] n1377;
-wire [8:0] n1378;
-wire [8:0] n1379;
-wire [0:0] n1380;
-wire [0:0] n1381;
-wire n1382;
-wire n1383;
-wire [0:0] n1384;
+wire [7:0] n1376;
+wire [7:0] n1377;
+wire [7:0] n1378;
+wire [7:0] n1379;
+wire [7:0] n1380;
+wire [7:0] n1381;
+wire [7:0] n1382;
+wire [7:0] n1383;
+wire [7:0] n1384;
 wire [7:0] n1385;
-wire [6:0] n1386;
-wire [0:0] n1387;
-wire [0:0] n1388;
-wire [0:0] n1389;
-wire [0:0] n1390;
-wire [0:0] n1391;
-wire [0:0] n1392;
-wire [0:0] n1393;
-wire [0:0] n1394;
-wire [0:0] n1395;
-wire [0:0] n1396;
-wire [0:0] n1397;
-wire [0:0] n1398;
+wire [7:0] n1386;
+wire [7:0] n1387;
+wire [7:0] n1388;
+wire [7:0] n1389;
+wire [7:0] n1390;
+wire [7:0] n1391;
+wire [7:0] n1392;
+wire [7:0] n1393;
+wire [7:0] n1394;
+wire [7:0] n1395;
+wire [8:0] n1396;
+wire [8:0] n1397;
+wire [8:0] n1398;
 wire [0:0] n1399;
-wire [0:0] n1400;
-wire [0:0] n1401;
-wire [7:0] n1402;
-wire [7:0] n1403;
-wire [7:0] n1404;
-wire [7:0] n1405;
-wire [7:0] n1406;
-wire [7:0] n1407;
-wire [7:0] n1408;
-wire [7:0] n1409;
-wire [7:0] n1410;
-wire [7:0] n1411;
-wire [7:0] n1412;
-wire [7:0] n1413;
+wire [3:0] n1400;
+wire [4:0] n1401;
+wire [4:0] n1402;
+wire [4:0] n1403;
+wire [4:0] n1404;
+wire [0:0] n1405;
+wire [8:0] n1406;
+wire [8:0] n1407;
+wire [8:0] n1408;
+wire [0:0] n1409;
+wire [0:0] n1410;
+wire n1411;
+wire n1412;
+wire [0:0] n1413;
 wire [7:0] n1414;
-wire [7:0] n1415;
-wire [7:0] n1416;
-wire [7:0] n1417;
-wire [7:0] n1418;
-wire [7:0] n1419;
-wire [7:0] n1420;
-wire [7:0] n1421;
-wire [8:0] n1422;
-wire [8:0] n1423;
-wire [8:0] n1424;
+wire [6:0] n1415;
+wire [0:0] n1416;
+wire [0:0] n1417;
+wire [0:0] n1418;
+wire [0:0] n1419;
+wire [0:0] n1420;
+wire [0:0] n1421;
+wire [0:0] n1422;
+wire [0:0] n1423;
+wire [0:0] n1424;
 wire [0:0] n1425;
-wire [3:0] n1426;
-wire [4:0] n1427;
-wire [4:0] n1428;
-wire [4:0] n1429;
-wire [4:0] n1430;
-wire [0:0] n1431;
-wire [8:0] n1432;
+wire [0:0] n1426;
+wire [0:0] n1427;
+wire [0:0] n1428;
+wire [0:0] n1429;
+wire [0:0] n1430;
+wire [7:0] n1431;
+wire [7:0] n1432;
 wire [8:0] n1433;
 wire [8:0] n1434;
-wire [0:0] n1435;
+wire [8:0] n1435;
 wire [0:0] n1436;
-wire n1437;
-wire n1438;
-wire [0:0] n1439;
-wire [7:0] n1440;
-wire [6:0] n1441;
-wire [0:0] n1442;
-wire [0:0] n1443;
-wire [0:0] n1444;
+wire [3:0] n1437;
+wire [4:0] n1438;
+wire [4:0] n1439;
+wire [4:0] n1440;
+wire [0:0] n1441;
+wire [8:0] n1442;
+wire [8:0] n1443;
+wire [8:0] n1444;
 wire [0:0] n1445;
 wire [0:0] n1446;
-wire [0:0] n1447;
-wire [0:0] n1448;
+wire n1447;
+wire n1448;
 wire [0:0] n1449;
-wire [0:0] n1450;
-wire [0:0] n1451;
+wire [7:0] n1450;
+wire [6:0] n1451;
 wire [0:0] n1452;
 wire [0:0] n1453;
 wire [0:0] n1454;
 wire [0:0] n1455;
 wire [0:0] n1456;
-wire [7:0] n1457;
-wire [7:0] n1458;
-wire [8:0] n1459;
-wire [8:0] n1460;
-wire [8:0] n1461;
+wire [0:0] n1457;
+wire [0:0] n1458;
+wire [0:0] n1459;
+wire [0:0] n1460;
+wire [0:0] n1461;
 wire [0:0] n1462;
-wire [3:0] n1463;
-wire [4:0] n1464;
-wire [4:0] n1465;
-wire [4:0] n1466;
-wire [0:0] n1467;
+wire [0:0] n1463;
+wire [0:0] n1464;
+wire [0:0] n1465;
+wire [0:0] n1466;
+wire [7:0] n1467;
 wire [8:0] n1468;
 wire [8:0] n1469;
 wire [8:0] n1470;
 wire [0:0] n1471;
-wire [0:0] n1472;
-wire n1473;
-wire n1474;
+wire [8:0] n1472;
+wire [8:0] n1473;
+wire [0:0] n1474;
 wire [0:0] n1475;
-wire [7:0] n1476;
-wire [6:0] n1477;
+wire n1476;
+wire n1477;
 wire [0:0] n1478;
-wire [0:0] n1479;
-wire [0:0] n1480;
-wire [0:0] n1481;
-wire [0:0] n1482;
-wire [0:0] n1483;
-wire [0:0] n1484;
-wire [0:0] n1485;
+wire [7:0] n1479;
+wire [6:0] n1480;
+wire [7:0] n1481;
+wire [7:0] n1482;
+wire [8:0] n1483;
+wire [8:0] n1484;
+wire [8:0] n1485;
 wire [0:0] n1486;
-wire [0:0] n1487;
-wire [0:0] n1488;
-wire [0:0] n1489;
+wire [4:0] n1487;
+wire [4:0] n1488;
+wire [4:0] n1489;
 wire [0:0] n1490;
-wire [0:0] n1491;
-wire [0:0] n1492;
-wire [7:0] n1493;
-wire [8:0] n1494;
-wire [8:0] n1495;
-wire [8:0] n1496;
-wire [0:0] n1497;
-wire [8:0] n1498;
-wire [8:0] n1499;
-wire [0:0] n1500;
+wire [8:0] n1491;
+wire [8:0] n1492;
+wire [8:0] n1493;
+wire [0:0] n1494;
+wire [0:0] n1495;
+wire n1496;
+wire n1497;
+wire [0:0] n1498;
+wire [7:0] n1499;
+wire [6:0] n1500;
 wire [0:0] n1501;
-wire n1502;
-wire n1503;
+wire [0:0] n1502;
+wire [0:0] n1503;
 wire [0:0] n1504;
-wire [7:0] n1505;
-wire [6:0] n1506;
-wire [7:0] n1507;
-wire [7:0] n1508;
-wire [8:0] n1509;
-wire [8:0] n1510;
-wire [8:0] n1511;
+wire [0:0] n1505;
+wire [0:0] n1506;
+wire [0:0] n1507;
+wire [0:0] n1508;
+wire [0:0] n1509;
+wire [0:0] n1510;
+wire [0:0] n1511;
 wire [0:0] n1512;
-wire [4:0] n1513;
-wire [4:0] n1514;
-wire [4:0] n1515;
-wire [0:0] n1516;
-wire [8:0] n1517;
-wire [8:0] n1518;
-wire [8:0] n1519;
-wire [0:0] n1520;
-wire [0:0] n1521;
-wire n1522;
-wire n1523;
-wire [0:0] n1524;
-wire [7:0] n1525;
-wire [6:0] n1526;
-wire [0:0] n1527;
+wire [0:0] n1513;
+wire [0:0] n1514;
+wire [0:0] n1515;
+wire [7:0] n1516;
+wire [4:0] n1517;
+wire [4:0] n1518;
+wire [0:0] n1519;
+wire [7:0] n1520;
+wire [6:0] n1521;
+wire [7:0] n1522;
+wire [8:0] n1523;
+wire [8:0] n1524;
+wire [0:0] n1525;
+wire [8:0] n1526;
+wire [8:0] n1527;
 wire [0:0] n1528;
 wire [0:0] n1529;
-wire [0:0] n1530;
-wire [0:0] n1531;
+wire n1530;
+wire n1531;
 wire [0:0] n1532;
-wire [0:0] n1533;
-wire [0:0] n1534;
-wire [0:0] n1535;
-wire [0:0] n1536;
-wire [0:0] n1537;
-wire [0:0] n1538;
-wire [0:0] n1539;
-wire [0:0] n1540;
-wire [0:0] n1541;
-wire [7:0] n1542;
-wire [4:0] n1543;
-wire [4:0] n1544;
-wire [0:0] n1545;
-wire [7:0] n1546;
-wire [6:0] n1547;
-wire [7:0] n1548;
-wire [8:0] n1549;
-wire [8:0] n1550;
+wire [7:0] n1533;
+wire [6:0] n1534;
+wire [7:0] n1535;
+wire [7:0] n1536;
+wire [6:0] n1537;
+wire [7:0] n1538;
+wire n1539;
+wire [15:0] n1540;
+wire [8:0] n1541;
+wire [8:0] n1542;
+wire [7:0] n1543;
+wire [7:0] n1544;
+wire [6:0] n1545;
+wire [0:0] n1546;
+wire [0:0] n1547;
+wire [0:0] n1548;
+wire [0:0] n1549;
+wire [0:0] n1550;
 wire [0:0] n1551;
-wire [8:0] n1552;
-wire [8:0] n1553;
+wire [0:0] n1552;
+wire [0:0] n1553;
 wire [0:0] n1554;
 wire [0:0] n1555;
-wire n1556;
-wire n1557;
+wire [0:0] n1556;
+wire [0:0] n1557;
 wire [0:0] n1558;
-wire [7:0] n1559;
-wire [6:0] n1560;
+wire [0:0] n1559;
+wire [0:0] n1560;
 wire [7:0] n1561;
 wire [7:0] n1562;
-wire [6:0] n1563;
+wire [7:0] n1563;
 wire [7:0] n1564;
-wire n1565;
-wire [15:0] n1566;
+wire [8:0] n1565;
+wire [8:0] n1566;
 wire [8:0] n1567;
-wire [8:0] n1568;
-wire [7:0] n1569;
-wire [7:0] n1570;
-wire [6:0] n1571;
+wire [0:0] n1568;
+wire [4:0] n1569;
+wire [4:0] n1570;
+wire [4:0] n1571;
 wire [0:0] n1572;
-wire [0:0] n1573;
-wire [0:0] n1574;
+wire [8:0] n1573;
+wire [8:0] n1574;
 wire [0:0] n1575;
 wire [0:0] n1576;
-wire [0:0] n1577;
-wire [0:0] n1578;
+wire n1577;
+wire n1578;
 wire [0:0] n1579;
-wire [0:0] n1580;
-wire [0:0] n1581;
+wire [7:0] n1580;
+wire [6:0] n1581;
 wire [0:0] n1582;
 wire [0:0] n1583;
 wire [0:0] n1584;
 wire [0:0] n1585;
 wire [0:0] n1586;
-wire [7:0] n1587;
-wire [7:0] n1588;
-wire [7:0] n1589;
-wire [7:0] n1590;
-wire [8:0] n1591;
-wire [8:0] n1592;
-wire [8:0] n1593;
+wire [0:0] n1587;
+wire [0:0] n1588;
+wire [0:0] n1589;
+wire [0:0] n1590;
+wire [0:0] n1591;
+wire [0:0] n1592;
+wire [0:0] n1593;
 wire [0:0] n1594;
-wire [4:0] n1595;
-wire [4:0] n1596;
-wire [4:0] n1597;
-wire [0:0] n1598;
-wire [8:0] n1599;
+wire [0:0] n1595;
+wire [0:0] n1596;
+wire [7:0] n1597;
+wire [7:0] n1598;
+wire [7:0] n1599;
 wire [8:0] n1600;
-wire [0:0] n1601;
+wire [8:0] n1601;
 wire [0:0] n1602;
-wire n1603;
-wire n1604;
+wire [4:0] n1603;
+wire [4:0] n1604;
 wire [0:0] n1605;
-wire [7:0] n1606;
-wire [6:0] n1607;
+wire [8:0] n1606;
+wire [8:0] n1607;
 wire [0:0] n1608;
 wire [0:0] n1609;
-wire [0:0] n1610;
-wire [0:0] n1611;
+wire n1610;
+wire n1611;
 wire [0:0] n1612;
-wire [0:0] n1613;
-wire [0:0] n1614;
+wire [7:0] n1613;
+wire [6:0] n1614;
 wire [0:0] n1615;
 wire [0:0] n1616;
 wire [0:0] n1617;
@@ -2961,31 +2677,31 @@ wire [0:0] n1619;
 wire [0:0] n1620;
 wire [0:0] n1621;
 wire [0:0] n1622;
-wire [7:0] n1623;
-wire [7:0] n1624;
-wire [7:0] n1625;
-wire [8:0] n1626;
-wire [8:0] n1627;
+wire [0:0] n1623;
+wire [0:0] n1624;
+wire [0:0] n1625;
+wire [0:0] n1626;
+wire [0:0] n1627;
 wire [0:0] n1628;
-wire [4:0] n1629;
-wire [4:0] n1630;
-wire [0:0] n1631;
-wire [8:0] n1632;
+wire [0:0] n1629;
+wire [7:0] n1630;
+wire [7:0] n1631;
+wire [7:0] n1632;
 wire [8:0] n1633;
-wire [0:0] n1634;
+wire [8:0] n1634;
 wire [0:0] n1635;
-wire n1636;
-wire n1637;
+wire [4:0] n1636;
+wire [4:0] n1637;
 wire [0:0] n1638;
-wire [7:0] n1639;
-wire [6:0] n1640;
+wire [8:0] n1639;
+wire [8:0] n1640;
 wire [0:0] n1641;
 wire [0:0] n1642;
-wire [0:0] n1643;
-wire [0:0] n1644;
+wire n1643;
+wire n1644;
 wire [0:0] n1645;
-wire [0:0] n1646;
-wire [0:0] n1647;
+wire [7:0] n1646;
+wire [6:0] n1647;
 wire [0:0] n1648;
 wire [0:0] n1649;
 wire [0:0] n1650;
@@ -2994,31 +2710,31 @@ wire [0:0] n1652;
 wire [0:0] n1653;
 wire [0:0] n1654;
 wire [0:0] n1655;
-wire [7:0] n1656;
-wire [7:0] n1657;
-wire [7:0] n1658;
-wire [8:0] n1659;
-wire [8:0] n1660;
+wire [0:0] n1656;
+wire [0:0] n1657;
+wire [0:0] n1658;
+wire [0:0] n1659;
+wire [0:0] n1660;
 wire [0:0] n1661;
-wire [4:0] n1662;
-wire [4:0] n1663;
-wire [0:0] n1664;
-wire [8:0] n1665;
+wire [0:0] n1662;
+wire [7:0] n1663;
+wire [7:0] n1664;
+wire [7:0] n1665;
 wire [8:0] n1666;
-wire [0:0] n1667;
+wire [8:0] n1667;
 wire [0:0] n1668;
-wire n1669;
-wire n1670;
+wire [4:0] n1669;
+wire [4:0] n1670;
 wire [0:0] n1671;
-wire [7:0] n1672;
-wire [6:0] n1673;
+wire [8:0] n1672;
+wire [8:0] n1673;
 wire [0:0] n1674;
 wire [0:0] n1675;
-wire [0:0] n1676;
-wire [0:0] n1677;
+wire n1676;
+wire n1677;
 wire [0:0] n1678;
-wire [0:0] n1679;
-wire [0:0] n1680;
+wire [7:0] n1679;
+wire [6:0] n1680;
 wire [0:0] n1681;
 wire [0:0] n1682;
 wire [0:0] n1683;
@@ -3027,93 +2743,93 @@ wire [0:0] n1685;
 wire [0:0] n1686;
 wire [0:0] n1687;
 wire [0:0] n1688;
-wire [7:0] n1689;
-wire [7:0] n1690;
-wire [7:0] n1691;
-wire [8:0] n1692;
-wire [8:0] n1693;
+wire [0:0] n1689;
+wire [0:0] n1690;
+wire [0:0] n1691;
+wire [0:0] n1692;
+wire [0:0] n1693;
 wire [0:0] n1694;
-wire [4:0] n1695;
-wire [4:0] n1696;
-wire [0:0] n1697;
-wire [8:0] n1698;
-wire [8:0] n1699;
-wire [0:0] n1700;
-wire [0:0] n1701;
-wire n1702;
-wire n1703;
-wire [0:0] n1704;
+wire [0:0] n1695;
+wire [7:0] n1696;
+wire n1697;
+wire [15:0] n1698;
+wire [15:0] n1699;
+wire [15:0] n1700;
+wire [7:0] n1701;
+wire [7:0] n1702;
+wire [7:0] n1703;
+wire [7:0] n1704;
 wire [7:0] n1705;
-wire [6:0] n1706;
-wire [0:0] n1707;
-wire [0:0] n1708;
-wire [0:0] n1709;
-wire [0:0] n1710;
-wire [0:0] n1711;
-wire [0:0] n1712;
-wire [0:0] n1713;
-wire [0:0] n1714;
-wire [0:0] n1715;
-wire [0:0] n1716;
-wire [0:0] n1717;
-wire [0:0] n1718;
-wire [0:0] n1719;
-wire [0:0] n1720;
-wire [0:0] n1721;
+wire [7:0] n1706;
+wire [7:0] n1707;
+wire [7:0] n1708;
+wire [7:0] n1709;
+wire [7:0] n1710;
+wire [6:0] n1711;
+wire [7:0] n1712;
+wire [7:0] n1713;
+wire [7:0] n1714;
+wire [7:0] n1715;
+wire [7:0] n1716;
+wire [7:0] n1717;
+wire [7:0] n1718;
+wire [7:0] n1719;
+wire [7:0] n1720;
+wire [7:0] n1721;
 wire [7:0] n1722;
-wire n1723;
-wire [15:0] n1724;
-wire [15:0] n1725;
-wire [15:0] n1726;
-wire [7:0] n1727;
-wire [7:0] n1728;
-wire [7:0] n1729;
-wire [7:0] n1730;
-wire [7:0] n1731;
-wire [7:0] n1732;
-wire [7:0] n1733;
-wire [7:0] n1734;
-wire [7:0] n1735;
-wire [7:0] n1736;
-wire [7:0] n1737;
-wire [7:0] n1738;
-wire [7:0] n1739;
+wire [7:0] n1723;
+wire [6:0] n1724;
+wire [0:0] n1725;
+wire [0:0] n1726;
+wire [0:0] n1727;
+wire [0:0] n1728;
+wire [0:0] n1729;
+wire [0:0] n1730;
+wire [0:0] n1731;
+wire [0:0] n1732;
+wire [0:0] n1733;
+wire [0:0] n1734;
+wire [0:0] n1735;
+wire [0:0] n1736;
+wire [0:0] n1737;
+wire [0:0] n1738;
+wire [0:0] n1739;
 wire [7:0] n1740;
 wire [7:0] n1741;
-wire [7:0] n1742;
-wire [7:0] n1743;
-wire [7:0] n1744;
-wire [7:0] n1745;
-wire [7:0] n1746;
-wire [7:0] n1747;
-wire [6:0] n1748;
-wire [7:0] n1749;
-wire [7:0] n1750;
-wire [7:0] n1751;
-wire [7:0] n1752;
-wire [7:0] n1753;
-wire [7:0] n1754;
-wire [7:0] n1755;
-wire [7:0] n1756;
+wire [0:0] n1742;
+wire [0:0] n1743;
+wire [0:0] n1744;
+wire [0:0] n1745;
+wire [0:0] n1746;
+wire [0:0] n1747;
+wire [0:0] n1748;
+wire [0:0] n1749;
+wire [0:0] n1750;
+wire [0:0] n1751;
+wire [0:0] n1752;
+wire [0:0] n1753;
+wire [0:0] n1754;
+wire [0:0] n1755;
+wire [0:0] n1756;
 wire [7:0] n1757;
 wire [7:0] n1758;
-wire [7:0] n1759;
-wire [7:0] n1760;
-wire [7:0] n1761;
-wire [7:0] n1762;
-wire [7:0] n1763;
-wire [7:0] n1764;
-wire [7:0] n1765;
-wire [7:0] n1766;
-wire [7:0] n1767;
-wire [7:0] n1768;
-wire [7:0] n1769;
-wire [7:0] n1770;
-wire [7:0] n1771;
-wire [6:0] n1772;
+wire [0:0] n1759;
+wire [0:0] n1760;
+wire [0:0] n1761;
+wire [0:0] n1762;
+wire [0:0] n1763;
+wire [0:0] n1764;
+wire [0:0] n1765;
+wire [0:0] n1766;
+wire [0:0] n1767;
+wire [0:0] n1768;
+wire [0:0] n1769;
+wire [0:0] n1770;
+wire [0:0] n1771;
+wire [0:0] n1772;
 wire [0:0] n1773;
-wire [0:0] n1774;
-wire [0:0] n1775;
+wire [7:0] n1774;
+wire [7:0] n1775;
 wire [0:0] n1776;
 wire [0:0] n1777;
 wire [0:0] n1778;
@@ -3126,11 +2842,11 @@ wire [0:0] n1784;
 wire [0:0] n1785;
 wire [0:0] n1786;
 wire [0:0] n1787;
-wire [7:0] n1788;
-wire [7:0] n1789;
+wire [0:0] n1788;
+wire [0:0] n1789;
 wire [0:0] n1790;
-wire [0:0] n1791;
-wire [0:0] n1792;
+wire [7:0] n1791;
+wire [7:0] n1792;
 wire [0:0] n1793;
 wire [0:0] n1794;
 wire [0:0] n1795;
@@ -3143,42 +2859,42 @@ wire [0:0] n1801;
 wire [0:0] n1802;
 wire [0:0] n1803;
 wire [0:0] n1804;
-wire [7:0] n1805;
-wire [7:0] n1806;
+wire [0:0] n1805;
+wire [0:0] n1806;
 wire [0:0] n1807;
-wire [0:0] n1808;
-wire [0:0] n1809;
-wire [0:0] n1810;
-wire [0:0] n1811;
-wire [0:0] n1812;
-wire [0:0] n1813;
-wire [0:0] n1814;
-wire [0:0] n1815;
-wire [0:0] n1816;
-wire [0:0] n1817;
-wire [0:0] n1818;
-wire [0:0] n1819;
-wire [0:0] n1820;
-wire [0:0] n1821;
+wire [7:0] n1808;
+wire n1809;
+wire [15:0] n1810;
+wire [7:0] n1811;
+wire [7:0] n1812;
+wire [7:0] n1813;
+wire [7:0] n1814;
+wire [7:0] n1815;
+wire [7:0] n1816;
+wire [7:0] n1817;
+wire [7:0] n1818;
+wire [7:0] n1819;
+wire [7:0] n1820;
+wire [6:0] n1821;
 wire [7:0] n1822;
 wire [7:0] n1823;
-wire [0:0] n1824;
-wire [0:0] n1825;
-wire [0:0] n1826;
-wire [0:0] n1827;
-wire [0:0] n1828;
-wire [0:0] n1829;
-wire [0:0] n1830;
-wire [0:0] n1831;
-wire [0:0] n1832;
-wire [0:0] n1833;
-wire [0:0] n1834;
+wire [7:0] n1824;
+wire [7:0] n1825;
+wire [7:0] n1826;
+wire [7:0] n1827;
+wire [7:0] n1828;
+wire [7:0] n1829;
+wire [7:0] n1830;
+wire [7:0] n1831;
+wire [7:0] n1832;
+wire [7:0] n1833;
+wire [6:0] n1834;
 wire [0:0] n1835;
 wire [0:0] n1836;
 wire [0:0] n1837;
 wire [0:0] n1838;
-wire [7:0] n1839;
-wire [7:0] n1840;
+wire [0:0] n1839;
+wire [0:0] n1840;
 wire [0:0] n1841;
 wire [0:0] n1842;
 wire [0:0] n1843;
@@ -3188,61 +2904,61 @@ wire [0:0] n1846;
 wire [0:0] n1847;
 wire [0:0] n1848;
 wire [0:0] n1849;
-wire [0:0] n1850;
-wire [0:0] n1851;
+wire [7:0] n1850;
+wire [7:0] n1851;
 wire [0:0] n1852;
 wire [0:0] n1853;
 wire [0:0] n1854;
 wire [0:0] n1855;
-wire [7:0] n1856;
-wire n1857;
-wire [15:0] n1858;
-wire [7:0] n1859;
-wire [7:0] n1860;
-wire [7:0] n1861;
-wire [7:0] n1862;
-wire [7:0] n1863;
-wire [7:0] n1864;
-wire [7:0] n1865;
-wire [7:0] n1866;
+wire [0:0] n1856;
+wire [0:0] n1857;
+wire [0:0] n1858;
+wire [0:0] n1859;
+wire [0:0] n1860;
+wire [0:0] n1861;
+wire [0:0] n1862;
+wire [0:0] n1863;
+wire [0:0] n1864;
+wire [0:0] n1865;
+wire [0:0] n1866;
 wire [7:0] n1867;
 wire [7:0] n1868;
-wire [7:0] n1869;
-wire [7:0] n1870;
-wire [7:0] n1871;
-wire [7:0] n1872;
-wire [7:0] n1873;
-wire [7:0] n1874;
-wire [7:0] n1875;
-wire [7:0] n1876;
-wire [7:0] n1877;
-wire [7:0] n1878;
-wire [7:0] n1879;
-wire [6:0] n1880;
-wire [7:0] n1881;
-wire [7:0] n1882;
-wire [7:0] n1883;
+wire [0:0] n1869;
+wire [0:0] n1870;
+wire [0:0] n1871;
+wire [0:0] n1872;
+wire [0:0] n1873;
+wire [0:0] n1874;
+wire [0:0] n1875;
+wire [0:0] n1876;
+wire [0:0] n1877;
+wire [0:0] n1878;
+wire [0:0] n1879;
+wire [0:0] n1880;
+wire [0:0] n1881;
+wire [0:0] n1882;
+wire [0:0] n1883;
 wire [7:0] n1884;
 wire [7:0] n1885;
-wire [7:0] n1886;
-wire [7:0] n1887;
-wire [7:0] n1888;
-wire [7:0] n1889;
-wire [7:0] n1890;
-wire [7:0] n1891;
-wire [7:0] n1892;
-wire [7:0] n1893;
-wire [7:0] n1894;
-wire [7:0] n1895;
-wire [7:0] n1896;
-wire [7:0] n1897;
-wire [7:0] n1898;
-wire [7:0] n1899;
-wire [7:0] n1900;
+wire [0:0] n1886;
+wire [0:0] n1887;
+wire [0:0] n1888;
+wire [0:0] n1889;
+wire [0:0] n1890;
+wire [0:0] n1891;
+wire [0:0] n1892;
+wire [0:0] n1893;
+wire [0:0] n1894;
+wire [0:0] n1895;
+wire [0:0] n1896;
+wire [0:0] n1897;
+wire [0:0] n1898;
+wire [0:0] n1899;
+wire [0:0] n1900;
 wire [7:0] n1901;
 wire [7:0] n1902;
-wire [7:0] n1903;
-wire [6:0] n1904;
+wire [0:0] n1903;
+wire [0:0] n1904;
 wire [0:0] n1905;
 wire [0:0] n1906;
 wire [0:0] n1907;
@@ -3256,27 +2972,27 @@ wire [0:0] n1914;
 wire [0:0] n1915;
 wire [0:0] n1916;
 wire [0:0] n1917;
-wire [0:0] n1918;
-wire [0:0] n1919;
-wire [7:0] n1920;
+wire [7:0] n1918;
+wire n1919;
+wire [15:0] n1920;
 wire [7:0] n1921;
-wire [0:0] n1922;
-wire [0:0] n1923;
-wire [0:0] n1924;
-wire [0:0] n1925;
-wire [0:0] n1926;
-wire [0:0] n1927;
-wire [0:0] n1928;
-wire [0:0] n1929;
-wire [0:0] n1930;
-wire [0:0] n1931;
-wire [0:0] n1932;
-wire [0:0] n1933;
+wire [7:0] n1922;
+wire [7:0] n1923;
+wire [7:0] n1924;
+wire [7:0] n1925;
+wire [7:0] n1926;
+wire [7:0] n1927;
+wire [7:0] n1928;
+wire [7:0] n1929;
+wire [7:0] n1930;
+wire [7:0] n1931;
+wire [7:0] n1932;
+wire [6:0] n1933;
 wire [0:0] n1934;
 wire [0:0] n1935;
 wire [0:0] n1936;
-wire [7:0] n1937;
-wire [7:0] n1938;
+wire [0:0] n1937;
+wire [0:0] n1938;
 wire [0:0] n1939;
 wire [0:0] n1940;
 wire [0:0] n1941;
@@ -3287,19 +3003,19 @@ wire [0:0] n1945;
 wire [0:0] n1946;
 wire [0:0] n1947;
 wire [0:0] n1948;
-wire [0:0] n1949;
-wire [0:0] n1950;
-wire [0:0] n1951;
-wire [0:0] n1952;
-wire [0:0] n1953;
+wire [7:0] n1949;
+wire [7:0] n1950;
+wire [7:0] n1951;
+wire [7:0] n1952;
+wire [7:0] n1953;
 wire [7:0] n1954;
 wire [7:0] n1955;
-wire [0:0] n1956;
-wire [0:0] n1957;
-wire [0:0] n1958;
-wire [0:0] n1959;
-wire [0:0] n1960;
-wire [0:0] n1961;
+wire [7:0] n1956;
+wire [7:0] n1957;
+wire [7:0] n1958;
+wire [7:0] n1959;
+wire [7:0] n1960;
+wire [6:0] n1961;
 wire [0:0] n1962;
 wire [0:0] n1963;
 wire [0:0] n1964;
@@ -3309,14 +3025,14 @@ wire [0:0] n1967;
 wire [0:0] n1968;
 wire [0:0] n1969;
 wire [0:0] n1970;
-wire [7:0] n1971;
-wire [7:0] n1972;
+wire [0:0] n1971;
+wire [0:0] n1972;
 wire [0:0] n1973;
 wire [0:0] n1974;
 wire [0:0] n1975;
 wire [0:0] n1976;
-wire [0:0] n1977;
-wire [0:0] n1978;
+wire [7:0] n1977;
+wire [7:0] n1978;
 wire [0:0] n1979;
 wire [0:0] n1980;
 wire [0:0] n1981;
@@ -3326,33 +3042,33 @@ wire [0:0] n1984;
 wire [0:0] n1985;
 wire [0:0] n1986;
 wire [0:0] n1987;
-wire [7:0] n1988;
-wire n1989;
-wire [15:0] n1990;
-wire [7:0] n1991;
-wire [7:0] n1992;
-wire [7:0] n1993;
+wire [0:0] n1988;
+wire [0:0] n1989;
+wire [0:0] n1990;
+wire [0:0] n1991;
+wire [0:0] n1992;
+wire [0:0] n1993;
 wire [7:0] n1994;
 wire [7:0] n1995;
-wire [7:0] n1996;
-wire [7:0] n1997;
-wire [7:0] n1998;
-wire [7:0] n1999;
-wire [7:0] n2000;
-wire [7:0] n2001;
-wire [7:0] n2002;
-wire [7:0] n2003;
-wire [7:0] n2004;
-wire [7:0] n2005;
-wire [7:0] n2006;
-wire [7:0] n2007;
-wire [7:0] n2008;
-wire [7:0] n2009;
-wire [7:0] n2010;
+wire [0:0] n1996;
+wire [0:0] n1997;
+wire [0:0] n1998;
+wire [0:0] n1999;
+wire [0:0] n2000;
+wire [0:0] n2001;
+wire [0:0] n2002;
+wire [0:0] n2003;
+wire [0:0] n2004;
+wire [0:0] n2005;
+wire [0:0] n2006;
+wire [0:0] n2007;
+wire [0:0] n2008;
+wire [0:0] n2009;
+wire [0:0] n2010;
 wire [7:0] n2011;
 wire [7:0] n2012;
-wire [7:0] n2013;
-wire [6:0] n2014;
+wire [0:0] n2013;
+wire [0:0] n2014;
 wire [0:0] n2015;
 wire [0:0] n2016;
 wire [0:0] n2017;
@@ -3366,33 +3082,33 @@ wire [0:0] n2024;
 wire [0:0] n2025;
 wire [0:0] n2026;
 wire [0:0] n2027;
-wire [0:0] n2028;
-wire [0:0] n2029;
-wire [7:0] n2030;
-wire [7:0] n2031;
-wire [7:0] n2032;
-wire [7:0] n2033;
-wire [7:0] n2034;
-wire [7:0] n2035;
-wire [7:0] n2036;
-wire [7:0] n2037;
-wire [7:0] n2038;
-wire [7:0] n2039;
-wire [7:0] n2040;
-wire [7:0] n2041;
-wire [7:0] n2042;
-wire [7:0] n2043;
-wire [7:0] n2044;
+wire [7:0] n2028;
+wire [7:0] n2029;
+wire [0:0] n2030;
+wire [0:0] n2031;
+wire [0:0] n2032;
+wire [0:0] n2033;
+wire [0:0] n2034;
+wire [0:0] n2035;
+wire [0:0] n2036;
+wire [0:0] n2037;
+wire [0:0] n2038;
+wire [0:0] n2039;
+wire [0:0] n2040;
+wire [0:0] n2041;
+wire [0:0] n2042;
+wire [0:0] n2043;
+wire [0:0] n2044;
 wire [7:0] n2045;
-wire [7:0] n2046;
-wire [7:0] n2047;
-wire [7:0] n2048;
-wire [7:0] n2049;
-wire [7:0] n2050;
+wire n2046;
+wire [15:0] n2047;
+wire [0:0] n2048;
+wire [0:0] n2049;
+wire [6:0] n2050;
 wire [7:0] n2051;
-wire [7:0] n2052;
-wire [6:0] n2053;
-wire [0:0] n2054;
+wire [6:0] n2052;
+wire [7:0] n2053;
+wire [15:0] n2054;
 wire [0:0] n2055;
 wire [0:0] n2056;
 wire [0:0] n2057;
@@ -3409,23 +3125,23 @@ wire [0:0] n2067;
 wire [0:0] n2068;
 wire [7:0] n2069;
 wire [7:0] n2070;
-wire [0:0] n2071;
-wire [0:0] n2072;
-wire [0:0] n2073;
-wire [0:0] n2074;
-wire [0:0] n2075;
-wire [0:0] n2076;
-wire [0:0] n2077;
-wire [0:0] n2078;
-wire [0:0] n2079;
-wire [0:0] n2080;
+wire [7:0] n2071;
+wire [7:0] n2072;
+wire [7:0] n2073;
+wire [7:0] n2074;
+wire [7:0] n2075;
+wire [7:0] n2076;
+wire [7:0] n2077;
+wire [7:0] n2078;
+wire [7:0] n2079;
+wire [6:0] n2080;
 wire [0:0] n2081;
 wire [0:0] n2082;
 wire [0:0] n2083;
 wire [0:0] n2084;
 wire [0:0] n2085;
-wire [7:0] n2086;
-wire [7:0] n2087;
+wire [0:0] n2086;
+wire [0:0] n2087;
 wire [0:0] n2088;
 wire [0:0] n2089;
 wire [0:0] n2090;
@@ -3434,21 +3150,21 @@ wire [0:0] n2092;
 wire [0:0] n2093;
 wire [0:0] n2094;
 wire [0:0] n2095;
-wire [0:0] n2096;
+wire [7:0] n2096;
 wire [0:0] n2097;
-wire [0:0] n2098;
-wire [0:0] n2099;
-wire [0:0] n2100;
-wire [0:0] n2101;
-wire [0:0] n2102;
+wire [7:0] n2098;
+wire [6:0] n2099;
+wire [7:0] n2100;
+wire n2101;
+wire [7:0] n2102;
 wire [7:0] n2103;
 wire [7:0] n2104;
-wire [0:0] n2105;
-wire [0:0] n2106;
-wire [0:0] n2107;
+wire [7:0] n2105;
+wire [7:0] n2106;
+wire [3:0] n2107;
 wire [0:0] n2108;
-wire [0:0] n2109;
-wire [0:0] n2110;
+wire [7:0] n2109;
+wire [6:0] n2110;
 wire [0:0] n2111;
 wire [0:0] n2112;
 wire [0:0] n2113;
@@ -3458,47 +3174,47 @@ wire [0:0] n2116;
 wire [0:0] n2117;
 wire [0:0] n2118;
 wire [0:0] n2119;
-wire [7:0] n2120;
-wire [7:0] n2121;
+wire [0:0] n2120;
+wire [0:0] n2121;
 wire [0:0] n2122;
 wire [0:0] n2123;
 wire [0:0] n2124;
 wire [0:0] n2125;
-wire [0:0] n2126;
+wire [7:0] n2126;
 wire [0:0] n2127;
-wire [0:0] n2128;
-wire [0:0] n2129;
-wire [0:0] n2130;
-wire [0:0] n2131;
-wire [0:0] n2132;
-wire [0:0] n2133;
-wire [0:0] n2134;
-wire [0:0] n2135;
-wire [0:0] n2136;
-wire [7:0] n2137;
+wire n2128;
+wire n2129;
+wire n2130;
+wire n2131;
+wire n2132;
+wire n2133;
+wire n2134;
+wire n2135;
+wire n2136;
+wire n2137;
 wire n2138;
-wire [15:0] n2139;
-wire [0:0] n2140;
-wire [0:0] n2141;
-wire [6:0] n2142;
-wire [7:0] n2143;
-wire [6:0] n2144;
-wire [7:0] n2145;
-wire [15:0] n2146;
-wire [0:0] n2147;
-wire [0:0] n2148;
-wire [0:0] n2149;
-wire [0:0] n2150;
-wire [0:0] n2151;
-wire [0:0] n2152;
-wire [0:0] n2153;
-wire [0:0] n2154;
-wire [0:0] n2155;
-wire [0:0] n2156;
-wire [0:0] n2157;
-wire [0:0] n2158;
-wire [0:0] n2159;
-wire [0:0] n2160;
+wire n2139;
+wire n2140;
+wire n2141;
+wire n2142;
+wire n2143;
+wire n2144;
+wire n2145;
+wire n2146;
+wire n2147;
+wire n2148;
+wire n2149;
+wire [7:0] n2150;
+wire [7:0] n2151;
+wire [7:0] n2152;
+wire [7:0] n2153;
+wire [7:0] n2154;
+wire [7:0] n2155;
+wire [7:0] n2156;
+wire [7:0] n2157;
+wire [7:0] n2158;
+wire [7:0] n2159;
+wire [7:0] n2160;
 wire [7:0] n2161;
 wire [7:0] n2162;
 wire [7:0] n2163;
@@ -3521,93 +3237,93 @@ wire [7:0] n2179;
 wire [7:0] n2180;
 wire [7:0] n2181;
 wire [7:0] n2182;
-wire [6:0] n2183;
-wire [0:0] n2184;
-wire [0:0] n2185;
-wire [0:0] n2186;
-wire [0:0] n2187;
-wire [0:0] n2188;
-wire [0:0] n2189;
-wire [0:0] n2190;
-wire [0:0] n2191;
-wire [0:0] n2192;
-wire [0:0] n2193;
-wire [0:0] n2194;
-wire [0:0] n2195;
-wire [0:0] n2196;
-wire [0:0] n2197;
-wire [0:0] n2198;
+wire [7:0] n2183;
+wire [7:0] n2184;
+wire [7:0] n2185;
+wire [7:0] n2186;
+wire [7:0] n2187;
+wire [7:0] n2188;
+wire [7:0] n2189;
+wire [7:0] n2190;
+wire [7:0] n2191;
+wire [7:0] n2192;
+wire [7:0] n2193;
+wire [7:0] n2194;
+wire [7:0] n2195;
+wire [7:0] n2196;
+wire [7:0] n2197;
+wire [7:0] n2198;
 wire [7:0] n2199;
-wire [0:0] n2200;
-wire [7:0] n2201;
-wire [6:0] n2202;
-wire [7:0] n2203;
-wire n2204;
-wire [7:0] n2205;
-wire [7:0] n2206;
-wire [7:0] n2207;
-wire [7:0] n2208;
-wire [7:0] n2209;
-wire [3:0] n2210;
+wire [6:0] n2200;
+wire [0:0] n2201;
+wire [0:0] n2202;
+wire [0:0] n2203;
+wire [0:0] n2204;
+wire [0:0] n2205;
+wire [0:0] n2206;
+wire [0:0] n2207;
+wire [0:0] n2208;
+wire [0:0] n2209;
+wire [0:0] n2210;
 wire [0:0] n2211;
-wire [7:0] n2212;
-wire [6:0] n2213;
+wire [0:0] n2212;
+wire [0:0] n2213;
 wire [0:0] n2214;
 wire [0:0] n2215;
-wire [0:0] n2216;
-wire [0:0] n2217;
-wire [0:0] n2218;
-wire [0:0] n2219;
-wire [0:0] n2220;
-wire [0:0] n2221;
-wire [0:0] n2222;
-wire [0:0] n2223;
-wire [0:0] n2224;
-wire [0:0] n2225;
-wire [0:0] n2226;
-wire [0:0] n2227;
+wire [7:0] n2216;
+wire [7:0] n2217;
+wire [7:0] n2218;
+wire [7:0] n2219;
+wire [7:0] n2220;
+wire [7:0] n2221;
+wire [7:0] n2222;
+wire [7:0] n2223;
+wire [7:0] n2224;
+wire [7:0] n2225;
+wire [7:0] n2226;
+wire [6:0] n2227;
 wire [0:0] n2228;
-wire [7:0] n2229;
+wire [0:0] n2229;
 wire [0:0] n2230;
-wire n2231;
-wire n2232;
-wire n2233;
-wire n2234;
-wire n2235;
-wire n2236;
-wire n2237;
-wire n2238;
-wire n2239;
-wire n2240;
-wire n2241;
-wire n2242;
-wire n2243;
-wire n2244;
-wire n2245;
-wire n2246;
-wire n2247;
-wire n2248;
-wire n2249;
-wire n2250;
-wire n2251;
-wire n2252;
+wire [0:0] n2231;
+wire [0:0] n2232;
+wire [0:0] n2233;
+wire [0:0] n2234;
+wire [0:0] n2235;
+wire [0:0] n2236;
+wire [0:0] n2237;
+wire [0:0] n2238;
+wire [0:0] n2239;
+wire [0:0] n2240;
+wire [0:0] n2241;
+wire [0:0] n2242;
+wire [7:0] n2243;
+wire [7:0] n2244;
+wire [7:0] n2245;
+wire [7:0] n2246;
+wire [7:0] n2247;
+wire [7:0] n2248;
+wire [7:0] n2249;
+wire [7:0] n2250;
+wire [7:0] n2251;
+wire [7:0] n2252;
 wire [7:0] n2253;
-wire [7:0] n2254;
-wire [7:0] n2255;
-wire [7:0] n2256;
-wire [7:0] n2257;
-wire [7:0] n2258;
-wire [7:0] n2259;
-wire [7:0] n2260;
-wire [7:0] n2261;
-wire [7:0] n2262;
-wire [7:0] n2263;
-wire [7:0] n2264;
-wire [7:0] n2265;
-wire [7:0] n2266;
-wire [7:0] n2267;
-wire [7:0] n2268;
-wire [7:0] n2269;
+wire [6:0] n2254;
+wire [0:0] n2255;
+wire [0:0] n2256;
+wire [0:0] n2257;
+wire [0:0] n2258;
+wire [0:0] n2259;
+wire [0:0] n2260;
+wire [0:0] n2261;
+wire [0:0] n2262;
+wire [0:0] n2263;
+wire [0:0] n2264;
+wire [0:0] n2265;
+wire [0:0] n2266;
+wire [0:0] n2267;
+wire [0:0] n2268;
+wire [0:0] n2269;
 wire [7:0] n2270;
 wire [7:0] n2271;
 wire [7:0] n2272;
@@ -3621,36 +3337,36 @@ wire [7:0] n2279;
 wire [7:0] n2280;
 wire [7:0] n2281;
 wire [7:0] n2282;
-wire [7:0] n2283;
-wire [7:0] n2284;
-wire [7:0] n2285;
-wire [7:0] n2286;
-wire [7:0] n2287;
-wire [7:0] n2288;
-wire [7:0] n2289;
-wire [7:0] n2290;
-wire [7:0] n2291;
-wire [7:0] n2292;
-wire [7:0] n2293;
-wire [7:0] n2294;
-wire [7:0] n2295;
-wire [7:0] n2296;
-wire [7:0] n2297;
-wire [7:0] n2298;
+wire [6:0] n2283;
+wire [0:0] n2284;
+wire [0:0] n2285;
+wire [0:0] n2286;
+wire [0:0] n2287;
+wire [0:0] n2288;
+wire [0:0] n2289;
+wire [0:0] n2290;
+wire [0:0] n2291;
+wire [0:0] n2292;
+wire [0:0] n2293;
+wire [0:0] n2294;
+wire [0:0] n2295;
+wire [0:0] n2296;
+wire [0:0] n2297;
+wire [0:0] n2298;
 wire [7:0] n2299;
 wire [7:0] n2300;
 wire [7:0] n2301;
 wire [7:0] n2302;
-wire [7:0] n2303;
-wire [7:0] n2304;
-wire [7:0] n2305;
-wire [7:0] n2306;
-wire [7:0] n2307;
-wire [7:0] n2308;
-wire [7:0] n2309;
-wire [7:0] n2310;
-wire [7:0] n2311;
-wire [7:0] n2312;
+wire n2303;
+wire [0:0] n2304;
+wire n2305;
+wire [0:0] n2306;
+wire [8:0] n2307;
+wire [0:0] n2308;
+wire [0:0] n2309;
+wire n2310;
+wire n2311;
+wire [0:0] n2312;
 wire [7:0] n2313;
 wire [6:0] n2314;
 wire [0:0] n2315;
@@ -3671,26 +3387,26 @@ wire [0:0] n2329;
 wire [7:0] n2330;
 wire [7:0] n2331;
 wire [7:0] n2332;
-wire [7:0] n2333;
-wire [7:0] n2334;
-wire [7:0] n2335;
-wire [7:0] n2336;
-wire [7:0] n2337;
-wire [7:0] n2338;
-wire [7:0] n2339;
-wire [7:0] n2340;
-wire [7:0] n2341;
-wire [7:0] n2342;
+wire n2333;
+wire [0:0] n2334;
+wire n2335;
+wire [0:0] n2336;
+wire [8:0] n2337;
+wire [0:0] n2338;
+wire [0:0] n2339;
+wire n2340;
+wire n2341;
+wire [0:0] n2342;
 wire [7:0] n2343;
-wire [7:0] n2344;
-wire [7:0] n2345;
-wire [7:0] n2346;
-wire [7:0] n2347;
-wire [7:0] n2348;
-wire [7:0] n2349;
-wire [7:0] n2350;
-wire [7:0] n2351;
-wire [6:0] n2352;
+wire [6:0] n2344;
+wire [0:0] n2345;
+wire [0:0] n2346;
+wire [0:0] n2347;
+wire [0:0] n2348;
+wire [0:0] n2349;
+wire [0:0] n2350;
+wire [0:0] n2351;
+wire [0:0] n2352;
 wire [0:0] n2353;
 wire [0:0] n2354;
 wire [0:0] n2355;
@@ -3698,197 +3414,197 @@ wire [0:0] n2356;
 wire [0:0] n2357;
 wire [0:0] n2358;
 wire [0:0] n2359;
-wire [0:0] n2360;
-wire [0:0] n2361;
-wire [0:0] n2362;
-wire [0:0] n2363;
+wire [7:0] n2360;
+wire [7:0] n2361;
+wire [7:0] n2362;
+wire n2363;
 wire [0:0] n2364;
-wire [0:0] n2365;
+wire n2365;
 wire [0:0] n2366;
-wire [0:0] n2367;
-wire [7:0] n2368;
-wire [7:0] n2369;
-wire [7:0] n2370;
-wire [7:0] n2371;
-wire [7:0] n2372;
+wire [8:0] n2367;
+wire [0:0] n2368;
+wire [0:0] n2369;
+wire n2370;
+wire n2371;
+wire [0:0] n2372;
 wire [7:0] n2373;
-wire [7:0] n2374;
-wire [7:0] n2375;
-wire [7:0] n2376;
-wire [7:0] n2377;
-wire [7:0] n2378;
-wire [7:0] n2379;
-wire [7:0] n2380;
-wire [7:0] n2381;
-wire [7:0] n2382;
-wire [7:0] n2383;
-wire [7:0] n2384;
-wire [7:0] n2385;
-wire [7:0] n2386;
-wire [7:0] n2387;
-wire [7:0] n2388;
-wire [7:0] n2389;
-wire [6:0] n2390;
-wire [0:0] n2391;
-wire [0:0] n2392;
-wire [0:0] n2393;
+wire [6:0] n2374;
+wire [0:0] n2375;
+wire [0:0] n2376;
+wire [0:0] n2377;
+wire [0:0] n2378;
+wire [0:0] n2379;
+wire [0:0] n2380;
+wire [0:0] n2381;
+wire [0:0] n2382;
+wire [0:0] n2383;
+wire [0:0] n2384;
+wire [0:0] n2385;
+wire [0:0] n2386;
+wire [0:0] n2387;
+wire [0:0] n2388;
+wire [0:0] n2389;
+wire [7:0] n2390;
+wire [7:0] n2391;
+wire [7:0] n2392;
+wire n2393;
 wire [0:0] n2394;
-wire [0:0] n2395;
+wire n2395;
 wire [0:0] n2396;
-wire [0:0] n2397;
+wire [8:0] n2397;
 wire [0:0] n2398;
 wire [0:0] n2399;
-wire [0:0] n2400;
-wire [0:0] n2401;
+wire n2400;
+wire n2401;
 wire [0:0] n2402;
-wire [0:0] n2403;
-wire [0:0] n2404;
+wire [7:0] n2403;
+wire [6:0] n2404;
 wire [0:0] n2405;
-wire [7:0] n2406;
-wire [7:0] n2407;
-wire [7:0] n2408;
-wire [7:0] n2409;
-wire [7:0] n2410;
-wire [7:0] n2411;
-wire [7:0] n2412;
-wire [7:0] n2413;
-wire [7:0] n2414;
-wire [7:0] n2415;
-wire [7:0] n2416;
-wire [7:0] n2417;
-wire [7:0] n2418;
-wire [7:0] n2419;
+wire [0:0] n2406;
+wire [0:0] n2407;
+wire [0:0] n2408;
+wire [0:0] n2409;
+wire [0:0] n2410;
+wire [0:0] n2411;
+wire [0:0] n2412;
+wire [0:0] n2413;
+wire [0:0] n2414;
+wire [0:0] n2415;
+wire [0:0] n2416;
+wire [0:0] n2417;
+wire [0:0] n2418;
+wire [0:0] n2419;
 wire [7:0] n2420;
-wire [7:0] n2421;
-wire [7:0] n2422;
-wire [6:0] n2423;
-wire [0:0] n2424;
-wire [0:0] n2425;
-wire [0:0] n2426;
-wire [0:0] n2427;
-wire [0:0] n2428;
-wire [0:0] n2429;
-wire [0:0] n2430;
-wire [0:0] n2431;
-wire [0:0] n2432;
-wire [0:0] n2433;
-wire [0:0] n2434;
-wire [0:0] n2435;
-wire [0:0] n2436;
-wire [0:0] n2437;
+wire [0:0] n2421;
+wire [0:0] n2422;
+wire [7:0] n2423;
+wire [6:0] n2424;
+wire [7:0] n2425;
+wire [7:0] n2426;
+wire [6:0] n2427;
+wire [7:0] n2428;
+wire [15:0] n2429;
+wire [7:0] n2430;
+wire [7:0] n2431;
+wire [15:0] n2432;
+wire [15:0] n2433;
+wire [7:0] n2434;
+wire [7:0] n2435;
+wire n2436;
+wire n2437;
 wire [0:0] n2438;
 wire [7:0] n2439;
-wire [7:0] n2440;
-wire [7:0] n2441;
-wire [7:0] n2442;
-wire n2443;
+wire [6:0] n2440;
+wire [0:0] n2441;
+wire [0:0] n2442;
+wire [0:0] n2443;
 wire [0:0] n2444;
-wire n2445;
+wire [0:0] n2445;
 wire [0:0] n2446;
-wire [8:0] n2447;
+wire [0:0] n2447;
 wire [0:0] n2448;
 wire [0:0] n2449;
-wire n2450;
-wire n2451;
+wire [0:0] n2450;
+wire [0:0] n2451;
 wire [0:0] n2452;
-wire [7:0] n2453;
-wire [6:0] n2454;
+wire [0:0] n2453;
+wire [0:0] n2454;
 wire [0:0] n2455;
-wire [0:0] n2456;
-wire [0:0] n2457;
-wire [0:0] n2458;
+wire [7:0] n2456;
+wire [7:0] n2457;
+wire [7:0] n2458;
 wire [0:0] n2459;
-wire [0:0] n2460;
-wire [0:0] n2461;
-wire [0:0] n2462;
-wire [0:0] n2463;
-wire [0:0] n2464;
-wire [0:0] n2465;
-wire [0:0] n2466;
-wire [0:0] n2467;
-wire [0:0] n2468;
-wire [0:0] n2469;
+wire [7:0] n2460;
+wire [6:0] n2461;
+wire [7:0] n2462;
+wire [7:0] n2463;
+wire [7:0] n2464;
+wire [7:0] n2465;
+wire [7:0] n2466;
+wire [7:0] n2467;
+wire [7:0] n2468;
+wire [7:0] n2469;
 wire [7:0] n2470;
 wire [7:0] n2471;
 wire [7:0] n2472;
-wire n2473;
+wire [6:0] n2473;
 wire [0:0] n2474;
-wire n2475;
+wire [0:0] n2475;
 wire [0:0] n2476;
-wire [8:0] n2477;
+wire [0:0] n2477;
 wire [0:0] n2478;
 wire [0:0] n2479;
-wire n2480;
-wire n2481;
+wire [0:0] n2480;
+wire [0:0] n2481;
 wire [0:0] n2482;
-wire [7:0] n2483;
-wire [6:0] n2484;
+wire [0:0] n2483;
+wire [0:0] n2484;
 wire [0:0] n2485;
 wire [0:0] n2486;
 wire [0:0] n2487;
 wire [0:0] n2488;
-wire [0:0] n2489;
+wire [7:0] n2489;
 wire [0:0] n2490;
-wire [0:0] n2491;
-wire [0:0] n2492;
-wire [0:0] n2493;
-wire [0:0] n2494;
-wire [0:0] n2495;
-wire [0:0] n2496;
-wire [0:0] n2497;
+wire [7:0] n2491;
+wire [6:0] n2492;
+wire [7:0] n2493;
+wire n2494;
+wire n2495;
+wire [15:0] n2496;
+wire n2497;
 wire [0:0] n2498;
-wire [0:0] n2499;
-wire [7:0] n2500;
+wire [7:0] n2499;
+wire [6:0] n2500;
 wire [7:0] n2501;
-wire [7:0] n2502;
+wire n2502;
 wire n2503;
-wire [0:0] n2504;
+wire [15:0] n2504;
 wire n2505;
 wire [0:0] n2506;
-wire [8:0] n2507;
-wire [0:0] n2508;
-wire [0:0] n2509;
+wire [7:0] n2507;
+wire [6:0] n2508;
+wire [7:0] n2509;
 wire n2510;
 wire n2511;
-wire [0:0] n2512;
-wire [7:0] n2513;
-wire [6:0] n2514;
-wire [0:0] n2515;
-wire [0:0] n2516;
-wire [0:0] n2517;
-wire [0:0] n2518;
-wire [0:0] n2519;
-wire [0:0] n2520;
-wire [0:0] n2521;
+wire [15:0] n2512;
+wire n2513;
+wire [0:0] n2514;
+wire [7:0] n2515;
+wire [6:0] n2516;
+wire [7:0] n2517;
+wire n2518;
+wire n2519;
+wire [15:0] n2520;
+wire n2521;
 wire [0:0] n2522;
-wire [0:0] n2523;
-wire [0:0] n2524;
-wire [0:0] n2525;
-wire [0:0] n2526;
-wire [0:0] n2527;
-wire [0:0] n2528;
-wire [0:0] n2529;
-wire [7:0] n2530;
-wire [7:0] n2531;
-wire [7:0] n2532;
-wire n2533;
+wire [7:0] n2523;
+wire [6:0] n2524;
+wire [7:0] n2525;
+wire [7:0] n2526;
+wire [7:0] n2527;
+wire [7:0] n2528;
+wire [6:0] n2529;
+wire [0:0] n2530;
+wire [0:0] n2531;
+wire [0:0] n2532;
+wire [0:0] n2533;
 wire [0:0] n2534;
-wire n2535;
+wire [0:0] n2535;
 wire [0:0] n2536;
-wire [8:0] n2537;
+wire [0:0] n2537;
 wire [0:0] n2538;
 wire [0:0] n2539;
-wire n2540;
-wire n2541;
+wire [0:0] n2540;
+wire [0:0] n2541;
 wire [0:0] n2542;
-wire [7:0] n2543;
-wire [6:0] n2544;
-wire [0:0] n2545;
-wire [0:0] n2546;
-wire [0:0] n2547;
-wire [0:0] n2548;
-wire [0:0] n2549;
-wire [0:0] n2550;
+wire [0:0] n2543;
+wire [0:0] n2544;
+wire [7:0] n2545;
+wire [7:0] n2546;
+wire [6:0] n2547;
+wire [7:0] n2548;
+wire [3:0] n2549;
+wire [7:0] n2550;
 wire [0:0] n2551;
 wire [0:0] n2552;
 wire [0:0] n2553;
@@ -3898,27 +3614,27 @@ wire [0:0] n2556;
 wire [0:0] n2557;
 wire [0:0] n2558;
 wire [0:0] n2559;
-wire [7:0] n2560;
+wire [0:0] n2560;
 wire [0:0] n2561;
 wire [0:0] n2562;
-wire [7:0] n2563;
-wire [6:0] n2564;
-wire [7:0] n2565;
+wire [0:0] n2563;
+wire [0:0] n2564;
+wire [0:0] n2565;
 wire [7:0] n2566;
-wire [6:0] n2567;
+wire [7:0] n2567;
 wire [7:0] n2568;
-wire [15:0] n2569;
+wire [7:0] n2569;
 wire [7:0] n2570;
 wire [7:0] n2571;
-wire [15:0] n2572;
-wire [15:0] n2573;
+wire [7:0] n2572;
+wire [7:0] n2573;
 wire [7:0] n2574;
 wire [7:0] n2575;
-wire n2576;
-wire n2577;
+wire [6:0] n2576;
+wire [0:0] n2577;
 wire [0:0] n2578;
-wire [7:0] n2579;
-wire [6:0] n2580;
+wire [0:0] n2579;
+wire [0:0] n2580;
 wire [0:0] n2581;
 wire [0:0] n2582;
 wire [0:0] n2583;
@@ -3930,92 +3646,92 @@ wire [0:0] n2588;
 wire [0:0] n2589;
 wire [0:0] n2590;
 wire [0:0] n2591;
-wire [0:0] n2592;
+wire [7:0] n2592;
 wire [0:0] n2593;
 wire [0:0] n2594;
 wire [0:0] n2595;
-wire [7:0] n2596;
-wire [7:0] n2597;
-wire [7:0] n2598;
+wire [0:0] n2596;
+wire [0:0] n2597;
+wire [0:0] n2598;
 wire [0:0] n2599;
-wire [7:0] n2600;
-wire [6:0] n2601;
-wire [7:0] n2602;
-wire [7:0] n2603;
-wire [7:0] n2604;
-wire [7:0] n2605;
-wire [7:0] n2606;
-wire [7:0] n2607;
+wire [0:0] n2600;
+wire [0:0] n2601;
+wire [0:0] n2602;
+wire [0:0] n2603;
+wire [0:0] n2604;
+wire [0:0] n2605;
+wire [0:0] n2606;
+wire [0:0] n2607;
 wire [7:0] n2608;
-wire [7:0] n2609;
-wire [7:0] n2610;
-wire [7:0] n2611;
-wire [7:0] n2612;
-wire [7:0] n2613;
-wire [7:0] n2614;
-wire [7:0] n2615;
-wire [7:0] n2616;
-wire [6:0] n2617;
+wire [0:0] n2609;
+wire [0:0] n2610;
+wire [0:0] n2611;
+wire [0:0] n2612;
+wire [0:0] n2613;
+wire [0:0] n2614;
+wire [0:0] n2615;
+wire [0:0] n2616;
+wire [0:0] n2617;
 wire [0:0] n2618;
 wire [0:0] n2619;
 wire [0:0] n2620;
 wire [0:0] n2621;
 wire [0:0] n2622;
 wire [0:0] n2623;
-wire [0:0] n2624;
-wire [0:0] n2625;
-wire [0:0] n2626;
-wire [0:0] n2627;
-wire [0:0] n2628;
-wire [0:0] n2629;
-wire [0:0] n2630;
-wire [0:0] n2631;
-wire [0:0] n2632;
+wire [7:0] n2624;
+wire [7:0] n2625;
+wire [7:0] n2626;
+wire [7:0] n2627;
+wire [7:0] n2628;
+wire [7:0] n2629;
+wire [7:0] n2630;
+wire [7:0] n2631;
+wire [7:0] n2632;
 wire [7:0] n2633;
-wire [0:0] n2634;
-wire [7:0] n2635;
-wire [6:0] n2636;
-wire [7:0] n2637;
-wire n2638;
-wire n2639;
-wire [15:0] n2640;
-wire n2641;
+wire [7:0] n2634;
+wire [6:0] n2635;
+wire [0:0] n2636;
+wire [0:0] n2637;
+wire [0:0] n2638;
+wire [0:0] n2639;
+wire [0:0] n2640;
+wire [0:0] n2641;
 wire [0:0] n2642;
-wire [7:0] n2643;
-wire [6:0] n2644;
-wire [7:0] n2645;
-wire n2646;
-wire n2647;
-wire [15:0] n2648;
-wire n2649;
+wire [0:0] n2643;
+wire [0:0] n2644;
+wire [0:0] n2645;
+wire [0:0] n2646;
+wire [0:0] n2647;
+wire [0:0] n2648;
+wire [0:0] n2649;
 wire [0:0] n2650;
 wire [7:0] n2651;
-wire [6:0] n2652;
-wire [7:0] n2653;
-wire n2654;
+wire [7:0] n2652;
+wire [6:0] n2653;
+wire [7:0] n2654;
 wire n2655;
-wire [15:0] n2656;
+wire [3:0] n2656;
 wire n2657;
-wire [0:0] n2658;
-wire [7:0] n2659;
-wire [6:0] n2660;
-wire [7:0] n2661;
-wire n2662;
-wire n2663;
-wire [15:0] n2664;
-wire n2665;
-wire [0:0] n2666;
-wire [7:0] n2667;
-wire [6:0] n2668;
-wire [7:0] n2669;
-wire [7:0] n2670;
+wire n2658;
+wire [8:0] n2659;
+wire [8:0] n2660;
+wire [8:0] n2661;
+wire [0:0] n2662;
+wire [0:0] n2663;
+wire n2664;
+wire [3:0] n2665;
+wire n2666;
+wire n2667;
+wire [8:0] n2668;
+wire [8:0] n2669;
+wire [8:0] n2670;
 wire [7:0] n2671;
-wire [7:0] n2672;
-wire [7:0] n2673;
+wire [0:0] n2672;
+wire [0:0] n2673;
 wire [7:0] n2674;
-wire [7:0] n2675;
-wire [7:0] n2676;
-wire [6:0] n2677;
+wire [6:0] n2675;
+wire [0:0] n2676;
+wire [0:0] n2677;
 wire [0:0] n2678;
 wire [0:0] n2679;
 wire [0:0] n2680;
@@ -4029,14 +3745,14 @@ wire [0:0] n2687;
 wire [0:0] n2688;
 wire [0:0] n2689;
 wire [0:0] n2690;
-wire [0:0] n2691;
-wire [0:0] n2692;
-wire [7:0] n2693;
-wire [7:0] n2694;
-wire [6:0] n2695;
-wire [7:0] n2696;
-wire [3:0] n2697;
-wire [7:0] n2698;
+wire [7:0] n2691;
+wire n2692;
+wire n2693;
+wire [15:0] n2694;
+wire [7:0] n2695;
+wire [3:0] n2696;
+wire [7:0] n2697;
+wire [0:0] n2698;
 wire [0:0] n2699;
 wire [0:0] n2700;
 wire [0:0] n2701;
@@ -4051,29 +3767,29 @@ wire [0:0] n2709;
 wire [0:0] n2710;
 wire [0:0] n2711;
 wire [0:0] n2712;
-wire [0:0] n2713;
-wire [7:0] n2714;
-wire [7:0] n2715;
-wire [7:0] n2716;
-wire [7:0] n2717;
-wire [7:0] n2718;
-wire [7:0] n2719;
-wire [7:0] n2720;
-wire [7:0] n2721;
-wire [7:0] n2722;
-wire [7:0] n2723;
-wire [7:0] n2724;
-wire [7:0] n2725;
-wire [7:0] n2726;
-wire [7:0] n2727;
-wire [7:0] n2728;
-wire [7:0] n2729;
-wire [7:0] n2730;
-wire [7:0] n2731;
+wire [7:0] n2713;
+wire n2714;
+wire n2715;
+wire [15:0] n2716;
+wire [0:0] n2717;
+wire [0:0] n2718;
+wire [0:0] n2719;
+wire [0:0] n2720;
+wire [0:0] n2721;
+wire [0:0] n2722;
+wire [0:0] n2723;
+wire [0:0] n2724;
+wire [0:0] n2725;
+wire [0:0] n2726;
+wire [0:0] n2727;
+wire [0:0] n2728;
+wire [0:0] n2729;
+wire [0:0] n2730;
+wire [0:0] n2731;
 wire [7:0] n2732;
 wire [7:0] n2733;
 wire [7:0] n2734;
-wire [6:0] n2735;
+wire [0:0] n2735;
 wire [0:0] n2736;
 wire [0:0] n2737;
 wire [0:0] n2738;
@@ -4088,307 +3804,144 @@ wire [0:0] n2746;
 wire [0:0] n2747;
 wire [0:0] n2748;
 wire [0:0] n2749;
-wire [0:0] n2750;
+wire [7:0] n2750;
 wire [7:0] n2751;
-wire [0:0] n2752;
-wire [0:0] n2753;
-wire [0:0] n2754;
-wire [0:0] n2755;
-wire [0:0] n2756;
-wire [0:0] n2757;
-wire [0:0] n2758;
-wire [0:0] n2759;
-wire [0:0] n2760;
-wire [0:0] n2761;
-wire [0:0] n2762;
-wire [0:0] n2763;
-wire [0:0] n2764;
-wire [0:0] n2765;
-wire [0:0] n2766;
-wire [7:0] n2767;
-wire [0:0] n2768;
-wire [0:0] n2769;
-wire [0:0] n2770;
-wire [0:0] n2771;
-wire [0:0] n2772;
-wire [0:0] n2773;
-wire [0:0] n2774;
-wire [0:0] n2775;
-wire [0:0] n2776;
-wire [0:0] n2777;
-wire [0:0] n2778;
-wire [0:0] n2779;
-wire [0:0] n2780;
-wire [0:0] n2781;
-wire [0:0] n2782;
+wire [7:0] n2752;
+wire n2753;
+wire [7:0] n2754;
+wire n2755;
+wire [7:0] n2756;
+wire n2757;
+wire [7:0] n2758;
+wire n2759;
+wire [7:0] n2760;
+wire n2761;
+wire [7:0] n2762;
+wire n2763;
+wire [7:0] n2764;
+wire n2765;
+wire [7:0] n2766;
+wire n2767;
+wire [7:0] n2768;
+wire n2769;
+wire [7:0] n2770;
+wire n2771;
+wire [7:0] n2772;
+wire n2773;
+wire [7:0] n2774;
+wire n2775;
+wire [7:0] n2776;
+wire n2777;
+wire n2778;
+wire [7:0] n2779;
+wire n2780;
+wire [7:0] n2781;
+wire n2782;
 wire [7:0] n2783;
-wire [7:0] n2784;
+wire n2784;
 wire [7:0] n2785;
-wire [7:0] n2786;
+wire n2786;
 wire [7:0] n2787;
-wire [7:0] n2788;
+wire n2788;
 wire [7:0] n2789;
-wire [7:0] n2790;
+wire n2790;
 wire [7:0] n2791;
-wire [7:0] n2792;
+wire n2792;
 wire [7:0] n2793;
-wire [7:0] n2794;
+wire n2794;
 wire [7:0] n2795;
-wire [7:0] n2796;
+wire n2796;
 wire [7:0] n2797;
-wire [6:0] n2798;
-wire [0:0] n2799;
-wire [0:0] n2800;
-wire [0:0] n2801;
-wire [0:0] n2802;
-wire [0:0] n2803;
-wire [0:0] n2804;
-wire [0:0] n2805;
-wire [0:0] n2806;
-wire [0:0] n2807;
-wire [0:0] n2808;
-wire [0:0] n2809;
-wire [0:0] n2810;
-wire [0:0] n2811;
-wire [0:0] n2812;
-wire [0:0] n2813;
-wire [7:0] n2814;
-wire [7:0] n2815;
-wire [6:0] n2816;
-wire [7:0] n2817;
-wire n2818;
-wire [3:0] n2819;
-wire n2820;
+wire n2798;
+wire [7:0] n2799;
+wire n2800;
+wire [7:0] n2801;
+wire n2802;
+wire [7:0] n2803;
+wire n2804;
+wire [7:0] n2805;
+wire n2806;
+wire [7:0] n2807;
+wire n2808;
+wire [7:0] n2809;
+wire n2810;
+wire [7:0] n2811;
+wire n2812;
+wire [7:0] n2813;
+wire n2814;
+wire n2815;
+wire n2816;
+wire n2817;
+wire [7:0] n2818;
+wire n2819;
+wire [7:0] n2820;
 wire n2821;
-wire [8:0] n2822;
-wire [8:0] n2823;
-wire [8:0] n2824;
-wire [0:0] n2825;
-wire [0:0] n2826;
+wire [7:0] n2822;
+wire n2823;
+wire [7:0] n2824;
+wire n2825;
+wire [7:0] n2826;
 wire n2827;
-wire [3:0] n2828;
+wire [7:0] n2828;
 wire n2829;
-wire n2830;
-wire [8:0] n2831;
-wire [8:0] n2832;
-wire [8:0] n2833;
+wire [7:0] n2830;
+wire n2831;
+wire [7:0] n2832;
+wire n2833;
 wire [7:0] n2834;
-wire [0:0] n2835;
-wire [0:0] n2836;
-wire [7:0] n2837;
-wire [6:0] n2838;
-wire [0:0] n2839;
-wire [0:0] n2840;
-wire [0:0] n2841;
-wire [0:0] n2842;
-wire [0:0] n2843;
-wire [0:0] n2844;
-wire [0:0] n2845;
-wire [0:0] n2846;
-wire [0:0] n2847;
-wire [0:0] n2848;
-wire [0:0] n2849;
-wire [0:0] n2850;
-wire [0:0] n2851;
-wire [0:0] n2852;
-wire [0:0] n2853;
-wire [7:0] n2854;
-wire n2855;
+wire n2835;
+wire [7:0] n2836;
+wire n2837;
+wire [7:0] n2838;
+wire n2839;
+wire [7:0] n2840;
+wire n2841;
+wire [7:0] n2842;
+wire n2843;
+wire [7:0] n2844;
+wire n2845;
+wire [7:0] n2846;
+wire n2847;
+wire [7:0] n2848;
+wire n2849;
+wire n2850;
+wire n2851;
+wire n2852;
+wire [7:0] n2853;
+wire n2854;
+wire [7:0] n2855;
 wire n2856;
-wire [15:0] n2857;
-wire [7:0] n2858;
-wire [3:0] n2859;
-wire [7:0] n2860;
-wire [0:0] n2861;
-wire [0:0] n2862;
-wire [0:0] n2863;
-wire [0:0] n2864;
-wire [0:0] n2865;
-wire [0:0] n2866;
-wire [0:0] n2867;
-wire [0:0] n2868;
-wire [0:0] n2869;
-wire [0:0] n2870;
-wire [0:0] n2871;
-wire [0:0] n2872;
-wire [0:0] n2873;
-wire [0:0] n2874;
-wire [0:0] n2875;
-wire [7:0] n2876;
-wire n2877;
+wire [7:0] n2857;
+wire n2858;
+wire [7:0] n2859;
+wire n2860;
+wire [7:0] n2861;
+wire n2862;
+wire [7:0] n2863;
+wire n2864;
+wire [7:0] n2865;
+wire n2866;
+wire [7:0] n2867;
+wire n2868;
+wire [7:0] n2869;
+wire n2870;
+wire [7:0] n2871;
+wire n2872;
+wire [7:0] n2873;
+wire n2874;
+wire [7:0] n2875;
+wire n2876;
+wire [7:0] n2877;
 wire n2878;
-wire [15:0] n2879;
-wire [0:0] n2880;
-wire [0:0] n2881;
-wire [0:0] n2882;
-wire [0:0] n2883;
-wire [0:0] n2884;
-wire [0:0] n2885;
-wire [0:0] n2886;
-wire [0:0] n2887;
-wire [0:0] n2888;
-wire [0:0] n2889;
-wire [0:0] n2890;
-wire [0:0] n2891;
-wire [0:0] n2892;
-wire [0:0] n2893;
-wire [0:0] n2894;
-wire [7:0] n2895;
-wire [7:0] n2896;
-wire [7:0] n2897;
-wire [0:0] n2898;
-wire [0:0] n2899;
-wire [0:0] n2900;
-wire [0:0] n2901;
-wire [0:0] n2902;
-wire [0:0] n2903;
-wire [0:0] n2904;
-wire [0:0] n2905;
-wire [0:0] n2906;
-wire [0:0] n2907;
-wire [0:0] n2908;
-wire [0:0] n2909;
-wire [0:0] n2910;
-wire [0:0] n2911;
-wire [0:0] n2912;
-wire [7:0] n2913;
-wire [7:0] n2914;
-wire [7:0] n2915;
-wire n2916;
-wire [7:0] n2917;
-wire n2918;
-wire [7:0] n2919;
-wire n2920;
-wire [7:0] n2921;
-wire n2922;
-wire [7:0] n2923;
-wire n2924;
-wire [7:0] n2925;
-wire n2926;
-wire [7:0] n2927;
-wire n2928;
-wire [7:0] n2929;
-wire n2930;
-wire [7:0] n2931;
-wire n2932;
-wire [7:0] n2933;
-wire n2934;
-wire [7:0] n2935;
-wire n2936;
-wire [7:0] n2937;
-wire n2938;
-wire [7:0] n2939;
-wire n2940;
-wire n2941;
-wire [7:0] n2942;
-wire n2943;
-wire [7:0] n2944;
-wire n2945;
-wire [7:0] n2946;
-wire n2947;
-wire [7:0] n2948;
-wire n2949;
-wire [7:0] n2950;
-wire n2951;
-wire [7:0] n2952;
-wire n2953;
-wire [7:0] n2954;
-wire n2955;
-wire [7:0] n2956;
-wire n2957;
-wire [7:0] n2958;
-wire n2959;
-wire n2960;
-wire [7:0] n2961;
-wire n2962;
-wire n2963;
-wire n2964;
-wire n2965;
-wire [7:0] n2966;
-wire n2967;
-wire [7:0] n2968;
-wire n2969;
-wire [7:0] n2970;
-wire n2971;
-wire [7:0] n2972;
-wire n2973;
-wire [7:0] n2974;
-wire n2975;
-wire [7:0] n2976;
-wire n2977;
-wire [7:0] n2978;
-wire n2979;
-wire [7:0] n2980;
-wire n2981;
-wire [7:0] n2982;
-wire n2983;
-wire [7:0] n2984;
-wire n2985;
-wire [7:0] n2986;
-wire n2987;
-wire [7:0] n2988;
-wire n2989;
-wire [7:0] n2990;
-wire n2991;
-wire [7:0] n2992;
-wire n2993;
-wire [7:0] n2994;
-wire n2995;
-wire [7:0] n2996;
-wire n2997;
-wire [7:0] n2998;
-wire n2999;
-wire [7:0] n3000;
-wire n3001;
-wire [7:0] n3002;
-wire n3003;
-wire [7:0] n3004;
-wire n3005;
-wire [7:0] n3006;
-wire n3007;
-wire n3008;
-wire n3009;
-wire [7:0] n3010;
-wire n3011;
-wire [7:0] n3012;
-wire n3013;
-wire [7:0] n3014;
-wire n3015;
-wire [7:0] n3016;
-wire n3017;
-wire [7:0] n3018;
-wire n3019;
-wire [7:0] n3020;
-wire n3021;
-wire [7:0] n3022;
-wire n3023;
-wire [7:0] n3024;
-wire n3025;
-wire [7:0] n3026;
-wire n3027;
-wire [7:0] n3028;
-wire n3029;
-wire [7:0] n3030;
-wire n3031;
-wire [7:0] n3032;
-wire n3033;
-wire [7:0] n3034;
-wire n3035;
-wire [7:0] n3036;
-wire n3037;
-wire [7:0] n3038;
-wire n3039;
-wire [7:0] n3040;
-wire n3041;
-wire [7:0] n3042;
-wire n3043;
-wire [7:0] n3044;
-wire n3045;
-wire [7:0] n3046;
-wire n3047;
-wire [7:0] n3048;
-wire n3049;
-wire n3050;
+wire [7:0] n2879;
+wire n2880;
+wire [7:0] n2881;
+wire n2882;
+wire [7:0] n2883;
+wire n2884;
+wire [7:0] n2885;
+wire n2886;
+wire n2887;
 
 reg [7:0] IRAM[15:0];
 reg [7:0] XRAM[65535:0];
@@ -5585,55 +5138,20 @@ assign n1117 = ( n1116 + n0574 );
 assign n1118 = ( n1066 ) ? ( n1117 ) : ( ACC );
 assign ACC_05 = n1118;
 // 
-// PCON_05
-// 
-assign n1119 = ( n1076 ) ? ( n1117 ) : ( PCON );
-assign PCON_05 = n1119;
-// 
 // P1_05
 // 
-assign n1120 = ( n1084 ) ? ( n1117 ) : ( P1 );
-assign P1_05 = n1120;
-// 
-// TMOD_05
-// 
-assign n1121 = ( n1078 ) ? ( n1117 ) : ( TMOD );
-assign TMOD_05 = n1121;
+assign n1119 = ( n1084 ) ? ( n1117 ) : ( P1 );
+assign P1_05 = n1119;
 // 
 // DPL_05
 // 
-assign n1122 = ( n1073 ) ? ( n1117 ) : ( DPL );
-assign DPL_05 = n1122;
+assign n1120 = ( n1073 ) ? ( n1117 ) : ( DPL );
+assign DPL_05 = n1120;
 // 
 // DPH_05
 // 
-assign n1123 = ( n1075 ) ? ( n1117 ) : ( DPH );
-assign DPH_05 = n1123;
-// 
-// TL1_05
-// 
-assign n1124 = ( n1081 ) ? ( n1117 ) : ( TL1 );
-assign TL1_05 = n1124;
-// 
-// TL0_05
-// 
-assign n1125 = ( n1079 ) ? ( n1117 ) : ( TL0 );
-assign TL0_05 = n1125;
-// 
-// TCON_05
-// 
-assign n1126 = ( n1077 ) ? ( n1117 ) : ( TCON );
-assign TCON_05 = n1126;
-// 
-// TH1_05
-// 
-assign n1127 = ( n1082 ) ? ( n1117 ) : ( TH1 );
-assign TH1_05 = n1127;
-// 
-// TH0_05
-// 
-assign n1128 = ( n1080 ) ? ( n1117 ) : ( TH0 );
-assign TH0_05 = n1128;
+assign n1121 = ( n1075 ) ? ( n1117 ) : ( DPH );
+assign DPH_05 = n1121;
 // 
 // PC_05
 // 
@@ -5641,74 +5159,54 @@ assign PC_05 = n0610;
 // 
 // P2_05
 // 
-assign n1129 = ( n1087 ) ? ( n1117 ) : ( P2 );
-assign P2_05 = n1129;
+assign n1122 = ( n1087 ) ? ( n1117 ) : ( P2 );
+assign P2_05 = n1122;
 // 
 // P3_05
 // 
-assign n1130 = ( n1089 ) ? ( n1117 ) : ( P3 );
-assign P3_05 = n1130;
+assign n1123 = ( n1089 ) ? ( n1117 ) : ( P3 );
+assign P3_05 = n1123;
 // 
 // P0_05
 // 
-assign n1131 = ( n1070 ) ? ( n1117 ) : ( P0 );
-assign P0_05 = n1131;
+assign n1124 = ( n1070 ) ? ( n1117 ) : ( P0 );
+assign P0_05 = n1124;
 // 
 // B_05
 // 
-assign n1132 = ( n1093 ) ? ( n1117 ) : ( B );
-assign B_05 = n1132;
+assign n1125 = ( n1093 ) ? ( n1117 ) : ( B );
+assign B_05 = n1125;
 // 
 // IRAM_05
 // 
-assign n1133 = RD_ROM_1[3:0];
-// 
-// IP_05
-// 
-assign n1134 = ( n1090 ) ? ( n1117 ) : ( IP );
-assign IP_05 = n1134;
-// 
-// IE_05
-// 
-assign n1135 = ( n1088 ) ? ( n1117 ) : ( IE );
-assign IE_05 = n1135;
-// 
-// SCON_05
-// 
-assign n1136 = ( n1085 ) ? ( n1117 ) : ( SCON );
-assign SCON_05 = n1136;
+assign n1126 = RD_ROM_1[3:0];
 // 
 // SP_05
 // 
-assign n1137 = ( n1072 ) ? ( n1117 ) : ( SP );
-assign SP_05 = n1137;
-// 
-// SBUF_05
-// 
-assign n1138 = ( n1086 ) ? ( n1117 ) : ( SBUF );
-assign SBUF_05 = n1138;
+assign n1127 = ( n1072 ) ? ( n1117 ) : ( SP );
+assign SP_05 = n1127;
 // 
 // PSW_05
 // 
-assign n1139 = ( n1091 ) ? ( n1117 ) : ( PSW );
-assign n1140 = n1139[7:1];
-assign n1141 = n1118[7:7];
-assign n1142 = n1118[6:6];
-assign n1143 = n1118[5:5];
-assign n1144 = n1118[4:4];
-assign n1145 = n1118[3:3];
-assign n1146 = n1118[2:2];
-assign n1147 = n1118[1:1];
-assign n1148 = n1118[0:0];
-assign n1149 = ( n1147 ^ n1148 );
-assign n1150 = ( n1146 ^ n1149 );
-assign n1151 = ( n1145 ^ n1150 );
-assign n1152 = ( n1144 ^ n1151 );
-assign n1153 = ( n1143 ^ n1152 );
-assign n1154 = ( n1142 ^ n1153 );
-assign n1155 = ( n1141 ^ n1154 );
-assign n1156 = { ( n1140 ), ( n1155 ) };
-assign PSW_05 = n1156;
+assign n1128 = ( n1091 ) ? ( n1117 ) : ( PSW );
+assign n1129 = n1128[7:1];
+assign n1130 = n1118[7:7];
+assign n1131 = n1118[6:6];
+assign n1132 = n1118[5:5];
+assign n1133 = n1118[4:4];
+assign n1134 = n1118[3:3];
+assign n1135 = n1118[2:2];
+assign n1136 = n1118[1:1];
+assign n1137 = n1118[0:0];
+assign n1138 = ( n1136 ^ n1137 );
+assign n1139 = ( n1135 ^ n1138 );
+assign n1140 = ( n1134 ^ n1139 );
+assign n1141 = ( n1133 ^ n1140 );
+assign n1142 = ( n1132 ^ n1141 );
+assign n1143 = ( n1131 ^ n1142 );
+assign n1144 = ( n1130 ^ n1143 );
+assign n1145 = { ( n1129 ), ( n1144 ) };
+assign PSW_05 = n1145;
 // 
 // PC_06
 // 
@@ -5716,8 +5214,8 @@ assign PC_06 = n0612;
 // 
 // IRAM_06
 // 
-assign n1157 = RD_IRAM_0[3:0];
-assign n1158 = ( RD_IRAM_1 + n0574 );
+assign n1146 = RD_IRAM_0[3:0];
+assign n1147 = ( RD_IRAM_1 + n0574 );
 // 
 // PSW_06
 // 
@@ -5740,8 +5238,8 @@ assign PC_08 = n0612;
 // 
 // IRAM_08
 // 
-assign n1159 = n0007[3:0];
-assign n1160 = ( RD_IRAM_0 + n0574 );
+assign n1148 = n0007[3:0];
+assign n1149 = ( RD_IRAM_0 + n0574 );
 // 
 // PSW_08
 // 
@@ -5753,7 +5251,7 @@ assign PC_09 = n0612;
 // 
 // IRAM_09
 // 
-assign n1161 = n0011[3:0];
+assign n1150 = n0011[3:0];
 // 
 // PSW_09
 // 
@@ -5765,7 +5263,7 @@ assign PC_0a = n0612;
 // 
 // IRAM_0a
 // 
-assign n1162 = n0019[3:0];
+assign n1151 = n0019[3:0];
 // 
 // PSW_0a
 // 
@@ -5777,7 +5275,7 @@ assign PC_0b = n0612;
 // 
 // IRAM_0b
 // 
-assign n1163 = n0023[3:0];
+assign n1152 = n0023[3:0];
 // 
 // PSW_0b
 // 
@@ -5789,7 +5287,7 @@ assign PC_0c = n0612;
 // 
 // IRAM_0c
 // 
-assign n1164 = n0027[3:0];
+assign n1153 = n0027[3:0];
 // 
 // PSW_0c
 // 
@@ -5801,7 +5299,7 @@ assign PC_0d = n0612;
 // 
 // IRAM_0d
 // 
-assign n1165 = n0031[3:0];
+assign n1154 = n0031[3:0];
 // 
 // PSW_0d
 // 
@@ -5813,7 +5311,7 @@ assign PC_0e = n0612;
 // 
 // IRAM_0e
 // 
-assign n1166 = n0035[3:0];
+assign n1155 = n0035[3:0];
 // 
 // PSW_0e
 // 
@@ -5825,7 +5323,7 @@ assign PC_0f = n0612;
 // 
 // IRAM_0f
 // 
-assign n1167 = n0039[3:0];
+assign n1156 = n0039[3:0];
 // 
 // PSW_0f
 // 
@@ -5833,154 +5331,134 @@ assign PSW_0f = n1024;
 // 
 // ACC_10
 // 
-assign n1168 = ( n0050 == n1065 );
-assign n1169 = RD_ROM_1[2:0];
-assign n1170 = { 5'b0, n1169 };
-assign n1171 = ( n0574 << n1170 );
-assign n1172 = ~( n1171 );
-assign n1173 = n0050[7:7];
-assign n1174 = ( n1173 == n1067 );
-assign n1175 = ( n0050 == n1069 );
-assign n1176 = ( n0050 == n0216 );
-assign n1177 = ( n0050 == n1083 );
-assign n1178 = ( n0050 == n0240 );
-assign n1179 = ( n0050 == n0256 );
-assign n1180 = ( n0050 == n0264 );
-assign n1181 = ( n0050 == n0280 );
-assign n1182 = ( n0050 == n0290 );
-assign n1183 = ( n0050 == n0332 );
-assign n1184 = ( n0050 == n1092 );
-assign n1185 = ( n1184 ) ? ( B ) : ( n1094 );
-assign n1186 = ( n1168 ) ? ( ACC ) : ( n1185 );
-assign n1187 = ( n1183 ) ? ( PSW ) : ( n1186 );
-assign n1188 = ( n1182 ) ? ( IP ) : ( n1187 );
-assign n1189 = ( n1181 ) ? ( P3INREG ) : ( n1188 );
-assign n1190 = ( n1180 ) ? ( IE ) : ( n1189 );
-assign n1191 = ( n1179 ) ? ( P2INREG ) : ( n1190 );
-assign n1192 = ( n1178 ) ? ( SCON ) : ( n1191 );
-assign n1193 = ( n1177 ) ? ( P1INREG ) : ( n1192 );
-assign n1194 = ( n1176 ) ? ( TCON ) : ( n1193 );
-assign n1195 = ( n1175 ) ? ( P0INREG ) : ( n1194 );
-assign n1196 = ( n1174 ) ? ( RD_IRAM_0 ) : ( n1195 );
-assign n1197 = ( n1172 & n1196 );
-assign n1198 = { 7'b0, n1067 };
-assign n1199 = ( n1198 << n1170 );
-assign n1200 = ( n1197 | n1199 );
-assign n1201 = ( n1168 ) ? ( n1200 ) : ( ACC );
-assign ACC_10 = n1201;
+assign n1157 = ( n0050 == n1065 );
+assign n1158 = RD_ROM_1[2:0];
+assign n1159 = { 5'b0, n1158 };
+assign n1160 = ( n0574 << n1159 );
+assign n1161 = ~( n1160 );
+assign n1162 = n0050[7:7];
+assign n1163 = ( n1162 == n1067 );
+assign n1164 = ( n0050 == n1069 );
+assign n1165 = ( n0050 == n0216 );
+assign n1166 = ( n0050 == n1083 );
+assign n1167 = ( n0050 == n0240 );
+assign n1168 = ( n0050 == n0256 );
+assign n1169 = ( n0050 == n0264 );
+assign n1170 = ( n0050 == n0280 );
+assign n1171 = ( n0050 == n0290 );
+assign n1172 = ( n0050 == n0332 );
+assign n1173 = ( n0050 == n1092 );
+assign n1174 = ( n1173 ) ? ( B ) : ( n1094 );
+assign n1175 = ( n1157 ) ? ( ACC ) : ( n1174 );
+assign n1176 = ( n1172 ) ? ( PSW ) : ( n1175 );
+assign n1177 = ( n1171 ) ? ( IP ) : ( n1176 );
+assign n1178 = ( n1170 ) ? ( P3INREG ) : ( n1177 );
+assign n1179 = ( n1169 ) ? ( IE ) : ( n1178 );
+assign n1180 = ( n1168 ) ? ( P2INREG ) : ( n1179 );
+assign n1181 = ( n1167 ) ? ( SCON ) : ( n1180 );
+assign n1182 = ( n1166 ) ? ( P1INREG ) : ( n1181 );
+assign n1183 = ( n1165 ) ? ( TCON ) : ( n1182 );
+assign n1184 = ( n1164 ) ? ( P0INREG ) : ( n1183 );
+assign n1185 = ( n1163 ) ? ( RD_IRAM_0 ) : ( n1184 );
+assign n1186 = ( n1161 & n1185 );
+assign n1187 = { 7'b0, n1067 };
+assign n1188 = ( n1187 << n1159 );
+assign n1189 = ( n1186 | n1188 );
+assign n1190 = ( n1157 ) ? ( n1189 ) : ( ACC );
+assign ACC_10 = n1190;
 // 
 // P1_10
 // 
-assign n1202 = ( n1181 ) ? ( P3 ) : ( n1188 );
-assign n1203 = ( n1180 ) ? ( IE ) : ( n1202 );
-assign n1204 = ( n1179 ) ? ( P2 ) : ( n1203 );
-assign n1205 = ( n1178 ) ? ( SCON ) : ( n1204 );
-assign n1206 = ( n1177 ) ? ( P1 ) : ( n1205 );
-assign n1207 = ( n1176 ) ? ( TCON ) : ( n1206 );
-assign n1208 = ( n1175 ) ? ( P0 ) : ( n1207 );
-assign n1209 = ( n1174 ) ? ( RD_IRAM_0 ) : ( n1208 );
-assign n1210 = ( n1172 & n1209 );
-assign n1211 = ( n1210 | n1199 );
-assign n1212 = ( n1177 ) ? ( n1211 ) : ( P1 );
-assign P1_10 = n1212;
-// 
-// IE_10
-// 
-assign n1213 = ( n1180 ) ? ( n1200 ) : ( IE );
-assign IE_10 = n1213;
+assign n1191 = ( n1170 ) ? ( P3 ) : ( n1177 );
+assign n1192 = ( n1169 ) ? ( IE ) : ( n1191 );
+assign n1193 = ( n1168 ) ? ( P2 ) : ( n1192 );
+assign n1194 = ( n1167 ) ? ( SCON ) : ( n1193 );
+assign n1195 = ( n1166 ) ? ( P1 ) : ( n1194 );
+assign n1196 = ( n1165 ) ? ( TCON ) : ( n1195 );
+assign n1197 = ( n1164 ) ? ( P0 ) : ( n1196 );
+assign n1198 = ( n1163 ) ? ( RD_IRAM_0 ) : ( n1197 );
+assign n1199 = ( n1161 & n1198 );
+assign n1200 = ( n1199 | n1188 );
+assign n1201 = ( n1166 ) ? ( n1200 ) : ( P1 );
+assign P1_10 = n1201;
 // 
 // PC_10
 // 
-assign n1214 = n1196[n1169];
-assign n1215 = ( n1214 == n0043 );
-assign n1216 = 16'h3;
-assign n1217 = ( PC + n1216 );
-assign n1218 = { RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2 };
-assign n1219 = ( n1217 + n1218 );
-assign n1220 = ( n1215 ) ? ( n1219 ) : ( n1217 );
-assign PC_10 = n1220;
+assign n1202 = n1185[n1158];
+assign n1203 = ( n1202 == n0043 );
+assign n1204 = 16'h3;
+assign n1205 = ( PC + n1204 );
+assign n1206 = { RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2[7], RD_ROM_2 };
+assign n1207 = ( n1205 + n1206 );
+assign n1208 = ( n1203 ) ? ( n1207 ) : ( n1205 );
+assign PC_10 = n1208;
 // 
 // P2_10
 // 
-assign n1221 = ( n1179 ) ? ( n1211 ) : ( P2 );
-assign P2_10 = n1221;
+assign n1209 = ( n1168 ) ? ( n1200 ) : ( P2 );
+assign P2_10 = n1209;
 // 
 // P3_10
 // 
-assign n1222 = ( n1181 ) ? ( n1211 ) : ( P3 );
-assign P3_10 = n1222;
+assign n1210 = ( n1170 ) ? ( n1200 ) : ( P3 );
+assign P3_10 = n1210;
 // 
 // P0_10
 // 
-assign n1223 = ( n1175 ) ? ( n1211 ) : ( P0 );
-assign P0_10 = n1223;
+assign n1211 = ( n1164 ) ? ( n1200 ) : ( P0 );
+assign P0_10 = n1211;
 // 
 // B_10
 // 
-assign n1224 = ( n1184 ) ? ( n1200 ) : ( B );
-assign B_10 = n1224;
+assign n1212 = ( n1173 ) ? ( n1189 ) : ( B );
+assign B_10 = n1212;
 // 
 // IRAM_10
 // 
-assign n1225 = n0050[3:0];
-// 
-// IP_10
-// 
-assign n1226 = ( n1182 ) ? ( n1200 ) : ( IP );
-assign IP_10 = n1226;
-// 
-// TCON_10
-// 
-assign n1227 = ( n1176 ) ? ( n1200 ) : ( TCON );
-assign TCON_10 = n1227;
-// 
-// SCON_10
-// 
-assign n1228 = ( n1178 ) ? ( n1200 ) : ( SCON );
-assign SCON_10 = n1228;
+assign n1213 = n0050[3:0];
 // 
 // PSW_10
 // 
-assign n1229 = ( n1183 ) ? ( n1200 ) : ( PSW );
-assign n1230 = n1229[7:1];
-assign n1231 = n1201[7:7];
-assign n1232 = n1201[6:6];
-assign n1233 = n1201[5:5];
-assign n1234 = n1201[4:4];
-assign n1235 = n1201[3:3];
-assign n1236 = n1201[2:2];
-assign n1237 = n1201[1:1];
-assign n1238 = n1201[0:0];
-assign n1239 = ( n1237 ^ n1238 );
-assign n1240 = ( n1236 ^ n1239 );
-assign n1241 = ( n1235 ^ n1240 );
-assign n1242 = ( n1234 ^ n1241 );
-assign n1243 = ( n1233 ^ n1242 );
-assign n1244 = ( n1232 ^ n1243 );
-assign n1245 = ( n1231 ^ n1244 );
-assign n1246 = { ( n1230 ), ( n1245 ) };
-assign PSW_10 = n1246;
+assign n1214 = ( n1172 ) ? ( n1189 ) : ( PSW );
+assign n1215 = n1214[7:1];
+assign n1216 = n1190[7:7];
+assign n1217 = n1190[6:6];
+assign n1218 = n1190[5:5];
+assign n1219 = n1190[4:4];
+assign n1220 = n1190[3:3];
+assign n1221 = n1190[2:2];
+assign n1222 = n1190[1:1];
+assign n1223 = n1190[0:0];
+assign n1224 = ( n1222 ^ n1223 );
+assign n1225 = ( n1221 ^ n1224 );
+assign n1226 = ( n1220 ^ n1225 );
+assign n1227 = ( n1219 ^ n1226 );
+assign n1228 = ( n1218 ^ n1227 );
+assign n1229 = ( n1217 ^ n1228 );
+assign n1230 = ( n1216 ^ n1229 );
+assign n1231 = { ( n1215 ), ( n1230 ) };
+assign PSW_10 = n1231;
 // 
 // PC_11
 // 
-assign n1247 = n1026[3:1];
-assign n1248 = { ( n1025 ), ( n1247 ), ( n1028 ) };
-assign PC_11 = n1248;
+assign n1232 = n1026[3:1];
+assign n1233 = { ( n1025 ), ( n1232 ), ( n1028 ) };
+assign PC_11 = n1233;
 // 
 // IRAM_11
 // 
-assign n1249 = ( SP + n0574 );
-assign n1250 = n1249[3:0];
-assign n1251 = n0610[7:0];
-assign n1252 = ( n1249 + n0574 );
-assign n1253 = n1252[3:0];
-assign n1254 = n0610[15:8];
+assign n1234 = ( SP + n0574 );
+assign n1235 = n1234[3:0];
+assign n1236 = n0610[7:0];
+assign n1237 = ( n1234 + n0574 );
+assign n1238 = n1237[3:0];
+assign n1239 = n0610[15:8];
 // 
 // SP_11
 // 
-assign n1255 = 8'h2;
-assign n1256 = ( SP + n1255 );
-assign SP_11 = n1256;
+assign n1240 = 8'h2;
+assign n1241 = ( SP + n1240 );
+assign SP_11 = n1241;
 // 
 // PSW_11
 // 
@@ -5992,12 +5470,12 @@ assign PC_12 = n1030;
 // 
 // IRAM_12
 // 
-assign n1257 = n1217[7:0];
-assign n1258 = n1217[15:8];
+assign n1242 = n1205[7:0];
+assign n1243 = n1205[15:8];
 // 
 // SP_12
 // 
-assign SP_12 = n1256;
+assign SP_12 = n1241;
 // 
 // PSW_12
 // 
@@ -6005,11 +5483,11 @@ assign PSW_12 = n1024;
 // 
 // ACC_13
 // 
-assign n1259 = PSW[7:7];
-assign n1260 = { ( ACC ), ( n1259 ) };
-assign n1261 = { n1260[0], n1260[8:1] };
-assign n1262 = n1261[8:1];
-assign ACC_13 = n1262;
+assign n1244 = PSW[7:7];
+assign n1245 = { ( ACC ), ( n1244 ) };
+assign n1246 = { n1245[0], n1245[8:1] };
+assign n1247 = n1246[8:1];
+assign ACC_13 = n1247;
 // 
 // PC_13
 // 
@@ -6017,34 +5495,34 @@ assign PC_13 = n0612;
 // 
 // PSW_13
 // 
-assign n1263 = PSW[6:6];
-assign n1264 = PSW[5:3];
-assign n1265 = PSW[2:2];
-assign n1266 = PSW[1:0];
-assign n1267 = { ( n1016 ), ( n1263 ), ( n1264 ), ( n1265 ), ( n1266 ) };
-assign n1268 = n1267[7:1];
-assign n1269 = n1262[7:7];
-assign n1270 = n1262[6:6];
-assign n1271 = n1262[5:5];
-assign n1272 = n1262[4:4];
-assign n1273 = n1262[3:3];
-assign n1274 = n1262[2:2];
-assign n1275 = n1262[1:1];
-assign n1276 = n1262[0:0];
-assign n1277 = ( n1275 ^ n1276 );
-assign n1278 = ( n1274 ^ n1277 );
-assign n1279 = ( n1273 ^ n1278 );
-assign n1280 = ( n1272 ^ n1279 );
-assign n1281 = ( n1271 ^ n1280 );
-assign n1282 = ( n1270 ^ n1281 );
-assign n1283 = ( n1269 ^ n1282 );
-assign n1284 = { ( n1268 ), ( n1283 ) };
-assign PSW_13 = n1284;
+assign n1248 = PSW[6:6];
+assign n1249 = PSW[5:3];
+assign n1250 = PSW[2:2];
+assign n1251 = PSW[1:0];
+assign n1252 = { ( n1016 ), ( n1248 ), ( n1249 ), ( n1250 ), ( n1251 ) };
+assign n1253 = n1252[7:1];
+assign n1254 = n1247[7:7];
+assign n1255 = n1247[6:6];
+assign n1256 = n1247[5:5];
+assign n1257 = n1247[4:4];
+assign n1258 = n1247[3:3];
+assign n1259 = n1247[2:2];
+assign n1260 = n1247[1:1];
+assign n1261 = n1247[0:0];
+assign n1262 = ( n1260 ^ n1261 );
+assign n1263 = ( n1259 ^ n1262 );
+assign n1264 = ( n1258 ^ n1263 );
+assign n1265 = ( n1257 ^ n1264 );
+assign n1266 = ( n1256 ^ n1265 );
+assign n1267 = ( n1255 ^ n1266 );
+assign n1268 = ( n1254 ^ n1267 );
+assign n1269 = { ( n1253 ), ( n1268 ) };
+assign PSW_13 = n1269;
 // 
 // ACC_14
 // 
-assign n1285 = ( ACC - n0574 );
-assign ACC_14 = n1285;
+assign n1270 = ( ACC - n0574 );
+assign ACC_14 = n1270;
 // 
 // PC_14
 // 
@@ -6052,79 +5530,44 @@ assign PC_14 = n0612;
 // 
 // PSW_14
 // 
-assign n1286 = n1285[7:7];
-assign n1287 = n1285[6:6];
-assign n1288 = n1285[5:5];
-assign n1289 = n1285[4:4];
-assign n1290 = n1285[3:3];
-assign n1291 = n1285[2:2];
-assign n1292 = n1285[1:1];
-assign n1293 = n1285[0:0];
-assign n1294 = ( n1292 ^ n1293 );
-assign n1295 = ( n1291 ^ n1294 );
-assign n1296 = ( n1290 ^ n1295 );
-assign n1297 = ( n1289 ^ n1296 );
-assign n1298 = ( n1288 ^ n1297 );
-assign n1299 = ( n1287 ^ n1298 );
-assign n1300 = ( n1286 ^ n1299 );
-assign n1301 = { ( n1008 ), ( n1300 ) };
-assign PSW_14 = n1301;
+assign n1271 = n1270[7:7];
+assign n1272 = n1270[6:6];
+assign n1273 = n1270[5:5];
+assign n1274 = n1270[4:4];
+assign n1275 = n1270[3:3];
+assign n1276 = n1270[2:2];
+assign n1277 = n1270[1:1];
+assign n1278 = n1270[0:0];
+assign n1279 = ( n1277 ^ n1278 );
+assign n1280 = ( n1276 ^ n1279 );
+assign n1281 = ( n1275 ^ n1280 );
+assign n1282 = ( n1274 ^ n1281 );
+assign n1283 = ( n1273 ^ n1282 );
+assign n1284 = ( n1272 ^ n1283 );
+assign n1285 = ( n1271 ^ n1284 );
+assign n1286 = { ( n1008 ), ( n1285 ) };
+assign PSW_14 = n1286;
 // 
 // ACC_15
 // 
-assign n1302 = ( n1116 - n0574 );
-assign n1303 = ( n1066 ) ? ( n1302 ) : ( ACC );
-assign ACC_15 = n1303;
-// 
-// PCON_15
-// 
-assign n1304 = ( n1076 ) ? ( n1302 ) : ( PCON );
-assign PCON_15 = n1304;
+assign n1287 = ( n1116 - n0574 );
+assign n1288 = ( n1066 ) ? ( n1287 ) : ( ACC );
+assign ACC_15 = n1288;
 // 
 // P1_15
 // 
-assign n1305 = ( n1084 ) ? ( n1302 ) : ( P1 );
-assign P1_15 = n1305;
-// 
-// TMOD_15
-// 
-assign n1306 = ( n1078 ) ? ( n1302 ) : ( TMOD );
-assign TMOD_15 = n1306;
+assign n1289 = ( n1084 ) ? ( n1287 ) : ( P1 );
+assign P1_15 = n1289;
 // 
 // DPL_15
 // 
-assign n1307 = ( n1073 ) ? ( n1302 ) : ( DPL );
-assign DPL_15 = n1307;
+assign n1290 = ( n1073 ) ? ( n1287 ) : ( DPL );
+assign DPL_15 = n1290;
 // 
 // DPH_15
 // 
-assign n1308 = ( n1075 ) ? ( n1302 ) : ( DPH );
-assign DPH_15 = n1308;
-// 
-// TL1_15
-// 
-assign n1309 = ( n1081 ) ? ( n1302 ) : ( TL1 );
-assign TL1_15 = n1309;
-// 
-// TL0_15
-// 
-assign n1310 = ( n1079 ) ? ( n1302 ) : ( TL0 );
-assign TL0_15 = n1310;
-// 
-// IE_15
-// 
-assign n1311 = ( n1088 ) ? ( n1302 ) : ( IE );
-assign IE_15 = n1311;
-// 
-// TH1_15
-// 
-assign n1312 = ( n1082 ) ? ( n1302 ) : ( TH1 );
-assign TH1_15 = n1312;
-// 
-// TH0_15
-// 
-assign n1313 = ( n1080 ) ? ( n1302 ) : ( TH0 );
-assign TH0_15 = n1313;
+assign n1291 = ( n1075 ) ? ( n1287 ) : ( DPH );
+assign DPH_15 = n1291;
 // 
 // PC_15
 // 
@@ -6132,73 +5575,53 @@ assign PC_15 = n0610;
 // 
 // P2_15
 // 
-assign n1314 = ( n1087 ) ? ( n1302 ) : ( P2 );
-assign P2_15 = n1314;
+assign n1292 = ( n1087 ) ? ( n1287 ) : ( P2 );
+assign P2_15 = n1292;
 // 
 // P3_15
 // 
-assign n1315 = ( n1089 ) ? ( n1302 ) : ( P3 );
-assign P3_15 = n1315;
+assign n1293 = ( n1089 ) ? ( n1287 ) : ( P3 );
+assign P3_15 = n1293;
 // 
 // P0_15
 // 
-assign n1316 = ( n1070 ) ? ( n1302 ) : ( P0 );
-assign P0_15 = n1316;
+assign n1294 = ( n1070 ) ? ( n1287 ) : ( P0 );
+assign P0_15 = n1294;
 // 
 // B_15
 // 
-assign n1317 = ( n1093 ) ? ( n1302 ) : ( B );
-assign B_15 = n1317;
+assign n1295 = ( n1093 ) ? ( n1287 ) : ( B );
+assign B_15 = n1295;
 // 
 // IRAM_15
 // 
 // 
-// IP_15
-// 
-assign n1318 = ( n1090 ) ? ( n1302 ) : ( IP );
-assign IP_15 = n1318;
-// 
-// TCON_15
-// 
-assign n1319 = ( n1077 ) ? ( n1302 ) : ( TCON );
-assign TCON_15 = n1319;
-// 
-// SCON_15
-// 
-assign n1320 = ( n1085 ) ? ( n1302 ) : ( SCON );
-assign SCON_15 = n1320;
-// 
 // SP_15
 // 
-assign n1321 = ( n1072 ) ? ( n1302 ) : ( SP );
-assign SP_15 = n1321;
-// 
-// SBUF_15
-// 
-assign n1322 = ( n1086 ) ? ( n1302 ) : ( SBUF );
-assign SBUF_15 = n1322;
+assign n1296 = ( n1072 ) ? ( n1287 ) : ( SP );
+assign SP_15 = n1296;
 // 
 // PSW_15
 // 
-assign n1323 = ( n1091 ) ? ( n1302 ) : ( PSW );
-assign n1324 = n1323[7:1];
-assign n1325 = n1303[7:7];
-assign n1326 = n1303[6:6];
-assign n1327 = n1303[5:5];
-assign n1328 = n1303[4:4];
-assign n1329 = n1303[3:3];
-assign n1330 = n1303[2:2];
-assign n1331 = n1303[1:1];
-assign n1332 = n1303[0:0];
-assign n1333 = ( n1331 ^ n1332 );
-assign n1334 = ( n1330 ^ n1333 );
-assign n1335 = ( n1329 ^ n1334 );
-assign n1336 = ( n1328 ^ n1335 );
-assign n1337 = ( n1327 ^ n1336 );
-assign n1338 = ( n1326 ^ n1337 );
-assign n1339 = ( n1325 ^ n1338 );
-assign n1340 = { ( n1324 ), ( n1339 ) };
-assign PSW_15 = n1340;
+assign n1297 = ( n1091 ) ? ( n1287 ) : ( PSW );
+assign n1298 = n1297[7:1];
+assign n1299 = n1288[7:7];
+assign n1300 = n1288[6:6];
+assign n1301 = n1288[5:5];
+assign n1302 = n1288[4:4];
+assign n1303 = n1288[3:3];
+assign n1304 = n1288[2:2];
+assign n1305 = n1288[1:1];
+assign n1306 = n1288[0:0];
+assign n1307 = ( n1305 ^ n1306 );
+assign n1308 = ( n1304 ^ n1307 );
+assign n1309 = ( n1303 ^ n1308 );
+assign n1310 = ( n1302 ^ n1309 );
+assign n1311 = ( n1301 ^ n1310 );
+assign n1312 = ( n1300 ^ n1311 );
+assign n1313 = ( n1299 ^ n1312 );
+assign n1314 = { ( n1298 ), ( n1313 ) };
+assign PSW_15 = n1314;
 // 
 // PC_16
 // 
@@ -6206,7 +5629,7 @@ assign PC_16 = n0612;
 // 
 // IRAM_16
 // 
-assign n1341 = ( RD_IRAM_1 - n0574 );
+assign n1315 = ( RD_IRAM_1 - n0574 );
 // 
 // PSW_16
 // 
@@ -6229,7 +5652,7 @@ assign PC_18 = n0612;
 // 
 // IRAM_18
 // 
-assign n1342 = ( RD_IRAM_0 - n0574 );
+assign n1316 = ( RD_IRAM_0 - n0574 );
 // 
 // PSW_18
 // 
@@ -6314,7 +5737,7 @@ assign PSW_1f = n1024;
 // 
 // PC_20
 // 
-assign PC_20 = n1220;
+assign PC_20 = n1208;
 // 
 // PSW_20
 // 
@@ -6330,13 +5753,13 @@ assign PSW_21 = n1024;
 // 
 // PC_22
 // 
-assign n1343 = { ( RD_IRAM_0 ), ( RD_IRAM_1 ) };
-assign PC_22 = n1343;
+assign n1317 = { ( RD_IRAM_0 ), ( RD_IRAM_1 ) };
+assign PC_22 = n1317;
 // 
 // SP_22
 // 
-assign n1344 = ( SP - n1255 );
-assign SP_22 = n1344;
+assign n1318 = ( SP - n1240 );
+assign SP_22 = n1318;
 // 
 // PSW_22
 // 
@@ -6344,8 +5767,8 @@ assign PSW_22 = n1024;
 // 
 // ACC_23
 // 
-assign n1345 = { ACC[6:0], ACC[7] };
-assign ACC_23 = n1345;
+assign n1319 = { ACC[6:0], ACC[7] };
+assign ACC_23 = n1319;
 // 
 // PC_23
 // 
@@ -6353,28 +5776,28 @@ assign PC_23 = n0612;
 // 
 // PSW_23
 // 
-assign n1346 = n1345[7:7];
-assign n1347 = n1345[6:6];
-assign n1348 = n1345[5:5];
-assign n1349 = n1345[4:4];
-assign n1350 = n1345[3:3];
-assign n1351 = n1345[2:2];
-assign n1352 = n1345[1:1];
-assign n1353 = n1345[0:0];
-assign n1354 = ( n1352 ^ n1353 );
-assign n1355 = ( n1351 ^ n1354 );
-assign n1356 = ( n1350 ^ n1355 );
-assign n1357 = ( n1349 ^ n1356 );
-assign n1358 = ( n1348 ^ n1357 );
-assign n1359 = ( n1347 ^ n1358 );
-assign n1360 = ( n1346 ^ n1359 );
-assign n1361 = { ( n1008 ), ( n1360 ) };
-assign PSW_23 = n1361;
+assign n1320 = n1319[7:7];
+assign n1321 = n1319[6:6];
+assign n1322 = n1319[5:5];
+assign n1323 = n1319[4:4];
+assign n1324 = n1319[3:3];
+assign n1325 = n1319[2:2];
+assign n1326 = n1319[1:1];
+assign n1327 = n1319[0:0];
+assign n1328 = ( n1326 ^ n1327 );
+assign n1329 = ( n1325 ^ n1328 );
+assign n1330 = ( n1324 ^ n1329 );
+assign n1331 = ( n1323 ^ n1330 );
+assign n1332 = ( n1322 ^ n1331 );
+assign n1333 = ( n1321 ^ n1332 );
+assign n1334 = ( n1320 ^ n1333 );
+assign n1335 = { ( n1008 ), ( n1334 ) };
+assign PSW_23 = n1335;
 // 
 // ACC_24
 // 
-assign n1362 = ( ACC + RD_ROM_1 );
-assign ACC_24 = n1362;
+assign n1336 = ( ACC + RD_ROM_1 );
+assign ACC_24 = n1336;
 // 
 // PC_24
 // 
@@ -6382,70 +5805,70 @@ assign PC_24 = n0610;
 // 
 // PSW_24
 // 
-assign n1363 = { 1'b0, ACC };
-assign n1364 = { 1'b0, RD_ROM_1 };
-assign n1365 = { n1067[0], n1067[0], n1067[0], n1067[0], n1067[0], n1067[0], n1067[0], n1067[0], n1067 };
-assign n1366 = ( n1364 + n1365 );
-assign n1367 = ( n1363 + n1366 );
-assign n1368 = n1367[8:8];
-assign n1369 = ACC[3:0];
-assign n1370 = { 1'b0, n1369 };
-assign n1371 = { 1'b0, n1133 };
-assign n1372 = { 4'b0, n1067 };
-assign n1373 = ( n1371 + n1372 );
-assign n1374 = ( n1370 + n1373 );
-assign n1375 = n1374[4:4];
-assign n1376 = { ACC[7], ACC };
-assign n1377 = { RD_ROM_1[7], RD_ROM_1 };
-assign n1378 = ( n1377 + n1365 );
-assign n1379 = ( n1376 + n1378 );
-assign n1380 = n1379[8:8];
-assign n1381 = n1379[7:7];
-assign n1382 = ( n1380 == n1381 );
-assign n1383 = !( n1382 );
-assign n1384 = ( n1383 ) ? ( n0043 ) : ( n1067 );
-assign n1385 = { ( n1368 ), ( n1375 ), ( n1264 ), ( n1384 ), ( n1266 ) };
-assign n1386 = n1385[7:1];
-assign n1387 = n1362[7:7];
-assign n1388 = n1362[6:6];
-assign n1389 = n1362[5:5];
-assign n1390 = n1362[4:4];
-assign n1391 = n1362[3:3];
-assign n1392 = n1362[2:2];
-assign n1393 = n1362[1:1];
-assign n1394 = n1362[0:0];
-assign n1395 = ( n1393 ^ n1394 );
-assign n1396 = ( n1392 ^ n1395 );
-assign n1397 = ( n1391 ^ n1396 );
-assign n1398 = ( n1390 ^ n1397 );
-assign n1399 = ( n1389 ^ n1398 );
-assign n1400 = ( n1388 ^ n1399 );
-assign n1401 = ( n1387 ^ n1400 );
-assign n1402 = { ( n1386 ), ( n1401 ) };
-assign PSW_24 = n1402;
+assign n1337 = { 1'b0, ACC };
+assign n1338 = { 1'b0, RD_ROM_1 };
+assign n1339 = { n1067[0], n1067[0], n1067[0], n1067[0], n1067[0], n1067[0], n1067[0], n1067[0], n1067 };
+assign n1340 = ( n1338 + n1339 );
+assign n1341 = ( n1337 + n1340 );
+assign n1342 = n1341[8:8];
+assign n1343 = ACC[3:0];
+assign n1344 = { 1'b0, n1343 };
+assign n1345 = { 1'b0, n1126 };
+assign n1346 = { 4'b0, n1067 };
+assign n1347 = ( n1345 + n1346 );
+assign n1348 = ( n1344 + n1347 );
+assign n1349 = n1348[4:4];
+assign n1350 = { ACC[7], ACC };
+assign n1351 = { RD_ROM_1[7], RD_ROM_1 };
+assign n1352 = ( n1351 + n1339 );
+assign n1353 = ( n1350 + n1352 );
+assign n1354 = n1353[8:8];
+assign n1355 = n1353[7:7];
+assign n1356 = ( n1354 == n1355 );
+assign n1357 = !( n1356 );
+assign n1358 = ( n1357 ) ? ( n0043 ) : ( n1067 );
+assign n1359 = { ( n1342 ), ( n1349 ), ( n1249 ), ( n1358 ), ( n1251 ) };
+assign n1360 = n1359[7:1];
+assign n1361 = n1336[7:7];
+assign n1362 = n1336[6:6];
+assign n1363 = n1336[5:5];
+assign n1364 = n1336[4:4];
+assign n1365 = n1336[3:3];
+assign n1366 = n1336[2:2];
+assign n1367 = n1336[1:1];
+assign n1368 = n1336[0:0];
+assign n1369 = ( n1367 ^ n1368 );
+assign n1370 = ( n1366 ^ n1369 );
+assign n1371 = ( n1365 ^ n1370 );
+assign n1372 = ( n1364 ^ n1371 );
+assign n1373 = ( n1363 ^ n1372 );
+assign n1374 = ( n1362 ^ n1373 );
+assign n1375 = ( n1361 ^ n1374 );
+assign n1376 = { ( n1360 ), ( n1375 ) };
+assign PSW_24 = n1376;
 // 
 // ACC_25
 // 
-assign n1403 = ( n1089 ) ? ( P3INREG ) : ( n1098 );
-assign n1404 = ( n1088 ) ? ( IE ) : ( n1403 );
-assign n1405 = ( n1087 ) ? ( P2INREG ) : ( n1404 );
-assign n1406 = ( n1086 ) ? ( SBUF ) : ( n1405 );
-assign n1407 = ( n1085 ) ? ( SCON ) : ( n1406 );
-assign n1408 = ( n1084 ) ? ( P1INREG ) : ( n1407 );
-assign n1409 = ( n1082 ) ? ( TH1 ) : ( n1408 );
-assign n1410 = ( n1081 ) ? ( TL1 ) : ( n1409 );
-assign n1411 = ( n1080 ) ? ( TH0 ) : ( n1410 );
-assign n1412 = ( n1079 ) ? ( TL0 ) : ( n1411 );
-assign n1413 = ( n1078 ) ? ( TMOD ) : ( n1412 );
-assign n1414 = ( n1077 ) ? ( TCON ) : ( n1413 );
-assign n1415 = ( n1076 ) ? ( PCON ) : ( n1414 );
-assign n1416 = ( n1075 ) ? ( DPH ) : ( n1415 );
-assign n1417 = ( n1073 ) ? ( DPL ) : ( n1416 );
-assign n1418 = ( n1072 ) ? ( SP ) : ( n1417 );
-assign n1419 = ( n1070 ) ? ( P0INREG ) : ( n1418 );
-assign n1420 = ( n1068 ) ? ( RD_IRAM_0 ) : ( n1419 );
-assign n1421 = ( ACC + n1420 );
-assign ACC_25 = n1421;
+assign n1377 = ( n1089 ) ? ( P3INREG ) : ( n1098 );
+assign n1378 = ( n1088 ) ? ( IE ) : ( n1377 );
+assign n1379 = ( n1087 ) ? ( P2INREG ) : ( n1378 );
+assign n1380 = ( n1086 ) ? ( SBUF ) : ( n1379 );
+assign n1381 = ( n1085 ) ? ( SCON ) : ( n1380 );
+assign n1382 = ( n1084 ) ? ( P1INREG ) : ( n1381 );
+assign n1383 = ( n1082 ) ? ( TH1 ) : ( n1382 );
+assign n1384 = ( n1081 ) ? ( TL1 ) : ( n1383 );
+assign n1385 = ( n1080 ) ? ( TH0 ) : ( n1384 );
+assign n1386 = ( n1079 ) ? ( TL0 ) : ( n1385 );
+assign n1387 = ( n1078 ) ? ( TMOD ) : ( n1386 );
+assign n1388 = ( n1077 ) ? ( TCON ) : ( n1387 );
+assign n1389 = ( n1076 ) ? ( PCON ) : ( n1388 );
+assign n1390 = ( n1075 ) ? ( DPH ) : ( n1389 );
+assign n1391 = ( n1073 ) ? ( DPL ) : ( n1390 );
+assign n1392 = ( n1072 ) ? ( SP ) : ( n1391 );
+assign n1393 = ( n1070 ) ? ( P0INREG ) : ( n1392 );
+assign n1394 = ( n1068 ) ? ( RD_IRAM_0 ) : ( n1393 );
+assign n1395 = ( ACC + n1394 );
+assign ACC_25 = n1395;
 // 
 // PC_25
 // 
@@ -6453,48 +5876,48 @@ assign PC_25 = n0610;
 // 
 // PSW_25
 // 
-assign n1422 = { 1'b0, n1420 };
-assign n1423 = ( n1422 + n1365 );
-assign n1424 = ( n1363 + n1423 );
-assign n1425 = n1424[8:8];
-assign n1426 = n1420[3:0];
-assign n1427 = { 1'b0, n1426 };
-assign n1428 = { n1067[0], n1067[0], n1067[0], n1067[0], n1067 };
-assign n1429 = ( n1427 + n1428 );
-assign n1430 = ( n1370 + n1429 );
-assign n1431 = n1430[4:4];
-assign n1432 = { n1420[7], n1420 };
-assign n1433 = ( n1432 + n1365 );
-assign n1434 = ( n1376 + n1433 );
-assign n1435 = n1434[8:8];
-assign n1436 = n1434[7:7];
-assign n1437 = ( n1435 == n1436 );
-assign n1438 = !( n1437 );
-assign n1439 = ( n1438 ) ? ( n0043 ) : ( n1067 );
-assign n1440 = { ( n1425 ), ( n1431 ), ( n1264 ), ( n1439 ), ( n1266 ) };
-assign n1441 = n1440[7:1];
-assign n1442 = n1421[7:7];
-assign n1443 = n1421[6:6];
-assign n1444 = n1421[5:5];
-assign n1445 = n1421[4:4];
-assign n1446 = n1421[3:3];
-assign n1447 = n1421[2:2];
-assign n1448 = n1421[1:1];
-assign n1449 = n1421[0:0];
-assign n1450 = ( n1448 ^ n1449 );
-assign n1451 = ( n1447 ^ n1450 );
-assign n1452 = ( n1446 ^ n1451 );
-assign n1453 = ( n1445 ^ n1452 );
-assign n1454 = ( n1444 ^ n1453 );
-assign n1455 = ( n1443 ^ n1454 );
-assign n1456 = ( n1442 ^ n1455 );
-assign n1457 = { ( n1441 ), ( n1456 ) };
-assign PSW_25 = n1457;
+assign n1396 = { 1'b0, n1394 };
+assign n1397 = ( n1396 + n1339 );
+assign n1398 = ( n1337 + n1397 );
+assign n1399 = n1398[8:8];
+assign n1400 = n1394[3:0];
+assign n1401 = { 1'b0, n1400 };
+assign n1402 = { n1067[0], n1067[0], n1067[0], n1067[0], n1067 };
+assign n1403 = ( n1401 + n1402 );
+assign n1404 = ( n1344 + n1403 );
+assign n1405 = n1404[4:4];
+assign n1406 = { n1394[7], n1394 };
+assign n1407 = ( n1406 + n1339 );
+assign n1408 = ( n1350 + n1407 );
+assign n1409 = n1408[8:8];
+assign n1410 = n1408[7:7];
+assign n1411 = ( n1409 == n1410 );
+assign n1412 = !( n1411 );
+assign n1413 = ( n1412 ) ? ( n0043 ) : ( n1067 );
+assign n1414 = { ( n1399 ), ( n1405 ), ( n1249 ), ( n1413 ), ( n1251 ) };
+assign n1415 = n1414[7:1];
+assign n1416 = n1395[7:7];
+assign n1417 = n1395[6:6];
+assign n1418 = n1395[5:5];
+assign n1419 = n1395[4:4];
+assign n1420 = n1395[3:3];
+assign n1421 = n1395[2:2];
+assign n1422 = n1395[1:1];
+assign n1423 = n1395[0:0];
+assign n1424 = ( n1422 ^ n1423 );
+assign n1425 = ( n1421 ^ n1424 );
+assign n1426 = ( n1420 ^ n1425 );
+assign n1427 = ( n1419 ^ n1426 );
+assign n1428 = ( n1418 ^ n1427 );
+assign n1429 = ( n1417 ^ n1428 );
+assign n1430 = ( n1416 ^ n1429 );
+assign n1431 = { ( n1415 ), ( n1430 ) };
+assign PSW_25 = n1431;
 // 
 // ACC_26
 // 
-assign n1458 = ( ACC + RD_IRAM_1 );
-assign ACC_26 = n1458;
+assign n1432 = ( ACC + RD_IRAM_1 );
+assign ACC_26 = n1432;
 // 
 // PC_26
 // 
@@ -6502,46 +5925,46 @@ assign PC_26 = n0612;
 // 
 // PSW_26
 // 
-assign n1459 = { 1'b0, RD_IRAM_1 };
-assign n1460 = ( n1459 + n1365 );
-assign n1461 = ( n1363 + n1460 );
-assign n1462 = n1461[8:8];
-assign n1463 = RD_IRAM_1[3:0];
-assign n1464 = { 1'b0, n1463 };
-assign n1465 = ( n1464 + n1428 );
-assign n1466 = ( n1370 + n1465 );
-assign n1467 = n1466[4:4];
-assign n1468 = { RD_IRAM_1[7], RD_IRAM_1 };
-assign n1469 = ( n1468 + n1365 );
-assign n1470 = ( n1376 + n1469 );
-assign n1471 = n1470[8:8];
-assign n1472 = n1470[7:7];
-assign n1473 = ( n1471 == n1472 );
-assign n1474 = !( n1473 );
-assign n1475 = ( n1474 ) ? ( n0043 ) : ( n1067 );
-assign n1476 = { ( n1462 ), ( n1467 ), ( n1264 ), ( n1475 ), ( n1266 ) };
-assign n1477 = n1476[7:1];
-assign n1478 = n1458[7:7];
-assign n1479 = n1458[6:6];
-assign n1480 = n1458[5:5];
-assign n1481 = n1458[4:4];
-assign n1482 = n1458[3:3];
-assign n1483 = n1458[2:2];
-assign n1484 = n1458[1:1];
-assign n1485 = n1458[0:0];
-assign n1486 = ( n1484 ^ n1485 );
-assign n1487 = ( n1483 ^ n1486 );
-assign n1488 = ( n1482 ^ n1487 );
-assign n1489 = ( n1481 ^ n1488 );
-assign n1490 = ( n1480 ^ n1489 );
-assign n1491 = ( n1479 ^ n1490 );
-assign n1492 = ( n1478 ^ n1491 );
-assign n1493 = { ( n1477 ), ( n1492 ) };
-assign PSW_26 = n1493;
+assign n1433 = { 1'b0, RD_IRAM_1 };
+assign n1434 = ( n1433 + n1339 );
+assign n1435 = ( n1337 + n1434 );
+assign n1436 = n1435[8:8];
+assign n1437 = RD_IRAM_1[3:0];
+assign n1438 = { 1'b0, n1437 };
+assign n1439 = ( n1438 + n1402 );
+assign n1440 = ( n1344 + n1439 );
+assign n1441 = n1440[4:4];
+assign n1442 = { RD_IRAM_1[7], RD_IRAM_1 };
+assign n1443 = ( n1442 + n1339 );
+assign n1444 = ( n1350 + n1443 );
+assign n1445 = n1444[8:8];
+assign n1446 = n1444[7:7];
+assign n1447 = ( n1445 == n1446 );
+assign n1448 = !( n1447 );
+assign n1449 = ( n1448 ) ? ( n0043 ) : ( n1067 );
+assign n1450 = { ( n1436 ), ( n1441 ), ( n1249 ), ( n1449 ), ( n1251 ) };
+assign n1451 = n1450[7:1];
+assign n1452 = n1432[7:7];
+assign n1453 = n1432[6:6];
+assign n1454 = n1432[5:5];
+assign n1455 = n1432[4:4];
+assign n1456 = n1432[3:3];
+assign n1457 = n1432[2:2];
+assign n1458 = n1432[1:1];
+assign n1459 = n1432[0:0];
+assign n1460 = ( n1458 ^ n1459 );
+assign n1461 = ( n1457 ^ n1460 );
+assign n1462 = ( n1456 ^ n1461 );
+assign n1463 = ( n1455 ^ n1462 );
+assign n1464 = ( n1454 ^ n1463 );
+assign n1465 = ( n1453 ^ n1464 );
+assign n1466 = ( n1452 ^ n1465 );
+assign n1467 = { ( n1451 ), ( n1466 ) };
+assign PSW_26 = n1467;
 // 
 // ACC_27
 // 
-assign ACC_27 = n1458;
+assign ACC_27 = n1432;
 // 
 // PC_27
 // 
@@ -6549,26 +5972,26 @@ assign PC_27 = n0612;
 // 
 // PSW_27
 // 
-assign n1494 = { 8'b0, n1067 };
-assign n1495 = ( n1459 + n1494 );
-assign n1496 = ( n1363 + n1495 );
-assign n1497 = n1496[8:8];
-assign n1498 = ( n1468 + n1494 );
-assign n1499 = ( n1376 + n1498 );
-assign n1500 = n1499[8:8];
-assign n1501 = n1499[7:7];
-assign n1502 = ( n1500 == n1501 );
-assign n1503 = !( n1502 );
-assign n1504 = ( n1503 ) ? ( n0043 ) : ( n1067 );
-assign n1505 = { ( n1497 ), ( n1467 ), ( n1264 ), ( n1504 ), ( n1266 ) };
-assign n1506 = n1505[7:1];
-assign n1507 = { ( n1506 ), ( n1492 ) };
-assign PSW_27 = n1507;
+assign n1468 = { 8'b0, n1067 };
+assign n1469 = ( n1433 + n1468 );
+assign n1470 = ( n1337 + n1469 );
+assign n1471 = n1470[8:8];
+assign n1472 = ( n1442 + n1468 );
+assign n1473 = ( n1350 + n1472 );
+assign n1474 = n1473[8:8];
+assign n1475 = n1473[7:7];
+assign n1476 = ( n1474 == n1475 );
+assign n1477 = !( n1476 );
+assign n1478 = ( n1477 ) ? ( n0043 ) : ( n1067 );
+assign n1479 = { ( n1471 ), ( n1441 ), ( n1249 ), ( n1478 ), ( n1251 ) };
+assign n1480 = n1479[7:1];
+assign n1481 = { ( n1480 ), ( n1466 ) };
+assign PSW_27 = n1481;
 // 
 // ACC_28
 // 
-assign n1508 = ( ACC + RD_IRAM_0 );
-assign ACC_28 = n1508;
+assign n1482 = ( ACC + RD_IRAM_0 );
+assign ACC_28 = n1482;
 // 
 // PC_28
 // 
@@ -6576,45 +5999,45 @@ assign PC_28 = n0612;
 // 
 // PSW_28
 // 
-assign n1509 = { 1'b0, RD_IRAM_0 };
-assign n1510 = ( n1509 + n1494 );
-assign n1511 = ( n1363 + n1510 );
-assign n1512 = n1511[8:8];
-assign n1513 = { 1'b0, n1157 };
-assign n1514 = ( n1513 + n1372 );
-assign n1515 = ( n1370 + n1514 );
-assign n1516 = n1515[4:4];
-assign n1517 = { RD_IRAM_0[7], RD_IRAM_0 };
-assign n1518 = ( n1517 + n1494 );
-assign n1519 = ( n1376 + n1518 );
-assign n1520 = n1519[8:8];
-assign n1521 = n1519[7:7];
-assign n1522 = ( n1520 == n1521 );
-assign n1523 = !( n1522 );
-assign n1524 = ( n1523 ) ? ( n0043 ) : ( n1067 );
-assign n1525 = { ( n1512 ), ( n1516 ), ( n1264 ), ( n1524 ), ( n1266 ) };
-assign n1526 = n1525[7:1];
-assign n1527 = n1508[7:7];
-assign n1528 = n1508[6:6];
-assign n1529 = n1508[5:5];
-assign n1530 = n1508[4:4];
-assign n1531 = n1508[3:3];
-assign n1532 = n1508[2:2];
-assign n1533 = n1508[1:1];
-assign n1534 = n1508[0:0];
-assign n1535 = ( n1533 ^ n1534 );
-assign n1536 = ( n1532 ^ n1535 );
-assign n1537 = ( n1531 ^ n1536 );
-assign n1538 = ( n1530 ^ n1537 );
-assign n1539 = ( n1529 ^ n1538 );
-assign n1540 = ( n1528 ^ n1539 );
-assign n1541 = ( n1527 ^ n1540 );
-assign n1542 = { ( n1526 ), ( n1541 ) };
-assign PSW_28 = n1542;
+assign n1483 = { 1'b0, RD_IRAM_0 };
+assign n1484 = ( n1483 + n1468 );
+assign n1485 = ( n1337 + n1484 );
+assign n1486 = n1485[8:8];
+assign n1487 = { 1'b0, n1146 };
+assign n1488 = ( n1487 + n1346 );
+assign n1489 = ( n1344 + n1488 );
+assign n1490 = n1489[4:4];
+assign n1491 = { RD_IRAM_0[7], RD_IRAM_0 };
+assign n1492 = ( n1491 + n1468 );
+assign n1493 = ( n1350 + n1492 );
+assign n1494 = n1493[8:8];
+assign n1495 = n1493[7:7];
+assign n1496 = ( n1494 == n1495 );
+assign n1497 = !( n1496 );
+assign n1498 = ( n1497 ) ? ( n0043 ) : ( n1067 );
+assign n1499 = { ( n1486 ), ( n1490 ), ( n1249 ), ( n1498 ), ( n1251 ) };
+assign n1500 = n1499[7:1];
+assign n1501 = n1482[7:7];
+assign n1502 = n1482[6:6];
+assign n1503 = n1482[5:5];
+assign n1504 = n1482[4:4];
+assign n1505 = n1482[3:3];
+assign n1506 = n1482[2:2];
+assign n1507 = n1482[1:1];
+assign n1508 = n1482[0:0];
+assign n1509 = ( n1507 ^ n1508 );
+assign n1510 = ( n1506 ^ n1509 );
+assign n1511 = ( n1505 ^ n1510 );
+assign n1512 = ( n1504 ^ n1511 );
+assign n1513 = ( n1503 ^ n1512 );
+assign n1514 = ( n1502 ^ n1513 );
+assign n1515 = ( n1501 ^ n1514 );
+assign n1516 = { ( n1500 ), ( n1515 ) };
+assign PSW_28 = n1516;
 // 
 // ACC_29
 // 
-assign ACC_29 = n1508;
+assign ACC_29 = n1482;
 // 
 // PC_29
 // 
@@ -6622,11 +6045,11 @@ assign PC_29 = n0612;
 // 
 // PSW_29
 // 
-assign PSW_29 = n1542;
+assign PSW_29 = n1516;
 // 
 // ACC_2a
 // 
-assign ACC_2a = n1508;
+assign ACC_2a = n1482;
 // 
 // PC_2a
 // 
@@ -6634,17 +6057,17 @@ assign PC_2a = n0612;
 // 
 // PSW_2a
 // 
-assign n1543 = ( n1513 + n1428 );
-assign n1544 = ( n1370 + n1543 );
-assign n1545 = n1544[4:4];
-assign n1546 = { ( n1512 ), ( n1545 ), ( n1264 ), ( n1524 ), ( n1266 ) };
-assign n1547 = n1546[7:1];
-assign n1548 = { ( n1547 ), ( n1541 ) };
-assign PSW_2a = n1548;
+assign n1517 = ( n1487 + n1402 );
+assign n1518 = ( n1344 + n1517 );
+assign n1519 = n1518[4:4];
+assign n1520 = { ( n1486 ), ( n1519 ), ( n1249 ), ( n1498 ), ( n1251 ) };
+assign n1521 = n1520[7:1];
+assign n1522 = { ( n1521 ), ( n1515 ) };
+assign PSW_2a = n1522;
 // 
 // ACC_2b
 // 
-assign ACC_2b = n1508;
+assign ACC_2b = n1482;
 // 
 // PC_2b
 // 
@@ -6652,24 +6075,24 @@ assign PC_2b = n0612;
 // 
 // PSW_2b
 // 
-assign n1549 = ( n1509 + n1365 );
-assign n1550 = ( n1363 + n1549 );
-assign n1551 = n1550[8:8];
-assign n1552 = ( n1517 + n1365 );
-assign n1553 = ( n1376 + n1552 );
-assign n1554 = n1553[8:8];
-assign n1555 = n1553[7:7];
-assign n1556 = ( n1554 == n1555 );
-assign n1557 = !( n1556 );
-assign n1558 = ( n1557 ) ? ( n0043 ) : ( n1067 );
-assign n1559 = { ( n1551 ), ( n1545 ), ( n1264 ), ( n1558 ), ( n1266 ) };
-assign n1560 = n1559[7:1];
-assign n1561 = { ( n1560 ), ( n1541 ) };
-assign PSW_2b = n1561;
+assign n1523 = ( n1483 + n1339 );
+assign n1524 = ( n1337 + n1523 );
+assign n1525 = n1524[8:8];
+assign n1526 = ( n1491 + n1339 );
+assign n1527 = ( n1350 + n1526 );
+assign n1528 = n1527[8:8];
+assign n1529 = n1527[7:7];
+assign n1530 = ( n1528 == n1529 );
+assign n1531 = !( n1530 );
+assign n1532 = ( n1531 ) ? ( n0043 ) : ( n1067 );
+assign n1533 = { ( n1525 ), ( n1519 ), ( n1249 ), ( n1532 ), ( n1251 ) };
+assign n1534 = n1533[7:1];
+assign n1535 = { ( n1534 ), ( n1515 ) };
+assign PSW_2b = n1535;
 // 
 // ACC_2c
 // 
-assign ACC_2c = n1508;
+assign ACC_2c = n1482;
 // 
 // PC_2c
 // 
@@ -6677,11 +6100,11 @@ assign PC_2c = n0612;
 // 
 // PSW_2c
 // 
-assign PSW_2c = n1561;
+assign PSW_2c = n1535;
 // 
 // ACC_2d
 // 
-assign ACC_2d = n1508;
+assign ACC_2d = n1482;
 // 
 // PC_2d
 // 
@@ -6689,11 +6112,11 @@ assign PC_2d = n0612;
 // 
 // PSW_2d
 // 
-assign PSW_2d = n1542;
+assign PSW_2d = n1516;
 // 
 // ACC_2e
 // 
-assign ACC_2e = n1508;
+assign ACC_2e = n1482;
 // 
 // PC_2e
 // 
@@ -6701,14 +6124,14 @@ assign PC_2e = n0612;
 // 
 // PSW_2e
 // 
-assign n1562 = { ( n1551 ), ( n1516 ), ( n1264 ), ( n1558 ), ( n1266 ) };
-assign n1563 = n1562[7:1];
-assign n1564 = { ( n1563 ), ( n1541 ) };
-assign PSW_2e = n1564;
+assign n1536 = { ( n1525 ), ( n1490 ), ( n1249 ), ( n1532 ), ( n1251 ) };
+assign n1537 = n1536[7:1];
+assign n1538 = { ( n1537 ), ( n1515 ) };
+assign PSW_2e = n1538;
 // 
 // ACC_2f
 // 
-assign ACC_2f = n1508;
+assign ACC_2f = n1482;
 // 
 // PC_2f
 // 
@@ -6716,13 +6139,13 @@ assign PC_2f = n0612;
 // 
 // PSW_2f
 // 
-assign PSW_2f = n1564;
+assign PSW_2f = n1538;
 // 
 // PC_30
 // 
-assign n1565 = ( n1214 == n1067 );
-assign n1566 = ( n1565 ) ? ( n1219 ) : ( n1217 );
-assign PC_30 = n1566;
+assign n1539 = ( n1202 == n1067 );
+assign n1540 = ( n1539 ) ? ( n1207 ) : ( n1205 );
+assign PC_30 = n1540;
 // 
 // PSW_30
 // 
@@ -6737,7 +6160,7 @@ assign PC_31 = n1029;
 // 
 // SP_31
 // 
-assign SP_31 = n1256;
+assign SP_31 = n1241;
 // 
 // PSW_31
 // 
@@ -6745,11 +6168,11 @@ assign PSW_31 = n1024;
 // 
 // PC_32
 // 
-assign PC_32 = n1343;
+assign PC_32 = n1317;
 // 
 // SP_32
 // 
-assign SP_32 = n1344;
+assign SP_32 = n1318;
 // 
 // PSW_32
 // 
@@ -6757,10 +6180,10 @@ assign PSW_32 = n1024;
 // 
 // ACC_33
 // 
-assign n1567 = { ( n1259 ), ( ACC ) };
-assign n1568 = { n1567[7:0], n1567[8] };
-assign n1569 = n1568[7:0];
-assign ACC_33 = n1569;
+assign n1541 = { ( n1244 ), ( ACC ) };
+assign n1542 = { n1541[7:0], n1541[8] };
+assign n1543 = n1542[7:0];
+assign ACC_33 = n1543;
 // 
 // PC_33
 // 
@@ -6768,32 +6191,32 @@ assign PC_33 = n0612;
 // 
 // PSW_33
 // 
-assign n1570 = { ( n1009 ), ( n1263 ), ( n1264 ), ( n1265 ), ( n1266 ) };
-assign n1571 = n1570[7:1];
-assign n1572 = n1569[7:7];
-assign n1573 = n1569[6:6];
-assign n1574 = n1569[5:5];
-assign n1575 = n1569[4:4];
-assign n1576 = n1569[3:3];
-assign n1577 = n1569[2:2];
-assign n1578 = n1569[1:1];
-assign n1579 = n1569[0:0];
-assign n1580 = ( n1578 ^ n1579 );
-assign n1581 = ( n1577 ^ n1580 );
-assign n1582 = ( n1576 ^ n1581 );
-assign n1583 = ( n1575 ^ n1582 );
-assign n1584 = ( n1574 ^ n1583 );
-assign n1585 = ( n1573 ^ n1584 );
-assign n1586 = ( n1572 ^ n1585 );
-assign n1587 = { ( n1571 ), ( n1586 ) };
-assign PSW_33 = n1587;
+assign n1544 = { ( n1009 ), ( n1248 ), ( n1249 ), ( n1250 ), ( n1251 ) };
+assign n1545 = n1544[7:1];
+assign n1546 = n1543[7:7];
+assign n1547 = n1543[6:6];
+assign n1548 = n1543[5:5];
+assign n1549 = n1543[4:4];
+assign n1550 = n1543[3:3];
+assign n1551 = n1543[2:2];
+assign n1552 = n1543[1:1];
+assign n1553 = n1543[0:0];
+assign n1554 = ( n1552 ^ n1553 );
+assign n1555 = ( n1551 ^ n1554 );
+assign n1556 = ( n1550 ^ n1555 );
+assign n1557 = ( n1549 ^ n1556 );
+assign n1558 = ( n1548 ^ n1557 );
+assign n1559 = ( n1547 ^ n1558 );
+assign n1560 = ( n1546 ^ n1559 );
+assign n1561 = { ( n1545 ), ( n1560 ) };
+assign PSW_33 = n1561;
 // 
 // ACC_34
 // 
-assign n1588 = { 7'b0, n1259 };
-assign n1589 = ( RD_ROM_1 + n1588 );
-assign n1590 = ( ACC + n1589 );
-assign ACC_34 = n1590;
+assign n1562 = { 7'b0, n1244 };
+assign n1563 = ( RD_ROM_1 + n1562 );
+assign n1564 = ( ACC + n1563 );
+assign ACC_34 = n1564;
 // 
 // PC_34
 // 
@@ -6801,46 +6224,46 @@ assign PC_34 = n0610;
 // 
 // PSW_34
 // 
-assign n1591 = { 8'b0, n1259 };
-assign n1592 = ( n1364 + n1591 );
-assign n1593 = ( n1363 + n1592 );
-assign n1594 = n1593[8:8];
-assign n1595 = { 4'b0, n1259 };
-assign n1596 = ( n1371 + n1595 );
-assign n1597 = ( n1370 + n1596 );
-assign n1598 = n1597[4:4];
-assign n1599 = ( n1377 + n1591 );
-assign n1600 = ( n1376 + n1599 );
-assign n1601 = n1600[8:8];
-assign n1602 = n1600[7:7];
-assign n1603 = ( n1601 == n1602 );
-assign n1604 = !( n1603 );
-assign n1605 = ( n1604 ) ? ( n0043 ) : ( n1067 );
-assign n1606 = { ( n1594 ), ( n1598 ), ( n1264 ), ( n1605 ), ( n1266 ) };
-assign n1607 = n1606[7:1];
-assign n1608 = n1590[7:7];
-assign n1609 = n1590[6:6];
-assign n1610 = n1590[5:5];
-assign n1611 = n1590[4:4];
-assign n1612 = n1590[3:3];
-assign n1613 = n1590[2:2];
-assign n1614 = n1590[1:1];
-assign n1615 = n1590[0:0];
-assign n1616 = ( n1614 ^ n1615 );
-assign n1617 = ( n1613 ^ n1616 );
-assign n1618 = ( n1612 ^ n1617 );
-assign n1619 = ( n1611 ^ n1618 );
-assign n1620 = ( n1610 ^ n1619 );
-assign n1621 = ( n1609 ^ n1620 );
-assign n1622 = ( n1608 ^ n1621 );
-assign n1623 = { ( n1607 ), ( n1622 ) };
-assign PSW_34 = n1623;
+assign n1565 = { 8'b0, n1244 };
+assign n1566 = ( n1338 + n1565 );
+assign n1567 = ( n1337 + n1566 );
+assign n1568 = n1567[8:8];
+assign n1569 = { 4'b0, n1244 };
+assign n1570 = ( n1345 + n1569 );
+assign n1571 = ( n1344 + n1570 );
+assign n1572 = n1571[4:4];
+assign n1573 = ( n1351 + n1565 );
+assign n1574 = ( n1350 + n1573 );
+assign n1575 = n1574[8:8];
+assign n1576 = n1574[7:7];
+assign n1577 = ( n1575 == n1576 );
+assign n1578 = !( n1577 );
+assign n1579 = ( n1578 ) ? ( n0043 ) : ( n1067 );
+assign n1580 = { ( n1568 ), ( n1572 ), ( n1249 ), ( n1579 ), ( n1251 ) };
+assign n1581 = n1580[7:1];
+assign n1582 = n1564[7:7];
+assign n1583 = n1564[6:6];
+assign n1584 = n1564[5:5];
+assign n1585 = n1564[4:4];
+assign n1586 = n1564[3:3];
+assign n1587 = n1564[2:2];
+assign n1588 = n1564[1:1];
+assign n1589 = n1564[0:0];
+assign n1590 = ( n1588 ^ n1589 );
+assign n1591 = ( n1587 ^ n1590 );
+assign n1592 = ( n1586 ^ n1591 );
+assign n1593 = ( n1585 ^ n1592 );
+assign n1594 = ( n1584 ^ n1593 );
+assign n1595 = ( n1583 ^ n1594 );
+assign n1596 = ( n1582 ^ n1595 );
+assign n1597 = { ( n1581 ), ( n1596 ) };
+assign PSW_34 = n1597;
 // 
 // ACC_35
 // 
-assign n1624 = ( n1420 + n1588 );
-assign n1625 = ( ACC + n1624 );
-assign ACC_35 = n1625;
+assign n1598 = ( n1394 + n1562 );
+assign n1599 = ( ACC + n1598 );
+assign ACC_35 = n1599;
 // 
 // PC_35
 // 
@@ -6848,44 +6271,44 @@ assign PC_35 = n0610;
 // 
 // PSW_35
 // 
-assign n1626 = ( n1422 + n1591 );
-assign n1627 = ( n1363 + n1626 );
-assign n1628 = n1627[8:8];
-assign n1629 = ( n1427 + n1595 );
-assign n1630 = ( n1370 + n1629 );
-assign n1631 = n1630[4:4];
-assign n1632 = ( n1432 + n1591 );
-assign n1633 = ( n1376 + n1632 );
-assign n1634 = n1633[8:8];
-assign n1635 = n1633[7:7];
-assign n1636 = ( n1634 == n1635 );
-assign n1637 = !( n1636 );
-assign n1638 = ( n1637 ) ? ( n0043 ) : ( n1067 );
-assign n1639 = { ( n1628 ), ( n1631 ), ( n1264 ), ( n1638 ), ( n1266 ) };
-assign n1640 = n1639[7:1];
-assign n1641 = n1625[7:7];
-assign n1642 = n1625[6:6];
-assign n1643 = n1625[5:5];
-assign n1644 = n1625[4:4];
-assign n1645 = n1625[3:3];
-assign n1646 = n1625[2:2];
-assign n1647 = n1625[1:1];
-assign n1648 = n1625[0:0];
-assign n1649 = ( n1647 ^ n1648 );
-assign n1650 = ( n1646 ^ n1649 );
-assign n1651 = ( n1645 ^ n1650 );
-assign n1652 = ( n1644 ^ n1651 );
-assign n1653 = ( n1643 ^ n1652 );
-assign n1654 = ( n1642 ^ n1653 );
-assign n1655 = ( n1641 ^ n1654 );
-assign n1656 = { ( n1640 ), ( n1655 ) };
-assign PSW_35 = n1656;
+assign n1600 = ( n1396 + n1565 );
+assign n1601 = ( n1337 + n1600 );
+assign n1602 = n1601[8:8];
+assign n1603 = ( n1401 + n1569 );
+assign n1604 = ( n1344 + n1603 );
+assign n1605 = n1604[4:4];
+assign n1606 = ( n1406 + n1565 );
+assign n1607 = ( n1350 + n1606 );
+assign n1608 = n1607[8:8];
+assign n1609 = n1607[7:7];
+assign n1610 = ( n1608 == n1609 );
+assign n1611 = !( n1610 );
+assign n1612 = ( n1611 ) ? ( n0043 ) : ( n1067 );
+assign n1613 = { ( n1602 ), ( n1605 ), ( n1249 ), ( n1612 ), ( n1251 ) };
+assign n1614 = n1613[7:1];
+assign n1615 = n1599[7:7];
+assign n1616 = n1599[6:6];
+assign n1617 = n1599[5:5];
+assign n1618 = n1599[4:4];
+assign n1619 = n1599[3:3];
+assign n1620 = n1599[2:2];
+assign n1621 = n1599[1:1];
+assign n1622 = n1599[0:0];
+assign n1623 = ( n1621 ^ n1622 );
+assign n1624 = ( n1620 ^ n1623 );
+assign n1625 = ( n1619 ^ n1624 );
+assign n1626 = ( n1618 ^ n1625 );
+assign n1627 = ( n1617 ^ n1626 );
+assign n1628 = ( n1616 ^ n1627 );
+assign n1629 = ( n1615 ^ n1628 );
+assign n1630 = { ( n1614 ), ( n1629 ) };
+assign PSW_35 = n1630;
 // 
 // ACC_36
 // 
-assign n1657 = ( RD_IRAM_1 + n1588 );
-assign n1658 = ( ACC + n1657 );
-assign ACC_36 = n1658;
+assign n1631 = ( RD_IRAM_1 + n1562 );
+assign n1632 = ( ACC + n1631 );
+assign ACC_36 = n1632;
 // 
 // PC_36
 // 
@@ -6893,42 +6316,42 @@ assign PC_36 = n0612;
 // 
 // PSW_36
 // 
-assign n1659 = ( n1459 + n1591 );
-assign n1660 = ( n1363 + n1659 );
-assign n1661 = n1660[8:8];
-assign n1662 = ( n1464 + n1595 );
-assign n1663 = ( n1370 + n1662 );
-assign n1664 = n1663[4:4];
-assign n1665 = ( n1468 + n1591 );
-assign n1666 = ( n1376 + n1665 );
-assign n1667 = n1666[8:8];
-assign n1668 = n1666[7:7];
-assign n1669 = ( n1667 == n1668 );
-assign n1670 = !( n1669 );
-assign n1671 = ( n1670 ) ? ( n0043 ) : ( n1067 );
-assign n1672 = { ( n1661 ), ( n1664 ), ( n1264 ), ( n1671 ), ( n1266 ) };
-assign n1673 = n1672[7:1];
-assign n1674 = n1658[7:7];
-assign n1675 = n1658[6:6];
-assign n1676 = n1658[5:5];
-assign n1677 = n1658[4:4];
-assign n1678 = n1658[3:3];
-assign n1679 = n1658[2:2];
-assign n1680 = n1658[1:1];
-assign n1681 = n1658[0:0];
-assign n1682 = ( n1680 ^ n1681 );
-assign n1683 = ( n1679 ^ n1682 );
-assign n1684 = ( n1678 ^ n1683 );
-assign n1685 = ( n1677 ^ n1684 );
-assign n1686 = ( n1676 ^ n1685 );
-assign n1687 = ( n1675 ^ n1686 );
-assign n1688 = ( n1674 ^ n1687 );
-assign n1689 = { ( n1673 ), ( n1688 ) };
-assign PSW_36 = n1689;
+assign n1633 = ( n1433 + n1565 );
+assign n1634 = ( n1337 + n1633 );
+assign n1635 = n1634[8:8];
+assign n1636 = ( n1438 + n1569 );
+assign n1637 = ( n1344 + n1636 );
+assign n1638 = n1637[4:4];
+assign n1639 = ( n1442 + n1565 );
+assign n1640 = ( n1350 + n1639 );
+assign n1641 = n1640[8:8];
+assign n1642 = n1640[7:7];
+assign n1643 = ( n1641 == n1642 );
+assign n1644 = !( n1643 );
+assign n1645 = ( n1644 ) ? ( n0043 ) : ( n1067 );
+assign n1646 = { ( n1635 ), ( n1638 ), ( n1249 ), ( n1645 ), ( n1251 ) };
+assign n1647 = n1646[7:1];
+assign n1648 = n1632[7:7];
+assign n1649 = n1632[6:6];
+assign n1650 = n1632[5:5];
+assign n1651 = n1632[4:4];
+assign n1652 = n1632[3:3];
+assign n1653 = n1632[2:2];
+assign n1654 = n1632[1:1];
+assign n1655 = n1632[0:0];
+assign n1656 = ( n1654 ^ n1655 );
+assign n1657 = ( n1653 ^ n1656 );
+assign n1658 = ( n1652 ^ n1657 );
+assign n1659 = ( n1651 ^ n1658 );
+assign n1660 = ( n1650 ^ n1659 );
+assign n1661 = ( n1649 ^ n1660 );
+assign n1662 = ( n1648 ^ n1661 );
+assign n1663 = { ( n1647 ), ( n1662 ) };
+assign PSW_36 = n1663;
 // 
 // ACC_37
 // 
-assign ACC_37 = n1658;
+assign ACC_37 = n1632;
 // 
 // PC_37
 // 
@@ -6936,13 +6359,13 @@ assign PC_37 = n0612;
 // 
 // PSW_37
 // 
-assign PSW_37 = n1689;
+assign PSW_37 = n1663;
 // 
 // ACC_38
 // 
-assign n1690 = ( RD_IRAM_0 + n1588 );
-assign n1691 = ( ACC + n1690 );
-assign ACC_38 = n1691;
+assign n1664 = ( RD_IRAM_0 + n1562 );
+assign n1665 = ( ACC + n1664 );
+assign ACC_38 = n1665;
 // 
 // PC_38
 // 
@@ -6950,42 +6373,42 @@ assign PC_38 = n0612;
 // 
 // PSW_38
 // 
-assign n1692 = ( n1509 + n1591 );
-assign n1693 = ( n1363 + n1692 );
-assign n1694 = n1693[8:8];
-assign n1695 = ( n1513 + n1595 );
-assign n1696 = ( n1370 + n1695 );
-assign n1697 = n1696[4:4];
-assign n1698 = ( n1517 + n1591 );
-assign n1699 = ( n1376 + n1698 );
-assign n1700 = n1699[8:8];
-assign n1701 = n1699[7:7];
-assign n1702 = ( n1700 == n1701 );
-assign n1703 = !( n1702 );
-assign n1704 = ( n1703 ) ? ( n0043 ) : ( n1067 );
-assign n1705 = { ( n1694 ), ( n1697 ), ( n1264 ), ( n1704 ), ( n1266 ) };
-assign n1706 = n1705[7:1];
-assign n1707 = n1691[7:7];
-assign n1708 = n1691[6:6];
-assign n1709 = n1691[5:5];
-assign n1710 = n1691[4:4];
-assign n1711 = n1691[3:3];
-assign n1712 = n1691[2:2];
-assign n1713 = n1691[1:1];
-assign n1714 = n1691[0:0];
-assign n1715 = ( n1713 ^ n1714 );
-assign n1716 = ( n1712 ^ n1715 );
-assign n1717 = ( n1711 ^ n1716 );
-assign n1718 = ( n1710 ^ n1717 );
-assign n1719 = ( n1709 ^ n1718 );
-assign n1720 = ( n1708 ^ n1719 );
-assign n1721 = ( n1707 ^ n1720 );
-assign n1722 = { ( n1706 ), ( n1721 ) };
-assign PSW_38 = n1722;
+assign n1666 = ( n1483 + n1565 );
+assign n1667 = ( n1337 + n1666 );
+assign n1668 = n1667[8:8];
+assign n1669 = ( n1487 + n1569 );
+assign n1670 = ( n1344 + n1669 );
+assign n1671 = n1670[4:4];
+assign n1672 = ( n1491 + n1565 );
+assign n1673 = ( n1350 + n1672 );
+assign n1674 = n1673[8:8];
+assign n1675 = n1673[7:7];
+assign n1676 = ( n1674 == n1675 );
+assign n1677 = !( n1676 );
+assign n1678 = ( n1677 ) ? ( n0043 ) : ( n1067 );
+assign n1679 = { ( n1668 ), ( n1671 ), ( n1249 ), ( n1678 ), ( n1251 ) };
+assign n1680 = n1679[7:1];
+assign n1681 = n1665[7:7];
+assign n1682 = n1665[6:6];
+assign n1683 = n1665[5:5];
+assign n1684 = n1665[4:4];
+assign n1685 = n1665[3:3];
+assign n1686 = n1665[2:2];
+assign n1687 = n1665[1:1];
+assign n1688 = n1665[0:0];
+assign n1689 = ( n1687 ^ n1688 );
+assign n1690 = ( n1686 ^ n1689 );
+assign n1691 = ( n1685 ^ n1690 );
+assign n1692 = ( n1684 ^ n1691 );
+assign n1693 = ( n1683 ^ n1692 );
+assign n1694 = ( n1682 ^ n1693 );
+assign n1695 = ( n1681 ^ n1694 );
+assign n1696 = { ( n1680 ), ( n1695 ) };
+assign PSW_38 = n1696;
 // 
 // ACC_39
 // 
-assign ACC_39 = n1691;
+assign ACC_39 = n1665;
 // 
 // PC_39
 // 
@@ -6993,11 +6416,11 @@ assign PC_39 = n0612;
 // 
 // PSW_39
 // 
-assign PSW_39 = n1722;
+assign PSW_39 = n1696;
 // 
 // ACC_3a
 // 
-assign ACC_3a = n1691;
+assign ACC_3a = n1665;
 // 
 // PC_3a
 // 
@@ -7005,11 +6428,11 @@ assign PC_3a = n0612;
 // 
 // PSW_3a
 // 
-assign PSW_3a = n1722;
+assign PSW_3a = n1696;
 // 
 // ACC_3b
 // 
-assign ACC_3b = n1691;
+assign ACC_3b = n1665;
 // 
 // PC_3b
 // 
@@ -7017,11 +6440,11 @@ assign PC_3b = n0612;
 // 
 // PSW_3b
 // 
-assign PSW_3b = n1722;
+assign PSW_3b = n1696;
 // 
 // ACC_3c
 // 
-assign ACC_3c = n1691;
+assign ACC_3c = n1665;
 // 
 // PC_3c
 // 
@@ -7029,11 +6452,11 @@ assign PC_3c = n0612;
 // 
 // PSW_3c
 // 
-assign PSW_3c = n1722;
+assign PSW_3c = n1696;
 // 
 // ACC_3d
 // 
-assign ACC_3d = n1691;
+assign ACC_3d = n1665;
 // 
 // PC_3d
 // 
@@ -7041,11 +6464,11 @@ assign PC_3d = n0612;
 // 
 // PSW_3d
 // 
-assign PSW_3d = n1722;
+assign PSW_3d = n1696;
 // 
 // ACC_3e
 // 
-assign ACC_3e = n1691;
+assign ACC_3e = n1665;
 // 
 // PC_3e
 // 
@@ -7053,11 +6476,11 @@ assign PC_3e = n0612;
 // 
 // PSW_3e
 // 
-assign PSW_3e = n1722;
+assign PSW_3e = n1696;
 // 
 // ACC_3f
 // 
-assign ACC_3f = n1691;
+assign ACC_3f = n1665;
 // 
 // PC_3f
 // 
@@ -7065,15 +6488,15 @@ assign PC_3f = n0612;
 // 
 // PSW_3f
 // 
-assign PSW_3f = n1722;
+assign PSW_3f = n1696;
 // 
 // PC_40
 // 
-assign n1723 = ( n1259 == n0043 );
-assign n1724 = { RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1 };
-assign n1725 = ( n0610 + n1724 );
-assign n1726 = ( n1723 ) ? ( n1725 ) : ( n0610 );
-assign PC_40 = n1726;
+assign n1697 = ( n1244 == n0043 );
+assign n1698 = { RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1[7], RD_ROM_1 };
+assign n1699 = ( n0610 + n1698 );
+assign n1700 = ( n1697 ) ? ( n1699 ) : ( n0610 );
+assign PC_40 = n1700;
 // 
 // PSW_40
 // 
@@ -7087,56 +6510,21 @@ assign PC_41 = n1029;
 // 
 assign PSW_41 = n1024;
 // 
-// PCON_42
-// 
-assign n1727 = ( n1116 | ACC );
-assign n1728 = ( n1076 ) ? ( n1727 ) : ( PCON );
-assign PCON_42 = n1728;
-// 
 // B_42
 // 
-assign n1729 = ( n1093 ) ? ( n1727 ) : ( B );
-assign B_42 = n1729;
-// 
-// TMOD_42
-// 
-assign n1730 = ( n1078 ) ? ( n1727 ) : ( TMOD );
-assign TMOD_42 = n1730;
+assign n1701 = ( n1116 | ACC );
+assign n1702 = ( n1093 ) ? ( n1701 ) : ( B );
+assign B_42 = n1702;
 // 
 // DPL_42
 // 
-assign n1731 = ( n1073 ) ? ( n1727 ) : ( DPL );
-assign DPL_42 = n1731;
+assign n1703 = ( n1073 ) ? ( n1701 ) : ( DPL );
+assign DPL_42 = n1703;
 // 
 // DPH_42
 // 
-assign n1732 = ( n1075 ) ? ( n1727 ) : ( DPH );
-assign DPH_42 = n1732;
-// 
-// TL1_42
-// 
-assign n1733 = ( n1081 ) ? ( n1727 ) : ( TL1 );
-assign TL1_42 = n1733;
-// 
-// TL0_42
-// 
-assign n1734 = ( n1079 ) ? ( n1727 ) : ( TL0 );
-assign TL0_42 = n1734;
-// 
-// IE_42
-// 
-assign n1735 = ( n1088 ) ? ( n1727 ) : ( IE );
-assign IE_42 = n1735;
-// 
-// TH1_42
-// 
-assign n1736 = ( n1082 ) ? ( n1727 ) : ( TH1 );
-assign TH1_42 = n1736;
-// 
-// TH0_42
-// 
-assign n1737 = ( n1080 ) ? ( n1727 ) : ( TH0 );
-assign TH0_42 = n1737;
+assign n1704 = ( n1075 ) ? ( n1701 ) : ( DPH );
+assign DPH_42 = n1704;
 // 
 // PC_42
 // 
@@ -7144,193 +6532,118 @@ assign PC_42 = n0610;
 // 
 // P2_42
 // 
-assign n1738 = ( n1087 ) ? ( n1727 ) : ( P2 );
-assign P2_42 = n1738;
+assign n1705 = ( n1087 ) ? ( n1701 ) : ( P2 );
+assign P2_42 = n1705;
 // 
 // P3_42
 // 
-assign n1739 = ( n1089 ) ? ( n1727 ) : ( P3 );
-assign P3_42 = n1739;
+assign n1706 = ( n1089 ) ? ( n1701 ) : ( P3 );
+assign P3_42 = n1706;
 // 
 // P0_42
 // 
-assign n1740 = ( n1070 ) ? ( n1727 ) : ( P0 );
-assign P0_42 = n1740;
+assign n1707 = ( n1070 ) ? ( n1701 ) : ( P0 );
+assign P0_42 = n1707;
 // 
 // P1_42
 // 
-assign n1741 = ( n1084 ) ? ( n1727 ) : ( P1 );
-assign P1_42 = n1741;
+assign n1708 = ( n1084 ) ? ( n1701 ) : ( P1 );
+assign P1_42 = n1708;
 // 
 // IRAM_42
 // 
 // 
-// IP_42
-// 
-assign n1742 = ( n1090 ) ? ( n1727 ) : ( IP );
-assign IP_42 = n1742;
-// 
-// TCON_42
-// 
-assign n1743 = ( n1077 ) ? ( n1727 ) : ( TCON );
-assign TCON_42 = n1743;
-// 
-// SCON_42
-// 
-assign n1744 = ( n1085 ) ? ( n1727 ) : ( SCON );
-assign SCON_42 = n1744;
-// 
 // SP_42
 // 
-assign n1745 = ( n1072 ) ? ( n1727 ) : ( SP );
-assign SP_42 = n1745;
-// 
-// SBUF_42
-// 
-assign n1746 = ( n1086 ) ? ( n1727 ) : ( SBUF );
-assign SBUF_42 = n1746;
+assign n1709 = ( n1072 ) ? ( n1701 ) : ( SP );
+assign SP_42 = n1709;
 // 
 // PSW_42
 // 
-assign n1747 = ( n1091 ) ? ( n1727 ) : ( PSW );
-assign n1748 = n1747[7:1];
-assign n1749 = { ( n1748 ), ( n1023 ) };
-assign PSW_42 = n1749;
+assign n1710 = ( n1091 ) ? ( n1701 ) : ( PSW );
+assign n1711 = n1710[7:1];
+assign n1712 = { ( n1711 ), ( n1023 ) };
+assign PSW_42 = n1712;
 // 
 // ACC_43
 // 
-assign n1750 = ( n1116 | RD_ROM_2 );
-assign n1751 = ( n1066 ) ? ( n1750 ) : ( ACC );
-assign ACC_43 = n1751;
-// 
-// PCON_43
-// 
-assign n1752 = ( n1076 ) ? ( n1750 ) : ( PCON );
-assign PCON_43 = n1752;
-// 
-// B_43
-// 
-assign n1753 = ( n1093 ) ? ( n1750 ) : ( B );
-assign B_43 = n1753;
-// 
-// TMOD_43
-// 
-assign n1754 = ( n1078 ) ? ( n1750 ) : ( TMOD );
-assign TMOD_43 = n1754;
-// 
-// DPL_43
-// 
-assign n1755 = ( n1073 ) ? ( n1750 ) : ( DPL );
-assign DPL_43 = n1755;
-// 
-// DPH_43
-// 
-assign n1756 = ( n1075 ) ? ( n1750 ) : ( DPH );
-assign DPH_43 = n1756;
-// 
-// TL1_43
-// 
-assign n1757 = ( n1081 ) ? ( n1750 ) : ( TL1 );
-assign TL1_43 = n1757;
-// 
-// TL0_43
-// 
-assign n1758 = ( n1079 ) ? ( n1750 ) : ( TL0 );
-assign TL0_43 = n1758;
-// 
-// IE_43
-// 
-assign n1759 = ( n1088 ) ? ( n1750 ) : ( IE );
-assign IE_43 = n1759;
-// 
-// TH1_43
-// 
-assign n1760 = ( n1082 ) ? ( n1750 ) : ( TH1 );
-assign TH1_43 = n1760;
-// 
-// TH0_43
-// 
-assign n1761 = ( n1080 ) ? ( n1750 ) : ( TH0 );
-assign TH0_43 = n1761;
-// 
-// PC_43
-// 
-assign PC_43 = n1217;
-// 
-// P2_43
-// 
-assign n1762 = ( n1087 ) ? ( n1750 ) : ( P2 );
-assign P2_43 = n1762;
-// 
-// P3_43
-// 
-assign n1763 = ( n1089 ) ? ( n1750 ) : ( P3 );
-assign P3_43 = n1763;
-// 
-// P0_43
-// 
-assign n1764 = ( n1070 ) ? ( n1750 ) : ( P0 );
-assign P0_43 = n1764;
+assign n1713 = ( n1116 | RD_ROM_2 );
+assign n1714 = ( n1066 ) ? ( n1713 ) : ( ACC );
+assign ACC_43 = n1714;
 // 
 // P1_43
 // 
-assign n1765 = ( n1084 ) ? ( n1750 ) : ( P1 );
-assign P1_43 = n1765;
+assign n1715 = ( n1084 ) ? ( n1713 ) : ( P1 );
+assign P1_43 = n1715;
+// 
+// DPL_43
+// 
+assign n1716 = ( n1073 ) ? ( n1713 ) : ( DPL );
+assign DPL_43 = n1716;
+// 
+// DPH_43
+// 
+assign n1717 = ( n1075 ) ? ( n1713 ) : ( DPH );
+assign DPH_43 = n1717;
+// 
+// PC_43
+// 
+assign PC_43 = n1205;
+// 
+// P2_43
+// 
+assign n1718 = ( n1087 ) ? ( n1713 ) : ( P2 );
+assign P2_43 = n1718;
+// 
+// P3_43
+// 
+assign n1719 = ( n1089 ) ? ( n1713 ) : ( P3 );
+assign P3_43 = n1719;
+// 
+// P0_43
+// 
+assign n1720 = ( n1070 ) ? ( n1713 ) : ( P0 );
+assign P0_43 = n1720;
+// 
+// B_43
+// 
+assign n1721 = ( n1093 ) ? ( n1713 ) : ( B );
+assign B_43 = n1721;
 // 
 // IRAM_43
 // 
 // 
-// IP_43
-// 
-assign n1766 = ( n1090 ) ? ( n1750 ) : ( IP );
-assign IP_43 = n1766;
-// 
-// TCON_43
-// 
-assign n1767 = ( n1077 ) ? ( n1750 ) : ( TCON );
-assign TCON_43 = n1767;
-// 
-// SCON_43
-// 
-assign n1768 = ( n1085 ) ? ( n1750 ) : ( SCON );
-assign SCON_43 = n1768;
-// 
 // SP_43
 // 
-assign n1769 = ( n1072 ) ? ( n1750 ) : ( SP );
-assign SP_43 = n1769;
-// 
-// SBUF_43
-// 
-assign n1770 = ( n1086 ) ? ( n1750 ) : ( SBUF );
-assign SBUF_43 = n1770;
+assign n1722 = ( n1072 ) ? ( n1713 ) : ( SP );
+assign SP_43 = n1722;
 // 
 // PSW_43
 // 
-assign n1771 = ( n1091 ) ? ( n1750 ) : ( PSW );
-assign n1772 = n1771[7:1];
-assign n1773 = n1751[7:7];
-assign n1774 = n1751[6:6];
-assign n1775 = n1751[5:5];
-assign n1776 = n1751[4:4];
-assign n1777 = n1751[3:3];
-assign n1778 = n1751[2:2];
-assign n1779 = n1751[1:1];
-assign n1780 = n1751[0:0];
-assign n1781 = ( n1779 ^ n1780 );
-assign n1782 = ( n1778 ^ n1781 );
-assign n1783 = ( n1777 ^ n1782 );
-assign n1784 = ( n1776 ^ n1783 );
-assign n1785 = ( n1775 ^ n1784 );
-assign n1786 = ( n1774 ^ n1785 );
-assign n1787 = ( n1773 ^ n1786 );
-assign n1788 = { ( n1772 ), ( n1787 ) };
-assign PSW_43 = n1788;
+assign n1723 = ( n1091 ) ? ( n1713 ) : ( PSW );
+assign n1724 = n1723[7:1];
+assign n1725 = n1714[7:7];
+assign n1726 = n1714[6:6];
+assign n1727 = n1714[5:5];
+assign n1728 = n1714[4:4];
+assign n1729 = n1714[3:3];
+assign n1730 = n1714[2:2];
+assign n1731 = n1714[1:1];
+assign n1732 = n1714[0:0];
+assign n1733 = ( n1731 ^ n1732 );
+assign n1734 = ( n1730 ^ n1733 );
+assign n1735 = ( n1729 ^ n1734 );
+assign n1736 = ( n1728 ^ n1735 );
+assign n1737 = ( n1727 ^ n1736 );
+assign n1738 = ( n1726 ^ n1737 );
+assign n1739 = ( n1725 ^ n1738 );
+assign n1740 = { ( n1724 ), ( n1739 ) };
+assign PSW_43 = n1740;
 // 
 // ACC_44
 // 
-assign n1789 = ( ACC | RD_ROM_1 );
-assign ACC_44 = n1789;
+assign n1741 = ( ACC | RD_ROM_1 );
+assign ACC_44 = n1741;
 // 
 // PC_44
 // 
@@ -7338,28 +6651,28 @@ assign PC_44 = n0610;
 // 
 // PSW_44
 // 
-assign n1790 = n1789[7:7];
-assign n1791 = n1789[6:6];
-assign n1792 = n1789[5:5];
-assign n1793 = n1789[4:4];
-assign n1794 = n1789[3:3];
-assign n1795 = n1789[2:2];
-assign n1796 = n1789[1:1];
-assign n1797 = n1789[0:0];
-assign n1798 = ( n1796 ^ n1797 );
-assign n1799 = ( n1795 ^ n1798 );
-assign n1800 = ( n1794 ^ n1799 );
-assign n1801 = ( n1793 ^ n1800 );
-assign n1802 = ( n1792 ^ n1801 );
-assign n1803 = ( n1791 ^ n1802 );
-assign n1804 = ( n1790 ^ n1803 );
-assign n1805 = { ( n1008 ), ( n1804 ) };
-assign PSW_44 = n1805;
+assign n1742 = n1741[7:7];
+assign n1743 = n1741[6:6];
+assign n1744 = n1741[5:5];
+assign n1745 = n1741[4:4];
+assign n1746 = n1741[3:3];
+assign n1747 = n1741[2:2];
+assign n1748 = n1741[1:1];
+assign n1749 = n1741[0:0];
+assign n1750 = ( n1748 ^ n1749 );
+assign n1751 = ( n1747 ^ n1750 );
+assign n1752 = ( n1746 ^ n1751 );
+assign n1753 = ( n1745 ^ n1752 );
+assign n1754 = ( n1744 ^ n1753 );
+assign n1755 = ( n1743 ^ n1754 );
+assign n1756 = ( n1742 ^ n1755 );
+assign n1757 = { ( n1008 ), ( n1756 ) };
+assign PSW_44 = n1757;
 // 
 // ACC_45
 // 
-assign n1806 = ( ACC | n1116 );
-assign ACC_45 = n1806;
+assign n1758 = ( ACC | n1116 );
+assign ACC_45 = n1758;
 // 
 // PC_45
 // 
@@ -7367,28 +6680,28 @@ assign PC_45 = n0610;
 // 
 // PSW_45
 // 
-assign n1807 = n1806[7:7];
-assign n1808 = n1806[6:6];
-assign n1809 = n1806[5:5];
-assign n1810 = n1806[4:4];
-assign n1811 = n1806[3:3];
-assign n1812 = n1806[2:2];
-assign n1813 = n1806[1:1];
-assign n1814 = n1806[0:0];
-assign n1815 = ( n1813 ^ n1814 );
-assign n1816 = ( n1812 ^ n1815 );
-assign n1817 = ( n1811 ^ n1816 );
-assign n1818 = ( n1810 ^ n1817 );
-assign n1819 = ( n1809 ^ n1818 );
-assign n1820 = ( n1808 ^ n1819 );
-assign n1821 = ( n1807 ^ n1820 );
-assign n1822 = { ( n1008 ), ( n1821 ) };
-assign PSW_45 = n1822;
+assign n1759 = n1758[7:7];
+assign n1760 = n1758[6:6];
+assign n1761 = n1758[5:5];
+assign n1762 = n1758[4:4];
+assign n1763 = n1758[3:3];
+assign n1764 = n1758[2:2];
+assign n1765 = n1758[1:1];
+assign n1766 = n1758[0:0];
+assign n1767 = ( n1765 ^ n1766 );
+assign n1768 = ( n1764 ^ n1767 );
+assign n1769 = ( n1763 ^ n1768 );
+assign n1770 = ( n1762 ^ n1769 );
+assign n1771 = ( n1761 ^ n1770 );
+assign n1772 = ( n1760 ^ n1771 );
+assign n1773 = ( n1759 ^ n1772 );
+assign n1774 = { ( n1008 ), ( n1773 ) };
+assign PSW_45 = n1774;
 // 
 // ACC_46
 // 
-assign n1823 = ( ACC | RD_IRAM_1 );
-assign ACC_46 = n1823;
+assign n1775 = ( ACC | RD_IRAM_1 );
+assign ACC_46 = n1775;
 // 
 // PC_46
 // 
@@ -7396,27 +6709,27 @@ assign PC_46 = n0612;
 // 
 // PSW_46
 // 
-assign n1824 = n1823[7:7];
-assign n1825 = n1823[6:6];
-assign n1826 = n1823[5:5];
-assign n1827 = n1823[4:4];
-assign n1828 = n1823[3:3];
-assign n1829 = n1823[2:2];
-assign n1830 = n1823[1:1];
-assign n1831 = n1823[0:0];
-assign n1832 = ( n1830 ^ n1831 );
-assign n1833 = ( n1829 ^ n1832 );
-assign n1834 = ( n1828 ^ n1833 );
-assign n1835 = ( n1827 ^ n1834 );
-assign n1836 = ( n1826 ^ n1835 );
-assign n1837 = ( n1825 ^ n1836 );
-assign n1838 = ( n1824 ^ n1837 );
-assign n1839 = { ( n1008 ), ( n1838 ) };
-assign PSW_46 = n1839;
+assign n1776 = n1775[7:7];
+assign n1777 = n1775[6:6];
+assign n1778 = n1775[5:5];
+assign n1779 = n1775[4:4];
+assign n1780 = n1775[3:3];
+assign n1781 = n1775[2:2];
+assign n1782 = n1775[1:1];
+assign n1783 = n1775[0:0];
+assign n1784 = ( n1782 ^ n1783 );
+assign n1785 = ( n1781 ^ n1784 );
+assign n1786 = ( n1780 ^ n1785 );
+assign n1787 = ( n1779 ^ n1786 );
+assign n1788 = ( n1778 ^ n1787 );
+assign n1789 = ( n1777 ^ n1788 );
+assign n1790 = ( n1776 ^ n1789 );
+assign n1791 = { ( n1008 ), ( n1790 ) };
+assign PSW_46 = n1791;
 // 
 // ACC_47
 // 
-assign ACC_47 = n1823;
+assign ACC_47 = n1775;
 // 
 // PC_47
 // 
@@ -7424,12 +6737,12 @@ assign PC_47 = n0612;
 // 
 // PSW_47
 // 
-assign PSW_47 = n1839;
+assign PSW_47 = n1791;
 // 
 // ACC_48
 // 
-assign n1840 = ( ACC | RD_IRAM_0 );
-assign ACC_48 = n1840;
+assign n1792 = ( ACC | RD_IRAM_0 );
+assign ACC_48 = n1792;
 // 
 // PC_48
 // 
@@ -7437,27 +6750,27 @@ assign PC_48 = n0612;
 // 
 // PSW_48
 // 
-assign n1841 = n1840[7:7];
-assign n1842 = n1840[6:6];
-assign n1843 = n1840[5:5];
-assign n1844 = n1840[4:4];
-assign n1845 = n1840[3:3];
-assign n1846 = n1840[2:2];
-assign n1847 = n1840[1:1];
-assign n1848 = n1840[0:0];
-assign n1849 = ( n1847 ^ n1848 );
-assign n1850 = ( n1846 ^ n1849 );
-assign n1851 = ( n1845 ^ n1850 );
-assign n1852 = ( n1844 ^ n1851 );
-assign n1853 = ( n1843 ^ n1852 );
-assign n1854 = ( n1842 ^ n1853 );
-assign n1855 = ( n1841 ^ n1854 );
-assign n1856 = { ( n1008 ), ( n1855 ) };
-assign PSW_48 = n1856;
+assign n1793 = n1792[7:7];
+assign n1794 = n1792[6:6];
+assign n1795 = n1792[5:5];
+assign n1796 = n1792[4:4];
+assign n1797 = n1792[3:3];
+assign n1798 = n1792[2:2];
+assign n1799 = n1792[1:1];
+assign n1800 = n1792[0:0];
+assign n1801 = ( n1799 ^ n1800 );
+assign n1802 = ( n1798 ^ n1801 );
+assign n1803 = ( n1797 ^ n1802 );
+assign n1804 = ( n1796 ^ n1803 );
+assign n1805 = ( n1795 ^ n1804 );
+assign n1806 = ( n1794 ^ n1805 );
+assign n1807 = ( n1793 ^ n1806 );
+assign n1808 = { ( n1008 ), ( n1807 ) };
+assign PSW_48 = n1808;
 // 
 // ACC_49
 // 
-assign ACC_49 = n1840;
+assign ACC_49 = n1792;
 // 
 // PC_49
 // 
@@ -7465,11 +6778,11 @@ assign PC_49 = n0612;
 // 
 // PSW_49
 // 
-assign PSW_49 = n1856;
+assign PSW_49 = n1808;
 // 
 // ACC_4a
 // 
-assign ACC_4a = n1840;
+assign ACC_4a = n1792;
 // 
 // PC_4a
 // 
@@ -7477,11 +6790,11 @@ assign PC_4a = n0612;
 // 
 // PSW_4a
 // 
-assign PSW_4a = n1856;
+assign PSW_4a = n1808;
 // 
 // ACC_4b
 // 
-assign ACC_4b = n1840;
+assign ACC_4b = n1792;
 // 
 // PC_4b
 // 
@@ -7489,11 +6802,11 @@ assign PC_4b = n0612;
 // 
 // PSW_4b
 // 
-assign PSW_4b = n1856;
+assign PSW_4b = n1808;
 // 
 // ACC_4c
 // 
-assign ACC_4c = n1840;
+assign ACC_4c = n1792;
 // 
 // PC_4c
 // 
@@ -7501,11 +6814,11 @@ assign PC_4c = n0612;
 // 
 // PSW_4c
 // 
-assign PSW_4c = n1856;
+assign PSW_4c = n1808;
 // 
 // ACC_4d
 // 
-assign ACC_4d = n1840;
+assign ACC_4d = n1792;
 // 
 // PC_4d
 // 
@@ -7513,11 +6826,11 @@ assign PC_4d = n0612;
 // 
 // PSW_4d
 // 
-assign PSW_4d = n1856;
+assign PSW_4d = n1808;
 // 
 // ACC_4e
 // 
-assign ACC_4e = n1840;
+assign ACC_4e = n1792;
 // 
 // PC_4e
 // 
@@ -7525,11 +6838,11 @@ assign PC_4e = n0612;
 // 
 // PSW_4e
 // 
-assign PSW_4e = n1856;
+assign PSW_4e = n1808;
 // 
 // ACC_4f
 // 
-assign ACC_4f = n1840;
+assign ACC_4f = n1792;
 // 
 // PC_4f
 // 
@@ -7537,13 +6850,13 @@ assign PC_4f = n0612;
 // 
 // PSW_4f
 // 
-assign PSW_4f = n1856;
+assign PSW_4f = n1808;
 // 
 // PC_50
 // 
-assign n1857 = ( n1259 == n1067 );
-assign n1858 = ( n1857 ) ? ( n1725 ) : ( n0610 );
-assign PC_50 = n1858;
+assign n1809 = ( n1244 == n1067 );
+assign n1810 = ( n1809 ) ? ( n1699 ) : ( n0610 );
+assign PC_50 = n1810;
 // 
 // PSW_50
 // 
@@ -7558,62 +6871,27 @@ assign PC_51 = n1029;
 // 
 // SP_51
 // 
-assign SP_51 = n1256;
+assign SP_51 = n1241;
 // 
 // PSW_51
 // 
 assign PSW_51 = n1024;
 // 
-// PCON_52
-// 
-assign n1859 = ( n1116 & ACC );
-assign n1860 = ( n1076 ) ? ( n1859 ) : ( PCON );
-assign PCON_52 = n1860;
-// 
 // B_52
 // 
-assign n1861 = ( n1093 ) ? ( n1859 ) : ( B );
-assign B_52 = n1861;
-// 
-// TMOD_52
-// 
-assign n1862 = ( n1078 ) ? ( n1859 ) : ( TMOD );
-assign TMOD_52 = n1862;
+assign n1811 = ( n1116 & ACC );
+assign n1812 = ( n1093 ) ? ( n1811 ) : ( B );
+assign B_52 = n1812;
 // 
 // DPL_52
 // 
-assign n1863 = ( n1073 ) ? ( n1859 ) : ( DPL );
-assign DPL_52 = n1863;
+assign n1813 = ( n1073 ) ? ( n1811 ) : ( DPL );
+assign DPL_52 = n1813;
 // 
 // DPH_52
 // 
-assign n1864 = ( n1075 ) ? ( n1859 ) : ( DPH );
-assign DPH_52 = n1864;
-// 
-// TL1_52
-// 
-assign n1865 = ( n1081 ) ? ( n1859 ) : ( TL1 );
-assign TL1_52 = n1865;
-// 
-// TL0_52
-// 
-assign n1866 = ( n1079 ) ? ( n1859 ) : ( TL0 );
-assign TL0_52 = n1866;
-// 
-// TCON_52
-// 
-assign n1867 = ( n1077 ) ? ( n1859 ) : ( TCON );
-assign TCON_52 = n1867;
-// 
-// TH1_52
-// 
-assign n1868 = ( n1082 ) ? ( n1859 ) : ( TH1 );
-assign TH1_52 = n1868;
-// 
-// TH0_52
-// 
-assign n1869 = ( n1080 ) ? ( n1859 ) : ( TH0 );
-assign TH0_52 = n1869;
+assign n1814 = ( n1075 ) ? ( n1811 ) : ( DPH );
+assign DPH_52 = n1814;
 // 
 // PC_52
 // 
@@ -7621,193 +6899,118 @@ assign PC_52 = n0610;
 // 
 // P2_52
 // 
-assign n1870 = ( n1087 ) ? ( n1859 ) : ( P2 );
-assign P2_52 = n1870;
+assign n1815 = ( n1087 ) ? ( n1811 ) : ( P2 );
+assign P2_52 = n1815;
 // 
 // P3_52
 // 
-assign n1871 = ( n1089 ) ? ( n1859 ) : ( P3 );
-assign P3_52 = n1871;
+assign n1816 = ( n1089 ) ? ( n1811 ) : ( P3 );
+assign P3_52 = n1816;
 // 
 // P0_52
 // 
-assign n1872 = ( n1070 ) ? ( n1859 ) : ( P0 );
-assign P0_52 = n1872;
+assign n1817 = ( n1070 ) ? ( n1811 ) : ( P0 );
+assign P0_52 = n1817;
 // 
 // P1_52
 // 
-assign n1873 = ( n1084 ) ? ( n1859 ) : ( P1 );
-assign P1_52 = n1873;
+assign n1818 = ( n1084 ) ? ( n1811 ) : ( P1 );
+assign P1_52 = n1818;
 // 
 // IRAM_52
 // 
 // 
-// IP_52
-// 
-assign n1874 = ( n1090 ) ? ( n1859 ) : ( IP );
-assign IP_52 = n1874;
-// 
-// IE_52
-// 
-assign n1875 = ( n1088 ) ? ( n1859 ) : ( IE );
-assign IE_52 = n1875;
-// 
-// SCON_52
-// 
-assign n1876 = ( n1085 ) ? ( n1859 ) : ( SCON );
-assign SCON_52 = n1876;
-// 
 // SP_52
 // 
-assign n1877 = ( n1072 ) ? ( n1859 ) : ( SP );
-assign SP_52 = n1877;
-// 
-// SBUF_52
-// 
-assign n1878 = ( n1086 ) ? ( n1859 ) : ( SBUF );
-assign SBUF_52 = n1878;
+assign n1819 = ( n1072 ) ? ( n1811 ) : ( SP );
+assign SP_52 = n1819;
 // 
 // PSW_52
 // 
-assign n1879 = ( n1091 ) ? ( n1859 ) : ( PSW );
-assign n1880 = n1879[7:1];
-assign n1881 = { ( n1880 ), ( n1023 ) };
-assign PSW_52 = n1881;
+assign n1820 = ( n1091 ) ? ( n1811 ) : ( PSW );
+assign n1821 = n1820[7:1];
+assign n1822 = { ( n1821 ), ( n1023 ) };
+assign PSW_52 = n1822;
 // 
 // ACC_53
 // 
-assign n1882 = ( n1116 & RD_ROM_2 );
-assign n1883 = ( n1066 ) ? ( n1882 ) : ( ACC );
-assign ACC_53 = n1883;
-// 
-// PCON_53
-// 
-assign n1884 = ( n1076 ) ? ( n1882 ) : ( PCON );
-assign PCON_53 = n1884;
-// 
-// B_53
-// 
-assign n1885 = ( n1093 ) ? ( n1882 ) : ( B );
-assign B_53 = n1885;
-// 
-// TMOD_53
-// 
-assign n1886 = ( n1078 ) ? ( n1882 ) : ( TMOD );
-assign TMOD_53 = n1886;
-// 
-// DPL_53
-// 
-assign n1887 = ( n1073 ) ? ( n1882 ) : ( DPL );
-assign DPL_53 = n1887;
-// 
-// DPH_53
-// 
-assign n1888 = ( n1075 ) ? ( n1882 ) : ( DPH );
-assign DPH_53 = n1888;
-// 
-// TL1_53
-// 
-assign n1889 = ( n1081 ) ? ( n1882 ) : ( TL1 );
-assign TL1_53 = n1889;
-// 
-// TL0_53
-// 
-assign n1890 = ( n1079 ) ? ( n1882 ) : ( TL0 );
-assign TL0_53 = n1890;
-// 
-// IE_53
-// 
-assign n1891 = ( n1088 ) ? ( n1882 ) : ( IE );
-assign IE_53 = n1891;
-// 
-// TH1_53
-// 
-assign n1892 = ( n1082 ) ? ( n1882 ) : ( TH1 );
-assign TH1_53 = n1892;
-// 
-// TH0_53
-// 
-assign n1893 = ( n1080 ) ? ( n1882 ) : ( TH0 );
-assign TH0_53 = n1893;
-// 
-// PC_53
-// 
-assign PC_53 = n1217;
-// 
-// P2_53
-// 
-assign n1894 = ( n1087 ) ? ( n1882 ) : ( P2 );
-assign P2_53 = n1894;
-// 
-// P3_53
-// 
-assign n1895 = ( n1089 ) ? ( n1882 ) : ( P3 );
-assign P3_53 = n1895;
-// 
-// P0_53
-// 
-assign n1896 = ( n1070 ) ? ( n1882 ) : ( P0 );
-assign P0_53 = n1896;
+assign n1823 = ( n1116 & RD_ROM_2 );
+assign n1824 = ( n1066 ) ? ( n1823 ) : ( ACC );
+assign ACC_53 = n1824;
 // 
 // P1_53
 // 
-assign n1897 = ( n1084 ) ? ( n1882 ) : ( P1 );
-assign P1_53 = n1897;
+assign n1825 = ( n1084 ) ? ( n1823 ) : ( P1 );
+assign P1_53 = n1825;
+// 
+// DPL_53
+// 
+assign n1826 = ( n1073 ) ? ( n1823 ) : ( DPL );
+assign DPL_53 = n1826;
+// 
+// DPH_53
+// 
+assign n1827 = ( n1075 ) ? ( n1823 ) : ( DPH );
+assign DPH_53 = n1827;
+// 
+// PC_53
+// 
+assign PC_53 = n1205;
+// 
+// P2_53
+// 
+assign n1828 = ( n1087 ) ? ( n1823 ) : ( P2 );
+assign P2_53 = n1828;
+// 
+// P3_53
+// 
+assign n1829 = ( n1089 ) ? ( n1823 ) : ( P3 );
+assign P3_53 = n1829;
+// 
+// P0_53
+// 
+assign n1830 = ( n1070 ) ? ( n1823 ) : ( P0 );
+assign P0_53 = n1830;
+// 
+// B_53
+// 
+assign n1831 = ( n1093 ) ? ( n1823 ) : ( B );
+assign B_53 = n1831;
 // 
 // IRAM_53
 // 
 // 
-// IP_53
-// 
-assign n1898 = ( n1090 ) ? ( n1882 ) : ( IP );
-assign IP_53 = n1898;
-// 
-// TCON_53
-// 
-assign n1899 = ( n1077 ) ? ( n1882 ) : ( TCON );
-assign TCON_53 = n1899;
-// 
-// SCON_53
-// 
-assign n1900 = ( n1085 ) ? ( n1882 ) : ( SCON );
-assign SCON_53 = n1900;
-// 
 // SP_53
 // 
-assign n1901 = ( n1072 ) ? ( n1882 ) : ( SP );
-assign SP_53 = n1901;
-// 
-// SBUF_53
-// 
-assign n1902 = ( n1086 ) ? ( n1882 ) : ( SBUF );
-assign SBUF_53 = n1902;
+assign n1832 = ( n1072 ) ? ( n1823 ) : ( SP );
+assign SP_53 = n1832;
 // 
 // PSW_53
 // 
-assign n1903 = ( n1091 ) ? ( n1882 ) : ( PSW );
-assign n1904 = n1903[7:1];
-assign n1905 = n1883[7:7];
-assign n1906 = n1883[6:6];
-assign n1907 = n1883[5:5];
-assign n1908 = n1883[4:4];
-assign n1909 = n1883[3:3];
-assign n1910 = n1883[2:2];
-assign n1911 = n1883[1:1];
-assign n1912 = n1883[0:0];
-assign n1913 = ( n1911 ^ n1912 );
-assign n1914 = ( n1910 ^ n1913 );
-assign n1915 = ( n1909 ^ n1914 );
-assign n1916 = ( n1908 ^ n1915 );
-assign n1917 = ( n1907 ^ n1916 );
-assign n1918 = ( n1906 ^ n1917 );
-assign n1919 = ( n1905 ^ n1918 );
-assign n1920 = { ( n1904 ), ( n1919 ) };
-assign PSW_53 = n1920;
+assign n1833 = ( n1091 ) ? ( n1823 ) : ( PSW );
+assign n1834 = n1833[7:1];
+assign n1835 = n1824[7:7];
+assign n1836 = n1824[6:6];
+assign n1837 = n1824[5:5];
+assign n1838 = n1824[4:4];
+assign n1839 = n1824[3:3];
+assign n1840 = n1824[2:2];
+assign n1841 = n1824[1:1];
+assign n1842 = n1824[0:0];
+assign n1843 = ( n1841 ^ n1842 );
+assign n1844 = ( n1840 ^ n1843 );
+assign n1845 = ( n1839 ^ n1844 );
+assign n1846 = ( n1838 ^ n1845 );
+assign n1847 = ( n1837 ^ n1846 );
+assign n1848 = ( n1836 ^ n1847 );
+assign n1849 = ( n1835 ^ n1848 );
+assign n1850 = { ( n1834 ), ( n1849 ) };
+assign PSW_53 = n1850;
 // 
 // ACC_54
 // 
-assign n1921 = ( ACC & RD_ROM_1 );
-assign ACC_54 = n1921;
+assign n1851 = ( ACC & RD_ROM_1 );
+assign ACC_54 = n1851;
 // 
 // PC_54
 // 
@@ -7815,28 +7018,28 @@ assign PC_54 = n0610;
 // 
 // PSW_54
 // 
-assign n1922 = n1921[7:7];
-assign n1923 = n1921[6:6];
-assign n1924 = n1921[5:5];
-assign n1925 = n1921[4:4];
-assign n1926 = n1921[3:3];
-assign n1927 = n1921[2:2];
-assign n1928 = n1921[1:1];
-assign n1929 = n1921[0:0];
-assign n1930 = ( n1928 ^ n1929 );
-assign n1931 = ( n1927 ^ n1930 );
-assign n1932 = ( n1926 ^ n1931 );
-assign n1933 = ( n1925 ^ n1932 );
-assign n1934 = ( n1924 ^ n1933 );
-assign n1935 = ( n1923 ^ n1934 );
-assign n1936 = ( n1922 ^ n1935 );
-assign n1937 = { ( n1008 ), ( n1936 ) };
-assign PSW_54 = n1937;
+assign n1852 = n1851[7:7];
+assign n1853 = n1851[6:6];
+assign n1854 = n1851[5:5];
+assign n1855 = n1851[4:4];
+assign n1856 = n1851[3:3];
+assign n1857 = n1851[2:2];
+assign n1858 = n1851[1:1];
+assign n1859 = n1851[0:0];
+assign n1860 = ( n1858 ^ n1859 );
+assign n1861 = ( n1857 ^ n1860 );
+assign n1862 = ( n1856 ^ n1861 );
+assign n1863 = ( n1855 ^ n1862 );
+assign n1864 = ( n1854 ^ n1863 );
+assign n1865 = ( n1853 ^ n1864 );
+assign n1866 = ( n1852 ^ n1865 );
+assign n1867 = { ( n1008 ), ( n1866 ) };
+assign PSW_54 = n1867;
 // 
 // ACC_55
 // 
-assign n1938 = ( ACC & n1116 );
-assign ACC_55 = n1938;
+assign n1868 = ( ACC & n1116 );
+assign ACC_55 = n1868;
 // 
 // PC_55
 // 
@@ -7844,28 +7047,28 @@ assign PC_55 = n0610;
 // 
 // PSW_55
 // 
-assign n1939 = n1938[7:7];
-assign n1940 = n1938[6:6];
-assign n1941 = n1938[5:5];
-assign n1942 = n1938[4:4];
-assign n1943 = n1938[3:3];
-assign n1944 = n1938[2:2];
-assign n1945 = n1938[1:1];
-assign n1946 = n1938[0:0];
-assign n1947 = ( n1945 ^ n1946 );
-assign n1948 = ( n1944 ^ n1947 );
-assign n1949 = ( n1943 ^ n1948 );
-assign n1950 = ( n1942 ^ n1949 );
-assign n1951 = ( n1941 ^ n1950 );
-assign n1952 = ( n1940 ^ n1951 );
-assign n1953 = ( n1939 ^ n1952 );
-assign n1954 = { ( n1008 ), ( n1953 ) };
-assign PSW_55 = n1954;
+assign n1869 = n1868[7:7];
+assign n1870 = n1868[6:6];
+assign n1871 = n1868[5:5];
+assign n1872 = n1868[4:4];
+assign n1873 = n1868[3:3];
+assign n1874 = n1868[2:2];
+assign n1875 = n1868[1:1];
+assign n1876 = n1868[0:0];
+assign n1877 = ( n1875 ^ n1876 );
+assign n1878 = ( n1874 ^ n1877 );
+assign n1879 = ( n1873 ^ n1878 );
+assign n1880 = ( n1872 ^ n1879 );
+assign n1881 = ( n1871 ^ n1880 );
+assign n1882 = ( n1870 ^ n1881 );
+assign n1883 = ( n1869 ^ n1882 );
+assign n1884 = { ( n1008 ), ( n1883 ) };
+assign PSW_55 = n1884;
 // 
 // ACC_56
 // 
-assign n1955 = ( ACC & RD_IRAM_1 );
-assign ACC_56 = n1955;
+assign n1885 = ( ACC & RD_IRAM_1 );
+assign ACC_56 = n1885;
 // 
 // PC_56
 // 
@@ -7873,27 +7076,27 @@ assign PC_56 = n0612;
 // 
 // PSW_56
 // 
-assign n1956 = n1955[7:7];
-assign n1957 = n1955[6:6];
-assign n1958 = n1955[5:5];
-assign n1959 = n1955[4:4];
-assign n1960 = n1955[3:3];
-assign n1961 = n1955[2:2];
-assign n1962 = n1955[1:1];
-assign n1963 = n1955[0:0];
-assign n1964 = ( n1962 ^ n1963 );
-assign n1965 = ( n1961 ^ n1964 );
-assign n1966 = ( n1960 ^ n1965 );
-assign n1967 = ( n1959 ^ n1966 );
-assign n1968 = ( n1958 ^ n1967 );
-assign n1969 = ( n1957 ^ n1968 );
-assign n1970 = ( n1956 ^ n1969 );
-assign n1971 = { ( n1008 ), ( n1970 ) };
-assign PSW_56 = n1971;
+assign n1886 = n1885[7:7];
+assign n1887 = n1885[6:6];
+assign n1888 = n1885[5:5];
+assign n1889 = n1885[4:4];
+assign n1890 = n1885[3:3];
+assign n1891 = n1885[2:2];
+assign n1892 = n1885[1:1];
+assign n1893 = n1885[0:0];
+assign n1894 = ( n1892 ^ n1893 );
+assign n1895 = ( n1891 ^ n1894 );
+assign n1896 = ( n1890 ^ n1895 );
+assign n1897 = ( n1889 ^ n1896 );
+assign n1898 = ( n1888 ^ n1897 );
+assign n1899 = ( n1887 ^ n1898 );
+assign n1900 = ( n1886 ^ n1899 );
+assign n1901 = { ( n1008 ), ( n1900 ) };
+assign PSW_56 = n1901;
 // 
 // ACC_57
 // 
-assign ACC_57 = n1955;
+assign ACC_57 = n1885;
 // 
 // PC_57
 // 
@@ -7901,12 +7104,12 @@ assign PC_57 = n0612;
 // 
 // PSW_57
 // 
-assign PSW_57 = n1971;
+assign PSW_57 = n1901;
 // 
 // ACC_58
 // 
-assign n1972 = ( ACC & RD_IRAM_0 );
-assign ACC_58 = n1972;
+assign n1902 = ( ACC & RD_IRAM_0 );
+assign ACC_58 = n1902;
 // 
 // PC_58
 // 
@@ -7914,27 +7117,27 @@ assign PC_58 = n0612;
 // 
 // PSW_58
 // 
-assign n1973 = n1972[7:7];
-assign n1974 = n1972[6:6];
-assign n1975 = n1972[5:5];
-assign n1976 = n1972[4:4];
-assign n1977 = n1972[3:3];
-assign n1978 = n1972[2:2];
-assign n1979 = n1972[1:1];
-assign n1980 = n1972[0:0];
-assign n1981 = ( n1979 ^ n1980 );
-assign n1982 = ( n1978 ^ n1981 );
-assign n1983 = ( n1977 ^ n1982 );
-assign n1984 = ( n1976 ^ n1983 );
-assign n1985 = ( n1975 ^ n1984 );
-assign n1986 = ( n1974 ^ n1985 );
-assign n1987 = ( n1973 ^ n1986 );
-assign n1988 = { ( n1008 ), ( n1987 ) };
-assign PSW_58 = n1988;
+assign n1903 = n1902[7:7];
+assign n1904 = n1902[6:6];
+assign n1905 = n1902[5:5];
+assign n1906 = n1902[4:4];
+assign n1907 = n1902[3:3];
+assign n1908 = n1902[2:2];
+assign n1909 = n1902[1:1];
+assign n1910 = n1902[0:0];
+assign n1911 = ( n1909 ^ n1910 );
+assign n1912 = ( n1908 ^ n1911 );
+assign n1913 = ( n1907 ^ n1912 );
+assign n1914 = ( n1906 ^ n1913 );
+assign n1915 = ( n1905 ^ n1914 );
+assign n1916 = ( n1904 ^ n1915 );
+assign n1917 = ( n1903 ^ n1916 );
+assign n1918 = { ( n1008 ), ( n1917 ) };
+assign PSW_58 = n1918;
 // 
 // ACC_59
 // 
-assign ACC_59 = n1972;
+assign ACC_59 = n1902;
 // 
 // PC_59
 // 
@@ -7942,11 +7145,11 @@ assign PC_59 = n0612;
 // 
 // PSW_59
 // 
-assign PSW_59 = n1988;
+assign PSW_59 = n1918;
 // 
 // ACC_5a
 // 
-assign ACC_5a = n1972;
+assign ACC_5a = n1902;
 // 
 // PC_5a
 // 
@@ -7954,11 +7157,11 @@ assign PC_5a = n0612;
 // 
 // PSW_5a
 // 
-assign PSW_5a = n1988;
+assign PSW_5a = n1918;
 // 
 // ACC_5b
 // 
-assign ACC_5b = n1972;
+assign ACC_5b = n1902;
 // 
 // PC_5b
 // 
@@ -7966,11 +7169,11 @@ assign PC_5b = n0612;
 // 
 // PSW_5b
 // 
-assign PSW_5b = n1988;
+assign PSW_5b = n1918;
 // 
 // ACC_5c
 // 
-assign ACC_5c = n1972;
+assign ACC_5c = n1902;
 // 
 // PC_5c
 // 
@@ -7978,11 +7181,11 @@ assign PC_5c = n0612;
 // 
 // PSW_5c
 // 
-assign PSW_5c = n1988;
+assign PSW_5c = n1918;
 // 
 // ACC_5d
 // 
-assign ACC_5d = n1972;
+assign ACC_5d = n1902;
 // 
 // PC_5d
 // 
@@ -7990,11 +7193,11 @@ assign PC_5d = n0612;
 // 
 // PSW_5d
 // 
-assign PSW_5d = n1988;
+assign PSW_5d = n1918;
 // 
 // ACC_5e
 // 
-assign ACC_5e = n1972;
+assign ACC_5e = n1902;
 // 
 // PC_5e
 // 
@@ -8002,11 +7205,11 @@ assign PC_5e = n0612;
 // 
 // PSW_5e
 // 
-assign PSW_5e = n1988;
+assign PSW_5e = n1918;
 // 
 // ACC_5f
 // 
-assign ACC_5f = n1972;
+assign ACC_5f = n1902;
 // 
 // PC_5f
 // 
@@ -8014,13 +7217,13 @@ assign PC_5f = n0612;
 // 
 // PSW_5f
 // 
-assign PSW_5f = n1988;
+assign PSW_5f = n1918;
 // 
 // PC_60
 // 
-assign n1989 = ( ACC == n1094 );
-assign n1990 = ( n1989 ) ? ( n1725 ) : ( n0610 );
-assign PC_60 = n1990;
+assign n1919 = ( ACC == n1094 );
+assign n1920 = ( n1919 ) ? ( n1699 ) : ( n0610 );
+assign PC_60 = n1920;
 // 
 // PSW_60
 // 
@@ -8036,60 +7239,25 @@ assign PSW_61 = n1024;
 // 
 // ACC_62
 // 
-assign n1991 = ( n1116 ^ n1116 );
-assign n1992 = ( n1066 ) ? ( n1991 ) : ( ACC );
-assign ACC_62 = n1992;
-// 
-// PCON_62
-// 
-assign n1993 = ( n1116 ^ ACC );
-assign n1994 = ( n1076 ) ? ( n1993 ) : ( PCON );
-assign PCON_62 = n1994;
+assign n1921 = ( n1116 ^ n1116 );
+assign n1922 = ( n1066 ) ? ( n1921 ) : ( ACC );
+assign ACC_62 = n1922;
 // 
 // P1_62
 // 
-assign n1995 = ( n1084 ) ? ( n1993 ) : ( P1 );
-assign P1_62 = n1995;
-// 
-// TMOD_62
-// 
-assign n1996 = ( n1078 ) ? ( n1993 ) : ( TMOD );
-assign TMOD_62 = n1996;
+assign n1923 = ( n1116 ^ ACC );
+assign n1924 = ( n1084 ) ? ( n1923 ) : ( P1 );
+assign P1_62 = n1924;
 // 
 // DPL_62
 // 
-assign n1997 = ( n1073 ) ? ( n1993 ) : ( DPL );
-assign DPL_62 = n1997;
+assign n1925 = ( n1073 ) ? ( n1923 ) : ( DPL );
+assign DPL_62 = n1925;
 // 
 // DPH_62
 // 
-assign n1998 = ( n1075 ) ? ( n1993 ) : ( DPH );
-assign DPH_62 = n1998;
-// 
-// TL1_62
-// 
-assign n1999 = ( n1081 ) ? ( n1993 ) : ( TL1 );
-assign TL1_62 = n1999;
-// 
-// TL0_62
-// 
-assign n2000 = ( n1079 ) ? ( n1993 ) : ( TL0 );
-assign TL0_62 = n2000;
-// 
-// TCON_62
-// 
-assign n2001 = ( n1077 ) ? ( n1993 ) : ( TCON );
-assign TCON_62 = n2001;
-// 
-// TH1_62
-// 
-assign n2002 = ( n1082 ) ? ( n1993 ) : ( TH1 );
-assign TH1_62 = n2002;
-// 
-// TH0_62
-// 
-assign n2003 = ( n1080 ) ? ( n1993 ) : ( TH0 );
-assign TH0_62 = n2003;
+assign n1926 = ( n1075 ) ? ( n1923 ) : ( DPH );
+assign DPH_62 = n1926;
 // 
 // PC_62
 // 
@@ -8097,208 +7265,133 @@ assign PC_62 = n0610;
 // 
 // P2_62
 // 
-assign n2004 = ( n1087 ) ? ( n1993 ) : ( P2 );
-assign P2_62 = n2004;
+assign n1927 = ( n1087 ) ? ( n1923 ) : ( P2 );
+assign P2_62 = n1927;
 // 
 // P3_62
 // 
-assign n2005 = ( n1089 ) ? ( n1993 ) : ( P3 );
-assign P3_62 = n2005;
+assign n1928 = ( n1089 ) ? ( n1923 ) : ( P3 );
+assign P3_62 = n1928;
 // 
 // P0_62
 // 
-assign n2006 = ( n1070 ) ? ( n1993 ) : ( P0 );
-assign P0_62 = n2006;
+assign n1929 = ( n1070 ) ? ( n1923 ) : ( P0 );
+assign P0_62 = n1929;
 // 
 // B_62
 // 
-assign n2007 = ( n1093 ) ? ( n1993 ) : ( B );
-assign B_62 = n2007;
+assign n1930 = ( n1093 ) ? ( n1923 ) : ( B );
+assign B_62 = n1930;
 // 
 // IRAM_62
 // 
 // 
-// IP_62
-// 
-assign n2008 = ( n1090 ) ? ( n1993 ) : ( IP );
-assign IP_62 = n2008;
-// 
-// IE_62
-// 
-assign n2009 = ( n1088 ) ? ( n1993 ) : ( IE );
-assign IE_62 = n2009;
-// 
-// SCON_62
-// 
-assign n2010 = ( n1085 ) ? ( n1993 ) : ( SCON );
-assign SCON_62 = n2010;
-// 
 // SP_62
 // 
-assign n2011 = ( n1072 ) ? ( n1993 ) : ( SP );
-assign SP_62 = n2011;
-// 
-// SBUF_62
-// 
-assign n2012 = ( n1086 ) ? ( n1993 ) : ( SBUF );
-assign SBUF_62 = n2012;
+assign n1931 = ( n1072 ) ? ( n1923 ) : ( SP );
+assign SP_62 = n1931;
 // 
 // PSW_62
 // 
-assign n2013 = ( n1091 ) ? ( n1993 ) : ( PSW );
-assign n2014 = n2013[7:1];
-assign n2015 = n1992[7:7];
-assign n2016 = n1992[6:6];
-assign n2017 = n1992[5:5];
-assign n2018 = n1992[4:4];
-assign n2019 = n1992[3:3];
-assign n2020 = n1992[2:2];
-assign n2021 = n1992[1:1];
-assign n2022 = n1992[0:0];
-assign n2023 = ( n2021 ^ n2022 );
-assign n2024 = ( n2020 ^ n2023 );
-assign n2025 = ( n2019 ^ n2024 );
-assign n2026 = ( n2018 ^ n2025 );
-assign n2027 = ( n2017 ^ n2026 );
-assign n2028 = ( n2016 ^ n2027 );
-assign n2029 = ( n2015 ^ n2028 );
-assign n2030 = { ( n2014 ), ( n2029 ) };
-assign PSW_62 = n2030;
+assign n1932 = ( n1091 ) ? ( n1923 ) : ( PSW );
+assign n1933 = n1932[7:1];
+assign n1934 = n1922[7:7];
+assign n1935 = n1922[6:6];
+assign n1936 = n1922[5:5];
+assign n1937 = n1922[4:4];
+assign n1938 = n1922[3:3];
+assign n1939 = n1922[2:2];
+assign n1940 = n1922[1:1];
+assign n1941 = n1922[0:0];
+assign n1942 = ( n1940 ^ n1941 );
+assign n1943 = ( n1939 ^ n1942 );
+assign n1944 = ( n1938 ^ n1943 );
+assign n1945 = ( n1937 ^ n1944 );
+assign n1946 = ( n1936 ^ n1945 );
+assign n1947 = ( n1935 ^ n1946 );
+assign n1948 = ( n1934 ^ n1947 );
+assign n1949 = { ( n1933 ), ( n1948 ) };
+assign PSW_62 = n1949;
 // 
 // ACC_63
 // 
-assign n2031 = ( n1116 ^ RD_ROM_2 );
-assign n2032 = ( n1066 ) ? ( n2031 ) : ( ACC );
-assign ACC_63 = n2032;
-// 
-// PCON_63
-// 
-assign n2033 = ( n1076 ) ? ( n2031 ) : ( PCON );
-assign PCON_63 = n2033;
+assign n1950 = ( n1116 ^ RD_ROM_2 );
+assign n1951 = ( n1066 ) ? ( n1950 ) : ( ACC );
+assign ACC_63 = n1951;
 // 
 // P1_63
 // 
-assign n2034 = ( n1084 ) ? ( n2031 ) : ( P1 );
-assign P1_63 = n2034;
-// 
-// TMOD_63
-// 
-assign n2035 = ( n1078 ) ? ( n2031 ) : ( TMOD );
-assign TMOD_63 = n2035;
+assign n1952 = ( n1084 ) ? ( n1950 ) : ( P1 );
+assign P1_63 = n1952;
 // 
 // DPL_63
 // 
-assign n2036 = ( n1073 ) ? ( n2031 ) : ( DPL );
-assign DPL_63 = n2036;
+assign n1953 = ( n1073 ) ? ( n1950 ) : ( DPL );
+assign DPL_63 = n1953;
 // 
 // DPH_63
 // 
-assign n2037 = ( n1075 ) ? ( n2031 ) : ( DPH );
-assign DPH_63 = n2037;
-// 
-// TL1_63
-// 
-assign n2038 = ( n1081 ) ? ( n2031 ) : ( TL1 );
-assign TL1_63 = n2038;
-// 
-// TL0_63
-// 
-assign n2039 = ( n1079 ) ? ( n2031 ) : ( TL0 );
-assign TL0_63 = n2039;
-// 
-// IE_63
-// 
-assign n2040 = ( n1088 ) ? ( n2031 ) : ( IE );
-assign IE_63 = n2040;
-// 
-// TH1_63
-// 
-assign n2041 = ( n1082 ) ? ( n2031 ) : ( TH1 );
-assign TH1_63 = n2041;
-// 
-// TH0_63
-// 
-assign n2042 = ( n1080 ) ? ( n2031 ) : ( TH0 );
-assign TH0_63 = n2042;
+assign n1954 = ( n1075 ) ? ( n1950 ) : ( DPH );
+assign DPH_63 = n1954;
 // 
 // PC_63
 // 
-assign PC_63 = n1217;
+assign PC_63 = n1205;
 // 
 // P2_63
 // 
-assign n2043 = ( n1087 ) ? ( n2031 ) : ( P2 );
-assign P2_63 = n2043;
+assign n1955 = ( n1087 ) ? ( n1950 ) : ( P2 );
+assign P2_63 = n1955;
 // 
 // P3_63
 // 
-assign n2044 = ( n1089 ) ? ( n2031 ) : ( P3 );
-assign P3_63 = n2044;
+assign n1956 = ( n1089 ) ? ( n1950 ) : ( P3 );
+assign P3_63 = n1956;
 // 
 // P0_63
 // 
-assign n2045 = ( n1070 ) ? ( n2031 ) : ( P0 );
-assign P0_63 = n2045;
+assign n1957 = ( n1070 ) ? ( n1950 ) : ( P0 );
+assign P0_63 = n1957;
 // 
 // B_63
 // 
-assign n2046 = ( n1093 ) ? ( n2031 ) : ( B );
-assign B_63 = n2046;
+assign n1958 = ( n1093 ) ? ( n1950 ) : ( B );
+assign B_63 = n1958;
 // 
 // IRAM_63
 // 
 // 
-// IP_63
-// 
-assign n2047 = ( n1090 ) ? ( n2031 ) : ( IP );
-assign IP_63 = n2047;
-// 
-// TCON_63
-// 
-assign n2048 = ( n1077 ) ? ( n2031 ) : ( TCON );
-assign TCON_63 = n2048;
-// 
-// SCON_63
-// 
-assign n2049 = ( n1085 ) ? ( n2031 ) : ( SCON );
-assign SCON_63 = n2049;
-// 
 // SP_63
 // 
-assign n2050 = ( n1072 ) ? ( n2031 ) : ( SP );
-assign SP_63 = n2050;
-// 
-// SBUF_63
-// 
-assign n2051 = ( n1086 ) ? ( n2031 ) : ( SBUF );
-assign SBUF_63 = n2051;
+assign n1959 = ( n1072 ) ? ( n1950 ) : ( SP );
+assign SP_63 = n1959;
 // 
 // PSW_63
 // 
-assign n2052 = ( n1091 ) ? ( n2031 ) : ( PSW );
-assign n2053 = n2052[7:1];
-assign n2054 = n2032[7:7];
-assign n2055 = n2032[6:6];
-assign n2056 = n2032[5:5];
-assign n2057 = n2032[4:4];
-assign n2058 = n2032[3:3];
-assign n2059 = n2032[2:2];
-assign n2060 = n2032[1:1];
-assign n2061 = n2032[0:0];
-assign n2062 = ( n2060 ^ n2061 );
-assign n2063 = ( n2059 ^ n2062 );
-assign n2064 = ( n2058 ^ n2063 );
-assign n2065 = ( n2057 ^ n2064 );
-assign n2066 = ( n2056 ^ n2065 );
-assign n2067 = ( n2055 ^ n2066 );
-assign n2068 = ( n2054 ^ n2067 );
-assign n2069 = { ( n2053 ), ( n2068 ) };
-assign PSW_63 = n2069;
+assign n1960 = ( n1091 ) ? ( n1950 ) : ( PSW );
+assign n1961 = n1960[7:1];
+assign n1962 = n1951[7:7];
+assign n1963 = n1951[6:6];
+assign n1964 = n1951[5:5];
+assign n1965 = n1951[4:4];
+assign n1966 = n1951[3:3];
+assign n1967 = n1951[2:2];
+assign n1968 = n1951[1:1];
+assign n1969 = n1951[0:0];
+assign n1970 = ( n1968 ^ n1969 );
+assign n1971 = ( n1967 ^ n1970 );
+assign n1972 = ( n1966 ^ n1971 );
+assign n1973 = ( n1965 ^ n1972 );
+assign n1974 = ( n1964 ^ n1973 );
+assign n1975 = ( n1963 ^ n1974 );
+assign n1976 = ( n1962 ^ n1975 );
+assign n1977 = { ( n1961 ), ( n1976 ) };
+assign PSW_63 = n1977;
 // 
 // ACC_64
 // 
-assign n2070 = ( ACC ^ RD_ROM_1 );
-assign ACC_64 = n2070;
+assign n1978 = ( ACC ^ RD_ROM_1 );
+assign ACC_64 = n1978;
 // 
 // PC_64
 // 
@@ -8306,28 +7399,28 @@ assign PC_64 = n0610;
 // 
 // PSW_64
 // 
-assign n2071 = n2070[7:7];
-assign n2072 = n2070[6:6];
-assign n2073 = n2070[5:5];
-assign n2074 = n2070[4:4];
-assign n2075 = n2070[3:3];
-assign n2076 = n2070[2:2];
-assign n2077 = n2070[1:1];
-assign n2078 = n2070[0:0];
-assign n2079 = ( n2077 ^ n2078 );
-assign n2080 = ( n2076 ^ n2079 );
-assign n2081 = ( n2075 ^ n2080 );
-assign n2082 = ( n2074 ^ n2081 );
-assign n2083 = ( n2073 ^ n2082 );
-assign n2084 = ( n2072 ^ n2083 );
-assign n2085 = ( n2071 ^ n2084 );
-assign n2086 = { ( n1008 ), ( n2085 ) };
-assign PSW_64 = n2086;
+assign n1979 = n1978[7:7];
+assign n1980 = n1978[6:6];
+assign n1981 = n1978[5:5];
+assign n1982 = n1978[4:4];
+assign n1983 = n1978[3:3];
+assign n1984 = n1978[2:2];
+assign n1985 = n1978[1:1];
+assign n1986 = n1978[0:0];
+assign n1987 = ( n1985 ^ n1986 );
+assign n1988 = ( n1984 ^ n1987 );
+assign n1989 = ( n1983 ^ n1988 );
+assign n1990 = ( n1982 ^ n1989 );
+assign n1991 = ( n1981 ^ n1990 );
+assign n1992 = ( n1980 ^ n1991 );
+assign n1993 = ( n1979 ^ n1992 );
+assign n1994 = { ( n1008 ), ( n1993 ) };
+assign PSW_64 = n1994;
 // 
 // ACC_65
 // 
-assign n2087 = ( ACC ^ n1116 );
-assign ACC_65 = n2087;
+assign n1995 = ( ACC ^ n1116 );
+assign ACC_65 = n1995;
 // 
 // PC_65
 // 
@@ -8335,28 +7428,28 @@ assign PC_65 = n0610;
 // 
 // PSW_65
 // 
-assign n2088 = n2087[7:7];
-assign n2089 = n2087[6:6];
-assign n2090 = n2087[5:5];
-assign n2091 = n2087[4:4];
-assign n2092 = n2087[3:3];
-assign n2093 = n2087[2:2];
-assign n2094 = n2087[1:1];
-assign n2095 = n2087[0:0];
-assign n2096 = ( n2094 ^ n2095 );
-assign n2097 = ( n2093 ^ n2096 );
-assign n2098 = ( n2092 ^ n2097 );
-assign n2099 = ( n2091 ^ n2098 );
-assign n2100 = ( n2090 ^ n2099 );
-assign n2101 = ( n2089 ^ n2100 );
-assign n2102 = ( n2088 ^ n2101 );
-assign n2103 = { ( n1008 ), ( n2102 ) };
-assign PSW_65 = n2103;
+assign n1996 = n1995[7:7];
+assign n1997 = n1995[6:6];
+assign n1998 = n1995[5:5];
+assign n1999 = n1995[4:4];
+assign n2000 = n1995[3:3];
+assign n2001 = n1995[2:2];
+assign n2002 = n1995[1:1];
+assign n2003 = n1995[0:0];
+assign n2004 = ( n2002 ^ n2003 );
+assign n2005 = ( n2001 ^ n2004 );
+assign n2006 = ( n2000 ^ n2005 );
+assign n2007 = ( n1999 ^ n2006 );
+assign n2008 = ( n1998 ^ n2007 );
+assign n2009 = ( n1997 ^ n2008 );
+assign n2010 = ( n1996 ^ n2009 );
+assign n2011 = { ( n1008 ), ( n2010 ) };
+assign PSW_65 = n2011;
 // 
 // ACC_66
 // 
-assign n2104 = ( ACC ^ RD_IRAM_1 );
-assign ACC_66 = n2104;
+assign n2012 = ( ACC ^ RD_IRAM_1 );
+assign ACC_66 = n2012;
 // 
 // PC_66
 // 
@@ -8364,27 +7457,27 @@ assign PC_66 = n0612;
 // 
 // PSW_66
 // 
-assign n2105 = n2104[7:7];
-assign n2106 = n2104[6:6];
-assign n2107 = n2104[5:5];
-assign n2108 = n2104[4:4];
-assign n2109 = n2104[3:3];
-assign n2110 = n2104[2:2];
-assign n2111 = n2104[1:1];
-assign n2112 = n2104[0:0];
-assign n2113 = ( n2111 ^ n2112 );
-assign n2114 = ( n2110 ^ n2113 );
-assign n2115 = ( n2109 ^ n2114 );
-assign n2116 = ( n2108 ^ n2115 );
-assign n2117 = ( n2107 ^ n2116 );
-assign n2118 = ( n2106 ^ n2117 );
-assign n2119 = ( n2105 ^ n2118 );
-assign n2120 = { ( n1008 ), ( n2119 ) };
-assign PSW_66 = n2120;
+assign n2013 = n2012[7:7];
+assign n2014 = n2012[6:6];
+assign n2015 = n2012[5:5];
+assign n2016 = n2012[4:4];
+assign n2017 = n2012[3:3];
+assign n2018 = n2012[2:2];
+assign n2019 = n2012[1:1];
+assign n2020 = n2012[0:0];
+assign n2021 = ( n2019 ^ n2020 );
+assign n2022 = ( n2018 ^ n2021 );
+assign n2023 = ( n2017 ^ n2022 );
+assign n2024 = ( n2016 ^ n2023 );
+assign n2025 = ( n2015 ^ n2024 );
+assign n2026 = ( n2014 ^ n2025 );
+assign n2027 = ( n2013 ^ n2026 );
+assign n2028 = { ( n1008 ), ( n2027 ) };
+assign PSW_66 = n2028;
 // 
 // ACC_67
 // 
-assign ACC_67 = n2104;
+assign ACC_67 = n2012;
 // 
 // PC_67
 // 
@@ -8392,12 +7485,12 @@ assign PC_67 = n0612;
 // 
 // PSW_67
 // 
-assign PSW_67 = n2120;
+assign PSW_67 = n2028;
 // 
 // ACC_68
 // 
-assign n2121 = ( ACC ^ RD_IRAM_0 );
-assign ACC_68 = n2121;
+assign n2029 = ( ACC ^ RD_IRAM_0 );
+assign ACC_68 = n2029;
 // 
 // PC_68
 // 
@@ -8405,27 +7498,27 @@ assign PC_68 = n0612;
 // 
 // PSW_68
 // 
-assign n2122 = n2121[7:7];
-assign n2123 = n2121[6:6];
-assign n2124 = n2121[5:5];
-assign n2125 = n2121[4:4];
-assign n2126 = n2121[3:3];
-assign n2127 = n2121[2:2];
-assign n2128 = n2121[1:1];
-assign n2129 = n2121[0:0];
-assign n2130 = ( n2128 ^ n2129 );
-assign n2131 = ( n2127 ^ n2130 );
-assign n2132 = ( n2126 ^ n2131 );
-assign n2133 = ( n2125 ^ n2132 );
-assign n2134 = ( n2124 ^ n2133 );
-assign n2135 = ( n2123 ^ n2134 );
-assign n2136 = ( n2122 ^ n2135 );
-assign n2137 = { ( n1008 ), ( n2136 ) };
-assign PSW_68 = n2137;
+assign n2030 = n2029[7:7];
+assign n2031 = n2029[6:6];
+assign n2032 = n2029[5:5];
+assign n2033 = n2029[4:4];
+assign n2034 = n2029[3:3];
+assign n2035 = n2029[2:2];
+assign n2036 = n2029[1:1];
+assign n2037 = n2029[0:0];
+assign n2038 = ( n2036 ^ n2037 );
+assign n2039 = ( n2035 ^ n2038 );
+assign n2040 = ( n2034 ^ n2039 );
+assign n2041 = ( n2033 ^ n2040 );
+assign n2042 = ( n2032 ^ n2041 );
+assign n2043 = ( n2031 ^ n2042 );
+assign n2044 = ( n2030 ^ n2043 );
+assign n2045 = { ( n1008 ), ( n2044 ) };
+assign PSW_68 = n2045;
 // 
 // ACC_69
 // 
-assign ACC_69 = n2121;
+assign ACC_69 = n2029;
 // 
 // PC_69
 // 
@@ -8433,11 +7526,11 @@ assign PC_69 = n0612;
 // 
 // PSW_69
 // 
-assign PSW_69 = n2137;
+assign PSW_69 = n2045;
 // 
 // ACC_6a
 // 
-assign ACC_6a = n2121;
+assign ACC_6a = n2029;
 // 
 // PC_6a
 // 
@@ -8445,11 +7538,11 @@ assign PC_6a = n0612;
 // 
 // PSW_6a
 // 
-assign PSW_6a = n2137;
+assign PSW_6a = n2045;
 // 
 // ACC_6b
 // 
-assign ACC_6b = n2121;
+assign ACC_6b = n2029;
 // 
 // PC_6b
 // 
@@ -8457,11 +7550,11 @@ assign PC_6b = n0612;
 // 
 // PSW_6b
 // 
-assign PSW_6b = n2137;
+assign PSW_6b = n2045;
 // 
 // ACC_6c
 // 
-assign ACC_6c = n2121;
+assign ACC_6c = n2029;
 // 
 // PC_6c
 // 
@@ -8469,11 +7562,11 @@ assign PC_6c = n0612;
 // 
 // PSW_6c
 // 
-assign PSW_6c = n2137;
+assign PSW_6c = n2045;
 // 
 // ACC_6d
 // 
-assign ACC_6d = n2121;
+assign ACC_6d = n2029;
 // 
 // PC_6d
 // 
@@ -8481,11 +7574,11 @@ assign PC_6d = n0612;
 // 
 // PSW_6d
 // 
-assign PSW_6d = n2137;
+assign PSW_6d = n2045;
 // 
 // ACC_6e
 // 
-assign ACC_6e = n2121;
+assign ACC_6e = n2029;
 // 
 // PC_6e
 // 
@@ -8493,11 +7586,11 @@ assign PC_6e = n0612;
 // 
 // PSW_6e
 // 
-assign PSW_6e = n2137;
+assign PSW_6e = n2045;
 // 
 // ACC_6f
 // 
-assign ACC_6f = n2121;
+assign ACC_6f = n2029;
 // 
 // PC_6f
 // 
@@ -8505,13 +7598,13 @@ assign PC_6f = n0612;
 // 
 // PSW_6f
 // 
-assign PSW_6f = n2137;
+assign PSW_6f = n2045;
 // 
 // PC_70
 // 
-assign n2138 = !( n1989 );
-assign n2139 = ( n2138 ) ? ( n1725 ) : ( n0610 );
-assign PC_70 = n2139;
+assign n2046 = !( n1919 );
+assign n2047 = ( n2046 ) ? ( n1699 ) : ( n0610 );
+assign PC_70 = n2047;
 // 
 // PSW_70
 // 
@@ -8526,7 +7619,7 @@ assign PC_71 = n1029;
 // 
 // SP_71
 // 
-assign SP_71 = n1256;
+assign SP_71 = n1241;
 // 
 // PSW_71
 // 
@@ -8538,18 +7631,18 @@ assign PC_72 = n0610;
 // 
 // PSW_72
 // 
-assign n2140 = n1209[n1169];
-assign n2141 = ( n1259 | n2140 );
-assign n2142 = PSW[6:0];
-assign n2143 = { ( n2141 ), ( n2142 ) };
-assign n2144 = n2143[7:1];
-assign n2145 = { ( n2144 ), ( n1023 ) };
-assign PSW_72 = n2145;
+assign n2048 = n1198[n1158];
+assign n2049 = ( n1244 | n2048 );
+assign n2050 = PSW[6:0];
+assign n2051 = { ( n2049 ), ( n2050 ) };
+assign n2052 = n2051[7:1];
+assign n2053 = { ( n2052 ), ( n1023 ) };
+assign PSW_72 = n2053;
 // 
 // PC_73
 // 
-assign n2146 = ( n0745 + n0713 );
-assign PC_73 = n2146;
+assign n2054 = ( n0745 + n0713 );
+assign PC_73 = n2054;
 // 
 // PSW_73
 // 
@@ -8565,151 +7658,96 @@ assign PC_74 = n0610;
 // 
 // PSW_74
 // 
-assign n2147 = RD_ROM_1[6:6];
-assign n2148 = RD_ROM_1[5:5];
-assign n2149 = RD_ROM_1[4:4];
-assign n2150 = RD_ROM_1[3:3];
-assign n2151 = RD_ROM_1[2:2];
-assign n2152 = RD_ROM_1[1:1];
-assign n2153 = RD_ROM_1[0:0];
-assign n2154 = ( n2152 ^ n2153 );
-assign n2155 = ( n2151 ^ n2154 );
-assign n2156 = ( n2150 ^ n2155 );
-assign n2157 = ( n2149 ^ n2156 );
-assign n2158 = ( n2148 ^ n2157 );
-assign n2159 = ( n2147 ^ n2158 );
-assign n2160 = ( n0042 ^ n2159 );
-assign n2161 = { ( n1008 ), ( n2160 ) };
-assign PSW_74 = n2161;
+assign n2055 = RD_ROM_1[6:6];
+assign n2056 = RD_ROM_1[5:5];
+assign n2057 = RD_ROM_1[4:4];
+assign n2058 = RD_ROM_1[3:3];
+assign n2059 = RD_ROM_1[2:2];
+assign n2060 = RD_ROM_1[1:1];
+assign n2061 = RD_ROM_1[0:0];
+assign n2062 = ( n2060 ^ n2061 );
+assign n2063 = ( n2059 ^ n2062 );
+assign n2064 = ( n2058 ^ n2063 );
+assign n2065 = ( n2057 ^ n2064 );
+assign n2066 = ( n2056 ^ n2065 );
+assign n2067 = ( n2055 ^ n2066 );
+assign n2068 = ( n0042 ^ n2067 );
+assign n2069 = { ( n1008 ), ( n2068 ) };
+assign PSW_74 = n2069;
 // 
 // ACC_75
 // 
-assign n2162 = ( n1066 ) ? ( RD_ROM_2 ) : ( ACC );
-assign ACC_75 = n2162;
-// 
-// PCON_75
-// 
-assign n2163 = ( n1076 ) ? ( RD_ROM_2 ) : ( PCON );
-assign PCON_75 = n2163;
-// 
-// B_75
-// 
-assign n2164 = ( n1093 ) ? ( RD_ROM_2 ) : ( B );
-assign B_75 = n2164;
-// 
-// TMOD_75
-// 
-assign n2165 = ( n1078 ) ? ( RD_ROM_2 ) : ( TMOD );
-assign TMOD_75 = n2165;
-// 
-// DPL_75
-// 
-assign n2166 = ( n1073 ) ? ( RD_ROM_2 ) : ( DPL );
-assign DPL_75 = n2166;
-// 
-// DPH_75
-// 
-assign n2167 = ( n1075 ) ? ( RD_ROM_2 ) : ( DPH );
-assign DPH_75 = n2167;
-// 
-// TL1_75
-// 
-assign n2168 = ( n1081 ) ? ( RD_ROM_2 ) : ( TL1 );
-assign TL1_75 = n2168;
-// 
-// TL0_75
-// 
-assign n2169 = ( n1079 ) ? ( RD_ROM_2 ) : ( TL0 );
-assign TL0_75 = n2169;
-// 
-// TCON_75
-// 
-assign n2170 = ( n1077 ) ? ( RD_ROM_2 ) : ( TCON );
-assign TCON_75 = n2170;
-// 
-// TH1_75
-// 
-assign n2171 = ( n1082 ) ? ( RD_ROM_2 ) : ( TH1 );
-assign TH1_75 = n2171;
-// 
-// TH0_75
-// 
-assign n2172 = ( n1080 ) ? ( RD_ROM_2 ) : ( TH0 );
-assign TH0_75 = n2172;
-// 
-// PC_75
-// 
-assign PC_75 = n1217;
-// 
-// P2_75
-// 
-assign n2173 = ( n1087 ) ? ( RD_ROM_2 ) : ( P2 );
-assign P2_75 = n2173;
-// 
-// P3_75
-// 
-assign n2174 = ( n1089 ) ? ( RD_ROM_2 ) : ( P3 );
-assign P3_75 = n2174;
-// 
-// P0_75
-// 
-assign n2175 = ( n1070 ) ? ( RD_ROM_2 ) : ( P0 );
-assign P0_75 = n2175;
+assign n2070 = ( n1066 ) ? ( RD_ROM_2 ) : ( ACC );
+assign ACC_75 = n2070;
 // 
 // P1_75
 // 
-assign n2176 = ( n1084 ) ? ( RD_ROM_2 ) : ( P1 );
-assign P1_75 = n2176;
+assign n2071 = ( n1084 ) ? ( RD_ROM_2 ) : ( P1 );
+assign P1_75 = n2071;
+// 
+// DPL_75
+// 
+assign n2072 = ( n1073 ) ? ( RD_ROM_2 ) : ( DPL );
+assign DPL_75 = n2072;
+// 
+// DPH_75
+// 
+assign n2073 = ( n1075 ) ? ( RD_ROM_2 ) : ( DPH );
+assign DPH_75 = n2073;
+// 
+// PC_75
+// 
+assign PC_75 = n1205;
+// 
+// P2_75
+// 
+assign n2074 = ( n1087 ) ? ( RD_ROM_2 ) : ( P2 );
+assign P2_75 = n2074;
+// 
+// P3_75
+// 
+assign n2075 = ( n1089 ) ? ( RD_ROM_2 ) : ( P3 );
+assign P3_75 = n2075;
+// 
+// P0_75
+// 
+assign n2076 = ( n1070 ) ? ( RD_ROM_2 ) : ( P0 );
+assign P0_75 = n2076;
+// 
+// B_75
+// 
+assign n2077 = ( n1093 ) ? ( RD_ROM_2 ) : ( B );
+assign B_75 = n2077;
 // 
 // IRAM_75
 // 
 // 
-// IP_75
-// 
-assign n2177 = ( n1090 ) ? ( RD_ROM_2 ) : ( IP );
-assign IP_75 = n2177;
-// 
-// IE_75
-// 
-assign n2178 = ( n1088 ) ? ( RD_ROM_2 ) : ( IE );
-assign IE_75 = n2178;
-// 
-// SCON_75
-// 
-assign n2179 = ( n1085 ) ? ( RD_ROM_2 ) : ( SCON );
-assign SCON_75 = n2179;
-// 
 // SP_75
 // 
-assign n2180 = ( n1072 ) ? ( RD_ROM_2 ) : ( SP );
-assign SP_75 = n2180;
-// 
-// SBUF_75
-// 
-assign n2181 = ( n1086 ) ? ( RD_ROM_2 ) : ( SBUF );
-assign SBUF_75 = n2181;
+assign n2078 = ( n1072 ) ? ( RD_ROM_2 ) : ( SP );
+assign SP_75 = n2078;
 // 
 // PSW_75
 // 
-assign n2182 = ( n1091 ) ? ( RD_ROM_2 ) : ( PSW );
-assign n2183 = n2182[7:1];
-assign n2184 = n2162[7:7];
-assign n2185 = n2162[6:6];
-assign n2186 = n2162[5:5];
-assign n2187 = n2162[4:4];
-assign n2188 = n2162[3:3];
-assign n2189 = n2162[2:2];
-assign n2190 = n2162[1:1];
-assign n2191 = n2162[0:0];
-assign n2192 = ( n2190 ^ n2191 );
-assign n2193 = ( n2189 ^ n2192 );
-assign n2194 = ( n2188 ^ n2193 );
-assign n2195 = ( n2187 ^ n2194 );
-assign n2196 = ( n2186 ^ n2195 );
-assign n2197 = ( n2185 ^ n2196 );
-assign n2198 = ( n2184 ^ n2197 );
-assign n2199 = { ( n2183 ), ( n2198 ) };
-assign PSW_75 = n2199;
+assign n2079 = ( n1091 ) ? ( RD_ROM_2 ) : ( PSW );
+assign n2080 = n2079[7:1];
+assign n2081 = n2070[7:7];
+assign n2082 = n2070[6:6];
+assign n2083 = n2070[5:5];
+assign n2084 = n2070[4:4];
+assign n2085 = n2070[3:3];
+assign n2086 = n2070[2:2];
+assign n2087 = n2070[1:1];
+assign n2088 = n2070[0:0];
+assign n2089 = ( n2087 ^ n2088 );
+assign n2090 = ( n2086 ^ n2089 );
+assign n2091 = ( n2085 ^ n2090 );
+assign n2092 = ( n2084 ^ n2091 );
+assign n2093 = ( n2083 ^ n2092 );
+assign n2094 = ( n2082 ^ n2093 );
+assign n2095 = ( n2081 ^ n2094 );
+assign n2096 = { ( n2080 ), ( n2095 ) };
+assign PSW_75 = n2096;
 // 
 // PC_76
 // 
@@ -8823,7 +7861,7 @@ assign PSW_7f = n1024;
 // 
 // PC_80
 // 
-assign PC_80 = n1725;
+assign PC_80 = n1699;
 // 
 // PSW_80
 // 
@@ -8843,11 +7881,11 @@ assign PC_82 = n0610;
 // 
 // PSW_82
 // 
-assign n2200 = ( n1259 & n2140 );
-assign n2201 = { ( n2200 ), ( n2142 ) };
-assign n2202 = n2201[7:1];
-assign n2203 = { ( n2202 ), ( n1023 ) };
-assign PSW_82 = n2203;
+assign n2097 = ( n1244 & n2048 );
+assign n2098 = { ( n2097 ), ( n2050 ) };
+assign n2099 = n2098[7:1];
+assign n2100 = { ( n2099 ), ( n1023 ) };
+assign PSW_82 = n2100;
 // 
 // ACC_83
 // 
@@ -8859,21 +7897,21 @@ assign PC_83 = n0612;
 // 
 // PSW_83
 // 
-assign PSW_83 = n2161;
+assign PSW_83 = n2069;
 // 
 // ACC_84
 // 
-assign n2204 = ( B == n1094 );
-assign n2205 = 8'hff;
-assign n2206 = ( ACC / B );
-assign n2207 = ( n2204 ) ? ( n2205 ) : ( n2206 );
-assign ACC_84 = n2207;
+assign n2101 = ( B == n1094 );
+assign n2102 = 8'hff;
+assign n2103 = ( ACC / B );
+assign n2104 = ( n2101 ) ? ( n2102 ) : ( n2103 );
+assign ACC_84 = n2104;
 // 
 // B_84
 // 
-assign n2208 = ( ACC % B );
-assign n2209 = ( n2204 ) ? ( ACC ) : ( n2208 );
-assign B_84 = n2209;
+assign n2105 = ( ACC % B );
+assign n2106 = ( n2101 ) ? ( ACC ) : ( n2105 );
+assign B_84 = n2106;
 // 
 // PC_84
 // 
@@ -8881,274 +7919,184 @@ assign PC_84 = n0612;
 // 
 // PSW_84
 // 
-assign n2210 = PSW[6:3];
-assign n2211 = ( n2204 ) ? ( n0043 ) : ( n1067 );
-assign n2212 = { ( n1067 ), ( n2210 ), ( n2211 ), ( n1266 ) };
-assign n2213 = n2212[7:1];
-assign n2214 = n2207[7:7];
-assign n2215 = n2207[6:6];
-assign n2216 = n2207[5:5];
-assign n2217 = n2207[4:4];
-assign n2218 = n2207[3:3];
-assign n2219 = n2207[2:2];
-assign n2220 = n2207[1:1];
-assign n2221 = n2207[0:0];
-assign n2222 = ( n2220 ^ n2221 );
-assign n2223 = ( n2219 ^ n2222 );
-assign n2224 = ( n2218 ^ n2223 );
-assign n2225 = ( n2217 ^ n2224 );
-assign n2226 = ( n2216 ^ n2225 );
-assign n2227 = ( n2215 ^ n2226 );
-assign n2228 = ( n2214 ^ n2227 );
-assign n2229 = { ( n2213 ), ( n2228 ) };
-assign PSW_84 = n2229;
+assign n2107 = PSW[6:3];
+assign n2108 = ( n2101 ) ? ( n0043 ) : ( n1067 );
+assign n2109 = { ( n1067 ), ( n2107 ), ( n2108 ), ( n1251 ) };
+assign n2110 = n2109[7:1];
+assign n2111 = n2104[7:7];
+assign n2112 = n2104[6:6];
+assign n2113 = n2104[5:5];
+assign n2114 = n2104[4:4];
+assign n2115 = n2104[3:3];
+assign n2116 = n2104[2:2];
+assign n2117 = n2104[1:1];
+assign n2118 = n2104[0:0];
+assign n2119 = ( n2117 ^ n2118 );
+assign n2120 = ( n2116 ^ n2119 );
+assign n2121 = ( n2115 ^ n2120 );
+assign n2122 = ( n2114 ^ n2121 );
+assign n2123 = ( n2113 ^ n2122 );
+assign n2124 = ( n2112 ^ n2123 );
+assign n2125 = ( n2111 ^ n2124 );
+assign n2126 = { ( n2110 ), ( n2125 ) };
+assign PSW_84 = n2126;
 // 
 // ACC_85
 // 
-assign n2230 = RD_ROM_2[7:7];
-assign n2231 = ( n2230 == n1067 );
-assign n2232 = ( RD_ROM_2 == n1069 );
-assign n2233 = ( RD_ROM_2 == n1071 );
-assign n2234 = ( RD_ROM_2 == n0208 );
-assign n2235 = ( RD_ROM_2 == n1074 );
-assign n2236 = ( RD_ROM_2 == n0214 );
-assign n2237 = ( RD_ROM_2 == n0216 );
-assign n2238 = ( RD_ROM_2 == n0218 );
-assign n2239 = ( RD_ROM_2 == n0220 );
-assign n2240 = ( RD_ROM_2 == n0224 );
-assign n2241 = ( RD_ROM_2 == n0222 );
-assign n2242 = ( RD_ROM_2 == n0226 );
-assign n2243 = ( RD_ROM_2 == n1083 );
-assign n2244 = ( RD_ROM_2 == n0240 );
-assign n2245 = ( RD_ROM_2 == n0242 );
-assign n2246 = ( RD_ROM_2 == n0256 );
-assign n2247 = ( RD_ROM_2 == n0264 );
-assign n2248 = ( RD_ROM_2 == n0280 );
-assign n2249 = ( RD_ROM_2 == n0290 );
-assign n2250 = ( RD_ROM_2 == n0332 );
-assign n2251 = ( RD_ROM_2 == n1065 );
-assign n2252 = ( RD_ROM_2 == n1092 );
-assign n2253 = ( n2252 ) ? ( B ) : ( n1094 );
-assign n2254 = ( n2251 ) ? ( ACC ) : ( n2253 );
-assign n2255 = ( n2250 ) ? ( PSW ) : ( n2254 );
-assign n2256 = ( n2249 ) ? ( IP ) : ( n2255 );
-assign n2257 = ( n2248 ) ? ( P3INREG ) : ( n2256 );
-assign n2258 = ( n2247 ) ? ( IE ) : ( n2257 );
-assign n2259 = ( n2246 ) ? ( P2INREG ) : ( n2258 );
-assign n2260 = ( n2245 ) ? ( SBUF ) : ( n2259 );
-assign n2261 = ( n2244 ) ? ( SCON ) : ( n2260 );
-assign n2262 = ( n2243 ) ? ( P1INREG ) : ( n2261 );
-assign n2263 = ( n2242 ) ? ( TH1 ) : ( n2262 );
-assign n2264 = ( n2241 ) ? ( TL1 ) : ( n2263 );
-assign n2265 = ( n2240 ) ? ( TH0 ) : ( n2264 );
-assign n2266 = ( n2239 ) ? ( TL0 ) : ( n2265 );
-assign n2267 = ( n2238 ) ? ( TMOD ) : ( n2266 );
-assign n2268 = ( n2237 ) ? ( TCON ) : ( n2267 );
-assign n2269 = ( n2236 ) ? ( PCON ) : ( n2268 );
-assign n2270 = ( n2235 ) ? ( DPH ) : ( n2269 );
-assign n2271 = ( n2234 ) ? ( DPL ) : ( n2270 );
-assign n2272 = ( n2233 ) ? ( SP ) : ( n2271 );
-assign n2273 = ( n2232 ) ? ( P0INREG ) : ( n2272 );
-assign n2274 = ( n2231 ) ? ( RD_IRAM_0 ) : ( n2273 );
-assign n2275 = ( n1066 ) ? ( n2274 ) : ( ACC );
-assign ACC_85 = n2275;
-// 
-// PCON_85
-// 
-assign n2276 = ( n1076 ) ? ( n2274 ) : ( PCON );
-assign PCON_85 = n2276;
+assign n2127 = RD_ROM_2[7:7];
+assign n2128 = ( n2127 == n1067 );
+assign n2129 = ( RD_ROM_2 == n1069 );
+assign n2130 = ( RD_ROM_2 == n1071 );
+assign n2131 = ( RD_ROM_2 == n0208 );
+assign n2132 = ( RD_ROM_2 == n1074 );
+assign n2133 = ( RD_ROM_2 == n0214 );
+assign n2134 = ( RD_ROM_2 == n0216 );
+assign n2135 = ( RD_ROM_2 == n0218 );
+assign n2136 = ( RD_ROM_2 == n0220 );
+assign n2137 = ( RD_ROM_2 == n0224 );
+assign n2138 = ( RD_ROM_2 == n0222 );
+assign n2139 = ( RD_ROM_2 == n0226 );
+assign n2140 = ( RD_ROM_2 == n1083 );
+assign n2141 = ( RD_ROM_2 == n0240 );
+assign n2142 = ( RD_ROM_2 == n0242 );
+assign n2143 = ( RD_ROM_2 == n0256 );
+assign n2144 = ( RD_ROM_2 == n0264 );
+assign n2145 = ( RD_ROM_2 == n0280 );
+assign n2146 = ( RD_ROM_2 == n0290 );
+assign n2147 = ( RD_ROM_2 == n0332 );
+assign n2148 = ( RD_ROM_2 == n1065 );
+assign n2149 = ( RD_ROM_2 == n1092 );
+assign n2150 = ( n2149 ) ? ( B ) : ( n1094 );
+assign n2151 = ( n2148 ) ? ( ACC ) : ( n2150 );
+assign n2152 = ( n2147 ) ? ( PSW ) : ( n2151 );
+assign n2153 = ( n2146 ) ? ( IP ) : ( n2152 );
+assign n2154 = ( n2145 ) ? ( P3INREG ) : ( n2153 );
+assign n2155 = ( n2144 ) ? ( IE ) : ( n2154 );
+assign n2156 = ( n2143 ) ? ( P2INREG ) : ( n2155 );
+assign n2157 = ( n2142 ) ? ( SBUF ) : ( n2156 );
+assign n2158 = ( n2141 ) ? ( SCON ) : ( n2157 );
+assign n2159 = ( n2140 ) ? ( P1INREG ) : ( n2158 );
+assign n2160 = ( n2139 ) ? ( TH1 ) : ( n2159 );
+assign n2161 = ( n2138 ) ? ( TL1 ) : ( n2160 );
+assign n2162 = ( n2137 ) ? ( TH0 ) : ( n2161 );
+assign n2163 = ( n2136 ) ? ( TL0 ) : ( n2162 );
+assign n2164 = ( n2135 ) ? ( TMOD ) : ( n2163 );
+assign n2165 = ( n2134 ) ? ( TCON ) : ( n2164 );
+assign n2166 = ( n2133 ) ? ( PCON ) : ( n2165 );
+assign n2167 = ( n2132 ) ? ( DPH ) : ( n2166 );
+assign n2168 = ( n2131 ) ? ( DPL ) : ( n2167 );
+assign n2169 = ( n2130 ) ? ( SP ) : ( n2168 );
+assign n2170 = ( n2129 ) ? ( P0INREG ) : ( n2169 );
+assign n2171 = ( n2128 ) ? ( RD_IRAM_0 ) : ( n2170 );
+assign n2172 = ( n1066 ) ? ( n2171 ) : ( ACC );
+assign ACC_85 = n2172;
 // 
 // B_85
 // 
-assign n2277 = ( n1093 ) ? ( n2274 ) : ( B );
-assign B_85 = n2277;
-// 
-// TMOD_85
-// 
-assign n2278 = ( n1078 ) ? ( n2274 ) : ( TMOD );
-assign TMOD_85 = n2278;
+assign n2173 = ( n1093 ) ? ( n2171 ) : ( B );
+assign B_85 = n2173;
 // 
 // DPL_85
 // 
-assign n2279 = ( n1073 ) ? ( n2274 ) : ( DPL );
-assign DPL_85 = n2279;
+assign n2174 = ( n1073 ) ? ( n2171 ) : ( DPL );
+assign DPL_85 = n2174;
 // 
 // DPH_85
 // 
-assign n2280 = ( n1075 ) ? ( n2274 ) : ( DPH );
-assign DPH_85 = n2280;
-// 
-// TL1_85
-// 
-assign n2281 = ( n1081 ) ? ( n2274 ) : ( TL1 );
-assign TL1_85 = n2281;
-// 
-// TL0_85
-// 
-assign n2282 = ( n1079 ) ? ( n2274 ) : ( TL0 );
-assign TL0_85 = n2282;
-// 
-// TCON_85
-// 
-assign n2283 = ( n1077 ) ? ( n2274 ) : ( TCON );
-assign TCON_85 = n2283;
-// 
-// TH1_85
-// 
-assign n2284 = ( n1082 ) ? ( n2274 ) : ( TH1 );
-assign TH1_85 = n2284;
-// 
-// TH0_85
-// 
-assign n2285 = ( n1080 ) ? ( n2274 ) : ( TH0 );
-assign TH0_85 = n2285;
+assign n2175 = ( n1075 ) ? ( n2171 ) : ( DPH );
+assign DPH_85 = n2175;
 // 
 // PC_85
 // 
-assign PC_85 = n1217;
+assign PC_85 = n1205;
 // 
 // P2_85
 // 
-assign n2286 = ( n2248 ) ? ( P3 ) : ( n2256 );
-assign n2287 = ( n2247 ) ? ( IE ) : ( n2286 );
-assign n2288 = ( n2246 ) ? ( P2 ) : ( n2287 );
-assign n2289 = ( n2245 ) ? ( SBUF ) : ( n2288 );
-assign n2290 = ( n2244 ) ? ( SCON ) : ( n2289 );
-assign n2291 = ( n2243 ) ? ( P1 ) : ( n2290 );
-assign n2292 = ( n2242 ) ? ( TH1 ) : ( n2291 );
-assign n2293 = ( n2241 ) ? ( TL1 ) : ( n2292 );
-assign n2294 = ( n2240 ) ? ( TH0 ) : ( n2293 );
-assign n2295 = ( n2239 ) ? ( TL0 ) : ( n2294 );
-assign n2296 = ( n2238 ) ? ( TMOD ) : ( n2295 );
-assign n2297 = ( n2237 ) ? ( TCON ) : ( n2296 );
-assign n2298 = ( n2236 ) ? ( PCON ) : ( n2297 );
-assign n2299 = ( n2235 ) ? ( DPH ) : ( n2298 );
-assign n2300 = ( n2234 ) ? ( DPL ) : ( n2299 );
-assign n2301 = ( n2233 ) ? ( SP ) : ( n2300 );
-assign n2302 = ( n2232 ) ? ( P0 ) : ( n2301 );
-assign n2303 = ( n2231 ) ? ( RD_IRAM_0 ) : ( n2302 );
-assign n2304 = ( n1087 ) ? ( n2303 ) : ( P2 );
-assign P2_85 = n2304;
+assign n2176 = ( n2145 ) ? ( P3 ) : ( n2153 );
+assign n2177 = ( n2144 ) ? ( IE ) : ( n2176 );
+assign n2178 = ( n2143 ) ? ( P2 ) : ( n2177 );
+assign n2179 = ( n2142 ) ? ( SBUF ) : ( n2178 );
+assign n2180 = ( n2141 ) ? ( SCON ) : ( n2179 );
+assign n2181 = ( n2140 ) ? ( P1 ) : ( n2180 );
+assign n2182 = ( n2139 ) ? ( TH1 ) : ( n2181 );
+assign n2183 = ( n2138 ) ? ( TL1 ) : ( n2182 );
+assign n2184 = ( n2137 ) ? ( TH0 ) : ( n2183 );
+assign n2185 = ( n2136 ) ? ( TL0 ) : ( n2184 );
+assign n2186 = ( n2135 ) ? ( TMOD ) : ( n2185 );
+assign n2187 = ( n2134 ) ? ( TCON ) : ( n2186 );
+assign n2188 = ( n2133 ) ? ( PCON ) : ( n2187 );
+assign n2189 = ( n2132 ) ? ( DPH ) : ( n2188 );
+assign n2190 = ( n2131 ) ? ( DPL ) : ( n2189 );
+assign n2191 = ( n2130 ) ? ( SP ) : ( n2190 );
+assign n2192 = ( n2129 ) ? ( P0 ) : ( n2191 );
+assign n2193 = ( n2128 ) ? ( RD_IRAM_0 ) : ( n2192 );
+assign n2194 = ( n1087 ) ? ( n2193 ) : ( P2 );
+assign P2_85 = n2194;
 // 
 // P3_85
 // 
-assign n2305 = ( n1089 ) ? ( n2303 ) : ( P3 );
-assign P3_85 = n2305;
+assign n2195 = ( n1089 ) ? ( n2193 ) : ( P3 );
+assign P3_85 = n2195;
 // 
 // P0_85
 // 
-assign n2306 = ( n1070 ) ? ( n2303 ) : ( P0 );
-assign P0_85 = n2306;
+assign n2196 = ( n1070 ) ? ( n2193 ) : ( P0 );
+assign P0_85 = n2196;
 // 
 // P1_85
 // 
-assign n2307 = ( n1084 ) ? ( n2303 ) : ( P1 );
-assign P1_85 = n2307;
+assign n2197 = ( n1084 ) ? ( n2193 ) : ( P1 );
+assign P1_85 = n2197;
 // 
 // IRAM_85
 // 
 // 
-// IP_85
-// 
-assign n2308 = ( n1090 ) ? ( n2274 ) : ( IP );
-assign IP_85 = n2308;
-// 
-// IE_85
-// 
-assign n2309 = ( n1088 ) ? ( n2274 ) : ( IE );
-assign IE_85 = n2309;
-// 
-// SCON_85
-// 
-assign n2310 = ( n1085 ) ? ( n2274 ) : ( SCON );
-assign SCON_85 = n2310;
-// 
 // SP_85
 // 
-assign n2311 = ( n1072 ) ? ( n2274 ) : ( SP );
-assign SP_85 = n2311;
-// 
-// SBUF_85
-// 
-assign n2312 = ( n1086 ) ? ( n2274 ) : ( SBUF );
-assign SBUF_85 = n2312;
+assign n2198 = ( n1072 ) ? ( n2171 ) : ( SP );
+assign SP_85 = n2198;
 // 
 // PSW_85
 // 
-assign n2313 = ( n1091 ) ? ( n2274 ) : ( PSW );
-assign n2314 = n2313[7:1];
-assign n2315 = n2275[7:7];
-assign n2316 = n2275[6:6];
-assign n2317 = n2275[5:5];
-assign n2318 = n2275[4:4];
-assign n2319 = n2275[3:3];
-assign n2320 = n2275[2:2];
-assign n2321 = n2275[1:1];
-assign n2322 = n2275[0:0];
-assign n2323 = ( n2321 ^ n2322 );
-assign n2324 = ( n2320 ^ n2323 );
-assign n2325 = ( n2319 ^ n2324 );
-assign n2326 = ( n2318 ^ n2325 );
-assign n2327 = ( n2317 ^ n2326 );
-assign n2328 = ( n2316 ^ n2327 );
-assign n2329 = ( n2315 ^ n2328 );
-assign n2330 = { ( n2314 ), ( n2329 ) };
-assign PSW_85 = n2330;
+assign n2199 = ( n1091 ) ? ( n2171 ) : ( PSW );
+assign n2200 = n2199[7:1];
+assign n2201 = n2172[7:7];
+assign n2202 = n2172[6:6];
+assign n2203 = n2172[5:5];
+assign n2204 = n2172[4:4];
+assign n2205 = n2172[3:3];
+assign n2206 = n2172[2:2];
+assign n2207 = n2172[1:1];
+assign n2208 = n2172[0:0];
+assign n2209 = ( n2207 ^ n2208 );
+assign n2210 = ( n2206 ^ n2209 );
+assign n2211 = ( n2205 ^ n2210 );
+assign n2212 = ( n2204 ^ n2211 );
+assign n2213 = ( n2203 ^ n2212 );
+assign n2214 = ( n2202 ^ n2213 );
+assign n2215 = ( n2201 ^ n2214 );
+assign n2216 = { ( n2200 ), ( n2215 ) };
+assign PSW_85 = n2216;
 // 
 // ACC_86
 // 
-assign n2331 = ( n1066 ) ? ( RD_IRAM_1 ) : ( ACC );
-assign ACC_86 = n2331;
-// 
-// PCON_86
-// 
-assign n2332 = ( n1076 ) ? ( RD_IRAM_1 ) : ( PCON );
-assign PCON_86 = n2332;
+assign n2217 = ( n1066 ) ? ( RD_IRAM_1 ) : ( ACC );
+assign ACC_86 = n2217;
 // 
 // P1_86
 // 
-assign n2333 = ( n1084 ) ? ( RD_IRAM_1 ) : ( P1 );
-assign P1_86 = n2333;
-// 
-// TMOD_86
-// 
-assign n2334 = ( n1078 ) ? ( RD_IRAM_1 ) : ( TMOD );
-assign TMOD_86 = n2334;
+assign n2218 = ( n1084 ) ? ( RD_IRAM_1 ) : ( P1 );
+assign P1_86 = n2218;
 // 
 // DPL_86
 // 
-assign n2335 = ( n1073 ) ? ( RD_IRAM_1 ) : ( DPL );
-assign DPL_86 = n2335;
+assign n2219 = ( n1073 ) ? ( RD_IRAM_1 ) : ( DPL );
+assign DPL_86 = n2219;
 // 
 // DPH_86
 // 
-assign n2336 = ( n1075 ) ? ( RD_IRAM_1 ) : ( DPH );
-assign DPH_86 = n2336;
-// 
-// TL1_86
-// 
-assign n2337 = ( n1081 ) ? ( RD_IRAM_1 ) : ( TL1 );
-assign TL1_86 = n2337;
-// 
-// TL0_86
-// 
-assign n2338 = ( n1079 ) ? ( RD_IRAM_1 ) : ( TL0 );
-assign TL0_86 = n2338;
-// 
-// IE_86
-// 
-assign n2339 = ( n1088 ) ? ( RD_IRAM_1 ) : ( IE );
-assign IE_86 = n2339;
-// 
-// TH1_86
-// 
-assign n2340 = ( n1082 ) ? ( RD_IRAM_1 ) : ( TH1 );
-assign TH1_86 = n2340;
-// 
-// TH0_86
-// 
-assign n2341 = ( n1080 ) ? ( RD_IRAM_1 ) : ( TH0 );
-assign TH0_86 = n2341;
+assign n2220 = ( n1075 ) ? ( RD_IRAM_1 ) : ( DPH );
+assign DPH_86 = n2220;
 // 
 // PC_86
 // 
@@ -9156,117 +8104,69 @@ assign PC_86 = n0610;
 // 
 // P2_86
 // 
-assign n2342 = ( n1087 ) ? ( RD_IRAM_1 ) : ( P2 );
-assign P2_86 = n2342;
+assign n2221 = ( n1087 ) ? ( RD_IRAM_1 ) : ( P2 );
+assign P2_86 = n2221;
 // 
 // P3_86
 // 
-assign n2343 = ( n1089 ) ? ( RD_IRAM_1 ) : ( P3 );
-assign P3_86 = n2343;
+assign n2222 = ( n1089 ) ? ( RD_IRAM_1 ) : ( P3 );
+assign P3_86 = n2222;
 // 
 // P0_86
 // 
-assign n2344 = ( n1070 ) ? ( RD_IRAM_1 ) : ( P0 );
-assign P0_86 = n2344;
+assign n2223 = ( n1070 ) ? ( RD_IRAM_1 ) : ( P0 );
+assign P0_86 = n2223;
 // 
 // B_86
 // 
-assign n2345 = ( n1093 ) ? ( RD_IRAM_1 ) : ( B );
-assign B_86 = n2345;
+assign n2224 = ( n1093 ) ? ( RD_IRAM_1 ) : ( B );
+assign B_86 = n2224;
 // 
 // IRAM_86
 // 
 // 
-// IP_86
-// 
-assign n2346 = ( n1090 ) ? ( RD_IRAM_1 ) : ( IP );
-assign IP_86 = n2346;
-// 
-// TCON_86
-// 
-assign n2347 = ( n1077 ) ? ( RD_IRAM_1 ) : ( TCON );
-assign TCON_86 = n2347;
-// 
-// SCON_86
-// 
-assign n2348 = ( n1085 ) ? ( RD_IRAM_1 ) : ( SCON );
-assign SCON_86 = n2348;
-// 
 // SP_86
 // 
-assign n2349 = ( n1072 ) ? ( RD_IRAM_1 ) : ( SP );
-assign SP_86 = n2349;
-// 
-// SBUF_86
-// 
-assign n2350 = ( n1086 ) ? ( RD_IRAM_1 ) : ( SBUF );
-assign SBUF_86 = n2350;
+assign n2225 = ( n1072 ) ? ( RD_IRAM_1 ) : ( SP );
+assign SP_86 = n2225;
 // 
 // PSW_86
 // 
-assign n2351 = ( n1091 ) ? ( RD_IRAM_1 ) : ( PSW );
-assign n2352 = n2351[7:1];
-assign n2353 = n2331[7:7];
-assign n2354 = n2331[6:6];
-assign n2355 = n2331[5:5];
-assign n2356 = n2331[4:4];
-assign n2357 = n2331[3:3];
-assign n2358 = n2331[2:2];
-assign n2359 = n2331[1:1];
-assign n2360 = n2331[0:0];
-assign n2361 = ( n2359 ^ n2360 );
-assign n2362 = ( n2358 ^ n2361 );
-assign n2363 = ( n2357 ^ n2362 );
-assign n2364 = ( n2356 ^ n2363 );
-assign n2365 = ( n2355 ^ n2364 );
-assign n2366 = ( n2354 ^ n2365 );
-assign n2367 = ( n2353 ^ n2366 );
-assign n2368 = { ( n2352 ), ( n2367 ) };
-assign PSW_86 = n2368;
+assign n2226 = ( n1091 ) ? ( RD_IRAM_1 ) : ( PSW );
+assign n2227 = n2226[7:1];
+assign n2228 = n2217[7:7];
+assign n2229 = n2217[6:6];
+assign n2230 = n2217[5:5];
+assign n2231 = n2217[4:4];
+assign n2232 = n2217[3:3];
+assign n2233 = n2217[2:2];
+assign n2234 = n2217[1:1];
+assign n2235 = n2217[0:0];
+assign n2236 = ( n2234 ^ n2235 );
+assign n2237 = ( n2233 ^ n2236 );
+assign n2238 = ( n2232 ^ n2237 );
+assign n2239 = ( n2231 ^ n2238 );
+assign n2240 = ( n2230 ^ n2239 );
+assign n2241 = ( n2229 ^ n2240 );
+assign n2242 = ( n2228 ^ n2241 );
+assign n2243 = { ( n2227 ), ( n2242 ) };
+assign PSW_86 = n2243;
 // 
 // ACC_87
 // 
-assign ACC_87 = n2331;
-// 
-// PCON_87
-// 
-assign PCON_87 = n2332;
+assign ACC_87 = n2217;
 // 
 // B_87
 // 
-assign B_87 = n2345;
-// 
-// TMOD_87
-// 
-assign TMOD_87 = n2334;
+assign B_87 = n2224;
 // 
 // DPL_87
 // 
-assign DPL_87 = n2335;
+assign DPL_87 = n2219;
 // 
 // DPH_87
 // 
-assign DPH_87 = n2336;
-// 
-// TL1_87
-// 
-assign TL1_87 = n2337;
-// 
-// TL0_87
-// 
-assign TL0_87 = n2338;
-// 
-// IE_87
-// 
-assign IE_87 = n2339;
-// 
-// TH1_87
-// 
-assign TH1_87 = n2340;
-// 
-// TH0_87
-// 
-assign TH0_87 = n2341;
+assign DPH_87 = n2220;
 // 
 // PC_87
 // 
@@ -9274,101 +8174,50 @@ assign PC_87 = n0610;
 // 
 // P2_87
 // 
-assign P2_87 = n2342;
+assign P2_87 = n2221;
 // 
 // P3_87
 // 
-assign P3_87 = n2343;
+assign P3_87 = n2222;
 // 
 // P0_87
 // 
-assign P0_87 = n2344;
+assign P0_87 = n2223;
 // 
 // P1_87
 // 
-assign P1_87 = n2333;
+assign P1_87 = n2218;
 // 
 // IRAM_87
 // 
 // 
-// IP_87
-// 
-assign IP_87 = n2346;
-// 
-// TCON_87
-// 
-assign TCON_87 = n2347;
-// 
-// SCON_87
-// 
-assign SCON_87 = n2348;
-// 
 // SP_87
 // 
-assign SP_87 = n2349;
-// 
-// SBUF_87
-// 
-assign SBUF_87 = n2350;
+assign SP_87 = n2225;
 // 
 // PSW_87
 // 
-assign PSW_87 = n2368;
+assign PSW_87 = n2243;
 // 
 // ACC_88
 // 
-assign n2369 = ( n1066 ) ? ( RD_IRAM_0 ) : ( ACC );
-assign ACC_88 = n2369;
-// 
-// PCON_88
-// 
-assign n2370 = ( n1076 ) ? ( RD_IRAM_0 ) : ( PCON );
-assign PCON_88 = n2370;
+assign n2244 = ( n1066 ) ? ( RD_IRAM_0 ) : ( ACC );
+assign ACC_88 = n2244;
 // 
 // B_88
 // 
-assign n2371 = ( n1093 ) ? ( RD_IRAM_0 ) : ( B );
-assign B_88 = n2371;
-// 
-// TMOD_88
-// 
-assign n2372 = ( n1078 ) ? ( RD_IRAM_0 ) : ( TMOD );
-assign TMOD_88 = n2372;
+assign n2245 = ( n1093 ) ? ( RD_IRAM_0 ) : ( B );
+assign B_88 = n2245;
 // 
 // DPL_88
 // 
-assign n2373 = ( n1073 ) ? ( RD_IRAM_0 ) : ( DPL );
-assign DPL_88 = n2373;
+assign n2246 = ( n1073 ) ? ( RD_IRAM_0 ) : ( DPL );
+assign DPL_88 = n2246;
 // 
 // DPH_88
 // 
-assign n2374 = ( n1075 ) ? ( RD_IRAM_0 ) : ( DPH );
-assign DPH_88 = n2374;
-// 
-// TL1_88
-// 
-assign n2375 = ( n1081 ) ? ( RD_IRAM_0 ) : ( TL1 );
-assign TL1_88 = n2375;
-// 
-// TL0_88
-// 
-assign n2376 = ( n1079 ) ? ( RD_IRAM_0 ) : ( TL0 );
-assign TL0_88 = n2376;
-// 
-// IE_88
-// 
-assign n2377 = ( n1088 ) ? ( RD_IRAM_0 ) : ( IE );
-assign IE_88 = n2377;
-// 
-// TH1_88
-// 
-assign n2378 = ( n1082 ) ? ( RD_IRAM_0 ) : ( TH1 );
-assign TH1_88 = n2378;
-// 
-// TH0_88
-// 
-assign n2379 = ( n1080 ) ? ( RD_IRAM_0 ) : ( TH0 );
-assign TH0_88 = n2379;
+assign n2247 = ( n1075 ) ? ( RD_IRAM_0 ) : ( DPH );
+assign DPH_88 = n2247;
 // 
 // PC_88
 // 
@@ -9376,117 +8225,69 @@ assign PC_88 = n0610;
 // 
 // P2_88
 // 
-assign n2380 = ( n1087 ) ? ( RD_IRAM_0 ) : ( P2 );
-assign P2_88 = n2380;
+assign n2248 = ( n1087 ) ? ( RD_IRAM_0 ) : ( P2 );
+assign P2_88 = n2248;
 // 
 // P3_88
 // 
-assign n2381 = ( n1089 ) ? ( RD_IRAM_0 ) : ( P3 );
-assign P3_88 = n2381;
+assign n2249 = ( n1089 ) ? ( RD_IRAM_0 ) : ( P3 );
+assign P3_88 = n2249;
 // 
 // P0_88
 // 
-assign n2382 = ( n1070 ) ? ( RD_IRAM_0 ) : ( P0 );
-assign P0_88 = n2382;
+assign n2250 = ( n1070 ) ? ( RD_IRAM_0 ) : ( P0 );
+assign P0_88 = n2250;
 // 
 // P1_88
 // 
-assign n2383 = ( n1084 ) ? ( RD_IRAM_0 ) : ( P1 );
-assign P1_88 = n2383;
+assign n2251 = ( n1084 ) ? ( RD_IRAM_0 ) : ( P1 );
+assign P1_88 = n2251;
 // 
 // IRAM_88
 // 
 // 
-// IP_88
-// 
-assign n2384 = ( n1090 ) ? ( RD_IRAM_0 ) : ( IP );
-assign IP_88 = n2384;
-// 
-// TCON_88
-// 
-assign n2385 = ( n1077 ) ? ( RD_IRAM_0 ) : ( TCON );
-assign TCON_88 = n2385;
-// 
-// SCON_88
-// 
-assign n2386 = ( n1085 ) ? ( RD_IRAM_0 ) : ( SCON );
-assign SCON_88 = n2386;
-// 
 // SP_88
 // 
-assign n2387 = ( n1072 ) ? ( RD_IRAM_0 ) : ( SP );
-assign SP_88 = n2387;
-// 
-// SBUF_88
-// 
-assign n2388 = ( n1086 ) ? ( RD_IRAM_0 ) : ( SBUF );
-assign SBUF_88 = n2388;
+assign n2252 = ( n1072 ) ? ( RD_IRAM_0 ) : ( SP );
+assign SP_88 = n2252;
 // 
 // PSW_88
 // 
-assign n2389 = ( n1091 ) ? ( RD_IRAM_0 ) : ( PSW );
-assign n2390 = n2389[7:1];
-assign n2391 = n2369[7:7];
-assign n2392 = n2369[6:6];
-assign n2393 = n2369[5:5];
-assign n2394 = n2369[4:4];
-assign n2395 = n2369[3:3];
-assign n2396 = n2369[2:2];
-assign n2397 = n2369[1:1];
-assign n2398 = n2369[0:0];
-assign n2399 = ( n2397 ^ n2398 );
-assign n2400 = ( n2396 ^ n2399 );
-assign n2401 = ( n2395 ^ n2400 );
-assign n2402 = ( n2394 ^ n2401 );
-assign n2403 = ( n2393 ^ n2402 );
-assign n2404 = ( n2392 ^ n2403 );
-assign n2405 = ( n2391 ^ n2404 );
-assign n2406 = { ( n2390 ), ( n2405 ) };
-assign PSW_88 = n2406;
+assign n2253 = ( n1091 ) ? ( RD_IRAM_0 ) : ( PSW );
+assign n2254 = n2253[7:1];
+assign n2255 = n2244[7:7];
+assign n2256 = n2244[6:6];
+assign n2257 = n2244[5:5];
+assign n2258 = n2244[4:4];
+assign n2259 = n2244[3:3];
+assign n2260 = n2244[2:2];
+assign n2261 = n2244[1:1];
+assign n2262 = n2244[0:0];
+assign n2263 = ( n2261 ^ n2262 );
+assign n2264 = ( n2260 ^ n2263 );
+assign n2265 = ( n2259 ^ n2264 );
+assign n2266 = ( n2258 ^ n2265 );
+assign n2267 = ( n2257 ^ n2266 );
+assign n2268 = ( n2256 ^ n2267 );
+assign n2269 = ( n2255 ^ n2268 );
+assign n2270 = { ( n2254 ), ( n2269 ) };
+assign PSW_88 = n2270;
 // 
 // ACC_89
 // 
-assign ACC_89 = n2369;
-// 
-// PCON_89
-// 
-assign PCON_89 = n2370;
+assign ACC_89 = n2244;
 // 
 // B_89
 // 
-assign B_89 = n2371;
-// 
-// TMOD_89
-// 
-assign TMOD_89 = n2372;
+assign B_89 = n2245;
 // 
 // DPL_89
 // 
-assign DPL_89 = n2373;
+assign DPL_89 = n2246;
 // 
 // DPH_89
 // 
-assign DPH_89 = n2374;
-// 
-// TL1_89
-// 
-assign TL1_89 = n2375;
-// 
-// TL0_89
-// 
-assign TL0_89 = n2376;
-// 
-// IE_89
-// 
-assign IE_89 = n2377;
-// 
-// TH1_89
-// 
-assign TH1_89 = n2378;
-// 
-// TH0_89
-// 
-assign TH0_89 = n2379;
+assign DPH_89 = n2247;
 // 
 // PC_89
 // 
@@ -9494,90 +8295,46 @@ assign PC_89 = n0610;
 // 
 // P2_89
 // 
-assign P2_89 = n2380;
+assign P2_89 = n2248;
 // 
 // P3_89
 // 
-assign P3_89 = n2381;
+assign P3_89 = n2249;
 // 
 // P0_89
 // 
-assign P0_89 = n2382;
+assign P0_89 = n2250;
 // 
 // P1_89
 // 
-assign P1_89 = n2383;
+assign P1_89 = n2251;
 // 
 // IRAM_89
 // 
 // 
-// IP_89
-// 
-assign IP_89 = n2384;
-// 
-// TCON_89
-// 
-assign TCON_89 = n2385;
-// 
-// SCON_89
-// 
-assign SCON_89 = n2386;
-// 
 // SP_89
 // 
-assign SP_89 = n2387;
-// 
-// SBUF_89
-// 
-assign SBUF_89 = n2388;
+assign SP_89 = n2252;
 // 
 // PSW_89
 // 
-assign PSW_89 = n2406;
+assign PSW_89 = n2270;
 // 
 // ACC_8a
 // 
-assign ACC_8a = n2369;
-// 
-// PCON_8a
-// 
-assign PCON_8a = n2370;
+assign ACC_8a = n2244;
 // 
 // P1_8a
 // 
-assign P1_8a = n2383;
-// 
-// TMOD_8a
-// 
-assign TMOD_8a = n2372;
+assign P1_8a = n2251;
 // 
 // DPL_8a
 // 
-assign DPL_8a = n2373;
+assign DPL_8a = n2246;
 // 
 // DPH_8a
 // 
-assign DPH_8a = n2374;
-// 
-// TL1_8a
-// 
-assign TL1_8a = n2375;
-// 
-// TL0_8a
-// 
-assign TL0_8a = n2376;
-// 
-// TCON_8a
-// 
-assign TCON_8a = n2385;
-// 
-// TH1_8a
-// 
-assign TH1_8a = n2378;
-// 
-// TH0_8a
-// 
-assign TH0_8a = n2379;
+assign DPH_8a = n2247;
 // 
 // PC_8a
 // 
@@ -9585,90 +8342,46 @@ assign PC_8a = n0610;
 // 
 // P2_8a
 // 
-assign P2_8a = n2380;
+assign P2_8a = n2248;
 // 
 // P3_8a
 // 
-assign P3_8a = n2381;
+assign P3_8a = n2249;
 // 
 // P0_8a
 // 
-assign P0_8a = n2382;
+assign P0_8a = n2250;
 // 
 // B_8a
 // 
-assign B_8a = n2371;
+assign B_8a = n2245;
 // 
 // IRAM_8a
 // 
 // 
-// IP_8a
-// 
-assign IP_8a = n2384;
-// 
-// IE_8a
-// 
-assign IE_8a = n2377;
-// 
-// SCON_8a
-// 
-assign SCON_8a = n2386;
-// 
 // SP_8a
 // 
-assign SP_8a = n2387;
-// 
-// SBUF_8a
-// 
-assign SBUF_8a = n2388;
+assign SP_8a = n2252;
 // 
 // PSW_8a
 // 
-assign PSW_8a = n2406;
+assign PSW_8a = n2270;
 // 
 // ACC_8b
 // 
-assign ACC_8b = n2369;
-// 
-// PCON_8b
-// 
-assign PCON_8b = n2370;
+assign ACC_8b = n2244;
 // 
 // B_8b
 // 
-assign B_8b = n2371;
-// 
-// TMOD_8b
-// 
-assign TMOD_8b = n2372;
+assign B_8b = n2245;
 // 
 // DPL_8b
 // 
-assign DPL_8b = n2373;
+assign DPL_8b = n2246;
 // 
 // DPH_8b
 // 
-assign DPH_8b = n2374;
-// 
-// TL1_8b
-// 
-assign TL1_8b = n2375;
-// 
-// TL0_8b
-// 
-assign TL0_8b = n2376;
-// 
-// IE_8b
-// 
-assign IE_8b = n2377;
-// 
-// TH1_8b
-// 
-assign TH1_8b = n2378;
-// 
-// TH0_8b
-// 
-assign TH0_8b = n2379;
+assign DPH_8b = n2247;
 // 
 // PC_8b
 // 
@@ -9676,90 +8389,46 @@ assign PC_8b = n0610;
 // 
 // P2_8b
 // 
-assign P2_8b = n2380;
+assign P2_8b = n2248;
 // 
 // P3_8b
 // 
-assign P3_8b = n2381;
+assign P3_8b = n2249;
 // 
 // P0_8b
 // 
-assign P0_8b = n2382;
+assign P0_8b = n2250;
 // 
 // P1_8b
 // 
-assign P1_8b = n2383;
+assign P1_8b = n2251;
 // 
 // IRAM_8b
 // 
 // 
-// IP_8b
-// 
-assign IP_8b = n2384;
-// 
-// TCON_8b
-// 
-assign TCON_8b = n2385;
-// 
-// SCON_8b
-// 
-assign SCON_8b = n2386;
-// 
 // SP_8b
 // 
-assign SP_8b = n2387;
-// 
-// SBUF_8b
-// 
-assign SBUF_8b = n2388;
+assign SP_8b = n2252;
 // 
 // PSW_8b
 // 
-assign PSW_8b = n2406;
+assign PSW_8b = n2270;
 // 
 // ACC_8c
 // 
-assign ACC_8c = n2369;
+assign ACC_8c = n2244;
 // 
-// PCON_8c
+// B_8c
 // 
-assign PCON_8c = n2370;
-// 
-// P1_8c
-// 
-assign P1_8c = n2383;
-// 
-// TMOD_8c
-// 
-assign TMOD_8c = n2372;
+assign B_8c = n2245;
 // 
 // DPL_8c
 // 
-assign DPL_8c = n2373;
+assign DPL_8c = n2246;
 // 
 // DPH_8c
 // 
-assign DPH_8c = n2374;
-// 
-// TL1_8c
-// 
-assign TL1_8c = n2375;
-// 
-// TL0_8c
-// 
-assign TL0_8c = n2376;
-// 
-// IE_8c
-// 
-assign IE_8c = n2377;
-// 
-// TH1_8c
-// 
-assign TH1_8c = n2378;
-// 
-// TH0_8c
-// 
-assign TH0_8c = n2379;
+assign DPH_8c = n2247;
 // 
 // PC_8c
 // 
@@ -9767,90 +8436,46 @@ assign PC_8c = n0610;
 // 
 // P2_8c
 // 
-assign P2_8c = n2380;
+assign P2_8c = n2248;
 // 
 // P3_8c
 // 
-assign P3_8c = n2381;
+assign P3_8c = n2249;
 // 
 // P0_8c
 // 
-assign P0_8c = n2382;
+assign P0_8c = n2250;
 // 
-// B_8c
+// P1_8c
 // 
-assign B_8c = n2371;
+assign P1_8c = n2251;
 // 
 // IRAM_8c
 // 
 // 
-// IP_8c
-// 
-assign IP_8c = n2384;
-// 
-// TCON_8c
-// 
-assign TCON_8c = n2385;
-// 
-// SCON_8c
-// 
-assign SCON_8c = n2386;
-// 
 // SP_8c
 // 
-assign SP_8c = n2387;
-// 
-// SBUF_8c
-// 
-assign SBUF_8c = n2388;
+assign SP_8c = n2252;
 // 
 // PSW_8c
 // 
-assign PSW_8c = n2406;
+assign PSW_8c = n2270;
 // 
 // ACC_8d
 // 
-assign ACC_8d = n2369;
-// 
-// PCON_8d
-// 
-assign PCON_8d = n2370;
+assign ACC_8d = n2244;
 // 
 // B_8d
 // 
-assign B_8d = n2371;
-// 
-// TMOD_8d
-// 
-assign TMOD_8d = n2372;
+assign B_8d = n2245;
 // 
 // DPL_8d
 // 
-assign DPL_8d = n2373;
+assign DPL_8d = n2246;
 // 
 // DPH_8d
 // 
-assign DPH_8d = n2374;
-// 
-// TL1_8d
-// 
-assign TL1_8d = n2375;
-// 
-// TL0_8d
-// 
-assign TL0_8d = n2376;
-// 
-// IE_8d
-// 
-assign IE_8d = n2377;
-// 
-// TH1_8d
-// 
-assign TH1_8d = n2378;
-// 
-// TH0_8d
-// 
-assign TH0_8d = n2379;
+assign DPH_8d = n2247;
 // 
 // PC_8d
 // 
@@ -9858,90 +8483,46 @@ assign PC_8d = n0610;
 // 
 // P2_8d
 // 
-assign P2_8d = n2380;
+assign P2_8d = n2248;
 // 
 // P3_8d
 // 
-assign P3_8d = n2381;
+assign P3_8d = n2249;
 // 
 // P0_8d
 // 
-assign P0_8d = n2382;
+assign P0_8d = n2250;
 // 
 // P1_8d
 // 
-assign P1_8d = n2383;
+assign P1_8d = n2251;
 // 
 // IRAM_8d
 // 
 // 
-// IP_8d
-// 
-assign IP_8d = n2384;
-// 
-// TCON_8d
-// 
-assign TCON_8d = n2385;
-// 
-// SCON_8d
-// 
-assign SCON_8d = n2386;
-// 
 // SP_8d
 // 
-assign SP_8d = n2387;
-// 
-// SBUF_8d
-// 
-assign SBUF_8d = n2388;
+assign SP_8d = n2252;
 // 
 // PSW_8d
 // 
-assign PSW_8d = n2406;
+assign PSW_8d = n2270;
 // 
 // ACC_8e
 // 
-assign ACC_8e = n2369;
-// 
-// PCON_8e
-// 
-assign PCON_8e = n2370;
+assign ACC_8e = n2244;
 // 
 // B_8e
 // 
-assign B_8e = n2371;
-// 
-// TMOD_8e
-// 
-assign TMOD_8e = n2372;
+assign B_8e = n2245;
 // 
 // DPL_8e
 // 
-assign DPL_8e = n2373;
+assign DPL_8e = n2246;
 // 
 // DPH_8e
 // 
-assign DPH_8e = n2374;
-// 
-// TL1_8e
-// 
-assign TL1_8e = n2375;
-// 
-// TL0_8e
-// 
-assign TL0_8e = n2376;
-// 
-// IE_8e
-// 
-assign IE_8e = n2377;
-// 
-// TH1_8e
-// 
-assign TH1_8e = n2378;
-// 
-// TH0_8e
-// 
-assign TH0_8e = n2379;
+assign DPH_8e = n2247;
 // 
 // PC_8e
 // 
@@ -9949,90 +8530,46 @@ assign PC_8e = n0610;
 // 
 // P2_8e
 // 
-assign P2_8e = n2380;
+assign P2_8e = n2248;
 // 
 // P3_8e
 // 
-assign P3_8e = n2381;
+assign P3_8e = n2249;
 // 
 // P0_8e
 // 
-assign P0_8e = n2382;
+assign P0_8e = n2250;
 // 
 // P1_8e
 // 
-assign P1_8e = n2383;
+assign P1_8e = n2251;
 // 
 // IRAM_8e
 // 
 // 
-// IP_8e
-// 
-assign IP_8e = n2384;
-// 
-// TCON_8e
-// 
-assign TCON_8e = n2385;
-// 
-// SCON_8e
-// 
-assign SCON_8e = n2386;
-// 
 // SP_8e
 // 
-assign SP_8e = n2387;
-// 
-// SBUF_8e
-// 
-assign SBUF_8e = n2388;
+assign SP_8e = n2252;
 // 
 // PSW_8e
 // 
-assign PSW_8e = n2406;
+assign PSW_8e = n2270;
 // 
 // ACC_8f
 // 
-assign ACC_8f = n2369;
-// 
-// PCON_8f
-// 
-assign PCON_8f = n2370;
+assign ACC_8f = n2244;
 // 
 // P1_8f
 // 
-assign P1_8f = n2383;
-// 
-// TMOD_8f
-// 
-assign TMOD_8f = n2372;
+assign P1_8f = n2251;
 // 
 // DPL_8f
 // 
-assign DPL_8f = n2373;
+assign DPL_8f = n2246;
 // 
 // DPH_8f
 // 
-assign DPH_8f = n2374;
-// 
-// TL1_8f
-// 
-assign TL1_8f = n2375;
-// 
-// TL0_8f
-// 
-assign TL0_8f = n2376;
-// 
-// IE_8f
-// 
-assign IE_8f = n2377;
-// 
-// TH1_8f
-// 
-assign TH1_8f = n2378;
-// 
-// TH0_8f
-// 
-assign TH0_8f = n2379;
+assign DPH_8f = n2247;
 // 
 // PC_8f
 // 
@@ -10040,60 +8577,44 @@ assign PC_8f = n0610;
 // 
 // P2_8f
 // 
-assign P2_8f = n2380;
+assign P2_8f = n2248;
 // 
 // P3_8f
 // 
-assign P3_8f = n2381;
+assign P3_8f = n2249;
 // 
 // P0_8f
 // 
-assign P0_8f = n2382;
+assign P0_8f = n2250;
 // 
 // B_8f
 // 
-assign B_8f = n2371;
+assign B_8f = n2245;
 // 
 // IRAM_8f
 // 
 // 
-// IP_8f
-// 
-assign IP_8f = n2384;
-// 
-// TCON_8f
-// 
-assign TCON_8f = n2385;
-// 
-// SCON_8f
-// 
-assign SCON_8f = n2386;
-// 
 // SP_8f
 // 
-assign SP_8f = n2387;
-// 
-// SBUF_8f
-// 
-assign SBUF_8f = n2388;
+assign SP_8f = n2252;
 // 
 // PSW_8f
 // 
-assign PSW_8f = n2406;
+assign PSW_8f = n2270;
 // 
 // DPL_90
 // 
-assign n2407 = n1030[7:0];
-assign DPL_90 = n2407;
+assign n2271 = n1030[7:0];
+assign DPL_90 = n2271;
 // 
 // DPH_90
 // 
-assign n2408 = n1030[15:8];
-assign DPH_90 = n2408;
+assign n2272 = n1030[15:8];
+assign DPH_90 = n2272;
 // 
 // PC_90
 // 
-assign PC_90 = n1217;
+assign PC_90 = n1205;
 // 
 // PSW_90
 // 
@@ -10108,7 +8629,7 @@ assign PC_91 = n1029;
 // 
 // SP_91
 // 
-assign SP_91 = n1256;
+assign SP_91 = n1241;
 // 
 // PSW_91
 // 
@@ -10116,20 +8637,16 @@ assign PSW_91 = n1024;
 // 
 // ACC_92
 // 
-assign n2409 = ( n1588 << n1170 );
-assign n2410 = ( n1197 | n2409 );
-assign n2411 = ( n1168 ) ? ( n2410 ) : ( ACC );
-assign ACC_92 = n2411;
+assign n2273 = ( n1562 << n1159 );
+assign n2274 = ( n1186 | n2273 );
+assign n2275 = ( n1157 ) ? ( n2274 ) : ( ACC );
+assign ACC_92 = n2275;
 // 
-// B_92
+// P1_92
 // 
-assign n2412 = ( n1184 ) ? ( n2410 ) : ( B );
-assign B_92 = n2412;
-// 
-// IE_92
-// 
-assign n2413 = ( n1180 ) ? ( n2410 ) : ( IE );
-assign IE_92 = n2413;
+assign n2276 = ( n1199 | n2273 );
+assign n2277 = ( n1166 ) ? ( n2276 ) : ( P1 );
+assign P1_92 = n2277;
 // 
 // PC_92
 // 
@@ -10137,64 +8654,48 @@ assign PC_92 = n0610;
 // 
 // P2_92
 // 
-assign n2414 = ( n1210 | n2409 );
-assign n2415 = ( n1179 ) ? ( n2414 ) : ( P2 );
-assign P2_92 = n2415;
+assign n2278 = ( n1168 ) ? ( n2276 ) : ( P2 );
+assign P2_92 = n2278;
 // 
 // P3_92
 // 
-assign n2416 = ( n1181 ) ? ( n2414 ) : ( P3 );
-assign P3_92 = n2416;
+assign n2279 = ( n1170 ) ? ( n2276 ) : ( P3 );
+assign P3_92 = n2279;
 // 
 // P0_92
 // 
-assign n2417 = ( n1175 ) ? ( n2414 ) : ( P0 );
-assign P0_92 = n2417;
+assign n2280 = ( n1164 ) ? ( n2276 ) : ( P0 );
+assign P0_92 = n2280;
 // 
-// P1_92
+// B_92
 // 
-assign n2418 = ( n1177 ) ? ( n2414 ) : ( P1 );
-assign P1_92 = n2418;
+assign n2281 = ( n1173 ) ? ( n2274 ) : ( B );
+assign B_92 = n2281;
 // 
 // IRAM_92
 // 
 // 
-// IP_92
-// 
-assign n2419 = ( n1182 ) ? ( n2410 ) : ( IP );
-assign IP_92 = n2419;
-// 
-// TCON_92
-// 
-assign n2420 = ( n1176 ) ? ( n2410 ) : ( TCON );
-assign TCON_92 = n2420;
-// 
-// SCON_92
-// 
-assign n2421 = ( n1178 ) ? ( n2410 ) : ( SCON );
-assign SCON_92 = n2421;
-// 
 // PSW_92
 // 
-assign n2422 = ( n1183 ) ? ( n2410 ) : ( PSW );
-assign n2423 = n2422[7:1];
-assign n2424 = n2411[7:7];
-assign n2425 = n2411[6:6];
-assign n2426 = n2411[5:5];
-assign n2427 = n2411[4:4];
-assign n2428 = n2411[3:3];
-assign n2429 = n2411[2:2];
-assign n2430 = n2411[1:1];
-assign n2431 = n2411[0:0];
-assign n2432 = ( n2430 ^ n2431 );
-assign n2433 = ( n2429 ^ n2432 );
-assign n2434 = ( n2428 ^ n2433 );
-assign n2435 = ( n2427 ^ n2434 );
-assign n2436 = ( n2426 ^ n2435 );
-assign n2437 = ( n2425 ^ n2436 );
-assign n2438 = ( n2424 ^ n2437 );
-assign n2439 = { ( n2423 ), ( n2438 ) };
-assign PSW_92 = n2439;
+assign n2282 = ( n1172 ) ? ( n2274 ) : ( PSW );
+assign n2283 = n2282[7:1];
+assign n2284 = n2275[7:7];
+assign n2285 = n2275[6:6];
+assign n2286 = n2275[5:5];
+assign n2287 = n2275[4:4];
+assign n2288 = n2275[3:3];
+assign n2289 = n2275[2:2];
+assign n2290 = n2275[1:1];
+assign n2291 = n2275[0:0];
+assign n2292 = ( n2290 ^ n2291 );
+assign n2293 = ( n2289 ^ n2292 );
+assign n2294 = ( n2288 ^ n2293 );
+assign n2295 = ( n2287 ^ n2294 );
+assign n2296 = ( n2286 ^ n2295 );
+assign n2297 = ( n2285 ^ n2296 );
+assign n2298 = ( n2284 ^ n2297 );
+assign n2299 = { ( n2283 ), ( n2298 ) };
+assign PSW_92 = n2299;
 // 
 // ACC_93
 // 
@@ -10206,14 +8707,14 @@ assign PC_93 = n0612;
 // 
 // PSW_93
 // 
-assign PSW_93 = n2161;
+assign PSW_93 = n2069;
 // 
 // ACC_94
 // 
-assign n2440 = ( ACC - RD_ROM_1 );
-assign n2441 = { n1259[0], n1259[0], n1259[0], n1259[0], n1259[0], n1259[0], n1259[0], n1259 };
-assign n2442 = ( n2440 + n2441 );
-assign ACC_94 = n2442;
+assign n2300 = ( ACC - RD_ROM_1 );
+assign n2301 = { n1244[0], n1244[0], n1244[0], n1244[0], n1244[0], n1244[0], n1244[0], n1244 };
+assign n2302 = ( n2300 + n2301 );
+assign ACC_94 = n2302;
 // 
 // PC_94
 // 
@@ -10221,41 +8722,41 @@ assign PC_94 = n0610;
 // 
 // PSW_94
 // 
-assign n2443 = ( n1363 < n1592 );
-assign n2444 = ( n2443 ) ? ( n0043 ) : ( n1067 );
-assign n2445 = ( n1370 < n1596 );
-assign n2446 = ( n2445 ) ? ( n0043 ) : ( n1067 );
-assign n2447 = ( n1376 - n1599 );
-assign n2448 = n2447[8:8];
-assign n2449 = n2447[7:7];
-assign n2450 = ( n2448 == n2449 );
-assign n2451 = !( n2450 );
-assign n2452 = ( n2451 ) ? ( n0043 ) : ( n1067 );
-assign n2453 = { ( n2444 ), ( n2446 ), ( n1264 ), ( n2452 ), ( n1266 ) };
-assign n2454 = n2453[7:1];
-assign n2455 = n2442[7:7];
-assign n2456 = n2442[6:6];
-assign n2457 = n2442[5:5];
-assign n2458 = n2442[4:4];
-assign n2459 = n2442[3:3];
-assign n2460 = n2442[2:2];
-assign n2461 = n2442[1:1];
-assign n2462 = n2442[0:0];
-assign n2463 = ( n2461 ^ n2462 );
-assign n2464 = ( n2460 ^ n2463 );
-assign n2465 = ( n2459 ^ n2464 );
-assign n2466 = ( n2458 ^ n2465 );
-assign n2467 = ( n2457 ^ n2466 );
-assign n2468 = ( n2456 ^ n2467 );
-assign n2469 = ( n2455 ^ n2468 );
-assign n2470 = { ( n2454 ), ( n2469 ) };
-assign PSW_94 = n2470;
+assign n2303 = ( n1337 < n1566 );
+assign n2304 = ( n2303 ) ? ( n0043 ) : ( n1067 );
+assign n2305 = ( n1344 < n1570 );
+assign n2306 = ( n2305 ) ? ( n0043 ) : ( n1067 );
+assign n2307 = ( n1350 - n1573 );
+assign n2308 = n2307[8:8];
+assign n2309 = n2307[7:7];
+assign n2310 = ( n2308 == n2309 );
+assign n2311 = !( n2310 );
+assign n2312 = ( n2311 ) ? ( n0043 ) : ( n1067 );
+assign n2313 = { ( n2304 ), ( n2306 ), ( n1249 ), ( n2312 ), ( n1251 ) };
+assign n2314 = n2313[7:1];
+assign n2315 = n2302[7:7];
+assign n2316 = n2302[6:6];
+assign n2317 = n2302[5:5];
+assign n2318 = n2302[4:4];
+assign n2319 = n2302[3:3];
+assign n2320 = n2302[2:2];
+assign n2321 = n2302[1:1];
+assign n2322 = n2302[0:0];
+assign n2323 = ( n2321 ^ n2322 );
+assign n2324 = ( n2320 ^ n2323 );
+assign n2325 = ( n2319 ^ n2324 );
+assign n2326 = ( n2318 ^ n2325 );
+assign n2327 = ( n2317 ^ n2326 );
+assign n2328 = ( n2316 ^ n2327 );
+assign n2329 = ( n2315 ^ n2328 );
+assign n2330 = { ( n2314 ), ( n2329 ) };
+assign PSW_94 = n2330;
 // 
 // ACC_95
 // 
-assign n2471 = ( ACC - n1420 );
-assign n2472 = ( n2471 + n2441 );
-assign ACC_95 = n2472;
+assign n2331 = ( ACC - n1394 );
+assign n2332 = ( n2331 + n2301 );
+assign ACC_95 = n2332;
 // 
 // PC_95
 // 
@@ -10263,41 +8764,41 @@ assign PC_95 = n0610;
 // 
 // PSW_95
 // 
-assign n2473 = ( n1363 < n1626 );
-assign n2474 = ( n2473 ) ? ( n0043 ) : ( n1067 );
-assign n2475 = ( n1370 < n1629 );
-assign n2476 = ( n2475 ) ? ( n0043 ) : ( n1067 );
-assign n2477 = ( n1376 - n1632 );
-assign n2478 = n2477[8:8];
-assign n2479 = n2477[7:7];
-assign n2480 = ( n2478 == n2479 );
-assign n2481 = !( n2480 );
-assign n2482 = ( n2481 ) ? ( n0043 ) : ( n1067 );
-assign n2483 = { ( n2474 ), ( n2476 ), ( n1264 ), ( n2482 ), ( n1266 ) };
-assign n2484 = n2483[7:1];
-assign n2485 = n2472[7:7];
-assign n2486 = n2472[6:6];
-assign n2487 = n2472[5:5];
-assign n2488 = n2472[4:4];
-assign n2489 = n2472[3:3];
-assign n2490 = n2472[2:2];
-assign n2491 = n2472[1:1];
-assign n2492 = n2472[0:0];
-assign n2493 = ( n2491 ^ n2492 );
-assign n2494 = ( n2490 ^ n2493 );
-assign n2495 = ( n2489 ^ n2494 );
-assign n2496 = ( n2488 ^ n2495 );
-assign n2497 = ( n2487 ^ n2496 );
-assign n2498 = ( n2486 ^ n2497 );
-assign n2499 = ( n2485 ^ n2498 );
-assign n2500 = { ( n2484 ), ( n2499 ) };
-assign PSW_95 = n2500;
+assign n2333 = ( n1337 < n1600 );
+assign n2334 = ( n2333 ) ? ( n0043 ) : ( n1067 );
+assign n2335 = ( n1344 < n1603 );
+assign n2336 = ( n2335 ) ? ( n0043 ) : ( n1067 );
+assign n2337 = ( n1350 - n1606 );
+assign n2338 = n2337[8:8];
+assign n2339 = n2337[7:7];
+assign n2340 = ( n2338 == n2339 );
+assign n2341 = !( n2340 );
+assign n2342 = ( n2341 ) ? ( n0043 ) : ( n1067 );
+assign n2343 = { ( n2334 ), ( n2336 ), ( n1249 ), ( n2342 ), ( n1251 ) };
+assign n2344 = n2343[7:1];
+assign n2345 = n2332[7:7];
+assign n2346 = n2332[6:6];
+assign n2347 = n2332[5:5];
+assign n2348 = n2332[4:4];
+assign n2349 = n2332[3:3];
+assign n2350 = n2332[2:2];
+assign n2351 = n2332[1:1];
+assign n2352 = n2332[0:0];
+assign n2353 = ( n2351 ^ n2352 );
+assign n2354 = ( n2350 ^ n2353 );
+assign n2355 = ( n2349 ^ n2354 );
+assign n2356 = ( n2348 ^ n2355 );
+assign n2357 = ( n2347 ^ n2356 );
+assign n2358 = ( n2346 ^ n2357 );
+assign n2359 = ( n2345 ^ n2358 );
+assign n2360 = { ( n2344 ), ( n2359 ) };
+assign PSW_95 = n2360;
 // 
 // ACC_96
 // 
-assign n2501 = ( ACC - RD_IRAM_1 );
-assign n2502 = ( n2501 + n2441 );
-assign ACC_96 = n2502;
+assign n2361 = ( ACC - RD_IRAM_1 );
+assign n2362 = ( n2361 + n2301 );
+assign ACC_96 = n2362;
 // 
 // PC_96
 // 
@@ -10305,39 +8806,39 @@ assign PC_96 = n0612;
 // 
 // PSW_96
 // 
-assign n2503 = ( n1363 < n1659 );
-assign n2504 = ( n2503 ) ? ( n0043 ) : ( n1067 );
-assign n2505 = ( n1370 < n1662 );
-assign n2506 = ( n2505 ) ? ( n0043 ) : ( n1067 );
-assign n2507 = ( n1376 - n1665 );
-assign n2508 = n2507[8:8];
-assign n2509 = n2507[7:7];
-assign n2510 = ( n2508 == n2509 );
-assign n2511 = !( n2510 );
-assign n2512 = ( n2511 ) ? ( n0043 ) : ( n1067 );
-assign n2513 = { ( n2504 ), ( n2506 ), ( n1264 ), ( n2512 ), ( n1266 ) };
-assign n2514 = n2513[7:1];
-assign n2515 = n2502[7:7];
-assign n2516 = n2502[6:6];
-assign n2517 = n2502[5:5];
-assign n2518 = n2502[4:4];
-assign n2519 = n2502[3:3];
-assign n2520 = n2502[2:2];
-assign n2521 = n2502[1:1];
-assign n2522 = n2502[0:0];
-assign n2523 = ( n2521 ^ n2522 );
-assign n2524 = ( n2520 ^ n2523 );
-assign n2525 = ( n2519 ^ n2524 );
-assign n2526 = ( n2518 ^ n2525 );
-assign n2527 = ( n2517 ^ n2526 );
-assign n2528 = ( n2516 ^ n2527 );
-assign n2529 = ( n2515 ^ n2528 );
-assign n2530 = { ( n2514 ), ( n2529 ) };
-assign PSW_96 = n2530;
+assign n2363 = ( n1337 < n1633 );
+assign n2364 = ( n2363 ) ? ( n0043 ) : ( n1067 );
+assign n2365 = ( n1344 < n1636 );
+assign n2366 = ( n2365 ) ? ( n0043 ) : ( n1067 );
+assign n2367 = ( n1350 - n1639 );
+assign n2368 = n2367[8:8];
+assign n2369 = n2367[7:7];
+assign n2370 = ( n2368 == n2369 );
+assign n2371 = !( n2370 );
+assign n2372 = ( n2371 ) ? ( n0043 ) : ( n1067 );
+assign n2373 = { ( n2364 ), ( n2366 ), ( n1249 ), ( n2372 ), ( n1251 ) };
+assign n2374 = n2373[7:1];
+assign n2375 = n2362[7:7];
+assign n2376 = n2362[6:6];
+assign n2377 = n2362[5:5];
+assign n2378 = n2362[4:4];
+assign n2379 = n2362[3:3];
+assign n2380 = n2362[2:2];
+assign n2381 = n2362[1:1];
+assign n2382 = n2362[0:0];
+assign n2383 = ( n2381 ^ n2382 );
+assign n2384 = ( n2380 ^ n2383 );
+assign n2385 = ( n2379 ^ n2384 );
+assign n2386 = ( n2378 ^ n2385 );
+assign n2387 = ( n2377 ^ n2386 );
+assign n2388 = ( n2376 ^ n2387 );
+assign n2389 = ( n2375 ^ n2388 );
+assign n2390 = { ( n2374 ), ( n2389 ) };
+assign PSW_96 = n2390;
 // 
 // ACC_97
 // 
-assign ACC_97 = n2502;
+assign ACC_97 = n2362;
 // 
 // PC_97
 // 
@@ -10345,13 +8846,13 @@ assign PC_97 = n0612;
 // 
 // PSW_97
 // 
-assign PSW_97 = n2530;
+assign PSW_97 = n2390;
 // 
 // ACC_98
 // 
-assign n2531 = ( ACC - RD_IRAM_0 );
-assign n2532 = ( n2531 + n2441 );
-assign ACC_98 = n2532;
+assign n2391 = ( ACC - RD_IRAM_0 );
+assign n2392 = ( n2391 + n2301 );
+assign ACC_98 = n2392;
 // 
 // PC_98
 // 
@@ -10359,39 +8860,39 @@ assign PC_98 = n0612;
 // 
 // PSW_98
 // 
-assign n2533 = ( n1363 < n1692 );
-assign n2534 = ( n2533 ) ? ( n0043 ) : ( n1067 );
-assign n2535 = ( n1370 < n1695 );
-assign n2536 = ( n2535 ) ? ( n0043 ) : ( n1067 );
-assign n2537 = ( n1376 - n1698 );
-assign n2538 = n2537[8:8];
-assign n2539 = n2537[7:7];
-assign n2540 = ( n2538 == n2539 );
-assign n2541 = !( n2540 );
-assign n2542 = ( n2541 ) ? ( n0043 ) : ( n1067 );
-assign n2543 = { ( n2534 ), ( n2536 ), ( n1264 ), ( n2542 ), ( n1266 ) };
-assign n2544 = n2543[7:1];
-assign n2545 = n2532[7:7];
-assign n2546 = n2532[6:6];
-assign n2547 = n2532[5:5];
-assign n2548 = n2532[4:4];
-assign n2549 = n2532[3:3];
-assign n2550 = n2532[2:2];
-assign n2551 = n2532[1:1];
-assign n2552 = n2532[0:0];
-assign n2553 = ( n2551 ^ n2552 );
-assign n2554 = ( n2550 ^ n2553 );
-assign n2555 = ( n2549 ^ n2554 );
-assign n2556 = ( n2548 ^ n2555 );
-assign n2557 = ( n2547 ^ n2556 );
-assign n2558 = ( n2546 ^ n2557 );
-assign n2559 = ( n2545 ^ n2558 );
-assign n2560 = { ( n2544 ), ( n2559 ) };
-assign PSW_98 = n2560;
+assign n2393 = ( n1337 < n1666 );
+assign n2394 = ( n2393 ) ? ( n0043 ) : ( n1067 );
+assign n2395 = ( n1344 < n1669 );
+assign n2396 = ( n2395 ) ? ( n0043 ) : ( n1067 );
+assign n2397 = ( n1350 - n1672 );
+assign n2398 = n2397[8:8];
+assign n2399 = n2397[7:7];
+assign n2400 = ( n2398 == n2399 );
+assign n2401 = !( n2400 );
+assign n2402 = ( n2401 ) ? ( n0043 ) : ( n1067 );
+assign n2403 = { ( n2394 ), ( n2396 ), ( n1249 ), ( n2402 ), ( n1251 ) };
+assign n2404 = n2403[7:1];
+assign n2405 = n2392[7:7];
+assign n2406 = n2392[6:6];
+assign n2407 = n2392[5:5];
+assign n2408 = n2392[4:4];
+assign n2409 = n2392[3:3];
+assign n2410 = n2392[2:2];
+assign n2411 = n2392[1:1];
+assign n2412 = n2392[0:0];
+assign n2413 = ( n2411 ^ n2412 );
+assign n2414 = ( n2410 ^ n2413 );
+assign n2415 = ( n2409 ^ n2414 );
+assign n2416 = ( n2408 ^ n2415 );
+assign n2417 = ( n2407 ^ n2416 );
+assign n2418 = ( n2406 ^ n2417 );
+assign n2419 = ( n2405 ^ n2418 );
+assign n2420 = { ( n2404 ), ( n2419 ) };
+assign PSW_98 = n2420;
 // 
 // ACC_99
 // 
-assign ACC_99 = n2532;
+assign ACC_99 = n2392;
 // 
 // PC_99
 // 
@@ -10399,11 +8900,11 @@ assign PC_99 = n0612;
 // 
 // PSW_99
 // 
-assign PSW_99 = n2560;
+assign PSW_99 = n2420;
 // 
 // ACC_9a
 // 
-assign ACC_9a = n2532;
+assign ACC_9a = n2392;
 // 
 // PC_9a
 // 
@@ -10411,11 +8912,11 @@ assign PC_9a = n0612;
 // 
 // PSW_9a
 // 
-assign PSW_9a = n2560;
+assign PSW_9a = n2420;
 // 
 // ACC_9b
 // 
-assign ACC_9b = n2532;
+assign ACC_9b = n2392;
 // 
 // PC_9b
 // 
@@ -10423,11 +8924,11 @@ assign PC_9b = n0612;
 // 
 // PSW_9b
 // 
-assign PSW_9b = n2560;
+assign PSW_9b = n2420;
 // 
 // ACC_9c
 // 
-assign ACC_9c = n2532;
+assign ACC_9c = n2392;
 // 
 // PC_9c
 // 
@@ -10435,11 +8936,11 @@ assign PC_9c = n0612;
 // 
 // PSW_9c
 // 
-assign PSW_9c = n2560;
+assign PSW_9c = n2420;
 // 
 // ACC_9d
 // 
-assign ACC_9d = n2532;
+assign ACC_9d = n2392;
 // 
 // PC_9d
 // 
@@ -10447,11 +8948,11 @@ assign PC_9d = n0612;
 // 
 // PSW_9d
 // 
-assign PSW_9d = n2560;
+assign PSW_9d = n2420;
 // 
 // ACC_9e
 // 
-assign ACC_9e = n2532;
+assign ACC_9e = n2392;
 // 
 // PC_9e
 // 
@@ -10459,11 +8960,11 @@ assign PC_9e = n0612;
 // 
 // PSW_9e
 // 
-assign PSW_9e = n2560;
+assign PSW_9e = n2420;
 // 
 // ACC_9f
 // 
-assign ACC_9f = n2532;
+assign ACC_9f = n2392;
 // 
 // PC_9f
 // 
@@ -10471,7 +8972,7 @@ assign PC_9f = n0612;
 // 
 // PSW_9f
 // 
-assign PSW_9f = n2560;
+assign PSW_9f = n2420;
 // 
 // PC_a0
 // 
@@ -10479,12 +8980,12 @@ assign PC_a0 = n0610;
 // 
 // PSW_a0
 // 
-assign n2561 = ~( n2140 );
-assign n2562 = ( n1259 | n2561 );
-assign n2563 = { ( n2562 ), ( n2142 ) };
-assign n2564 = n2563[7:1];
-assign n2565 = { ( n2564 ), ( n1023 ) };
-assign PSW_a0 = n2565;
+assign n2421 = ~( n2048 );
+assign n2422 = ( n1244 | n2421 );
+assign n2423 = { ( n2422 ), ( n2050 ) };
+assign n2424 = n2423[7:1];
+assign n2425 = { ( n2424 ), ( n1023 ) };
+assign PSW_a0 = n2425;
 // 
 // PC_a1
 // 
@@ -10500,21 +9001,21 @@ assign PC_a2 = n0610;
 // 
 // PSW_a2
 // 
-assign n2566 = { ( n1214 ), ( n2142 ) };
-assign n2567 = n2566[7:1];
-assign n2568 = { ( n2567 ), ( n1023 ) };
-assign PSW_a2 = n2568;
+assign n2426 = { ( n1202 ), ( n2050 ) };
+assign n2427 = n2426[7:1];
+assign n2428 = { ( n2427 ), ( n1023 ) };
+assign PSW_a2 = n2428;
 // 
 // DPL_a3
 // 
-assign n2569 = ( n0745 + n0607 );
-assign n2570 = n2569[7:0];
-assign DPL_a3 = n2570;
+assign n2429 = ( n0745 + n0607 );
+assign n2430 = n2429[7:0];
+assign DPL_a3 = n2430;
 // 
 // DPH_a3
 // 
-assign n2571 = n2569[15:8];
-assign DPH_a3 = n2571;
+assign n2431 = n2429[15:8];
+assign DPH_a3 = n2431;
 // 
 // PC_a3
 // 
@@ -10526,44 +9027,44 @@ assign PSW_a3 = n1024;
 // 
 // ACC_a4
 // 
-assign n2572 = { 8'b0, B };
-assign n2573 = ( n0713 * n2572 );
-assign n2574 = n2573[7:0];
-assign ACC_a4 = n2574;
-// 
-// B_a4
-// 
-assign n2575 = n2573[15:8];
-assign B_a4 = n2575;
+assign n2432 = { 8'b0, B };
+assign n2433 = ( n0713 * n2432 );
+assign n2434 = n2433[7:0];
+assign ACC_a4 = n2434;
 // 
 // PC_a4
 // 
 assign PC_a4 = n0612;
 // 
+// B_a4
+// 
+assign n2435 = n2433[15:8];
+assign B_a4 = n2435;
+// 
 // PSW_a4
 // 
-assign n2576 = ( n2575 == n1094 );
-assign n2577 = !( n2576 );
-assign n2578 = ( n2577 ) ? ( n0043 ) : ( n1067 );
-assign n2579 = { ( n1067 ), ( n2210 ), ( n2578 ), ( n1266 ) };
-assign n2580 = n2579[7:1];
-assign n2581 = n2574[7:7];
-assign n2582 = n2574[6:6];
-assign n2583 = n2574[5:5];
-assign n2584 = n2574[4:4];
-assign n2585 = n2574[3:3];
-assign n2586 = n2574[2:2];
-assign n2587 = n2574[1:1];
-assign n2588 = n2574[0:0];
-assign n2589 = ( n2587 ^ n2588 );
-assign n2590 = ( n2586 ^ n2589 );
-assign n2591 = ( n2585 ^ n2590 );
-assign n2592 = ( n2584 ^ n2591 );
-assign n2593 = ( n2583 ^ n2592 );
-assign n2594 = ( n2582 ^ n2593 );
-assign n2595 = ( n2581 ^ n2594 );
-assign n2596 = { ( n2580 ), ( n2595 ) };
-assign PSW_a4 = n2596;
+assign n2436 = ( n2435 == n1094 );
+assign n2437 = !( n2436 );
+assign n2438 = ( n2437 ) ? ( n0043 ) : ( n1067 );
+assign n2439 = { ( n1067 ), ( n2107 ), ( n2438 ), ( n1251 ) };
+assign n2440 = n2439[7:1];
+assign n2441 = n2434[7:7];
+assign n2442 = n2434[6:6];
+assign n2443 = n2434[5:5];
+assign n2444 = n2434[4:4];
+assign n2445 = n2434[3:3];
+assign n2446 = n2434[2:2];
+assign n2447 = n2434[1:1];
+assign n2448 = n2434[0:0];
+assign n2449 = ( n2447 ^ n2448 );
+assign n2450 = ( n2446 ^ n2449 );
+assign n2451 = ( n2445 ^ n2450 );
+assign n2452 = ( n2444 ^ n2451 );
+assign n2453 = ( n2443 ^ n2452 );
+assign n2454 = ( n2442 ^ n2453 );
+assign n2455 = ( n2441 ^ n2454 );
+assign n2456 = { ( n2440 ), ( n2455 ) };
+assign PSW_a4 = n2456;
 // 
 // PC_a5
 // 
@@ -10579,7 +9080,7 @@ assign PC_a6 = n0610;
 // 
 // IRAM_a6
 // 
-assign n2597 = ( n1068 ) ? ( RD_IRAM_1 ) : ( n1419 );
+assign n2457 = ( n1068 ) ? ( RD_IRAM_1 ) : ( n1393 );
 // 
 // PSW_a6
 // 
@@ -10657,8 +9158,8 @@ assign PC_ad = n0610;
 // 
 // P3_ad
 // 
-assign n2598 = ( n1089 ) ? ( n1116 ) : ( P3 );
-assign P3_ad = n2598;
+assign n2458 = ( n1089 ) ? ( n1116 ) : ( P3 );
+assign P3_ad = n2458;
 // 
 // IRAM_ad
 // 
@@ -10695,11 +9196,11 @@ assign PC_b0 = n0610;
 // 
 // PSW_b0
 // 
-assign n2599 = ( n1259 & n2561 );
-assign n2600 = { ( n2599 ), ( n2142 ) };
-assign n2601 = n2600[7:1];
-assign n2602 = { ( n2601 ), ( n1023 ) };
-assign PSW_b0 = n2602;
+assign n2459 = ( n1244 & n2421 );
+assign n2460 = { ( n2459 ), ( n2050 ) };
+assign n2461 = n2460[7:1];
+assign n2462 = { ( n2461 ), ( n1023 ) };
+assign PSW_b0 = n2462;
 // 
 // PC_b1
 // 
@@ -10710,7 +9211,7 @@ assign PC_b1 = n1029;
 // 
 // SP_b1
 // 
-assign SP_b1 = n1256;
+assign SP_b1 = n1241;
 // 
 // PSW_b1
 // 
@@ -10718,21 +9219,16 @@ assign PSW_b1 = n1024;
 // 
 // ACC_b2
 // 
-assign n2603 = { 7'b0, n2561 };
-assign n2604 = ( n2603 << n1170 );
-assign n2605 = ( n1210 | n2604 );
-assign n2606 = ( n1168 ) ? ( n2605 ) : ( ACC );
-assign ACC_b2 = n2606;
+assign n2463 = { 7'b0, n2421 };
+assign n2464 = ( n2463 << n1159 );
+assign n2465 = ( n1199 | n2464 );
+assign n2466 = ( n1157 ) ? ( n2465 ) : ( ACC );
+assign ACC_b2 = n2466;
 // 
 // P1_b2
 // 
-assign n2607 = ( n1177 ) ? ( n2605 ) : ( P1 );
-assign P1_b2 = n2607;
-// 
-// TCON_b2
-// 
-assign n2608 = ( n1176 ) ? ( n2605 ) : ( TCON );
-assign TCON_b2 = n2608;
+assign n2467 = ( n1166 ) ? ( n2465 ) : ( P1 );
+assign P1_b2 = n2467;
 // 
 // PC_b2
 // 
@@ -10740,63 +9236,48 @@ assign PC_b2 = n0610;
 // 
 // P2_b2
 // 
-assign n2609 = ( n1179 ) ? ( n2605 ) : ( P2 );
-assign P2_b2 = n2609;
+assign n2468 = ( n1168 ) ? ( n2465 ) : ( P2 );
+assign P2_b2 = n2468;
 // 
 // P3_b2
 // 
-assign n2610 = ( n1181 ) ? ( n2605 ) : ( P3 );
-assign P3_b2 = n2610;
+assign n2469 = ( n1170 ) ? ( n2465 ) : ( P3 );
+assign P3_b2 = n2469;
 // 
 // P0_b2
 // 
-assign n2611 = ( n1175 ) ? ( n2605 ) : ( P0 );
-assign P0_b2 = n2611;
+assign n2470 = ( n1164 ) ? ( n2465 ) : ( P0 );
+assign P0_b2 = n2470;
 // 
 // B_b2
 // 
-assign n2612 = ( n1184 ) ? ( n2605 ) : ( B );
-assign B_b2 = n2612;
+assign n2471 = ( n1173 ) ? ( n2465 ) : ( B );
+assign B_b2 = n2471;
 // 
 // IRAM_b2
 // 
 // 
-// IP_b2
-// 
-assign n2613 = ( n1182 ) ? ( n2605 ) : ( IP );
-assign IP_b2 = n2613;
-// 
-// IE_b2
-// 
-assign n2614 = ( n1180 ) ? ( n2605 ) : ( IE );
-assign IE_b2 = n2614;
-// 
-// SCON_b2
-// 
-assign n2615 = ( n1178 ) ? ( n2605 ) : ( SCON );
-assign SCON_b2 = n2615;
-// 
 // PSW_b2
 // 
-assign n2616 = ( n1183 ) ? ( n2605 ) : ( PSW );
-assign n2617 = n2616[7:1];
-assign n2618 = n2606[7:7];
-assign n2619 = n2606[6:6];
-assign n2620 = n2606[5:5];
-assign n2621 = n2606[4:4];
-assign n2622 = n2606[3:3];
-assign n2623 = n2606[2:2];
-assign n2624 = n2606[1:1];
-assign n2625 = n2606[0:0];
-assign n2626 = ( n2624 ^ n2625 );
-assign n2627 = ( n2623 ^ n2626 );
-assign n2628 = ( n2622 ^ n2627 );
-assign n2629 = ( n2621 ^ n2628 );
-assign n2630 = ( n2620 ^ n2629 );
-assign n2631 = ( n2619 ^ n2630 );
-assign n2632 = ( n2618 ^ n2631 );
-assign n2633 = { ( n2617 ), ( n2632 ) };
-assign PSW_b2 = n2633;
+assign n2472 = ( n1172 ) ? ( n2465 ) : ( PSW );
+assign n2473 = n2472[7:1];
+assign n2474 = n2466[7:7];
+assign n2475 = n2466[6:6];
+assign n2476 = n2466[5:5];
+assign n2477 = n2466[4:4];
+assign n2478 = n2466[3:3];
+assign n2479 = n2466[2:2];
+assign n2480 = n2466[1:1];
+assign n2481 = n2466[0:0];
+assign n2482 = ( n2480 ^ n2481 );
+assign n2483 = ( n2479 ^ n2482 );
+assign n2484 = ( n2478 ^ n2483 );
+assign n2485 = ( n2477 ^ n2484 );
+assign n2486 = ( n2476 ^ n2485 );
+assign n2487 = ( n2475 ^ n2486 );
+assign n2488 = ( n2474 ^ n2487 );
+assign n2489 = { ( n2473 ), ( n2488 ) };
+assign PSW_b2 = n2489;
 // 
 // PC_b3
 // 
@@ -10804,139 +9285,139 @@ assign PC_b3 = n0612;
 // 
 // PSW_b3
 // 
-assign n2634 = ~( n1259 );
-assign n2635 = { ( n2634 ), ( n2142 ) };
-assign n2636 = n2635[7:1];
-assign n2637 = { ( n2636 ), ( n1023 ) };
-assign PSW_b3 = n2637;
+assign n2490 = ~( n1244 );
+assign n2491 = { ( n2490 ), ( n2050 ) };
+assign n2492 = n2491[7:1];
+assign n2493 = { ( n2492 ), ( n1023 ) };
+assign PSW_b3 = n2493;
 // 
 // PC_b4
 // 
-assign n2638 = ( ACC == RD_ROM_1 );
-assign n2639 = !( n2638 );
-assign n2640 = ( n2639 ) ? ( n1219 ) : ( n1217 );
-assign PC_b4 = n2640;
+assign n2494 = ( ACC == RD_ROM_1 );
+assign n2495 = !( n2494 );
+assign n2496 = ( n2495 ) ? ( n1207 ) : ( n1205 );
+assign PC_b4 = n2496;
 // 
 // PSW_b4
 // 
-assign n2641 = ( ACC < RD_ROM_1 );
-assign n2642 = ( n2641 ) ? ( n0043 ) : ( n1067 );
-assign n2643 = { ( n2642 ), ( n2142 ) };
-assign n2644 = n2643[7:1];
-assign n2645 = { ( n2644 ), ( n1023 ) };
-assign PSW_b4 = n2645;
+assign n2497 = ( ACC < RD_ROM_1 );
+assign n2498 = ( n2497 ) ? ( n0043 ) : ( n1067 );
+assign n2499 = { ( n2498 ), ( n2050 ) };
+assign n2500 = n2499[7:1];
+assign n2501 = { ( n2500 ), ( n1023 ) };
+assign PSW_b4 = n2501;
 // 
 // PC_b5
 // 
-assign n2646 = ( ACC == n1420 );
-assign n2647 = !( n2646 );
-assign n2648 = ( n2647 ) ? ( n1219 ) : ( n1217 );
-assign PC_b5 = n2648;
+assign n2502 = ( ACC == n1394 );
+assign n2503 = !( n2502 );
+assign n2504 = ( n2503 ) ? ( n1207 ) : ( n1205 );
+assign PC_b5 = n2504;
 // 
 // PSW_b5
 // 
-assign n2649 = ( ACC < n1420 );
-assign n2650 = ( n2649 ) ? ( n0043 ) : ( n1067 );
-assign n2651 = { ( n2650 ), ( n2142 ) };
-assign n2652 = n2651[7:1];
-assign n2653 = { ( n2652 ), ( n1023 ) };
-assign PSW_b5 = n2653;
+assign n2505 = ( ACC < n1394 );
+assign n2506 = ( n2505 ) ? ( n0043 ) : ( n1067 );
+assign n2507 = { ( n2506 ), ( n2050 ) };
+assign n2508 = n2507[7:1];
+assign n2509 = { ( n2508 ), ( n1023 ) };
+assign PSW_b5 = n2509;
 // 
 // PC_b6
 // 
-assign n2654 = ( RD_IRAM_1 == RD_ROM_1 );
-assign n2655 = !( n2654 );
-assign n2656 = ( n2655 ) ? ( n1219 ) : ( n1217 );
-assign PC_b6 = n2656;
+assign n2510 = ( RD_IRAM_1 == RD_ROM_1 );
+assign n2511 = !( n2510 );
+assign n2512 = ( n2511 ) ? ( n1207 ) : ( n1205 );
+assign PC_b6 = n2512;
 // 
 // PSW_b6
 // 
-assign n2657 = ( RD_IRAM_1 < RD_ROM_1 );
-assign n2658 = ( n2657 ) ? ( n0043 ) : ( n1067 );
-assign n2659 = { ( n2658 ), ( n2142 ) };
-assign n2660 = n2659[7:1];
-assign n2661 = { ( n2660 ), ( n1023 ) };
-assign PSW_b6 = n2661;
+assign n2513 = ( RD_IRAM_1 < RD_ROM_1 );
+assign n2514 = ( n2513 ) ? ( n0043 ) : ( n1067 );
+assign n2515 = { ( n2514 ), ( n2050 ) };
+assign n2516 = n2515[7:1];
+assign n2517 = { ( n2516 ), ( n1023 ) };
+assign PSW_b6 = n2517;
 // 
 // PC_b7
 // 
-assign PC_b7 = n2656;
+assign PC_b7 = n2512;
 // 
 // PSW_b7
 // 
-assign PSW_b7 = n2661;
+assign PSW_b7 = n2517;
 // 
 // PC_b8
 // 
-assign n2662 = ( RD_IRAM_0 == RD_ROM_1 );
-assign n2663 = !( n2662 );
-assign n2664 = ( n2663 ) ? ( n1219 ) : ( n1217 );
-assign PC_b8 = n2664;
+assign n2518 = ( RD_IRAM_0 == RD_ROM_1 );
+assign n2519 = !( n2518 );
+assign n2520 = ( n2519 ) ? ( n1207 ) : ( n1205 );
+assign PC_b8 = n2520;
 // 
 // PSW_b8
 // 
-assign n2665 = ( RD_IRAM_0 < RD_ROM_1 );
-assign n2666 = ( n2665 ) ? ( n0043 ) : ( n1067 );
-assign n2667 = { ( n2666 ), ( n2142 ) };
-assign n2668 = n2667[7:1];
-assign n2669 = { ( n2668 ), ( n1023 ) };
-assign PSW_b8 = n2669;
+assign n2521 = ( RD_IRAM_0 < RD_ROM_1 );
+assign n2522 = ( n2521 ) ? ( n0043 ) : ( n1067 );
+assign n2523 = { ( n2522 ), ( n2050 ) };
+assign n2524 = n2523[7:1];
+assign n2525 = { ( n2524 ), ( n1023 ) };
+assign PSW_b8 = n2525;
 // 
 // PC_b9
 // 
-assign PC_b9 = n2664;
+assign PC_b9 = n2520;
 // 
 // PSW_b9
 // 
-assign PSW_b9 = n2669;
+assign PSW_b9 = n2525;
 // 
 // PC_ba
 // 
-assign PC_ba = n2664;
+assign PC_ba = n2520;
 // 
 // PSW_ba
 // 
-assign PSW_ba = n2669;
+assign PSW_ba = n2525;
 // 
 // PC_bb
 // 
-assign PC_bb = n2664;
+assign PC_bb = n2520;
 // 
 // PSW_bb
 // 
-assign PSW_bb = n2669;
+assign PSW_bb = n2525;
 // 
 // PC_bc
 // 
-assign PC_bc = n2664;
+assign PC_bc = n2520;
 // 
 // PSW_bc
 // 
-assign PSW_bc = n2669;
+assign PSW_bc = n2525;
 // 
 // PC_bd
 // 
-assign PC_bd = n2664;
+assign PC_bd = n2520;
 // 
 // PSW_bd
 // 
-assign PSW_bd = n2669;
+assign PSW_bd = n2525;
 // 
 // PC_be
 // 
-assign PC_be = n2664;
+assign PC_be = n2520;
 // 
 // PSW_be
 // 
-assign PSW_be = n2669;
+assign PSW_be = n2525;
 // 
 // PC_bf
 // 
-assign PC_bf = n2664;
+assign PC_bf = n2520;
 // 
 // PSW_bf
 // 
-assign PSW_bf = n2669;
+assign PSW_bf = n2525;
 // 
 // PC_c0
 // 
@@ -10947,7 +9428,7 @@ assign PC_c0 = n0610;
 // 
 // SP_c0
 // 
-assign SP_c0 = n1249;
+assign SP_c0 = n1234;
 // 
 // PSW_c0
 // 
@@ -10963,17 +9444,12 @@ assign PSW_c1 = n1024;
 // 
 // ACC_c2
 // 
-assign n2670 = ( n1168 ) ? ( n1211 ) : ( ACC );
-assign ACC_c2 = n2670;
+assign n2526 = ( n1157 ) ? ( n1200 ) : ( ACC );
+assign ACC_c2 = n2526;
 // 
 // P1_c2
 // 
-assign P1_c2 = n1212;
-// 
-// IE_c2
-// 
-assign n2671 = ( n1180 ) ? ( n1211 ) : ( IE );
-assign IE_c2 = n2671;
+assign P1_c2 = n1201;
 // 
 // PC_c2
 // 
@@ -10981,60 +9457,45 @@ assign PC_c2 = n0610;
 // 
 // P2_c2
 // 
-assign P2_c2 = n1221;
+assign P2_c2 = n1209;
 // 
 // P3_c2
 // 
-assign P3_c2 = n1222;
+assign P3_c2 = n1210;
 // 
 // P0_c2
 // 
-assign P0_c2 = n1223;
+assign P0_c2 = n1211;
 // 
 // B_c2
 // 
-assign n2672 = ( n1184 ) ? ( n1211 ) : ( B );
-assign B_c2 = n2672;
+assign n2527 = ( n1173 ) ? ( n1200 ) : ( B );
+assign B_c2 = n2527;
 // 
 // IRAM_c2
 // 
 // 
-// IP_c2
-// 
-assign n2673 = ( n1182 ) ? ( n1211 ) : ( IP );
-assign IP_c2 = n2673;
-// 
-// TCON_c2
-// 
-assign n2674 = ( n1176 ) ? ( n1211 ) : ( TCON );
-assign TCON_c2 = n2674;
-// 
-// SCON_c2
-// 
-assign n2675 = ( n1178 ) ? ( n1211 ) : ( SCON );
-assign SCON_c2 = n2675;
-// 
 // PSW_c2
 // 
-assign n2676 = ( n1183 ) ? ( n1211 ) : ( PSW );
-assign n2677 = n2676[7:1];
-assign n2678 = n2670[7:7];
-assign n2679 = n2670[6:6];
-assign n2680 = n2670[5:5];
-assign n2681 = n2670[4:4];
-assign n2682 = n2670[3:3];
-assign n2683 = n2670[2:2];
-assign n2684 = n2670[1:1];
-assign n2685 = n2670[0:0];
-assign n2686 = ( n2684 ^ n2685 );
-assign n2687 = ( n2683 ^ n2686 );
-assign n2688 = ( n2682 ^ n2687 );
-assign n2689 = ( n2681 ^ n2688 );
-assign n2690 = ( n2680 ^ n2689 );
-assign n2691 = ( n2679 ^ n2690 );
-assign n2692 = ( n2678 ^ n2691 );
-assign n2693 = { ( n2677 ), ( n2692 ) };
-assign PSW_c2 = n2693;
+assign n2528 = ( n1172 ) ? ( n1200 ) : ( PSW );
+assign n2529 = n2528[7:1];
+assign n2530 = n2526[7:7];
+assign n2531 = n2526[6:6];
+assign n2532 = n2526[5:5];
+assign n2533 = n2526[4:4];
+assign n2534 = n2526[3:3];
+assign n2535 = n2526[2:2];
+assign n2536 = n2526[1:1];
+assign n2537 = n2526[0:0];
+assign n2538 = ( n2536 ^ n2537 );
+assign n2539 = ( n2535 ^ n2538 );
+assign n2540 = ( n2534 ^ n2539 );
+assign n2541 = ( n2533 ^ n2540 );
+assign n2542 = ( n2532 ^ n2541 );
+assign n2543 = ( n2531 ^ n2542 );
+assign n2544 = ( n2530 ^ n2543 );
+assign n2545 = { ( n2529 ), ( n2544 ) };
+assign PSW_c2 = n2545;
 // 
 // PC_c3
 // 
@@ -11042,16 +9503,16 @@ assign PC_c3 = n0612;
 // 
 // PSW_c3
 // 
-assign n2694 = { ( n1067 ), ( n2142 ) };
-assign n2695 = n2694[7:1];
-assign n2696 = { ( n2695 ), ( n1023 ) };
-assign PSW_c3 = n2696;
+assign n2546 = { ( n1067 ), ( n2050 ) };
+assign n2547 = n2546[7:1];
+assign n2548 = { ( n2547 ), ( n1023 ) };
+assign PSW_c3 = n2548;
 // 
 // ACC_c4
 // 
-assign n2697 = ACC[7:4];
-assign n2698 = { ( n1369 ), ( n2697 ) };
-assign ACC_c4 = n2698;
+assign n2549 = ACC[7:4];
+assign n2550 = { ( n1343 ), ( n2549 ) };
+assign ACC_c4 = n2550;
 // 
 // PC_c4
 // 
@@ -11059,77 +9520,42 @@ assign PC_c4 = n0612;
 // 
 // PSW_c4
 // 
-assign n2699 = n2698[7:7];
-assign n2700 = n2698[6:6];
-assign n2701 = n2698[5:5];
-assign n2702 = n2698[4:4];
-assign n2703 = n2698[3:3];
-assign n2704 = n2698[2:2];
-assign n2705 = n2698[1:1];
-assign n2706 = n2698[0:0];
-assign n2707 = ( n2705 ^ n2706 );
-assign n2708 = ( n2704 ^ n2707 );
-assign n2709 = ( n2703 ^ n2708 );
-assign n2710 = ( n2702 ^ n2709 );
-assign n2711 = ( n2701 ^ n2710 );
-assign n2712 = ( n2700 ^ n2711 );
-assign n2713 = ( n2699 ^ n2712 );
-assign n2714 = { ( n1008 ), ( n2713 ) };
-assign PSW_c4 = n2714;
+assign n2551 = n2550[7:7];
+assign n2552 = n2550[6:6];
+assign n2553 = n2550[5:5];
+assign n2554 = n2550[4:4];
+assign n2555 = n2550[3:3];
+assign n2556 = n2550[2:2];
+assign n2557 = n2550[1:1];
+assign n2558 = n2550[0:0];
+assign n2559 = ( n2557 ^ n2558 );
+assign n2560 = ( n2556 ^ n2559 );
+assign n2561 = ( n2555 ^ n2560 );
+assign n2562 = ( n2554 ^ n2561 );
+assign n2563 = ( n2553 ^ n2562 );
+assign n2564 = ( n2552 ^ n2563 );
+assign n2565 = ( n2551 ^ n2564 );
+assign n2566 = { ( n1008 ), ( n2565 ) };
+assign PSW_c4 = n2566;
 // 
 // ACC_c5
 // 
-assign ACC_c5 = n1420;
-// 
-// PCON_c5
-// 
-assign n2715 = ( n1076 ) ? ( ACC ) : ( PCON );
-assign PCON_c5 = n2715;
+assign ACC_c5 = n1394;
 // 
 // P1_c5
 // 
-assign n2716 = ( n1084 ) ? ( ACC ) : ( P1 );
-assign P1_c5 = n2716;
-// 
-// TMOD_c5
-// 
-assign n2717 = ( n1078 ) ? ( ACC ) : ( TMOD );
-assign TMOD_c5 = n2717;
+assign n2567 = ( n1084 ) ? ( ACC ) : ( P1 );
+assign P1_c5 = n2567;
 // 
 // DPL_c5
 // 
-assign n2718 = ( n1073 ) ? ( ACC ) : ( DPL );
-assign DPL_c5 = n2718;
+assign n2568 = ( n1073 ) ? ( ACC ) : ( DPL );
+assign DPL_c5 = n2568;
 // 
 // DPH_c5
 // 
-assign n2719 = ( n1075 ) ? ( ACC ) : ( DPH );
-assign DPH_c5 = n2719;
-// 
-// TL1_c5
-// 
-assign n2720 = ( n1081 ) ? ( ACC ) : ( TL1 );
-assign TL1_c5 = n2720;
-// 
-// TL0_c5
-// 
-assign n2721 = ( n1079 ) ? ( ACC ) : ( TL0 );
-assign TL0_c5 = n2721;
-// 
-// TCON_c5
-// 
-assign n2722 = ( n1077 ) ? ( ACC ) : ( TCON );
-assign TCON_c5 = n2722;
-// 
-// TH1_c5
-// 
-assign n2723 = ( n1082 ) ? ( ACC ) : ( TH1 );
-assign TH1_c5 = n2723;
-// 
-// TH0_c5
-// 
-assign n2724 = ( n1080 ) ? ( ACC ) : ( TH0 );
-assign TH0_c5 = n2724;
+assign n2569 = ( n1075 ) ? ( ACC ) : ( DPH );
+assign DPH_c5 = n2569;
 // 
 // PC_c5
 // 
@@ -11137,73 +9563,53 @@ assign PC_c5 = n0610;
 // 
 // P2_c5
 // 
-assign n2725 = ( n1087 ) ? ( ACC ) : ( P2 );
-assign P2_c5 = n2725;
+assign n2570 = ( n1087 ) ? ( ACC ) : ( P2 );
+assign P2_c5 = n2570;
 // 
 // P3_c5
 // 
-assign n2726 = ( n1089 ) ? ( ACC ) : ( P3 );
-assign P3_c5 = n2726;
+assign n2571 = ( n1089 ) ? ( ACC ) : ( P3 );
+assign P3_c5 = n2571;
 // 
 // P0_c5
 // 
-assign n2727 = ( n1070 ) ? ( ACC ) : ( P0 );
-assign P0_c5 = n2727;
+assign n2572 = ( n1070 ) ? ( ACC ) : ( P0 );
+assign P0_c5 = n2572;
 // 
 // B_c5
 // 
-assign n2728 = ( n1093 ) ? ( ACC ) : ( B );
-assign B_c5 = n2728;
+assign n2573 = ( n1093 ) ? ( ACC ) : ( B );
+assign B_c5 = n2573;
 // 
 // IRAM_c5
 // 
 // 
-// IP_c5
-// 
-assign n2729 = ( n1090 ) ? ( ACC ) : ( IP );
-assign IP_c5 = n2729;
-// 
-// IE_c5
-// 
-assign n2730 = ( n1088 ) ? ( ACC ) : ( IE );
-assign IE_c5 = n2730;
-// 
-// SCON_c5
-// 
-assign n2731 = ( n1085 ) ? ( ACC ) : ( SCON );
-assign SCON_c5 = n2731;
-// 
 // SP_c5
 // 
-assign n2732 = ( n1072 ) ? ( ACC ) : ( SP );
-assign SP_c5 = n2732;
-// 
-// SBUF_c5
-// 
-assign n2733 = ( n1086 ) ? ( ACC ) : ( SBUF );
-assign SBUF_c5 = n2733;
+assign n2574 = ( n1072 ) ? ( ACC ) : ( SP );
+assign SP_c5 = n2574;
 // 
 // PSW_c5
 // 
-assign n2734 = ( n1091 ) ? ( ACC ) : ( PSW );
-assign n2735 = n2734[7:1];
-assign n2736 = n1420[7:7];
-assign n2737 = n1420[6:6];
-assign n2738 = n1420[5:5];
-assign n2739 = n1420[4:4];
-assign n2740 = n1420[3:3];
-assign n2741 = n1420[2:2];
-assign n2742 = n1420[1:1];
-assign n2743 = n1420[0:0];
-assign n2744 = ( n2742 ^ n2743 );
-assign n2745 = ( n2741 ^ n2744 );
-assign n2746 = ( n2740 ^ n2745 );
-assign n2747 = ( n2739 ^ n2746 );
-assign n2748 = ( n2738 ^ n2747 );
-assign n2749 = ( n2737 ^ n2748 );
-assign n2750 = ( n2736 ^ n2749 );
-assign n2751 = { ( n2735 ), ( n2750 ) };
-assign PSW_c5 = n2751;
+assign n2575 = ( n1091 ) ? ( ACC ) : ( PSW );
+assign n2576 = n2575[7:1];
+assign n2577 = n1394[7:7];
+assign n2578 = n1394[6:6];
+assign n2579 = n1394[5:5];
+assign n2580 = n1394[4:4];
+assign n2581 = n1394[3:3];
+assign n2582 = n1394[2:2];
+assign n2583 = n1394[1:1];
+assign n2584 = n1394[0:0];
+assign n2585 = ( n2583 ^ n2584 );
+assign n2586 = ( n2582 ^ n2585 );
+assign n2587 = ( n2581 ^ n2586 );
+assign n2588 = ( n2580 ^ n2587 );
+assign n2589 = ( n2579 ^ n2588 );
+assign n2590 = ( n2578 ^ n2589 );
+assign n2591 = ( n2577 ^ n2590 );
+assign n2592 = { ( n2576 ), ( n2591 ) };
+assign PSW_c5 = n2592;
 // 
 // ACC_c6
 // 
@@ -11218,23 +9624,23 @@ assign PC_c6 = n0612;
 // 
 // PSW_c6
 // 
-assign n2752 = RD_IRAM_1[7:7];
-assign n2753 = RD_IRAM_1[6:6];
-assign n2754 = RD_IRAM_1[5:5];
-assign n2755 = RD_IRAM_1[4:4];
-assign n2756 = RD_IRAM_1[3:3];
-assign n2757 = RD_IRAM_1[2:2];
-assign n2758 = RD_IRAM_1[1:1];
-assign n2759 = RD_IRAM_1[0:0];
-assign n2760 = ( n2758 ^ n2759 );
-assign n2761 = ( n2757 ^ n2760 );
-assign n2762 = ( n2756 ^ n2761 );
-assign n2763 = ( n2755 ^ n2762 );
-assign n2764 = ( n2754 ^ n2763 );
-assign n2765 = ( n2753 ^ n2764 );
-assign n2766 = ( n2752 ^ n2765 );
-assign n2767 = { ( n1008 ), ( n2766 ) };
-assign PSW_c6 = n2767;
+assign n2593 = RD_IRAM_1[7:7];
+assign n2594 = RD_IRAM_1[6:6];
+assign n2595 = RD_IRAM_1[5:5];
+assign n2596 = RD_IRAM_1[4:4];
+assign n2597 = RD_IRAM_1[3:3];
+assign n2598 = RD_IRAM_1[2:2];
+assign n2599 = RD_IRAM_1[1:1];
+assign n2600 = RD_IRAM_1[0:0];
+assign n2601 = ( n2599 ^ n2600 );
+assign n2602 = ( n2598 ^ n2601 );
+assign n2603 = ( n2597 ^ n2602 );
+assign n2604 = ( n2596 ^ n2603 );
+assign n2605 = ( n2595 ^ n2604 );
+assign n2606 = ( n2594 ^ n2605 );
+assign n2607 = ( n2593 ^ n2606 );
+assign n2608 = { ( n1008 ), ( n2607 ) };
+assign PSW_c6 = n2608;
 // 
 // ACC_c7
 // 
@@ -11249,7 +9655,7 @@ assign PC_c7 = n0612;
 // 
 // PSW_c7
 // 
-assign PSW_c7 = n2767;
+assign PSW_c7 = n2608;
 // 
 // ACC_c8
 // 
@@ -11264,23 +9670,23 @@ assign PC_c8 = n0612;
 // 
 // PSW_c8
 // 
-assign n2768 = RD_IRAM_0[7:7];
-assign n2769 = RD_IRAM_0[6:6];
-assign n2770 = RD_IRAM_0[5:5];
-assign n2771 = RD_IRAM_0[4:4];
-assign n2772 = RD_IRAM_0[3:3];
-assign n2773 = RD_IRAM_0[2:2];
-assign n2774 = RD_IRAM_0[1:1];
-assign n2775 = RD_IRAM_0[0:0];
-assign n2776 = ( n2774 ^ n2775 );
-assign n2777 = ( n2773 ^ n2776 );
-assign n2778 = ( n2772 ^ n2777 );
-assign n2779 = ( n2771 ^ n2778 );
-assign n2780 = ( n2770 ^ n2779 );
-assign n2781 = ( n2769 ^ n2780 );
-assign n2782 = ( n2768 ^ n2781 );
-assign n2783 = { ( n1008 ), ( n2782 ) };
-assign PSW_c8 = n2783;
+assign n2609 = RD_IRAM_0[7:7];
+assign n2610 = RD_IRAM_0[6:6];
+assign n2611 = RD_IRAM_0[5:5];
+assign n2612 = RD_IRAM_0[4:4];
+assign n2613 = RD_IRAM_0[3:3];
+assign n2614 = RD_IRAM_0[2:2];
+assign n2615 = RD_IRAM_0[1:1];
+assign n2616 = RD_IRAM_0[0:0];
+assign n2617 = ( n2615 ^ n2616 );
+assign n2618 = ( n2614 ^ n2617 );
+assign n2619 = ( n2613 ^ n2618 );
+assign n2620 = ( n2612 ^ n2619 );
+assign n2621 = ( n2611 ^ n2620 );
+assign n2622 = ( n2610 ^ n2621 );
+assign n2623 = ( n2609 ^ n2622 );
+assign n2624 = { ( n1008 ), ( n2623 ) };
+assign PSW_c8 = n2624;
 // 
 // ACC_c9
 // 
@@ -11295,7 +9701,7 @@ assign PC_c9 = n0612;
 // 
 // PSW_c9
 // 
-assign PSW_c9 = n2783;
+assign PSW_c9 = n2624;
 // 
 // ACC_ca
 // 
@@ -11310,7 +9716,7 @@ assign PC_ca = n0612;
 // 
 // PSW_ca
 // 
-assign PSW_ca = n2783;
+assign PSW_ca = n2624;
 // 
 // ACC_cb
 // 
@@ -11325,7 +9731,7 @@ assign PC_cb = n0612;
 // 
 // PSW_cb
 // 
-assign PSW_cb = n2783;
+assign PSW_cb = n2624;
 // 
 // ACC_cc
 // 
@@ -11340,7 +9746,7 @@ assign PC_cc = n0612;
 // 
 // PSW_cc
 // 
-assign PSW_cc = n2783;
+assign PSW_cc = n2624;
 // 
 // ACC_cd
 // 
@@ -11355,7 +9761,7 @@ assign PC_cd = n0612;
 // 
 // PSW_cd
 // 
-assign PSW_cd = n2783;
+assign PSW_cd = n2624;
 // 
 // ACC_ce
 // 
@@ -11370,7 +9776,7 @@ assign PC_ce = n0612;
 // 
 // PSW_ce
 // 
-assign PSW_ce = n2783;
+assign PSW_ce = n2624;
 // 
 // ACC_cf
 // 
@@ -11385,51 +9791,23 @@ assign PC_cf = n0612;
 // 
 // PSW_cf
 // 
-assign PSW_cf = n2783;
+assign PSW_cf = n2624;
 // 
 // ACC_d0
 // 
-assign ACC_d0 = n2369;
-// 
-// PCON_d0
-// 
-assign PCON_d0 = n2370;
+assign ACC_d0 = n2244;
 // 
 // B_d0
 // 
-assign B_d0 = n2371;
-// 
-// TMOD_d0
-// 
-assign TMOD_d0 = n2372;
+assign B_d0 = n2245;
 // 
 // DPL_d0
 // 
-assign DPL_d0 = n2373;
+assign DPL_d0 = n2246;
 // 
 // DPH_d0
 // 
-assign DPH_d0 = n2374;
-// 
-// TL1_d0
-// 
-assign TL1_d0 = n2375;
-// 
-// TL0_d0
-// 
-assign TL0_d0 = n2376;
-// 
-// IE_d0
-// 
-assign IE_d0 = n2377;
-// 
-// TH1_d0
-// 
-assign TH1_d0 = n2378;
-// 
-// TH0_d0
-// 
-assign TH0_d0 = n2379;
+assign DPH_d0 = n2247;
 // 
 // PC_d0
 // 
@@ -11437,46 +9815,30 @@ assign PC_d0 = n0610;
 // 
 // P2_d0
 // 
-assign P2_d0 = n2380;
+assign P2_d0 = n2248;
 // 
 // P3_d0
 // 
-assign P3_d0 = n2381;
+assign P3_d0 = n2249;
 // 
 // P0_d0
 // 
-assign P0_d0 = n2382;
+assign P0_d0 = n2250;
 // 
 // P1_d0
 // 
-assign P1_d0 = n2383;
+assign P1_d0 = n2251;
 // 
 // IRAM_d0
 // 
-// 
-// IP_d0
-// 
-assign IP_d0 = n2384;
-// 
-// TCON_d0
-// 
-assign TCON_d0 = n2385;
-// 
-// SCON_d0
-// 
-assign SCON_d0 = n2386;
 // 
 // SP_d0
 // 
 assign SP_d0 = n0575;
 // 
-// SBUF_d0
-// 
-assign SBUF_d0 = n2388;
-// 
 // PSW_d0
 // 
-assign PSW_d0 = n2406;
+assign PSW_d0 = n2270;
 // 
 // PC_d1
 // 
@@ -11487,7 +9849,7 @@ assign PC_d1 = n1029;
 // 
 // SP_d1
 // 
-assign SP_d1 = n1256;
+assign SP_d1 = n1241;
 // 
 // PSW_d1
 // 
@@ -11495,21 +9857,16 @@ assign PSW_d1 = n1024;
 // 
 // ACC_d2
 // 
-assign n2784 = { 7'b0, n0043 };
-assign n2785 = ( n2784 << n1170 );
-assign n2786 = ( n1210 | n2785 );
-assign n2787 = ( n1168 ) ? ( n2786 ) : ( ACC );
-assign ACC_d2 = n2787;
+assign n2625 = { 7'b0, n0043 };
+assign n2626 = ( n2625 << n1159 );
+assign n2627 = ( n1199 | n2626 );
+assign n2628 = ( n1157 ) ? ( n2627 ) : ( ACC );
+assign ACC_d2 = n2628;
 // 
-// B_d2
+// P1_d2
 // 
-assign n2788 = ( n1184 ) ? ( n2786 ) : ( B );
-assign B_d2 = n2788;
-// 
-// TCON_d2
-// 
-assign n2789 = ( n1176 ) ? ( n2786 ) : ( TCON );
-assign TCON_d2 = n2789;
+assign n2629 = ( n1166 ) ? ( n2627 ) : ( P1 );
+assign P1_d2 = n2629;
 // 
 // PC_d2
 // 
@@ -11517,63 +9874,48 @@ assign PC_d2 = n0610;
 // 
 // P2_d2
 // 
-assign n2790 = ( n1179 ) ? ( n2786 ) : ( P2 );
-assign P2_d2 = n2790;
+assign n2630 = ( n1168 ) ? ( n2627 ) : ( P2 );
+assign P2_d2 = n2630;
 // 
 // P3_d2
 // 
-assign n2791 = ( n1181 ) ? ( n2786 ) : ( P3 );
-assign P3_d2 = n2791;
+assign n2631 = ( n1170 ) ? ( n2627 ) : ( P3 );
+assign P3_d2 = n2631;
 // 
 // P0_d2
 // 
-assign n2792 = ( n1175 ) ? ( n2786 ) : ( P0 );
-assign P0_d2 = n2792;
+assign n2632 = ( n1164 ) ? ( n2627 ) : ( P0 );
+assign P0_d2 = n2632;
 // 
-// P1_d2
+// B_d2
 // 
-assign n2793 = ( n1177 ) ? ( n2786 ) : ( P1 );
-assign P1_d2 = n2793;
+assign n2633 = ( n1173 ) ? ( n2627 ) : ( B );
+assign B_d2 = n2633;
 // 
 // IRAM_d2
 // 
 // 
-// IP_d2
-// 
-assign n2794 = ( n1182 ) ? ( n2786 ) : ( IP );
-assign IP_d2 = n2794;
-// 
-// IE_d2
-// 
-assign n2795 = ( n1180 ) ? ( n2786 ) : ( IE );
-assign IE_d2 = n2795;
-// 
-// SCON_d2
-// 
-assign n2796 = ( n1178 ) ? ( n2786 ) : ( SCON );
-assign SCON_d2 = n2796;
-// 
 // PSW_d2
 // 
-assign n2797 = ( n1183 ) ? ( n2786 ) : ( PSW );
-assign n2798 = n2797[7:1];
-assign n2799 = n2787[7:7];
-assign n2800 = n2787[6:6];
-assign n2801 = n2787[5:5];
-assign n2802 = n2787[4:4];
-assign n2803 = n2787[3:3];
-assign n2804 = n2787[2:2];
-assign n2805 = n2787[1:1];
-assign n2806 = n2787[0:0];
-assign n2807 = ( n2805 ^ n2806 );
-assign n2808 = ( n2804 ^ n2807 );
-assign n2809 = ( n2803 ^ n2808 );
-assign n2810 = ( n2802 ^ n2809 );
-assign n2811 = ( n2801 ^ n2810 );
-assign n2812 = ( n2800 ^ n2811 );
-assign n2813 = ( n2799 ^ n2812 );
-assign n2814 = { ( n2798 ), ( n2813 ) };
-assign PSW_d2 = n2814;
+assign n2634 = ( n1172 ) ? ( n2627 ) : ( PSW );
+assign n2635 = n2634[7:1];
+assign n2636 = n2628[7:7];
+assign n2637 = n2628[6:6];
+assign n2638 = n2628[5:5];
+assign n2639 = n2628[4:4];
+assign n2640 = n2628[3:3];
+assign n2641 = n2628[2:2];
+assign n2642 = n2628[1:1];
+assign n2643 = n2628[0:0];
+assign n2644 = ( n2642 ^ n2643 );
+assign n2645 = ( n2641 ^ n2644 );
+assign n2646 = ( n2640 ^ n2645 );
+assign n2647 = ( n2639 ^ n2646 );
+assign n2648 = ( n2638 ^ n2647 );
+assign n2649 = ( n2637 ^ n2648 );
+assign n2650 = ( n2636 ^ n2649 );
+assign n2651 = { ( n2635 ), ( n2650 ) };
+assign PSW_d2 = n2651;
 // 
 // PC_d3
 // 
@@ -11581,31 +9923,31 @@ assign PC_d3 = n0612;
 // 
 // PSW_d3
 // 
-assign n2815 = { ( n0043 ), ( n2142 ) };
-assign n2816 = n2815[7:1];
-assign n2817 = { ( n2816 ), ( n1023 ) };
-assign PSW_d3 = n2817;
+assign n2652 = { ( n0043 ), ( n2050 ) };
+assign n2653 = n2652[7:1];
+assign n2654 = { ( n2653 ), ( n1023 ) };
+assign PSW_d3 = n2654;
 // 
 // ACC_d4
 // 
-assign n2818 = ( n1263 == n0043 );
-assign n2819 = 4'h9;
-assign n2820 = ( n1369 > n2819 );
-assign n2821 = ( n2818 || n2820 );
-assign n2822 = 9'h6;
-assign n2823 = ( n1363 + n2822 );
-assign n2824 = ( n2821 ) ? ( n2823 ) : ( n1363 );
-assign n2825 = n2824[8:8];
-assign n2826 = ( n2825 | n1259 );
-assign n2827 = ( n2826 == n0043 );
-assign n2828 = n2824[7:4];
-assign n2829 = ( n2828 > n2819 );
-assign n2830 = ( n2827 || n2829 );
-assign n2831 = 9'h60;
-assign n2832 = ( n2824 + n2831 );
-assign n2833 = ( n2830 ) ? ( n2832 ) : ( n2824 );
-assign n2834 = n2833[7:0];
-assign ACC_d4 = n2834;
+assign n2655 = ( n1248 == n0043 );
+assign n2656 = 4'h9;
+assign n2657 = ( n1343 > n2656 );
+assign n2658 = ( n2655 || n2657 );
+assign n2659 = 9'h6;
+assign n2660 = ( n1337 + n2659 );
+assign n2661 = ( n2658 ) ? ( n2660 ) : ( n1337 );
+assign n2662 = n2661[8:8];
+assign n2663 = ( n2662 | n1244 );
+assign n2664 = ( n2663 == n0043 );
+assign n2665 = n2661[7:4];
+assign n2666 = ( n2665 > n2656 );
+assign n2667 = ( n2664 || n2666 );
+assign n2668 = 9'h60;
+assign n2669 = ( n2661 + n2668 );
+assign n2670 = ( n2667 ) ? ( n2669 ) : ( n2661 );
+assign n2671 = n2670[7:0];
+assign ACC_d4 = n2671;
 // 
 // PC_d4
 // 
@@ -11613,126 +9955,82 @@ assign PC_d4 = n0612;
 // 
 // PSW_d4
 // 
-assign n2835 = n2833[8:8];
-assign n2836 = ( n2835 | n2826 );
-assign n2837 = { ( n2836 ), ( n2142 ) };
-assign n2838 = n2837[7:1];
-assign n2839 = n2834[7:7];
-assign n2840 = n2834[6:6];
-assign n2841 = n2834[5:5];
-assign n2842 = n2834[4:4];
-assign n2843 = n2834[3:3];
-assign n2844 = n2834[2:2];
-assign n2845 = n2834[1:1];
-assign n2846 = n2834[0:0];
-assign n2847 = ( n2845 ^ n2846 );
-assign n2848 = ( n2844 ^ n2847 );
-assign n2849 = ( n2843 ^ n2848 );
-assign n2850 = ( n2842 ^ n2849 );
-assign n2851 = ( n2841 ^ n2850 );
-assign n2852 = ( n2840 ^ n2851 );
-assign n2853 = ( n2839 ^ n2852 );
-assign n2854 = { ( n2838 ), ( n2853 ) };
-assign PSW_d4 = n2854;
+assign n2672 = n2670[8:8];
+assign n2673 = ( n2672 | n2663 );
+assign n2674 = { ( n2673 ), ( n2050 ) };
+assign n2675 = n2674[7:1];
+assign n2676 = n2671[7:7];
+assign n2677 = n2671[6:6];
+assign n2678 = n2671[5:5];
+assign n2679 = n2671[4:4];
+assign n2680 = n2671[3:3];
+assign n2681 = n2671[2:2];
+assign n2682 = n2671[1:1];
+assign n2683 = n2671[0:0];
+assign n2684 = ( n2682 ^ n2683 );
+assign n2685 = ( n2681 ^ n2684 );
+assign n2686 = ( n2680 ^ n2685 );
+assign n2687 = ( n2679 ^ n2686 );
+assign n2688 = ( n2678 ^ n2687 );
+assign n2689 = ( n2677 ^ n2688 );
+assign n2690 = ( n2676 ^ n2689 );
+assign n2691 = { ( n2675 ), ( n2690 ) };
+assign PSW_d4 = n2691;
 // 
 // ACC_d5
 // 
-assign ACC_d5 = n1303;
-// 
-// PCON_d5
-// 
-assign PCON_d5 = n1304;
+assign ACC_d5 = n1288;
 // 
 // B_d5
 // 
-assign B_d5 = n1317;
-// 
-// TMOD_d5
-// 
-assign TMOD_d5 = n1306;
+assign B_d5 = n1295;
 // 
 // DPL_d5
 // 
-assign DPL_d5 = n1307;
+assign DPL_d5 = n1290;
 // 
 // DPH_d5
 // 
-assign DPH_d5 = n1308;
-// 
-// TL1_d5
-// 
-assign TL1_d5 = n1309;
-// 
-// TL0_d5
-// 
-assign TL0_d5 = n1310;
-// 
-// TCON_d5
-// 
-assign TCON_d5 = n1319;
-// 
-// TH1_d5
-// 
-assign TH1_d5 = n1312;
-// 
-// TH0_d5
-// 
-assign TH0_d5 = n1313;
+assign DPH_d5 = n1291;
 // 
 // PC_d5
 // 
-assign n2855 = ( n1116 == n0574 );
-assign n2856 = !( n2855 );
-assign n2857 = ( n2856 ) ? ( n1219 ) : ( n1217 );
-assign PC_d5 = n2857;
+assign n2692 = ( n1116 == n0574 );
+assign n2693 = !( n2692 );
+assign n2694 = ( n2693 ) ? ( n1207 ) : ( n1205 );
+assign PC_d5 = n2694;
 // 
 // P2_d5
 // 
-assign P2_d5 = n1314;
+assign P2_d5 = n1292;
 // 
 // P3_d5
 // 
-assign P3_d5 = n1315;
+assign P3_d5 = n1293;
 // 
 // P0_d5
 // 
-assign P0_d5 = n1316;
+assign P0_d5 = n1294;
 // 
 // P1_d5
 // 
-assign P1_d5 = n1305;
+assign P1_d5 = n1289;
 // 
 // IRAM_d5
 // 
 // 
-// IP_d5
-// 
-assign IP_d5 = n1318;
-// 
-// IE_d5
-// 
-assign IE_d5 = n1311;
-// 
-// SCON_d5
-// 
-assign SCON_d5 = n1320;
-// 
 // SP_d5
 // 
-assign SP_d5 = n1321;
-// 
-// SBUF_d5
-// 
-assign SBUF_d5 = n1322;
+assign SP_d5 = n1296;
 // 
 // PSW_d5
 // 
-assign PSW_d5 = n1340;
+assign PSW_d5 = n1314;
 // 
 // ACC_d6
 // 
-assign n2858 = { ( n2697 ), ( n1463 ) };
-assign ACC_d6 = n2858;
+assign n2695 = { ( n2549 ), ( n1437 ) };
+assign ACC_d6 = n2695;
 // 
 // PC_d6
 // 
@@ -11740,32 +10038,32 @@ assign PC_d6 = n0612;
 // 
 // IRAM_d6
 // 
-assign n2859 = RD_IRAM_1[7:4];
-assign n2860 = { ( n2859 ), ( n1369 ) };
+assign n2696 = RD_IRAM_1[7:4];
+assign n2697 = { ( n2696 ), ( n1343 ) };
 // 
 // PSW_d6
 // 
-assign n2861 = n2858[7:7];
-assign n2862 = n2858[6:6];
-assign n2863 = n2858[5:5];
-assign n2864 = n2858[4:4];
-assign n2865 = n2858[3:3];
-assign n2866 = n2858[2:2];
-assign n2867 = n2858[1:1];
-assign n2868 = n2858[0:0];
-assign n2869 = ( n2867 ^ n2868 );
-assign n2870 = ( n2866 ^ n2869 );
-assign n2871 = ( n2865 ^ n2870 );
-assign n2872 = ( n2864 ^ n2871 );
-assign n2873 = ( n2863 ^ n2872 );
-assign n2874 = ( n2862 ^ n2873 );
-assign n2875 = ( n2861 ^ n2874 );
-assign n2876 = { ( n1008 ), ( n2875 ) };
-assign PSW_d6 = n2876;
+assign n2698 = n2695[7:7];
+assign n2699 = n2695[6:6];
+assign n2700 = n2695[5:5];
+assign n2701 = n2695[4:4];
+assign n2702 = n2695[3:3];
+assign n2703 = n2695[2:2];
+assign n2704 = n2695[1:1];
+assign n2705 = n2695[0:0];
+assign n2706 = ( n2704 ^ n2705 );
+assign n2707 = ( n2703 ^ n2706 );
+assign n2708 = ( n2702 ^ n2707 );
+assign n2709 = ( n2701 ^ n2708 );
+assign n2710 = ( n2700 ^ n2709 );
+assign n2711 = ( n2699 ^ n2710 );
+assign n2712 = ( n2698 ^ n2711 );
+assign n2713 = { ( n1008 ), ( n2712 ) };
+assign PSW_d6 = n2713;
 // 
 // ACC_d7
 // 
-assign ACC_d7 = n2858;
+assign ACC_d7 = n2695;
 // 
 // PC_d7
 // 
@@ -11776,14 +10074,14 @@ assign PC_d7 = n0612;
 // 
 // PSW_d7
 // 
-assign PSW_d7 = n2876;
+assign PSW_d7 = n2713;
 // 
 // PC_d8
 // 
-assign n2877 = ( RD_IRAM_0 == n0574 );
-assign n2878 = !( n2877 );
-assign n2879 = ( n2878 ) ? ( n1725 ) : ( n0610 );
-assign PC_d8 = n2879;
+assign n2714 = ( RD_IRAM_0 == n0574 );
+assign n2715 = !( n2714 );
+assign n2716 = ( n2715 ) ? ( n1699 ) : ( n0610 );
+assign PC_d8 = n2716;
 // 
 // IRAM_d8
 // 
@@ -11794,7 +10092,7 @@ assign PSW_d8 = n1024;
 // 
 // PC_d9
 // 
-assign PC_d9 = n2879;
+assign PC_d9 = n2716;
 // 
 // IRAM_d9
 // 
@@ -11805,7 +10103,7 @@ assign PSW_d9 = n1024;
 // 
 // PC_da
 // 
-assign PC_da = n2879;
+assign PC_da = n2716;
 // 
 // IRAM_da
 // 
@@ -11816,7 +10114,7 @@ assign PSW_da = n1024;
 // 
 // PC_db
 // 
-assign PC_db = n2879;
+assign PC_db = n2716;
 // 
 // IRAM_db
 // 
@@ -11827,7 +10125,7 @@ assign PSW_db = n1024;
 // 
 // PC_dc
 // 
-assign PC_dc = n2879;
+assign PC_dc = n2716;
 // 
 // IRAM_dc
 // 
@@ -11838,7 +10136,7 @@ assign PSW_dc = n1024;
 // 
 // PC_dd
 // 
-assign PC_dd = n2879;
+assign PC_dd = n2716;
 // 
 // IRAM_dd
 // 
@@ -11849,7 +10147,7 @@ assign PSW_dd = n1024;
 // 
 // PC_de
 // 
-assign PC_de = n2879;
+assign PC_de = n2716;
 // 
 // IRAM_de
 // 
@@ -11860,7 +10158,7 @@ assign PSW_de = n1024;
 // 
 // PC_df
 // 
-assign PC_df = n2879;
+assign PC_df = n2716;
 // 
 // IRAM_df
 // 
@@ -11887,27 +10185,27 @@ assign PC_e4 = n0612;
 // 
 // PSW_e4
 // 
-assign n2880 = n1094[7:7];
-assign n2881 = n1094[6:6];
-assign n2882 = n1094[5:5];
-assign n2883 = n1094[4:4];
-assign n2884 = n1094[3:3];
-assign n2885 = n1094[2:2];
-assign n2886 = n1094[1:1];
-assign n2887 = n1094[0:0];
-assign n2888 = ( n2886 ^ n2887 );
-assign n2889 = ( n2885 ^ n2888 );
-assign n2890 = ( n2884 ^ n2889 );
-assign n2891 = ( n2883 ^ n2890 );
-assign n2892 = ( n2882 ^ n2891 );
-assign n2893 = ( n2881 ^ n2892 );
-assign n2894 = ( n2880 ^ n2893 );
-assign n2895 = { ( n1008 ), ( n2894 ) };
-assign PSW_e4 = n2895;
+assign n2717 = n1094[7:7];
+assign n2718 = n1094[6:6];
+assign n2719 = n1094[5:5];
+assign n2720 = n1094[4:4];
+assign n2721 = n1094[3:3];
+assign n2722 = n1094[2:2];
+assign n2723 = n1094[1:1];
+assign n2724 = n1094[0:0];
+assign n2725 = ( n2723 ^ n2724 );
+assign n2726 = ( n2722 ^ n2725 );
+assign n2727 = ( n2721 ^ n2726 );
+assign n2728 = ( n2720 ^ n2727 );
+assign n2729 = ( n2719 ^ n2728 );
+assign n2730 = ( n2718 ^ n2729 );
+assign n2731 = ( n2717 ^ n2730 );
+assign n2732 = { ( n1008 ), ( n2731 ) };
+assign PSW_e4 = n2732;
 // 
 // ACC_e5
 // 
-assign ACC_e5 = n1420;
+assign ACC_e5 = n1394;
 // 
 // PC_e5
 // 
@@ -11915,8 +10213,8 @@ assign PC_e5 = n0610;
 // 
 // PSW_e5
 // 
-assign n2896 = { ( n1008 ), ( n2750 ) };
-assign PSW_e5 = n2896;
+assign n2733 = { ( n1008 ), ( n2591 ) };
+assign PSW_e5 = n2733;
 // 
 // ACC_e6
 // 
@@ -11928,7 +10226,7 @@ assign PC_e6 = n0612;
 // 
 // PSW_e6
 // 
-assign PSW_e6 = n2767;
+assign PSW_e6 = n2608;
 // 
 // ACC_e7
 // 
@@ -11940,7 +10238,7 @@ assign PC_e7 = n0612;
 // 
 // PSW_e7
 // 
-assign PSW_e7 = n2767;
+assign PSW_e7 = n2608;
 // 
 // ACC_e8
 // 
@@ -11952,7 +10250,7 @@ assign PC_e8 = n0612;
 // 
 // PSW_e8
 // 
-assign PSW_e8 = n2783;
+assign PSW_e8 = n2624;
 // 
 // ACC_e9
 // 
@@ -11964,7 +10262,7 @@ assign PC_e9 = n0612;
 // 
 // PSW_e9
 // 
-assign PSW_e9 = n2783;
+assign PSW_e9 = n2624;
 // 
 // ACC_ea
 // 
@@ -11976,7 +10274,7 @@ assign PC_ea = n0612;
 // 
 // PSW_ea
 // 
-assign PSW_ea = n2783;
+assign PSW_ea = n2624;
 // 
 // ACC_eb
 // 
@@ -11988,7 +10286,7 @@ assign PC_eb = n0612;
 // 
 // PSW_eb
 // 
-assign PSW_eb = n2783;
+assign PSW_eb = n2624;
 // 
 // ACC_ec
 // 
@@ -12000,7 +10298,7 @@ assign PC_ec = n0612;
 // 
 // PSW_ec
 // 
-assign PSW_ec = n2783;
+assign PSW_ec = n2624;
 // 
 // ACC_ed
 // 
@@ -12012,7 +10310,7 @@ assign PC_ed = n0612;
 // 
 // PSW_ed
 // 
-assign PSW_ed = n2783;
+assign PSW_ed = n2624;
 // 
 // ACC_ee
 // 
@@ -12024,7 +10322,7 @@ assign PC_ee = n0612;
 // 
 // PSW_ee
 // 
-assign PSW_ee = n2783;
+assign PSW_ee = n2624;
 // 
 // ACC_ef
 // 
@@ -12036,7 +10334,7 @@ assign PC_ef = n0612;
 // 
 // PSW_ef
 // 
-assign PSW_ef = n2783;
+assign PSW_ef = n2624;
 // 
 // PC_f1
 // 
@@ -12047,7 +10345,7 @@ assign PC_f1 = n1029;
 // 
 // SP_f1
 // 
-assign SP_f1 = n1256;
+assign SP_f1 = n1241;
 // 
 // PSW_f1
 // 
@@ -12055,8 +10353,8 @@ assign PSW_f1 = n1024;
 // 
 // ACC_f4
 // 
-assign n2897 = ~( ACC );
-assign ACC_f4 = n2897;
+assign n2734 = ~( ACC );
+assign ACC_f4 = n2734;
 // 
 // PC_f4
 // 
@@ -12064,63 +10362,35 @@ assign PC_f4 = n0612;
 // 
 // PSW_f4
 // 
-assign n2898 = n2897[7:7];
-assign n2899 = n2897[6:6];
-assign n2900 = n2897[5:5];
-assign n2901 = n2897[4:4];
-assign n2902 = n2897[3:3];
-assign n2903 = n2897[2:2];
-assign n2904 = n2897[1:1];
-assign n2905 = n2897[0:0];
-assign n2906 = ( n2904 ^ n2905 );
-assign n2907 = ( n2903 ^ n2906 );
-assign n2908 = ( n2902 ^ n2907 );
-assign n2909 = ( n2901 ^ n2908 );
-assign n2910 = ( n2900 ^ n2909 );
-assign n2911 = ( n2899 ^ n2910 );
-assign n2912 = ( n2898 ^ n2911 );
-assign n2913 = { ( n1008 ), ( n2912 ) };
-assign PSW_f4 = n2913;
-// 
-// PCON_f5
-// 
-assign PCON_f5 = n2715;
+assign n2735 = n2734[7:7];
+assign n2736 = n2734[6:6];
+assign n2737 = n2734[5:5];
+assign n2738 = n2734[4:4];
+assign n2739 = n2734[3:3];
+assign n2740 = n2734[2:2];
+assign n2741 = n2734[1:1];
+assign n2742 = n2734[0:0];
+assign n2743 = ( n2741 ^ n2742 );
+assign n2744 = ( n2740 ^ n2743 );
+assign n2745 = ( n2739 ^ n2744 );
+assign n2746 = ( n2738 ^ n2745 );
+assign n2747 = ( n2737 ^ n2746 );
+assign n2748 = ( n2736 ^ n2747 );
+assign n2749 = ( n2735 ^ n2748 );
+assign n2750 = { ( n1008 ), ( n2749 ) };
+assign PSW_f4 = n2750;
 // 
 // P1_f5
 // 
-assign P1_f5 = n2716;
-// 
-// TMOD_f5
-// 
-assign TMOD_f5 = n2717;
+assign P1_f5 = n2567;
 // 
 // DPL_f5
 // 
-assign DPL_f5 = n2718;
+assign DPL_f5 = n2568;
 // 
 // DPH_f5
 // 
-assign DPH_f5 = n2719;
-// 
-// TL1_f5
-// 
-assign TL1_f5 = n2720;
-// 
-// TL0_f5
-// 
-assign TL0_f5 = n2721;
-// 
-// TCON_f5
-// 
-assign TCON_f5 = n2722;
-// 
-// TH1_f5
-// 
-assign TH1_f5 = n2723;
-// 
-// TH0_f5
-// 
-assign TH0_f5 = n2724;
+assign DPH_f5 = n2569;
 // 
 // PC_f5
 // 
@@ -12128,47 +10398,31 @@ assign PC_f5 = n0610;
 // 
 // P2_f5
 // 
-assign P2_f5 = n2725;
+assign P2_f5 = n2570;
 // 
 // P3_f5
 // 
-assign P3_f5 = n2726;
+assign P3_f5 = n2571;
 // 
 // P0_f5
 // 
-assign P0_f5 = n2727;
+assign P0_f5 = n2572;
 // 
 // B_f5
 // 
-assign B_f5 = n2728;
+assign B_f5 = n2573;
 // 
 // IRAM_f5
 // 
 // 
-// IP_f5
-// 
-assign IP_f5 = n2729;
-// 
-// IE_f5
-// 
-assign IE_f5 = n2730;
-// 
-// SCON_f5
-// 
-assign SCON_f5 = n2731;
-// 
 // SP_f5
 // 
-assign SP_f5 = n2732;
-// 
-// SBUF_f5
-// 
-assign SBUF_f5 = n2733;
+assign SP_f5 = n2574;
 // 
 // PSW_f5
 // 
-assign n2914 = { ( n2735 ), ( n1023 ) };
-assign PSW_f5 = n2914;
+assign n2751 = { ( n2576 ), ( n1023 ) };
+assign PSW_f5 = n2751;
 // 
 // PC_f6
 // 
@@ -12279,59 +10533,59 @@ assign PC_ff = n0612;
 // PSW_ff
 // 
 assign PSW_ff = n1024;
-assign n2915 = 8'h3;
-assign n2916 = ( RD_ROM_0 == n2915 );
-assign n2917 = 8'h4;
-assign n2918 = ( RD_ROM_0 == n2917 );
-assign n2919 = 8'h13;
-assign n2920 = ( RD_ROM_0 == n2919 );
-assign n2921 = 8'h14;
-assign n2922 = ( RD_ROM_0 == n2921 );
-assign n2923 = 8'h23;
-assign n2924 = ( RD_ROM_0 == n2923 );
-assign n2925 = 8'h24;
-assign n2926 = ( RD_ROM_0 == n2925 );
-assign n2927 = 8'h33;
-assign n2928 = ( RD_ROM_0 == n2927 );
-assign n2929 = 8'h34;
-assign n2930 = ( RD_ROM_0 == n2929 );
-assign n2931 = 8'h44;
-assign n2932 = ( RD_ROM_0 == n2931 );
-assign n2933 = 8'h54;
-assign n2934 = ( RD_ROM_0 == n2933 );
-assign n2935 = 8'h64;
-assign n2936 = ( RD_ROM_0 == n2935 );
-assign n2937 = 8'h74;
-assign n2938 = ( RD_ROM_0 == n2937 );
-assign n2939 = 8'h75;
-assign n2940 = ( RD_ROM_0 == n2939 );
-assign n2941 = ( RD_ROM_0 == n1074 );
-assign n2942 = 8'h84;
-assign n2943 = ( RD_ROM_0 == n2942 );
-assign n2944 = 8'h93;
-assign n2945 = ( RD_ROM_0 == n2944 );
-assign n2946 = 8'h94;
-assign n2947 = ( RD_ROM_0 == n2946 );
-assign n2948 = 8'ha4;
-assign n2949 = ( RD_ROM_0 == n2948 );
-assign n2950 = 8'hc4;
-assign n2951 = ( RD_ROM_0 == n2950 );
-assign n2952 = 8'hd4;
-assign n2953 = ( RD_ROM_0 == n2952 );
-assign n2954 = 8'he4;
-assign n2955 = ( RD_ROM_0 == n2954 );
-assign n2956 = 8'hf4;
-assign n2957 = ( RD_ROM_0 == n2956 );
+assign n2752 = 8'h3;
+assign n2753 = ( RD_ROM_0 == n2752 );
+assign n2754 = 8'h4;
+assign n2755 = ( RD_ROM_0 == n2754 );
+assign n2756 = 8'h13;
+assign n2757 = ( RD_ROM_0 == n2756 );
+assign n2758 = 8'h14;
+assign n2759 = ( RD_ROM_0 == n2758 );
+assign n2760 = 8'h23;
+assign n2761 = ( RD_ROM_0 == n2760 );
+assign n2762 = 8'h24;
+assign n2763 = ( RD_ROM_0 == n2762 );
+assign n2764 = 8'h33;
+assign n2765 = ( RD_ROM_0 == n2764 );
+assign n2766 = 8'h34;
+assign n2767 = ( RD_ROM_0 == n2766 );
+assign n2768 = 8'h44;
+assign n2769 = ( RD_ROM_0 == n2768 );
+assign n2770 = 8'h54;
+assign n2771 = ( RD_ROM_0 == n2770 );
+assign n2772 = 8'h64;
+assign n2773 = ( RD_ROM_0 == n2772 );
+assign n2774 = 8'h74;
+assign n2775 = ( RD_ROM_0 == n2774 );
+assign n2776 = 8'h75;
+assign n2777 = ( RD_ROM_0 == n2776 );
+assign n2778 = ( RD_ROM_0 == n1074 );
+assign n2779 = 8'h84;
+assign n2780 = ( RD_ROM_0 == n2779 );
+assign n2781 = 8'h93;
+assign n2782 = ( RD_ROM_0 == n2781 );
+assign n2783 = 8'h94;
+assign n2784 = ( RD_ROM_0 == n2783 );
+assign n2785 = 8'ha4;
+assign n2786 = ( RD_ROM_0 == n2785 );
+assign n2787 = 8'hc4;
+assign n2788 = ( RD_ROM_0 == n2787 );
+assign n2789 = 8'hd4;
+assign n2790 = ( RD_ROM_0 == n2789 );
+assign n2791 = 8'he4;
+assign n2792 = ( RD_ROM_0 == n2791 );
+assign n2793 = 8'hf4;
+assign n2794 = ( RD_ROM_0 == n2793 );
 assign ACC_next = 
-  ( n2916 ) ? ACC_03 : 
-  ( n2918 ) ? ACC_04 : 
+  ( n2753 ) ? ACC_03 : 
+  ( n2755 ) ? ACC_04 : 
   ( n0002 ) ? ACC_05 : 
   ( n0041 ) ? ACC_10 : 
-  ( n2920 ) ? ACC_13 : 
-  ( n2922 ) ? ACC_14 : 
+  ( n2757 ) ? ACC_13 : 
+  ( n2759 ) ? ACC_14 : 
   ( n0052 ) ? ACC_15 : 
-  ( n2924 ) ? ACC_23 : 
-  ( n2926 ) ? ACC_24 : 
+  ( n2761 ) ? ACC_23 : 
+  ( n2763 ) ? ACC_24 : 
   ( n0077 ) ? ACC_25 : 
   ( n0079 ) ? ACC_26 : 
   ( n0081 ) ? ACC_27 : 
@@ -12343,8 +10597,8 @@ assign ACC_next =
   ( n0093 ) ? ACC_2d : 
   ( n0095 ) ? ACC_2e : 
   ( n0097 ) ? ACC_2f : 
-  ( n2928 ) ? ACC_33 : 
-  ( n2930 ) ? ACC_34 : 
+  ( n2765 ) ? ACC_33 : 
+  ( n2767 ) ? ACC_34 : 
   ( n0103 ) ? ACC_35 : 
   ( n0105 ) ? ACC_36 : 
   ( n0107 ) ? ACC_37 : 
@@ -12357,7 +10611,7 @@ assign ACC_next =
   ( n0121 ) ? ACC_3e : 
   ( n0123 ) ? ACC_3f : 
   ( n0127 ) ? ACC_43 : 
-  ( n2932 ) ? ACC_44 : 
+  ( n2769 ) ? ACC_44 : 
   ( n0129 ) ? ACC_45 : 
   ( n0131 ) ? ACC_46 : 
   ( n0133 ) ? ACC_47 : 
@@ -12370,7 +10624,7 @@ assign ACC_next =
   ( n0147 ) ? ACC_4e : 
   ( n0149 ) ? ACC_4f : 
   ( n0153 ) ? ACC_53 : 
-  ( n2934 ) ? ACC_54 : 
+  ( n2771 ) ? ACC_54 : 
   ( n0155 ) ? ACC_55 : 
   ( n0157 ) ? ACC_56 : 
   ( n0159 ) ? ACC_57 : 
@@ -12384,7 +10638,7 @@ assign ACC_next =
   ( n0175 ) ? ACC_5f : 
   ( n0177 ) ? ACC_62 : 
   ( n0179 ) ? ACC_63 : 
-  ( n2936 ) ? ACC_64 : 
+  ( n2773 ) ? ACC_64 : 
   ( n0181 ) ? ACC_65 : 
   ( n0183 ) ? ACC_66 : 
   ( n0185 ) ? ACC_67 : 
@@ -12396,10 +10650,10 @@ assign ACC_next =
   ( n0197 ) ? ACC_6d : 
   ( n0199 ) ? ACC_6e : 
   ( n0201 ) ? ACC_6f : 
-  ( n2938 ) ? ACC_74 : 
-  ( n2940 ) ? ACC_75 : 
-  ( n2941 ) ? ACC_83 : 
-  ( n2943 ) ? ACC_84 : 
+  ( n2775 ) ? ACC_74 : 
+  ( n2777 ) ? ACC_75 : 
+  ( n2778 ) ? ACC_83 : 
+  ( n2780 ) ? ACC_84 : 
   ( n0211 ) ? ACC_85 : 
   ( n0213 ) ? ACC_86 : 
   ( n0215 ) ? ACC_87 : 
@@ -12412,8 +10666,8 @@ assign ACC_next =
   ( n0229 ) ? ACC_8e : 
   ( n0231 ) ? ACC_8f : 
   ( n0233 ) ? ACC_92 : 
-  ( n2945 ) ? ACC_93 : 
-  ( n2947 ) ? ACC_94 : 
+  ( n2782 ) ? ACC_93 : 
+  ( n2784 ) ? ACC_94 : 
   ( n0235 ) ? ACC_95 : 
   ( n0237 ) ? ACC_96 : 
   ( n0239 ) ? ACC_97 : 
@@ -12425,10 +10679,10 @@ assign ACC_next =
   ( n0251 ) ? ACC_9d : 
   ( n0253 ) ? ACC_9e : 
   ( n0255 ) ? ACC_9f : 
-  ( n2949 ) ? ACC_a4 : 
+  ( n2786 ) ? ACC_a4 : 
   ( n0283 ) ? ACC_b2 : 
   ( n0309 ) ? ACC_c2 : 
-  ( n2951 ) ? ACC_c4 : 
+  ( n2788 ) ? ACC_c4 : 
   ( n0311 ) ? ACC_c5 : 
   ( n0313 ) ? ACC_c6 : 
   ( n0315 ) ? ACC_c7 : 
@@ -12442,11 +10696,11 @@ assign ACC_next =
   ( n0331 ) ? ACC_cf : 
   ( n0333 ) ? ACC_d0 : 
   ( n0335 ) ? ACC_d2 : 
-  ( n2953 ) ? ACC_d4 : 
+  ( n2790 ) ? ACC_d4 : 
   ( n0337 ) ? ACC_d5 : 
   ( n0339 ) ? ACC_d6 : 
   ( n0341 ) ? ACC_d7 : 
-  ( n2955 ) ? ACC_e4 : 
+  ( n2792 ) ? ACC_e4 : 
   ( n0363 ) ? ACC_e5 : 
   ( n0365 ) ? ACC_e6 : 
   ( n0367 ) ? ACC_e7 : 
@@ -12458,629 +10712,10 @@ assign ACC_next =
   ( n0379 ) ? ACC_ed : 
   ( n0381 ) ? ACC_ee : 
   ( n0383 ) ? ACC_ef : 
-  ( n2957 ) ? ACC_f4 : 
+  ( n2794 ) ? ACC_f4 : 
   ( ACC );
-assign n2958 = 8'hf5;
-assign n2959 = ( RD_ROM_0 == n2958 );
-assign PCON_next = 
-  ( n0002 ) ? PCON_05 : 
-  ( n0052 ) ? PCON_15 : 
-  ( n0125 ) ? PCON_42 : 
-  ( n0127 ) ? PCON_43 : 
-  ( n0151 ) ? PCON_52 : 
-  ( n0153 ) ? PCON_53 : 
-  ( n0177 ) ? PCON_62 : 
-  ( n0179 ) ? PCON_63 : 
-  ( n2940 ) ? PCON_75 : 
-  ( n0211 ) ? PCON_85 : 
-  ( n0213 ) ? PCON_86 : 
-  ( n0215 ) ? PCON_87 : 
-  ( n0217 ) ? PCON_88 : 
-  ( n0219 ) ? PCON_89 : 
-  ( n0221 ) ? PCON_8a : 
-  ( n0223 ) ? PCON_8b : 
-  ( n0225 ) ? PCON_8c : 
-  ( n0227 ) ? PCON_8d : 
-  ( n0229 ) ? PCON_8e : 
-  ( n0231 ) ? PCON_8f : 
-  ( n0311 ) ? PCON_c5 : 
-  ( n0333 ) ? PCON_d0 : 
-  ( n0337 ) ? PCON_d5 : 
-  ( n2959 ) ? PCON_f5 : 
-  ( PCON );
-assign B_next = 
-  ( n0002 ) ? B_05 : 
-  ( n0041 ) ? B_10 : 
-  ( n0052 ) ? B_15 : 
-  ( n0125 ) ? B_42 : 
-  ( n0127 ) ? B_43 : 
-  ( n0151 ) ? B_52 : 
-  ( n0153 ) ? B_53 : 
-  ( n0177 ) ? B_62 : 
-  ( n0179 ) ? B_63 : 
-  ( n2940 ) ? B_75 : 
-  ( n2943 ) ? B_84 : 
-  ( n0211 ) ? B_85 : 
-  ( n0213 ) ? B_86 : 
-  ( n0215 ) ? B_87 : 
-  ( n0217 ) ? B_88 : 
-  ( n0219 ) ? B_89 : 
-  ( n0221 ) ? B_8a : 
-  ( n0223 ) ? B_8b : 
-  ( n0225 ) ? B_8c : 
-  ( n0227 ) ? B_8d : 
-  ( n0229 ) ? B_8e : 
-  ( n0231 ) ? B_8f : 
-  ( n0233 ) ? B_92 : 
-  ( n2949 ) ? B_a4 : 
-  ( n0283 ) ? B_b2 : 
-  ( n0309 ) ? B_c2 : 
-  ( n0311 ) ? B_c5 : 
-  ( n0333 ) ? B_d0 : 
-  ( n0335 ) ? B_d2 : 
-  ( n0337 ) ? B_d5 : 
-  ( n2959 ) ? B_f5 : 
-  ( B );
-assign TMOD_next = 
-  ( n0002 ) ? TMOD_05 : 
-  ( n0052 ) ? TMOD_15 : 
-  ( n0125 ) ? TMOD_42 : 
-  ( n0127 ) ? TMOD_43 : 
-  ( n0151 ) ? TMOD_52 : 
-  ( n0153 ) ? TMOD_53 : 
-  ( n0177 ) ? TMOD_62 : 
-  ( n0179 ) ? TMOD_63 : 
-  ( n2940 ) ? TMOD_75 : 
-  ( n0211 ) ? TMOD_85 : 
-  ( n0213 ) ? TMOD_86 : 
-  ( n0215 ) ? TMOD_87 : 
-  ( n0217 ) ? TMOD_88 : 
-  ( n0219 ) ? TMOD_89 : 
-  ( n0221 ) ? TMOD_8a : 
-  ( n0223 ) ? TMOD_8b : 
-  ( n0225 ) ? TMOD_8c : 
-  ( n0227 ) ? TMOD_8d : 
-  ( n0229 ) ? TMOD_8e : 
-  ( n0231 ) ? TMOD_8f : 
-  ( n0311 ) ? TMOD_c5 : 
-  ( n0333 ) ? TMOD_d0 : 
-  ( n0337 ) ? TMOD_d5 : 
-  ( n2959 ) ? TMOD_f5 : 
-  ( TMOD );
-assign n2960 = ( RD_ROM_0 == n1083 );
-assign n2961 = 8'ha3;
-assign n2962 = ( RD_ROM_0 == n2961 );
-assign DPL_next = 
-  ( n0002 ) ? DPL_05 : 
-  ( n0052 ) ? DPL_15 : 
-  ( n0125 ) ? DPL_42 : 
-  ( n0127 ) ? DPL_43 : 
-  ( n0151 ) ? DPL_52 : 
-  ( n0153 ) ? DPL_53 : 
-  ( n0177 ) ? DPL_62 : 
-  ( n0179 ) ? DPL_63 : 
-  ( n2940 ) ? DPL_75 : 
-  ( n0211 ) ? DPL_85 : 
-  ( n0213 ) ? DPL_86 : 
-  ( n0215 ) ? DPL_87 : 
-  ( n0217 ) ? DPL_88 : 
-  ( n0219 ) ? DPL_89 : 
-  ( n0221 ) ? DPL_8a : 
-  ( n0223 ) ? DPL_8b : 
-  ( n0225 ) ? DPL_8c : 
-  ( n0227 ) ? DPL_8d : 
-  ( n0229 ) ? DPL_8e : 
-  ( n0231 ) ? DPL_8f : 
-  ( n2960 ) ? DPL_90 : 
-  ( n2962 ) ? DPL_a3 : 
-  ( n0311 ) ? DPL_c5 : 
-  ( n0333 ) ? DPL_d0 : 
-  ( n0337 ) ? DPL_d5 : 
-  ( n2959 ) ? DPL_f5 : 
-  ( DPL );
-assign DPH_next = 
-  ( n0002 ) ? DPH_05 : 
-  ( n0052 ) ? DPH_15 : 
-  ( n0125 ) ? DPH_42 : 
-  ( n0127 ) ? DPH_43 : 
-  ( n0151 ) ? DPH_52 : 
-  ( n0153 ) ? DPH_53 : 
-  ( n0177 ) ? DPH_62 : 
-  ( n0179 ) ? DPH_63 : 
-  ( n2940 ) ? DPH_75 : 
-  ( n0211 ) ? DPH_85 : 
-  ( n0213 ) ? DPH_86 : 
-  ( n0215 ) ? DPH_87 : 
-  ( n0217 ) ? DPH_88 : 
-  ( n0219 ) ? DPH_89 : 
-  ( n0221 ) ? DPH_8a : 
-  ( n0223 ) ? DPH_8b : 
-  ( n0225 ) ? DPH_8c : 
-  ( n0227 ) ? DPH_8d : 
-  ( n0229 ) ? DPH_8e : 
-  ( n0231 ) ? DPH_8f : 
-  ( n2960 ) ? DPH_90 : 
-  ( n2962 ) ? DPH_a3 : 
-  ( n0311 ) ? DPH_c5 : 
-  ( n0333 ) ? DPH_d0 : 
-  ( n0337 ) ? DPH_d5 : 
-  ( n2959 ) ? DPH_f5 : 
-  ( DPH );
-assign TL1_next = 
-  ( n0002 ) ? TL1_05 : 
-  ( n0052 ) ? TL1_15 : 
-  ( n0125 ) ? TL1_42 : 
-  ( n0127 ) ? TL1_43 : 
-  ( n0151 ) ? TL1_52 : 
-  ( n0153 ) ? TL1_53 : 
-  ( n0177 ) ? TL1_62 : 
-  ( n0179 ) ? TL1_63 : 
-  ( n2940 ) ? TL1_75 : 
-  ( n0211 ) ? TL1_85 : 
-  ( n0213 ) ? TL1_86 : 
-  ( n0215 ) ? TL1_87 : 
-  ( n0217 ) ? TL1_88 : 
-  ( n0219 ) ? TL1_89 : 
-  ( n0221 ) ? TL1_8a : 
-  ( n0223 ) ? TL1_8b : 
-  ( n0225 ) ? TL1_8c : 
-  ( n0227 ) ? TL1_8d : 
-  ( n0229 ) ? TL1_8e : 
-  ( n0231 ) ? TL1_8f : 
-  ( n0311 ) ? TL1_c5 : 
-  ( n0333 ) ? TL1_d0 : 
-  ( n0337 ) ? TL1_d5 : 
-  ( n2959 ) ? TL1_f5 : 
-  ( TL1 );
-assign TL0_next = 
-  ( n0002 ) ? TL0_05 : 
-  ( n0052 ) ? TL0_15 : 
-  ( n0125 ) ? TL0_42 : 
-  ( n0127 ) ? TL0_43 : 
-  ( n0151 ) ? TL0_52 : 
-  ( n0153 ) ? TL0_53 : 
-  ( n0177 ) ? TL0_62 : 
-  ( n0179 ) ? TL0_63 : 
-  ( n2940 ) ? TL0_75 : 
-  ( n0211 ) ? TL0_85 : 
-  ( n0213 ) ? TL0_86 : 
-  ( n0215 ) ? TL0_87 : 
-  ( n0217 ) ? TL0_88 : 
-  ( n0219 ) ? TL0_89 : 
-  ( n0221 ) ? TL0_8a : 
-  ( n0223 ) ? TL0_8b : 
-  ( n0225 ) ? TL0_8c : 
-  ( n0227 ) ? TL0_8d : 
-  ( n0229 ) ? TL0_8e : 
-  ( n0231 ) ? TL0_8f : 
-  ( n0311 ) ? TL0_c5 : 
-  ( n0333 ) ? TL0_d0 : 
-  ( n0337 ) ? TL0_d5 : 
-  ( n2959 ) ? TL0_f5 : 
-  ( TL0 );
-assign TCON_next = 
-  ( n0002 ) ? TCON_05 : 
-  ( n0041 ) ? TCON_10 : 
-  ( n0052 ) ? TCON_15 : 
-  ( n0125 ) ? TCON_42 : 
-  ( n0127 ) ? TCON_43 : 
-  ( n0151 ) ? TCON_52 : 
-  ( n0153 ) ? TCON_53 : 
-  ( n0177 ) ? TCON_62 : 
-  ( n0179 ) ? TCON_63 : 
-  ( n2940 ) ? TCON_75 : 
-  ( n0211 ) ? TCON_85 : 
-  ( n0213 ) ? TCON_86 : 
-  ( n0215 ) ? TCON_87 : 
-  ( n0217 ) ? TCON_88 : 
-  ( n0219 ) ? TCON_89 : 
-  ( n0221 ) ? TCON_8a : 
-  ( n0223 ) ? TCON_8b : 
-  ( n0225 ) ? TCON_8c : 
-  ( n0227 ) ? TCON_8d : 
-  ( n0229 ) ? TCON_8e : 
-  ( n0231 ) ? TCON_8f : 
-  ( n0233 ) ? TCON_92 : 
-  ( n0283 ) ? TCON_b2 : 
-  ( n0309 ) ? TCON_c2 : 
-  ( n0311 ) ? TCON_c5 : 
-  ( n0333 ) ? TCON_d0 : 
-  ( n0335 ) ? TCON_d2 : 
-  ( n0337 ) ? TCON_d5 : 
-  ( n2959 ) ? TCON_f5 : 
-  ( TCON );
-assign TH1_next = 
-  ( n0002 ) ? TH1_05 : 
-  ( n0052 ) ? TH1_15 : 
-  ( n0125 ) ? TH1_42 : 
-  ( n0127 ) ? TH1_43 : 
-  ( n0151 ) ? TH1_52 : 
-  ( n0153 ) ? TH1_53 : 
-  ( n0177 ) ? TH1_62 : 
-  ( n0179 ) ? TH1_63 : 
-  ( n2940 ) ? TH1_75 : 
-  ( n0211 ) ? TH1_85 : 
-  ( n0213 ) ? TH1_86 : 
-  ( n0215 ) ? TH1_87 : 
-  ( n0217 ) ? TH1_88 : 
-  ( n0219 ) ? TH1_89 : 
-  ( n0221 ) ? TH1_8a : 
-  ( n0223 ) ? TH1_8b : 
-  ( n0225 ) ? TH1_8c : 
-  ( n0227 ) ? TH1_8d : 
-  ( n0229 ) ? TH1_8e : 
-  ( n0231 ) ? TH1_8f : 
-  ( n0311 ) ? TH1_c5 : 
-  ( n0333 ) ? TH1_d0 : 
-  ( n0337 ) ? TH1_d5 : 
-  ( n2959 ) ? TH1_f5 : 
-  ( TH1 );
-assign TH0_next = 
-  ( n0002 ) ? TH0_05 : 
-  ( n0052 ) ? TH0_15 : 
-  ( n0125 ) ? TH0_42 : 
-  ( n0127 ) ? TH0_43 : 
-  ( n0151 ) ? TH0_52 : 
-  ( n0153 ) ? TH0_53 : 
-  ( n0177 ) ? TH0_62 : 
-  ( n0179 ) ? TH0_63 : 
-  ( n2940 ) ? TH0_75 : 
-  ( n0211 ) ? TH0_85 : 
-  ( n0213 ) ? TH0_86 : 
-  ( n0215 ) ? TH0_87 : 
-  ( n0217 ) ? TH0_88 : 
-  ( n0219 ) ? TH0_89 : 
-  ( n0221 ) ? TH0_8a : 
-  ( n0223 ) ? TH0_8b : 
-  ( n0225 ) ? TH0_8c : 
-  ( n0227 ) ? TH0_8d : 
-  ( n0229 ) ? TH0_8e : 
-  ( n0231 ) ? TH0_8f : 
-  ( n0311 ) ? TH0_c5 : 
-  ( n0333 ) ? TH0_d0 : 
-  ( n0337 ) ? TH0_d5 : 
-  ( n2959 ) ? TH0_f5 : 
-  ( TH0 );
-assign n2963 = ( RD_ROM_0 == n1094 );
-assign n2964 = ( RD_ROM_0 == n0574 );
-assign n2965 = ( RD_ROM_0 == n1255 );
-assign n2966 = 8'h11;
-assign n2967 = ( RD_ROM_0 == n2966 );
-assign n2968 = 8'h12;
-assign n2969 = ( RD_ROM_0 == n2968 );
-assign n2970 = 8'h21;
-assign n2971 = ( RD_ROM_0 == n2970 );
-assign n2972 = 8'h31;
-assign n2973 = ( RD_ROM_0 == n2972 );
-assign n2974 = 8'h40;
-assign n2975 = ( RD_ROM_0 == n2974 );
-assign n2976 = 8'h41;
-assign n2977 = ( RD_ROM_0 == n2976 );
-assign n2978 = 8'h50;
-assign n2979 = ( RD_ROM_0 == n2978 );
-assign n2980 = 8'h51;
-assign n2981 = ( RD_ROM_0 == n2980 );
-assign n2982 = 8'h60;
-assign n2983 = ( RD_ROM_0 == n2982 );
-assign n2984 = 8'h61;
-assign n2985 = ( RD_ROM_0 == n2984 );
-assign n2986 = 8'h70;
-assign n2987 = ( RD_ROM_0 == n2986 );
-assign n2988 = 8'h71;
-assign n2989 = ( RD_ROM_0 == n2988 );
-assign n2990 = 8'h73;
-assign n2991 = ( RD_ROM_0 == n2990 );
-assign n2992 = 8'h78;
-assign n2993 = ( RD_ROM_0 == n2992 );
-assign n2994 = 8'h79;
-assign n2995 = ( RD_ROM_0 == n2994 );
-assign n2996 = 8'h7a;
-assign n2997 = ( RD_ROM_0 == n2996 );
-assign n2998 = 8'h7b;
-assign n2999 = ( RD_ROM_0 == n2998 );
-assign n3000 = 8'h7c;
-assign n3001 = ( RD_ROM_0 == n3000 );
-assign n3002 = 8'h7d;
-assign n3003 = ( RD_ROM_0 == n3002 );
-assign n3004 = 8'h7e;
-assign n3005 = ( RD_ROM_0 == n3004 );
-assign n3006 = 8'h7f;
-assign n3007 = ( RD_ROM_0 == n3006 );
-assign n3008 = ( RD_ROM_0 == n1069 );
-assign n3009 = ( RD_ROM_0 == n1071 );
-assign n3010 = 8'h91;
-assign n3011 = ( RD_ROM_0 == n3010 );
-assign n3012 = 8'ha1;
-assign n3013 = ( RD_ROM_0 == n3012 );
-assign n3014 = 8'ha5;
-assign n3015 = ( RD_ROM_0 == n3014 );
-assign n3016 = 8'hb1;
-assign n3017 = ( RD_ROM_0 == n3016 );
-assign n3018 = 8'hb3;
-assign n3019 = ( RD_ROM_0 == n3018 );
-assign n3020 = 8'hb4;
-assign n3021 = ( RD_ROM_0 == n3020 );
-assign n3022 = 8'hc1;
-assign n3023 = ( RD_ROM_0 == n3022 );
-assign n3024 = 8'hc3;
-assign n3025 = ( RD_ROM_0 == n3024 );
-assign n3026 = 8'hd1;
-assign n3027 = ( RD_ROM_0 == n3026 );
-assign n3028 = 8'hd3;
-assign n3029 = ( RD_ROM_0 == n3028 );
-assign n3030 = 8'he1;
-assign n3031 = ( RD_ROM_0 == n3030 );
-assign n3032 = 8'hf1;
-assign n3033 = ( RD_ROM_0 == n3032 );
-assign n3034 = 8'hf7;
-assign n3035 = ( RD_ROM_0 == n3034 );
-assign n3036 = 8'hf8;
-assign n3037 = ( RD_ROM_0 == n3036 );
-assign n3038 = 8'hf9;
-assign n3039 = ( RD_ROM_0 == n3038 );
-assign n3040 = 8'hfa;
-assign n3041 = ( RD_ROM_0 == n3040 );
-assign n3042 = 8'hfb;
-assign n3043 = ( RD_ROM_0 == n3042 );
-assign n3044 = 8'hfc;
-assign n3045 = ( RD_ROM_0 == n3044 );
-assign n3046 = 8'hfd;
-assign n3047 = ( RD_ROM_0 == n3046 );
-assign n3048 = 8'hfe;
-assign n3049 = ( RD_ROM_0 == n3048 );
-assign n3050 = ( RD_ROM_0 == n2205 );
-assign PC_next = 
-  ( n2963 ) ? PC_00 : 
-  ( n2964 ) ? PC_01 : 
-  ( n2965 ) ? PC_02 : 
-  ( n2916 ) ? PC_03 : 
-  ( n2918 ) ? PC_04 : 
-  ( n0002 ) ? PC_05 : 
-  ( n0004 ) ? PC_06 : 
-  ( n0009 ) ? PC_07 : 
-  ( n0013 ) ? PC_08 : 
-  ( n0015 ) ? PC_09 : 
-  ( n0017 ) ? PC_0a : 
-  ( n0021 ) ? PC_0b : 
-  ( n0025 ) ? PC_0c : 
-  ( n0029 ) ? PC_0d : 
-  ( n0033 ) ? PC_0e : 
-  ( n0037 ) ? PC_0f : 
-  ( n0041 ) ? PC_10 : 
-  ( n2967 ) ? PC_11 : 
-  ( n2969 ) ? PC_12 : 
-  ( n2920 ) ? PC_13 : 
-  ( n2922 ) ? PC_14 : 
-  ( n0052 ) ? PC_15 : 
-  ( n0054 ) ? PC_16 : 
-  ( n0056 ) ? PC_17 : 
-  ( n0058 ) ? PC_18 : 
-  ( n0060 ) ? PC_19 : 
-  ( n0062 ) ? PC_1a : 
-  ( n0064 ) ? PC_1b : 
-  ( n0066 ) ? PC_1c : 
-  ( n0068 ) ? PC_1d : 
-  ( n0070 ) ? PC_1e : 
-  ( n0072 ) ? PC_1f : 
-  ( n0073 ) ? PC_20 : 
-  ( n2971 ) ? PC_21 : 
-  ( n0075 ) ? PC_22 : 
-  ( n2924 ) ? PC_23 : 
-  ( n2926 ) ? PC_24 : 
-  ( n0077 ) ? PC_25 : 
-  ( n0079 ) ? PC_26 : 
-  ( n0081 ) ? PC_27 : 
-  ( n0083 ) ? PC_28 : 
-  ( n0085 ) ? PC_29 : 
-  ( n0087 ) ? PC_2a : 
-  ( n0089 ) ? PC_2b : 
-  ( n0091 ) ? PC_2c : 
-  ( n0093 ) ? PC_2d : 
-  ( n0095 ) ? PC_2e : 
-  ( n0097 ) ? PC_2f : 
-  ( n0099 ) ? PC_30 : 
-  ( n2973 ) ? PC_31 : 
-  ( n0101 ) ? PC_32 : 
-  ( n2928 ) ? PC_33 : 
-  ( n2930 ) ? PC_34 : 
-  ( n0103 ) ? PC_35 : 
-  ( n0105 ) ? PC_36 : 
-  ( n0107 ) ? PC_37 : 
-  ( n0109 ) ? PC_38 : 
-  ( n0111 ) ? PC_39 : 
-  ( n0113 ) ? PC_3a : 
-  ( n0115 ) ? PC_3b : 
-  ( n0117 ) ? PC_3c : 
-  ( n0119 ) ? PC_3d : 
-  ( n0121 ) ? PC_3e : 
-  ( n0123 ) ? PC_3f : 
-  ( n2975 ) ? PC_40 : 
-  ( n2977 ) ? PC_41 : 
-  ( n0125 ) ? PC_42 : 
-  ( n0127 ) ? PC_43 : 
-  ( n2932 ) ? PC_44 : 
-  ( n0129 ) ? PC_45 : 
-  ( n0131 ) ? PC_46 : 
-  ( n0133 ) ? PC_47 : 
-  ( n0135 ) ? PC_48 : 
-  ( n0137 ) ? PC_49 : 
-  ( n0139 ) ? PC_4a : 
-  ( n0141 ) ? PC_4b : 
-  ( n0143 ) ? PC_4c : 
-  ( n0145 ) ? PC_4d : 
-  ( n0147 ) ? PC_4e : 
-  ( n0149 ) ? PC_4f : 
-  ( n2979 ) ? PC_50 : 
-  ( n2981 ) ? PC_51 : 
-  ( n0151 ) ? PC_52 : 
-  ( n0153 ) ? PC_53 : 
-  ( n2934 ) ? PC_54 : 
-  ( n0155 ) ? PC_55 : 
-  ( n0157 ) ? PC_56 : 
-  ( n0159 ) ? PC_57 : 
-  ( n0161 ) ? PC_58 : 
-  ( n0163 ) ? PC_59 : 
-  ( n0165 ) ? PC_5a : 
-  ( n0167 ) ? PC_5b : 
-  ( n0169 ) ? PC_5c : 
-  ( n0171 ) ? PC_5d : 
-  ( n0173 ) ? PC_5e : 
-  ( n0175 ) ? PC_5f : 
-  ( n2983 ) ? PC_60 : 
-  ( n2985 ) ? PC_61 : 
-  ( n0177 ) ? PC_62 : 
-  ( n0179 ) ? PC_63 : 
-  ( n2936 ) ? PC_64 : 
-  ( n0181 ) ? PC_65 : 
-  ( n0183 ) ? PC_66 : 
-  ( n0185 ) ? PC_67 : 
-  ( n0187 ) ? PC_68 : 
-  ( n0189 ) ? PC_69 : 
-  ( n0191 ) ? PC_6a : 
-  ( n0193 ) ? PC_6b : 
-  ( n0195 ) ? PC_6c : 
-  ( n0197 ) ? PC_6d : 
-  ( n0199 ) ? PC_6e : 
-  ( n0201 ) ? PC_6f : 
-  ( n2987 ) ? PC_70 : 
-  ( n2989 ) ? PC_71 : 
-  ( n0203 ) ? PC_72 : 
-  ( n2991 ) ? PC_73 : 
-  ( n2938 ) ? PC_74 : 
-  ( n2940 ) ? PC_75 : 
-  ( n0205 ) ? PC_76 : 
-  ( n0207 ) ? PC_77 : 
-  ( n2993 ) ? PC_78 : 
-  ( n2995 ) ? PC_79 : 
-  ( n2997 ) ? PC_7a : 
-  ( n2999 ) ? PC_7b : 
-  ( n3001 ) ? PC_7c : 
-  ( n3003 ) ? PC_7d : 
-  ( n3005 ) ? PC_7e : 
-  ( n3007 ) ? PC_7f : 
-  ( n3008 ) ? PC_80 : 
-  ( n3009 ) ? PC_81 : 
-  ( n0209 ) ? PC_82 : 
-  ( n2941 ) ? PC_83 : 
-  ( n2943 ) ? PC_84 : 
-  ( n0211 ) ? PC_85 : 
-  ( n0213 ) ? PC_86 : 
-  ( n0215 ) ? PC_87 : 
-  ( n0217 ) ? PC_88 : 
-  ( n0219 ) ? PC_89 : 
-  ( n0221 ) ? PC_8a : 
-  ( n0223 ) ? PC_8b : 
-  ( n0225 ) ? PC_8c : 
-  ( n0227 ) ? PC_8d : 
-  ( n0229 ) ? PC_8e : 
-  ( n0231 ) ? PC_8f : 
-  ( n2960 ) ? PC_90 : 
-  ( n3011 ) ? PC_91 : 
-  ( n0233 ) ? PC_92 : 
-  ( n2945 ) ? PC_93 : 
-  ( n2947 ) ? PC_94 : 
-  ( n0235 ) ? PC_95 : 
-  ( n0237 ) ? PC_96 : 
-  ( n0239 ) ? PC_97 : 
-  ( n0241 ) ? PC_98 : 
-  ( n0243 ) ? PC_99 : 
-  ( n0245 ) ? PC_9a : 
-  ( n0247 ) ? PC_9b : 
-  ( n0249 ) ? PC_9c : 
-  ( n0251 ) ? PC_9d : 
-  ( n0253 ) ? PC_9e : 
-  ( n0255 ) ? PC_9f : 
-  ( n0257 ) ? PC_a0 : 
-  ( n3013 ) ? PC_a1 : 
-  ( n0259 ) ? PC_a2 : 
-  ( n2962 ) ? PC_a3 : 
-  ( n2949 ) ? PC_a4 : 
-  ( n3015 ) ? PC_a5 : 
-  ( n0261 ) ? PC_a6 : 
-  ( n0263 ) ? PC_a7 : 
-  ( n0265 ) ? PC_a8 : 
-  ( n0267 ) ? PC_a9 : 
-  ( n0269 ) ? PC_aa : 
-  ( n0271 ) ? PC_ab : 
-  ( n0273 ) ? PC_ac : 
-  ( n0275 ) ? PC_ad : 
-  ( n0277 ) ? PC_ae : 
-  ( n0279 ) ? PC_af : 
-  ( n0281 ) ? PC_b0 : 
-  ( n3017 ) ? PC_b1 : 
-  ( n0283 ) ? PC_b2 : 
-  ( n3019 ) ? PC_b3 : 
-  ( n3021 ) ? PC_b4 : 
-  ( n0285 ) ? PC_b5 : 
-  ( n0287 ) ? PC_b6 : 
-  ( n0289 ) ? PC_b7 : 
-  ( n0291 ) ? PC_b8 : 
-  ( n0293 ) ? PC_b9 : 
-  ( n0295 ) ? PC_ba : 
-  ( n0297 ) ? PC_bb : 
-  ( n0299 ) ? PC_bc : 
-  ( n0301 ) ? PC_bd : 
-  ( n0303 ) ? PC_be : 
-  ( n0305 ) ? PC_bf : 
-  ( n0307 ) ? PC_c0 : 
-  ( n3023 ) ? PC_c1 : 
-  ( n0309 ) ? PC_c2 : 
-  ( n3025 ) ? PC_c3 : 
-  ( n2951 ) ? PC_c4 : 
-  ( n0311 ) ? PC_c5 : 
-  ( n0313 ) ? PC_c6 : 
-  ( n0315 ) ? PC_c7 : 
-  ( n0317 ) ? PC_c8 : 
-  ( n0319 ) ? PC_c9 : 
-  ( n0321 ) ? PC_ca : 
-  ( n0323 ) ? PC_cb : 
-  ( n0325 ) ? PC_cc : 
-  ( n0327 ) ? PC_cd : 
-  ( n0329 ) ? PC_ce : 
-  ( n0331 ) ? PC_cf : 
-  ( n0333 ) ? PC_d0 : 
-  ( n3027 ) ? PC_d1 : 
-  ( n0335 ) ? PC_d2 : 
-  ( n3029 ) ? PC_d3 : 
-  ( n2953 ) ? PC_d4 : 
-  ( n0337 ) ? PC_d5 : 
-  ( n0339 ) ? PC_d6 : 
-  ( n0341 ) ? PC_d7 : 
-  ( n0343 ) ? PC_d8 : 
-  ( n0345 ) ? PC_d9 : 
-  ( n0347 ) ? PC_da : 
-  ( n0349 ) ? PC_db : 
-  ( n0351 ) ? PC_dc : 
-  ( n0353 ) ? PC_dd : 
-  ( n0355 ) ? PC_de : 
-  ( n0357 ) ? PC_df : 
-  ( n3031 ) ? PC_e1 : 
-  ( n2955 ) ? PC_e4 : 
-  ( n0363 ) ? PC_e5 : 
-  ( n0365 ) ? PC_e6 : 
-  ( n0367 ) ? PC_e7 : 
-  ( n0369 ) ? PC_e8 : 
-  ( n0371 ) ? PC_e9 : 
-  ( n0373 ) ? PC_ea : 
-  ( n0375 ) ? PC_eb : 
-  ( n0377 ) ? PC_ec : 
-  ( n0379 ) ? PC_ed : 
-  ( n0381 ) ? PC_ee : 
-  ( n0383 ) ? PC_ef : 
-  ( n3033 ) ? PC_f1 : 
-  ( n2957 ) ? PC_f4 : 
-  ( n2959 ) ? PC_f5 : 
-  ( n0389 ) ? PC_f6 : 
-  ( n3035 ) ? PC_f7 : 
-  ( n3037 ) ? PC_f8 : 
-  ( n3039 ) ? PC_f9 : 
-  ( n3041 ) ? PC_fa : 
-  ( n3043 ) ? PC_fb : 
-  ( n3045 ) ? PC_fc : 
-  ( n3047 ) ? PC_fd : 
-  ( n3049 ) ? PC_fe : 
-  ( n3050 ) ? PC_ff : 
-  ( PC );
+assign n2795 = 8'hf5;
+assign n2796 = ( RD_ROM_0 == n2795 );
 assign P2_next = 
   ( n0002 ) ? P2_05 : 
   ( n0041 ) ? P2_10 : 
@@ -13091,7 +10726,7 @@ assign P2_next =
   ( n0153 ) ? P2_53 : 
   ( n0177 ) ? P2_62 : 
   ( n0179 ) ? P2_63 : 
-  ( n2940 ) ? P2_75 : 
+  ( n2777 ) ? P2_75 : 
   ( n0211 ) ? P2_85 : 
   ( n0213 ) ? P2_86 : 
   ( n0215 ) ? P2_87 : 
@@ -13110,8 +10745,70 @@ assign P2_next =
   ( n0333 ) ? P2_d0 : 
   ( n0335 ) ? P2_d2 : 
   ( n0337 ) ? P2_d5 : 
-  ( n2959 ) ? P2_f5 : 
+  ( n2796 ) ? P2_f5 : 
   ( P2 );
+assign P0_next = 
+  ( n0002 ) ? P0_05 : 
+  ( n0041 ) ? P0_10 : 
+  ( n0052 ) ? P0_15 : 
+  ( n0125 ) ? P0_42 : 
+  ( n0127 ) ? P0_43 : 
+  ( n0151 ) ? P0_52 : 
+  ( n0153 ) ? P0_53 : 
+  ( n0177 ) ? P0_62 : 
+  ( n0179 ) ? P0_63 : 
+  ( n2777 ) ? P0_75 : 
+  ( n0211 ) ? P0_85 : 
+  ( n0213 ) ? P0_86 : 
+  ( n0215 ) ? P0_87 : 
+  ( n0217 ) ? P0_88 : 
+  ( n0219 ) ? P0_89 : 
+  ( n0221 ) ? P0_8a : 
+  ( n0223 ) ? P0_8b : 
+  ( n0225 ) ? P0_8c : 
+  ( n0227 ) ? P0_8d : 
+  ( n0229 ) ? P0_8e : 
+  ( n0231 ) ? P0_8f : 
+  ( n0233 ) ? P0_92 : 
+  ( n0283 ) ? P0_b2 : 
+  ( n0309 ) ? P0_c2 : 
+  ( n0311 ) ? P0_c5 : 
+  ( n0333 ) ? P0_d0 : 
+  ( n0335 ) ? P0_d2 : 
+  ( n0337 ) ? P0_d5 : 
+  ( n2796 ) ? P0_f5 : 
+  ( P0 );
+assign P1_next = 
+  ( n0002 ) ? P1_05 : 
+  ( n0041 ) ? P1_10 : 
+  ( n0052 ) ? P1_15 : 
+  ( n0125 ) ? P1_42 : 
+  ( n0127 ) ? P1_43 : 
+  ( n0151 ) ? P1_52 : 
+  ( n0153 ) ? P1_53 : 
+  ( n0177 ) ? P1_62 : 
+  ( n0179 ) ? P1_63 : 
+  ( n2777 ) ? P1_75 : 
+  ( n0211 ) ? P1_85 : 
+  ( n0213 ) ? P1_86 : 
+  ( n0215 ) ? P1_87 : 
+  ( n0217 ) ? P1_88 : 
+  ( n0219 ) ? P1_89 : 
+  ( n0221 ) ? P1_8a : 
+  ( n0223 ) ? P1_8b : 
+  ( n0225 ) ? P1_8c : 
+  ( n0227 ) ? P1_8d : 
+  ( n0229 ) ? P1_8e : 
+  ( n0231 ) ? P1_8f : 
+  ( n0233 ) ? P1_92 : 
+  ( n0283 ) ? P1_b2 : 
+  ( n0309 ) ? P1_c2 : 
+  ( n0311 ) ? P1_c5 : 
+  ( n0333 ) ? P1_d0 : 
+  ( n0335 ) ? P1_d2 : 
+  ( n0337 ) ? P1_d5 : 
+  ( n2796 ) ? P1_f5 : 
+  ( P1 );
 assign P3_next = 
   ( n0002 ) ? P3_05 : 
   ( n0041 ) ? P3_10 : 
@@ -13122,7 +10819,7 @@ assign P3_next =
   ( n0153 ) ? P3_53 : 
   ( n0177 ) ? P3_62 : 
   ( n0179 ) ? P3_63 : 
-  ( n2940 ) ? P3_75 : 
+  ( n2777 ) ? P3_75 : 
   ( n0211 ) ? P3_85 : 
   ( n0213 ) ? P3_86 : 
   ( n0215 ) ? P3_87 : 
@@ -13142,180 +10839,43 @@ assign P3_next =
   ( n0333 ) ? P3_d0 : 
   ( n0335 ) ? P3_d2 : 
   ( n0337 ) ? P3_d5 : 
-  ( n2959 ) ? P3_f5 : 
+  ( n2796 ) ? P3_f5 : 
   ( P3 );
-assign P0_next = 
-  ( n0002 ) ? P0_05 : 
-  ( n0041 ) ? P0_10 : 
-  ( n0052 ) ? P0_15 : 
-  ( n0125 ) ? P0_42 : 
-  ( n0127 ) ? P0_43 : 
-  ( n0151 ) ? P0_52 : 
-  ( n0153 ) ? P0_53 : 
-  ( n0177 ) ? P0_62 : 
-  ( n0179 ) ? P0_63 : 
-  ( n2940 ) ? P0_75 : 
-  ( n0211 ) ? P0_85 : 
-  ( n0213 ) ? P0_86 : 
-  ( n0215 ) ? P0_87 : 
-  ( n0217 ) ? P0_88 : 
-  ( n0219 ) ? P0_89 : 
-  ( n0221 ) ? P0_8a : 
-  ( n0223 ) ? P0_8b : 
-  ( n0225 ) ? P0_8c : 
-  ( n0227 ) ? P0_8d : 
-  ( n0229 ) ? P0_8e : 
-  ( n0231 ) ? P0_8f : 
-  ( n0233 ) ? P0_92 : 
-  ( n0283 ) ? P0_b2 : 
-  ( n0309 ) ? P0_c2 : 
-  ( n0311 ) ? P0_c5 : 
-  ( n0333 ) ? P0_d0 : 
-  ( n0335 ) ? P0_d2 : 
-  ( n0337 ) ? P0_d5 : 
-  ( n2959 ) ? P0_f5 : 
-  ( P0 );
-assign P1_next = 
-  ( n0002 ) ? P1_05 : 
-  ( n0041 ) ? P1_10 : 
-  ( n0052 ) ? P1_15 : 
-  ( n0125 ) ? P1_42 : 
-  ( n0127 ) ? P1_43 : 
-  ( n0151 ) ? P1_52 : 
-  ( n0153 ) ? P1_53 : 
-  ( n0177 ) ? P1_62 : 
-  ( n0179 ) ? P1_63 : 
-  ( n2940 ) ? P1_75 : 
-  ( n0211 ) ? P1_85 : 
-  ( n0213 ) ? P1_86 : 
-  ( n0215 ) ? P1_87 : 
-  ( n0217 ) ? P1_88 : 
-  ( n0219 ) ? P1_89 : 
-  ( n0221 ) ? P1_8a : 
-  ( n0223 ) ? P1_8b : 
-  ( n0225 ) ? P1_8c : 
-  ( n0227 ) ? P1_8d : 
-  ( n0229 ) ? P1_8e : 
-  ( n0231 ) ? P1_8f : 
-  ( n0233 ) ? P1_92 : 
-  ( n0283 ) ? P1_b2 : 
-  ( n0309 ) ? P1_c2 : 
-  ( n0311 ) ? P1_c5 : 
-  ( n0333 ) ? P1_d0 : 
-  ( n0335 ) ? P1_d2 : 
-  ( n0337 ) ? P1_d5 : 
-  ( n2959 ) ? P1_f5 : 
-  ( P1 );
-assign IP_next = 
-  ( n0002 ) ? IP_05 : 
-  ( n0041 ) ? IP_10 : 
-  ( n0052 ) ? IP_15 : 
-  ( n0125 ) ? IP_42 : 
-  ( n0127 ) ? IP_43 : 
-  ( n0151 ) ? IP_52 : 
-  ( n0153 ) ? IP_53 : 
-  ( n0177 ) ? IP_62 : 
-  ( n0179 ) ? IP_63 : 
-  ( n2940 ) ? IP_75 : 
-  ( n0211 ) ? IP_85 : 
-  ( n0213 ) ? IP_86 : 
-  ( n0215 ) ? IP_87 : 
-  ( n0217 ) ? IP_88 : 
-  ( n0219 ) ? IP_89 : 
-  ( n0221 ) ? IP_8a : 
-  ( n0223 ) ? IP_8b : 
-  ( n0225 ) ? IP_8c : 
-  ( n0227 ) ? IP_8d : 
-  ( n0229 ) ? IP_8e : 
-  ( n0231 ) ? IP_8f : 
-  ( n0233 ) ? IP_92 : 
-  ( n0283 ) ? IP_b2 : 
-  ( n0309 ) ? IP_c2 : 
-  ( n0311 ) ? IP_c5 : 
-  ( n0333 ) ? IP_d0 : 
-  ( n0335 ) ? IP_d2 : 
-  ( n0337 ) ? IP_d5 : 
-  ( n2959 ) ? IP_f5 : 
-  ( IP );
-assign IE_next = 
-  ( n0002 ) ? IE_05 : 
-  ( n0041 ) ? IE_10 : 
-  ( n0052 ) ? IE_15 : 
-  ( n0125 ) ? IE_42 : 
-  ( n0127 ) ? IE_43 : 
-  ( n0151 ) ? IE_52 : 
-  ( n0153 ) ? IE_53 : 
-  ( n0177 ) ? IE_62 : 
-  ( n0179 ) ? IE_63 : 
-  ( n2940 ) ? IE_75 : 
-  ( n0211 ) ? IE_85 : 
-  ( n0213 ) ? IE_86 : 
-  ( n0215 ) ? IE_87 : 
-  ( n0217 ) ? IE_88 : 
-  ( n0219 ) ? IE_89 : 
-  ( n0221 ) ? IE_8a : 
-  ( n0223 ) ? IE_8b : 
-  ( n0225 ) ? IE_8c : 
-  ( n0227 ) ? IE_8d : 
-  ( n0229 ) ? IE_8e : 
-  ( n0231 ) ? IE_8f : 
-  ( n0233 ) ? IE_92 : 
-  ( n0283 ) ? IE_b2 : 
-  ( n0309 ) ? IE_c2 : 
-  ( n0311 ) ? IE_c5 : 
-  ( n0333 ) ? IE_d0 : 
-  ( n0335 ) ? IE_d2 : 
-  ( n0337 ) ? IE_d5 : 
-  ( n2959 ) ? IE_f5 : 
-  ( IE );
-assign SCON_next = 
-  ( n0002 ) ? SCON_05 : 
-  ( n0041 ) ? SCON_10 : 
-  ( n0052 ) ? SCON_15 : 
-  ( n0125 ) ? SCON_42 : 
-  ( n0127 ) ? SCON_43 : 
-  ( n0151 ) ? SCON_52 : 
-  ( n0153 ) ? SCON_53 : 
-  ( n0177 ) ? SCON_62 : 
-  ( n0179 ) ? SCON_63 : 
-  ( n2940 ) ? SCON_75 : 
-  ( n0211 ) ? SCON_85 : 
-  ( n0213 ) ? SCON_86 : 
-  ( n0215 ) ? SCON_87 : 
-  ( n0217 ) ? SCON_88 : 
-  ( n0219 ) ? SCON_89 : 
-  ( n0221 ) ? SCON_8a : 
-  ( n0223 ) ? SCON_8b : 
-  ( n0225 ) ? SCON_8c : 
-  ( n0227 ) ? SCON_8d : 
-  ( n0229 ) ? SCON_8e : 
-  ( n0231 ) ? SCON_8f : 
-  ( n0233 ) ? SCON_92 : 
-  ( n0283 ) ? SCON_b2 : 
-  ( n0309 ) ? SCON_c2 : 
-  ( n0311 ) ? SCON_c5 : 
-  ( n0333 ) ? SCON_d0 : 
-  ( n0335 ) ? SCON_d2 : 
-  ( n0337 ) ? SCON_d5 : 
-  ( n2959 ) ? SCON_f5 : 
-  ( SCON );
+assign n2797 = 8'h11;
+assign n2798 = ( RD_ROM_0 == n2797 );
+assign n2799 = 8'h12;
+assign n2800 = ( RD_ROM_0 == n2799 );
+assign n2801 = 8'h31;
+assign n2802 = ( RD_ROM_0 == n2801 );
+assign n2803 = 8'h51;
+assign n2804 = ( RD_ROM_0 == n2803 );
+assign n2805 = 8'h71;
+assign n2806 = ( RD_ROM_0 == n2805 );
+assign n2807 = 8'h91;
+assign n2808 = ( RD_ROM_0 == n2807 );
+assign n2809 = 8'hb1;
+assign n2810 = ( RD_ROM_0 == n2809 );
+assign n2811 = 8'hd1;
+assign n2812 = ( RD_ROM_0 == n2811 );
+assign n2813 = 8'hf1;
+assign n2814 = ( RD_ROM_0 == n2813 );
 assign SP_next = 
   ( n0002 ) ? SP_05 : 
-  ( n2967 ) ? SP_11 : 
-  ( n2969 ) ? SP_12 : 
+  ( n2798 ) ? SP_11 : 
+  ( n2800 ) ? SP_12 : 
   ( n0052 ) ? SP_15 : 
   ( n0075 ) ? SP_22 : 
-  ( n2973 ) ? SP_31 : 
+  ( n2802 ) ? SP_31 : 
   ( n0101 ) ? SP_32 : 
   ( n0125 ) ? SP_42 : 
   ( n0127 ) ? SP_43 : 
-  ( n2981 ) ? SP_51 : 
+  ( n2804 ) ? SP_51 : 
   ( n0151 ) ? SP_52 : 
   ( n0153 ) ? SP_53 : 
   ( n0177 ) ? SP_62 : 
   ( n0179 ) ? SP_63 : 
-  ( n2989 ) ? SP_71 : 
-  ( n2940 ) ? SP_75 : 
+  ( n2806 ) ? SP_71 : 
+  ( n2777 ) ? SP_75 : 
   ( n0211 ) ? SP_85 : 
   ( n0213 ) ? SP_86 : 
   ( n0215 ) ? SP_87 : 
@@ -13327,48 +10887,408 @@ assign SP_next =
   ( n0227 ) ? SP_8d : 
   ( n0229 ) ? SP_8e : 
   ( n0231 ) ? SP_8f : 
-  ( n3011 ) ? SP_91 : 
-  ( n3017 ) ? SP_b1 : 
+  ( n2808 ) ? SP_91 : 
+  ( n2810 ) ? SP_b1 : 
   ( n0307 ) ? SP_c0 : 
   ( n0311 ) ? SP_c5 : 
   ( n0333 ) ? SP_d0 : 
-  ( n3027 ) ? SP_d1 : 
+  ( n2812 ) ? SP_d1 : 
   ( n0337 ) ? SP_d5 : 
-  ( n3033 ) ? SP_f1 : 
-  ( n2959 ) ? SP_f5 : 
+  ( n2814 ) ? SP_f1 : 
+  ( n2796 ) ? SP_f5 : 
   ( SP );
-assign SBUF_next = 
-  ( n0002 ) ? SBUF_05 : 
-  ( n0052 ) ? SBUF_15 : 
-  ( n0125 ) ? SBUF_42 : 
-  ( n0127 ) ? SBUF_43 : 
-  ( n0151 ) ? SBUF_52 : 
-  ( n0153 ) ? SBUF_53 : 
-  ( n0177 ) ? SBUF_62 : 
-  ( n0179 ) ? SBUF_63 : 
-  ( n2940 ) ? SBUF_75 : 
-  ( n0211 ) ? SBUF_85 : 
-  ( n0213 ) ? SBUF_86 : 
-  ( n0215 ) ? SBUF_87 : 
-  ( n0217 ) ? SBUF_88 : 
-  ( n0219 ) ? SBUF_89 : 
-  ( n0221 ) ? SBUF_8a : 
-  ( n0223 ) ? SBUF_8b : 
-  ( n0225 ) ? SBUF_8c : 
-  ( n0227 ) ? SBUF_8d : 
-  ( n0229 ) ? SBUF_8e : 
-  ( n0231 ) ? SBUF_8f : 
-  ( n0311 ) ? SBUF_c5 : 
-  ( n0333 ) ? SBUF_d0 : 
-  ( n0337 ) ? SBUF_d5 : 
-  ( n2959 ) ? SBUF_f5 : 
-  ( SBUF );
+assign n2815 = ( RD_ROM_0 == n1094 );
+assign n2816 = ( RD_ROM_0 == n0574 );
+assign n2817 = ( RD_ROM_0 == n1240 );
+assign n2818 = 8'h21;
+assign n2819 = ( RD_ROM_0 == n2818 );
+assign n2820 = 8'h40;
+assign n2821 = ( RD_ROM_0 == n2820 );
+assign n2822 = 8'h41;
+assign n2823 = ( RD_ROM_0 == n2822 );
+assign n2824 = 8'h50;
+assign n2825 = ( RD_ROM_0 == n2824 );
+assign n2826 = 8'h60;
+assign n2827 = ( RD_ROM_0 == n2826 );
+assign n2828 = 8'h61;
+assign n2829 = ( RD_ROM_0 == n2828 );
+assign n2830 = 8'h70;
+assign n2831 = ( RD_ROM_0 == n2830 );
+assign n2832 = 8'h73;
+assign n2833 = ( RD_ROM_0 == n2832 );
+assign n2834 = 8'h78;
+assign n2835 = ( RD_ROM_0 == n2834 );
+assign n2836 = 8'h79;
+assign n2837 = ( RD_ROM_0 == n2836 );
+assign n2838 = 8'h7a;
+assign n2839 = ( RD_ROM_0 == n2838 );
+assign n2840 = 8'h7b;
+assign n2841 = ( RD_ROM_0 == n2840 );
+assign n2842 = 8'h7c;
+assign n2843 = ( RD_ROM_0 == n2842 );
+assign n2844 = 8'h7d;
+assign n2845 = ( RD_ROM_0 == n2844 );
+assign n2846 = 8'h7e;
+assign n2847 = ( RD_ROM_0 == n2846 );
+assign n2848 = 8'h7f;
+assign n2849 = ( RD_ROM_0 == n2848 );
+assign n2850 = ( RD_ROM_0 == n1069 );
+assign n2851 = ( RD_ROM_0 == n1071 );
+assign n2852 = ( RD_ROM_0 == n1083 );
+assign n2853 = 8'ha1;
+assign n2854 = ( RD_ROM_0 == n2853 );
+assign n2855 = 8'ha3;
+assign n2856 = ( RD_ROM_0 == n2855 );
+assign n2857 = 8'ha5;
+assign n2858 = ( RD_ROM_0 == n2857 );
+assign n2859 = 8'hb3;
+assign n2860 = ( RD_ROM_0 == n2859 );
+assign n2861 = 8'hb4;
+assign n2862 = ( RD_ROM_0 == n2861 );
+assign n2863 = 8'hc1;
+assign n2864 = ( RD_ROM_0 == n2863 );
+assign n2865 = 8'hc3;
+assign n2866 = ( RD_ROM_0 == n2865 );
+assign n2867 = 8'hd3;
+assign n2868 = ( RD_ROM_0 == n2867 );
+assign n2869 = 8'he1;
+assign n2870 = ( RD_ROM_0 == n2869 );
+assign n2871 = 8'hf7;
+assign n2872 = ( RD_ROM_0 == n2871 );
+assign n2873 = 8'hf8;
+assign n2874 = ( RD_ROM_0 == n2873 );
+assign n2875 = 8'hf9;
+assign n2876 = ( RD_ROM_0 == n2875 );
+assign n2877 = 8'hfa;
+assign n2878 = ( RD_ROM_0 == n2877 );
+assign n2879 = 8'hfb;
+assign n2880 = ( RD_ROM_0 == n2879 );
+assign n2881 = 8'hfc;
+assign n2882 = ( RD_ROM_0 == n2881 );
+assign n2883 = 8'hfd;
+assign n2884 = ( RD_ROM_0 == n2883 );
+assign n2885 = 8'hfe;
+assign n2886 = ( RD_ROM_0 == n2885 );
+assign n2887 = ( RD_ROM_0 == n2102 );
+assign PC_next = 
+  ( n2815 ) ? PC_00 : 
+  ( n2816 ) ? PC_01 : 
+  ( n2817 ) ? PC_02 : 
+  ( n2753 ) ? PC_03 : 
+  ( n2755 ) ? PC_04 : 
+  ( n0002 ) ? PC_05 : 
+  ( n0004 ) ? PC_06 : 
+  ( n0009 ) ? PC_07 : 
+  ( n0013 ) ? PC_08 : 
+  ( n0015 ) ? PC_09 : 
+  ( n0017 ) ? PC_0a : 
+  ( n0021 ) ? PC_0b : 
+  ( n0025 ) ? PC_0c : 
+  ( n0029 ) ? PC_0d : 
+  ( n0033 ) ? PC_0e : 
+  ( n0037 ) ? PC_0f : 
+  ( n0041 ) ? PC_10 : 
+  ( n2798 ) ? PC_11 : 
+  ( n2800 ) ? PC_12 : 
+  ( n2757 ) ? PC_13 : 
+  ( n2759 ) ? PC_14 : 
+  ( n0052 ) ? PC_15 : 
+  ( n0054 ) ? PC_16 : 
+  ( n0056 ) ? PC_17 : 
+  ( n0058 ) ? PC_18 : 
+  ( n0060 ) ? PC_19 : 
+  ( n0062 ) ? PC_1a : 
+  ( n0064 ) ? PC_1b : 
+  ( n0066 ) ? PC_1c : 
+  ( n0068 ) ? PC_1d : 
+  ( n0070 ) ? PC_1e : 
+  ( n0072 ) ? PC_1f : 
+  ( n0073 ) ? PC_20 : 
+  ( n2819 ) ? PC_21 : 
+  ( n0075 ) ? PC_22 : 
+  ( n2761 ) ? PC_23 : 
+  ( n2763 ) ? PC_24 : 
+  ( n0077 ) ? PC_25 : 
+  ( n0079 ) ? PC_26 : 
+  ( n0081 ) ? PC_27 : 
+  ( n0083 ) ? PC_28 : 
+  ( n0085 ) ? PC_29 : 
+  ( n0087 ) ? PC_2a : 
+  ( n0089 ) ? PC_2b : 
+  ( n0091 ) ? PC_2c : 
+  ( n0093 ) ? PC_2d : 
+  ( n0095 ) ? PC_2e : 
+  ( n0097 ) ? PC_2f : 
+  ( n0099 ) ? PC_30 : 
+  ( n2802 ) ? PC_31 : 
+  ( n0101 ) ? PC_32 : 
+  ( n2765 ) ? PC_33 : 
+  ( n2767 ) ? PC_34 : 
+  ( n0103 ) ? PC_35 : 
+  ( n0105 ) ? PC_36 : 
+  ( n0107 ) ? PC_37 : 
+  ( n0109 ) ? PC_38 : 
+  ( n0111 ) ? PC_39 : 
+  ( n0113 ) ? PC_3a : 
+  ( n0115 ) ? PC_3b : 
+  ( n0117 ) ? PC_3c : 
+  ( n0119 ) ? PC_3d : 
+  ( n0121 ) ? PC_3e : 
+  ( n0123 ) ? PC_3f : 
+  ( n2821 ) ? PC_40 : 
+  ( n2823 ) ? PC_41 : 
+  ( n0125 ) ? PC_42 : 
+  ( n0127 ) ? PC_43 : 
+  ( n2769 ) ? PC_44 : 
+  ( n0129 ) ? PC_45 : 
+  ( n0131 ) ? PC_46 : 
+  ( n0133 ) ? PC_47 : 
+  ( n0135 ) ? PC_48 : 
+  ( n0137 ) ? PC_49 : 
+  ( n0139 ) ? PC_4a : 
+  ( n0141 ) ? PC_4b : 
+  ( n0143 ) ? PC_4c : 
+  ( n0145 ) ? PC_4d : 
+  ( n0147 ) ? PC_4e : 
+  ( n0149 ) ? PC_4f : 
+  ( n2825 ) ? PC_50 : 
+  ( n2804 ) ? PC_51 : 
+  ( n0151 ) ? PC_52 : 
+  ( n0153 ) ? PC_53 : 
+  ( n2771 ) ? PC_54 : 
+  ( n0155 ) ? PC_55 : 
+  ( n0157 ) ? PC_56 : 
+  ( n0159 ) ? PC_57 : 
+  ( n0161 ) ? PC_58 : 
+  ( n0163 ) ? PC_59 : 
+  ( n0165 ) ? PC_5a : 
+  ( n0167 ) ? PC_5b : 
+  ( n0169 ) ? PC_5c : 
+  ( n0171 ) ? PC_5d : 
+  ( n0173 ) ? PC_5e : 
+  ( n0175 ) ? PC_5f : 
+  ( n2827 ) ? PC_60 : 
+  ( n2829 ) ? PC_61 : 
+  ( n0177 ) ? PC_62 : 
+  ( n0179 ) ? PC_63 : 
+  ( n2773 ) ? PC_64 : 
+  ( n0181 ) ? PC_65 : 
+  ( n0183 ) ? PC_66 : 
+  ( n0185 ) ? PC_67 : 
+  ( n0187 ) ? PC_68 : 
+  ( n0189 ) ? PC_69 : 
+  ( n0191 ) ? PC_6a : 
+  ( n0193 ) ? PC_6b : 
+  ( n0195 ) ? PC_6c : 
+  ( n0197 ) ? PC_6d : 
+  ( n0199 ) ? PC_6e : 
+  ( n0201 ) ? PC_6f : 
+  ( n2831 ) ? PC_70 : 
+  ( n2806 ) ? PC_71 : 
+  ( n0203 ) ? PC_72 : 
+  ( n2833 ) ? PC_73 : 
+  ( n2775 ) ? PC_74 : 
+  ( n2777 ) ? PC_75 : 
+  ( n0205 ) ? PC_76 : 
+  ( n0207 ) ? PC_77 : 
+  ( n2835 ) ? PC_78 : 
+  ( n2837 ) ? PC_79 : 
+  ( n2839 ) ? PC_7a : 
+  ( n2841 ) ? PC_7b : 
+  ( n2843 ) ? PC_7c : 
+  ( n2845 ) ? PC_7d : 
+  ( n2847 ) ? PC_7e : 
+  ( n2849 ) ? PC_7f : 
+  ( n2850 ) ? PC_80 : 
+  ( n2851 ) ? PC_81 : 
+  ( n0209 ) ? PC_82 : 
+  ( n2778 ) ? PC_83 : 
+  ( n2780 ) ? PC_84 : 
+  ( n0211 ) ? PC_85 : 
+  ( n0213 ) ? PC_86 : 
+  ( n0215 ) ? PC_87 : 
+  ( n0217 ) ? PC_88 : 
+  ( n0219 ) ? PC_89 : 
+  ( n0221 ) ? PC_8a : 
+  ( n0223 ) ? PC_8b : 
+  ( n0225 ) ? PC_8c : 
+  ( n0227 ) ? PC_8d : 
+  ( n0229 ) ? PC_8e : 
+  ( n0231 ) ? PC_8f : 
+  ( n2852 ) ? PC_90 : 
+  ( n2808 ) ? PC_91 : 
+  ( n0233 ) ? PC_92 : 
+  ( n2782 ) ? PC_93 : 
+  ( n2784 ) ? PC_94 : 
+  ( n0235 ) ? PC_95 : 
+  ( n0237 ) ? PC_96 : 
+  ( n0239 ) ? PC_97 : 
+  ( n0241 ) ? PC_98 : 
+  ( n0243 ) ? PC_99 : 
+  ( n0245 ) ? PC_9a : 
+  ( n0247 ) ? PC_9b : 
+  ( n0249 ) ? PC_9c : 
+  ( n0251 ) ? PC_9d : 
+  ( n0253 ) ? PC_9e : 
+  ( n0255 ) ? PC_9f : 
+  ( n0257 ) ? PC_a0 : 
+  ( n2854 ) ? PC_a1 : 
+  ( n0259 ) ? PC_a2 : 
+  ( n2856 ) ? PC_a3 : 
+  ( n2786 ) ? PC_a4 : 
+  ( n2858 ) ? PC_a5 : 
+  ( n0261 ) ? PC_a6 : 
+  ( n0263 ) ? PC_a7 : 
+  ( n0265 ) ? PC_a8 : 
+  ( n0267 ) ? PC_a9 : 
+  ( n0269 ) ? PC_aa : 
+  ( n0271 ) ? PC_ab : 
+  ( n0273 ) ? PC_ac : 
+  ( n0275 ) ? PC_ad : 
+  ( n0277 ) ? PC_ae : 
+  ( n0279 ) ? PC_af : 
+  ( n0281 ) ? PC_b0 : 
+  ( n2810 ) ? PC_b1 : 
+  ( n0283 ) ? PC_b2 : 
+  ( n2860 ) ? PC_b3 : 
+  ( n2862 ) ? PC_b4 : 
+  ( n0285 ) ? PC_b5 : 
+  ( n0287 ) ? PC_b6 : 
+  ( n0289 ) ? PC_b7 : 
+  ( n0291 ) ? PC_b8 : 
+  ( n0293 ) ? PC_b9 : 
+  ( n0295 ) ? PC_ba : 
+  ( n0297 ) ? PC_bb : 
+  ( n0299 ) ? PC_bc : 
+  ( n0301 ) ? PC_bd : 
+  ( n0303 ) ? PC_be : 
+  ( n0305 ) ? PC_bf : 
+  ( n0307 ) ? PC_c0 : 
+  ( n2864 ) ? PC_c1 : 
+  ( n0309 ) ? PC_c2 : 
+  ( n2866 ) ? PC_c3 : 
+  ( n2788 ) ? PC_c4 : 
+  ( n0311 ) ? PC_c5 : 
+  ( n0313 ) ? PC_c6 : 
+  ( n0315 ) ? PC_c7 : 
+  ( n0317 ) ? PC_c8 : 
+  ( n0319 ) ? PC_c9 : 
+  ( n0321 ) ? PC_ca : 
+  ( n0323 ) ? PC_cb : 
+  ( n0325 ) ? PC_cc : 
+  ( n0327 ) ? PC_cd : 
+  ( n0329 ) ? PC_ce : 
+  ( n0331 ) ? PC_cf : 
+  ( n0333 ) ? PC_d0 : 
+  ( n2812 ) ? PC_d1 : 
+  ( n0335 ) ? PC_d2 : 
+  ( n2868 ) ? PC_d3 : 
+  ( n2790 ) ? PC_d4 : 
+  ( n0337 ) ? PC_d5 : 
+  ( n0339 ) ? PC_d6 : 
+  ( n0341 ) ? PC_d7 : 
+  ( n0343 ) ? PC_d8 : 
+  ( n0345 ) ? PC_d9 : 
+  ( n0347 ) ? PC_da : 
+  ( n0349 ) ? PC_db : 
+  ( n0351 ) ? PC_dc : 
+  ( n0353 ) ? PC_dd : 
+  ( n0355 ) ? PC_de : 
+  ( n0357 ) ? PC_df : 
+  ( n2870 ) ? PC_e1 : 
+  ( n2792 ) ? PC_e4 : 
+  ( n0363 ) ? PC_e5 : 
+  ( n0365 ) ? PC_e6 : 
+  ( n0367 ) ? PC_e7 : 
+  ( n0369 ) ? PC_e8 : 
+  ( n0371 ) ? PC_e9 : 
+  ( n0373 ) ? PC_ea : 
+  ( n0375 ) ? PC_eb : 
+  ( n0377 ) ? PC_ec : 
+  ( n0379 ) ? PC_ed : 
+  ( n0381 ) ? PC_ee : 
+  ( n0383 ) ? PC_ef : 
+  ( n2814 ) ? PC_f1 : 
+  ( n2794 ) ? PC_f4 : 
+  ( n2796 ) ? PC_f5 : 
+  ( n0389 ) ? PC_f6 : 
+  ( n2872 ) ? PC_f7 : 
+  ( n2874 ) ? PC_f8 : 
+  ( n2876 ) ? PC_f9 : 
+  ( n2878 ) ? PC_fa : 
+  ( n2880 ) ? PC_fb : 
+  ( n2882 ) ? PC_fc : 
+  ( n2884 ) ? PC_fd : 
+  ( n2886 ) ? PC_fe : 
+  ( n2887 ) ? PC_ff : 
+  ( PC );
+assign B_next = 
+  ( n0002 ) ? B_05 : 
+  ( n0041 ) ? B_10 : 
+  ( n0052 ) ? B_15 : 
+  ( n0125 ) ? B_42 : 
+  ( n0127 ) ? B_43 : 
+  ( n0151 ) ? B_52 : 
+  ( n0153 ) ? B_53 : 
+  ( n0177 ) ? B_62 : 
+  ( n0179 ) ? B_63 : 
+  ( n2777 ) ? B_75 : 
+  ( n2780 ) ? B_84 : 
+  ( n0211 ) ? B_85 : 
+  ( n0213 ) ? B_86 : 
+  ( n0215 ) ? B_87 : 
+  ( n0217 ) ? B_88 : 
+  ( n0219 ) ? B_89 : 
+  ( n0221 ) ? B_8a : 
+  ( n0223 ) ? B_8b : 
+  ( n0225 ) ? B_8c : 
+  ( n0227 ) ? B_8d : 
+  ( n0229 ) ? B_8e : 
+  ( n0231 ) ? B_8f : 
+  ( n0233 ) ? B_92 : 
+  ( n2786 ) ? B_a4 : 
+  ( n0283 ) ? B_b2 : 
+  ( n0309 ) ? B_c2 : 
+  ( n0311 ) ? B_c5 : 
+  ( n0333 ) ? B_d0 : 
+  ( n0335 ) ? B_d2 : 
+  ( n0337 ) ? B_d5 : 
+  ( n2796 ) ? B_f5 : 
+  ( B );
+assign DPL_next = 
+  ( n0002 ) ? DPL_05 : 
+  ( n0052 ) ? DPL_15 : 
+  ( n0125 ) ? DPL_42 : 
+  ( n0127 ) ? DPL_43 : 
+  ( n0151 ) ? DPL_52 : 
+  ( n0153 ) ? DPL_53 : 
+  ( n0177 ) ? DPL_62 : 
+  ( n0179 ) ? DPL_63 : 
+  ( n2777 ) ? DPL_75 : 
+  ( n0211 ) ? DPL_85 : 
+  ( n0213 ) ? DPL_86 : 
+  ( n0215 ) ? DPL_87 : 
+  ( n0217 ) ? DPL_88 : 
+  ( n0219 ) ? DPL_89 : 
+  ( n0221 ) ? DPL_8a : 
+  ( n0223 ) ? DPL_8b : 
+  ( n0225 ) ? DPL_8c : 
+  ( n0227 ) ? DPL_8d : 
+  ( n0229 ) ? DPL_8e : 
+  ( n0231 ) ? DPL_8f : 
+  ( n2852 ) ? DPL_90 : 
+  ( n2856 ) ? DPL_a3 : 
+  ( n0311 ) ? DPL_c5 : 
+  ( n0333 ) ? DPL_d0 : 
+  ( n0337 ) ? DPL_d5 : 
+  ( n2796 ) ? DPL_f5 : 
+  ( DPL );
 assign PSW_next = 
-  ( n2963 ) ? PSW_00 : 
-  ( n2964 ) ? PSW_01 : 
-  ( n2965 ) ? PSW_02 : 
-  ( n2916 ) ? PSW_03 : 
-  ( n2918 ) ? PSW_04 : 
+  ( n2815 ) ? PSW_00 : 
+  ( n2816 ) ? PSW_01 : 
+  ( n2817 ) ? PSW_02 : 
+  ( n2753 ) ? PSW_03 : 
+  ( n2755 ) ? PSW_04 : 
   ( n0002 ) ? PSW_05 : 
   ( n0004 ) ? PSW_06 : 
   ( n0009 ) ? PSW_07 : 
@@ -13381,10 +11301,10 @@ assign PSW_next =
   ( n0033 ) ? PSW_0e : 
   ( n0037 ) ? PSW_0f : 
   ( n0041 ) ? PSW_10 : 
-  ( n2967 ) ? PSW_11 : 
-  ( n2969 ) ? PSW_12 : 
-  ( n2920 ) ? PSW_13 : 
-  ( n2922 ) ? PSW_14 : 
+  ( n2798 ) ? PSW_11 : 
+  ( n2800 ) ? PSW_12 : 
+  ( n2757 ) ? PSW_13 : 
+  ( n2759 ) ? PSW_14 : 
   ( n0052 ) ? PSW_15 : 
   ( n0054 ) ? PSW_16 : 
   ( n0056 ) ? PSW_17 : 
@@ -13397,10 +11317,10 @@ assign PSW_next =
   ( n0070 ) ? PSW_1e : 
   ( n0072 ) ? PSW_1f : 
   ( n0073 ) ? PSW_20 : 
-  ( n2971 ) ? PSW_21 : 
+  ( n2819 ) ? PSW_21 : 
   ( n0075 ) ? PSW_22 : 
-  ( n2924 ) ? PSW_23 : 
-  ( n2926 ) ? PSW_24 : 
+  ( n2761 ) ? PSW_23 : 
+  ( n2763 ) ? PSW_24 : 
   ( n0077 ) ? PSW_25 : 
   ( n0079 ) ? PSW_26 : 
   ( n0081 ) ? PSW_27 : 
@@ -13413,10 +11333,10 @@ assign PSW_next =
   ( n0095 ) ? PSW_2e : 
   ( n0097 ) ? PSW_2f : 
   ( n0099 ) ? PSW_30 : 
-  ( n2973 ) ? PSW_31 : 
+  ( n2802 ) ? PSW_31 : 
   ( n0101 ) ? PSW_32 : 
-  ( n2928 ) ? PSW_33 : 
-  ( n2930 ) ? PSW_34 : 
+  ( n2765 ) ? PSW_33 : 
+  ( n2767 ) ? PSW_34 : 
   ( n0103 ) ? PSW_35 : 
   ( n0105 ) ? PSW_36 : 
   ( n0107 ) ? PSW_37 : 
@@ -13428,11 +11348,11 @@ assign PSW_next =
   ( n0119 ) ? PSW_3d : 
   ( n0121 ) ? PSW_3e : 
   ( n0123 ) ? PSW_3f : 
-  ( n2975 ) ? PSW_40 : 
-  ( n2977 ) ? PSW_41 : 
+  ( n2821 ) ? PSW_40 : 
+  ( n2823 ) ? PSW_41 : 
   ( n0125 ) ? PSW_42 : 
   ( n0127 ) ? PSW_43 : 
-  ( n2932 ) ? PSW_44 : 
+  ( n2769 ) ? PSW_44 : 
   ( n0129 ) ? PSW_45 : 
   ( n0131 ) ? PSW_46 : 
   ( n0133 ) ? PSW_47 : 
@@ -13444,11 +11364,11 @@ assign PSW_next =
   ( n0145 ) ? PSW_4d : 
   ( n0147 ) ? PSW_4e : 
   ( n0149 ) ? PSW_4f : 
-  ( n2979 ) ? PSW_50 : 
-  ( n2981 ) ? PSW_51 : 
+  ( n2825 ) ? PSW_50 : 
+  ( n2804 ) ? PSW_51 : 
   ( n0151 ) ? PSW_52 : 
   ( n0153 ) ? PSW_53 : 
-  ( n2934 ) ? PSW_54 : 
+  ( n2771 ) ? PSW_54 : 
   ( n0155 ) ? PSW_55 : 
   ( n0157 ) ? PSW_56 : 
   ( n0159 ) ? PSW_57 : 
@@ -13460,11 +11380,11 @@ assign PSW_next =
   ( n0171 ) ? PSW_5d : 
   ( n0173 ) ? PSW_5e : 
   ( n0175 ) ? PSW_5f : 
-  ( n2983 ) ? PSW_60 : 
-  ( n2985 ) ? PSW_61 : 
+  ( n2827 ) ? PSW_60 : 
+  ( n2829 ) ? PSW_61 : 
   ( n0177 ) ? PSW_62 : 
   ( n0179 ) ? PSW_63 : 
-  ( n2936 ) ? PSW_64 : 
+  ( n2773 ) ? PSW_64 : 
   ( n0181 ) ? PSW_65 : 
   ( n0183 ) ? PSW_66 : 
   ( n0185 ) ? PSW_67 : 
@@ -13476,27 +11396,27 @@ assign PSW_next =
   ( n0197 ) ? PSW_6d : 
   ( n0199 ) ? PSW_6e : 
   ( n0201 ) ? PSW_6f : 
-  ( n2987 ) ? PSW_70 : 
-  ( n2989 ) ? PSW_71 : 
+  ( n2831 ) ? PSW_70 : 
+  ( n2806 ) ? PSW_71 : 
   ( n0203 ) ? PSW_72 : 
-  ( n2991 ) ? PSW_73 : 
-  ( n2938 ) ? PSW_74 : 
-  ( n2940 ) ? PSW_75 : 
+  ( n2833 ) ? PSW_73 : 
+  ( n2775 ) ? PSW_74 : 
+  ( n2777 ) ? PSW_75 : 
   ( n0205 ) ? PSW_76 : 
   ( n0207 ) ? PSW_77 : 
-  ( n2993 ) ? PSW_78 : 
-  ( n2995 ) ? PSW_79 : 
-  ( n2997 ) ? PSW_7a : 
-  ( n2999 ) ? PSW_7b : 
-  ( n3001 ) ? PSW_7c : 
-  ( n3003 ) ? PSW_7d : 
-  ( n3005 ) ? PSW_7e : 
-  ( n3007 ) ? PSW_7f : 
-  ( n3008 ) ? PSW_80 : 
-  ( n3009 ) ? PSW_81 : 
+  ( n2835 ) ? PSW_78 : 
+  ( n2837 ) ? PSW_79 : 
+  ( n2839 ) ? PSW_7a : 
+  ( n2841 ) ? PSW_7b : 
+  ( n2843 ) ? PSW_7c : 
+  ( n2845 ) ? PSW_7d : 
+  ( n2847 ) ? PSW_7e : 
+  ( n2849 ) ? PSW_7f : 
+  ( n2850 ) ? PSW_80 : 
+  ( n2851 ) ? PSW_81 : 
   ( n0209 ) ? PSW_82 : 
-  ( n2941 ) ? PSW_83 : 
-  ( n2943 ) ? PSW_84 : 
+  ( n2778 ) ? PSW_83 : 
+  ( n2780 ) ? PSW_84 : 
   ( n0211 ) ? PSW_85 : 
   ( n0213 ) ? PSW_86 : 
   ( n0215 ) ? PSW_87 : 
@@ -13508,11 +11428,11 @@ assign PSW_next =
   ( n0227 ) ? PSW_8d : 
   ( n0229 ) ? PSW_8e : 
   ( n0231 ) ? PSW_8f : 
-  ( n2960 ) ? PSW_90 : 
-  ( n3011 ) ? PSW_91 : 
+  ( n2852 ) ? PSW_90 : 
+  ( n2808 ) ? PSW_91 : 
   ( n0233 ) ? PSW_92 : 
-  ( n2945 ) ? PSW_93 : 
-  ( n2947 ) ? PSW_94 : 
+  ( n2782 ) ? PSW_93 : 
+  ( n2784 ) ? PSW_94 : 
   ( n0235 ) ? PSW_95 : 
   ( n0237 ) ? PSW_96 : 
   ( n0239 ) ? PSW_97 : 
@@ -13525,11 +11445,11 @@ assign PSW_next =
   ( n0253 ) ? PSW_9e : 
   ( n0255 ) ? PSW_9f : 
   ( n0257 ) ? PSW_a0 : 
-  ( n3013 ) ? PSW_a1 : 
+  ( n2854 ) ? PSW_a1 : 
   ( n0259 ) ? PSW_a2 : 
-  ( n2962 ) ? PSW_a3 : 
-  ( n2949 ) ? PSW_a4 : 
-  ( n3015 ) ? PSW_a5 : 
+  ( n2856 ) ? PSW_a3 : 
+  ( n2786 ) ? PSW_a4 : 
+  ( n2858 ) ? PSW_a5 : 
   ( n0261 ) ? PSW_a6 : 
   ( n0263 ) ? PSW_a7 : 
   ( n0265 ) ? PSW_a8 : 
@@ -13541,10 +11461,10 @@ assign PSW_next =
   ( n0277 ) ? PSW_ae : 
   ( n0279 ) ? PSW_af : 
   ( n0281 ) ? PSW_b0 : 
-  ( n3017 ) ? PSW_b1 : 
+  ( n2810 ) ? PSW_b1 : 
   ( n0283 ) ? PSW_b2 : 
-  ( n3019 ) ? PSW_b3 : 
-  ( n3021 ) ? PSW_b4 : 
+  ( n2860 ) ? PSW_b3 : 
+  ( n2862 ) ? PSW_b4 : 
   ( n0285 ) ? PSW_b5 : 
   ( n0287 ) ? PSW_b6 : 
   ( n0289 ) ? PSW_b7 : 
@@ -13557,10 +11477,10 @@ assign PSW_next =
   ( n0303 ) ? PSW_be : 
   ( n0305 ) ? PSW_bf : 
   ( n0307 ) ? PSW_c0 : 
-  ( n3023 ) ? PSW_c1 : 
+  ( n2864 ) ? PSW_c1 : 
   ( n0309 ) ? PSW_c2 : 
-  ( n3025 ) ? PSW_c3 : 
-  ( n2951 ) ? PSW_c4 : 
+  ( n2866 ) ? PSW_c3 : 
+  ( n2788 ) ? PSW_c4 : 
   ( n0311 ) ? PSW_c5 : 
   ( n0313 ) ? PSW_c6 : 
   ( n0315 ) ? PSW_c7 : 
@@ -13573,10 +11493,10 @@ assign PSW_next =
   ( n0329 ) ? PSW_ce : 
   ( n0331 ) ? PSW_cf : 
   ( n0333 ) ? PSW_d0 : 
-  ( n3027 ) ? PSW_d1 : 
+  ( n2812 ) ? PSW_d1 : 
   ( n0335 ) ? PSW_d2 : 
-  ( n3029 ) ? PSW_d3 : 
-  ( n2953 ) ? PSW_d4 : 
+  ( n2868 ) ? PSW_d3 : 
+  ( n2790 ) ? PSW_d4 : 
   ( n0337 ) ? PSW_d5 : 
   ( n0339 ) ? PSW_d6 : 
   ( n0341 ) ? PSW_d7 : 
@@ -13588,8 +11508,8 @@ assign PSW_next =
   ( n0353 ) ? PSW_dd : 
   ( n0355 ) ? PSW_de : 
   ( n0357 ) ? PSW_df : 
-  ( n3031 ) ? PSW_e1 : 
-  ( n2955 ) ? PSW_e4 : 
+  ( n2870 ) ? PSW_e1 : 
+  ( n2792 ) ? PSW_e4 : 
   ( n0363 ) ? PSW_e5 : 
   ( n0365 ) ? PSW_e6 : 
   ( n0367 ) ? PSW_e7 : 
@@ -13601,27 +11521,66 @@ assign PSW_next =
   ( n0379 ) ? PSW_ed : 
   ( n0381 ) ? PSW_ee : 
   ( n0383 ) ? PSW_ef : 
-  ( n3033 ) ? PSW_f1 : 
-  ( n2957 ) ? PSW_f4 : 
-  ( n2959 ) ? PSW_f5 : 
+  ( n2814 ) ? PSW_f1 : 
+  ( n2794 ) ? PSW_f4 : 
+  ( n2796 ) ? PSW_f5 : 
   ( n0389 ) ? PSW_f6 : 
-  ( n3035 ) ? PSW_f7 : 
-  ( n3037 ) ? PSW_f8 : 
-  ( n3039 ) ? PSW_f9 : 
-  ( n3041 ) ? PSW_fa : 
-  ( n3043 ) ? PSW_fb : 
-  ( n3045 ) ? PSW_fc : 
-  ( n3047 ) ? PSW_fd : 
-  ( n3049 ) ? PSW_fe : 
-  ( n3050 ) ? PSW_ff : 
+  ( n2872 ) ? PSW_f7 : 
+  ( n2874 ) ? PSW_f8 : 
+  ( n2876 ) ? PSW_f9 : 
+  ( n2878 ) ? PSW_fa : 
+  ( n2880 ) ? PSW_fb : 
+  ( n2882 ) ? PSW_fc : 
+  ( n2884 ) ? PSW_fd : 
+  ( n2886 ) ? PSW_fe : 
+  ( n2887 ) ? PSW_ff : 
   ( PSW );
-assign WR_ADDR_0_IRAM = ((n0002) && (n1068)) ? (n1133) : ((n0004) ? (n1157) : ((n0009) ? (n1157) : ((n0013) ? (n1159) : ((n0015) ? (n1161) : ((n0017) ? (n1162) : ((n0021) ? (n1163) : ((n0025) ? (n1164) : ((n0029) ? (n1165) : ((n0033) ? (n1166) : ((n0037) ? (n1167) : (((n0041) && (n1174)) ? (n1225) : (((n2967) && (((n1250) != (n1253)))) ? (n1250) : (((n2969) && (((n1250) != (n1253)))) ? (n1250) : (((n0052) && (n1068)) ? (n1133) : ((n0054) ? (n1157) : ((n0056) ? (n1157) : ((n0058) ? (n1159) : ((n0060) ? (n1161) : ((n0062) ? (n1162) : ((n0064) ? (n1163) : ((n0066) ? (n1164) : ((n0068) ? (n1165) : ((n0070) ? (n1166) : ((n0072) ? (n1167) : (((n2973) && (((n1250) != (n1253)))) ? (n1250) : (((n0125) && (n1068)) ? (n1133) : (((n0127) && (n1068)) ? (n1133) : (((n2981) && (((n1250) != (n1253)))) ? (n1250) : (((n0151) && (n1068)) ? (n1133) : (((n0153) && (n1068)) ? (n1133) : (((n0177) && (n1068)) ? (n1133) : (((n0179) && (n1068)) ? (n1133) : (((n2989) && (((n1250) != (n1253)))) ? (n1250) : (((n2940) && (n1068)) ? (n1133) : ((n0205) ? (n1157) : ((n0207) ? (n1157) : ((n2993) ? (n1159) : ((n2995) ? (n1161) : ((n2997) ? (n1162) : ((n2999) ? (n1163) : ((n3001) ? (n1164) : ((n3003) ? (n1165) : ((n3005) ? (n1166) : ((n3007) ? (n1167) : (((n0211) && (n1068)) ? (n1133) : (((n0213) && (n1068)) ? (n1133) : (((n0215) && (n1068)) ? (n1133) : (((n0217) && (n1068)) ? (n1133) : (((n0219) && (n1068)) ? (n1133) : (((n0221) && (n1068)) ? (n1133) : (((n0223) && (n1068)) ? (n1133) : (((n0225) && (n1068)) ? (n1133) : (((n0227) && (n1068)) ? (n1133) : (((n0229) && (n1068)) ? (n1133) : (((n0231) && (n1068)) ? (n1133) : (((n3011) && (((n1250) != (n1253)))) ? (n1250) : (((n0233) && (n1174)) ? (n1225) : ((n0261) ? (n1157) : ((n0263) ? (n1157) : ((n0265) ? (n1159) : ((n0267) ? (n1161) : ((n0269) ? (n1162) : ((n0271) ? (n1163) : ((n0273) ? (n1164) : ((n0275) ? (n1165) : ((n0277) ? (n1166) : ((n0279) ? (n1167) : (((n3017) && (((n1250) != (n1253)))) ? (n1250) : (((n0283) && (n1174)) ? (n1225) : ((n0307) ? (n1250) : (((n0309) && (n1174)) ? (n1225) : (((n0311) && (n1068)) ? (n1133) : ((n0313) ? (n1157) : ((n0315) ? (n1157) : ((n0317) ? (n1159) : ((n0319) ? (n1161) : ((n0321) ? (n1162) : ((n0323) ? (n1163) : ((n0325) ? (n1164) : ((n0327) ? (n1165) : ((n0329) ? (n1166) : ((n0331) ? (n1167) : (((n0333) && (n1068)) ? (n1133) : (((n3027) && (((n1250) != (n1253)))) ? (n1250) : (((n0335) && (n1174)) ? (n1225) : (((n0337) && (n1068)) ? (n1133) : ((n0339) ? (n1157) : ((n0341) ? (n1157) : ((n0343) ? (n1159) : ((n0345) ? (n1161) : ((n0347) ? (n1162) : ((n0349) ? (n1163) : ((n0351) ? (n1164) : ((n0353) ? (n1165) : ((n0355) ? (n1166) : ((n0357) ? (n1167) : (((n3033) && (((n1250) != (n1253)))) ? (n1250) : (((n2959) && (n1068)) ? (n1133) : ((n0389) ? (n1157) : ((n3035) ? (n1157) : ((n3037) ? (n1159) : ((n3039) ? (n1161) : ((n3041) ? (n1162) : ((n3043) ? (n1163) : ((n3045) ? (n1164) : ((n3047) ? (n1165) : ((n3049) ? (n1166) : (n1167))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));
-assign WR_DATA_0_IRAM = ((n0002) && (n1068)) ? (n1117) : ((n0004) ? (n1158) : ((n0009) ? (n1158) : ((n0013) ? (n1160) : ((n0015) ? (n1160) : ((n0017) ? (n1160) : ((n0021) ? (n1160) : ((n0025) ? (n1160) : ((n0029) ? (n1160) : ((n0033) ? (n1160) : ((n0037) ? (n1160) : (((n0041) && (n1174)) ? (n1200) : (((n2967) && (((n1250) != (n1253)))) ? (n1251) : (((n2969) && (((n1250) != (n1253)))) ? (n1257) : (((n0052) && (n1068)) ? (n1302) : ((n0054) ? (n1341) : ((n0056) ? (n1341) : ((n0058) ? (n1342) : ((n0060) ? (n1342) : ((n0062) ? (n1342) : ((n0064) ? (n1342) : ((n0066) ? (n1342) : ((n0068) ? (n1342) : ((n0070) ? (n1342) : ((n0072) ? (n1342) : (((n2973) && (((n1250) != (n1253)))) ? (n1251) : (((n0125) && (n1068)) ? (n1727) : (((n0127) && (n1068)) ? (n1750) : (((n2981) && (((n1250) != (n1253)))) ? (n1251) : (((n0151) && (n1068)) ? (n1859) : (((n0153) && (n1068)) ? (n1882) : (((n0177) && (n1068)) ? (n1993) : (((n0179) && (n1068)) ? (n2031) : (((n2989) && (((n1250) != (n1253)))) ? (n1251) : (((n2940) && (n1068)) ? (RD_ROM_2) : ((n0205) ? (RD_ROM_1) : ((n0207) ? (RD_ROM_1) : ((n2993) ? (RD_ROM_1) : ((n2995) ? (RD_ROM_1) : ((n2997) ? (RD_ROM_1) : ((n2999) ? (RD_ROM_1) : ((n3001) ? (RD_ROM_1) : ((n3003) ? (RD_ROM_1) : ((n3005) ? (RD_ROM_1) : ((n3007) ? (RD_ROM_1) : (((n0211) && (n1068)) ? (n2274) : (((n0213) && (n1068)) ? (RD_IRAM_1) : (((n0215) && (n1068)) ? (RD_IRAM_1) : (((n0217) && (n1068)) ? (RD_IRAM_0) : (((n0219) && (n1068)) ? (RD_IRAM_0) : (((n0221) && (n1068)) ? (RD_IRAM_0) : (((n0223) && (n1068)) ? (RD_IRAM_0) : (((n0225) && (n1068)) ? (RD_IRAM_0) : (((n0227) && (n1068)) ? (RD_IRAM_0) : (((n0229) && (n1068)) ? (RD_IRAM_0) : (((n0231) && (n1068)) ? (RD_IRAM_0) : (((n3011) && (((n1250) != (n1253)))) ? (n1251) : (((n0233) && (n1174)) ? (n2410) : ((n0261) ? (n2597) : ((n0263) ? (n2597) : ((n0265) ? (n1420) : ((n0267) ? (n1420) : ((n0269) ? (n1420) : ((n0271) ? (n1420) : ((n0273) ? (n1420) : ((n0275) ? (n1420) : ((n0277) ? (n1420) : ((n0279) ? (n1420) : (((n3017) && (((n1250) != (n1253)))) ? (n1251) : (((n0283) && (n1174)) ? (n2605) : ((n0307) ? (n1420) : (((n0309) && (n1174)) ? (n1211) : (((n0311) && (n1068)) ? (ACC) : ((n0313) ? (ACC) : ((n0315) ? (ACC) : ((n0317) ? (ACC) : ((n0319) ? (ACC) : ((n0321) ? (ACC) : ((n0323) ? (ACC) : ((n0325) ? (ACC) : ((n0327) ? (ACC) : ((n0329) ? (ACC) : ((n0331) ? (ACC) : (((n0333) && (n1068)) ? (RD_IRAM_0) : (((n3027) && (((n1250) != (n1253)))) ? (n1251) : (((n0335) && (n1174)) ? (n2786) : (((n0337) && (n1068)) ? (n1302) : ((n0339) ? (n2860) : ((n0341) ? (n2860) : ((n0343) ? (n1342) : ((n0345) ? (n1342) : ((n0347) ? (n1342) : ((n0349) ? (n1342) : ((n0351) ? (n1342) : ((n0353) ? (n1342) : ((n0355) ? (n1342) : ((n0357) ? (n1342) : (((n3033) && (((n1250) != (n1253)))) ? (n1251) : (((n2959) && (n1068)) ? (ACC) : ((n0389) ? (ACC) : ((n3035) ? (ACC) : ((n3037) ? (ACC) : ((n3039) ? (ACC) : ((n3041) ? (ACC) : ((n3043) ? (ACC) : ((n3045) ? (ACC) : ((n3047) ? (ACC) : ((n3049) ? (ACC) : (ACC))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));
-assign WR_COND_0_IRAM = ((n0002) && (n1068)) || (n0004) || (n0009) || (n0013) || (n0015) || (n0017) || (n0021) || (n0025) || (n0029) || (n0033) || (n0037) || ((n0041) && (n1174)) || ((n2967) && (((n1250) != (n1253)))) || ((n2969) && (((n1250) != (n1253)))) || ((n0052) && (n1068)) || (n0054) || (n0056) || (n0058) || (n0060) || (n0062) || (n0064) || (n0066) || (n0068) || (n0070) || (n0072) || ((n2973) && (((n1250) != (n1253)))) || ((n0125) && (n1068)) || ((n0127) && (n1068)) || ((n2981) && (((n1250) != (n1253)))) || ((n0151) && (n1068)) || ((n0153) && (n1068)) || ((n0177) && (n1068)) || ((n0179) && (n1068)) || ((n2989) && (((n1250) != (n1253)))) || ((n2940) && (n1068)) || (n0205) || (n0207) || (n2993) || (n2995) || (n2997) || (n2999) || (n3001) || (n3003) || (n3005) || (n3007) || ((n0211) && (n1068)) || ((n0213) && (n1068)) || ((n0215) && (n1068)) || ((n0217) && (n1068)) || ((n0219) && (n1068)) || ((n0221) && (n1068)) || ((n0223) && (n1068)) || ((n0225) && (n1068)) || ((n0227) && (n1068)) || ((n0229) && (n1068)) || ((n0231) && (n1068)) || ((n3011) && (((n1250) != (n1253)))) || ((n0233) && (n1174)) || (n0261) || (n0263) || (n0265) || (n0267) || (n0269) || (n0271) || (n0273) || (n0275) || (n0277) || (n0279) || ((n3017) && (((n1250) != (n1253)))) || ((n0283) && (n1174)) || (n0307) || ((n0309) && (n1174)) || ((n0311) && (n1068)) || (n0313) || (n0315) || (n0317) || (n0319) || (n0321) || (n0323) || (n0325) || (n0327) || (n0329) || (n0331) || ((n0333) && (n1068)) || ((n3027) && (((n1250) != (n1253)))) || ((n0335) && (n1174)) || ((n0337) && (n1068)) || (n0339) || (n0341) || (n0343) || (n0345) || (n0347) || (n0349) || (n0351) || (n0353) || (n0355) || (n0357) || ((n3033) && (((n1250) != (n1253)))) || ((n2959) && (n1068)) || (n0389) || (n3035) || (n3037) || (n3039) || (n3041) || (n3043) || (n3045) || (n3047) || (n3049) || (n3050);
-assign WR_ADDR_1_IRAM = (n2967) ? (n1253) : ((n2969) ? (n1253) : ((n2973) ? (n1253) : ((n2981) ? (n1253) : ((n2989) ? (n1253) : ((n3011) ? (n1253) : ((n3017) ? (n1253) : ((n3027) ? (n1253) : (n1253))))))));
-assign WR_DATA_1_IRAM = (n2967) ? (n1254) : ((n2969) ? (n1258) : ((n2973) ? (n1254) : ((n2981) ? (n1254) : ((n2989) ? (n1254) : ((n3011) ? (n1254) : ((n3017) ? (n1254) : ((n3027) ? (n1254) : (n1254))))))));
-assign WR_COND_1_IRAM = (n2967) || (n2969) || (n2973) || (n2981) || (n2989) || (n3011) || (n3017) || (n3027) || (n3033);
+assign DPH_next = 
+  ( n0002 ) ? DPH_05 : 
+  ( n0052 ) ? DPH_15 : 
+  ( n0125 ) ? DPH_42 : 
+  ( n0127 ) ? DPH_43 : 
+  ( n0151 ) ? DPH_52 : 
+  ( n0153 ) ? DPH_53 : 
+  ( n0177 ) ? DPH_62 : 
+  ( n0179 ) ? DPH_63 : 
+  ( n2777 ) ? DPH_75 : 
+  ( n0211 ) ? DPH_85 : 
+  ( n0213 ) ? DPH_86 : 
+  ( n0215 ) ? DPH_87 : 
+  ( n0217 ) ? DPH_88 : 
+  ( n0219 ) ? DPH_89 : 
+  ( n0221 ) ? DPH_8a : 
+  ( n0223 ) ? DPH_8b : 
+  ( n0225 ) ? DPH_8c : 
+  ( n0227 ) ? DPH_8d : 
+  ( n0229 ) ? DPH_8e : 
+  ( n0231 ) ? DPH_8f : 
+  ( n2852 ) ? DPH_90 : 
+  ( n2856 ) ? DPH_a3 : 
+  ( n0311 ) ? DPH_c5 : 
+  ( n0333 ) ? DPH_d0 : 
+  ( n0337 ) ? DPH_d5 : 
+  ( n2796 ) ? DPH_f5 : 
+  ( DPH );
+assign WR_ADDR_0_IRAM = ((n0002) && (n1068)) ? (n1126) : ((n0004) ? (n1146) : ((n0009) ? (n1146) : ((n0013) ? (n1148) : ((n0015) ? (n1150) : ((n0017) ? (n1151) : ((n0021) ? (n1152) : ((n0025) ? (n1153) : ((n0029) ? (n1154) : ((n0033) ? (n1155) : ((n0037) ? (n1156) : (((n0041) && (n1163)) ? (n1213) : (((n2798) && (((n1235) != (n1238)))) ? (n1235) : (((n2800) && (((n1235) != (n1238)))) ? (n1235) : (((n0052) && (n1068)) ? (n1126) : ((n0054) ? (n1146) : ((n0056) ? (n1146) : ((n0058) ? (n1148) : ((n0060) ? (n1150) : ((n0062) ? (n1151) : ((n0064) ? (n1152) : ((n0066) ? (n1153) : ((n0068) ? (n1154) : ((n0070) ? (n1155) : ((n0072) ? (n1156) : (((n2802) && (((n1235) != (n1238)))) ? (n1235) : (((n0125) && (n1068)) ? (n1126) : (((n0127) && (n1068)) ? (n1126) : (((n2804) && (((n1235) != (n1238)))) ? (n1235) : (((n0151) && (n1068)) ? (n1126) : (((n0153) && (n1068)) ? (n1126) : (((n0177) && (n1068)) ? (n1126) : (((n0179) && (n1068)) ? (n1126) : (((n2806) && (((n1235) != (n1238)))) ? (n1235) : (((n2777) && (n1068)) ? (n1126) : ((n0205) ? (n1146) : ((n0207) ? (n1146) : ((n2835) ? (n1148) : ((n2837) ? (n1150) : ((n2839) ? (n1151) : ((n2841) ? (n1152) : ((n2843) ? (n1153) : ((n2845) ? (n1154) : ((n2847) ? (n1155) : ((n2849) ? (n1156) : (((n0211) && (n1068)) ? (n1126) : (((n0213) && (n1068)) ? (n1126) : (((n0215) && (n1068)) ? (n1126) : (((n0217) && (n1068)) ? (n1126) : (((n0219) && (n1068)) ? (n1126) : (((n0221) && (n1068)) ? (n1126) : (((n0223) && (n1068)) ? (n1126) : (((n0225) && (n1068)) ? (n1126) : (((n0227) && (n1068)) ? (n1126) : (((n0229) && (n1068)) ? (n1126) : (((n0231) && (n1068)) ? (n1126) : (((n2808) && (((n1235) != (n1238)))) ? (n1235) : (((n0233) && (n1163)) ? (n1213) : ((n0261) ? (n1146) : ((n0263) ? (n1146) : ((n0265) ? (n1148) : ((n0267) ? (n1150) : ((n0269) ? (n1151) : ((n0271) ? (n1152) : ((n0273) ? (n1153) : ((n0275) ? (n1154) : ((n0277) ? (n1155) : ((n0279) ? (n1156) : (((n2810) && (((n1235) != (n1238)))) ? (n1235) : (((n0283) && (n1163)) ? (n1213) : ((n0307) ? (n1235) : (((n0309) && (n1163)) ? (n1213) : (((n0311) && (n1068)) ? (n1126) : ((n0313) ? (n1146) : ((n0315) ? (n1146) : ((n0317) ? (n1148) : ((n0319) ? (n1150) : ((n0321) ? (n1151) : ((n0323) ? (n1152) : ((n0325) ? (n1153) : ((n0327) ? (n1154) : ((n0329) ? (n1155) : ((n0331) ? (n1156) : (((n0333) && (n1068)) ? (n1126) : (((n2812) && (((n1235) != (n1238)))) ? (n1235) : (((n0335) && (n1163)) ? (n1213) : (((n0337) && (n1068)) ? (n1126) : ((n0339) ? (n1146) : ((n0341) ? (n1146) : ((n0343) ? (n1148) : ((n0345) ? (n1150) : ((n0347) ? (n1151) : ((n0349) ? (n1152) : ((n0351) ? (n1153) : ((n0353) ? (n1154) : ((n0355) ? (n1155) : ((n0357) ? (n1156) : (((n2814) && (((n1235) != (n1238)))) ? (n1235) : (((n2796) && (n1068)) ? (n1126) : ((n0389) ? (n1146) : ((n2872) ? (n1146) : ((n2874) ? (n1148) : ((n2876) ? (n1150) : ((n2878) ? (n1151) : ((n2880) ? (n1152) : ((n2882) ? (n1153) : ((n2884) ? (n1154) : ((n2886) ? (n1155) : (n1156))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));
+assign WR_DATA_0_IRAM = ((n0002) && (n1068)) ? (n1117) : ((n0004) ? (n1147) : ((n0009) ? (n1147) : ((n0013) ? (n1149) : ((n0015) ? (n1149) : ((n0017) ? (n1149) : ((n0021) ? (n1149) : ((n0025) ? (n1149) : ((n0029) ? (n1149) : ((n0033) ? (n1149) : ((n0037) ? (n1149) : (((n0041) && (n1163)) ? (n1189) : (((n2798) && (((n1235) != (n1238)))) ? (n1236) : (((n2800) && (((n1235) != (n1238)))) ? (n1242) : (((n0052) && (n1068)) ? (n1287) : ((n0054) ? (n1315) : ((n0056) ? (n1315) : ((n0058) ? (n1316) : ((n0060) ? (n1316) : ((n0062) ? (n1316) : ((n0064) ? (n1316) : ((n0066) ? (n1316) : ((n0068) ? (n1316) : ((n0070) ? (n1316) : ((n0072) ? (n1316) : (((n2802) && (((n1235) != (n1238)))) ? (n1236) : (((n0125) && (n1068)) ? (n1701) : (((n0127) && (n1068)) ? (n1713) : (((n2804) && (((n1235) != (n1238)))) ? (n1236) : (((n0151) && (n1068)) ? (n1811) : (((n0153) && (n1068)) ? (n1823) : (((n0177) && (n1068)) ? (n1923) : (((n0179) && (n1068)) ? (n1950) : (((n2806) && (((n1235) != (n1238)))) ? (n1236) : (((n2777) && (n1068)) ? (RD_ROM_2) : ((n0205) ? (RD_ROM_1) : ((n0207) ? (RD_ROM_1) : ((n2835) ? (RD_ROM_1) : ((n2837) ? (RD_ROM_1) : ((n2839) ? (RD_ROM_1) : ((n2841) ? (RD_ROM_1) : ((n2843) ? (RD_ROM_1) : ((n2845) ? (RD_ROM_1) : ((n2847) ? (RD_ROM_1) : ((n2849) ? (RD_ROM_1) : (((n0211) && (n1068)) ? (n2171) : (((n0213) && (n1068)) ? (RD_IRAM_1) : (((n0215) && (n1068)) ? (RD_IRAM_1) : (((n0217) && (n1068)) ? (RD_IRAM_0) : (((n0219) && (n1068)) ? (RD_IRAM_0) : (((n0221) && (n1068)) ? (RD_IRAM_0) : (((n0223) && (n1068)) ? (RD_IRAM_0) : (((n0225) && (n1068)) ? (RD_IRAM_0) : (((n0227) && (n1068)) ? (RD_IRAM_0) : (((n0229) && (n1068)) ? (RD_IRAM_0) : (((n0231) && (n1068)) ? (RD_IRAM_0) : (((n2808) && (((n1235) != (n1238)))) ? (n1236) : (((n0233) && (n1163)) ? (n2274) : ((n0261) ? (n2457) : ((n0263) ? (n2457) : ((n0265) ? (n1394) : ((n0267) ? (n1394) : ((n0269) ? (n1394) : ((n0271) ? (n1394) : ((n0273) ? (n1394) : ((n0275) ? (n1394) : ((n0277) ? (n1394) : ((n0279) ? (n1394) : (((n2810) && (((n1235) != (n1238)))) ? (n1236) : (((n0283) && (n1163)) ? (n2465) : ((n0307) ? (n1394) : (((n0309) && (n1163)) ? (n1200) : (((n0311) && (n1068)) ? (ACC) : ((n0313) ? (ACC) : ((n0315) ? (ACC) : ((n0317) ? (ACC) : ((n0319) ? (ACC) : ((n0321) ? (ACC) : ((n0323) ? (ACC) : ((n0325) ? (ACC) : ((n0327) ? (ACC) : ((n0329) ? (ACC) : ((n0331) ? (ACC) : (((n0333) && (n1068)) ? (RD_IRAM_0) : (((n2812) && (((n1235) != (n1238)))) ? (n1236) : (((n0335) && (n1163)) ? (n2627) : (((n0337) && (n1068)) ? (n1287) : ((n0339) ? (n2697) : ((n0341) ? (n2697) : ((n0343) ? (n1316) : ((n0345) ? (n1316) : ((n0347) ? (n1316) : ((n0349) ? (n1316) : ((n0351) ? (n1316) : ((n0353) ? (n1316) : ((n0355) ? (n1316) : ((n0357) ? (n1316) : (((n2814) && (((n1235) != (n1238)))) ? (n1236) : (((n2796) && (n1068)) ? (ACC) : ((n0389) ? (ACC) : ((n2872) ? (ACC) : ((n2874) ? (ACC) : ((n2876) ? (ACC) : ((n2878) ? (ACC) : ((n2880) ? (ACC) : ((n2882) ? (ACC) : ((n2884) ? (ACC) : ((n2886) ? (ACC) : (ACC))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));
+assign WR_COND_0_IRAM = ((n0002) && (n1068)) || (n0004) || (n0009) || (n0013) || (n0015) || (n0017) || (n0021) || (n0025) || (n0029) || (n0033) || (n0037) || ((n0041) && (n1163)) || ((n2798) && (((n1235) != (n1238)))) || ((n2800) && (((n1235) != (n1238)))) || ((n0052) && (n1068)) || (n0054) || (n0056) || (n0058) || (n0060) || (n0062) || (n0064) || (n0066) || (n0068) || (n0070) || (n0072) || ((n2802) && (((n1235) != (n1238)))) || ((n0125) && (n1068)) || ((n0127) && (n1068)) || ((n2804) && (((n1235) != (n1238)))) || ((n0151) && (n1068)) || ((n0153) && (n1068)) || ((n0177) && (n1068)) || ((n0179) && (n1068)) || ((n2806) && (((n1235) != (n1238)))) || ((n2777) && (n1068)) || (n0205) || (n0207) || (n2835) || (n2837) || (n2839) || (n2841) || (n2843) || (n2845) || (n2847) || (n2849) || ((n0211) && (n1068)) || ((n0213) && (n1068)) || ((n0215) && (n1068)) || ((n0217) && (n1068)) || ((n0219) && (n1068)) || ((n0221) && (n1068)) || ((n0223) && (n1068)) || ((n0225) && (n1068)) || ((n0227) && (n1068)) || ((n0229) && (n1068)) || ((n0231) && (n1068)) || ((n2808) && (((n1235) != (n1238)))) || ((n0233) && (n1163)) || (n0261) || (n0263) || (n0265) || (n0267) || (n0269) || (n0271) || (n0273) || (n0275) || (n0277) || (n0279) || ((n2810) && (((n1235) != (n1238)))) || ((n0283) && (n1163)) || (n0307) || ((n0309) && (n1163)) || ((n0311) && (n1068)) || (n0313) || (n0315) || (n0317) || (n0319) || (n0321) || (n0323) || (n0325) || (n0327) || (n0329) || (n0331) || ((n0333) && (n1068)) || ((n2812) && (((n1235) != (n1238)))) || ((n0335) && (n1163)) || ((n0337) && (n1068)) || (n0339) || (n0341) || (n0343) || (n0345) || (n0347) || (n0349) || (n0351) || (n0353) || (n0355) || (n0357) || ((n2814) && (((n1235) != (n1238)))) || ((n2796) && (n1068)) || (n0389) || (n2872) || (n2874) || (n2876) || (n2878) || (n2880) || (n2882) || (n2884) || (n2886) || (n2887);
+assign WR_ADDR_1_IRAM = (n2798) ? (n1238) : ((n2800) ? (n1238) : ((n2802) ? (n1238) : ((n2804) ? (n1238) : ((n2806) ? (n1238) : ((n2808) ? (n1238) : ((n2810) ? (n1238) : ((n2812) ? (n1238) : (n1238))))))));
+assign WR_DATA_1_IRAM = (n2798) ? (n1239) : ((n2800) ? (n1243) : ((n2802) ? (n1239) : ((n2804) ? (n1239) : ((n2806) ? (n1239) : ((n2808) ? (n1239) : ((n2810) ? (n1239) : ((n2812) ? (n1239) : (n1239))))))));
+assign WR_COND_1_IRAM = (n2798) || (n2800) || (n2802) || (n2804) || (n2806) || (n2808) || (n2810) || (n2812) || (n2814);
 assign IRAM_full = {IRAM[15], IRAM[14], IRAM[13], IRAM[12], IRAM[11], IRAM[10], IRAM[9], IRAM[8], IRAM[7], IRAM[6], IRAM[5], IRAM[4], IRAM[3], IRAM[2], IRAM[1], IRAM[0]} ;
+assign SBUF_next = SBUF;
+assign SCON_next = SCON;
+assign PCON_next = PCON;
+assign TCON_next = TCON;
+assign TL0_next = TL0;
+assign TL1_next = TL1;
+assign TH0_next = TH0;
+assign TH1_next = TH1;
+assign TMOD_next = TMOD;
+assign IE_next = IE;
+assign IP_next = IP;
 
 always @(posedge clk) begin
   if (rst) begin
@@ -79215,27 +77174,16 @@ always @(posedge clk) begin
       P2INREG <= P2IN;
       P3INREG <= P3IN;
       ACC <= ACC_next;
-      PCON <= PCON_next;
-      B <= B_next;
-      TMOD <= TMOD_next;
-      DPL <= DPL_next;
-      DPH <= DPH_next;
-      TL1 <= TL1_next;
-      TL0 <= TL0_next;
-      TCON <= TCON_next;
-      TH1 <= TH1_next;
-      TH0 <= TH0_next;
-      PC <= PC_next;
       P2 <= P2_next;
-      P3 <= P3_next;
       P0 <= P0_next;
       P1 <= P1_next;
-      IP <= IP_next;
-      IE <= IE_next;
-      SCON <= SCON_next;
+      P3 <= P3_next;
       SP <= SP_next;
-      SBUF <= SBUF_next;
+      PC <= PC_next;
+      B <= B_next;
+      DPL <= DPL_next;
       PSW <= PSW_next;
+      DPH <= DPH_next;
       if (WR_COND_0_IRAM) IRAM[WR_ADDR_0_IRAM] <= WR_DATA_0_IRAM;
       if (WR_COND_1_IRAM) IRAM[WR_ADDR_1_IRAM] <= WR_DATA_1_IRAM;
     end

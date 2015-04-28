@@ -245,20 +245,7 @@ input         t2_i,             // counter 2 input
     reg inst_finished_r;
 
     // if we see a non-zero op, property is always valid.
-    wire regs_zero = 
-        SBUF_gm == 8'b0 && SBUF_gm_next == 8'b0 && 
-        SCON_gm == 8'b0 && SCON_gm_next == 8'b0 && 
-        PCON_gm == 8'b0 && PCON_gm_next == 8'b0 && 
-        TCON_gm == 8'h2 && TCON_gm_next == 8'h2 && 
-        TL0_gm == 8'b0 && TL0_gm_next == 8'b0 && 
-        TL1_gm == 8'b0 && TL1_gm_next == 8'b0 && 
-        TH0_gm == 8'b0 && TH0_gm_next == 8'b0 && 
-        TH1_gm == 8'b0 && TH1_gm_next == 8'b0 && 
-        TMOD_gm == 8'b0 && TMOD_gm_next == 8'b0 && 
-        IE_gm == 8'b0 && IE_gm_next == 8'b0 && 
-        IP_gm == 8'b0 && IP_gm_next == 8'b0;
-        
-    wire op0_cnst_next = op0_cnst ? ((rd_rom_0 <= 8'h80) && regs_zero) : 0;
+    wire op0_cnst_next = op0_cnst ? ((rd_rom_0 <= 8'h80)) : 0;
     wire cnst_valid = op0_cnst && op0_cnst_next;
 
     assign property_invalid_pc = cnst_valid && inst_finished && (PC_gm_next != pc_impl);
