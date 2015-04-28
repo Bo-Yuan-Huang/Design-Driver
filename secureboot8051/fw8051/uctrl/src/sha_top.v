@@ -151,8 +151,8 @@ wire reading_last_byte = (byte_counter == 6'd63) || (bytes_read_next == sha_reg_
 wire read_last_byte_acked = reading_last_byte && xram_ack;
 
 // Are we done reading or do we have more blocks?
-wire sha_finished    = sha_core_digest_valid && (reg_bytes_read == sha_reg_len);
 wire sha_more_blocks = sha_core_digest_valid && (reg_bytes_read <  sha_reg_len);
+wire sha_finished    = sha_core_digest_valid && (reg_bytes_read >= sha_reg_len);
 
 // SHA operation logic.
 wire [511:0] sha_core_block_read_data_next;
@@ -230,8 +230,20 @@ wire [511:0] sha_core_block_next = sha_state_idle       ? 512'b0                
 wire writing_last_byte = byte_counter == 6'd19;
 wire write_last_byte_acked = writing_last_byte && xram_ack;
 
+wire [7:0] data_out_state,
+           data_out_rd_addr,
+           data_out_wr_addr,
+           data_out_len;
+
 // allow the processor to read the current state.
-wire [7:0] data_out = sel_reg_state ? {6'd0, sha_reg_state} : 8'dz;
+assign data_out_state = {6'd0, sha_reg_state};
+
+wire [7:0] data_out;
+assign data_out = sel_reg_state     ? data_out_state
+                : sel_reg_rd_addr   ? data_out_rd_addr
+                : sel_reg_wr_addr   ? data_out_wr_addr
+                : sel_reg_len       ? data_out_len
+                : 8'd0;
 
 // rd address register.
 wire [15:0] sha_reg_rd_addr;
@@ -242,7 +254,7 @@ reg2byte sha_reg_rd_addr_i(
     .wr         (sel_reg_rd_addr && wren),
     .addr       (addr[0]),
     .data_in    (data_in),
-    .data_out   (data_out),
+    .data_out   (data_out_rd_addr),
     .reg_out    (sha_reg_rd_addr)
 );
 
@@ -255,7 +267,7 @@ reg2byte sha_reg_wr_addr_i(
     .wr         (sel_reg_wr_addr && wren),
     .addr       (addr[0]),
     .data_in    (data_in),
-    .data_out   (data_out),
+    .data_out   (data_out_wr_addr),
     .reg_out    (sha_reg_wr_addr)
 );
 
@@ -268,7 +280,7 @@ reg2byte sha_reg_len_i(
     .wr         (sel_reg_len && wren),
     .addr       (addr[0]),
     .data_in    (data_in),
-    .data_out   (data_out),
+    .data_out   (data_out_len),
     .reg_out    (sha_reg_len)
 );
 

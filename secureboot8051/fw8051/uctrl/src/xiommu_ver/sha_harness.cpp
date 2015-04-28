@@ -149,9 +149,9 @@ int test_sha_harness() {
 
     set_sha_rdaddr(0x1000);
     set_sha_wraddr(0x2000);
-    set_sha_len(16);
+    set_sha_len(0x40);
 
-    init_xram(0);
+    init_xram(0x41);
 
     incrtime(100);
 
@@ -160,20 +160,7 @@ int test_sha_harness() {
     write_addr(0xFE00, 1);
     incrtime(10);
     
-    // let's try to debug.
-    top->proc_wr = 0; top->proc_stb = 1;
-    top->proc_addr = 0xFE01;
-    top->eval();
-    std::cout << "stb-sha=" << (int) top->v__DOT__stb_sha << std::endl;
-    std::cout << "sha-addr-range=" << (int) top->v__DOT__sha_addr_range << std::endl;
-    std::cout << "ack=" << (int) top->proc_ack << std::endl;
-    std::cout << "state=" << (int) top->v__DOT__sha_top_i__DOT__sha_reg_state << std::endl;
-    std::cout << "data_out=" << (int) top->proc_data_out << std::endl;
-
-    std::cout << "sha_state=" << read_addr(0xFE01) << std::endl;
-    std::cout << "sha_state=" << get_sha_state() << std::endl;
     while(read_addr(0xFE01) != 0) {
-        std::cout << "sha_state=" << get_sha_state() << std::endl;
         incrtime(10);
     }
 
@@ -194,25 +181,32 @@ void test_sha_state_fns()
     state_in.reg_state = 0;
     state_in.reg_rdaddr = 0x3000;
     state_in.reg_wraddr = 0x4000;
-    state_in.reg_len = 0x40;
+    state_in.reg_len = 0x80;
     state_in.reg_bytes_read = 0;
-    state_in.xram.def = 32;
+    state_in.xram.def = 0;
+    for(int i=0; i < 128; i++) {
+        int addr = 0x3000 + i;
+        state_in.xram.others.push_back(std::pair<int, int>(addr, i));
+    }
 
     int data_out;
 
     eval_sha_state( SHA_WR, 0xFE00, 1, data_out, state_in, state_out);
-    std::cout << state_out.reg_state << std::endl;
+    std::cout << "state=" << std::dec << state_out.reg_state << "; "
+              << "bytes=" << std::dec << state_out.reg_bytes_read << "; "
+              << "time=" << std::dec << main_time << std::endl;
     state_in = state_out;
-    std::cout << "bytes=" << state_in.reg_bytes_read << std::endl;
 
     do {
         eval_sha_state( SHA_NOP, 0, 0, data_out, state_in, state_out);
-        std::cout << state_out.reg_state << std::endl;
+
+        std::cout << "state=" << std::dec << state_out.reg_state << "; "
+                  << "bytes=" << std::dec << state_out.reg_bytes_read << "; "
+                  << "time=" << std::dec << main_time << std::endl;
         state_in = state_out;
-        std::cout << "bytes=" << state_in.reg_bytes_read << std::endl;
     } while(state_in.reg_state != 0);
 
-    for(int i=0x2000; i < 0x2000+32; i++) {
+    for(int i=0x4000; i < 0x4000+20; i++) {
         std::cout << std::hex << std::setw(2) << get_xram_val(i) << " ";
     }
     std::cout << std::endl;

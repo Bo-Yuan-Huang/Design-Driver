@@ -64,6 +64,7 @@ void write_addr(uint16_t addr, uint8_t data)
 
 void init_xram(uint8_t def)
 {
+    std::cout << "init_xram.def=" << std::hex << (int) def << std::endl;
     for(int i=0; i != XRAM_SIZE; i++) {
         top->v__DOT__oc8051_xram_i__DOT__buff[i] = def;
     }

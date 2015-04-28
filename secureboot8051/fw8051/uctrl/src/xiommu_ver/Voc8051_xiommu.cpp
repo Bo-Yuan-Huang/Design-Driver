@@ -3943,7 +3943,7 @@ void Voc8051_xiommu::_sequent__TOP__2(Voc8051_xiommu__Syms* __restrict vlSymsp) 
 	__Vdly__v__DOT__oc8051_memarbiter_i__DOT__arbiter_state 
 	    = vlTOPp->v__DOT__oc8051_memarbiter_i__DOT__arbiter_state_next;
     }
-    // ALWAYS at sha_top.v:336
+    // ALWAYS at sha_top.v:348
     if (vlTOPp->rst) {
 	__Vdly__v__DOT__sha_top_i__DOT__sha_reg_state = 0;
 	__Vdly__v__DOT__sha_top_i__DOT__byte_counter = 0;
@@ -12660,60 +12660,72 @@ void Voc8051_xiommu::_settle__TOP__8(Voc8051_xiommu__Syms* __restrict vlSymsp) {
 								(0xfff0 
 								 & (IData)(vlTOPp->proc_addr))))))
 				      : ((IData)(vlTOPp->v__DOT__stb_sha)
-					  ? ((((((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_state) 
-						 & VL_NEGATE_I((IData)(
-								       (0xfe01 
-									== (IData)(vlTOPp->proc_addr))))) 
-						| (((1 
-						     & (IData)(vlTOPp->proc_addr))
-						     ? 
-						    ((1 
-						      & (IData)(vlTOPp->proc_addr))
-						      ? 
-						     ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_rd_addr) 
-						      >> 8)
-						      : 0)
-						     : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_rd_addr)) 
-						   & VL_NEGATE_I((IData)(
-									 (0xfe02 
-									  == 
-									  (0xfffe 
-									   & (IData)(vlTOPp->proc_addr))))))) 
-					       | (((1 
+					  ? ((0xfe01 
+					      == (IData)(vlTOPp->proc_addr))
+					      ? (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_state)
+					      : ((0xfe02 
+						  == 
+						  (0xfffe 
+						   & (IData)(vlTOPp->proc_addr)))
+						  ? 
+						 (((1 
 						    & (IData)(vlTOPp->proc_addr))
 						    ? 
 						   ((1 
 						     & (IData)(vlTOPp->proc_addr))
 						     ? 
-						    ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_wr_addr) 
+						    ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_rd_addr) 
 						     >> 8)
 						     : 0)
-						    : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_wr_addr)) 
+						    : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_rd_addr)) 
 						  & VL_NEGATE_I((IData)(
-									(0xfe04 
+									(0xfe02 
 									 == 
 									 (0xfffe 
-									  & (IData)(vlTOPp->proc_addr))))))) 
-					      | (((1 
-						   & (IData)(vlTOPp->proc_addr))
+									  & (IData)(vlTOPp->proc_addr))))))
+						  : 
+						 ((0xfe04 
+						   == 
+						   (0xfffe 
+						    & (IData)(vlTOPp->proc_addr)))
 						   ? 
-						  ((1 
-						    & (IData)(vlTOPp->proc_addr))
+						  (((1 
+						     & (IData)(vlTOPp->proc_addr))
+						     ? 
+						    ((1 
+						      & (IData)(vlTOPp->proc_addr))
+						      ? 
+						     ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_wr_addr) 
+						      >> 8)
+						      : 0)
+						     : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_wr_addr)) 
+						   & VL_NEGATE_I((IData)(
+									 (0xfe04 
+									  == 
+									  (0xfffe 
+									   & (IData)(vlTOPp->proc_addr))))))
+						   : 
+						  ((0xfe06 
+						    == 
+						    (0xfffe 
+						     & (IData)(vlTOPp->proc_addr)))
 						    ? 
-						   ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_len) 
-						    >> 8)
-						    : 0)
-						   : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_len)) 
-						 & VL_NEGATE_I((IData)(
-								       (0xfe06 
-									== 
-									(0xfffe 
-									 & (IData)(vlTOPp->proc_addr))))))) 
-					     & VL_NEGATE_I((IData)(
-								   (0xfe06 
-								    == 
-								    (0xfffe 
-								     & (IData)(vlTOPp->proc_addr))))))
+						   (((1 
+						      & (IData)(vlTOPp->proc_addr))
+						      ? 
+						     ((1 
+						       & (IData)(vlTOPp->proc_addr))
+						       ? 
+						      ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_len) 
+						       >> 8)
+						       : 0)
+						      : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_len)) 
+						    & VL_NEGATE_I((IData)(
+									  (0xfe06 
+									   == 
+									   (0xfffe 
+									    & (IData)(vlTOPp->proc_addr))))))
+						    : 0))))
 					  : (IData)(vlTOPp->v__DOT__memarbiter_data_out))));
     vlTOPp->v__DOT__oc8051_memarbiter_i__DOT__arbiter_state_next 
 	= ((IData)(vlTOPp->v__DOT__oc8051_memarbiter_i__DOT__arbiter_state)
@@ -13412,60 +13424,72 @@ void Voc8051_xiommu::_combo__TOP__9(Voc8051_xiommu__Syms* __restrict vlSymsp) {
 								(0xfff0 
 								 & (IData)(vlTOPp->proc_addr))))))
 				      : ((IData)(vlTOPp->v__DOT__stb_sha)
-					  ? ((((((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_state) 
-						 & VL_NEGATE_I((IData)(
-								       (0xfe01 
-									== (IData)(vlTOPp->proc_addr))))) 
-						| (((1 
-						     & (IData)(vlTOPp->proc_addr))
-						     ? 
-						    ((1 
-						      & (IData)(vlTOPp->proc_addr))
-						      ? 
-						     ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_rd_addr) 
-						      >> 8)
-						      : 0)
-						     : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_rd_addr)) 
-						   & VL_NEGATE_I((IData)(
-									 (0xfe02 
-									  == 
-									  (0xfffe 
-									   & (IData)(vlTOPp->proc_addr))))))) 
-					       | (((1 
+					  ? ((0xfe01 
+					      == (IData)(vlTOPp->proc_addr))
+					      ? (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_state)
+					      : ((0xfe02 
+						  == 
+						  (0xfffe 
+						   & (IData)(vlTOPp->proc_addr)))
+						  ? 
+						 (((1 
 						    & (IData)(vlTOPp->proc_addr))
 						    ? 
 						   ((1 
 						     & (IData)(vlTOPp->proc_addr))
 						     ? 
-						    ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_wr_addr) 
+						    ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_rd_addr) 
 						     >> 8)
 						     : 0)
-						    : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_wr_addr)) 
+						    : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_rd_addr)) 
 						  & VL_NEGATE_I((IData)(
-									(0xfe04 
+									(0xfe02 
 									 == 
 									 (0xfffe 
-									  & (IData)(vlTOPp->proc_addr))))))) 
-					      | (((1 
-						   & (IData)(vlTOPp->proc_addr))
+									  & (IData)(vlTOPp->proc_addr))))))
+						  : 
+						 ((0xfe04 
+						   == 
+						   (0xfffe 
+						    & (IData)(vlTOPp->proc_addr)))
 						   ? 
-						  ((1 
-						    & (IData)(vlTOPp->proc_addr))
+						  (((1 
+						     & (IData)(vlTOPp->proc_addr))
+						     ? 
+						    ((1 
+						      & (IData)(vlTOPp->proc_addr))
+						      ? 
+						     ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_wr_addr) 
+						      >> 8)
+						      : 0)
+						     : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_wr_addr)) 
+						   & VL_NEGATE_I((IData)(
+									 (0xfe04 
+									  == 
+									  (0xfffe 
+									   & (IData)(vlTOPp->proc_addr))))))
+						   : 
+						  ((0xfe06 
+						    == 
+						    (0xfffe 
+						     & (IData)(vlTOPp->proc_addr)))
 						    ? 
-						   ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_len) 
-						    >> 8)
-						    : 0)
-						   : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_len)) 
-						 & VL_NEGATE_I((IData)(
-								       (0xfe06 
-									== 
-									(0xfffe 
-									 & (IData)(vlTOPp->proc_addr))))))) 
-					     & VL_NEGATE_I((IData)(
-								   (0xfe06 
-								    == 
-								    (0xfffe 
-								     & (IData)(vlTOPp->proc_addr))))))
+						   (((1 
+						      & (IData)(vlTOPp->proc_addr))
+						      ? 
+						     ((1 
+						       & (IData)(vlTOPp->proc_addr))
+						       ? 
+						      ((IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_len) 
+						       >> 8)
+						       : 0)
+						      : (IData)(vlTOPp->v__DOT__sha_top_i__DOT__sha_reg_len)) 
+						    & VL_NEGATE_I((IData)(
+									  (0xfe06 
+									   == 
+									   (0xfffe 
+									    & (IData)(vlTOPp->proc_addr))))))
+						    : 0))))
 					  : (IData)(vlTOPp->v__DOT__memarbiter_data_out))));
     vlTOPp->v__DOT__oc8051_memarbiter_i__DOT__arbiter_state_next 
 	= ((IData)(vlTOPp->v__DOT__oc8051_memarbiter_i__DOT__arbiter_state)
