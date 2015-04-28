@@ -198,6 +198,7 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 iram,
                 psw,
                 sp,
+                op1, op2, op3,
                 decoder_state
                 );
 
@@ -223,6 +224,7 @@ output [7:0]  acc;
 output [7:0]  b_reg;
 output [15:0] dptr;
 output [2047:0] iram;
+output [7:0] op1, op2, op3;
 output [7:0]  ie;
 
 input [7:0]   wbd_dat_i;        // ram data input
@@ -634,6 +636,9 @@ oc8051_memory_interface oc8051_memory_interface1(.clk(wb_clk_i),
                        .op1_out(op1_n),
                        .op2_out(op2_n),
                        .op3_out(op3_n),
+                       .op1(op1),
+                       .op2(op2),
+                       .op3(op3),
 
 // interrupt interface
                        .intr(intr), 

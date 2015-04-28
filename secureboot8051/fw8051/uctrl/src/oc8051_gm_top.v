@@ -40,6 +40,7 @@ module oc8051_gm_top(
     t2_i,             // counter 2 input
     t2ex_i,           //
 `endif
+    property_invalid_rom_pc,
     property_invalid_pc,
     property_invalid_acc,
     property_invalid_b_reg,
@@ -91,6 +92,7 @@ input         t2_i,             // counter 2 input
 `endif
 
 
+    output property_invalid_rom_pc;
     output property_invalid_pc;
     output property_invalid_acc;
     output property_invalid_b_reg;
@@ -133,7 +135,7 @@ input         t2_i,             // counter 2 input
 
     reg  first_instr;
     wire inst_finished;
-    wire [15:0] pc2, pc1;
+    wire [15:0] pc_impl;
     wire [7:0] psw_impl;
     wire [7:0] sp_impl;
     wire [7:0] acc_impl, b_reg_impl;
@@ -256,7 +258,7 @@ input         t2_i,             // counter 2 input
     wire op0_cnst_next = op0_cnst ? ((rd_rom_0 <= 8'h80) && regs_zero) : 0;
     wire cnst_valid = op0_cnst && op0_cnst_next;
 
-    assign property_invalid_pc = cnst_valid && inst_finished && (PC_gm_next != pc2);
+    assign property_invalid_pc = cnst_valid && inst_finished && (PC_gm_next != pc_impl);
     assign property_invalid_acc = cnst_valid && inst_finished_r && (ACC_gm != acc_impl);
     assign property_invalid_b_reg = cnst_valid & inst_finished_r && (B_gm != b_reg_impl);
     assign property_invalid_dpl = cnst_valid & inst_finished_r && (DPL_gm != dptr_impl[7:0]);
@@ -303,6 +305,20 @@ input         t2_i,             // counter 2 input
     end
 
 
+
+    wire [15:0] pc_impl_p1 = pc_impl + 16'd1;
+    wire [15:0] pc_impl_p2 = pc_impl + 16'd2;
+
+    wire [7:0] op1_impl, op2_impl, op3_impl;
+    wire [7:0] op1_gm   = rd_rom_0;
+    wire [7:0] op2_gm   = rd_rom_1;
+    wire [7:0] op3_gm   = rd_rom_2;
+
+    assign property_invalid_rom_pc = inst_finished          && 
+                                     (op1_gm != op1_impl)   && (rd_rom_0_addr == pc_impl)       &&
+                                     (op2_gm != op2_impl)   && (rd_rom_1_addr == pc_impl_p1)    &&
+                                     (op3_gm != op3_impl)   && (rd_rom_2_addr == pc_impl_p2);
+
     wire [2047:0] iram_impl_flat;
     wire [127:0] iram_impl = iram_impl_flat[127:0];
 
@@ -321,14 +337,16 @@ input         t2_i,             // counter 2 input
          .cxrom_data_out        ( cxrom_data_out ),
 
          .pc_change             (inst_finished),
-         .pc                    (pc2),
-         .pc_log                (pc1),
+         .pc                    (pc_impl),
          .psw                   (psw_impl),
          .sp                    (sp_impl),
          .acc                   (acc_impl),
          .b_reg                 (b_reg_impl),
          .dptr                  (dptr_impl),
          .iram                  (iram_impl_flat),
+         .op1                   (op1_impl),
+         .op2                   (op2_impl),
+         .op3                   (op3_impl),
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0

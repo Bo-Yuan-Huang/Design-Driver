@@ -124,9 +124,9 @@ module oc8051_memory_interface (clk, rst,
      iadr_o, 
      ea, 
      ea_int,
-     op1_out, 
-     op2_out, 
-     op3_out,
+     op1_out,  op1,
+     op2_out,  op2,
+     op3_out,  op3,
      out_of_rst,
      decoder_new_valid_pc,
      pc_log,
@@ -281,9 +281,9 @@ input  [31:0] idat_onchip;
 output        int_ack,
               istb_o;
 
-output  [7:0] op1_out,
-              op3_out,
-              op2_out;
+output  [7:0] op1_out, op1,
+              op3_out, op2,
+              op2_out, op3;
 
 reg           int_ack_t,
               int_ack,
