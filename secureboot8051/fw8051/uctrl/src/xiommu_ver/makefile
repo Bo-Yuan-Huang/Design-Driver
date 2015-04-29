@@ -28,14 +28,16 @@ endif
 #######################################################################
 # Linking final exe -- presumes have a sim_main.cpp
 
-simulate: simulate.o aes_harness.o sha_harness.o $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a
+simulate: simulate.o aes_harness.o sha_harness.o xmodel.o $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a
 	$(LINK) $(LDFLAGS) -g $^ $(LOADLIBES) $(LDLIBS) -o $@ $(LIBS) 2>&1 | c++filt
 
-simulate.o: simulate.cpp simulate.h aes_harness.h sha_harness.h $(VM_PREFIX).h
+simulate.o: simulate.cpp simulate.h aes_harness.h sha_harness.h xmodel.h $(VM_PREFIX).h
 
 aes_harness.o: aes_harness.cpp aes_harness.h simulate.h $(VM_PREFIX).h
 
 sha_harness.o: sha_harness.cpp sha_harness.h simulate.h $(VM_PREFIX).h
+
+xmodel.o: xmodel.cpp xmodel.h simulate.h aes_harness.h sha_harness.h $(VM_PREFIX).h
 
 clean:
 	rm -rf *.o *.a ./simulate

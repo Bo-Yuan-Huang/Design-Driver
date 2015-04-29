@@ -2,7 +2,7 @@
 #define _SIMULATE_H_DEFINED_
 
 #include <iostream>
-#include <vector>
+#include <map>
 
 #include <stdint.h>
 #include <verilated.h>
@@ -15,7 +15,10 @@ extern const int XRAM_SIZE;
 
 struct xram_val_t {
     int def;
-    std::vector< std::pair<int,int> > others;
+    std::map<int,int> others;
+
+    int get_val(int addr) const;
+    void set_val(int addr, int val);
 };
 
 std::ostream& operator<<(std::ostream& out, const xram_val_t& xram);

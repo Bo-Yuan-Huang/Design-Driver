@@ -28,8 +28,8 @@ int get_aes_len();
 void set_aes_ctr(const uint8_t* ctr);
 void get_aes_ctr(uint8_t* ctr);
 
-void set_aes_key(const uint8_t* ctr);
-void get_aes_key(uint8_t* ctr);
+void set_aes_key(const uint8_t* key);
+void get_aes_key(uint8_t* key);
 
 void set_aes_num_op_bytes(int value);
 int get_aes_num_op_bytes();
@@ -37,31 +37,9 @@ int get_aes_num_op_bytes();
 void set_aes_block_ctr(int value);
 int get_aes_block_ctr();
 
-enum AES_OP { AES_NOP, AES_RD, AES_WR };
-
-struct aes_state_t {
-    int reg_state;
-    int reg_addr;
-    int reg_len;
-    int reg_num_op_bytes;
-    int reg_block_ctr;
-
-    uint8_t reg_ctr[16];
-    uint8_t reg_key[16];
-    xram_val_t xram;
-};
-
-void eval_aes_state(
-    AES_OP op,
-    int addrin,
-    int datain,
-    int& dataout,
-    const aes_state_t& state_in,
-    aes_state_t& state_out
-);
-
-int test_aes_harness();
-void test_aes_state_fns();
-void aes_simulate(const char* filename);
+void set_aes_mem_data_buf(const uint8_t* buf);
+void get_aes_mem_data_buf(uint8_t* buf);
+void set_aes_enc_data_buf(const uint8_t* buf);
+void get_aes_enc_data_buf(uint8_t* buf);
 
 #endif

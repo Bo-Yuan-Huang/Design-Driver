@@ -33,31 +33,5 @@ int get_sha_bytes_read();
 void set_sha_block_ctr(int value);
 int get_sha_block_ctr();
 
-enum SHA_OP { SHA_NOP, SHA_RD, SHA_WR };
-
-struct sha_state_t {
-    int reg_state;
-    int reg_rdaddr;
-    int reg_wraddr;
-    int reg_len;
-    int reg_bytes_read;
-    int reg_block_ctr;
-
-    xram_val_t xram;
-};
-
-void eval_sha_state(
-    SHA_OP op,
-    int addrin,
-    int datain,
-    int& dataout,
-    const sha_state_t& state_in,
-    sha_state_t& state_out
-);
-
-int test_sha_harness();
-void test_sha_state_fns();
-void sha_simulate(const char* filename);
-
 #endif
 

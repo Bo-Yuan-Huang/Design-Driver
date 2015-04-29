@@ -8,13 +8,29 @@
 #include "Voc8051_xiommu.h"
 #include "aes_harness.h"
 #include "sha_harness.h"
+#include "xmodel.h"
 
 #include <vector>
 #include <map>
 
+
 Voc8051_xiommu* top;
 vluint64_t main_time = 0;
 const int XRAM_SIZE = 65536;
+
+int xram_val_t::get_val(int addr) const
+{
+    auto pos = others.find(addr);
+    if (pos != others.end()) return pos->second;
+    else return def;
+}
+
+void xram_val_t::set_val(int addr, int val)
+{
+    if(val != def)  {
+        others[addr] = val;
+    }
+}
 
 double sc_time_stamp() {
     return main_time;
@@ -64,7 +80,6 @@ void write_addr(uint16_t addr, uint8_t data)
 
 void init_xram(uint8_t def)
 {
-    std::cout << "init_xram.def=" << std::hex << (int) def << std::endl;
     for(int i=0; i != XRAM_SIZE; i++) {
         top->v__DOT__oc8051_xram_i__DOT__buff[i] = def;
     }
@@ -78,8 +93,8 @@ void set_xram_val(int addr, int val)
 void set_xram_val(const xram_val_t& xv)
 {
     init_xram(xv.def);
-    for(unsigned i=0; i != xv.others.size(); i++) {
-        set_xram_val(xv.others[i].first, xv.others[i].second);
+    for(auto it=xv.others.begin(); it != xv.others.end(); it++) {
+        set_xram_val(it->first, it->second);
     }
 }
 
@@ -104,11 +119,11 @@ void get_xram_val(xram_val_t& xv)
     }
     assert (max_val != -1);
     xv.def = max_val;
+    xv.others.clear();
     for(int i=0; i != XRAM_SIZE; i++) {
         int vi = get_xram_val(i);
         if(vi != xv.def) {
-            auto p = std::pair<int,int>(i, vi);
-            xv.others.push_back(p);
+            xv.others[i] = vi;
         }
     }
 }
@@ -116,10 +131,10 @@ void get_xram_val(xram_val_t& xv)
 std::ostream& operator<<(std::ostream& out, const xram_val_t& xram)
 {
     out << std::hex << xram.others.size() << " ";
-    out << std::hex << xram.def << " ";
-    for (unsigned i=0; i != xram.others.size(); i++) {
-        out << std::hex << xram.others[i].first << " "
-            << std::hex << xram.others[i].second << " ";
+    out << std::hex << xram.def << " " << std::endl;
+    for (auto it : xram.others) {
+        out << std::hex << it.first << " "
+            << std::hex << it.second << " ";
     }
     return (out << std::dec);
 }
@@ -131,9 +146,9 @@ std::istream& operator>>(std::istream& in, xram_val_t& xram)
 
     xram.others.clear();
     for(unsigned i=0; i != sz; i++) {
-        auto p = std::pair<int, int>(0,0);
-        in >> std::hex >> p.first >> std::hex >> p.second;
-        xram.others.push_back(p);
+        int addr, val;
+        in >> std::hex >> addr >> std::hex >> val;
+        xram.others[addr] = val;
     }
     assert(xram.others.size() == sz);
 
@@ -144,18 +159,15 @@ std::istream& operator>>(std::istream& in, xram_val_t& xram)
 int main(int argc, char* argv[])
 {
     Verilated::commandArgs(argc, argv);
-    if (argc != 3 || (strcmp(argv[1], "aes") != 0 && strcmp(argv[1], "sha") != 0)) {
+    if (argc != 2) {
         std::cerr << "Syntax error. " << std::endl;
-        std::cerr << "Usage:  " << argv[0]  << " <aes|sha> <state-file>" << std::endl;
+        std::cerr << "Usage:  " << argv[0]  << " <state-file>" << std::endl;
         return 1;
     }
     top = new Voc8051_xiommu;
-    if(strcmp(argv[1], "aes") == 0) {
-        aes_simulate(argv[2]);
-        // test_aes_harness();
-    } else {
-        test_sha_harness();
-    }
+
+    // test_harness();
+    xm_simulate(argv[1]);
 
     top->final();
     delete top;
