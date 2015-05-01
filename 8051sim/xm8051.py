@@ -5,9 +5,12 @@ from Crypto.Hash import SHA
 from collections import defaultdict
 
 class XMM(object):
-    STEP = 0
-    RD   = 1
-    WR   = 2
+    STEP_NONE = 0
+    STEP_AES  = 1
+    STEP_SHA  = 2
+    STEP_BOTH = 3
+    RD        = 4
+    WR        = 5
 
     AES_IDLE = 0
     AES_RD   = 1
@@ -200,9 +203,11 @@ class XMM(object):
             self.write(addr, datain)
             return 0
         else:
-            assert op == XMM.STEP
-            self.aes_step()
-            self.sha_step()
+            assert op == XMM.STEP_NONE or op == XMM.STEP_AES or op == XMM.STEP_SHA or op == XMM.STEP_BOTH
+            if op == XMM.STEP_AES or op == XMM.STEP_BOTH:
+                self.aes_step()
+            if op == XMM.STEP_SHA or op == XMM.STEP_BOTH:
+                self.sha_step()
 
     def compressXRAM(self):
         numCounts = defaultdict(int)
@@ -300,22 +305,22 @@ def test(argv):
     xmm.operate(XMM.WR, 0xff00, 1)
     assert xmm.operate(XMM.RD, 0xff01, 1) == XMM.AES_RD
 
-    xmm.operate(XMM.STEP, 0, 0)
+    xmm.operate(XMM.STEP_BOTH, 0, 0)
     assert xmm.operate(XMM.RD, 0xff01, 1) == XMM.AES_OP
 
-    xmm.operate(XMM.STEP, 0, 0)
+    xmm.operate(XMM.STEP_BOTH, 0, 0)
     assert xmm.operate(XMM.RD, 0xff01, 1) == XMM.AES_WR
 
-    xmm.operate(XMM.STEP, 0, 0)
+    xmm.operate(XMM.STEP_BOTH, 0, 0)
     assert xmm.operate(XMM.RD, 0xff01, 1) == XMM.AES_RD
 
-    xmm.operate(XMM.STEP, 0, 0)
+    xmm.operate(XMM.STEP_BOTH, 0, 0)
     assert xmm.operate(XMM.RD, 0xff01, 1) == XMM.AES_OP
 
-    xmm.operate(XMM.STEP, 0, 0)
+    xmm.operate(XMM.STEP_BOTH, 0, 0)
     assert xmm.operate(XMM.RD, 0xff01, 1) == XMM.AES_WR
 
-    xmm.operate(XMM.STEP, 0, 0)
+    xmm.operate(XMM.STEP_BOTH, 0, 0)
     assert xmm.operate(XMM.RD, 0xff01, 1) == XMM.AES_IDLE
 
     data = []
@@ -325,7 +330,7 @@ def test(argv):
 
     xmm.operate(XMM.WR, 0xff00, 1)
     while xmm.operate(XMM.RD, 0xff01, 0) != XMM.AES_IDLE:
-        xmm.operate(XMM.STEP, 0, 0)
+        xmm.operate(XMM.STEP_BOTH, 0, 0)
 
     for i in xrange(0x20):
         assert xmm.operate(XMM.RD, 0x1000+i, 0) == 65+i
@@ -348,7 +353,7 @@ def test(argv):
     assert xmm.operate(XMM.RD, 0xfe01, 0) == XMM.SHA_RD
 
     while xmm.operate(XMM.RD, 0xfe01, 0) != XMM.SHA_IDLE:
-        xmm.operate(XMM.STEP, 0, 0)
+        xmm.operate(XMM.STEP_BOTH, 0, 0)
 
     data = []
     for i in xrange(20):
