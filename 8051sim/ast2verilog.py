@@ -114,6 +114,14 @@ class VerilogContext(object):
         self.addWire(node, node.name)
         self.objects[node] = node.name
 
+    def addAbstractInput(self, name):
+        for iname, iwidth in self.inputs:
+            if iname == name:
+                ndname = iname + '_abstr'
+                self.cinputs.append((ndname, iwidth))
+                return ndname
+        raise KeyError, 'Input %s not found to create abstract input!' % name
+
     def addNext(self, name):
         for iname, iwidth in self.inputs:
             if iname == name:
@@ -287,6 +295,23 @@ class VerilogContext(object):
     def setCnst(self, c):
         self.cnst = c
 
+    def addOutputsSingleOp(self, this_opcode):
+        for out, exprs in self.statechanges.iteritems():
+            outnext = self.addNext(out)
+            ndnext = self.addAbstractInput(out)
+            expr = 'assign %s = ' % outnext
+            found = False
+            for opcode, exp in exprs:
+                if opcode == this_opcode:
+                    opast = ast.BitVecVal(opcode, self.cnst.width)
+                    eqast = ast.Equal(self.cnst, opast)
+                    eqexp = self.getExpr(eqast)
+                    expr += '  ( %s ) ? ( %s ) : ' % (eqexp, exp)
+                    found = True
+            expr += ' ( %s );' % ndnext                
+            self.statements.append(expr)
+            self.always_stmts.append('%s <= %s;' % (out, outnext))
+            
     def addOutputs(self):
         for out, exprs in self.statechanges.iteritems():
             outnext = self.addNext(out)
@@ -300,7 +325,7 @@ class VerilogContext(object):
             self.statements.append(expr);
             self.always_stmts.append('%s <= %s;' % (out, outnext))
 
-    def addMems(self):
+    def addMems(self, this_opcode=None):
         writes = {}
         for st, mws in self.memwrites.iteritems():
             for i, (opcode, mw) in enumerate(mws):
@@ -324,15 +349,45 @@ class VerilogContext(object):
                 writes[mem][opcode] += stmts
 
         for mem, memwrites in writes.iteritems():
-            self.writeMem(mem, memwrites)
+            self.writeMem(mem, memwrites, this_opcode)
 
-    def writeMem(self, mem, writes):
+    def writeMem(self, mem, writes, this_opcode):
         wrports = WritePorts()
-        for opcode, stmts in writes.iteritems():
-            for i, [c, m, a, d] in enumerate(stmts):
-                assert m == mem
-                wrports.addWrite(i, c, a, d)
 
+        if this_opcode:
+            maxports = 0
+            for opcode, stmts in writes.iteritems():
+                if maxports < len(stmts):
+                    maxports = len(stmts)
+
+            a_conds, a_addrs, a_datas = [], [], []
+            for i in xrange(maxports):
+                ca_i = 'WR_COND_ABSTR_%s_%d' % (mem.name, i)
+                aa_i = 'WR_ADDR_ABSTR_%s_%d' % (mem.name, i)
+                da_i = 'WR_DATA_ABSTR_%s_%d' % (mem.name, i)
+
+                a_conds.append(ca_i)
+                a_addrs.append(aa_i)
+                a_datas.append(da_i)
+
+                self.cinputs.append((ca_i, None))
+                self.cinputs.append((aa_i, (mem.awidth-1, 0)))
+                self.cinputs.append((da_i, (mem.dwidth-1, 0)))
+
+        for opcode, stmts in writes.iteritems():
+            if this_opcode:
+                for i, [c, m, a, d] in enumerate(stmts):
+                    assert m == mem
+                    if opcode == this_opcode:
+                        wrports.addWrite(i, c, a, d)
+            else:
+                for i, [c, m, a, d] in enumerate(stmts):
+                    assert m == mem
+                    wrports.addWrite(i, c, a, d)
+
+        if this_opcode:
+            for i in xrange(maxports):
+                wrports.addWrite(i, a_conds[i], a_addrs[i], a_datas[i])
         # print mem.name, 'num ports:', wrports.numPorts
         for i in xrange(wrports.numPorts):
             addrport = 'WR_ADDR_%d_%s' % (i, mem.name)
@@ -622,7 +677,7 @@ class AddrSubs(object):
         ports.sort(key=lambda p: p[0].name)
         return ports
 
-    def getExpr(self, cnst, mem, sub):
+    def getExpr(self, cnst, mem, sub, this_opcode=None, vctx=None):
         exprs = []
         all_same = False
         for p, m, a, s in self.subs:
@@ -633,6 +688,24 @@ class AddrSubs(object):
 
         assert len(exprs) >= 1
         if all_same: assert len(exprs) == 1
+
+        if this_opcode and not all_same:
+            assert vctx != None
+
+            abstr_addr_name = sub.name + '_ABSTR_ADDR'
+            vctx.cinputs.append((abstr_addr_name, (mem.awidth-1, 0)))
+            abstr_addr = ast.BitVecVar(abstr_addr_name, mem.awidth)
+            vctx.objects[abstr_addr] = abstr_addr_name
+
+            addr = None
+            for p, a in exprs:
+                if p == this_opcode:
+                    addr = a
+                    break
+            if addr:
+                return ast.If(ast.Equal(cnst, ast.BitVecVal(p, cnst.width)), addr, abstr_addr)
+            else:
+                return abstr_addr
 
         def createIf(i):
             [p, a] = exprs[i]
