@@ -13,6 +13,29 @@ module oc8051_gm_top(
     clk,
     rst,
     word_in,
+
+    RD_IRAM_0_ABSTR_ADDR,
+    RD_IRAM_1_ABSTR_ADDR,
+    RD_ROM_1_ABSTR_ADDR,
+    RD_ROM_2_ABSTR_ADDR,
+    ACC_abstr,
+    P2_abstr,
+    P0_abstr,
+    P1_abstr,
+    P3_abstr,
+    SP_abstr,
+    PC_abstr,
+    B_abstr,
+    DPL_abstr,
+    PSW_abstr,
+    DPH_abstr,
+    WR_COND_ABSTR_IRAM_0,
+    WR_ADDR_ABSTR_IRAM_0,
+    WR_DATA_ABSTR_IRAM_0,
+    WR_COND_ABSTR_IRAM_1,
+    WR_ADDR_ABSTR_IRAM_1,
+    WR_DATA_ABSTR_IRAM_1,
+
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
     p0_in,             // port 0 input
@@ -56,6 +79,27 @@ module oc8051_gm_top(
     input clk;
     input rst;
     input [127:0] word_in;
+    input [7:0] RD_IRAM_0_ABSTR_ADDR;
+    input [7:0] RD_IRAM_1_ABSTR_ADDR;
+    input [15:0] RD_ROM_1_ABSTR_ADDR;
+    input [15:0] RD_ROM_2_ABSTR_ADDR;
+    input [7:0] ACC_abstr;
+    input [7:0] P2_abstr;
+    input [7:0] P0_abstr;
+    input [7:0] P1_abstr;
+    input [7:0] P3_abstr;
+    input [7:0] SP_abstr;
+    input [15:0] PC_abstr;
+    input [7:0] B_abstr;
+    input [7:0] DPL_abstr;
+    input [7:0] PSW_abstr;
+    input [7:0] DPH_abstr;
+    input WR_COND_ABSTR_IRAM_0;
+    input [3:0] WR_ADDR_ABSTR_IRAM_0;
+    input [7:0] WR_DATA_ABSTR_IRAM_0;
+    input WR_COND_ABSTR_IRAM_1;
+    input [3:0] WR_ADDR_ABSTR_IRAM_1;
+    input [7:0] WR_DATA_ABSTR_IRAM_1;
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
@@ -233,35 +277,44 @@ input         t2_i,             // counter 2 input
         .TL1_next       (TL1_gm_next),
         .TL1            (TL1_gm),
         .TMOD_next      (TMOD_gm_next),
-        .TMOD           (TMOD_gm)
+        .TMOD           (TMOD_gm),
+
+        .RD_IRAM_0_ABSTR_ADDR ( RD_IRAM_0_ABSTR_ADDR ) ,
+        .RD_IRAM_1_ABSTR_ADDR ( RD_IRAM_1_ABSTR_ADDR ) ,
+        .RD_ROM_1_ABSTR_ADDR  ( RD_ROM_1_ABSTR_ADDR  ) ,
+        .RD_ROM_2_ABSTR_ADDR  ( RD_ROM_2_ABSTR_ADDR  ) ,
+        .ACC_abstr            ( ACC_abstr            ) ,
+        .P2_abstr             ( P2_abstr             ) ,
+        .P0_abstr             ( P0_abstr             ) ,
+        .P1_abstr             ( P1_abstr             ) ,
+        .P3_abstr             ( P3_abstr             ) ,
+        .SP_abstr             ( SP_abstr             ) ,
+        .PC_abstr             ( PC_abstr             ) ,
+        .B_abstr              ( B_abstr              ) ,
+        .DPL_abstr            ( DPL_abstr            ) ,
+        .PSW_abstr            ( PSW_abstr            ) ,
+        .DPH_abstr            ( DPH_abstr            ) ,
+        .WR_COND_ABSTR_IRAM_0 ( WR_COND_ABSTR_IRAM_0 ) ,
+        .WR_ADDR_ABSTR_IRAM_0 ( WR_ADDR_ABSTR_IRAM_0 ) ,
+        .WR_DATA_ABSTR_IRAM_0 ( WR_DATA_ABSTR_IRAM_0 ) ,
+        .WR_COND_ABSTR_IRAM_1 ( WR_COND_ABSTR_IRAM_1 ) ,
+        .WR_ADDR_ABSTR_IRAM_1 ( WR_ADDR_ABSTR_IRAM_1 ) ,
+        .WR_DATA_ABSTR_IRAM_1 ( WR_DATA_ABSTR_IRAM_1 ) 
+
     );
 
-    reg op0_cnst;
     reg inst_finished_r;
 
-    // if we see a non-zero op, property is always valid.
-    wire regs_zero = 
-        SBUF_gm == 8'b0 && SBUF_gm_next == 8'b0 && 
-        SCON_gm == 8'b0 && SCON_gm_next == 8'b0 && 
-        PCON_gm == 8'b0 && PCON_gm_next == 8'b0 && 
-        TCON_gm == 8'h2 && TCON_gm_next == 8'h2 && 
-        TL0_gm == 8'b0 && TL0_gm_next == 8'b0 && 
-        TL1_gm == 8'b0 && TL1_gm_next == 8'b0 && 
-        TH0_gm == 8'b0 && TH0_gm_next == 8'b0 && 
-        TH1_gm == 8'b0 && TH1_gm_next == 8'b0 && 
-        TMOD_gm == 8'b0 && TMOD_gm_next == 8'b0 && 
-        IE_gm == 8'b0 && IE_gm_next == 8'b0 && 
-        IP_gm == 8'b0 && IP_gm_next == 8'b0;
-
-    reg regs_always_zero;
-    wire regs_always_zero_next = (regs_always_zero ? regs_zero : 0);
-    wire rz_cnst = regs_always_zero && regs_always_zero_next;
 
     wire [7:0] opcode = rd_rom_0;
-    reg opcode_r;
 
-    wire op_cnst = opcode == 8'h04;
-    wire op_cnst_r = opcode_r == 8'h04;
+    wire this_op_cnst = opcode == 8'h05;
+    reg this_op_cnst_r;
+
+    wire op_cnst = opcode <= 8'h80; // opcode == 8'h04;
+
+    reg op0_cnst;
+    wire op0_cnst_next = op0_cnst ? op_cnst : op0_cnst;
 
     wire property_valid_pc_1 = (PC_gm_next == pc2);
     wire property_valid_acc_2 = (ACC_gm == acc_impl);
@@ -284,8 +337,7 @@ input         t2_i,             // counter 2 input
     wire property_valid_sp_2o = (SP_gm == sp_impl);
     wire property_valid_sp_2 = property_valid_sp_1_r || property_valid_sp_2o;
 
-    reg p1_valid_r;
-    wire p1_valid = property_valid_pc_1 && inst_finished && rz_cnst;
+    wire p1_valid = property_valid_pc_1 && inst_finished;
     wire p2_valid = 
         ( property_valid_acc_2      &&
           property_valid_b_reg_2    &&
@@ -296,56 +348,55 @@ input         t2_i,             // counter 2 input
           property_valid_p1_2       &&
           property_valid_p2_2       &&
           property_valid_p3_2       &&
-          property_valid_psw_2      &&
-          property_valid_sp_2 )     && inst_finished_r && rz_cnst;
+          (PSW_gm_next == psw_impl) &&
+          (SP_gm == sp_impl))       && inst_finished_r;
 
-    wire p12_equal = p1_valid_r; // && p2_valid;
+    reg eq_state_1, eq_state_2;
+    wire eq_state_next_1 = eq_state_1 ? (inst_finished ? p1_valid : 1) : 0;
+    wire eq_state_next_2 = eq_state_2 ? (inst_finished_r ? p2_valid : 1) : 0;
 
-    reg eq_state;
-    wire property_invalid_pc = eq_state && op_cnst && inst_finished && !property_valid_pc_1;
-    wire property_invalid_acc = eq_state && op_cnst_r && inst_finished_r && !property_valid_acc_2;
-    wire property_invalid_b_reg = eq_state && op_cnst_r && inst_finished_r && !property_valid_b_reg_2; 
-    wire property_invalid_dpl = eq_state && op_cnst_r && inst_finished_r && !property_valid_dpl_2; 
-    wire property_invalid_dph = eq_state && op_cnst_r && inst_finished_r && !property_valid_dph_2; 
-    wire property_invalid_iram = eq_state && op_cnst_r && inst_finished_r && !property_valid_iram_2; 
-    wire property_invalid_p0 = eq_state && op_cnst_r && inst_finished_r && !property_valid_p0_2; 
-    wire property_invalid_p1 = eq_state && op_cnst_r && inst_finished_r && !property_valid_p1_2; 
-    wire property_invalid_p2 = eq_state && op_cnst_r && inst_finished_r && !property_valid_p2_2; 
-    wire property_invalid_p3 = eq_state && op_cnst_r && inst_finished_r && !property_valid_p3_2; 
-    wire property_invalid_psw = eq_state && op_cnst_r && inst_finished_r && !property_valid_psw_2; 
-    wire property_invalid_sp = eq_state && op_cnst_r && inst_finished_r && !property_valid_sp_2; 
+    wire property_invalid_pc = this_op_cnst && op0_cnst && eq_state_1 && eq_state_next_2 && inst_finished && !property_valid_pc_1;
+    wire property_invalid_acc = this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_acc_2;
+    wire property_invalid_b_reg = this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_b_reg_2; 
+    wire property_invalid_dpl = this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_dpl_2; 
+    wire property_invalid_dph = this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_dph_2; 
+    wire property_invalid_iram = this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_iram_2; 
+    wire property_invalid_p0 = this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_p0_2; 
+    wire property_invalid_p1 = this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_p1_2; 
+    wire property_invalid_p2 = this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_p2_2; 
+    wire property_invalid_p3 = this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_p3_2; 
+    wire property_invalid_psw = this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_psw_2; 
+    wire property_invalid_sp = 0; // this_op_cnst_r && op0_cnst && eq_state_next_1 && eq_state_2 && inst_finished_r && !property_valid_sp_2o; 
 
     always @(posedge clk) begin
         if (rst) begin
             op0_cnst <= 1;
-            regs_always_zero <= 1;
             inst_finished_r <= 0;
+            this_op_cnst_r <= 0;
             p0in_reg <= 8'b0;
             p1in_reg <= 8'b0;
             p2in_reg <= 8'b0;
             p3in_reg <= 8'b0;
             property_valid_psw_1_r <= 0;
             property_valid_sp_1_r <= 0;
-            p1_valid_r <= 0;
-            eq_state <= 1;
-            opcode_r <= 8'b0;
+            eq_state_1 <= 1;
+            eq_state_2 <= 1;
         end
         else begin
             op0_cnst <= op0_cnst_next;
-            regs_always_zero <= regs_always_zero_next;
-            opcode_r <= opcode;
+            this_op_cnst_r <= this_op_cnst;
 
             inst_finished_r <= inst_finished;
             property_valid_psw_1_r <= property_valid_psw_1;
             property_valid_sp_1_r <= property_valid_sp_1;
-            p1_valid_r <= p1_valid;
             if (inst_finished) begin
                 p0in_reg <= p0_in;
                 p1in_reg <= p1_in;
                 p2in_reg <= p2_in;
                 p3in_reg <= p3_in;
             end
-            eq_state <= p12_equal;
+            eq_state_1 <= eq_state_next_1;
+            eq_state_2 <= eq_state_next_2;
         end
     end
 

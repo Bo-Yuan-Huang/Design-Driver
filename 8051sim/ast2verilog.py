@@ -366,7 +366,8 @@ class VerilogContext(object):
                 aa_i = 'WR_ADDR_ABSTR_%s_%d' % (mem.name, i)
                 da_i = 'WR_DATA_ABSTR_%s_%d' % (mem.name, i)
 
-                a_conds.append(ca_i)
+                cond_i = '(%s && !(%s))' % (ca_i, self.getExpr(ast.Equal(self.cnst, ast.BitVecVal(this_opcode, self.cnst.width))))
+                a_conds.append(cond_i)
                 a_addrs.append(aa_i)
                 a_datas.append(da_i)
 

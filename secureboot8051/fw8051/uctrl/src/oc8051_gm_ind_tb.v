@@ -47,6 +47,28 @@ module oc8051_gm_tb();
     reg t2ex_i = 1;
 `endif
 
+    reg [7:0] RD_IRAM_0_ABSTR_ADDR;
+    reg [7:0] RD_IRAM_1_ABSTR_ADDR;
+    reg [15:0] RD_ROM_1_ABSTR_ADDR;
+    reg [15:0] RD_ROM_2_ABSTR_ADDR;
+    reg [7:0] ACC_abstr;
+    reg [7:0] P2_abstr;
+    reg [7:0] P0_abstr;
+    reg [7:0] P1_abstr;
+    reg [7:0] P3_abstr;
+    reg [7:0] SP_abstr;
+    reg [15:0] PC_abstr;
+    reg [7:0] B_abstr;
+    reg [7:0] DPL_abstr;
+    reg [7:0] PSW_abstr;
+    reg [7:0] DPH_abstr;
+    reg WR_COND_ABSTR_IRAM_0;
+    reg [3:0] WR_ADDR_ABSTR_IRAM_0;
+    reg [7:0] WR_DATA_ABSTR_IRAM_0;
+    reg WR_COND_ABSTR_IRAM_1;
+    reg [3:0] WR_ADDR_ABSTR_IRAM_1;
+    reg [7:0] WR_DATA_ABSTR_IRAM_1;
+
 // reset.
     initial begin
       $dumpon;
@@ -156,7 +178,29 @@ module oc8051_gm_tb();
         .t2_i(t2_i),             // counter 2 input
         .t2ex_i(t2ex_i),           //
 `endif
-        .property_invalid_pc    (property_invalid_pc    )
+        .property_invalid_pc    (property_invalid_pc    ),
+
+        .RD_IRAM_0_ABSTR_ADDR ( RD_IRAM_0_ABSTR_ADDR ) ,
+        .RD_IRAM_1_ABSTR_ADDR ( RD_IRAM_1_ABSTR_ADDR ) ,
+        .RD_ROM_1_ABSTR_ADDR  ( RD_ROM_1_ABSTR_ADDR  ) ,
+        .RD_ROM_2_ABSTR_ADDR  ( RD_ROM_2_ABSTR_ADDR  ) ,
+        .ACC_abstr            ( ACC_abstr            ) ,
+        .P2_abstr             ( P2_abstr             ) ,
+        .P0_abstr             ( P0_abstr             ) ,
+        .P1_abstr             ( P1_abstr             ) ,
+        .P3_abstr             ( P3_abstr             ) ,
+        .SP_abstr             ( SP_abstr             ) ,
+        .PC_abstr             ( PC_abstr             ) ,
+        .B_abstr              ( B_abstr              ) ,
+        .DPL_abstr            ( DPL_abstr            ) ,
+        .PSW_abstr            ( PSW_abstr            ) ,
+        .DPH_abstr            ( DPH_abstr            ) ,
+        .WR_COND_ABSTR_IRAM_0 ( WR_COND_ABSTR_IRAM_0 ) ,
+        .WR_ADDR_ABSTR_IRAM_0 ( WR_ADDR_ABSTR_IRAM_0 ) ,
+        .WR_DATA_ABSTR_IRAM_0 ( WR_DATA_ABSTR_IRAM_0 ) ,
+        .WR_COND_ABSTR_IRAM_1 ( WR_COND_ABSTR_IRAM_1 ) ,
+        .WR_ADDR_ABSTR_IRAM_1 ( WR_ADDR_ABSTR_IRAM_1 ) ,
+        .WR_DATA_ABSTR_IRAM_1 ( WR_DATA_ABSTR_IRAM_1 ) 
     );
 
 endmodule
