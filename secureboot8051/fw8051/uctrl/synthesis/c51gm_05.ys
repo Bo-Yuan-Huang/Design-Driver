@@ -4,7 +4,7 @@ abstract oc8051_gm_top->oc8051_top_1->oc8051_alu1->oc8051_mul1
 abstract oc8051_gm_top->oc8051_top_1->oc8051_alu1->oc8051_div1
 
 cd oc8051_gm_top
-delexcept property_invalid_acc
+delexcept property_invalid_dpl
 cd ..
 
 hierarchy -check  -top oc8051_gm_top
