@@ -38,12 +38,18 @@ def eval8051(inputs, outputs):
     rom = inputs['ROM']
     pc = inputs['PC']
     xram = inputs['XRAM']
+    xram_data_in = inputs['XRAM_DATA_IN']
+
+    # print inputs
     # simulate
-    newPC, newRegs, newXRAM = evalState(pc, rom, xram, regs)
+    newPC, xram_addr, xram_data_out, newRegs, newXRAM = evalState(pc, xram_data_in, rom, xram, regs)
 
     # read output state
     outputs['IRAM'] = extractIRAM(newRegs)
     outputs['XRAM'] = newXRAM
+    outputs['XRAM_ADDR'] = xram_addr
+    outputs['XRAM_DATA_OUT'] = xram_data_out
+
     outputs['PC'] = newPC
     outputs['ACC']  = newRegs[0x160]
     outputs['SP']   = newRegs[0x101]
@@ -66,6 +72,8 @@ def eval8051(inputs, outputs):
     outputs['P3']   = newRegs[0x80 + 0xB0]
     outputs['IP']   = newRegs[0x80 + 0xB8]
     outputs['B']    = newRegs[0x80 + 0xF0]
+
+    # print outputs
 
 def extractIRAM(regs):
     numCounts = defaultdict(int)

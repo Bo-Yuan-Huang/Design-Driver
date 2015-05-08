@@ -330,13 +330,17 @@ def synthesize(opc, regs, logfilename, outputfilename, verbosity, unsat_core):
     ctxXCHG_INDIR.ACC = XCHG_SRC2_INDIR
 
     # XRAM reads and writes
-    XRAM_ADDR_Rx = Concat(Choice('MSB_XRAM_ADDR', ctx.op0, [ctx.P0, ctx.P2]),
+    XRAM_ADDR_Rx = Concat(BitVecVal(0, 8),
                           Choice('LSB_XRAM_ADDR', ctx.op0, [ctx.Rx(0), ctx.Rx(1)]))
     XRAM_ADDR = Choice('XRAM_ADDR', ctx.op0, [XRAM_ADDR_Rx, DPTR])
+    XRAM_DATA_OUT = Choice('XRAM_DATA_OUT', ctx.op0, [BitVecVal(0, 8), ctx.ACC])
     ctxWRX = ctxNOP.clone()
-    ctxWRX.XRAM = WriteMem(ctx.XRAM, XRAM_ADDR, ctx.ACC)
+    ctxWRX.XRAM_DATA_OUT = XRAM_DATA_OUT
+    ctxWRX.XRAM_ADDR = XRAM_ADDR
+
     ctxRDX = ctxNOP.clone()
-    ctxRDX.ACC = ReadMem(ctx.XRAM, XRAM_ADDR)
+    ctxRDX.XRAM_ADDR = XRAM_ADDR
+    ctxRDX.ACC = ctx.XRAM_DATA_IN
     
     # final result.
     ctxFINAL = CtxChoice('CTX3', ctx.op0, [ctxNOP, ctxACC, ctxDIR, ctxDPTR, 
@@ -370,6 +374,8 @@ def synthesize(opc, regs, logfilename, outputfilename, verbosity, unsat_core):
     syn.addOutput('SBUF', ctxFINAL.SBUF, Synthesizer.BITVEC)
     syn.addOutput('IE', ctxFINAL.IE, Synthesizer.BITVEC)
     syn.addOutput('IP', ctxFINAL.IP, Synthesizer.BITVEC)
+    syn.addOutput('XRAM_ADDR', ctxFINAL.XRAM_ADDR, Synthesizer.BITVEC)
+    syn.addOutput('XRAM_DATA_OUT', ctxFINAL.XRAM_DATA_OUT, Synthesizer.BITVEC)
 
     if logfilename:
         lf = open(logfilename, 'wt')

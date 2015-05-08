@@ -32,10 +32,13 @@ def create8051Inputs(syn):
     syn.addInput(BitVecVar('SBUF', 8))
     syn.addInput(BitVecVar('IE', 8))
     syn.addInput(BitVecVar('IP', 8))
+    # XRAM
+    syn.addInput(BitVecVar('XRAM_DATA_IN', 8))
 
 class Ctx8051(object):
     def __init__( self, PC, ROM, IRAM, XRAM, P0, SP, DPL, DPH, PCON, TCON, TMOD, 
-        TL0, TH0, TL1, TH1, P1, SCON, SBUF, P2, IE, P3, IP, PSW, ACC, B):
+        TL0, TH0, TL1, TH1, P1, SCON, SBUF, P2, IE, P3, IP, PSW, ACC, B, XRAM_ADDR, 
+        XRAM_DATA_IN, XRAM_DATA_OUT):
 
         self.PC = PC
         self.ROM = ROM
@@ -67,6 +70,9 @@ class Ctx8051(object):
         self.PSW = PSW
         self.ACC = ACC
         self.B = B
+        self.XRAM_ADDR = XRAM_ADDR
+        self.XRAM_DATA_IN = XRAM_DATA_IN
+        self.XRAM_DATA_OUT = XRAM_DATA_OUT
 
         self._CY = Extract(7, 7, self.PSW)
         self._AC = Extract(6, 6, self.PSW)
@@ -78,7 +84,8 @@ class Ctx8051(object):
     def clone(self):
         return Ctx8051(self.PC, self.ROM, self.IRAM, self.XRAM, self.P0, self.SP, self.DPL, self.DPH, self.PCON, 
         self.TCON, self.TMOD, self.TL0, self.TH0, self.TL1, self.TH1, self.P1, self.SCON, 
-        self.SBUF, self.P2, self.IE, self.P3, self.IP, self.PSW, self.ACC, self.B)
+        self.SBUF, self.P2, self.IE, self.P3, self.IP, self.PSW, self.ACC, self.B, 
+        self.XRAM_ADDR, self.XRAM_DATA_IN, self.XRAM_DATA_OUT)
             
     def CY(self): return self._CY
     def AC(self): return self._AC
@@ -210,8 +217,11 @@ def CtxChoice(name, op, ctxs):
     PSW = Choice(name, op, [c.PSW for c in ctxs])
     ACC = Choice(name, op, [c.ACC for c in ctxs])
     B = Choice(name, op, [c.B for c in ctxs])
+    XRAM_ADDR = Choice(name, op, [c.XRAM_ADDR for c in ctxs])
+    XRAM_DATA_OUT = Choice(name, op, [c.XRAM_DATA_OUT for c in ctxs])
     return Ctx8051(PC, ROM, IRAM, XRAM, P0, SP, DPL, DPH, PCON, TCON, TMOD, 
-        TL0, TH0, TL1, TH1, P1, SCON, SBUF, P2, IE, P3, IP, PSW, ACC, B)
+        TL0, TH0, TL1, TH1, P1, SCON, SBUF, P2, IE, P3, IP, PSW, ACC, B, 
+        XRAM_ADDR, c.XRAM_DATA_IN, XRAM_DATA_OUT)
     
 def Ctx8051FromSyn(syn):
     return Ctx8051( syn.inp('PC'), syn.inp('ROM'), syn.inp('IRAM'),
@@ -220,4 +230,5 @@ def Ctx8051FromSyn(syn):
         syn.inp('TL0'), syn.inp('TH0'), syn.inp('TL1'), syn.inp('TH1'),
         syn.inp('P1'), syn.inp('SCON'), syn.inp('SBUF'), syn.inp('P2'),
         syn.inp('IE'), syn.inp('P3'), syn.inp('IP'), syn.inp('PSW'),
-        syn.inp('ACC'), syn.inp('B') )
+        syn.inp('ACC'), syn.inp('B'), 
+        BitVecVal(0, 16), syn.inp('XRAM_DATA_IN'), BitVecVal(0, 8))

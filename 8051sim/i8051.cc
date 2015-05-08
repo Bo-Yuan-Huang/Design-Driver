@@ -98,6 +98,8 @@ I8051::SynSim(const char* filename)
     // increment number of instructions executed
     instrCount++;
     
+    XRAM_ADDR = 0;
+    XRAM_DATA_OUT = 0;
     switch(Decode(IR)) {
         
         //(A) <- (A) & (Rn)
@@ -1862,8 +1864,9 @@ I8051::SynSim(const char* filename)
             #endif
             regNum = IR & 0x01;
             ((unsigned char*)&tempDPTR)[0] = RAM[GetRegisterBank()+regNum];
-            ((unsigned char*)&tempDPTR)[1] = RAM[P2];
-            RAM[ACC] = XRAM[tempDPTR];
+            ((unsigned char*)&tempDPTR)[1] = 0;
+            XRAM_ADDR = tempDPTR;
+            RAM[ACC] = XRAM_DATA_IN;
             cycleCount += 24;
             break;
 
@@ -1877,7 +1880,8 @@ I8051::SynSim(const char* filename)
                 os << "\t" << "A <- XRAM(" << tempDPTR << ")" << std::endl;
             #endif
             #endif
-            RAM[ACC] = XRAM[tempDPTR];
+            RAM[ACC] = XRAM_DATA_IN;
+            XRAM_ADDR = tempDPTR;
             cycleCount += 24;
             break;
             
@@ -1891,8 +1895,9 @@ I8051::SynSim(const char* filename)
             #endif
             regNum = IR & 0x01;
             ((unsigned char*)&tempDPTR)[0] = RAM[GetRegisterBank()+regNum];
-            ((unsigned char*)&tempDPTR)[1] = RAM[P2];
-            XRAM[tempDPTR] = RAM[ACC];
+            ((unsigned char*)&tempDPTR)[1] = 0;
+            XRAM_DATA_OUT = RAM[ACC];
+            XRAM_ADDR = tempDPTR;
             cycleCount += 24;
             break;
           
@@ -1906,7 +1911,8 @@ I8051::SynSim(const char* filename)
                 os << "\t" << "XRAM(" << tempDPTR << ") <- A" << std::endl;
             #endif
             #endif
-            XRAM[tempDPTR] = RAM[ACC];
+            XRAM_DATA_OUT = RAM[ACC];
+            XRAM_ADDR = tempDPTR;
             cycleCount += 24;
             break;
 
@@ -5159,6 +5165,8 @@ I8051::InitState(const char* filename) {
         exit(0);
     }
     PC = ReadWord(fin);
+    XRAM_DATA_IN = ReadWord(fin);
+
     ReadMem(fin, ROM, RomSize);
     ReadMem(fin, XRAM, XRamSize);
     //ROM[PC] = ReadByte(fin);
@@ -5180,6 +5188,8 @@ I8051::InitState(const char* filename) {
 void
 I8051::WriteState() {
     std::cout << std::hex << std::setw(4) << PC << std::endl;
+    std::cout << std::hex << std::setw(4) << XRAM_ADDR << std::endl;
+    std::cout << std::hex << std::setw(4) << XRAM_DATA_OUT << std::endl;
     WriteMem(std::cout, XRAM, XRamSize);
     for(unsigned i=0; i < RamSize; i++) {
         std::cout << std::hex << std::setw(2) << (int) (unsigned char) RAM[i] << " ";

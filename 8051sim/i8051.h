@@ -83,6 +83,9 @@ class I8051
     unsigned char IR;
     unsigned short tempDPTR;
     bool progEnd;
+    unsigned short XRAM_ADDR;
+    unsigned short XRAM_DATA_IN;
+    unsigned short XRAM_DATA_OUT;
 
   public:
     I8051();
