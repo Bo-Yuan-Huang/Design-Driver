@@ -51,7 +51,8 @@ class Node(object):
     BOOLVAL         = 3
     BITVECVAL       = 4
     MEMVAR          = 5
-    CHOICE          = 6
+    BVINRANGE       = 6
+    CHOICE          = 7
     CHOOSECONSEC    = 8
     READMEM         = 9
     WRITEMEM        = 10
@@ -67,7 +68,9 @@ class Node(object):
         """Constructor."""
         self.nodetype = nodetype
         self.z3objs = {}
+        self.z3clauses = {}
         self.z3cnsts = {}
+        self.z3clausesWCnsts = {}
         self.synMemo = None
         self.name = '_UnnamedObject'
         self.is_input = False
@@ -150,6 +153,49 @@ class Node(object):
             self.z3cnsts[prefix] = self._toZ3Constraints(prefix, m)
         return self.z3cnsts[prefix]
 
+    def z3Clauses(self, prefix):
+        """Extra clauses that may need to be added to the SMT problem."""
+        if prefix not in self.z3clauses:
+            self.z3clauses[prefix] = self._z3Clauses(prefix)
+        return self.z3clauses[prefix]
+
+    def z3ClausesWithConstraints(self, prefix, m):
+        """Extra clauses that may need to be added to the SMT problem."""
+        if prefix not in self.z3clausesWCnsts:
+            self.z3clausesWCnsts[prefix] = self._z3ClausesWithConstraints(prefix, m)
+        return self.z3clausesWCnsts[prefix]
+
+    def _z3Clauses(self, prefix):
+        """Most AST nodes don't have anything special to be added."""
+        exprs = []
+        for c in self.childObjects():
+            cz3 = c.z3Clauses(prefix)
+            if cz3:
+                exprs.append(cz3)
+
+        if len(exprs) == 0:
+            return None
+        elif len(exprs) == 1:
+            return exprs[0]
+        else:
+            assert len(exprs) >= 2
+            return z3.And(*exprs)
+
+    def _z3ClausesWithConstraints(self, prefix, m):
+        exprs = []
+        for c in self.childObjects():
+            cz3 = c.z3ClausesWithConstraints(prefix, m)
+            if cz3:
+                exprs.append(cz3)
+
+        if len(exprs) == 0:
+            return None
+        elif len(exprs) == 1:
+            return exprs[0]
+        else:
+            assert len(exprs) >= 2
+            return z3.And(*exprs)
+
     def synthesize(self, m):
         if self.synMemo is None:
             self.synMemo = self._synthesize(m)
@@ -160,6 +206,9 @@ class Node(object):
         self.z3objs = {}
         self.z3cnsts = {}
         self.synMemo = None
+        self.z3clausesWCnsts = {}
+        self.z3clauses = {}
+
         for c in self.childObjects():
             c.clearCache()
 
@@ -519,6 +568,98 @@ class MemVar(Node):
 
 def _choiceBoolName(obj, prefix, i):
     return '_choice_%s_%s_%d_' % (prefix, obj.name, i)
+
+class BVInRange(Node):
+    """Select a bitvector within a range lo <= bv < hi."""
+    def __init__(self, name, lo, hi):
+        assert lo.width == hi.width
+        Node.__init__(self, Node.BVINRANGE)
+        self.name = name
+        self.lo = lo
+        self.hi = hi
+        self.width = lo.width
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if self.nodetype != other.nodetype:
+                return False
+            if self.name != other.name:
+                return False
+            if self.lo != other.lo:
+                return False
+            if self.hi != other.hi:
+                return False
+            return True
+        return NotImplemented
+
+    def _toZ3sHelper(self, prefix, rfun):
+        self.bitvec = z3.BitVec('_bv_in_range_%s_%s_' % (prefix, self.name), self.width)
+        return self.bitvec
+    
+    def _z3Clauses(self, prefix):
+        self.bitvec = z3.BitVec('_bv_in_range_%s_%s_' % (prefix, self.name), self.width)
+        exprs = []
+
+        loz3 = self.lo.toZ3(prefix)
+        hiz3 = self.hi.toZ3(prefix)
+
+        r1 = self.lo.z3Clauses(prefix)
+        r2 = self.hi.z3Clauses(prefix)
+        if r1: exprs.append(r1)
+        if r2: exprs.append(r2)
+
+        exprs.append(z3.ULE(loz3, self.bitvec))
+        exprs.append(z3.ULT(self.bitvec, hiz3))
+
+        return z3.And(*exprs)
+
+    def _z3ClausesWithConstraints(self, prefix, m):
+        self.bitvec = z3.BitVec('_bv_in_range_%s_%s_' % (prefix, self.name), self.width)
+        exprs = []
+
+        loz3 = self.lo.toZ3Constraints(prefix, m)
+        hiz3 = self.hi.toZ3Constraints(prefix, m)
+
+        r1 = self.lo.z3ClausesWithConstraints(prefix, m)
+        r2 = self.hi.z3ClausesWithConstraints(prefix, m)
+        if r1: exprs.append(r1)
+        if r2: exprs.append(r2)
+
+        exprs.append(z3.ULE(loz3, self.bitvec))
+        exprs.append(z3.ULT(self.bitvec, hiz3))
+
+        return z3.And(*exprs)
+
+    def _toZ3(self, prefix):
+        rfun = lambda n, prefix : n.toZ3(prefix)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _toZ3Constraints(self, prefix, m):
+        rfun = lambda n, prefix : n.toZ3Constraints(prefix, m)
+        return self._toZ3sHelper(prefix, rfun)
+
+    def _synthesize(self, m):
+        vi = m[self.bitvec].as_long()
+        return BitVecVal(vi, self.width)
+
+    def apply(self, f):
+        lo_ = self.lo.apply(f)
+        hi_ = self.hi.apply(f)
+        return f(BVInRange(self.name, lo_, hi_))
+
+
+    def __str__(self):
+        return '(bv-in-range %s %s %s)' % (self.name, str(self.lo), str(self.hi))
+
+    def childObjects(self):
+        yield self.lo
+        yield self.hi
+
+    def rewrite(self, child, replacement):
+        if self.lo == child:
+            self.lo = replacement
+        if self.hi == child:
+            self.hi = replacement
 
 class Choice(Node):
     """A choice between a set of options."""

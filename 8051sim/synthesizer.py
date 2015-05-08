@@ -34,6 +34,7 @@ class Synthesizer(object):
         which is used to compute the values of the state variable."""
         self.inputs[inp.name] = inp
         self.inputs[inp.name].is_input = True
+        return inp
 
     def inp(self, name):
         """Return the input with this name."""
@@ -62,6 +63,8 @@ class Synthesizer(object):
         outs = []
         y1s = []
         y2s = []
+        y1cs = []
+        y2cs = []
         for i, name in enumerate(outputs):
             if name not in self.outputs:
                 raise KeyError, "No output '%s' is known." % name
@@ -73,15 +76,21 @@ class Synthesizer(object):
             y1 = out.toZ3(Synthesizer.P1)
             y2 = out.toZ3(Synthesizer.P2)
 
+            y1c = out.z3Clauses(Synthesizer.P1)
+            y2c = out.z3Clauses(Synthesizer.P2)
+
             y1s.append( y1 )
             y2s.append( y2 )
+
+            y1cs.append(y1c)
+            y2cs.append(y2c)
 
             if self.VERBOSITY >= 4: 
                 self.log('out :' + str(out))
                 self.log('exp1[%d]:%s' % (i, y1.sexpr()))
                 self.log('exp2[%d]:%s' % (i, y2.sexpr()))
         
-        return outs, y1s, y2s
+        return outs, y1s, y2s, y1cs, y2cs
 
     def createInputVars(self):
         # input_vars contains the Z3 objects corresponding
@@ -154,7 +163,7 @@ class Synthesizer(object):
     def synthesize(self, outputNames, cnsts, sim):
         """Main synthesizer."""
 
-        outs, y1s, y2s = self.createOutputExpressions(outputNames)
+        outs, y1s, y2s, y1cs, y2cs = self.createOutputExpressions(outputNames)
         input_vars = self.createInputVars()
 
         # let's create the initial instance.
@@ -168,10 +177,15 @@ class Synthesizer(object):
 
         # let's now create the expression that states one of the outputs must be different.
         ys = []
-        for i, (y1, y2) in enumerate(itertools.izip(y1s, y2s)):
+        for i, (y1, y2, y1c, y2c) in enumerate(itertools.izip(y1s, y2s, y1cs, y2cs)):
             yi = z3.Bool('y%d' % i)
             self.addExpr(S, yi == z3.Distinct(y1, y2), 'prob%d' % i)
             ys.append(yi)
+            if y1c:
+                assert y2c
+                self.addExpr(S, y1c, 'cnst%d_1' % i)
+                self.addExpr(S, y2c, 'cnst%d_2' % i)
+
         y = z3.Bool('y')
         self.addExpr(S, y == z3.Or(*ys), 'prob')
 
@@ -222,6 +236,15 @@ class Synthesizer(object):
                 y1mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P1, sim_inputs))
                 out.clearCache()
                 y2mz3 = z3.simplify(out.toZ3Constraints(Synthesizer.P2, sim_inputs))
+
+                y1mz3c = out.z3ClausesWithConstraints(Synthesizer.P1, sim_inputs)
+                y2mz3c = out.z3ClausesWithConstraints(Synthesizer.P2, sim_inputs)
+                
+                if y1mz3c:
+                    assert y2mz3c
+                    S.add(z3.simplify(y1mz3c))
+                    S.add(z3.simplify(y2mz3c))
+
 
                 y1z3s.append(y1mz3)
                 y2z3s.append(y2mz3)
