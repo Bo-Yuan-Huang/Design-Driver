@@ -14,13 +14,14 @@ def find_files(d):
 
 script = Template("""#PBS -l walltime=36:00:00
 cd $curdir
-./uc8051syn.py --output $ast $op $state >& $out""")
+time ./uc8051syn.py --output $ast $op $state >& $out""")
 
 all_state = [
-    'PC', 'ACC', 'IRAM', 'XRAM', 'PSW', 'SP',
+    'PC', 'ACC', 'IRAM', 'PSW', 'SP',
     'B', 'DPL', 'DPH', 'P0', 'P1', 'P2', 'P3',
     'PCON', 'TCON', 'TMOD', 'TL0', 'TH0', 'TL1',
-    'TH1', 'SCON', 'SBUF', 'IE', 'IP',
+    'TH1', 'SCON', 'SBUF', 'IE', 'IP', 
+    'XRAM_ADDR', 'XRAM_DATA_OUT'
 ]
 
 def create_scripts(start, stop, name, state):
