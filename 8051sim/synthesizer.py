@@ -265,10 +265,25 @@ class Synthesizer(object):
 
         for out in outs:
             out.clearCache()
-        rs = [out.synthesize(m) for out in outs]
+        rs = [self.cleanup(outputNames[i], out.synthesize(m)) for i, out in enumerate(outs)]
         for r in rs:
             r.clearCache()
         return rs
+
+    def cleanup(self, name, out):
+        r = out
+        if name in self.inputs:
+            inp = self.inputs[name]
+            S = z3.Solver()
+            inp.clearCache()
+            out.clearCache()
+            S.add(inp.toZ3() != out.toZ3())
+            if S.check() == z3.unsat:
+                r = inp
+
+            inp.clearCache()
+            out.clearCache()
+        return r
 
     def cleanupMemList(self, memvals):        
         vals = []
