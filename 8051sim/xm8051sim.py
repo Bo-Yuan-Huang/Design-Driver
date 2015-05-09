@@ -53,7 +53,7 @@ class XMM(object):
         self.addReg('sha_rdaddr', 0xfe02, 2)
         self.addReg('sha_wraddr', 0xfe04, 2)
         self.addReg('sha_len', 0xfe06, 2)
-        self.addReg('sha_reserved_2', 0xfe08, 2, readonly=True)
+        self.addReg('sha_reserved_2', 0xfe08, 8, readonly=True)
 
         self.aes_bytes_processed = 0
         self.aes_read_data = [0] * 16
@@ -227,9 +227,9 @@ class XMM(object):
         if step == XMM.STEP_SHA or step == XMM.STEP_BOTH:
             self.sha_step()
 
-        elif (op & 0xc) == XMM.WR:
+        if (op & 0xc) == XMM.WR:
+            assert rv == 0
             self.write(addr, datain)
-            rv = 0
 
         return rv
     def compressXRAM(self):
