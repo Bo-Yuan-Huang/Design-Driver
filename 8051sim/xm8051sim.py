@@ -217,17 +217,16 @@ class XMM(object):
                         
     def operate(self, op, addr, datain):
         rv = 0
-
+        if (op & 0xc) == XMM.RD:
+            rv = self.read(addr)
         step = op & 0x3
+
         assert step == XMM.STEP_NONE or step == XMM.STEP_AES or step == XMM.STEP_SHA or step == XMM.STEP_BOTH
         if step == XMM.STEP_AES or step == XMM.STEP_BOTH:
             self.aes_step()
         if step == XMM.STEP_SHA or step == XMM.STEP_BOTH:
             self.sha_step()
 
-        rv = 0
-        if (op & 0xc) == XMM.RD:
-            rv = self.read(addr)
         elif (op & 0xc) == XMM.WR:
             self.write(addr, datain)
             rv = 0

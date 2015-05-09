@@ -340,8 +340,8 @@ def synthesize(state, log, output, verbosity, unsat_core):
 
     states = [
         'dataout', 'xram', 'aes_addr', 'aes_len',
-        'aes_ctr', 'aes_key0', 'aes_key1',
-        'aes_bytes_processed', 'aes_read_data', 'aes_state'
+        'aes_state', 'aes_ctr', 'aes_key0', 'aes_key1', 
+        'aes_bytes_processed', 'aes_read_data', 'aes_enc_data'
     ]
     asts = syn.synthesize(states, [param], evalxmm)
 

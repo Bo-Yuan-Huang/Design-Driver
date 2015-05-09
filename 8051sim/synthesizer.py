@@ -288,16 +288,17 @@ class Synthesizer(object):
 
         for out in outs:
             out.clearCache()
-        rs = [self.cleanup(outputNames[i], out.synthesize(m)) for i, out in enumerate(outs)]
+        rs = [self.cleanup(cnsts, outputNames[i], out.synthesize(m)) for i, out in enumerate(outs)]
         for r in rs:
             r.clearCache()
         return rs
 
-    def cleanup(self, name, out):
+    def cleanup(self, cnsts, name, out):
         r = out
         if name in self.inputs:
             inp = self.inputs[name]
             S = z3.Solver()
+            self.addConstraints(S, cnsts)
             inp.clearCache()
             out.clearCache()
             S.add(inp.toZ3() != out.toZ3())
