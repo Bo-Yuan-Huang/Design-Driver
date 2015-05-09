@@ -147,7 +147,7 @@ class XMM(object):
         aes_state = self.getRegI('aes_state')
         aes_addr = self.getRegI('aes_addr')
         if aes_state == XMM.AES_RD:
-            self.aes_read_data = [self.xram[i+aes_addr+self.aes_bytes_processed] for i in xrange(16)]
+            self.aes_read_data = [self.xram[(i+aes_addr+self.aes_bytes_processed) & 0xFFFF] for i in xrange(16)]
             self.setRegI('aes_state', XMM.AES_OP)
         elif aes_state == XMM.AES_OP:
             aes_bytes_in = bytes(''.join([chr(ci) for ci in self.aes_read_data]))
@@ -168,7 +168,7 @@ class XMM(object):
             assert len(self.aes_enc_data) == 16
 
             for i in xrange(16):
-                addr = aes_addr + i + self.aes_bytes_processed
+                addr = (aes_addr + i + self.aes_bytes_processed) & 0xFFFF
                 self.xram[addr] = self.aes_enc_data[i]
             self.aes_bytes_processed += 16
             if self.aes_bytes_processed < self.getRegI('aes_len'):
@@ -186,7 +186,7 @@ class XMM(object):
         sha_len = self.getRegI('sha_len')
 
         if sha_state == XMM.SHA_RD:
-            self.sha_read_data = [self.xram[i+sha_rdaddr+self.sha_bytes_processed] for i in xrange(64)]
+            self.sha_read_data = [self.xram[(i+sha_rdaddr+self.sha_bytes_processed)&0xFFFF] for i in xrange(64)]
             self.setRegI('sha_state', XMM.SHA_OP)
         elif sha_state == XMM.SHA_OP:
             assert len(self.sha_digest) == 20
@@ -208,7 +208,7 @@ class XMM(object):
         elif sha_state == XMM.SHA_WR:
             assert len(self.sha_digest) == 20
             for i in xrange(20):
-                addr = i + sha_wraddr
+                addr = (i + sha_wraddr) & 0xFFFF
                 self.xram[addr] = self.sha_digest[i]
             self.setRegI('sha_state', XMM.SHA_IDLE)
 
@@ -217,18 +217,20 @@ class XMM(object):
                         
     def operate(self, op, addr, datain):
         rv = 0
+
+        step = op & 0x3
+        assert step == XMM.STEP_NONE or step == XMM.STEP_AES or step == XMM.STEP_SHA or step == XMM.STEP_BOTH
+        if step == XMM.STEP_AES or step == XMM.STEP_BOTH:
+            self.aes_step()
+        if step == XMM.STEP_SHA or step == XMM.STEP_BOTH:
+            self.sha_step()
+
+        rv = 0
         if (op & 0xc) == XMM.RD:
             rv = self.read(addr)
         elif (op & 0xc) == XMM.WR:
             self.write(addr, datain)
             rv = 0
-
-        op = op & 0x3
-        assert op == XMM.STEP_NONE or op == XMM.STEP_AES or op == XMM.STEP_SHA or op == XMM.STEP_BOTH
-        if op == XMM.STEP_AES or op == XMM.STEP_BOTH:
-            self.aes_step()
-        if op == XMM.STEP_SHA or op == XMM.STEP_BOTH:
-            self.sha_step()
 
         return rv
     def compressXRAM(self):

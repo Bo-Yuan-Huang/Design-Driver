@@ -1,5 +1,6 @@
 import sys
 import itertools
+import argparse
 
 import ast
 from synthesizer import Synthesizer
@@ -8,15 +9,16 @@ from xm8051sim import evalXMM, XMM
 class XmemContext(object):
     def __init__(self, 
         xram, op, addrin, datain, 
-        aes_state, aes_addr, aes_len, 
-        aes_ctr, aes_key0, aes_key1,
-        aes_bytes_processed, aes_read_data, aes_enc_data,
-        aes_func):
+        aes_state, aes_addr, aes_len, aes_ctr, aes_key0, aes_key1,
+        aes_bytes_processed, aes_read_data, aes_enc_data, aes_func,
+        sha_state, sha_rdaddr, sha_wraddr, sha_len,
+        sha_bytes_processed, sha_read_data, sha_digest):
 
         self.xram = xram
         self.op = op
         self.addrin = addrin
         self.datain = datain
+
         self.aes_state = aes_state
         self.aes_addr = aes_addr
         self.aes_len = aes_len
@@ -28,32 +30,16 @@ class XmemContext(object):
         self.aes_enc_data = aes_enc_data
         self.aes_func = aes_func
 
+        self.sha_state = sha_state
+        self.sha_rdaddr = sha_rdaddr
+        self.sha_wraddr = sha_wraddr
+        self.sha_len = sha_len
+        self.sha_bytes_processed = sha_bytes_processed
+        self.sha_read_data = sha_read_data
+        self.sha_digest = sha_digest
+
 def evalxmm(inputs, outputs):
-    # set a lot inputs to zero.
-    state_in = {}
-    sha_regs = [
-        'sha_state', 'sha_rdaddr', 'sha_wraddr', 'sha_len',
-    ]
-
-    state_in['aes_state'] = inputs['aes_state']
-    state_in['aes_addr'] = inputs['aes_addr']
-    state_in['aes_len'] = inputs['aes_len']
-    state_in['aes_ctr'] = inputs['aes_ctr']
-    state_in['aes_key0'] = inputs['aes_key0']
-    state_in['aes_key1'] = inputs['aes_key1']
-    state_in['aes_bytes_processed'] = inputs['aes_bytes_processed']
-    state_in['aes_read_data'] = inputs['aes_read_data']
-    state_in['aes_enc_data'] = inputs['aes_enc_data']
-
-    for i in sha_regs:
-        state_in[i] = 0
-
-    state_in['sha_bytes_processed'] = 0
-    state_in['sha_read_data'] = 0
-    state_in['sha_digest'] = 0
-    state_in['xram'] = inputs['xram']
-
-    dataout = evalXMM(inputs['op'], inputs['addrin'], inputs['datain'], state_in, outputs)
+    dataout = evalXMM(inputs['op'], inputs['addrin'], inputs['datain'], inputs, outputs)
     outputs['dataout'] = dataout
 
 def createInputs(syn):
@@ -61,6 +47,7 @@ def createInputs(syn):
     op = syn.addInput(ast.BitVecVar('op', 4))
     addrin = syn.addInput(ast.BitVecVar('addrin', 16))
     datain = syn.addInput(ast.BitVecVar('datain', 8))
+
     aes_state = syn.addInput(ast.BitVecVar('aes_state', 8))
     aes_addr = syn.addInput(ast.BitVecVar('aes_addr', 16))
     aes_len = syn.addInput(ast.BitVecVar('aes_len', 16))
@@ -72,24 +59,39 @@ def createInputs(syn):
     aes_enc_data = syn.addInput(ast.BitVecVar('aes_enc_data', 128))
     aes_func = syn.addInput(ast.FuncVar('aes_func', 256, 128))
 
+    sha_state = syn.addInput(ast.BitVecVar('sha_state', 8))
+    sha_rdaddr = syn.addInput(ast.BitVecVar('sha_rdaddr', 16))
+    sha_wraddr = syn.addInput(ast.BitVecVar('sha_wraddr', 16))
+    sha_len = syn.addInput(ast.BitVecVar('sha_len', 16))
+    sha_bytes_processed = syn.addInput(ast.BitVecVar('sha_bytes_processed', 16))
+    sha_read_data = syn.addInput(ast.BitVecVar('sha_read_data', 512))
+    sha_digest = syn.addInput(ast.BitVecVar('sha_digest', 160))
+
     return XmemContext(
         xram=xram, op=op, addrin=addrin, datain=datain,
         aes_state=aes_state, aes_addr=aes_addr, aes_len=aes_len,
         aes_ctr=aes_ctr, aes_key0=aes_key0, aes_key1=aes_key1,
         aes_bytes_processed=aes_bytes_processed,
         aes_read_data=aes_read_data, aes_enc_data=aes_enc_data,
-        aes_func=aes_func)
+        aes_func=aes_func,
+        sha_state=sha_state, sha_rdaddr=sha_rdaddr, sha_wraddr=sha_wraddr,
+        sha_len=sha_len, sha_bytes_processed=sha_bytes_processed,
+        sha_read_data=sha_read_data, sha_digest=sha_digest)
 
+# a bunch of utility functions.
 def lsb0(x): return ast.Concat(ast.Extract(15, 1, x), ast.BitVecVal(0, 1))
 def lsn0(x): return ast.Concat(ast.Extract(15, 4, x), ast.BitVecVal(0, 4))
+
 def rd2byte(addr, reg):
     return ast.If(ast.Equal(ast.Extract(0, 0, addr), ast.BitVecVal(0, 1)),
                         ast.Extract(7, 0, reg),
                         ast.Extract(15, 8, reg))
+
 def wr2byte(addr, reg, val):
     return ast.If(ast.Equal(ast.Extract(0, 0, addr), ast.BitVecVal(0, 1)),
                     ast.Concat(ast.Extract(15, 8, reg), val),
                     ast.Concat(val, ast.Extract(7, 0, reg)))
+
 def rd16byte(addr, reg):
     addr_ = ast.Extract(3, 0, addr)
     return ast.If(ast.Equal(addr_, ast.BitVecVal(0, 4)), ast.Extract(7, 0, reg),
@@ -108,6 +110,7 @@ def rd16byte(addr, reg):
                 ast.If(ast.Equal(addr_, ast.BitVecVal(13, 4)), ast.Extract(111, 104, reg),            
                 ast.If(ast.Equal(addr_, ast.BitVecVal(14, 4)), ast.Extract(119, 112, reg),            
                 ast.Extract(127, 120, reg))))))))))))))))
+
 def wr16byte(addr, reg, val):
     addr_ = ast.Extract(3, 0, addr)
     return ast.If(ast.Equal(addr_, ast.BitVecVal(0, 4)), ast.Concat(ast.Extract(127, 8, reg), val),
@@ -127,8 +130,7 @@ def wr16byte(addr, reg, val):
                 ast.If(ast.Equal(addr_, ast.BitVecVal(14, 4)), ast.Concat(ast.Extract(127, 120, reg), val, ast.Extract(111, 0, reg)),
                 ast.Concat(val, ast.Extract(119, 0, reg)))))))))))))))))
 
-
-
+# The AES model.
 def modelAES(syn, rd_en, wr_en, xmem):
     # addresses for the regs
     aes_start_addr = ast.BVInRange('aes_start_addr', ast.BitVecVal(0xff00, 16), ast.BitVecVal(0xff39, 16))
@@ -154,9 +156,6 @@ def modelAES(syn, rd_en, wr_en, xmem):
     AES_WRITE= ast.BitVecVal(3, 8)
      
     aes_state_idle  = ast.Equal(xmem.aes_state, AES_IDLE)
-    aes_state_read  = ast.Equal(xmem.aes_state, AES_READ)
-    aes_state_op    = ast.Equal(xmem.aes_state, AES_OP)
-    aes_state_write = ast.Equal(xmem.aes_state, AES_WRITE)
 
     # should we take a step this cycle?
     aes_step = ast.Equal(ast.ChooseConsecBits('aes_step', 1, xmem.op), ast.BitVecVal(1, 1))
@@ -205,21 +204,24 @@ def modelAES(syn, rd_en, wr_en, xmem):
                     ast.BitVecVal(0, 8)))))))
 
     # register update for a write
-    xmem.aes_addr_next = ast.If(aes_opaddr_sel_wr, wr2byte(xmem.addrin, xmem.aes_addr, xmem.datain), xmem.aes_addr)
-    xmem.aes_len_next = ast.If(aes_len_sel_wr, wr2byte(xmem.addrin, xmem.aes_len, xmem.datain), xmem.aes_len)
-    xmem.aes_ctr_next = ast.If(aes_ctr_sel_wr, wr16byte(xmem.addrin, xmem.aes_ctr, xmem.datain), xmem.aes_ctr)
-    xmem.aes_key0_next = ast.If(aes_key0_sel_wr, wr16byte(xmem.addrin, xmem.aes_key0, xmem.datain), xmem.aes_key0)
-    xmem.aes_key1_next = ast.If(aes_key1_sel_wr, wr16byte(xmem.addrin, xmem.aes_key1, xmem.datain), xmem.aes_key1)
+    xmem.aes_addr_next = ast.Choice('aes_next', xmem.aes_state, [ast.If(aes_opaddr_sel_wr, wr2byte(xmem.addrin, xmem.aes_addr, xmem.datain), xmem.aes_addr), xmem.aes_addr])
+    xmem.aes_len_next = ast.Choice('aes_next', xmem.aes_state, [ast.If(aes_len_sel_wr, wr2byte(xmem.addrin, xmem.aes_len, xmem.datain), xmem.aes_len), xmem.aes_len])
+    xmem.aes_ctr_next = ast.Choice('aes_next', xmem.aes_state, [ast.If(aes_ctr_sel_wr, wr16byte(xmem.addrin, xmem.aes_ctr, xmem.datain), xmem.aes_ctr), xmem.aes_ctr])
+    xmem.aes_key0_next = ast.Choice('aes_next', xmem.aes_state, [ast.If(aes_key0_sel_wr, wr16byte(xmem.addrin, xmem.aes_key0, xmem.datain), xmem.aes_key0), xmem.aes_key0])
+    xmem.aes_key1_next = ast.Choice('aes_next', xmem.aes_state, [ast.If(aes_key1_sel_wr, wr16byte(xmem.addrin, xmem.aes_key1, xmem.datain), xmem.aes_key1), xmem.aes_key1])
 
     # are we going to start the operation in the next cycle?
     aes_start_next = ast.And(ast.Equal(ast.Extract(0, 0, xmem.datain), ast.BitVecVal(1,1)), 
                              aes_wr_en, aes_start_sel)
 
     # how many bytes have we eaten?
-    xmem.aes_bytes_processed_next = ast.If(aes_start_next, ast.BitVecVal(0, 16), 
-                                        ast.If(ast.And(aes_step, aes_state_write),
-                                                ast.Add(xmem.aes_bytes_processed, ast.BitVecVal(16, 16)),
-                                                xmem.aes_bytes_processed))
+    aes_bytes_processed_next_1 = ast.If(aes_start_next, ast.BitVecVal(0, 16), xmem.aes_bytes_processed)
+    aes_bytes_processed_next_2 = ast.If(aes_step, ast.Add(xmem.aes_bytes_processed, ast.BitVecVal(16, 16)),
+                                        xmem.aes_bytes_processed)
+    xmem.aes_bytes_processed_next = ast.Choice('aes_bytes_processed_next', xmem.aes_state, 
+                                                [aes_bytes_processed_next_1, 
+                                                 aes_bytes_processed_next_2, 
+                                                 xmem.aes_bytes_processed])
 
     # read data to be processed.
     aes_read_data_array = []
@@ -228,20 +230,19 @@ def modelAES(syn, rd_en, wr_en, xmem):
             ast.ReadMem(xmem.xram, 
                 ast.Add(xmem.aes_addr, 
                     ast.Add(xmem.aes_bytes_processed, ast.BitVecVal(i, 16)))))
+    # reverse the damn thing because we want MSB first.
+    aes_read_data_array = aes_read_data_array[::-1]
 
-    xmem.aes_read_data_next = ast.If(
-        ast.And(aes_state_read, aes_step), 
-        ast.Concat(*aes_read_data_array),
-        xmem.aes_read_data)
+    aes_read_data_next_1 = ast.If(aes_step, ast.Concat(*aes_read_data_array), xmem.aes_read_data)
+    xmem.aes_read_data_next = ast.Choice('aes_read_data_next', xmem.aes_state, 
+                                            [aes_read_data_next_1, xmem.aes_read_data])
 
     # encrypt data.
     aes_func_inp = ast.Concat(xmem.aes_ctr, xmem.aes_read_data)
     aes_func_out = ast.Apply(xmem.aes_func, aes_func_inp)
-    xmem.aes_enc_data_next = ast.If(
-        ast.And(aes_state_op, aes_step), 
-        aes_func_out, 
-        xmem.aes_enc_data)
-
+    aes_enc_data_next_1 = ast.If(aes_step, aes_func_out, xmem.aes_enc_data)
+    xmem.aes_enc_data_next = ast.Choice('aes_enc_data_next', xmem.aes_state,
+                                            [aes_enc_data_next_1, xmem.aes_enc_data])
     # write data
     aes_write_xram = xmem.xram
     for i in xrange(16):
@@ -249,8 +250,8 @@ def modelAES(syn, rd_en, wr_en, xmem):
             aes_write_xram, 
             ast.Add(xmem.aes_addr, ast.Add(xmem.aes_bytes_processed, ast.BitVecVal(i, 16))),
             ast.Extract(i*8+7, i*8, xmem.aes_enc_data))
-    xram_next = ast.If(ast.And(aes_step, aes_state_write), aes_write_xram, xmem.xram)
-    xmem.xram = xram_next
+    xram_next = ast.If(aes_step, aes_write_xram, xmem.xram)
+    xmem.xram = ast.Choice('xram_next', xmem.aes_state, [xram_next, xmem.xram])
 
     # next state computation.
     aes_state_idle_next = ast.If(aes_start_next, AES_READ, AES_IDLE)
@@ -262,13 +263,25 @@ def modelAES(syn, rd_en, wr_en, xmem):
                                     AES_IDLE),
                                 AES_WRITE)
 
-    xmem.aes_state_next = ast.If(aes_state_idle, aes_state_idle_next,
-                            ast.If(aes_state_read, aes_state_read_next,
-                                ast.If(aes_state_op, aes_state_op_next,
-                                    aes_state_write_next)))
+    xmem.aes_state_next = ast.Choice('aes_state_next', xmem.aes_state, 
+                                                    [aes_state_idle_next, 
+                                                     aes_state_read_next, 
+                                                     aes_state_op_next, 
+                                                     aes_state_write_next])
     return in_aes_range, aes_dataout
 
-def synthesize():
+def modelSHA():
+    # addresses for the regs.
+    sha_start_addr = ast.BVInRange('sha_start_addr', ast.BitVecVal(0xfe00, 16), ast.BitVecVal(0xfe0f, 16))
+    sha_state_addr = ast.BVInRange('sha_state_addr', ast.BitVecVal(0xfe00, 16), ast.BitVecVal(0xfe0f, 16))
+    sha_rdaddr_addr = ast.BVInRange('sha_rdaddr_addr', ast.BitVecVal(0xfe00, 16), ast.BitVecVal(0xfe0f, 16))
+    sha_wraddr_addr = ast.BVInRange('sha_wraddr_addr', ast.BitVecVal(0xfe00, 16), ast.BitVecVal(0xfe0f, 16))
+    sha_len_addr = ast.BVInRange('sha_len_addr', ast.BitVecVal(0xfe00, 16), ast.BitVecVal(0xfe0f, 16))
+    in_sha_range = ast.And(ast.ULE(ast.BitVecVal(0xfe00, 16), xmem.addrin),
+                           ast.ULT(xmem.addrin, ast.BitVecVal(0xfe10, 16)))
+
+    
+def synthesize(state, log, output, verbosity, unsat_core):
     syn = Synthesizer()
     xmem = createInputs(syn)
 
@@ -310,23 +323,45 @@ def synthesize():
     syn.addOutput('aes_enc_data', xmem.aes_enc_data_next, Synthesizer.BITVEC)
     syn.addOutput('aes_state', xmem.aes_state_next, Synthesizer.BITVEC)
 
-    syn.logfile = sys.stdout
-    syn.VERBOSITY = 2
-    syn.unsat_core = True
+    if log == 'STDOUT':
+        syn.logfile = sys.stdout
+    elif log:
+        syn.logfile = open(log, 'wt')
+    syn.VERBOSITY = verbosity
+    syn.unsat_core = unsat_core
+
+    # syn.unsat_core = True
+
+    aes_state = state & 0x3
+    sha_state = (state & 0xc) >> 2
+
+    param = ast.And(ast.Equal(xmem.aes_state, ast.BitVecVal(aes_state, 8)),
+                    ast.Equal(xmem.sha_state, ast.BitVecVal(sha_state, 8)))
 
     states = [
-        'dataout', 'xram',
-        'aes_addr', 'aes_len',
+        'dataout', 'xram', 'aes_addr', 'aes_len',
         'aes_ctr', 'aes_key0', 'aes_key1',
         'aes_bytes_processed', 'aes_read_data', 'aes_state'
     ]
+    asts = syn.synthesize(states, [param], evalxmm)
 
-    asts = syn.synthesize(states, [ast.BoolVal(1)], evalxmm)
     for a, s in itertools.izip(asts, states):
-        print '%s\n-----------\n' % s
+        print '\n%s\n' % s
         print str(a)
 
+def auto_int(x): return int(x, 0)
+def main():
+    parser = argparse.ArgumentParser(description='8051 XRAM+crypto synthesizer')
+    parser.add_argument("--log", help="log file name")
+    parser.add_argument("--verbosity", help="verbosity", type=int, default=0)
+    parser.add_argument("--unsat_core", help="generate UNSAT core?", type=int, default=0)
+    parser.add_argument("--output", help='Pickled AST output.', default='')
+    parser.add_argument("state", help="param", type=auto_int)
+    args = parser.parse_args()
+
+    print 'state : (%d,%d)' % (args.state & 0x3, (args.state & 0xc) >> 2)
+    synthesize(args.state, args.log, args.output, args.verbosity, args.unsat_core)
 
 if __name__ == '__main__':
-    synthesize()
+    main()
 
