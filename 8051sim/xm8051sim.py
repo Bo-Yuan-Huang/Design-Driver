@@ -4,6 +4,21 @@ from Crypto.Cipher import AES
 from Crypto.Hash import SHA
 from collections import defaultdict
 
+
+def array2int(data, length):
+    m, v = 1, 0
+    for i in xrange(length):
+        v = v + m * data[i]
+        m = m * 0x100
+    return v
+
+def int2array(datain, length):
+    data = []
+    for i in xrange(length):
+        data.append(datain & 0xFF)
+        datain = datain >> 8 
+    return data
+
 class XMM(object):
     STEP_NONE = 0
     STEP_AES  = 1
@@ -26,14 +41,15 @@ class XMM(object):
         self.regmap = {}
         self.regidx = {}
         self.addReg('aes_start', 0xff00, 1, readonly=True)
-        self.addReg('aes_state', 0xff01, 1)
+        self.addReg('aes_state', 0xff01, 1, readonly=True)
         self.addReg('aes_addr', 0xff02, 2)
         self.addReg('aes_len', 0xff04, 2)
+        self.addReg('aes_reserved_1', 0xff06, 10, readonly=True)
         self.addReg('aes_ctr', 0xff10, 0x10)
         self.addReg('aes_key0', 0xff20, 0x10)
         self.addReg('aes_key1', 0xff30, 0x10)
         self.addReg('sha_start', 0xfe00, 1, readonly=True)
-        self.addReg('sha_state', 0xfe01, 1)
+        self.addReg('sha_state', 0xfe01, 1, readonly=True)
         self.addReg('sha_rdaddr', 0xfe02, 2)
         self.addReg('sha_wraddr', 0xfe04, 2)
         self.addReg('sha_len', 0xfe06, 2)
@@ -148,6 +164,9 @@ class XMM(object):
             assert len(self.aes_enc_data) == 16
 
         elif aes_state == XMM.AES_WR:
+            assert len(self.aes_read_data) == 16
+            assert len(self.aes_enc_data) == 16
+
             for i in xrange(16):
                 addr = aes_addr + i + self.aes_bytes_processed
                 self.xram[addr] = self.aes_enc_data[i]
@@ -241,34 +260,34 @@ class XMM(object):
         for [a,v] in ram[:-1]:
             self.xram[a] = v
 
-    int_regs = [
+    regs = [
         'aes_state', 'aes_addr', 'aes_len', 
         'sha_state', 'sha_rdaddr', 'sha_wraddr', 'sha_len',
-        'aes_ctr', 'aes_key0', 'aes_key1'
+        'aes_ctr', 'aes_key0', 'aes_key1',
     ]
 
     def writeState(self, state_in):
-        for ir in XMM.int_regs:
-            self.setRegI(ir, state_in[ir])
+        for r in XMM.regs:
+            self.setRegI(r, state_in[r])
 
         self.aes_bytes_processed = state_in['aes_bytes_processed']
-        self.aes_read_data = state_in['aes_read_data']
-        self.aes_enc_data = state_in['aes_enc_data']
+        self.aes_read_data = int2array(state_in['aes_read_data'], 16)
+        self.aes_enc_data = int2array(state_in['aes_enc_data'], 16)
         self.sha_bytes_processed = state_in['sha_bytes_processed']
-        self.sha_read_data = state_in['sha_read_data']
-        self.sha_digest = state_in['sha_digest']
+        self.sha_read_data = int2array(state_in['sha_read_data'], 64)
+        self.sha_digest = int2array(state_in['sha_digest'], 20)
         self.decompressXRAM(state_in['xram'])
 
     def readState(self, state_out):
-        for ir in XMM.int_regs:
-            state_out[ir] = self.getRegI(ir)
+        for r in XMM.regs:
+            state_out[r] = self.getRegI(r)
 
-        state_out['aes_bytes_processed'] = self.aes_bytes_processed 
-        state_out['aes_read_data'] = self.aes_read_data 
-        state_out['aes_enc_data'] = self.aes_enc_data 
-        state_out['sha_bytes_processed'] = self.sha_bytes_processed 
-        state_out['sha_read_data'] = self.sha_read_data 
-        state_out['sha_digest'] = self.sha_digest 
+        state_out['aes_bytes_processed'] = self.aes_bytes_processed
+        state_out['aes_read_data'] = array2int(self.aes_read_data, 16)
+        state_out['aes_enc_data'] = array2int(self.aes_enc_data, 16)
+        state_out['sha_bytes_processed'] = self.sha_bytes_processed
+        state_out['sha_read_data'] = array2int(self.sha_read_data, 64)
+        state_out['sha_digest'] = array2int(self.sha_digest, 20)
         state_out['xram'] = self.compressXRAM()
 
 def evalXMM(op, addrin, datain, state_in, state_out):
