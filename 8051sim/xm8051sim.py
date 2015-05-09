@@ -10,7 +10,7 @@ class XMM(object):
     STEP_SHA  = 2
     STEP_BOTH = 3
     RD        = 4
-    WR        = 5
+    WR        = 8
 
     AES_IDLE = 0
     AES_RD   = 1
@@ -197,18 +197,21 @@ class XMM(object):
             assert sha_state == XMM.SHA_IDLE
                         
     def operate(self, op, addr, datain):
-        if op == XMM.RD:
-            return self.read(addr)
-        elif op == XMM.WR:
+        rv = 0
+        if (op & 0xc) == XMM.RD:
+            rv = self.read(addr)
+        elif (op & 0xc) == XMM.WR:
             self.write(addr, datain)
-            return 0
-        else:
-            assert op == XMM.STEP_NONE or op == XMM.STEP_AES or op == XMM.STEP_SHA or op == XMM.STEP_BOTH
-            if op == XMM.STEP_AES or op == XMM.STEP_BOTH:
-                self.aes_step()
-            if op == XMM.STEP_SHA or op == XMM.STEP_BOTH:
-                self.sha_step()
+            rv = 0
 
+        op = op & 0x3
+        assert op == XMM.STEP_NONE or op == XMM.STEP_AES or op == XMM.STEP_SHA or op == XMM.STEP_BOTH
+        if op == XMM.STEP_AES or op == XMM.STEP_BOTH:
+            self.aes_step()
+        if op == XMM.STEP_SHA or op == XMM.STEP_BOTH:
+            self.sha_step()
+
+        return rv
     def compressXRAM(self):
         numCounts = defaultdict(int)
         assert len(self.xram) == 65536
@@ -240,16 +243,13 @@ class XMM(object):
 
     int_regs = [
         'aes_state', 'aes_addr', 'aes_len', 
-        'sha_state', 'sha_rdaddr', 'sha_wraddr', 'sha_len'
+        'sha_state', 'sha_rdaddr', 'sha_wraddr', 'sha_len',
+        'aes_ctr', 'aes_key0', 'aes_key1'
     ]
-    byte_regs = [ 'aes_ctr', 'aes_key0', 'aes_key1' ]
 
     def writeState(self, state_in):
         for ir in XMM.int_regs:
             self.setRegI(ir, state_in[ir])
-
-        for br in XMM.byte_regs:
-            self.setRegB(br, state_in[br])
 
         self.aes_bytes_processed = state_in['aes_bytes_processed']
         self.aes_read_data = state_in['aes_read_data']
@@ -257,13 +257,11 @@ class XMM(object):
         self.sha_bytes_processed = state_in['sha_bytes_processed']
         self.sha_read_data = state_in['sha_read_data']
         self.sha_digest = state_in['sha_digest']
+        self.decompressXRAM(state_in['xram'])
 
     def readState(self, state_out):
         for ir in XMM.int_regs:
             state_out[ir] = self.getRegI(ir)
-
-        for br in XMM.byte_regs:
-            state_out[ir] = self.getRegB(ir)
 
         state_out['aes_bytes_processed'] = self.aes_bytes_processed 
         state_out['aes_read_data'] = self.aes_read_data 
@@ -271,6 +269,7 @@ class XMM(object):
         state_out['sha_bytes_processed'] = self.sha_bytes_processed 
         state_out['sha_read_data'] = self.sha_read_data 
         state_out['sha_digest'] = self.sha_digest 
+        state_out['xram'] = self.compressXRAM()
 
 def evalXMM(op, addrin, datain, state_in, state_out):
     xmm = XMM()

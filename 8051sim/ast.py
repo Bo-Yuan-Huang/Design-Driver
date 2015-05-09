@@ -570,7 +570,7 @@ def _choiceBoolName(obj, prefix, i):
     return '_choice_%s_%s_%d_' % (prefix, obj.name, i)
 
 class BVInRange(Node):
-    """Select a bitvector within a range lo <= bv < hi."""
+    """Select a bitvector within a range lo <= bv <= hi."""
     def __init__(self, name, lo, hi):
         assert lo.width == hi.width
         Node.__init__(self, Node.BVINRANGE)
@@ -609,7 +609,7 @@ class BVInRange(Node):
         if r2: exprs.append(r2)
 
         exprs.append(z3.ULE(loz3, self.bitvec))
-        exprs.append(z3.ULT(self.bitvec, hiz3))
+        exprs.append(z3.ULE(self.bitvec, hiz3))
 
         return z3.And(*exprs)
 
@@ -1422,6 +1422,12 @@ def ULT(op1, op2):
 
 def UGT(op1, op2):
     return Z3Op('ugt', z3.UGT, [op1, op2], _noWidth)
+
+def ULE(op1, op2):
+    return Z3Op('ule', z3.ULE, [op1, op2], _noWidth)
+
+def UGE(op1, op2):
+    return Z3Op('uge', z3.UGE, [op1, op2], _noWidth)
 
 def _extendWidth(params, ops):
     assert len(params) == 1
