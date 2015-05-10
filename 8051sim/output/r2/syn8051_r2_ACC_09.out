@@ -1,0 +1,4 @@
+opcode : 0x9
+state  : ACC
+3.10user 0.05system 0:03.32elapsed 94%CPU (0avgtext+0avgdata 166784maxresident)k
+0inputs+96outputs (0major+42620minor)pagefaults 0swaps
