@@ -1,6 +1,10 @@
 import re
+import os
 import sys
 
+from collections import defaultdict
+import matplotlib.pyplot as plt
+import numpy as np
 
 user_re = re.compile(r'(\d+\.\d+)user')
 system_re = re.compile(r'(\d+\.\d+)system')
@@ -20,4 +24,21 @@ def get_time(filename):
     assert False
 
 
-print get_time(sys.argv[1])
+prefix = 'syn8051_r2_'
+def get_times(directory):
+    files = [f for f in os.listdir(directory) if f.endswith('.out')]
+    times = defaultdict(list)
+    for f in files:
+        assert f.startswith(prefix), f
+        t = f[len(prefix):-7]
+        times[t].append(get_time(os.path.join(directory, f)))
+
+    for t in sorted(times.iterkeys()):
+        vec = np.array(times[t])
+        print t, np.average(vec), max(vec), min(vec)
+
+
+if __name__ == '__main__':
+    get_times(sys.argv[1])
+
+
