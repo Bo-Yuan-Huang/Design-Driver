@@ -1,4 +1,4 @@
 Exception z3types.Z3Exception: Z3Exception() in  ignored
 state : (1,1)
-0.28user 0.01system 0:00.50elapsed 58%CPU (0avgtext+0avgdata 116224maxresident)k
-0inputs+16outputs (0major+7942minor)pagefaults 0swaps
+0.26user 0.02system 0:00.75elapsed 37%CPU (0avgtext+0avgdata 116160maxresident)k
+0inputs+16outputs (0major+7954minor)pagefaults 0swaps
