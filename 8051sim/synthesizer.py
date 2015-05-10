@@ -298,7 +298,7 @@ class Synthesizer(object):
         if name in self.inputs:
             inp = self.inputs[name]
             S = z3.Solver()
-            self.addConstraints(S, cnsts)
+            # self.addConstraints(S, cnsts)
             inp.clearCache()
             out.clearCache()
             S.add(inp.toZ3() != out.toZ3())

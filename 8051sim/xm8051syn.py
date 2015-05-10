@@ -471,8 +471,8 @@ def synthesize(output_state, fsm_state, log, output, verbosity, unsat_core):
             pk.dump(output_state)
             pk.dump(a)
     else:
-        print '\n%s\n' % output_state
-        print str(a)
+        print '%s' % output_state
+        print str(a) + '\n'
 
 def auto_int(x): return int(x, 0)
 def main():
