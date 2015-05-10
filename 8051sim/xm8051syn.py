@@ -1,3 +1,5 @@
+#! /usr/bin/python2.7
+
 import sys
 import itertools
 import argparse
@@ -482,15 +484,6 @@ def main():
     parser.add_argument("fsm_state", help="state of the FSMs", type=auto_int)
     parser.add_argument("output_state", help="output_state")
     args = parser.parse_args()
-
-    states = [
-        'dataout', 'xram', 'aes_addr', 'aes_len',
-        'aes_state', 'aes_ctr', 'aes_key0', 'aes_key1', 
-        'aes_bytes_processed', 'aes_read_data', 'aes_enc_data'
-    ]
-
-    if args.output_state not in states:
-        print 'Unknown output state: %s' % args.output_state
 
     print 'state : (%d,%d)' % (args.fsm_state & 0x3, (args.fsm_state & 0xc) >> 2)
     synthesize(args.output_state, args.fsm_state, args.log, args.output, args.verbosity, args.unsat_core)
