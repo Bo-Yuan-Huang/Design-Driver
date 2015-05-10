@@ -62,7 +62,8 @@ class Node(object):
     CONCAT          = 14
     Z3OP            = 15
     MACRO           = 16
-    NODE_TYPE_MAX   = 16
+    APPLY           = 17
+    NODE_TYPE_MAX   = 17
 
     def __init__(self, nodetype):
         """Constructor."""
@@ -755,6 +756,7 @@ class Choice(Node):
 
 class Apply(Node):
     def __init__(self, fun, arg):
+        Node.__init__(self, Node.APPLY)
         self.fun = fun
         self.arg = arg
         self.width = self.fun.owidth

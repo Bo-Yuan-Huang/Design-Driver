@@ -38,6 +38,33 @@ def readAllASTs(d):
 
     return asts
 
+def rewriteComplexMemReads(n):
+    def f(n):
+        if n.nodetype == ast.Node.READMEM:
+            if n.mem.nodetype != ast.Node.MEMVAR:
+                mem = ast2verilog.getBaseMemory(n.mem)
+                return ast.ReadMem(mem, n.addr)
+            else:
+                return n
+        else:
+            return n
+    return n.apply(f)
+
+def nondetChooseMemWrite(choice_vars, memwrites, sz=16):
+    if len(memwrites) == 0:
+        return ast.BoolVal(0), ast.BitVecVal(0, sz)
+    else:
+        def createIf(i):
+            (cond_i, mem_i, addr_i) = memwrites[i]
+            if i == len(memwrites) - 1:
+                return cond_i, addr_i
+            else:
+                cond_rest, addr_rest = createIf(i+1)
+                cond = ast.If(choice_vars[i], cond_i, cond_rest) 
+                addr = ast.If(choice_vars[i], addr_i, addr_rest)
+                return cond, addr
+        return createIf(0)
+
 def main(argv):
     if len(argv) != 3:
         print 'Syntax error.'
@@ -49,69 +76,67 @@ def main(argv):
 
     vctx = VerilogContext() 
     cnst = ast.Concat(
-                ast.Extract(1, 0, ast.BitVecVar('sha_state')), 
-                ast.Extract(1, 0, ast.BitVecVar('aes_state')))
+                ast.Extract(1, 0, ast.BitVecVar('sha_state', 8)), 
+                ast.Extract(1, 0, ast.BitVecVar('aes_state', 8)))
 
     vctx.setCnst(cnst)
 
     vctx.cinputs.append(('op', (3,0)))
-    vctx.cinputs.append(('addrin', (15,0))
-    vctx.cinputs.append(('datain', (7,0))
+    vctx.cinputs.append(('addrin', (15,0)))
+    vctx.cinputs.append(('datain', (7,0)))
+    vctx.objects[ast.BitVecVar('op', 4)] = 'op'
+    vctx.objects[ast.BitVecVar('addrin', 16)] = 'addrin'
+    vctx.objects[ast.BitVecVar('datain', 8)] = 'datain'
 
+    vctx.addInput(ast.BoolVar('WR_XRAM_EN'), None)
+    vctx.addInput(ast.BitVecVar('WR_XRAM_ADDR', 16), (15,0))
+
+    subs = ast2verilog.AddrSubs()
     asts_p = []
+    nondet_inputs = []
     for opcode, astdict in enumerate(asts):
         astdict_p = []
         acc_v = None
         for st, v in astdict.iteritems():
             v_p1 = ast2verilog.stripMacros(v)
-            v_p2 = ast2verilog.rewriteMemReads(opcode, v_p1, subs)
-            v_p3 = forceRegsToZero(st, v_p2)
-            v_p = rewritePortsAsInputs(opcode, st, v_p3)
-            astdict_p.append((st, v_p))
-            if st == 'ACC':
-                acc_v = v_p
-
-        assert acc_v != None
-        acc_p = ast.BVXor(ast.Extract(7, 7, acc_v),
-                ast.BVXor(ast.Extract(6, 6, acc_v),
-                ast.BVXor(ast.Extract(5, 5, acc_v),
-                ast.BVXor(ast.Extract(4, 4, acc_v),
-                ast.BVXor(ast.Extract(3, 3, acc_v),
-                ast.BVXor(ast.Extract(2, 2, acc_v),
-                ast.BVXor(ast.Extract(1, 1, acc_v), 
-                ast.Extract(0, 0, acc_v))))))))
-        for i in xrange(len(astdict_p)):
-            st = astdict_p[i][0]
-            v = astdict_p[i][1]
-            if st == 'PSW':
-                v_p = ast.Concat(ast.Extract(7, 1, v), acc_p)
-                astdict_p[i] = (st, v_p)
+            v_p2 = rewriteComplexMemReads(v_p1)
+            v_p3 = ast2verilog.replaceFunctions(v_p2, nondet_inputs)
+            v_p4 = ast2verilog.rewriteMemReads(opcode, v_p3, subs)
+            astdict_p.append((st, v_p4))
 
         asts_p.append(astdict_p)
+
+    for var, name, width in nondet_inputs:
+        vctx.cinputs.append((name, width))
+        vctx.objects[var] = name
 
     ports = subs.getReadPorts()
     for m, s in ports:
         vctx.addComment("port: " + m.name + "->" + str(s))
         vctx.createWire(s)
-        if m.name == 'ROM':
-            vctx.cinputs.append((s, vctx.getWidth(s)))
-            vctx.objects[s] = s.name;
+        vctx.cinputs.append((s, vctx.getWidth(s)))
+        vctx.objects[s] = s.name;
 
     for m, s in ports:
-        addr_expr = subs.getExpr(cnst_p, m, s)
+        addr_expr = subs.getExpr(cnst, m, s)
         addr_name = s.name + "_ADDR"
         vctx.addComment(addr_name + "=" + str(addr_expr))
         vctx.addAssignment(addr_expr, vctx.getExpr(addr_expr), addr_name)
-        if(m.name != 'ROM'):
-            rd_expr = ast2verilog.resizeMem(ast.ReadMem(m, addr_expr), 'IRAM', 4)
-            vctx.addAssignment(rd_expr, vctx.getExpr(rd_expr), s.name)
-        else:
-            vctx.outputs.append((addr_name, vctx.getWidth(addr_expr)))
+        vctx.outputs.append((addr_name, vctx.getWidth(addr_expr)))
+
+    max_writes = 120
+    choice_vars = []
+    for i in xrange(120):
+        name = 'nondet_memwrite_choice_%d' % i
+        var = ast.BoolVar(name)
+        vctx.cinputs.append((name, None))
+        vctx.objects[var] = name
+        choice_vars.append(var)
 
     for opcode, astdict in enumerate(asts_p):
-        if opcode in opcodes_to_exclude: continue
-        assert len(astdict) == 24
+        assert len(astdict) == 18
 
+        memwrites = []
         for st, v in astdict:
             # ignore the case where nothing changes.
             if v.isVar() and v.name == st: continue
@@ -121,31 +146,27 @@ def main(argv):
             vctx.addComment('%s_%02x' % (st, opcode))
             vctx.addComment('')
 
-            if v.isMem(): 
-                mw = vctx.getMemWrite(st, ast2verilog.resizeMem(v, 'IRAM', 4))
-                if mw != None: vctx.addMemWrite(st, opcode, mw)
-            else:
+            if not v.isMem(): 
                 name = '%s_%02x' % (st, opcode)
                 vctx.addAssignment(v, vctx.getExpr(v), name)
                 vctx.addStateChange(st, opcode, name)
+            else:
+                vctx.getMemWriteAddrs(ast.BoolVal(1), st, v, memwrites)
+                # mw = vctx.getMemWrite(st, v)
+                # if mw != None: vctx.addMemWrite(st, opcode, mw)
 
+        cond, addr = nondetChooseMemWrite(choice_vars, memwrites)
+        vctx.addAssignment(cond, vctx.getExpr(cond), 'WR_XRAM_EN_%02x' % opcode)
+        vctx.addStateChange('WR_XRAM_EN', opcode, 'WR_XRAM_EN_%02x' % opcode)
+        vctx.addAssignment(addr, vctx.getExpr(addr), 'WR_XRAM_ADDR_%02x' % opcode)
+        vctx.addStateChange('WR_XRAM_ADDR', opcode, 'WR_XRAM_ADDR_%02x' % opcode)
 
+    vctx.inputs.append(('dataout', (7,0)))
     vctx.addOutputs()
-    vctx.addMems()
-    vctx.outputs.append(('IRAM_full', (127,0)))
-    vctx.statements.append('assign IRAM_full = {IRAM[15], IRAM[14], IRAM[13], IRAM[12], IRAM[11], IRAM[10], IRAM[9], IRAM[8], IRAM[7], IRAM[6], IRAM[5], IRAM[4], IRAM[3], IRAM[2], IRAM[1], IRAM[0]} ;')
-    vctx.setRst('P0', 'ff')
-    vctx.setRst('P1', 'ff')
-    vctx.setRst('P2', 'ff')
-    vctx.setRst('P3', 'ff')
-    vctx.setRst('TCON', '0')
-    vctx.setRst('SP', '7')
-    addZeroRegs(vctx)
+    # vctx.addMems()
 
-    vctx.init_mem_guard = 'OC8051_SIMULATION'
     with open(argv[2], 'wt') as f:
-        vctx.dump(f, 'oc8051_golden_model')
-
+        vctx.dump(f, 'xm8051_golden_model')
 
 if __name__ == '__main__':
     main(sys.argv)

@@ -82,6 +82,19 @@ class MemWrite(object):
                     stmts += '%s[%s] <= %s;' % (self.mem.name, ai, self.datas[i])
             return '; '.join(stmts)
 
+def getBaseMemory(n):
+    if n.nodetype == ast.Node.MEMVAR:
+        return n
+    elif n.nodetype == ast.Node.WRITEMEM:
+        return getBaseMemory(n.mem)
+    elif n.nodetype == ast.Node.IF:
+        m1 = getBaseMemory(n.exptrue)
+        m2 = getBaseMemory(n.expfalse)
+        assert m1 == m2
+        return m1
+    else:
+        assert False, n.nodetype
+
 class VerilogContext(object):
     def __init__(self):
         self.inputs     = []
@@ -147,6 +160,28 @@ class VerilogContext(object):
         self.mems.append(node)
         self.objects[node] = node.name
 
+    def getMemWriteAddrs(self, cond, outname, exp, addrs):
+        assert exp.nodetype == ast.Node.IF or exp.nodetype == ast.Node.WRITEMEM or exp.nodetype == ast.Node.MEMVAR, (exp, exp.nodetype)
+        if exp.nodetype == ast.Node.IF:
+            c1 = ast.And(cond, exp.cond)
+            c2 = ast.And(cond, ast.Not(exp.cond))
+
+            self.getMemWriteAddrs(c1, outname, exp.exptrue, addrs)
+            self.getMemWriteAddrs(c2, outname, exp.expfalse, addrs)
+        elif exp.nodetype == ast.Node.WRITEMEM:
+            if exp.mem.isMemVar():
+                new_addr = (cond, exp.mem, exp.addr)
+                addrs.append(new_addr)
+            else:
+                mem = getBaseMemory(exp)
+                new_addr = (cond, mem, exp.addr)
+                addrs.append(new_addr)
+                self.getMemWriteAddrs(cond, outname, exp.mem, addrs)
+        elif exp.nodetype == ast.Node.MEMVAR:
+            pass
+        else:
+            assert False
+
     def getMemWrite(self, outname, exp):
         assert exp.nodetype == ast.Node.IF or exp.nodetype == ast.Node.WRITEMEM or exp.nodetype == ast.Node.MEMVAR, (exp, exp.nodetype)
         if exp.nodetype == ast.Node.IF:
@@ -165,7 +200,7 @@ class VerilogContext(object):
                 mw = MemWrite(MemWrite.WRITE, mem=mem, addr=addr, data=data)
                 return mw
             else:
-                assert exp.mem.nodetype == ast.Node.WRITEMEM
+                assert exp.mem.nodetype == ast.Node.WRITEMEM, (str(exp), exp.mem.nodetype)
                 mvs = self.getMemWrite(outname, exp.mem)
                 addr = self.getExpr(exp.addr)
                 data = self.getExpr(exp.data)
@@ -497,7 +532,7 @@ def bitvecvar2verilog(node, ctx):
     ctx.addInput(node, (node.width-1, 0))
     return node.name
 
-def boolvar2verilog(node, ctx):
+def boolval2verilog(node, ctx):
     assert node.nodetype == ast.Node.BOOLVAL
     return str(node.value)
 
@@ -602,6 +637,10 @@ def z3op2verilog(node, ctx):
         return ctx.addAssignment(node, '( %s )' % (' < '.join(ops)))
     elif node.opname == 'ugt':
         return ctx.addAssignment(node, '( %s )' % (' > '.join(ops)))
+    elif node.opname == 'ule':
+        return ctx.addAssignment(node, '( %s )' % (' <= '.join(ops)))
+    elif node.opname == 'uge':
+        return ctx.addAssignment(node, '( %s )' % (' >= '.join(ops)))
     elif node.opname == 'zero-ext':
         assert len(ops) == 1
         assert len(params) == 1
@@ -731,7 +770,7 @@ def rewriteMemReads(param, n_top, subs):
         if n.nodetype == ast.Node.READMEM:
             if not n.mem.isMemVar():
                 err_msg = 'Reading from modified memories not supported yet.'
-                raise NotImplementedError
+                raise NotImplementedError, err_msg
             s = subs.getSub(param, n.mem, n.addr)
             if not s:
                 name = 'RD_%s_%d' % (n.mem.name, subs.count(param, n.mem))
@@ -747,6 +786,30 @@ def stripMacros(top):
     def f(n):
         if n.nodetype == ast.Node.MACRO:
             return n.expr
+        else:
+            return n
+    return top.apply(f)
+
+def replaceFunctions(top, inputs):
+    def f(n):
+        if n.nodetype == ast.Node.APPLY:
+            width = n.width
+            nchunks = width // 64
+            chunksizes = [64] * nchunks
+            assert sum(chunksizes) <= width
+            if (nchunks * 64) < width:
+                chunksizes.append(width % 64)
+            assert sum(chunksizes) == width
+            assert 0 not in chunksizes
+
+            these_inputs = []
+            for cs in chunksizes:
+                name = 'input_%s_%d' % (n.fun.name, len(inputs))
+                var = ast.BitVecVar(name, cs)
+                inp = (var, name, (cs-1, 0))
+                inputs.append(inp)
+                these_inputs.append(var)
+            return ast.Concat(*these_inputs)
         else:
             return n
     return top.apply(f)
