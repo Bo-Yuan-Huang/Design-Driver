@@ -171,6 +171,7 @@ class XMM(object):
                 addr = (aes_addr + i + self.aes_bytes_processed) & 0xFFFF
                 self.xram[addr] = self.aes_enc_data[i]
             self.aes_bytes_processed += 16
+            self.aes_bytes_processed &= 0xFFFF
             if self.aes_bytes_processed < self.getRegI('aes_len'):
                 self.setRegI('aes_state', XMM.AES_RD)
             else:
@@ -196,6 +197,7 @@ class XMM(object):
             h.update(sha_bytes_in)
             self.sha_digest = [ord(a) for a in h.digest()]
             self.sha_bytes_processed += 64
+            self.sha_bytes_processed &= 0xFFFF
 
             if self.sha_bytes_processed < sha_len:
                 self.setRegI('sha_state', XMM.SHA_RD)
