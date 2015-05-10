@@ -1,3 +1,17 @@
 state : (3,0)
-3.45user 0.02system 0:03.62elapsed 96%CPU (0avgtext+0avgdata 144736maxresident)k
-0inputs+40outputs (0major+9806minor)pagefaults 0swaps
+Traceback (most recent call last):
+  File "./xm8051syn.py", line 487, in <module>
+    main()
+  File "./xm8051syn.py", line 484, in main
+    synthesize(args.output_state, args.fsm_state, args.log, args.output, args.verbosity, args.unsat_core)
+  File "./xm8051syn.py", line 460, in synthesize
+    [a] = syn.synthesize([output_state], [param], evalxmm)
+  File "/u/psubrama/hwsec-design-drivers/8051sim/synthesizer.py", line 284, in synthesize
+    assert result == z3.sat
+AssertionError
+Exception z3types.Z3Exception: Z3Exception() in  ignored
+Exception z3types.Z3Exception: Z3Exception() in  ignored
+Exception z3types.Z3Exception: Z3Exception() in  ignored
+Command exited with non-zero status 1
+59.49user 0.02system 0:59.70elapsed 99%CPU (0avgtext+0avgdata 163552maxresident)k
+0inputs+8outputs (0major+11282minor)pagefaults 0swaps

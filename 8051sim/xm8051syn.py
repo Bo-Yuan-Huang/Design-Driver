@@ -296,6 +296,10 @@ def modelSHA(syn, rd_en, wr_en, xmem):
 
     # are we idle
     sha_state_idle = ast.Equal(xmem.sha_state, SHA_IDLE)
+    sha_state_read = ast.Equal(xmem.sha_state, SHA_READ)
+    sha_state_op   = ast.Equal(xmem.sha_state, SHA_OP)
+    sha_state_write= ast.Equal(xmem.sha_state, SHA_WRITE)
+
     # should we take a step this cycle?
     sha_step = ast.Equal(ast.Extract(1, 1, xmem.op), ast.BitVecVal(1, 1))
     # write enable
@@ -368,8 +372,9 @@ def modelSHA(syn, rd_en, wr_en, xmem):
     sha_func_out = ast.Apply(xmem.sha_func, sha_func_inp)
     sha_digest_1 = ast.If(sha_start_next, ast.BitVecVal(0, 160), xmem.sha_digest)
     sha_digest_2 = ast.If(sha_step, sha_func_out, xmem.sha_digest)
-    xmem.sha_digest_next = ast.Choice('sha_digest_next', xmem.sha_state,
-                                        [sha_digest_1, sha_digest_2, xmem.sha_digest])
+    xmem.sha_digest_next = ast.If(sha_state_read, sha_digest_1,
+                                ast.If(sha_state_op, sha_digest_2,
+                                    xmem.sha_digest))
 
     # write data
     sha_write_xram = xmem.xram
