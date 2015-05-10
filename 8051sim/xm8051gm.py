@@ -10,12 +10,6 @@ from cPickle import Unpickler
 from ast2verilog import VerilogContext
 import ast2verilog
 
-def readCnst(filename):
-    with open(filename, 'rb') as f:
-        pk = Unpickler(f)
-        cnst = pk.load()
-        return cnst
-
 def readAST(filename):
     with open(filename, 'rb') as f:
         pk = Unpickler(f)
@@ -34,7 +28,7 @@ def readAllASTs(d):
     astfiles = [os.path.join(d, f) for f in os.listdir(d) if f.endswith('.ast')]
 
     asts = []
-    for i in xrange(0x100): asts.append({})
+    for i in xrange(0x10): asts.append({})
 
     for f in astfiles:
         ast = readAST(f)
@@ -44,86 +38,25 @@ def readAllASTs(d):
 
     return asts
 
-def addPort(R, mem, addr, opcode):
-    k = (mem, addr)
-    if k not in R:
-        R[k] = []
-
-    if opcode == -1:
-        R[k] = [-1]
-    else:
-        if R[k] != [-1]:
-            R[k].append(opcode)
-
-rmw_opcodes = set([
-    0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc, 
-    0xd, 0xe, 0xf, 0x15, 0x16, 0x17, 0x18, 
-    0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 
-    0x42, 0x43, 0x45, 0x46, 0x47, 0x48, 0x49, 
-    0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x52, 
-    0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 
-    0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f, 0x62, 
-    0x63, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 
-    0x6b, 0x6c, 0x6d, 0x6e, 0x6f, 0x72, 0x82, 
-    0xa0, 0xb0, 0xb2, 0xc2, 0xd2, 0xd5, 0xd8, 
-    0xd9, 0xda, 0xdb, 0xdc, 0xdd, 0xde, 0xdf])
-
-zero_regs = [
-    'SBUF', 'SCON', 'PCON', 'TCON', 
-    'TL0', 'TL1', 'TH0', 'TH1', 
-    'TMOD', 'IE', 'IP'
-]
-
-def forceRegsToZero(st, v):
-    if st in zero_regs:
-        return ast.BitVecVar(st, 8)
-    return v
-
-def addZeroRegs(vctx):
-    for r in zero_regs:
-        vctx.outputs.append((r, (7,0)))
-        vctx.wires.append((r+'_next', (7,0)))
-        vctx.outputs.append((r+'_next', (7,0)))
-        vctx.statements.append('assign %s_next = %s;' % (r, r))
-
-def rewritePortsAsInputs(opcode, st, v):
-    port_names = ['P0', 'P1', 'P2', 'P3']
-    def f(n):
-        if n.nodetype == ast.Node.BITVECVAR and n.name in port_names:
-            assert n.width == 8
-            n_p = ast.BitVecVar(n.name + 'INREG', n.width)
-            return n_p
-        else:
-            return n
-
-    if (opcode not in rmw_opcodes) and (st not in port_names):
-        return v.apply(f)
-    else:
-        return v
-                
 def main(argv):
-    if len(argv) != 4:
+    if len(argv) != 3:
         print 'Syntax error.'
-        print 'Usage: %s <ast-dir> <cnst> <output.v>'
+        print 'Usage: %s <ast-dir> <output.v>'
         return 1
 
     asts = readAllASTs(argv[1])
-    assert len(asts) == 0x100
-    opcodes_to_exclude = [0xF0, 0xF2, 0xF3, 0xE0, 0xE2, 0xE3]
+    assert len(asts) == 0x10
 
     vctx = VerilogContext() 
-    cnst = readCnst(argv[2])
+    cnst = ast.Concat(
+                ast.Extract(1, 0, ast.BitVecVar('sha_state')), 
+                ast.Extract(1, 0, ast.BitVecVar('aes_state')))
 
-    subs = ast2verilog.AddrSubs()
-    cnst_p = ast2verilog.rewriteMemReads(-1, cnst, subs)
-    vctx.setCnst(cnst_p)
+    vctx.setCnst(cnst)
 
-    for i in xrange(4):
-        pi = 'P%dIN' % i
-        pireg = 'P%dINREG' % i
-        vctx.cinputs.append((pi, (7,0)))
-        vctx.always_stmts.append('%s <= %s;' % (pireg, pi))
-
+    vctx.cinputs.append(('op', (3,0)))
+    vctx.cinputs.append(('addrin', (15,0))
+    vctx.cinputs.append(('datain', (7,0))
 
     asts_p = []
     for opcode, astdict in enumerate(asts):
@@ -210,7 +143,7 @@ def main(argv):
     addZeroRegs(vctx)
 
     vctx.init_mem_guard = 'OC8051_SIMULATION'
-    with open(argv[3], 'wt') as f:
+    with open(argv[2], 'wt') as f:
         vctx.dump(f, 'oc8051_golden_model')
 
 

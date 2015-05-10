@@ -397,11 +397,6 @@ def synthesize(output_state, fsm_state, log, output, verbosity, unsat_core):
     syn = Synthesizer()
     xmem = createInputs(syn)
 
-    c1 = ast.Or(ast.ULT(xmem.addrin, ast.BitVecVal(0xFE00, 16)), ast.UGT(xmem.addrin, ast.BitVecVal(0xFE40, 16)))
-    c2 = ast.Not(ast.Equal(xmem.addrin, ast.BitVecVal(0xFF00, 16)))
-    c3 = ast.Equal(ast.Extract(1, 1, xmem.op), ast.BitVecVal(0, 1))
-    syn.addConstraint(ast.And(c1, c2, c3))
-
     # common signals.
     mem_op_bits = ast.Extract(3, 2, xmem.op)
     rd_en = ast.Equal(mem_op_bits, ast.BitVecVal(1, 2))
