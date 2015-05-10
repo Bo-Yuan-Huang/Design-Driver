@@ -14,7 +14,7 @@ def find_files(d):
 
 script = Template("""#PBS -l walltime=36:00:00
 cd $curdir
-time ./uc8051syn.py --output $ast $op $state >& $out""")
+/usr/bin/time ./uc8051syn.py --output $ast $op $state >& $out""")
 
 all_state = [
     'PC', 'ACC', 'IRAM', 'PSW', 'SP',
@@ -30,6 +30,7 @@ def create_scripts(start, stop, name, state):
         script_name = 'scripts/%s.sh' % basename
         output = 'output/%s.out' % basename
         ast = 'output/%s.ast' % basename
+        print state, op
         with open(script_name, 'wt') as fileobj:
             print >> fileobj, script.substitute(
                                 curdir=os.getcwd(),
