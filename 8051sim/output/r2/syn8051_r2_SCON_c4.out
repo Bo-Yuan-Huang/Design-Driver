@@ -1,0 +1,4 @@
+opcode : 0xc4
+state  : SCON
+2.88user 0.05system 0:03.16elapsed 92%CPU (0avgtext+0avgdata 140400maxresident)k
+0inputs+96outputs (0major+34192minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x68
+state  : PCON
+2.47user 0.07system 0:02.82elapsed 90%CPU (0avgtext+0avgdata 135808maxresident)k
+0inputs+88outputs (0major+31124minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xe9
+state  : B
+3.12user 0.07system 0:03.46elapsed 92%CPU (0avgtext+0avgdata 146816maxresident)k
+0inputs+96outputs (0major+36508minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x57
+state  : TL1
+2.16user 0.04system 0:02.43elapsed 91%CPU (0avgtext+0avgdata 134848maxresident)k
+0inputs+72outputs (0major+26092minor)pagefaults 0swaps

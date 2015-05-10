@@ -1,0 +1,4 @@
+opcode : 0x11
+state  : SBUF
+2.29user 0.05system 0:02.59elapsed 90%CPU (0avgtext+0avgdata 139040maxresident)k
+0inputs+88outputs (0major+31248minor)pagefaults 0swaps

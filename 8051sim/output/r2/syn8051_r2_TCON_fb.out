@@ -1,0 +1,4 @@
+opcode : 0xfb
+state  : TCON
+2.39user 0.08system 0:02.73elapsed 90%CPU (0avgtext+0avgdata 137200maxresident)k
+0inputs+96outputs (0major+33310minor)pagefaults 0swaps

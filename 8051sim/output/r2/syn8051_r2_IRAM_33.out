@@ -1,0 +1,4 @@
+opcode : 0x33
+state  : IRAM
+1581.89user 0.13system 26:24.98elapsed 99%CPU (0avgtext+0avgdata 279824maxresident)k
+0inputs+96outputs (0major+80498minor)pagefaults 0swaps

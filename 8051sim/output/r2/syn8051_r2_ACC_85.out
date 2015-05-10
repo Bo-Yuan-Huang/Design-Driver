@@ -1,0 +1,4 @@
+opcode : 0x85
+state  : ACC
+5.47user 0.11system 0:05.93elapsed 94%CPU (0avgtext+0avgdata 186176maxresident)k
+0inputs+128outputs (0major+57351minor)pagefaults 0swaps

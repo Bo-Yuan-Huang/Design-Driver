@@ -1,0 +1,4 @@
+opcode : 0x89
+state  : ACC
+4.13user 0.09system 0:04.49elapsed 93%CPU (0avgtext+0avgdata 167360maxresident)k
+0inputs+112outputs (0major+50832minor)pagefaults 0swaps

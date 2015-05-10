@@ -1,0 +1,4 @@
+opcode : 0xb7
+state  : IRAM
+2858.40user 0.20system 47:43.79elapsed 99%CPU (0avgtext+0avgdata 319248maxresident)k
+0inputs+152outputs (0major+149590minor)pagefaults 0swaps

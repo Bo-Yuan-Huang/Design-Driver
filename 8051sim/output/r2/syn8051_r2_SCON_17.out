@@ -1,0 +1,4 @@
+opcode : 0x17
+state  : SCON
+2.78user 0.04system 0:03.26elapsed 86%CPU (0avgtext+0avgdata 139904maxresident)k
+0inputs+96outputs (0major+34110minor)pagefaults 0swaps

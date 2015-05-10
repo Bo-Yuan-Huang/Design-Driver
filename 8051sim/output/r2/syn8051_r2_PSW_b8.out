@@ -1,0 +1,4 @@
+opcode : 0xb8
+state  : PSW
+2.96user 0.07system 0:03.28elapsed 92%CPU (0avgtext+0avgdata 158480maxresident)k
+0inputs+64outputs (0major+29006minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x3a
+state  : ACC
+3.30user 0.07system 0:03.55elapsed 95%CPU (0avgtext+0avgdata 151936maxresident)k
+0inputs+88outputs (0major+35572minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x2f
+state  : IRAM
+1456.52user 0.85system 24:20.29elapsed 99%CPU (0avgtext+0avgdata 300928maxresident)k
+0inputs+144outputs (0major+136730minor)pagefaults 0swaps

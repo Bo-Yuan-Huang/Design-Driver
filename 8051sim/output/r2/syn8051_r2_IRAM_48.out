@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : IRAM
+1722.39user 0.84system 28:46.69elapsed 99%CPU (0avgtext+0avgdata 268656maxresident)k
+0inputs+112outputs (0major+87323minor)pagefaults 0swaps

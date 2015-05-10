@@ -1,0 +1,4 @@
+opcode : 0x16
+state  : ACC
+5.08user 0.12system 0:05.33elapsed 97%CPU (0avgtext+0avgdata 161424maxresident)k
+0inputs+112outputs (0major+47470minor)pagefaults 0swaps

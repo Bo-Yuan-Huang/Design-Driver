@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : P1
+2.86user 0.08system 0:03.44elapsed 85%CPU (0avgtext+0avgdata 142880maxresident)k
+0inputs+104outputs (0major+36649minor)pagefaults 0swaps

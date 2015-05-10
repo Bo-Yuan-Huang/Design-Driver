@@ -1,0 +1,4 @@
+opcode : 0x94
+state  : SP
+2.64user 0.08system 0:02.94elapsed 92%CPU (0avgtext+0avgdata 138256maxresident)k
+0inputs+80outputs (0major+28352minor)pagefaults 0swaps

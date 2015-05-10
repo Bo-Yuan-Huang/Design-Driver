@@ -1,0 +1,4 @@
+opcode : 0xa4
+state  : IE
+2.46user 0.06system 0:02.71elapsed 93%CPU (0avgtext+0avgdata 136624maxresident)k
+0inputs+72outputs (0major+25812minor)pagefaults 0swaps

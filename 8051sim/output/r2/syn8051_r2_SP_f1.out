@@ -1,0 +1,4 @@
+opcode : 0xf1
+state  : SP
+1.04user 0.04system 0:01.34elapsed 80%CPU (0avgtext+0avgdata 127696maxresident)k
+0inputs+40outputs (0major+15365minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x4b
+state  : P3
+2.90user 0.07system 0:03.30elapsed 89%CPU (0avgtext+0avgdata 144032maxresident)k
+0inputs+104outputs (0major+37433minor)pagefaults 0swaps

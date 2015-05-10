@@ -1,0 +1,4 @@
+opcode : 0xac
+state  : TL0
+2.50user 0.06system 0:03.08elapsed 83%CPU (0avgtext+0avgdata 140400maxresident)k
+0inputs+88outputs (0major+31443minor)pagefaults 0swaps

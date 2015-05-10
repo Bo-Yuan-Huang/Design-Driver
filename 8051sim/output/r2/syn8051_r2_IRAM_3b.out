@@ -1,0 +1,4 @@
+opcode : 0x3b
+state  : IRAM
+1552.05user 0.15system 25:55.21elapsed 99%CPU (0avgtext+0avgdata 292608maxresident)k
+0inputs+136outputs (0major+114339minor)pagefaults 0swaps

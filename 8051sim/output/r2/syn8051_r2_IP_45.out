@@ -1,0 +1,4 @@
+opcode : 0x45
+state  : IP
+4.41user 0.12system 0:04.79elapsed 94%CPU (0avgtext+0avgdata 144192maxresident)k
+0inputs+104outputs (0major+36549minor)pagefaults 0swaps

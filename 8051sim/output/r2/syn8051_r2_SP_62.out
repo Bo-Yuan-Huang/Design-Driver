@@ -1,0 +1,4 @@
+opcode : 0x62
+state  : SP
+2.65user 0.04system 0:02.91elapsed 92%CPU (0avgtext+0avgdata 141488maxresident)k
+0inputs+72outputs (0major+28231minor)pagefaults 0swaps

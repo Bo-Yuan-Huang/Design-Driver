@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : ACC
+1.55user 0.03system 0:01.80elapsed 88%CPU (0avgtext+0avgdata 142928maxresident)k
+0inputs+40outputs (0major+17595minor)pagefaults 0swaps

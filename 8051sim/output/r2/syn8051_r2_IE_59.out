@@ -1,0 +1,4 @@
+opcode : 0x59
+state  : IE
+1.78user 0.04system 0:02.00elapsed 91%CPU (0avgtext+0avgdata 136560maxresident)k
+0inputs+72outputs (0major+25823minor)pagefaults 0swaps

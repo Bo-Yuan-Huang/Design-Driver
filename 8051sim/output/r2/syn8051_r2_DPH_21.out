@@ -1,0 +1,4 @@
+opcode : 0x21
+state  : DPH
+2.64user 0.07system 0:02.92elapsed 92%CPU (0avgtext+0avgdata 136640maxresident)k
+0inputs+88outputs (0major+30810minor)pagefaults 0swaps

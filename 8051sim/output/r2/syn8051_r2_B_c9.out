@@ -1,0 +1,4 @@
+opcode : 0xc9
+state  : B
+2.85user 0.07system 0:03.32elapsed 88%CPU (0avgtext+0avgdata 146064maxresident)k
+0inputs+96outputs (0major+36467minor)pagefaults 0swaps

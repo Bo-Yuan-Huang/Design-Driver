@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : SCON
+2.71user 0.08system 0:03.00elapsed 93%CPU (0avgtext+0avgdata 139344maxresident)k
+0inputs+96outputs (0major+34042minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x69
+state  : TL0
+2.25user 0.05system 0:02.55elapsed 90%CPU (0avgtext+0avgdata 136432maxresident)k
+0inputs+80outputs (0major+28480minor)pagefaults 0swaps

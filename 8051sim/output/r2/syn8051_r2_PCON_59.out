@@ -1,0 +1,4 @@
+opcode : 0x59
+state  : PCON
+2.33user 0.07system 0:02.69elapsed 89%CPU (0avgtext+0avgdata 135408maxresident)k
+0inputs+80outputs (0major+28469minor)pagefaults 0swaps

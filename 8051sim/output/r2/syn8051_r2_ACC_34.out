@@ -1,0 +1,4 @@
+opcode : 0x34
+state  : ACC
+2.08user 0.04system 0:02.24elapsed 94%CPU (0avgtext+0avgdata 140816maxresident)k
+0inputs+56outputs (0major+22592minor)pagefaults 0swaps

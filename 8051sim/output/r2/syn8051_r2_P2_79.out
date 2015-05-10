@@ -1,0 +1,4 @@
+opcode : 0x79
+state  : P2
+2.10user 0.04system 0:02.36elapsed 90%CPU (0avgtext+0avgdata 139808maxresident)k
+0inputs+96outputs (0major+33770minor)pagefaults 0swaps

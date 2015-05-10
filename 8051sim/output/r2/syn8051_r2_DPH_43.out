@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : DPH
+2.87user 0.03system 0:03.18elapsed 91%CPU (0avgtext+0avgdata 137680maxresident)k
+0inputs+64outputs (0major+21851minor)pagefaults 0swaps

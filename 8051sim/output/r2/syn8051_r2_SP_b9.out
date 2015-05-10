@@ -1,0 +1,4 @@
+opcode : 0xb9
+state  : SP
+2.71user 0.09system 0:03.02elapsed 92%CPU (0avgtext+0avgdata 138448maxresident)k
+0inputs+88outputs (0major+30699minor)pagefaults 0swaps

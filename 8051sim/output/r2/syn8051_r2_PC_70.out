@@ -1,0 +1,4 @@
+opcode : 0x70
+state  : PC
+2.47user 0.04system 0:02.65elapsed 95%CPU (0avgtext+0avgdata 140048maxresident)k
+0inputs+64outputs (0major+23602minor)pagefaults 0swaps

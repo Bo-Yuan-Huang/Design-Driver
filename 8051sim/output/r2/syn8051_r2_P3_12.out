@@ -1,0 +1,4 @@
+opcode : 0x12
+state  : P3
+2.40user 0.07system 0:03.40elapsed 72%CPU (0avgtext+0avgdata 138720maxresident)k
+0inputs+88outputs (0major+31405minor)pagefaults 0swaps

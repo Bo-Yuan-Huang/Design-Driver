@@ -1,0 +1,4 @@
+opcode : 0x24
+state  : B
+3.50user 0.09system 0:03.78elapsed 95%CPU (0avgtext+0avgdata 145408maxresident)k
+0inputs+88outputs (0major+33237minor)pagefaults 0swaps

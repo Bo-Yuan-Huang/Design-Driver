@@ -1,0 +1,4 @@
+opcode : 0x46
+state  : SBUF
+2.40user 0.05system 0:03.11elapsed 78%CPU (0avgtext+0avgdata 136800maxresident)k
+0inputs+80outputs (0major+28469minor)pagefaults 0swaps

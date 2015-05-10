@@ -1,0 +1,4 @@
+opcode : 0x35
+state  : PCON
+2.20user 0.04system 0:02.53elapsed 88%CPU (0avgtext+0avgdata 135424maxresident)k
+0inputs+64outputs (0major+23617minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x50
+state  : DPL
+2.37user 0.06system 0:02.62elapsed 92%CPU (0avgtext+0avgdata 134304maxresident)k
+0inputs+80outputs (0major+28236minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x8f
+state  : SCON
+4.47user 0.11system 0:04.78elapsed 95%CPU (0avgtext+0avgdata 149424maxresident)k
+0inputs+152outputs (0major+53924minor)pagefaults 0swaps

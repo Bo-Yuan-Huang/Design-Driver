@@ -1,0 +1,4 @@
+opcode : 0x20
+state  : PC
+45.53user 0.05system 0:45.87elapsed 99%CPU (0avgtext+0avgdata 224624maxresident)k
+0inputs+64outputs (0major+28186minor)pagefaults 0swaps

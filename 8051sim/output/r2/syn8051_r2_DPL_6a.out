@@ -1,0 +1,4 @@
+opcode : 0x6a
+state  : DPL
+2.84user 0.06system 0:03.16elapsed 92%CPU (0avgtext+0avgdata 138432maxresident)k
+0inputs+96outputs (0major+33909minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x9e
+state  : DPL
+2.01user 0.09system 0:02.30elapsed 91%CPU (0avgtext+0avgdata 133440maxresident)k
+0inputs+72outputs (0major+25478minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : SCON
+2.51user 0.07system 0:02.75elapsed 93%CPU (0avgtext+0avgdata 141184maxresident)k
+0inputs+96outputs (0major+34294minor)pagefaults 0swaps

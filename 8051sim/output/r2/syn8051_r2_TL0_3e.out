@@ -1,0 +1,4 @@
+opcode : 0x3e
+state  : TL0
+2.18user 0.06system 0:02.53elapsed 88%CPU (0avgtext+0avgdata 138208maxresident)k
+0inputs+80outputs (0major+28747minor)pagefaults 0swaps

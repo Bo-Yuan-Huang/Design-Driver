@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : IRAM
+171.61user 0.07system 2:52.15elapsed 99%CPU (0avgtext+0avgdata 207888maxresident)k
+0inputs+64outputs (0major+34828minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x62
+state  : PSW
+3.73user 0.07system 0:03.98elapsed 95%CPU (0avgtext+0avgdata 159472maxresident)k
+0inputs+80outputs (0major+34382minor)pagefaults 0swaps

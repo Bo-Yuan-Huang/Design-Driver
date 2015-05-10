@@ -1,0 +1,4 @@
+opcode : 0x79
+state  : TMOD
+2.47user 0.07system 0:02.87elapsed 88%CPU (0avgtext+0avgdata 135808maxresident)k
+0inputs+88outputs (0major+30514minor)pagefaults 0swaps

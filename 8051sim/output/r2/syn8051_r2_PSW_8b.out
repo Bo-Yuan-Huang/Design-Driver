@@ -1,0 +1,4 @@
+opcode : 0x8b
+state  : PSW
+4.42user 0.10system 0:04.75elapsed 95%CPU (0avgtext+0avgdata 170304maxresident)k
+0inputs+128outputs (0major+61586minor)pagefaults 0swaps

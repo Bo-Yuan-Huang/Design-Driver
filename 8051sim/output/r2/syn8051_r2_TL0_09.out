@@ -1,0 +1,4 @@
+opcode : 0x9
+state  : TL0
+2.45user 0.05system 0:02.92elapsed 85%CPU (0avgtext+0avgdata 137888maxresident)k
+0inputs+88outputs (0major+31188minor)pagefaults 0swaps

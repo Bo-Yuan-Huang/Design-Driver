@@ -1,0 +1,4 @@
+opcode : 0x68
+state  : DPL
+2.94user 0.06system 0:03.32elapsed 90%CPU (0avgtext+0avgdata 138528maxresident)k
+0inputs+96outputs (0major+33990minor)pagefaults 0swaps

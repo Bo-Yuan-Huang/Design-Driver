@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : PC
+73.64user 0.08system 1:14.01elapsed 99%CPU (0avgtext+0avgdata 239440maxresident)k
+0inputs+88outputs (0major+37110minor)pagefaults 0swaps

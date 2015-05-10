@@ -1,0 +1,4 @@
+opcode : 0x92
+state  : P0
+1.61user 0.02system 0:01.83elapsed 89%CPU (0avgtext+0avgdata 136960maxresident)k
+0inputs+64outputs (0major+20733minor)pagefaults 0swaps

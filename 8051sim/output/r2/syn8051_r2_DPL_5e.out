@@ -1,0 +1,4 @@
+opcode : 0x5e
+state  : DPL
+3.16user 0.06system 0:03.62elapsed 89%CPU (0avgtext+0avgdata 138624maxresident)k
+0inputs+96outputs (0major+33964minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xa8
+state  : P0
+1.56user 0.04system 0:01.85elapsed 86%CPU (0avgtext+0avgdata 135040maxresident)k
+0inputs+80outputs (0major+27989minor)pagefaults 0swaps

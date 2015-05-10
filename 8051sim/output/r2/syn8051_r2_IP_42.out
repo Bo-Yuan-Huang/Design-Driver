@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : IP
+4.16user 0.12system 0:04.51elapsed 95%CPU (0avgtext+0avgdata 141872maxresident)k
+0inputs+88outputs (0major+34095minor)pagefaults 0swaps

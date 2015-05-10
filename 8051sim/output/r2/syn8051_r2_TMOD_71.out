@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : TMOD
+2.32user 0.05system 0:02.75elapsed 86%CPU (0avgtext+0avgdata 136528maxresident)k
+0inputs+88outputs (0major+30524minor)pagefaults 0swaps

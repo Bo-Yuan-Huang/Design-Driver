@@ -1,0 +1,4 @@
+opcode : 0x44
+state  : SCON
+3.63user 0.06system 0:04.28elapsed 86%CPU (0avgtext+0avgdata 140944maxresident)k
+0inputs+96outputs (0major+34420minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xde
+state  : PCON
+2.52user 0.07system 0:03.10elapsed 83%CPU (0avgtext+0avgdata 137088maxresident)k
+0inputs+88outputs (0major+31307minor)pagefaults 0swaps

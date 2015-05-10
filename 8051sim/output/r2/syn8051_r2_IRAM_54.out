@@ -1,0 +1,4 @@
+opcode : 0x54
+state  : IRAM
+826.74user 0.12system 13:48.53elapsed 99%CPU (0avgtext+0avgdata 249504maxresident)k
+0inputs+104outputs (0major+78072minor)pagefaults 0swaps

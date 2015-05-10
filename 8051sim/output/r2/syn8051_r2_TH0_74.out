@@ -1,0 +1,4 @@
+opcode : 0x74
+state  : TH0
+2.04user 0.05system 0:02.44elapsed 85%CPU (0avgtext+0avgdata 135488maxresident)k
+0inputs+72outputs (0major+26034minor)pagefaults 0swaps

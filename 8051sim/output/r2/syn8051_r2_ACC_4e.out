@@ -1,0 +1,4 @@
+opcode : 0x4e
+state  : ACC
+5.21user 0.11system 0:05.91elapsed 90%CPU (0avgtext+0avgdata 162032maxresident)k
+0inputs+136outputs (0major+57893minor)pagefaults 0swaps

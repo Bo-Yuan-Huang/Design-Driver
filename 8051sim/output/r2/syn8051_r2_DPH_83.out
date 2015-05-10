@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : DPH
+2.26user 0.05system 0:02.84elapsed 81%CPU (0avgtext+0avgdata 138752maxresident)k
+0inputs+88outputs (0major+31267minor)pagefaults 0swaps

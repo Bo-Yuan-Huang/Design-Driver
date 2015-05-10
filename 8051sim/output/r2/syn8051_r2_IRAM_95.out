@@ -1,0 +1,4 @@
+opcode : 0x95
+state  : IRAM
+1511.71user 0.13system 25:14.77elapsed 99%CPU (0avgtext+0avgdata 264400maxresident)k
+0inputs+104outputs (0major+81486minor)pagefaults 0swaps

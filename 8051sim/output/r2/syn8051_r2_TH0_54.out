@@ -1,0 +1,4 @@
+opcode : 0x54
+state  : TH0
+2.07user 0.06system 0:02.58elapsed 83%CPU (0avgtext+0avgdata 135520maxresident)k
+0inputs+72outputs (0major+26157minor)pagefaults 0swaps

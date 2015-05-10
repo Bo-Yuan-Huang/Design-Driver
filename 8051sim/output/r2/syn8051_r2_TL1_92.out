@@ -1,0 +1,4 @@
+opcode : 0x92
+state  : TL1
+2.68user 0.05system 0:02.95elapsed 92%CPU (0avgtext+0avgdata 141216maxresident)k
+0inputs+88outputs (0major+32317minor)pagefaults 0swaps

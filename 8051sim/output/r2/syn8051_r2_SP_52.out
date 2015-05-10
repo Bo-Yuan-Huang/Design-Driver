@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : SP
+2.84user 0.06system 0:03.16elapsed 92%CPU (0avgtext+0avgdata 141232maxresident)k
+0inputs+88outputs (0major+33630minor)pagefaults 0swaps

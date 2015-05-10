@@ -1,0 +1,4 @@
+opcode : 0x58
+state  : PC
+1.09user 0.01system 0:01.38elapsed 80%CPU (0avgtext+0avgdata 129440maxresident)k
+0inputs+32outputs (0major+13289minor)pagefaults 0swaps

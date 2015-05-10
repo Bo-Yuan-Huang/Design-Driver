@@ -1,0 +1,4 @@
+opcode : 0xda
+state  : IE
+2.36user 0.06system 0:02.70elapsed 89%CPU (0avgtext+0avgdata 136512maxresident)k
+0inputs+72outputs (0major+25788minor)pagefaults 0swaps

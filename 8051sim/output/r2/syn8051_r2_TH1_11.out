@@ -1,0 +1,4 @@
+opcode : 0x11
+state  : TH1
+2.10user 0.06system 0:02.36elapsed 91%CPU (0avgtext+0avgdata 136864maxresident)k
+0inputs+80outputs (0major+28431minor)pagefaults 0swaps

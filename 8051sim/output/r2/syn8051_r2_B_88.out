@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : B
+2.41user 0.08system 0:02.65elapsed 94%CPU (0avgtext+0avgdata 141744maxresident)k
+0inputs+72outputs (0major+27074minor)pagefaults 0swaps

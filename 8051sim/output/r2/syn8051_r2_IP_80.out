@@ -1,0 +1,4 @@
+opcode : 0x80
+state  : IP
+3.60user 0.07system 0:03.85elapsed 95%CPU (0avgtext+0avgdata 143616maxresident)k
+0inputs+104outputs (0major+36764minor)pagefaults 0swaps

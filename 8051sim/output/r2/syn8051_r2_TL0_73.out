@@ -1,0 +1,4 @@
+opcode : 0x73
+state  : TL0
+2.34user 0.04system 0:02.71elapsed 87%CPU (0avgtext+0avgdata 136208maxresident)k
+0inputs+80outputs (0major+28397minor)pagefaults 0swaps

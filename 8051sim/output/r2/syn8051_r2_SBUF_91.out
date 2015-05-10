@@ -1,0 +1,4 @@
+opcode : 0x91
+state  : SBUF
+2.18user 0.04system 0:02.54elapsed 87%CPU (0avgtext+0avgdata 136288maxresident)k
+0inputs+72outputs (0major+25868minor)pagefaults 0swaps

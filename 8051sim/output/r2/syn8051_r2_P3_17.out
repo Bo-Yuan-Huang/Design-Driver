@@ -1,0 +1,4 @@
+opcode : 0x17
+state  : P3
+2.32user 0.08system 0:03.28elapsed 73%CPU (0avgtext+0avgdata 142928maxresident)k
+0inputs+96outputs (0major+34291minor)pagefaults 0swaps

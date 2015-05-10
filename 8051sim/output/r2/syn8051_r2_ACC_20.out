@@ -1,0 +1,4 @@
+opcode : 0x20
+state  : ACC
+6.94user 0.11system 0:07.32elapsed 96%CPU (0avgtext+0avgdata 180928maxresident)k
+0inputs+136outputs (0major+63888minor)pagefaults 0swaps

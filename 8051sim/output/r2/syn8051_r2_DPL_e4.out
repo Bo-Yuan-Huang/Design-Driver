@@ -1,0 +1,4 @@
+opcode : 0xe4
+state  : DPL
+2.31user 0.07system 0:02.54elapsed 93%CPU (0avgtext+0avgdata 135536maxresident)k
+0inputs+80outputs (0major+28551minor)pagefaults 0swaps

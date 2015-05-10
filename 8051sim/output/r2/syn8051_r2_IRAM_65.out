@@ -1,0 +1,4 @@
+opcode : 0x65
+state  : IRAM
+717.49user 0.58system 11:59.45elapsed 99%CPU (0avgtext+0avgdata 258144maxresident)k
+0inputs+120outputs (0major+92753minor)pagefaults 0swaps

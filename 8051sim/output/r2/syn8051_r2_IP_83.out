@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : IP
+3.77user 0.07system 0:04.01elapsed 95%CPU (0avgtext+0avgdata 140848maxresident)k
+0inputs+96outputs (0major+33534minor)pagefaults 0swaps

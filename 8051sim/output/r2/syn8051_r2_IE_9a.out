@@ -1,0 +1,4 @@
+opcode : 0x9a
+state  : IE
+2.08user 0.07system 0:02.77elapsed 77%CPU (0avgtext+0avgdata 136736maxresident)k
+0inputs+72outputs (0major+25880minor)pagefaults 0swaps

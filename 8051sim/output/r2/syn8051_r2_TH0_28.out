@@ -1,0 +1,4 @@
+opcode : 0x28
+state  : TH0
+1.94user 0.02system 0:02.18elapsed 90%CPU (0avgtext+0avgdata 134704maxresident)k
+0inputs+64outputs (0major+23502minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xa0
+state  : PSW
+4.62user 0.05system 0:04.87elapsed 96%CPU (0avgtext+0avgdata 170096maxresident)k
+0inputs+96outputs (0major+43803minor)pagefaults 0swaps

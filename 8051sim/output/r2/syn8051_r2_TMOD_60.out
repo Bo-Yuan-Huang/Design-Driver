@@ -1,0 +1,4 @@
+opcode : 0x60
+state  : TMOD
+2.37user 0.05system 0:03.06elapsed 79%CPU (0avgtext+0avgdata 135088maxresident)k
+0inputs+88outputs (0major+30433minor)pagefaults 0swaps

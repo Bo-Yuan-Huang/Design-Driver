@@ -1,0 +1,4 @@
+opcode : 0x74
+state  : TL1
+2.27user 0.05system 0:02.68elapsed 86%CPU (0avgtext+0avgdata 136176maxresident)k
+0inputs+80outputs (0major+28775minor)pagefaults 0swaps

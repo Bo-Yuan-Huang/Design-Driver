@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : TL1
+2.73user 0.06system 0:03.55elapsed 78%CPU (0avgtext+0avgdata 139968maxresident)k
+0inputs+96outputs (0major+34850minor)pagefaults 0swaps

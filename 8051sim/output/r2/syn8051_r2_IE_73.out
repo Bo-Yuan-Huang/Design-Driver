@@ -1,0 +1,4 @@
+opcode : 0x73
+state  : IE
+1.67user 0.05system 0:02.04elapsed 84%CPU (0avgtext+0avgdata 136720maxresident)k
+0inputs+72outputs (0major+25866minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x94
+state  : ACC
+1.46user 0.03system 0:02.43elapsed 61%CPU (0avgtext+0avgdata 141472maxresident)k
+0inputs+40outputs (0major+17513minor)pagefaults 0swaps

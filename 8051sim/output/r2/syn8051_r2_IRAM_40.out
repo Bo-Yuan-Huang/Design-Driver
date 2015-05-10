@@ -1,0 +1,4 @@
+opcode : 0x40
+state  : IRAM
+910.40user 0.13system 15:12.30elapsed 99%CPU (0avgtext+0avgdata 259792maxresident)k
+0inputs+104outputs (0major+82168minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x53
+state  : IRAM
+86.80user 0.06system 1:27.33elapsed 99%CPU (0avgtext+0avgdata 199952maxresident)k
+0inputs+72outputs (0major+37765minor)pagefaults 0swaps

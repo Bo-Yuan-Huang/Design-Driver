@@ -1,0 +1,4 @@
+opcode : 0x4c
+state  : SP
+2.94user 0.05system 0:03.28elapsed 91%CPU (0avgtext+0avgdata 140656maxresident)k
+0inputs+96outputs (0major+33960minor)pagefaults 0swaps

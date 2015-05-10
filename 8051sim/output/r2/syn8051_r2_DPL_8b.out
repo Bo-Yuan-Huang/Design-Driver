@@ -1,0 +1,4 @@
+opcode : 0x8b
+state  : DPL
+3.91user 0.09system 0:04.17elapsed 95%CPU (0avgtext+0avgdata 143904maxresident)k
+0inputs+144outputs (0major+49835minor)pagefaults 0swaps

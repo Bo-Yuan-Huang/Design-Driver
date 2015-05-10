@@ -1,0 +1,4 @@
+opcode : 0x44
+state  : B
+4.16user 0.07system 0:04.41elapsed 95%CPU (0avgtext+0avgdata 149376maxresident)k
+0inputs+104outputs (0major+39697minor)pagefaults 0swaps

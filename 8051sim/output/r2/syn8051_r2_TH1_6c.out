@@ -1,0 +1,4 @@
+opcode : 0x6c
+state  : TH1
+2.05user 0.05system 0:02.35elapsed 89%CPU (0avgtext+0avgdata 135568maxresident)k
+0inputs+72outputs (0major+25808minor)pagefaults 0swaps

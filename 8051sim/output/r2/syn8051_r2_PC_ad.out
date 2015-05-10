@@ -1,0 +1,4 @@
+opcode : 0xad
+state  : PC
+2.20user 0.02system 0:02.37elapsed 93%CPU (0avgtext+0avgdata 136256maxresident)k
+0inputs+80outputs (0major+28489minor)pagefaults 0swaps

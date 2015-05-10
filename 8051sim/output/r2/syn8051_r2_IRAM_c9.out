@@ -1,0 +1,4 @@
+opcode : 0xc9
+state  : IRAM
+10.13user 0.02system 0:10.33elapsed 98%CPU (0avgtext+0avgdata 153264maxresident)k
+0inputs+32outputs (0major+15792minor)pagefaults 0swaps

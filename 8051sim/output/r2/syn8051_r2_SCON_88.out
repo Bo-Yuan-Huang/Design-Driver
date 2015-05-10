@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : SCON
+3.70user 0.12system 0:04.02elapsed 95%CPU (0avgtext+0avgdata 147968maxresident)k
+0inputs+144outputs (0major+51397minor)pagefaults 0swaps

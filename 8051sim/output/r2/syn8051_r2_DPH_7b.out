@@ -1,0 +1,4 @@
+opcode : 0x7b
+state  : DPH
+3.45user 0.07system 0:03.78elapsed 93%CPU (0avgtext+0avgdata 139600maxresident)k
+0inputs+112outputs (0major+38879minor)pagefaults 0swaps

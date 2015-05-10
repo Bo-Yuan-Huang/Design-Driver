@@ -1,0 +1,4 @@
+opcode : 0xdb
+state  : TL0
+2.42user 0.05system 0:03.14elapsed 78%CPU (0avgtext+0avgdata 139200maxresident)k
+0inputs+88outputs (0major+31254minor)pagefaults 0swaps

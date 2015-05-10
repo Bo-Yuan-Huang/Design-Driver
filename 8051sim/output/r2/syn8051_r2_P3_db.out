@@ -1,0 +1,4 @@
+opcode : 0xdb
+state  : P3
+2.23user 0.03system 0:02.50elapsed 90%CPU (0avgtext+0avgdata 138880maxresident)k
+0inputs+88outputs (0major+31403minor)pagefaults 0swaps

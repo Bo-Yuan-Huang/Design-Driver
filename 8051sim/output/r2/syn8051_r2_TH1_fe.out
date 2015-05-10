@@ -1,0 +1,4 @@
+opcode : 0xfe
+state  : TH1
+2.28user 0.05system 0:02.68elapsed 87%CPU (0avgtext+0avgdata 136080maxresident)k
+0inputs+80outputs (0major+28326minor)pagefaults 0swaps

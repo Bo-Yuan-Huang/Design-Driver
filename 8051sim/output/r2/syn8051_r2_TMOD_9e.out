@@ -1,0 +1,4 @@
+opcode : 0x9e
+state  : TMOD
+2.39user 0.07system 0:02.83elapsed 87%CPU (0avgtext+0avgdata 135248maxresident)k
+0inputs+80outputs (0major+27913minor)pagefaults 0swaps

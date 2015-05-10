@@ -1,0 +1,4 @@
+opcode : 0x8b
+state  : IRAM
+35.11user 0.04system 0:35.91elapsed 97%CPU (0avgtext+0avgdata 176656maxresident)k
+0inputs+56outputs (0major+29122minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x37
+state  : TL1
+2.27user 0.05system 0:02.64elapsed 87%CPU (0avgtext+0avgdata 136048maxresident)k
+0inputs+80outputs (0major+28743minor)pagefaults 0swaps

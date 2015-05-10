@@ -1,0 +1,4 @@
+opcode : 0x2d
+state  : ACC
+4.07user 0.09system 0:04.37elapsed 95%CPU (0avgtext+0avgdata 152960maxresident)k
+0inputs+96outputs (0major+38965minor)pagefaults 0swaps

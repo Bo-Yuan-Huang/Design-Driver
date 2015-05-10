@@ -1,0 +1,4 @@
+opcode : 0x13
+state  : PCON
+1.71user 0.04system 0:01.97elapsed 88%CPU (0avgtext+0avgdata 136688maxresident)k
+0inputs+88outputs (0major+31253minor)pagefaults 0swaps

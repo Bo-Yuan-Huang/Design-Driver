@@ -1,0 +1,4 @@
+opcode : 0xc4
+state  : DPL
+2.17user 0.06system 0:02.42elapsed 91%CPU (0avgtext+0avgdata 134912maxresident)k
+0inputs+80outputs (0major+28261minor)pagefaults 0swaps

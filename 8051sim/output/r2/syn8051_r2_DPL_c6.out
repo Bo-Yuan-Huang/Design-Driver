@@ -1,0 +1,4 @@
+opcode : 0xc6
+state  : DPL
+3.21user 0.09system 0:03.59elapsed 91%CPU (0avgtext+0avgdata 137520maxresident)k
+0inputs+88outputs (0major+31267minor)pagefaults 0swaps

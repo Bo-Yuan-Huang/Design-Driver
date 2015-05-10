@@ -1,0 +1,4 @@
+opcode : 0x89
+state  : P2
+2.54user 0.08system 0:02.83elapsed 92%CPU (0avgtext+0avgdata 143648maxresident)k
+0inputs+136outputs (0major+47382minor)pagefaults 0swaps

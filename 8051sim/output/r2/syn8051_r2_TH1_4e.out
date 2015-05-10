@@ -1,0 +1,4 @@
+opcode : 0x4e
+state  : TH1
+2.54user 0.06system 0:03.04elapsed 85%CPU (0avgtext+0avgdata 137408maxresident)k
+0inputs+88outputs (0major+31179minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x31
+state  : TL0
+2.38user 0.04system 0:02.94elapsed 82%CPU (0avgtext+0avgdata 138000maxresident)k
+0inputs+88outputs (0major+31182minor)pagefaults 0swaps

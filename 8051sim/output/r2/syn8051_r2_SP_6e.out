@@ -1,0 +1,4 @@
+opcode : 0x6e
+state  : SP
+3.61user 0.06system 0:03.91elapsed 93%CPU (0avgtext+0avgdata 146128maxresident)k
+0inputs+104outputs (0major+37412minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x13
+state  : ACC
+2.43user 0.05system 0:02.66elapsed 93%CPU (0avgtext+0avgdata 137488maxresident)k
+0inputs+48outputs (0major+19578minor)pagefaults 0swaps

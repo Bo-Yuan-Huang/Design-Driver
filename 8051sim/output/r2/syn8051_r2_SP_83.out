@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : SP
+2.46user 0.08system 0:02.82elapsed 90%CPU (0avgtext+0avgdata 138208maxresident)k
+0inputs+88outputs (0major+30885minor)pagefaults 0swaps

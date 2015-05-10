@@ -1,0 +1,4 @@
+opcode : 0xeb
+state  : P0
+1.87user 0.04system 0:02.08elapsed 92%CPU (0avgtext+0avgdata 133872maxresident)k
+0inputs+72outputs (0major+25156minor)pagefaults 0swaps

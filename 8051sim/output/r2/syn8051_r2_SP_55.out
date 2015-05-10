@@ -1,0 +1,4 @@
+opcode : 0x55
+state  : SP
+3.44user 0.07system 0:03.78elapsed 92%CPU (0avgtext+0avgdata 148144maxresident)k
+0inputs+120outputs (0major+43979minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x69
+state  : P2
+2.87user 0.04system 0:03.32elapsed 87%CPU (0avgtext+0avgdata 140592maxresident)k
+0inputs+96outputs (0major+33952minor)pagefaults 0swaps

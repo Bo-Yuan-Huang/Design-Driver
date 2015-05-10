@@ -1,0 +1,4 @@
+opcode : 0x37
+state  : SP
+2.58user 0.10system 0:02.86elapsed 94%CPU (0avgtext+0avgdata 146608maxresident)k
+0inputs+112outputs (0major+40498minor)pagefaults 0swaps

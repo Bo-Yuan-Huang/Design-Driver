@@ -1,0 +1,4 @@
+opcode : 0x7f
+state  : TL0
+2.12user 0.06system 0:02.41elapsed 90%CPU (0avgtext+0avgdata 135648maxresident)k
+0inputs+80outputs (0major+28349minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x8d
+state  : IP
+5.17user 0.14system 0:05.55elapsed 95%CPU (0avgtext+0avgdata 142944maxresident)k
+0inputs+136outputs (0major+46950minor)pagefaults 0swaps

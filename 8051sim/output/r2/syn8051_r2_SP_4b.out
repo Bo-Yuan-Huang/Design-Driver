@@ -1,0 +1,4 @@
+opcode : 0x4b
+state  : SP
+3.28user 0.05system 0:03.51elapsed 95%CPU (0avgtext+0avgdata 141328maxresident)k
+0inputs+96outputs (0major+33961minor)pagefaults 0swaps

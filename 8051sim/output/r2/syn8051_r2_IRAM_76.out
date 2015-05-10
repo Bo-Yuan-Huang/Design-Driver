@@ -1,0 +1,4 @@
+opcode : 0x76
+state  : IRAM
+5.92user 0.02system 1:33.17elapsed 6%CPU (0avgtext+0avgdata 147584maxresident)k
+0inputs+32outputs (0major+15343minor)pagefaults 0swaps

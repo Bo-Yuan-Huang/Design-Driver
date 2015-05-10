@@ -1,0 +1,4 @@
+opcode : 0x98
+state  : SBUF
+2.27user 0.06system 0:02.57elapsed 90%CPU (0avgtext+0avgdata 136432maxresident)k
+0inputs+80outputs (0major+28516minor)pagefaults 0swaps

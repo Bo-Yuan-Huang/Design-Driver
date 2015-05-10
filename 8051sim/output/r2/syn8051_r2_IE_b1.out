@@ -1,0 +1,4 @@
+opcode : 0xb1
+state  : IE
+1.55user 0.04system 0:01.74elapsed 91%CPU (0avgtext+0avgdata 136720maxresident)k
+0inputs+72outputs (0major+25804minor)pagefaults 0swaps

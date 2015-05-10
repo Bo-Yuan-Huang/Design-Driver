@@ -1,0 +1,4 @@
+opcode : 0x55
+state  : IRAM
+1124.67user 0.19system 18:47.11elapsed 99%CPU (0avgtext+0avgdata 262960maxresident)k
+0inputs+112outputs (0major+85972minor)pagefaults 0swaps

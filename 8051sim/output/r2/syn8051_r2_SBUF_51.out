@@ -1,0 +1,4 @@
+opcode : 0x51
+state  : SBUF
+2.19user 0.07system 0:02.41elapsed 94%CPU (0avgtext+0avgdata 135584maxresident)k
+0inputs+80outputs (0major+28231minor)pagefaults 0swaps

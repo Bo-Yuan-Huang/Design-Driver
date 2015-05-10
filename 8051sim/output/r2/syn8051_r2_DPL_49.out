@@ -1,0 +1,4 @@
+opcode : 0x49
+state  : DPL
+3.29user 0.10system 0:03.53elapsed 96%CPU (0avgtext+0avgdata 137968maxresident)k
+0inputs+96outputs (0major+33864minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x21
+state  : IP
+4.00user 0.08system 0:04.31elapsed 94%CPU (0avgtext+0avgdata 143200maxresident)k
+0inputs+104outputs (0major+36675minor)pagefaults 0swaps

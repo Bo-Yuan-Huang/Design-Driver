@@ -1,0 +1,4 @@
+opcode : 0x78
+state  : TL0
+2.25user 0.06system 0:02.98elapsed 77%CPU (0avgtext+0avgdata 136592maxresident)k
+0inputs+80outputs (0major+28587minor)pagefaults 0swaps

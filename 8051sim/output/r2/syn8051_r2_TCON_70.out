@@ -1,0 +1,4 @@
+opcode : 0x70
+state  : TCON
+2.75user 0.07system 0:03.10elapsed 91%CPU (0avgtext+0avgdata 138912maxresident)k
+0inputs+96outputs (0major+33771minor)pagefaults 0swaps

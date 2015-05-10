@@ -1,0 +1,4 @@
+opcode : 0x85
+state  : TCON
+3.09user 0.07system 0:03.32elapsed 95%CPU (0avgtext+0avgdata 141520maxresident)k
+0inputs+96outputs (0major+35460minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x73
+state  : DPL
+2.40user 0.06system 0:02.74elapsed 90%CPU (0avgtext+0avgdata 137936maxresident)k
+0inputs+88outputs (0major+31255minor)pagefaults 0swaps

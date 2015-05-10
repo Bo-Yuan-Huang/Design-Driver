@@ -1,0 +1,4 @@
+opcode : 0x51
+state  : ACC
+4.35user 0.07system 0:04.67elapsed 94%CPU (0avgtext+0avgdata 158672maxresident)k
+0inputs+104outputs (0major+43630minor)pagefaults 0swaps

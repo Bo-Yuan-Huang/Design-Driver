@@ -1,0 +1,4 @@
+opcode : 0x77
+state  : DPH
+3.34user 0.06system 0:03.68elapsed 92%CPU (0avgtext+0avgdata 139328maxresident)k
+0inputs+96outputs (0major+34035minor)pagefaults 0swaps

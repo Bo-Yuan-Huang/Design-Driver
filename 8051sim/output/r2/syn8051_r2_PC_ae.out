@@ -1,0 +1,4 @@
+opcode : 0xae
+state  : PC
+3.18user 0.07system 0:03.42elapsed 95%CPU (0avgtext+0avgdata 140336maxresident)k
+0inputs+88outputs (0major+31902minor)pagefaults 0swaps

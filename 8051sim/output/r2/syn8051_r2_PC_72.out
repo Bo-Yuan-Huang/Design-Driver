@@ -1,0 +1,4 @@
+opcode : 0x72
+state  : PC
+4.06user 0.10system 0:04.30elapsed 96%CPU (0avgtext+0avgdata 144208maxresident)k
+0inputs+120outputs (0major+43447minor)pagefaults 0swaps

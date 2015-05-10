@@ -1,0 +1,4 @@
+opcode : 0x6d
+state  : P2
+1.96user 0.05system 0:02.21elapsed 91%CPU (0avgtext+0avgdata 141360maxresident)k
+0inputs+96outputs (0major+34062minor)pagefaults 0swaps

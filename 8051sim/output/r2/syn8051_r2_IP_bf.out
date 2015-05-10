@@ -1,0 +1,4 @@
+opcode : 0xbf
+state  : IP
+4.64user 0.08system 0:04.91elapsed 96%CPU (0avgtext+0avgdata 144224maxresident)k
+0inputs+112outputs (0major+39640minor)pagefaults 0swaps

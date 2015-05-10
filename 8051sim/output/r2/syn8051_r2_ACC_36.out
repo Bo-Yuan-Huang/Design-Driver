@@ -1,0 +1,4 @@
+opcode : 0x36
+state  : ACC
+3.73user 0.12system 0:03.99elapsed 96%CPU (0avgtext+0avgdata 154384maxresident)k
+0inputs+104outputs (0major+42501minor)pagefaults 0swaps

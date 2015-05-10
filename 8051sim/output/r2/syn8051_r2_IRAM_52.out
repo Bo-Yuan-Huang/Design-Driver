@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : IRAM
+203.36user 0.14system 3:43.96elapsed 90%CPU (0avgtext+0avgdata 225776maxresident)k
+0inputs+104outputs (0major+69060minor)pagefaults 0swaps

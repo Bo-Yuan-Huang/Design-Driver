@@ -1,0 +1,4 @@
+opcode : 0x76
+state  : DPL
+3.22user 0.06system 0:03.63elapsed 90%CPU (0avgtext+0avgdata 138512maxresident)k
+0inputs+96outputs (0major+33895minor)pagefaults 0swaps

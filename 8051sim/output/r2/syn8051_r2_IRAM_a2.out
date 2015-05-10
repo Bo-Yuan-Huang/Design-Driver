@@ -1,0 +1,4 @@
+opcode : 0xa2
+state  : IRAM
+10715.91user 1.32system 2:58:56elapsed 99%CPU (0avgtext+0avgdata 375632maxresident)k
+0inputs+112outputs (0major+131910minor)pagefaults 0swaps

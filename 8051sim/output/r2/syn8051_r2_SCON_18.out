@@ -1,0 +1,4 @@
+opcode : 0x18
+state  : SCON
+2.59user 0.05system 0:03.16elapsed 83%CPU (0avgtext+0avgdata 139616maxresident)k
+0inputs+88outputs (0major+31447minor)pagefaults 0swaps

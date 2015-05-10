@@ -1,0 +1,4 @@
+opcode : 0xa5
+state  : DPL
+1.93user 0.06system 0:02.10elapsed 94%CPU (0avgtext+0avgdata 135056maxresident)k
+0inputs+80outputs (0major+28222minor)pagefaults 0swaps

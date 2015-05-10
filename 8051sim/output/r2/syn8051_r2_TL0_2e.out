@@ -1,0 +1,4 @@
+opcode : 0x2e
+state  : TL0
+2.22user 0.05system 0:02.58elapsed 87%CPU (0avgtext+0avgdata 136592maxresident)k
+0inputs+80outputs (0major+28552minor)pagefaults 0swaps

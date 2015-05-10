@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : IRAM
+680.22user 0.10system 11:21.80elapsed 99%CPU (0avgtext+0avgdata 242160maxresident)k
+0inputs+112outputs (0major+81021minor)pagefaults 0swaps

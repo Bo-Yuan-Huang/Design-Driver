@@ -1,0 +1,4 @@
+opcode : 0x90
+state  : B
+4.27user 0.14system 0:04.88elapsed 90%CPU (0avgtext+0avgdata 149888maxresident)k
+0inputs+120outputs (0major+46113minor)pagefaults 0swaps

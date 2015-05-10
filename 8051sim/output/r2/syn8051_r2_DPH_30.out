@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : DPH
+2.35user 0.06system 0:02.89elapsed 83%CPU (0avgtext+0avgdata 137728maxresident)k
+0inputs+88outputs (0major+31235minor)pagefaults 0swaps

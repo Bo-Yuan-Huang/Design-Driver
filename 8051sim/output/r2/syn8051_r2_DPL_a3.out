@@ -1,0 +1,4 @@
+opcode : 0xa3
+state  : DPL
+0.92user 0.02system 0:01.13elapsed 82%CPU (0avgtext+0avgdata 125824maxresident)k
+0inputs+40outputs (0major+15532minor)pagefaults 0swaps

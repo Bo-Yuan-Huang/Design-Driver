@@ -1,0 +1,4 @@
+opcode : 0x41
+state  : TL1
+2.30user 0.02system 0:02.77elapsed 84%CPU (0avgtext+0avgdata 137808maxresident)k
+0inputs+80outputs (0major+28912minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x12
+state  : TL1
+2.34user 0.07system 0:02.84elapsed 84%CPU (0avgtext+0avgdata 138848maxresident)k
+0inputs+80outputs (0major+29208minor)pagefaults 0swaps

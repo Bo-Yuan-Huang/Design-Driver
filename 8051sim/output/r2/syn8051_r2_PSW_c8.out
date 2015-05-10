@@ -1,0 +1,4 @@
+opcode : 0xc8
+state  : PSW
+9.04user 0.15system 0:09.38elapsed 97%CPU (0avgtext+0avgdata 197968maxresident)k
+0inputs+176outputs (0major+96203minor)pagefaults 0swaps

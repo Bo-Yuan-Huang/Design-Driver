@@ -1,0 +1,4 @@
+opcode : 0xba
+state  : P3
+2.58user 0.04system 0:02.86elapsed 91%CPU (0avgtext+0avgdata 140064maxresident)k
+0inputs+88outputs (0major+31493minor)pagefaults 0swaps

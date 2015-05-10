@@ -1,0 +1,4 @@
+opcode : 0x19
+state  : IRAM
+17.00user 0.04system 0:17.24elapsed 98%CPU (0avgtext+0avgdata 154080maxresident)k
+0inputs+32outputs (0major+15825minor)pagefaults 0swaps

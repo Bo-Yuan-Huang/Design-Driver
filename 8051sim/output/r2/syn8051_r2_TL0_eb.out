@@ -1,0 +1,4 @@
+opcode : 0xeb
+state  : TL0
+2.49user 0.07system 0:03.48elapsed 73%CPU (0avgtext+0avgdata 138928maxresident)k
+0inputs+88outputs (0major+31270minor)pagefaults 0swaps

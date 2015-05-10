@@ -1,0 +1,4 @@
+opcode : 0xd9
+state  : TMOD
+2.39user 0.07system 0:02.96elapsed 83%CPU (0avgtext+0avgdata 135440maxresident)k
+0inputs+80outputs (0major+27954minor)pagefaults 0swaps

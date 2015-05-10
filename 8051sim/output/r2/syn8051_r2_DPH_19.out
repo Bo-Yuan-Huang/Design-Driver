@@ -1,0 +1,4 @@
+opcode : 0x19
+state  : DPH
+1.74user 0.03system 0:01.92elapsed 92%CPU (0avgtext+0avgdata 133584maxresident)k
+0inputs+72outputs (0major+25306minor)pagefaults 0swaps

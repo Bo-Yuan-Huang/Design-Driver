@@ -1,0 +1,4 @@
+opcode : 0x9f
+state  : SP
+2.74user 0.06system 0:03.16elapsed 88%CPU (0avgtext+0avgdata 138688maxresident)k
+0inputs+88outputs (0major+31028minor)pagefaults 0swaps

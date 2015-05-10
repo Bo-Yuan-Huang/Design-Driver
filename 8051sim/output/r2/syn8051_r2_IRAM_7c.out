@@ -1,0 +1,4 @@
+opcode : 0x7c
+state  : IRAM
+7.92user 0.02system 0:31.00elapsed 25%CPU (0avgtext+0avgdata 147504maxresident)k
+0inputs+32outputs (0major+15417minor)pagefaults 0swaps

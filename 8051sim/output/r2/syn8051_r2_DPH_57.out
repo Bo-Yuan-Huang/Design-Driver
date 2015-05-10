@@ -1,0 +1,4 @@
+opcode : 0x57
+state  : DPH
+2.74user 0.06system 0:02.95elapsed 95%CPU (0avgtext+0avgdata 136368maxresident)k
+0inputs+88outputs (0major+31145minor)pagefaults 0swaps

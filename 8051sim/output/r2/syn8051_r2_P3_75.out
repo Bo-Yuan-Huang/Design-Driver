@@ -1,0 +1,4 @@
+opcode : 0x75
+state  : P3
+0.70user 0.03system 0:00.91elapsed 80%CPU (0avgtext+0avgdata 132800maxresident)k
+0inputs+40outputs (0major+15905minor)pagefaults 0swaps

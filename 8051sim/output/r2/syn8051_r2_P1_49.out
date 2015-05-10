@@ -1,0 +1,4 @@
+opcode : 0x49
+state  : P1
+2.90user 0.04system 0:03.46elapsed 85%CPU (0avgtext+0avgdata 142528maxresident)k
+0inputs+104outputs (0major+36767minor)pagefaults 0swaps

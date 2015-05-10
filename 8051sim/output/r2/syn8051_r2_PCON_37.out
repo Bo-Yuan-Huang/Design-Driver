@@ -1,0 +1,4 @@
+opcode : 0x37
+state  : PCON
+1.52user 0.04system 0:01.76elapsed 89%CPU (0avgtext+0avgdata 135616maxresident)k
+0inputs+80outputs (0major+28613minor)pagefaults 0swaps

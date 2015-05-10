@@ -1,0 +1,4 @@
+opcode : 0xa3
+state  : P2
+2.03user 0.07system 0:02.28elapsed 92%CPU (0avgtext+0avgdata 141680maxresident)k
+0inputs+96outputs (0major+33952minor)pagefaults 0swaps

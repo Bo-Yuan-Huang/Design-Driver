@@ -1,0 +1,4 @@
+opcode : 0x12
+state  : SCON
+2.94user 0.08system 0:03.45elapsed 87%CPU (0avgtext+0avgdata 141296maxresident)k
+0inputs+96outputs (0major+34533minor)pagefaults 0swaps

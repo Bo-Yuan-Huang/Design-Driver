@@ -1,0 +1,4 @@
+opcode : 0x27
+state  : B
+4.24user 0.13system 0:04.91elapsed 89%CPU (0avgtext+0avgdata 146000maxresident)k
+0inputs+96outputs (0major+36392minor)pagefaults 0swaps

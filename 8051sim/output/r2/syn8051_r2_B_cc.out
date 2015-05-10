@@ -1,0 +1,4 @@
+opcode : 0xcc
+state  : B
+4.03user 0.09system 0:04.44elapsed 92%CPU (0avgtext+0avgdata 148544maxresident)k
+0inputs+104outputs (0major+39098minor)pagefaults 0swaps

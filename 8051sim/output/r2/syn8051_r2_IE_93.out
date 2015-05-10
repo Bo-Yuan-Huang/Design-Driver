@@ -1,0 +1,4 @@
+opcode : 0x93
+state  : IE
+2.24user 0.04system 0:02.44elapsed 93%CPU (0avgtext+0avgdata 136672maxresident)k
+0inputs+72outputs (0major+25921minor)pagefaults 0swaps

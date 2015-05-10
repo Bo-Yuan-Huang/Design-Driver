@@ -1,0 +1,4 @@
+opcode : 0xb7
+state  : PCON
+1.96user 0.03system 0:02.53elapsed 78%CPU (0avgtext+0avgdata 134272maxresident)k
+0inputs+64outputs (0major+23488minor)pagefaults 0swaps

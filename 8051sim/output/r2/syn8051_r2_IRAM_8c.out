@@ -1,0 +1,4 @@
+opcode : 0x8c
+state  : IRAM
+47.75user 0.26system 1:41.47elapsed 47%CPU (0avgtext+0avgdata 186912maxresident)k
+0inputs+56outputs (0major+31238minor)pagefaults 0swaps

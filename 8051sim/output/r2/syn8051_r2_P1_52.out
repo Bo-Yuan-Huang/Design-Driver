@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : P1
+2.06user 0.02system 0:02.37elapsed 87%CPU (0avgtext+0avgdata 141712maxresident)k
+0inputs+80outputs (0major+26874minor)pagefaults 0swaps

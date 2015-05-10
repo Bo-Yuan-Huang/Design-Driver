@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : TMOD
+2.32user 0.07system 0:02.57elapsed 93%CPU (0avgtext+0avgdata 136992maxresident)k
+0inputs+80outputs (0major+27960minor)pagefaults 0swaps

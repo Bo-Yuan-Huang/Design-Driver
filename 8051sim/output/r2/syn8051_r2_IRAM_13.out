@@ -1,0 +1,4 @@
+opcode : 0x13
+state  : IRAM
+1534.07user 0.18system 25:36.77elapsed 99%CPU (0avgtext+0avgdata 297664maxresident)k
+0inputs+144outputs (0major+127779minor)pagefaults 0swaps

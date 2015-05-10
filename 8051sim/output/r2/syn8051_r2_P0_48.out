@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : P0
+1.79user 0.04system 0:02.02elapsed 90%CPU (0avgtext+0avgdata 135584maxresident)k
+0inputs+88outputs (0major+30665minor)pagefaults 0swaps

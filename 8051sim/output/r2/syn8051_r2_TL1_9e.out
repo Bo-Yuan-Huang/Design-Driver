@@ -1,0 +1,4 @@
+opcode : 0x9e
+state  : TL1
+2.12user 0.06system 0:02.46elapsed 88%CPU (0avgtext+0avgdata 135024maxresident)k
+0inputs+72outputs (0major+26180minor)pagefaults 0swaps

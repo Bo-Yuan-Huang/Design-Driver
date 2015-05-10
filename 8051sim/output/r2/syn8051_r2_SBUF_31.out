@@ -1,0 +1,4 @@
+opcode : 0x31
+state  : SBUF
+1.86user 0.04system 0:02.90elapsed 65%CPU (0avgtext+0avgdata 135360maxresident)k
+0inputs+80outputs (0major+28246minor)pagefaults 0swaps

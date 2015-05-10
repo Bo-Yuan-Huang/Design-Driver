@@ -1,0 +1,4 @@
+opcode : 0x35
+state  : DPL
+2.67user 0.07system 0:03.14elapsed 87%CPU (0avgtext+0avgdata 135360maxresident)k
+0inputs+80outputs (0major+28513minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : TCON
+2.39user 0.07system 0:02.85elapsed 86%CPU (0avgtext+0avgdata 137200maxresident)k
+0inputs+96outputs (0major+33426minor)pagefaults 0swaps

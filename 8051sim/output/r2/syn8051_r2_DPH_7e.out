@@ -1,0 +1,4 @@
+opcode : 0x7e
+state  : DPH
+3.14user 0.08system 0:03.49elapsed 92%CPU (0avgtext+0avgdata 138256maxresident)k
+0inputs+88outputs (0major+31295minor)pagefaults 0swaps

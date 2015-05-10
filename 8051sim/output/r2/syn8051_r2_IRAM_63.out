@@ -1,0 +1,4 @@
+opcode : 0x63
+state  : IRAM
+49.81user 0.04system 0:50.11elapsed 99%CPU (0avgtext+0avgdata 181632maxresident)k
+0inputs+64outputs (0major+30055minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xbe
+state  : SCON
+3.24user 0.12system 0:03.62elapsed 92%CPU (0avgtext+0avgdata 144784maxresident)k
+0inputs+112outputs (0major+40712minor)pagefaults 0swaps

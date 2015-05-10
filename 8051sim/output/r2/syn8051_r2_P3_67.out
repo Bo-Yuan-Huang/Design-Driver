@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : P3
+1.95user 0.05system 0:02.35elapsed 85%CPU (0avgtext+0avgdata 143888maxresident)k
+0inputs+96outputs (0major+34624minor)pagefaults 0swaps

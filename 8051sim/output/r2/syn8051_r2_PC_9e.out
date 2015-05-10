@@ -1,0 +1,4 @@
+opcode : 0x9e
+state  : PC
+1.19user 0.02system 0:01.74elapsed 70%CPU (0avgtext+0avgdata 129584maxresident)k
+0inputs+32outputs (0major+13309minor)pagefaults 0swaps

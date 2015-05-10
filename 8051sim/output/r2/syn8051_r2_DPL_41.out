@@ -1,0 +1,4 @@
+opcode : 0x41
+state  : DPL
+2.47user 0.08system 0:03.02elapsed 84%CPU (0avgtext+0avgdata 135248maxresident)k
+0inputs+88outputs (0major+30771minor)pagefaults 0swaps

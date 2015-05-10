@@ -1,0 +1,4 @@
+opcode : 0xb7
+state  : P0
+1.60user 0.04system 0:01.78elapsed 92%CPU (0avgtext+0avgdata 135680maxresident)k
+0inputs+88outputs (0major+30377minor)pagefaults 0swaps

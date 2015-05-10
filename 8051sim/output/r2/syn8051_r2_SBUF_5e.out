@@ -1,0 +1,4 @@
+opcode : 0x5e
+state  : SBUF
+2.59user 0.04system 0:02.81elapsed 93%CPU (0avgtext+0avgdata 138592maxresident)k
+0inputs+80outputs (0major+28655minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x59
+state  : IP
+4.03user 0.11system 0:04.28elapsed 96%CPU (0avgtext+0avgdata 144800maxresident)k
+0inputs+112outputs (0major+39847minor)pagefaults 0swaps

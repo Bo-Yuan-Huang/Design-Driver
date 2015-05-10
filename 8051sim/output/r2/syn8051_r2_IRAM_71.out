@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : IRAM
+58.61user 0.02system 0:59.77elapsed 98%CPU (0avgtext+0avgdata 165360maxresident)k
+0inputs+32outputs (0major+16560minor)pagefaults 0swaps

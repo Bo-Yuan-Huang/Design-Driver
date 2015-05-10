@@ -1,0 +1,4 @@
+opcode : 0x5d
+state  : P2
+2.75user 0.07system 0:02.97elapsed 95%CPU (0avgtext+0avgdata 144272maxresident)k
+0inputs+96outputs (0major+34400minor)pagefaults 0swaps

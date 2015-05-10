@@ -1,0 +1,4 @@
+opcode : 0x50
+state  : B
+3.56user 0.09system 0:03.89elapsed 93%CPU (0avgtext+0avgdata 146080maxresident)k
+0inputs+96outputs (0major+36469minor)pagefaults 0swaps

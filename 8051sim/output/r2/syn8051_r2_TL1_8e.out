@@ -1,0 +1,4 @@
+opcode : 0x8e
+state  : TL1
+4.58user 0.07system 0:04.79elapsed 97%CPU (0avgtext+0avgdata 150640maxresident)k
+0inputs+152outputs (0major+55364minor)pagefaults 0swaps

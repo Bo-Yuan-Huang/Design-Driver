@@ -1,0 +1,4 @@
+opcode : 0xfd
+state  : B
+2.37user 0.06system 0:02.74elapsed 88%CPU (0avgtext+0avgdata 145712maxresident)k
+0inputs+88outputs (0major+33925minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x13
+state  : PSW
+4.10user 0.07system 0:04.38elapsed 95%CPU (0avgtext+0avgdata 162432maxresident)k
+0inputs+96outputs (0major+42099minor)pagefaults 0swaps

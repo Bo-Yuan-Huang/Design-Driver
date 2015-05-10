@@ -1,0 +1,4 @@
+opcode : 0x2d
+state  : IE
+1.83user 0.06system 0:02.13elapsed 89%CPU (0avgtext+0avgdata 136752maxresident)k
+0inputs+72outputs (0major+25917minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x12
+state  : SBUF
+2.28user 0.06system 0:02.61elapsed 90%CPU (0avgtext+0avgdata 138256maxresident)k
+0inputs+80outputs (0major+28711minor)pagefaults 0swaps

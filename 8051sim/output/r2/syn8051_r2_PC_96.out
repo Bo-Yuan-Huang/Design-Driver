@@ -1,0 +1,4 @@
+opcode : 0x96
+state  : PC
+1.08user 0.03system 0:01.56elapsed 71%CPU (0avgtext+0avgdata 129456maxresident)k
+0inputs+32outputs (0major+13449minor)pagefaults 0swaps

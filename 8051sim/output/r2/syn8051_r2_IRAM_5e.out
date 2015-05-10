@@ -1,0 +1,4 @@
+opcode : 0x5e
+state  : IRAM
+653.93user 0.11system 10:55.34elapsed 99%CPU (0avgtext+0avgdata 244976maxresident)k
+0inputs+104outputs (0major+75359minor)pagefaults 0swaps

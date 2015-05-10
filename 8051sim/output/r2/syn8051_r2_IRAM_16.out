@@ -1,0 +1,4 @@
+opcode : 0x16
+state  : IRAM
+7.55user 0.02system 0:07.85elapsed 96%CPU (0avgtext+0avgdata 149520maxresident)k
+0inputs+32outputs (0major+15576minor)pagefaults 0swaps

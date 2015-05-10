@@ -1,0 +1,4 @@
+opcode : 0x4f
+state  : P1
+2.86user 0.04system 0:03.05elapsed 95%CPU (0avgtext+0avgdata 142608maxresident)k
+0inputs+104outputs (0major+36818minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x5a
+state  : TL1
+2.56user 0.04system 0:02.91elapsed 89%CPU (0avgtext+0avgdata 138720maxresident)k
+0inputs+88outputs (0major+31848minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x66
+state  : IE
+2.04user 0.05system 0:02.30elapsed 91%CPU (0avgtext+0avgdata 136592maxresident)k
+0inputs+72outputs (0major+25830minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x9c
+state  : TMOD
+2.32user 0.05system 0:02.70elapsed 87%CPU (0avgtext+0avgdata 135440maxresident)k
+0inputs+80outputs (0major+28004minor)pagefaults 0swaps

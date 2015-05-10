@@ -1,0 +1,4 @@
+opcode : 0x97
+state  : IE
+2.21user 0.04system 0:02.45elapsed 92%CPU (0avgtext+0avgdata 136704maxresident)k
+0inputs+72outputs (0major+25634minor)pagefaults 0swaps

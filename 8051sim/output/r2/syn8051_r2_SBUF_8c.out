@@ -1,0 +1,4 @@
+opcode : 0x8c
+state  : SBUF
+3.64user 0.10system 0:04.07elapsed 91%CPU (0avgtext+0avgdata 143952maxresident)k
+0inputs+128outputs (0major+45079minor)pagefaults 0swaps

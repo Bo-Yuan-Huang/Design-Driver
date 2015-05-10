@@ -1,0 +1,4 @@
+opcode : 0x4b
+state  : SCON
+3.09user 0.06system 0:03.54elapsed 89%CPU (0avgtext+0avgdata 140704maxresident)k
+0inputs+104outputs (0major+36754minor)pagefaults 0swaps

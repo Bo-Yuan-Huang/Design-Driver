@@ -1,0 +1,4 @@
+opcode : 0x90
+state  : IRAM
+744.10user 0.12system 12:33.95elapsed 98%CPU (0avgtext+0avgdata 250720maxresident)k
+0inputs+104outputs (0major+78642minor)pagefaults 0swaps

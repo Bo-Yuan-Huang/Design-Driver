@@ -1,0 +1,4 @@
+opcode : 0x25
+state  : ACC
+4.86user 0.10system 0:05.21elapsed 95%CPU (0avgtext+0avgdata 148352maxresident)k
+0inputs+72outputs (0major+31008minor)pagefaults 0swaps

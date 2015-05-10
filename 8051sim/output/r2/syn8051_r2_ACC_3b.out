@@ -1,0 +1,4 @@
+opcode : 0x3b
+state  : ACC
+6.56user 0.10system 0:07.40elapsed 90%CPU (0avgtext+0avgdata 162960maxresident)k
+0inputs+144outputs (0major+60606minor)pagefaults 0swaps

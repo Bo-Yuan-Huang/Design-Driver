@@ -1,0 +1,4 @@
+opcode : 0xa6
+state  : IP
+3.11user 0.10system 0:03.38elapsed 95%CPU (0avgtext+0avgdata 141648maxresident)k
+0inputs+96outputs (0major+33824minor)pagefaults 0swaps

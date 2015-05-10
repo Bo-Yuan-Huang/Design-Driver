@@ -1,0 +1,4 @@
+opcode : 0xf3
+state  : DPL
+2.42user 0.06system 0:02.78elapsed 89%CPU (0avgtext+0avgdata 134384maxresident)k
+0inputs+80outputs (0major+28149minor)pagefaults 0swaps

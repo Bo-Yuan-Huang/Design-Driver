@@ -1,0 +1,4 @@
+opcode : 0x70
+state  : IRAM
+595.34user 0.11system 10:33.26elapsed 94%CPU (0avgtext+0avgdata 243856maxresident)k
+0inputs+104outputs (0major+75705minor)pagefaults 0swaps

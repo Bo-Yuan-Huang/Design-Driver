@@ -1,0 +1,4 @@
+opcode : 0xc8
+state  : SCON
+3.41user 0.05system 0:03.67elapsed 94%CPU (0avgtext+0avgdata 143936maxresident)k
+0inputs+112outputs (0major+39995minor)pagefaults 0swaps

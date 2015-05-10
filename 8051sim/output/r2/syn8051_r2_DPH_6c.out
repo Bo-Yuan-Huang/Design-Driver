@@ -1,0 +1,4 @@
+opcode : 0x6c
+state  : DPH
+2.38user 0.06system 0:02.70elapsed 90%CPU (0avgtext+0avgdata 136464maxresident)k
+0inputs+88outputs (0major+30897minor)pagefaults 0swaps

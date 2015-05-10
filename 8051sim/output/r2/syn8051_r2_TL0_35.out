@@ -1,0 +1,4 @@
+opcode : 0x35
+state  : TL0
+2.35user 0.06system 0:02.95elapsed 82%CPU (0avgtext+0avgdata 136304maxresident)k
+0inputs+80outputs (0major+28453minor)pagefaults 0swaps

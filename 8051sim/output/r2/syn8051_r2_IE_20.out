@@ -1,0 +1,4 @@
+opcode : 0x20
+state  : IE
+2.01user 0.05system 0:02.22elapsed 93%CPU (0avgtext+0avgdata 136704maxresident)k
+0inputs+72outputs (0major+25763minor)pagefaults 0swaps

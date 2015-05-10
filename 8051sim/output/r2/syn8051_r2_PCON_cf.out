@@ -1,0 +1,4 @@
+opcode : 0xcf
+state  : PCON
+1.90user 0.03system 0:02.18elapsed 88%CPU (0avgtext+0avgdata 133376maxresident)k
+0inputs+64outputs (0major+23327minor)pagefaults 0swaps

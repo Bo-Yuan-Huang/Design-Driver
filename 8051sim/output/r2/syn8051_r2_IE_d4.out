@@ -1,0 +1,4 @@
+opcode : 0xd4
+state  : IE
+2.56user 0.06system 0:03.10elapsed 84%CPU (0avgtext+0avgdata 136832maxresident)k
+0inputs+72outputs (0major+25741minor)pagefaults 0swaps

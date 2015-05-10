@@ -1,0 +1,4 @@
+opcode : 0x8f
+state  : DPH
+4.22user 0.09system 0:04.54elapsed 95%CPU (0avgtext+0avgdata 145072maxresident)k
+0inputs+152outputs (0major+53061minor)pagefaults 0swaps

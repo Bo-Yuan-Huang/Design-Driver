@@ -1,0 +1,4 @@
+opcode : 0x8b
+state  : P1
+3.33user 0.06system 0:03.88elapsed 87%CPU (0avgtext+0avgdata 142560maxresident)k
+0inputs+120outputs (0major+41937minor)pagefaults 0swaps

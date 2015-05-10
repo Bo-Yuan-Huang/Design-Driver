@@ -1,0 +1,4 @@
+opcode : 0x49
+state  : TL0
+2.41user 0.09system 0:02.93elapsed 85%CPU (0avgtext+0avgdata 138016maxresident)k
+0inputs+88outputs (0major+31213minor)pagefaults 0swaps

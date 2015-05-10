@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : P1
+1.93user 0.07system 0:02.22elapsed 90%CPU (0avgtext+0avgdata 141728maxresident)k
+0inputs+96outputs (0major+34026minor)pagefaults 0swaps

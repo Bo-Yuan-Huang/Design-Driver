@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : PSW
+4.33user 0.05system 0:05.06elapsed 86%CPU (0avgtext+0avgdata 184320maxresident)k
+0inputs+88outputs (0major+40000minor)pagefaults 0swaps

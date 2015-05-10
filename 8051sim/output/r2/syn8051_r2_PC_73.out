@@ -1,0 +1,4 @@
+opcode : 0x73
+state  : PC
+1.02user 0.02system 0:01.25elapsed 84%CPU (0avgtext+0avgdata 132880maxresident)k
+0inputs+48outputs (0major+18028minor)pagefaults 0swaps

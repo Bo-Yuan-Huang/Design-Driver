@@ -1,0 +1,4 @@
+opcode : 0x82
+state  : TL1
+2.32user 0.04system 0:02.66elapsed 89%CPU (0avgtext+0avgdata 138640maxresident)k
+0inputs+80outputs (0major+29197minor)pagefaults 0swaps

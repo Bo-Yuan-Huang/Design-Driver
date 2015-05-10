@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : IP
+3.41user 0.12system 0:03.67elapsed 96%CPU (0avgtext+0avgdata 143728maxresident)k
+0inputs+104outputs (0major+36820minor)pagefaults 0swaps

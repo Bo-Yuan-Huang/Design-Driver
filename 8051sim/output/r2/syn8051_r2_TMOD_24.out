@@ -1,0 +1,4 @@
+opcode : 0x24
+state  : TMOD
+2.52user 0.04system 0:03.06elapsed 83%CPU (0avgtext+0avgdata 137376maxresident)k
+0inputs+96outputs (0major+33610minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x26
+state  : DPL
+2.54user 0.05system 0:03.00elapsed 86%CPU (0avgtext+0avgdata 137984maxresident)k
+0inputs+88outputs (0major+31411minor)pagefaults 0swaps

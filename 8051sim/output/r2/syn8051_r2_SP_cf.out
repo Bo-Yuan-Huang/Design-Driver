@@ -1,0 +1,4 @@
+opcode : 0xcf
+state  : SP
+2.34user 0.07system 0:02.58elapsed 93%CPU (0avgtext+0avgdata 139168maxresident)k
+0inputs+80outputs (0major+28563minor)pagefaults 0swaps

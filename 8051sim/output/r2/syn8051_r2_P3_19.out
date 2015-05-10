@@ -1,0 +1,4 @@
+opcode : 0x19
+state  : P3
+1.84user 0.05system 0:02.07elapsed 91%CPU (0avgtext+0avgdata 139216maxresident)k
+0inputs+80outputs (0major+28722minor)pagefaults 0swaps

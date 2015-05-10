@@ -1,0 +1,4 @@
+opcode : 0x5d
+state  : PC
+0.86user 0.02system 0:01.11elapsed 78%CPU (0avgtext+0avgdata 129840maxresident)k
+0inputs+32outputs (0major+13287minor)pagefaults 0swaps

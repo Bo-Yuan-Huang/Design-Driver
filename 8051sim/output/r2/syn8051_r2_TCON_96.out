@@ -1,0 +1,4 @@
+opcode : 0x96
+state  : TCON
+2.86user 0.06system 0:03.28elapsed 89%CPU (0avgtext+0avgdata 140176maxresident)k
+0inputs+104outputs (0major+36513minor)pagefaults 0swaps

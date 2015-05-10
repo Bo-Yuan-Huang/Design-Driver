@@ -1,0 +1,4 @@
+opcode : 0x1a
+state  : SBUF
+2.62user 0.04system 0:02.80elapsed 95%CPU (0avgtext+0avgdata 136272maxresident)k
+0inputs+80outputs (0major+28466minor)pagefaults 0swaps

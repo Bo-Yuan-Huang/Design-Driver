@@ -1,0 +1,4 @@
+opcode : 0xee
+state  : IRAM
+2645.93user 0.18system 44:10.98elapsed 99%CPU (0avgtext+0avgdata 302928maxresident)k
+0inputs+144outputs (0major+133044minor)pagefaults 0swaps

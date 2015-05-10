@@ -1,0 +1,4 @@
+opcode : 0x27
+state  : SP
+2.95user 0.07system 0:03.24elapsed 93%CPU (0avgtext+0avgdata 141120maxresident)k
+0inputs+104outputs (0major+36801minor)pagefaults 0swaps

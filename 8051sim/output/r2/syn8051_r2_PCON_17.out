@@ -1,0 +1,4 @@
+opcode : 0x17
+state  : PCON
+2.26user 0.05system 0:02.46elapsed 94%CPU (0avgtext+0avgdata 136112maxresident)k
+0inputs+80outputs (0major+28589minor)pagefaults 0swaps

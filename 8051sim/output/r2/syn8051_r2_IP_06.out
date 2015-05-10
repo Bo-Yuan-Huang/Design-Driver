@@ -1,0 +1,4 @@
+opcode : 0x6
+state  : IP
+3.59user 0.06system 0:03.84elapsed 95%CPU (0avgtext+0avgdata 147056maxresident)k
+0inputs+112outputs (0major+41424minor)pagefaults 0swaps

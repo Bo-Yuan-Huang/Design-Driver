@@ -1,0 +1,4 @@
+opcode : 0x75
+state  : B
+1.45user 0.04system 0:01.70elapsed 88%CPU (0avgtext+0avgdata 138768maxresident)k
+0inputs+48outputs (0major+19047minor)pagefaults 0swaps

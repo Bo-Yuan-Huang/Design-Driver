@@ -1,0 +1,4 @@
+opcode : 0x95
+state  : ACC
+4.78user 0.09system 0:05.16elapsed 94%CPU (0avgtext+0avgdata 167696maxresident)k
+0inputs+88outputs (0major+39227minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x8e
+state  : DPH
+4.46user 0.12system 0:04.82elapsed 95%CPU (0avgtext+0avgdata 145008maxresident)k
+0inputs+152outputs (0major+53501minor)pagefaults 0swaps

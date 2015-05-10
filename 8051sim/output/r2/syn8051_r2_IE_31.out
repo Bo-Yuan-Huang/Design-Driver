@@ -1,0 +1,4 @@
+opcode : 0x31
+state  : IE
+2.79user 0.07system 0:03.26elapsed 87%CPU (0avgtext+0avgdata 138144maxresident)k
+0inputs+80outputs (0major+28657minor)pagefaults 0swaps

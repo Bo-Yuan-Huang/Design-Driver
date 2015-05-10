@@ -1,0 +1,4 @@
+opcode : 0x9f
+state  : TL1
+2.30user 0.09system 0:02.74elapsed 87%CPU (0avgtext+0avgdata 138624maxresident)k
+0inputs+80outputs (0major+29073minor)pagefaults 0swaps

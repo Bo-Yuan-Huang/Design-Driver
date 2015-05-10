@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : IRAM
+3017.24user 0.19system 50:22.98elapsed 99%CPU (0avgtext+0avgdata 313984maxresident)k
+0inputs+144outputs (0major+135174minor)pagefaults 0swaps

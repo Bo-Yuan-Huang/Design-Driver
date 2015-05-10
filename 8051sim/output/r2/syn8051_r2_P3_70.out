@@ -1,0 +1,4 @@
+opcode : 0x70
+state  : P3
+2.41user 0.04system 0:02.63elapsed 93%CPU (0avgtext+0avgdata 138992maxresident)k
+0inputs+88outputs (0major+31029minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x39
+state  : IE
+2.44user 0.06system 0:02.90elapsed 85%CPU (0avgtext+0avgdata 136960maxresident)k
+0inputs+72outputs (0major+25841minor)pagefaults 0swaps

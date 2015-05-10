@@ -1,0 +1,4 @@
+opcode : 0x4b
+state  : DPL
+2.78user 0.06system 0:03.02elapsed 94%CPU (0avgtext+0avgdata 133504maxresident)k
+0inputs+72outputs (0major+25416minor)pagefaults 0swaps

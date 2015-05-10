@@ -1,0 +1,4 @@
+opcode : 0x25
+state  : PC
+3.86user 0.05system 0:04.08elapsed 95%CPU (0avgtext+0avgdata 144128maxresident)k
+0inputs+120outputs (0major+43282minor)pagefaults 0swaps

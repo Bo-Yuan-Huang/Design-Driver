@@ -1,0 +1,4 @@
+opcode : 0x74
+state  : B
+3.88user 0.06system 0:04.17elapsed 94%CPU (0avgtext+0avgdata 142880maxresident)k
+0inputs+88outputs (0major+33115minor)pagefaults 0swaps

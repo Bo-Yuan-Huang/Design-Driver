@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : SP
+2.62user 0.07system 0:03.00elapsed 89%CPU (0avgtext+0avgdata 139808maxresident)k
+0inputs+80outputs (0major+28668minor)pagefaults 0swaps

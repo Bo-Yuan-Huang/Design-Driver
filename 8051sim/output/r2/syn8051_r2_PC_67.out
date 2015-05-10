@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : PC
+0.90user 0.00system 0:01.07elapsed 84%CPU (0avgtext+0avgdata 130384maxresident)k
+0inputs+32outputs (0major+13414minor)pagefaults 0swaps

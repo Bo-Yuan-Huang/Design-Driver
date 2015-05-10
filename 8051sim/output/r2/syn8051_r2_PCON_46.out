@@ -1,0 +1,4 @@
+opcode : 0x46
+state  : PCON
+2.04user 0.08system 0:02.37elapsed 89%CPU (0avgtext+0avgdata 137248maxresident)k
+0inputs+80outputs (0major+28684minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x8e
+state  : ACC
+4.89user 0.09system 0:05.21elapsed 95%CPU (0avgtext+0avgdata 165904maxresident)k
+0inputs+128outputs (0major+57113minor)pagefaults 0swaps

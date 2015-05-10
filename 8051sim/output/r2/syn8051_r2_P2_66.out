@@ -1,0 +1,4 @@
+opcode : 0x66
+state  : P2
+1.88user 0.04system 0:02.20elapsed 87%CPU (0avgtext+0avgdata 138992maxresident)k
+0inputs+88outputs (0major+31147minor)pagefaults 0swaps

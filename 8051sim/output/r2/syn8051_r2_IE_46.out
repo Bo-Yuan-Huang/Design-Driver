@@ -1,0 +1,4 @@
+opcode : 0x46
+state  : IE
+1.91user 0.04system 0:02.50elapsed 78%CPU (0avgtext+0avgdata 136544maxresident)k
+0inputs+72outputs (0major+25747minor)pagefaults 0swaps

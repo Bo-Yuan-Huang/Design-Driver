@@ -1,0 +1,4 @@
+opcode : 0x14
+state  : PSW
+7.66user 0.10system 0:08.38elapsed 92%CPU (0avgtext+0avgdata 183792maxresident)k
+0inputs+136outputs (0major+70241minor)pagefaults 0swaps

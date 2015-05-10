@@ -1,0 +1,4 @@
+opcode : 0x1e
+state  : TCON
+2.70user 0.07system 0:03.15elapsed 88%CPU (0avgtext+0avgdata 139120maxresident)k
+0inputs+96outputs (0major+33913minor)pagefaults 0swaps

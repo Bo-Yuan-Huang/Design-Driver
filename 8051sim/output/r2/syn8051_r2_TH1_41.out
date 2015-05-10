@@ -1,0 +1,4 @@
+opcode : 0x41
+state  : TH1
+2.37user 0.04system 0:02.68elapsed 89%CPU (0avgtext+0avgdata 138016maxresident)k
+0inputs+88outputs (0major+31098minor)pagefaults 0swaps

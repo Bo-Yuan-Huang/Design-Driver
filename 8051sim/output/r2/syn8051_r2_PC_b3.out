@@ -1,0 +1,4 @@
+opcode : 0xb3
+state  : PC
+0.71user 0.02system 0:00.93elapsed 78%CPU (0avgtext+0avgdata 129232maxresident)k
+0inputs+32outputs (0major+13365minor)pagefaults 0swaps

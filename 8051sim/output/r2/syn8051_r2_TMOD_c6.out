@@ -1,0 +1,4 @@
+opcode : 0xc6
+state  : TMOD
+2.39user 0.06system 0:02.67elapsed 91%CPU (0avgtext+0avgdata 136096maxresident)k
+0inputs+88outputs (0major+30668minor)pagefaults 0swaps

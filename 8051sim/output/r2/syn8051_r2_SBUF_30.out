@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : SBUF
+2.33user 0.07system 0:03.05elapsed 78%CPU (0avgtext+0avgdata 138672maxresident)k
+0inputs+80outputs (0major+28779minor)pagefaults 0swaps

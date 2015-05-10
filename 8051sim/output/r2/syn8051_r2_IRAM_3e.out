@@ -1,0 +1,4 @@
+opcode : 0x3e
+state  : IRAM
+1588.57user 0.22system 26:31.77elapsed 99%CPU (0avgtext+0avgdata 293728maxresident)k
+0inputs+128outputs (0major+111687minor)pagefaults 0swaps

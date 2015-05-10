@@ -1,0 +1,4 @@
+opcode : 0x38
+state  : PCON
+2.31user 0.06system 0:02.68elapsed 88%CPU (0avgtext+0avgdata 136432maxresident)k
+0inputs+80outputs (0major+28857minor)pagefaults 0swaps

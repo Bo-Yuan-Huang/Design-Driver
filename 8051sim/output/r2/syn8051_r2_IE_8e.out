@@ -1,0 +1,4 @@
+opcode : 0x8e
+state  : IE
+3.38user 0.05system 0:03.58elapsed 95%CPU (0avgtext+0avgdata 142000maxresident)k
+0inputs+112outputs (0major+39329minor)pagefaults 0swaps

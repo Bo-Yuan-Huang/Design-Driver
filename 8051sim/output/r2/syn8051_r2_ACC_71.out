@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : ACC
+4.44user 0.09system 0:04.98elapsed 91%CPU (0avgtext+0avgdata 160496maxresident)k
+0inputs+104outputs (0major+44052minor)pagefaults 0swaps

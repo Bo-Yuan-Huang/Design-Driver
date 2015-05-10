@@ -1,0 +1,4 @@
+opcode : 0x32
+state  : TH1
+2.56user 0.05system 0:02.90elapsed 89%CPU (0avgtext+0avgdata 136176maxresident)k
+0inputs+88outputs (0major+30739minor)pagefaults 0swaps

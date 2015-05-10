@@ -1,0 +1,4 @@
+opcode : 0x14
+state  : SCON
+3.13user 0.05system 0:03.50elapsed 90%CPU (0avgtext+0avgdata 141264maxresident)k
+0inputs+104outputs (0major+36957minor)pagefaults 0swaps

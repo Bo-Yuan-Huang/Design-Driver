@@ -1,0 +1,4 @@
+opcode : 0x9b
+state  : IE
+2.39user 0.07system 0:02.67elapsed 92%CPU (0avgtext+0avgdata 136624maxresident)k
+0inputs+72outputs (0major+25853minor)pagefaults 0swaps

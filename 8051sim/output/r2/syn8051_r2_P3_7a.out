@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : P3
+2.90user 0.06system 0:03.20elapsed 92%CPU (0avgtext+0avgdata 143184maxresident)k
+0inputs+104outputs (0major+37172minor)pagefaults 0swaps

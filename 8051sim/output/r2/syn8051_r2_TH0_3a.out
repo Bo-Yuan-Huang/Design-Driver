@@ -1,0 +1,4 @@
+opcode : 0x3a
+state  : TH0
+1.87user 0.04system 0:02.20elapsed 87%CPU (0avgtext+0avgdata 134448maxresident)k
+0inputs+64outputs (0major+23487minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xb
+state  : SCON
+2.57user 0.06system 0:02.77elapsed 95%CPU (0avgtext+0avgdata 139568maxresident)k
+0inputs+88outputs (0major+31417minor)pagefaults 0swaps

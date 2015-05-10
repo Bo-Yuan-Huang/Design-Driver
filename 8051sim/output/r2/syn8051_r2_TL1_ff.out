@@ -1,0 +1,4 @@
+opcode : 0xff
+state  : TL1
+2.27user 0.02system 0:02.55elapsed 89%CPU (0avgtext+0avgdata 139040maxresident)k
+0inputs+80outputs (0major+29159minor)pagefaults 0swaps

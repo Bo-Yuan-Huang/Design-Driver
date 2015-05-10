@@ -1,0 +1,4 @@
+opcode : 0x72
+state  : PSW
+5.21user 0.07system 0:05.53elapsed 95%CPU (0avgtext+0avgdata 166144maxresident)k
+0inputs+96outputs (0major+43344minor)pagefaults 0swaps

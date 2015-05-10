@@ -1,0 +1,4 @@
+opcode : 0x79
+state  : PSW
+7.95user 0.11system 0:08.25elapsed 97%CPU (0avgtext+0avgdata 182352maxresident)k
+0inputs+128outputs (0major+67510minor)pagefaults 0swaps

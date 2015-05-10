@@ -1,0 +1,4 @@
+opcode : 0xe3
+state  : DPL
+2.58user 0.06system 0:02.85elapsed 92%CPU (0avgtext+0avgdata 136368maxresident)k
+0inputs+88outputs (0major+30811minor)pagefaults 0swaps

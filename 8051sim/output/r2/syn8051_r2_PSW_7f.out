@@ -1,0 +1,4 @@
+opcode : 0x7f
+state  : PSW
+8.09user 0.12system 0:09.08elapsed 90%CPU (0avgtext+0avgdata 202560maxresident)k
+0inputs+176outputs (0major+100468minor)pagefaults 0swaps

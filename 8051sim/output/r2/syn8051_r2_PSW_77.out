@@ -1,0 +1,4 @@
+opcode : 0x77
+state  : PSW
+10.92user 0.10system 0:11.20elapsed 98%CPU (0avgtext+0avgdata 195216maxresident)k
+0inputs+160outputs (0major+90082minor)pagefaults 0swaps

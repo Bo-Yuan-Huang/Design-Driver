@@ -1,0 +1,4 @@
+opcode : 0xc9
+state  : DPH
+2.64user 0.07system 0:03.38elapsed 80%CPU (0avgtext+0avgdata 138032maxresident)k
+0inputs+96outputs (0major+33521minor)pagefaults 0swaps

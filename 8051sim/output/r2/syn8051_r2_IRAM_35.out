@@ -1,0 +1,4 @@
+opcode : 0x35
+state  : IRAM
+2462.62user 0.14system 41:07.26elapsed 99%CPU (0avgtext+0avgdata 314416maxresident)k
+0inputs+120outputs (0major+99926minor)pagefaults 0swaps

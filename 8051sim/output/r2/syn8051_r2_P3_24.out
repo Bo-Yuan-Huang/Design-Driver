@@ -1,0 +1,4 @@
+opcode : 0x24
+state  : P3
+2.49user 0.05system 0:03.00elapsed 84%CPU (0avgtext+0avgdata 138640maxresident)k
+0inputs+88outputs (0major+31336minor)pagefaults 0swaps

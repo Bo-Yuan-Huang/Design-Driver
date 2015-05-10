@@ -1,0 +1,4 @@
+opcode : 0x58
+state  : DPL
+2.56user 0.08system 0:02.95elapsed 89%CPU (0avgtext+0avgdata 138016maxresident)k
+0inputs+88outputs (0major+31326minor)pagefaults 0swaps

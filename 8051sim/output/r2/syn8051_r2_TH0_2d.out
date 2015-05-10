@@ -1,0 +1,4 @@
+opcode : 0x2d
+state  : TH0
+2.09user 0.03system 0:02.56elapsed 83%CPU (0avgtext+0avgdata 134672maxresident)k
+0inputs+72outputs (0major+25722minor)pagefaults 0swaps

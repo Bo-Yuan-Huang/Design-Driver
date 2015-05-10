@@ -1,0 +1,4 @@
+opcode : 0x11
+state  : PC
+8.67user 0.05system 0:08.90elapsed 98%CPU (0avgtext+0avgdata 146096maxresident)k
+0inputs+56outputs (0major+21712minor)pagefaults 0swaps

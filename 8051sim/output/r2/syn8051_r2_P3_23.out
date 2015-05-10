@@ -1,0 +1,4 @@
+opcode : 0x23
+state  : P3
+2.75user 0.07system 0:03.06elapsed 92%CPU (0avgtext+0avgdata 138960maxresident)k
+0inputs+80outputs (0major+28633minor)pagefaults 0swaps

@@ -1,0 +1,5 @@
+Exception z3types.Z3Exception: Z3Exception() in  ignored
+opcode : 0x58
+state  : XRAM_DATA_OUT
+0.32user 0.01system 0:00.45elapsed 75%CPU (0avgtext+0avgdata 108624maxresident)k
+0inputs+32outputs (0major+11726minor)pagefaults 0swaps

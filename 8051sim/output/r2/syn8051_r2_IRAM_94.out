@@ -1,0 +1,4 @@
+opcode : 0x94
+state  : IRAM
+2759.66user 0.52system 46:18.90elapsed 99%CPU (0avgtext+0avgdata 308464maxresident)k
+0inputs+112outputs (0major+102072minor)pagefaults 0swaps

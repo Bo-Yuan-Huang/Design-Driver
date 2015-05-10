@@ -1,0 +1,4 @@
+opcode : 0x8f
+state  : P2
+2.94user 0.06system 0:03.15elapsed 95%CPU (0avgtext+0avgdata 142160maxresident)k
+0inputs+112outputs (0major+38883minor)pagefaults 0swaps

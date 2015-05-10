@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : PCON
+2.36user 0.07system 0:02.74elapsed 89%CPU (0avgtext+0avgdata 135888maxresident)k
+0inputs+80outputs (0major+28841minor)pagefaults 0swaps

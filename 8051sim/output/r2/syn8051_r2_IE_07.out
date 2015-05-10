@@ -1,0 +1,4 @@
+opcode : 0x7
+state  : IE
+1.75user 0.04system 0:02.05elapsed 87%CPU (0avgtext+0avgdata 136624maxresident)k
+0inputs+72outputs (0major+25888minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x11
+state  : B
+3.75user 0.06system 0:04.01elapsed 95%CPU (0avgtext+0avgdata 143632maxresident)k
+0inputs+80outputs (0major+30224minor)pagefaults 0swaps

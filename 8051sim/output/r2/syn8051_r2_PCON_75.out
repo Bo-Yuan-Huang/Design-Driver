@@ -1,0 +1,4 @@
+opcode : 0x75
+state  : PCON
+1.23user 0.05system 0:01.50elapsed 85%CPU (0avgtext+0avgdata 133072maxresident)k
+0inputs+48outputs (0major+18481minor)pagefaults 0swaps

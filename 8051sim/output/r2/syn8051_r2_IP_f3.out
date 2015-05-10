@@ -1,0 +1,4 @@
+opcode : 0xf3
+state  : IP
+3.51user 0.10system 0:03.78elapsed 95%CPU (0avgtext+0avgdata 141008maxresident)k
+0inputs+96outputs (0major+33689minor)pagefaults 0swaps

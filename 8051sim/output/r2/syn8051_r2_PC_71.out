@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : PC
+6.78user 0.04system 0:07.00elapsed 97%CPU (0avgtext+0avgdata 145616maxresident)k
+0inputs+40outputs (0major+16753minor)pagefaults 0swaps

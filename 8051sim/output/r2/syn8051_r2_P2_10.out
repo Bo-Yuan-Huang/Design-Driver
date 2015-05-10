@@ -1,0 +1,4 @@
+opcode : 0x10
+state  : P2
+2.39user 0.08system 0:02.72elapsed 90%CPU (0avgtext+0avgdata 149232maxresident)k
+0inputs+104outputs (0major+37086minor)pagefaults 0swaps

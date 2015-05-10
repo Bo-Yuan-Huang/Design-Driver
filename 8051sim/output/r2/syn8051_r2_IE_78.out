@@ -1,0 +1,4 @@
+opcode : 0x78
+state  : IE
+2.01user 0.07system 0:02.23elapsed 93%CPU (0avgtext+0avgdata 141232maxresident)k
+0inputs+88outputs (0major+31562minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x4a
+state  : IRAM
+4644.15user 0.65system 1:17:36elapsed 99%CPU (0avgtext+0avgdata 330448maxresident)k
+0inputs+144outputs (0major+139381minor)pagefaults 0swaps

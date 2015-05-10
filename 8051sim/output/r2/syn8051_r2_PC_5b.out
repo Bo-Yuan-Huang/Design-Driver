@@ -1,0 +1,4 @@
+opcode : 0x5b
+state  : PC
+0.70user 0.02system 0:00.88elapsed 81%CPU (0avgtext+0avgdata 129504maxresident)k
+0inputs+32outputs (0major+13349minor)pagefaults 0swaps

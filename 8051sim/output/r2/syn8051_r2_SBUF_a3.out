@@ -1,0 +1,4 @@
+opcode : 0xa3
+state  : SBUF
+2.20user 0.07system 0:02.83elapsed 80%CPU (0avgtext+0avgdata 135424maxresident)k
+0inputs+80outputs (0major+28297minor)pagefaults 0swaps

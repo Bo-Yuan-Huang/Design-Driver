@@ -1,0 +1,4 @@
+opcode : 0x23
+state  : DPH
+2.70user 0.08system 0:02.94elapsed 94%CPU (0avgtext+0avgdata 136576maxresident)k
+0inputs+88outputs (0major+31069minor)pagefaults 0swaps

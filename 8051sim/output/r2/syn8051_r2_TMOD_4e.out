@@ -1,0 +1,4 @@
+opcode : 0x4e
+state  : TMOD
+2.65user 0.07system 0:02.92elapsed 93%CPU (0avgtext+0avgdata 139264maxresident)k
+0inputs+96outputs (0major+33629minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xc9
+state  : PC
+1.18user 0.02system 0:01.34elapsed 90%CPU (0avgtext+0avgdata 129712maxresident)k
+0inputs+32outputs (0major+13392minor)pagefaults 0swaps

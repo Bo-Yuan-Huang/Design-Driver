@@ -1,0 +1,4 @@
+opcode : 0x24
+state  : PCON
+2.16user 0.03system 0:02.38elapsed 92%CPU (0avgtext+0avgdata 134496maxresident)k
+0inputs+72outputs (0major+25689minor)pagefaults 0swaps

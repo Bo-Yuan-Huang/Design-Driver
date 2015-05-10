@@ -1,0 +1,4 @@
+opcode : 0x8f
+state  : PSW
+9.82user 0.21system 0:10.28elapsed 97%CPU (0avgtext+0avgdata 206128maxresident)k
+0inputs+216outputs (0major+121308minor)pagefaults 0swaps

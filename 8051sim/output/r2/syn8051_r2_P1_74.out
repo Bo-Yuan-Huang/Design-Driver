@@ -1,0 +1,4 @@
+opcode : 0x74
+state  : P1
+2.05user 0.07system 0:02.40elapsed 88%CPU (0avgtext+0avgdata 140672maxresident)k
+0inputs+96outputs (0major+34123minor)pagefaults 0swaps

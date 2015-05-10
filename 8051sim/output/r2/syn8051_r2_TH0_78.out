@@ -1,0 +1,4 @@
+opcode : 0x78
+state  : TH0
+1.99user 0.04system 0:02.18elapsed 93%CPU (0avgtext+0avgdata 134656maxresident)k
+0inputs+64outputs (0major+23386minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x5d
+state  : IRAM
+2523.03user 0.15system 42:07.87elapsed 99%CPU (0avgtext+0avgdata 299776maxresident)k
+0inputs+128outputs (0major+113994minor)pagefaults 0swaps

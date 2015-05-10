@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : TL0
+3.22user 0.09system 0:03.47elapsed 95%CPU (0avgtext+0avgdata 144288maxresident)k
+0inputs+96outputs (0major+36903minor)pagefaults 0swaps

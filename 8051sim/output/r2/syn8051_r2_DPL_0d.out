@@ -1,0 +1,4 @@
+opcode : 0xd
+state  : DPL
+3.12user 0.07system 0:03.50elapsed 91%CPU (0avgtext+0avgdata 139248maxresident)k
+0inputs+96outputs (0major+34066minor)pagefaults 0swaps

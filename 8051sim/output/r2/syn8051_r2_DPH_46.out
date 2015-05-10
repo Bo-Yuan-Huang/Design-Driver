@@ -1,0 +1,4 @@
+opcode : 0x46
+state  : DPH
+2.71user 0.07system 0:02.93elapsed 94%CPU (0avgtext+0avgdata 138528maxresident)k
+0inputs+88outputs (0major+31174minor)pagefaults 0swaps

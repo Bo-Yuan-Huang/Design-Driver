@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : SBUF
+2.24user 0.06system 0:03.12elapsed 73%CPU (0avgtext+0avgdata 135568maxresident)k
+0inputs+80outputs (0major+28442minor)pagefaults 0swaps

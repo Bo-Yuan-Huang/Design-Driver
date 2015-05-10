@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : SBUF
+2.35user 0.06system 0:02.96elapsed 81%CPU (0avgtext+0avgdata 139984maxresident)k
+0inputs+72outputs (0major+25858minor)pagefaults 0swaps

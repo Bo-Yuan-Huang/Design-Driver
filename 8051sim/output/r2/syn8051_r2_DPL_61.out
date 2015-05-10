@@ -1,0 +1,4 @@
+opcode : 0x61
+state  : DPL
+2.86user 0.08system 0:03.32elapsed 88%CPU (0avgtext+0avgdata 137248maxresident)k
+0inputs+88outputs (0major+31107minor)pagefaults 0swaps

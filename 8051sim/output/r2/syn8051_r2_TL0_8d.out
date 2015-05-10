@@ -1,0 +1,4 @@
+opcode : 0x8d
+state  : TL0
+3.00user 0.06system 0:03.28elapsed 93%CPU (0avgtext+0avgdata 140336maxresident)k
+0inputs+112outputs (0major+38815minor)pagefaults 0swaps

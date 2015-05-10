@@ -1,0 +1,27 @@
+ÄKÉ.ÄUACCq.Äcast
+ReadMem
+q)Åq}q(Uaddrqcast
+Z3Op
+q)Åq}q(Unodetypeq	KUz3cnstsq
+}Uoperandsq]q(h)Åq}q(h	Kh
+}h]qcast
+BitVecVar
+q)Åq}q(h	Kh
+}UwidthqKUz3objsq}Uis_inputqâUsynMemoqNUnameqUACCqubahKh}U	mwidthFunqNhâUparamsq]qKaUopqcz3
+ZeroExt
+qUopnameqUzero-extqhNU	rwidthFunq cast
+_extendWidth
+q!hU_UnnamedObjectq"ubh)Åq#}q$(h	Kh
+}h]q%(h)Åq&}q'(h	Kh
+}hKh}hâhNhUPCq(ubcast
+BitVecVal
+q))Åq*}q+(h	Kh
+}hKh}Uvalueq,KhâhNhh"ubehKh}hNhâhNhcz3helper
+z3Add
+q-hUaddq.hNh cast
+_determineOpWidth
+q/hh"ubehKh}hNhâhNhh-hh.hNh h/hh"ubh	K	h
+}hKUmemq0cast
+MemVar
+q1)Åq2}q3(Uawidthq4Kh	Kh
+}h}hâhNUdwidthq5KhUROMq6ubh}hâhNhh"ub.

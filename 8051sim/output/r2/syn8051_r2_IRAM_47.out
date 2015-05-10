@@ -1,0 +1,4 @@
+opcode : 0x47
+state  : IRAM
+4276.10user 0.21system 1:11:24elapsed 99%CPU (0avgtext+0avgdata 321584maxresident)k
+0inputs+128outputs (0major+125541minor)pagefaults 0swaps

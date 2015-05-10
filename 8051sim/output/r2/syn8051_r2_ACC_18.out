@@ -1,0 +1,4 @@
+opcode : 0x18
+state  : ACC
+4.16user 0.09system 0:04.40elapsed 96%CPU (0avgtext+0avgdata 155328maxresident)k
+0inputs+104outputs (0major+43037minor)pagefaults 0swaps

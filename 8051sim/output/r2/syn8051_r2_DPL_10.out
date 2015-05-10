@@ -1,0 +1,4 @@
+opcode : 0x10
+state  : DPL
+2.74user 0.05system 0:03.12elapsed 89%CPU (0avgtext+0avgdata 134704maxresident)k
+0inputs+80outputs (0major+28207minor)pagefaults 0swaps

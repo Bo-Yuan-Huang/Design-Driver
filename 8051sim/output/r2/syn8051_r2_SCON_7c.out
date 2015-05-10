@@ -1,0 +1,4 @@
+opcode : 0x7c
+state  : SCON
+2.45user 0.07system 0:02.74elapsed 92%CPU (0avgtext+0avgdata 141552maxresident)k
+0inputs+104outputs (0major+37090minor)pagefaults 0swaps

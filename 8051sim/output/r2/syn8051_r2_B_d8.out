@@ -1,0 +1,4 @@
+opcode : 0xd8
+state  : B
+4.51user 0.09system 0:04.79elapsed 96%CPU (0avgtext+0avgdata 146496maxresident)k
+0inputs+96outputs (0major+36447minor)pagefaults 0swaps

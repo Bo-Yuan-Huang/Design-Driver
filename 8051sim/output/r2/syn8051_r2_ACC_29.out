@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : ACC
+5.47user 0.12system 0:05.76elapsed 97%CPU (0avgtext+0avgdata 155728maxresident)k
+0inputs+120outputs (0major+49091minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : DPH
+3.28user 0.08system 0:03.77elapsed 89%CPU (0avgtext+0avgdata 138464maxresident)k
+0inputs+96outputs (0major+33768minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x74
+state  : PCON
+2.04user 0.04system 0:02.39elapsed 87%CPU (0avgtext+0avgdata 133856maxresident)k
+0inputs+64outputs (0major+23379minor)pagefaults 0swaps

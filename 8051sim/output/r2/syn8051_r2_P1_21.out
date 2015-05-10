@@ -1,0 +1,4 @@
+opcode : 0x21
+state  : P1
+2.74user 0.07system 0:03.02elapsed 93%CPU (0avgtext+0avgdata 141312maxresident)k
+0inputs+104outputs (0major+36617minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x6d
+state  : DPL
+2.44user 0.06system 0:02.74elapsed 91%CPU (0avgtext+0avgdata 137312maxresident)k
+0inputs+88outputs (0major+31178minor)pagefaults 0swaps

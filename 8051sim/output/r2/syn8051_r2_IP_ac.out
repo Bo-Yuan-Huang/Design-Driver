@@ -1,0 +1,4 @@
+opcode : 0xac
+state  : IP
+3.90user 0.08system 0:04.24elapsed 93%CPU (0avgtext+0avgdata 143216maxresident)k
+0inputs+104outputs (0major+36971minor)pagefaults 0swaps

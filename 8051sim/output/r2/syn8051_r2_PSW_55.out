@@ -1,0 +1,4 @@
+opcode : 0x55
+state  : PSW
+9.40user 0.13system 0:09.94elapsed 95%CPU (0avgtext+0avgdata 196352maxresident)k
+0inputs+152outputs (0major+79272minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : IP
+4.37user 0.10system 0:04.65elapsed 96%CPU (0avgtext+0avgdata 143168maxresident)k
+0inputs+136outputs (0major+46564minor)pagefaults 0swaps

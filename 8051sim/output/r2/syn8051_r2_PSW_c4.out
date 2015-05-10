@@ -1,0 +1,4 @@
+opcode : 0xc4
+state  : PSW
+10.08user 0.11system 0:10.39elapsed 98%CPU (0avgtext+0avgdata 191616maxresident)k
+0inputs+144outputs (0major+77141minor)pagefaults 0swaps

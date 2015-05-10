@@ -1,0 +1,4 @@
+opcode : 0x75
+state  : TH0
+1.14user 0.04system 0:01.34elapsed 88%CPU (0avgtext+0avgdata 132960maxresident)k
+0inputs+40outputs (0major+16314minor)pagefaults 0swaps

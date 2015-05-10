@@ -1,0 +1,4 @@
+opcode : 0x4f
+state  : TMOD
+2.07user 0.05system 0:02.40elapsed 88%CPU (0avgtext+0avgdata 134496maxresident)k
+0inputs+72outputs (0major+25450minor)pagefaults 0swaps

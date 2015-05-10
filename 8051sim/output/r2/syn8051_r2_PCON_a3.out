@@ -1,0 +1,4 @@
+opcode : 0xa3
+state  : PCON
+1.75user 0.06system 0:02.32elapsed 78%CPU (0avgtext+0avgdata 134592maxresident)k
+0inputs+72outputs (0major+25872minor)pagefaults 0swaps

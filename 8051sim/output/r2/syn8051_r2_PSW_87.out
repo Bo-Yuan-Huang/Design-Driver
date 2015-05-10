@@ -1,0 +1,4 @@
+opcode : 0x87
+state  : PSW
+2.56user 0.05system 0:02.79elapsed 93%CPU (0avgtext+0avgdata 152096maxresident)k
+0inputs+56outputs (0major+25198minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x87
+state  : PCON
+1.97user 0.05system 0:02.24elapsed 90%CPU (0avgtext+0avgdata 137888maxresident)k
+0inputs+80outputs (0major+28747minor)pagefaults 0swaps

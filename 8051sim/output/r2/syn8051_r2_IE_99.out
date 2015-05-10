@@ -1,0 +1,4 @@
+opcode : 0x99
+state  : IE
+2.15user 0.06system 0:02.82elapsed 78%CPU (0avgtext+0avgdata 136544maxresident)k
+0inputs+72outputs (0major+25807minor)pagefaults 0swaps

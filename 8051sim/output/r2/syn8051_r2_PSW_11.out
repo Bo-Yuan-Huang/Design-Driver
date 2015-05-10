@@ -1,0 +1,4 @@
+opcode : 0x11
+state  : PSW
+6.68user 0.12system 0:07.05elapsed 96%CPU (0avgtext+0avgdata 185472maxresident)k
+0inputs+152outputs (0major+76157minor)pagefaults 0swaps

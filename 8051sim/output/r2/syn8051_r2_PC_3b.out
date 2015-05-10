@@ -1,0 +1,4 @@
+opcode : 0x3b
+state  : PC
+0.74user 0.01system 0:00.87elapsed 87%CPU (0avgtext+0avgdata 130000maxresident)k
+0inputs+32outputs (0major+13371minor)pagefaults 0swaps

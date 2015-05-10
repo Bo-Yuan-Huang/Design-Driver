@@ -1,0 +1,4 @@
+opcode : 0x25
+state  : IE
+2.20user 0.09system 0:02.47elapsed 92%CPU (0avgtext+0avgdata 136576maxresident)k
+0inputs+72outputs (0major+25819minor)pagefaults 0swaps

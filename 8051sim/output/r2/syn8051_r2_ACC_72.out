@@ -1,0 +1,4 @@
+opcode : 0x72
+state  : ACC
+4.02user 0.08system 0:04.47elapsed 91%CPU (0avgtext+0avgdata 162736maxresident)k
+0inputs+120outputs (0major+50940minor)pagefaults 0swaps

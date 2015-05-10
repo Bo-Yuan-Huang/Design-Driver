@@ -1,0 +1,4 @@
+opcode : 0x45
+state  : DPH
+2.94user 0.08system 0:03.32elapsed 90%CPU (0avgtext+0avgdata 136032maxresident)k
+0inputs+88outputs (0major+30954minor)pagefaults 0swaps

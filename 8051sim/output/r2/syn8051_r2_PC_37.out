@@ -1,0 +1,4 @@
+opcode : 0x37
+state  : PC
+1.13user 0.02system 0:01.36elapsed 85%CPU (0avgtext+0avgdata 129680maxresident)k
+0inputs+32outputs (0major+13355minor)pagefaults 0swaps

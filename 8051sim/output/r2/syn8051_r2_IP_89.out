@@ -1,0 +1,4 @@
+opcode : 0x89
+state  : IP
+2.94user 0.04system 0:03.15elapsed 94%CPU (0avgtext+0avgdata 139440maxresident)k
+0inputs+88outputs (0major+30275minor)pagefaults 0swaps

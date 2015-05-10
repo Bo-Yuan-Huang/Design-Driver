@@ -1,0 +1,4 @@
+opcode : 0x76
+state  : TL1
+2.36user 0.05system 0:02.83elapsed 85%CPU (0avgtext+0avgdata 137120maxresident)k
+0inputs+80outputs (0major+28988minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x45
+state  : PSW
+8.74user 0.09system 0:09.15elapsed 96%CPU (0avgtext+0avgdata 199344maxresident)k
+0inputs+160outputs (0major+89230minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : IP
+4.36user 0.13system 0:04.68elapsed 96%CPU (0avgtext+0avgdata 145168maxresident)k
+0inputs+112outputs (0major+39981minor)pagefaults 0swaps

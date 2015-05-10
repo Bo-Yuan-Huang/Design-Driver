@@ -1,0 +1,4 @@
+opcode : 0xe6
+state  : TH1
+2.11user 0.06system 0:02.47elapsed 88%CPU (0avgtext+0avgdata 136336maxresident)k
+0inputs+80outputs (0major+28378minor)pagefaults 0swaps

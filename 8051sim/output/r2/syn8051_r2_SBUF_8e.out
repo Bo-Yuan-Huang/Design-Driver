@@ -1,0 +1,4 @@
+opcode : 0x8e
+state  : SBUF
+3.44user 0.08system 0:03.93elapsed 89%CPU (0avgtext+0avgdata 143808maxresident)k
+0inputs+128outputs (0major+45098minor)pagefaults 0swaps

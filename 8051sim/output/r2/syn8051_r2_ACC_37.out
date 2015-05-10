@@ -1,0 +1,4 @@
+opcode : 0x37
+state  : ACC
+4.30user 0.06system 0:04.49elapsed 97%CPU (0avgtext+0avgdata 156768maxresident)k
+0inputs+96outputs (0major+39787minor)pagefaults 0swaps

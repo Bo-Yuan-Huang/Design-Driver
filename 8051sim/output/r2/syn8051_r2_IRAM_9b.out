@@ -1,0 +1,4 @@
+opcode : 0x9b
+state  : IRAM
+3643.39user 0.18system 1:00:50elapsed 99%CPU (0avgtext+0avgdata 327248maxresident)k
+0inputs+144outputs (0major+142640minor)pagefaults 0swaps

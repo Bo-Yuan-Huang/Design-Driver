@@ -1,0 +1,4 @@
+opcode : 0x44
+state  : PCON
+2.16user 0.04system 0:02.39elapsed 91%CPU (0avgtext+0avgdata 135760maxresident)k
+0inputs+72outputs (0major+26208minor)pagefaults 0swaps

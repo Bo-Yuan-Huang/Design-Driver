@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : PCON
+2.41user 0.06system 0:02.71elapsed 91%CPU (0avgtext+0avgdata 138032maxresident)k
+0inputs+88outputs (0major+31327minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x8e
+state  : P0
+2.09user 0.08system 0:02.36elapsed 92%CPU (0avgtext+0avgdata 139776maxresident)k
+0inputs+96outputs (0major+33633minor)pagefaults 0swaps

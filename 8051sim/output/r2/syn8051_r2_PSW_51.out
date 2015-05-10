@@ -1,0 +1,4 @@
+opcode : 0x51
+state  : PSW
+8.70user 0.12system 0:08.99elapsed 98%CPU (0avgtext+0avgdata 184048maxresident)k
+0inputs+152outputs (0major+78721minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x2
+state  : TMOD
+2.36user 0.07system 0:02.85elapsed 85%CPU (0avgtext+0avgdata 135696maxresident)k
+0inputs+88outputs (0major+30393minor)pagefaults 0swaps

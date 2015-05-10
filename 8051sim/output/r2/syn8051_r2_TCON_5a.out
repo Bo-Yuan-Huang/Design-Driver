@@ -1,0 +1,4 @@
+opcode : 0x5a
+state  : TCON
+2.47user 0.10system 0:03.06elapsed 84%CPU (0avgtext+0avgdata 139040maxresident)k
+0inputs+96outputs (0major+33700minor)pagefaults 0swaps

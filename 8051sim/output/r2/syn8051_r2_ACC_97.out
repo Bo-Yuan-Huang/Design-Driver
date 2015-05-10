@@ -1,0 +1,4 @@
+opcode : 0x97
+state  : ACC
+2.94user 0.08system 0:03.39elapsed 89%CPU (0avgtext+0avgdata 155744maxresident)k
+0inputs+72outputs (0major+31216minor)pagefaults 0swaps

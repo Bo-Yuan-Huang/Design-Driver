@@ -1,0 +1,4 @@
+opcode : 0x10
+state  : IRAM
+58.01user 0.06system 0:58.37elapsed 99%CPU (0avgtext+0avgdata 192016maxresident)k
+0inputs+64outputs (0major+30882minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : SP
+1.95user 0.06system 0:02.15elapsed 93%CPU (0avgtext+0avgdata 134096maxresident)k
+0inputs+56outputs (0major+22584minor)pagefaults 0swaps

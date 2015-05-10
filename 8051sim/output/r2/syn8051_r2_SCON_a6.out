@@ -1,0 +1,4 @@
+opcode : 0xa6
+state  : SCON
+3.13user 0.06system 0:03.44elapsed 92%CPU (0avgtext+0avgdata 144992maxresident)k
+0inputs+112outputs (0major+40260minor)pagefaults 0swaps

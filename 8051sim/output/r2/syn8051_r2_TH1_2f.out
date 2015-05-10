@@ -1,0 +1,4 @@
+opcode : 0x2f
+state  : TH1
+2.40user 0.04system 0:02.73elapsed 89%CPU (0avgtext+0avgdata 136672maxresident)k
+0inputs+88outputs (0major+30767minor)pagefaults 0swaps

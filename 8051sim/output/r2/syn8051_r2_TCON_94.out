@@ -1,0 +1,4 @@
+opcode : 0x94
+state  : TCON
+2.50user 0.06system 0:03.05elapsed 83%CPU (0avgtext+0avgdata 138672maxresident)k
+0inputs+96outputs (0major+33480minor)pagefaults 0swaps

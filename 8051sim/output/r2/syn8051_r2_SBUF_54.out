@@ -1,0 +1,4 @@
+opcode : 0x54
+state  : SBUF
+2.30user 0.05system 0:02.65elapsed 89%CPU (0avgtext+0avgdata 136432maxresident)k
+0inputs+80outputs (0major+28406minor)pagefaults 0swaps

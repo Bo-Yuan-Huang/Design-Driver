@@ -1,0 +1,4 @@
+opcode : 0x93
+state  : PCON
+2.09user 0.05system 0:02.40elapsed 89%CPU (0avgtext+0avgdata 137168maxresident)k
+0inputs+80outputs (0major+28747minor)pagefaults 0swaps

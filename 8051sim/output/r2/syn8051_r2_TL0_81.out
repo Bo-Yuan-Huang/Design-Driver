@@ -1,0 +1,4 @@
+opcode : 0x81
+state  : TL0
+2.36user 0.08system 0:02.81elapsed 87%CPU (0avgtext+0avgdata 138320maxresident)k
+0inputs+88outputs (0major+31243minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xc4
+state  : B
+3.54user 0.07system 0:03.99elapsed 90%CPU (0avgtext+0avgdata 150240maxresident)k
+0inputs+112outputs (0major+43181minor)pagefaults 0swaps

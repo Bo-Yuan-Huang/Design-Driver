@@ -1,0 +1,4 @@
+opcode : 0x3f
+state  : P3
+2.45user 0.05system 0:02.95elapsed 85%CPU (0avgtext+0avgdata 145248maxresident)k
+0inputs+112outputs (0major+40259minor)pagefaults 0swaps

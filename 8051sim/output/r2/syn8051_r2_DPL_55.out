@@ -1,0 +1,4 @@
+opcode : 0x55
+state  : DPL
+2.47user 0.05system 0:02.80elapsed 90%CPU (0avgtext+0avgdata 133280maxresident)k
+0inputs+72outputs (0major+25518minor)pagefaults 0swaps

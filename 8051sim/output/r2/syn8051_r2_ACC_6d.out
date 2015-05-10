@@ -1,0 +1,4 @@
+opcode : 0x6d
+state  : ACC
+3.75user 0.08system 0:04.23elapsed 90%CPU (0avgtext+0avgdata 152544maxresident)k
+0inputs+96outputs (0major+38945minor)pagefaults 0swaps

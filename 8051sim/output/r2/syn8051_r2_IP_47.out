@@ -1,0 +1,4 @@
+opcode : 0x47
+state  : IP
+4.42user 0.09system 0:04.68elapsed 96%CPU (0avgtext+0avgdata 144704maxresident)k
+0inputs+112outputs (0major+39909minor)pagefaults 0swaps

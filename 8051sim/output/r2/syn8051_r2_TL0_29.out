@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : TL0
+2.24user 0.06system 0:02.55elapsed 90%CPU (0avgtext+0avgdata 135520maxresident)k
+0inputs+80outputs (0major+28337minor)pagefaults 0swaps

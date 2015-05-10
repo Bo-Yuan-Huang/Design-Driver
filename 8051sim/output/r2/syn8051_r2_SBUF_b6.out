@@ -1,0 +1,4 @@
+opcode : 0xb6
+state  : SBUF
+2.32user 0.05system 0:03.15elapsed 75%CPU (0avgtext+0avgdata 136832maxresident)k
+0inputs+80outputs (0major+28552minor)pagefaults 0swaps

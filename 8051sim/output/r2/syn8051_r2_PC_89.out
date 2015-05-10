@@ -1,0 +1,4 @@
+opcode : 0x89
+state  : PC
+2.76user 0.09system 0:03.13elapsed 91%CPU (0avgtext+0avgdata 138544maxresident)k
+0inputs+88outputs (0major+31565minor)pagefaults 0swaps

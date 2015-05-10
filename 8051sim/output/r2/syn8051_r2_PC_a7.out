@@ -1,0 +1,4 @@
+opcode : 0xa7
+state  : PC
+2.59user 0.04system 0:02.86elapsed 92%CPU (0avgtext+0avgdata 141504maxresident)k
+0inputs+96outputs (0major+34715minor)pagefaults 0swaps

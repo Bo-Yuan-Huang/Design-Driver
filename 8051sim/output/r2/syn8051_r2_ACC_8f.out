@@ -1,0 +1,4 @@
+opcode : 0x8f
+state  : ACC
+6.17user 0.12system 0:06.62elapsed 95%CPU (0avgtext+0avgdata 181264maxresident)k
+0inputs+160outputs (0major+77388minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x7c
+state  : SBUF
+2.33user 0.06system 0:02.89elapsed 83%CPU (0avgtext+0avgdata 137248maxresident)k
+0inputs+80outputs (0major+28455minor)pagefaults 0swaps

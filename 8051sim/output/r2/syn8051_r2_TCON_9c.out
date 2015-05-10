@@ -1,0 +1,4 @@
+opcode : 0x9c
+state  : TCON
+2.56user 0.06system 0:03.10elapsed 84%CPU (0avgtext+0avgdata 139024maxresident)k
+0inputs+96outputs (0major+33976minor)pagefaults 0swaps

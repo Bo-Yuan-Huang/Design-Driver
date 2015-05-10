@@ -1,0 +1,4 @@
+opcode : 0x3a
+state  : IRAM
+3385.57user 2.05system 56:35.99elapsed 99%CPU (0avgtext+0avgdata 342128maxresident)k
+0inputs+112outputs (0major+105783minor)pagefaults 0swaps

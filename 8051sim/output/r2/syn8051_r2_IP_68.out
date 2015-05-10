@@ -1,0 +1,4 @@
+opcode : 0x68
+state  : IP
+3.39user 0.12system 0:03.67elapsed 95%CPU (0avgtext+0avgdata 143184maxresident)k
+0inputs+104outputs (0major+36713minor)pagefaults 0swaps

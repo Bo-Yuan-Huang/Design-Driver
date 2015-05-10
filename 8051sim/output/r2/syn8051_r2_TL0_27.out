@@ -1,0 +1,4 @@
+opcode : 0x27
+state  : TL0
+2.51user 0.06system 0:02.71elapsed 94%CPU (0avgtext+0avgdata 138016maxresident)k
+0inputs+88outputs (0major+31181minor)pagefaults 0swaps

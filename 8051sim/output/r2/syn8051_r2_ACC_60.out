@@ -1,0 +1,4 @@
+opcode : 0x60
+state  : ACC
+4.28user 0.09system 0:04.71elapsed 92%CPU (0avgtext+0avgdata 165504maxresident)k
+0inputs+112outputs (0major+50024minor)pagefaults 0swaps

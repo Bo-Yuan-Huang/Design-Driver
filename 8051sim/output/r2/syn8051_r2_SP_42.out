@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : SP
+2.64user 0.07system 0:02.91elapsed 93%CPU (0avgtext+0avgdata 141760maxresident)k
+0inputs+80outputs (0major+30457minor)pagefaults 0swaps

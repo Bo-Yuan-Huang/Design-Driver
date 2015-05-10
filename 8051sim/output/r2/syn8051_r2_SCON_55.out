@@ -1,0 +1,4 @@
+opcode : 0x55
+state  : SCON
+2.89user 0.09system 0:03.34elapsed 89%CPU (0avgtext+0avgdata 140144maxresident)k
+0inputs+96outputs (0major+34109minor)pagefaults 0swaps

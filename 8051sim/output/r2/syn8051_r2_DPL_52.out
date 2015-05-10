@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : DPL
+2.95user 0.09system 0:03.38elapsed 90%CPU (0avgtext+0avgdata 141328maxresident)k
+0inputs+88outputs (0major+34506minor)pagefaults 0swaps

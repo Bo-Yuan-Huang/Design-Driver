@@ -1,0 +1,4 @@
+opcode : 0x65
+state  : B
+3.74user 0.11system 0:04.24elapsed 90%CPU (0avgtext+0avgdata 148624maxresident)k
+0inputs+104outputs (0major+39857minor)pagefaults 0swaps

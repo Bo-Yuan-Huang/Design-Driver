@@ -1,0 +1,4 @@
+opcode : 0xf8
+state  : SP
+3.02user 0.05system 0:03.26elapsed 94%CPU (0avgtext+0avgdata 138720maxresident)k
+0inputs+88outputs (0major+30881minor)pagefaults 0swaps

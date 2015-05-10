@@ -1,0 +1,4 @@
+opcode : 0x4c
+state  : ACC
+4.30user 0.10system 0:05.28elapsed 83%CPU (0avgtext+0avgdata 158352maxresident)k
+0inputs+104outputs (0major+43871minor)pagefaults 0swaps

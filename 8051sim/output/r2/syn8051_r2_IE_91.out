@@ -1,0 +1,4 @@
+opcode : 0x91
+state  : IE
+3.00user 0.08system 0:03.25elapsed 95%CPU (0avgtext+0avgdata 140464maxresident)k
+0inputs+88outputs (0major+31648minor)pagefaults 0swaps

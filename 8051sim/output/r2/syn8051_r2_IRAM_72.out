@@ -1,0 +1,4 @@
+opcode : 0x72
+state  : IRAM
+1937.80user 0.75system 32:59.63elapsed 97%CPU (0avgtext+0avgdata 288048maxresident)k
+0inputs+128outputs (0major+101459minor)pagefaults 0swaps

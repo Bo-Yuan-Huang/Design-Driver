@@ -1,0 +1,4 @@
+opcode : 0xe7
+state  : PSW
+8.34user 0.13system 0:08.65elapsed 97%CPU (0avgtext+0avgdata 194528maxresident)k
+0inputs+144outputs (0major+79204minor)pagefaults 0swaps

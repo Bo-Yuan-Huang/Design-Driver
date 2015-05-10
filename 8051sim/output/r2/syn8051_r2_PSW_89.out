@@ -1,0 +1,4 @@
+opcode : 0x89
+state  : PSW
+2.94user 0.03system 0:03.11elapsed 95%CPU (0avgtext+0avgdata 160144maxresident)k
+0inputs+80outputs (0major+36367minor)pagefaults 0swaps

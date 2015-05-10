@@ -1,0 +1,4 @@
+opcode : 0x89
+state  : TH0
+2.74user 0.07system 0:02.98elapsed 94%CPU (0avgtext+0avgdata 141920maxresident)k
+0inputs+96outputs (0major+34234minor)pagefaults 0swaps

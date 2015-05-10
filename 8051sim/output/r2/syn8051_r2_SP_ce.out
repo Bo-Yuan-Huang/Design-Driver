@@ -1,0 +1,4 @@
+opcode : 0xce
+state  : SP
+2.60user 0.05system 0:02.91elapsed 90%CPU (0avgtext+0avgdata 137136maxresident)k
+0inputs+80outputs (0major+28223minor)pagefaults 0swaps

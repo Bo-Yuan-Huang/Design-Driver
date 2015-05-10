@@ -1,0 +1,4 @@
+opcode : 0x60
+state  : PC
+3.76user 0.04system 0:04.02elapsed 94%CPU (0avgtext+0avgdata 147936maxresident)k
+0inputs+96outputs (0major+35494minor)pagefaults 0swaps

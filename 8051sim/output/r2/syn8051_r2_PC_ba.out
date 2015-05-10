@@ -1,0 +1,4 @@
+opcode : 0xba
+state  : PC
+4.71user 0.11system 0:04.92elapsed 97%CPU (0avgtext+0avgdata 151424maxresident)k
+0inputs+136outputs (0major+49946minor)pagefaults 0swaps

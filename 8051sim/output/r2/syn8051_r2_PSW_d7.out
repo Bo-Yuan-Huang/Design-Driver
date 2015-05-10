@@ -1,0 +1,4 @@
+opcode : 0xd7
+state  : PSW
+8.22user 0.14system 0:08.52elapsed 98%CPU (0avgtext+0avgdata 188752maxresident)k
+0inputs+168outputs (0major+90110minor)pagefaults 0swaps

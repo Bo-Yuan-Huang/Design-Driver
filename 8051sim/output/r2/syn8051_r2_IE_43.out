@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : IE
+2.02user 0.07system 0:02.75elapsed 75%CPU (0avgtext+0avgdata 137632maxresident)k
+0inputs+56outputs (0major+21291minor)pagefaults 0swaps

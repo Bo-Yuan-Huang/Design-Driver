@@ -1,0 +1,4 @@
+opcode : 0x2c
+state  : IRAM
+902.21user 0.10system 15:03.74elapsed 99%CPU (0avgtext+0avgdata 258224maxresident)k
+0inputs+120outputs (0major+91457minor)pagefaults 0swaps

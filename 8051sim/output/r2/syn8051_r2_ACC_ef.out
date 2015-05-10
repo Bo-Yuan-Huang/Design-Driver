@@ -1,0 +1,4 @@
+opcode : 0xef
+state  : ACC
+2.86user 0.06system 0:03.24elapsed 90%CPU (0avgtext+0avgdata 158448maxresident)k
+0inputs+88outputs (0major+37751minor)pagefaults 0swaps

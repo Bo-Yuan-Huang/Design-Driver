@@ -1,0 +1,4 @@
+opcode : 0x69
+state  : SBUF
+2.16user 0.07system 0:02.45elapsed 91%CPU (0avgtext+0avgdata 135584maxresident)k
+0inputs+80outputs (0major+28361minor)pagefaults 0swaps

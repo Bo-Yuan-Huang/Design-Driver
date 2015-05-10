@@ -1,0 +1,4 @@
+opcode : 0xd2
+state  : PC
+1.56user 0.02system 0:01.74elapsed 91%CPU (0avgtext+0avgdata 134272maxresident)k
+0inputs+64outputs (0major+23385minor)pagefaults 0swaps

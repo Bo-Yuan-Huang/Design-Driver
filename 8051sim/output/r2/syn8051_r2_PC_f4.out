@@ -1,0 +1,4 @@
+opcode : 0xf4
+state  : PC
+1.18user 0.03system 0:01.48elapsed 82%CPU (0avgtext+0avgdata 129648maxresident)k
+0inputs+32outputs (0major+13470minor)pagefaults 0swaps

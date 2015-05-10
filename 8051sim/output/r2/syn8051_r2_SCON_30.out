@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : SCON
+2.94user 0.10system 0:03.90elapsed 77%CPU (0avgtext+0avgdata 140320maxresident)k
+0inputs+96outputs (0major+34266minor)pagefaults 0swaps

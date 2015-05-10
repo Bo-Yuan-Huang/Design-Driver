@@ -1,0 +1,4 @@
+opcode : 0xcb
+state  : TMOD
+2.49user 0.05system 0:03.00elapsed 85%CPU (0avgtext+0avgdata 135872maxresident)k
+0inputs+88outputs (0major+30750minor)pagefaults 0swaps

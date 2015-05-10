@@ -1,0 +1,4 @@
+opcode : 0x9c
+state  : IRAM
+5148.95user 0.28system 1:27:16elapsed 98%CPU (0avgtext+0avgdata 364304maxresident)k
+0inputs+120outputs (0major+111727minor)pagefaults 0swaps

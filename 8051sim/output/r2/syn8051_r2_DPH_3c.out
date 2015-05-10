@@ -1,0 +1,4 @@
+opcode : 0x3c
+state  : DPH
+1.96user 0.04system 0:02.35elapsed 85%CPU (0avgtext+0avgdata 136528maxresident)k
+0inputs+88outputs (0major+30957minor)pagefaults 0swaps

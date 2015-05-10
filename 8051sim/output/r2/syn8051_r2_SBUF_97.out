@@ -1,0 +1,4 @@
+opcode : 0x97
+state  : SBUF
+2.27user 0.07system 0:02.56elapsed 91%CPU (0avgtext+0avgdata 137408maxresident)k
+0inputs+80outputs (0major+28600minor)pagefaults 0swaps

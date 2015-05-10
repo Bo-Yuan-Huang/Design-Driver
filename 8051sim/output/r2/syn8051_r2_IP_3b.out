@@ -1,0 +1,4 @@
+opcode : 0x3b
+state  : IP
+4.12user 0.09system 0:04.36elapsed 96%CPU (0avgtext+0avgdata 141424maxresident)k
+0inputs+104outputs (0major+36553minor)pagefaults 0swaps

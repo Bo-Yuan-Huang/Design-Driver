@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : PSW
+7.63user 0.10system 0:07.89elapsed 98%CPU (0avgtext+0avgdata 190816maxresident)k
+0inputs+144outputs (0major+78146minor)pagefaults 0swaps

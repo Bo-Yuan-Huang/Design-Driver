@@ -1,0 +1,4 @@
+opcode : 0x8b
+state  : ACC
+5.55user 0.12system 0:06.04elapsed 93%CPU (0avgtext+0avgdata 176688maxresident)k
+0inputs+144outputs (0major+67349minor)pagefaults 0swaps

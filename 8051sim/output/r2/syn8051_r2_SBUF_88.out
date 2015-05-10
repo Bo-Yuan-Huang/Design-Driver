@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : SBUF
+2.38user 0.05system 0:02.98elapsed 81%CPU (0avgtext+0avgdata 138512maxresident)k
+0inputs+80outputs (0major+28377minor)pagefaults 0swaps

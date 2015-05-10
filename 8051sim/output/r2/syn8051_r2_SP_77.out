@@ -1,0 +1,4 @@
+opcode : 0x77
+state  : SP
+2.41user 0.03system 0:02.59elapsed 94%CPU (0avgtext+0avgdata 143072maxresident)k
+0inputs+96outputs (0major+34329minor)pagefaults 0swaps

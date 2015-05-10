@@ -1,0 +1,4 @@
+opcode : 0x59
+state  : PSW
+6.27user 0.07system 0:06.55elapsed 96%CPU (0avgtext+0avgdata 185792maxresident)k
+0inputs+136outputs (0major+70850minor)pagefaults 0swaps

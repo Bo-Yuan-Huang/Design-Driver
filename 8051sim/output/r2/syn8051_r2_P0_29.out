@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : P0
+1.65user 0.06system 0:01.87elapsed 91%CPU (0avgtext+0avgdata 135392maxresident)k
+0inputs+80outputs (0major+27736minor)pagefaults 0swaps

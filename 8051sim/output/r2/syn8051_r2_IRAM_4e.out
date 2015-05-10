@@ -1,0 +1,4 @@
+opcode : 0x4e
+state  : IRAM
+1163.62user 0.16system 19:30.79elapsed 99%CPU (0avgtext+0avgdata 263072maxresident)k
+0inputs+104outputs (0major+84206minor)pagefaults 0swaps

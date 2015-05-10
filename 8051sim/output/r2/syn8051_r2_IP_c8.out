@@ -1,0 +1,4 @@
+opcode : 0xc8
+state  : IP
+2.43user 0.03system 0:02.64elapsed 93%CPU (0avgtext+0avgdata 140896maxresident)k
+0inputs+96outputs (0major+33828minor)pagefaults 0swaps

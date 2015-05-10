@@ -1,0 +1,4 @@
+opcode : 0xab
+state  : DPL
+3.30user 0.07system 0:03.80elapsed 88%CPU (0avgtext+0avgdata 139072maxresident)k
+0inputs+88outputs (0major+31610minor)pagefaults 0swaps

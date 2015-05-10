@@ -1,0 +1,4 @@
+opcode : 0x38
+state  : TMOD
+2.48user 0.08system 0:02.71elapsed 94%CPU (0avgtext+0avgdata 136240maxresident)k
+0inputs+88outputs (0major+30775minor)pagefaults 0swaps

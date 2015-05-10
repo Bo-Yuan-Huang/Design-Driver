@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : TCON
+2.55user 0.07system 0:03.19elapsed 82%CPU (0avgtext+0avgdata 138560maxresident)k
+0inputs+96outputs (0major+33478minor)pagefaults 0swaps

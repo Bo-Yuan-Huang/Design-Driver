@@ -1,0 +1,4 @@
+opcode : 0x4b
+state  : ACC
+4.58user 0.09system 0:05.48elapsed 85%CPU (0avgtext+0avgdata 158928maxresident)k
+0inputs+112outputs (0major+47048minor)pagefaults 0swaps

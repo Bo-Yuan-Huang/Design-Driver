@@ -1,0 +1,4 @@
+opcode : 0x70
+state  : DPL
+2.12user 0.03system 0:02.39elapsed 90%CPU (0avgtext+0avgdata 136016maxresident)k
+0inputs+80outputs (0major+28282minor)pagefaults 0swaps

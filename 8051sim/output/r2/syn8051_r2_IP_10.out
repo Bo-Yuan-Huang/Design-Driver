@@ -1,0 +1,4 @@
+opcode : 0x10
+state  : IP
+3.72user 0.11system 0:04.05elapsed 94%CPU (0avgtext+0avgdata 143120maxresident)k
+0inputs+88outputs (0major+28522minor)pagefaults 0swaps

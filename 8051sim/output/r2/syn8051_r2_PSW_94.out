@@ -1,0 +1,4 @@
+opcode : 0x94
+state  : PSW
+6.18user 0.11system 0:06.49elapsed 96%CPU (0avgtext+0avgdata 192560maxresident)k
+0inputs+120outputs (0major+62482minor)pagefaults 0swaps

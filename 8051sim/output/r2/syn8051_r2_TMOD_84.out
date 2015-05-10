@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : TMOD
+2.70user 0.06system 0:03.33elapsed 83%CPU (0avgtext+0avgdata 137760maxresident)k
+0inputs+88outputs (0major+30699minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x33
+state  : DPL
+2.82user 0.04system 0:03.56elapsed 80%CPU (0avgtext+0avgdata 135136maxresident)k
+0inputs+80outputs (0major+28185minor)pagefaults 0swaps

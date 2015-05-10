@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : SCON
+2.74user 0.05system 0:02.99elapsed 93%CPU (0avgtext+0avgdata 140752maxresident)k
+0inputs+96outputs (0major+34323minor)pagefaults 0swaps

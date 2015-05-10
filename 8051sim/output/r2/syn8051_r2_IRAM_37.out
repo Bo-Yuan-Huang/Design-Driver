@@ -1,0 +1,4 @@
+opcode : 0x37
+state  : IRAM
+4802.49user 0.15system 1:20:11elapsed 99%CPU (0avgtext+0avgdata 351264maxresident)k
+0inputs+128outputs (0major+131801minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x56
+state  : IRAM
+826.98user 0.12system 13:48.75elapsed 99%CPU (0avgtext+0avgdata 252304maxresident)k
+0inputs+112outputs (0major+84511minor)pagefaults 0swaps

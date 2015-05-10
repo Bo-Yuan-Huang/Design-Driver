@@ -1,0 +1,4 @@
+opcode : 0xea
+state  : TMOD
+2.54user 0.06system 0:02.93elapsed 88%CPU (0avgtext+0avgdata 137648maxresident)k
+0inputs+88outputs (0major+30790minor)pagefaults 0swaps

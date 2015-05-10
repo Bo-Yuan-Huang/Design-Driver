@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : P0
+1.37user 0.05system 0:01.60elapsed 89%CPU (0avgtext+0avgdata 137584maxresident)k
+0inputs+64outputs (0major+23468minor)pagefaults 0swaps

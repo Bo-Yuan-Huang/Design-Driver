@@ -1,0 +1,4 @@
+opcode : 0x74
+state  : ACC
+1.85user 0.04system 0:02.98elapsed 63%CPU (0avgtext+0avgdata 147872maxresident)k
+0inputs+64outputs (0major+26476minor)pagefaults 0swaps

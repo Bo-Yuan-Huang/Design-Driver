@@ -1,0 +1,4 @@
+opcode : 0x87
+state  : TH1
+2.85user 0.07system 0:03.12elapsed 93%CPU (0avgtext+0avgdata 140624maxresident)k
+0inputs+112outputs (0major+38442minor)pagefaults 0swaps

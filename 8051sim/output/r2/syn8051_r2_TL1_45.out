@@ -1,0 +1,4 @@
+opcode : 0x45
+state  : TL1
+2.17user 0.03system 0:02.41elapsed 91%CPU (0avgtext+0avgdata 134928maxresident)k
+0inputs+72outputs (0major+26088minor)pagefaults 0swaps

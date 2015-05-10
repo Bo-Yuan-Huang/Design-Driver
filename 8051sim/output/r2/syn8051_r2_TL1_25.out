@@ -1,0 +1,4 @@
+opcode : 0x25
+state  : TL1
+2.48user 0.08system 0:02.78elapsed 92%CPU (0avgtext+0avgdata 136800maxresident)k
+0inputs+80outputs (0major+28950minor)pagefaults 0swaps

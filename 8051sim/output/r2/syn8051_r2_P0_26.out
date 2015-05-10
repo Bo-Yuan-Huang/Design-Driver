@@ -1,0 +1,4 @@
+opcode : 0x26
+state  : P0
+1.59user 0.04system 0:01.77elapsed 92%CPU (0avgtext+0avgdata 135216maxresident)k
+0inputs+80outputs (0major+27960minor)pagefaults 0swaps

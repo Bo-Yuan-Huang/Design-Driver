@@ -1,0 +1,4 @@
+opcode : 0xbb
+state  : ACC
+6.13user 0.09system 0:06.51elapsed 95%CPU (0avgtext+0avgdata 177696maxresident)k
+0inputs+136outputs (0major+65370minor)pagefaults 0swaps

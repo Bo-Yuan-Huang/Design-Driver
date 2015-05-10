@@ -1,0 +1,4 @@
+opcode : 0x92
+state  : TH1
+2.61user 0.05system 0:02.84elapsed 93%CPU (0avgtext+0avgdata 139216maxresident)k
+0inputs+88outputs (0major+31430minor)pagefaults 0swaps

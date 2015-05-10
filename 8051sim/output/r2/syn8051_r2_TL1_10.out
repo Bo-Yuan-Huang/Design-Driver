@@ -1,0 +1,4 @@
+opcode : 0x10
+state  : TL1
+2.43user 0.07system 0:03.50elapsed 71%CPU (0avgtext+0avgdata 136096maxresident)k
+0inputs+80outputs (0major+28964minor)pagefaults 0swaps

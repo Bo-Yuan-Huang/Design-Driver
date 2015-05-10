@@ -1,0 +1,4 @@
+opcode : 0xe3
+state  : PC
+0.84user 0.02system 0:00.99elapsed 87%CPU (0avgtext+0avgdata 129760maxresident)k
+0inputs+32outputs (0major+13368minor)pagefaults 0swaps

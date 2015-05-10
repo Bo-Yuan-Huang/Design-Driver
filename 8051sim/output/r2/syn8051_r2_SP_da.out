@@ -1,0 +1,4 @@
+opcode : 0xda
+state  : SP
+2.38user 0.08system 0:02.69elapsed 91%CPU (0avgtext+0avgdata 140640maxresident)k
+0inputs+72outputs (0major+26092minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x25
+state  : P2
+2.37user 0.07system 0:02.62elapsed 93%CPU (0avgtext+0avgdata 139488maxresident)k
+0inputs+88outputs (0major+31027minor)pagefaults 0swaps

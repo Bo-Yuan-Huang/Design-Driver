@@ -1,0 +1,4 @@
+opcode : 0x63
+state  : P1
+2.06user 0.04system 0:02.44elapsed 86%CPU (0avgtext+0avgdata 139072maxresident)k
+0inputs+64outputs (0major+24311minor)pagefaults 0swaps

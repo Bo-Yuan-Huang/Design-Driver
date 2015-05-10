@@ -1,0 +1,4 @@
+opcode : 0x1b
+state  : ACC
+4.50user 0.07system 0:04.74elapsed 96%CPU (0avgtext+0avgdata 160016maxresident)k
+0inputs+104outputs (0major+44004minor)pagefaults 0swaps

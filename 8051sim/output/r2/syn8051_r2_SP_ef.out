@@ -1,0 +1,4 @@
+opcode : 0xef
+state  : SP
+2.99user 0.07system 0:03.25elapsed 94%CPU (0avgtext+0avgdata 141456maxresident)k
+0inputs+104outputs (0major+36727minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : PC
+0.86user 0.02system 0:01.10elapsed 80%CPU (0avgtext+0avgdata 129536maxresident)k
+0inputs+32outputs (0major+13491minor)pagefaults 0swaps

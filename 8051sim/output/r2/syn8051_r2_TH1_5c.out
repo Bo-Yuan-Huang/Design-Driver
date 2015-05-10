@@ -1,0 +1,4 @@
+opcode : 0x5c
+state  : TH1
+2.52user 0.07system 0:02.94elapsed 88%CPU (0avgtext+0avgdata 140048maxresident)k
+0inputs+96outputs (0major+34117minor)pagefaults 0swaps

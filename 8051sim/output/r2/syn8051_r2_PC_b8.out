@@ -1,0 +1,4 @@
+opcode : 0xb8
+state  : PC
+83.12user 0.10system 1:23.56elapsed 99%CPU (0avgtext+0avgdata 257936maxresident)k
+0inputs+88outputs (0major+40910minor)pagefaults 0swaps

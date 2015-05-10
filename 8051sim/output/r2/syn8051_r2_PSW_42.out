@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : PSW
+2.92user 0.06system 0:03.16elapsed 94%CPU (0avgtext+0avgdata 154112maxresident)k
+0inputs+56outputs (0major+27526minor)pagefaults 0swaps

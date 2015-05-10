@@ -1,0 +1,4 @@
+opcode : 0x95
+state  : TH1
+2.22user 0.05system 0:02.48elapsed 91%CPU (0avgtext+0avgdata 135168maxresident)k
+0inputs+80outputs (0major+28280minor)pagefaults 0swaps

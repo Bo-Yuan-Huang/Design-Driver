@@ -1,0 +1,4 @@
+opcode : 0x7d
+state  : SP
+3.71user 0.06system 0:03.92elapsed 96%CPU (0avgtext+0avgdata 145552maxresident)k
+0inputs+112outputs (0major+40325minor)pagefaults 0swaps

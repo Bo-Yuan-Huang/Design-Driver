@@ -1,0 +1,4 @@
+opcode : 0x74
+state  : DPH
+2.38user 0.07system 0:02.97elapsed 82%CPU (0avgtext+0avgdata 134928maxresident)k
+0inputs+80outputs (0major+27937minor)pagefaults 0swaps

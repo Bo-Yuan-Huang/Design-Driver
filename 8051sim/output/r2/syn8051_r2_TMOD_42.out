@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : TMOD
+2.60user 0.06system 0:03.13elapsed 85%CPU (0avgtext+0avgdata 139552maxresident)k
+0inputs+80outputs (0major+30637minor)pagefaults 0swaps

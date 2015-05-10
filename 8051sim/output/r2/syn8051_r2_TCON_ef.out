@@ -1,0 +1,4 @@
+opcode : 0xef
+state  : TCON
+2.60user 0.09system 0:03.11elapsed 86%CPU (0avgtext+0avgdata 138464maxresident)k
+0inputs+96outputs (0major+33402minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x9b
+state  : PCON
+1.47user 0.07system 0:02.29elapsed 67%CPU (0avgtext+0avgdata 134496maxresident)k
+0inputs+72outputs (0major+25802minor)pagefaults 0swaps

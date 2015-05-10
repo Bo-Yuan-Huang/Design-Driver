@@ -1,0 +1,4 @@
+opcode : 0x46
+state  : DPL
+2.45user 0.07system 0:02.97elapsed 85%CPU (0avgtext+0avgdata 136064maxresident)k
+0inputs+88outputs (0major+31064minor)pagefaults 0swaps

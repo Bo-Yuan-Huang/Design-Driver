@@ -1,0 +1,4 @@
+opcode : 0x5d
+state  : TH1
+2.68user 0.08system 0:03.12elapsed 88%CPU (0avgtext+0avgdata 138400maxresident)k
+0inputs+96outputs (0major+33765minor)pagefaults 0swaps

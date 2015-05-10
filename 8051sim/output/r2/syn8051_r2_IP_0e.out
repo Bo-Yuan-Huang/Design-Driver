@@ -1,0 +1,4 @@
+opcode : 0xe
+state  : IP
+4.62user 0.12system 0:04.96elapsed 95%CPU (0avgtext+0avgdata 144736maxresident)k
+0inputs+112outputs (0major+39948minor)pagefaults 0swaps

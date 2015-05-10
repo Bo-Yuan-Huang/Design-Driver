@@ -1,0 +1,4 @@
+opcode : 0xb0
+state  : DPL
+2.60user 0.07system 0:02.95elapsed 90%CPU (0avgtext+0avgdata 135232maxresident)k
+0inputs+88outputs (0major+30790minor)pagefaults 0swaps

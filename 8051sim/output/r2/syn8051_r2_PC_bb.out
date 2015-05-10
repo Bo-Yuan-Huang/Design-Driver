@@ -1,0 +1,4 @@
+opcode : 0xbb
+state  : PC
+5.43user 0.08system 0:05.70elapsed 96%CPU (0avgtext+0avgdata 149984maxresident)k
+0inputs+168outputs (0major+59724minor)pagefaults 0swaps

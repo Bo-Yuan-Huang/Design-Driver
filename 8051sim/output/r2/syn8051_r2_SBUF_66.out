@@ -1,0 +1,4 @@
+opcode : 0x66
+state  : SBUF
+2.31user 0.04system 0:02.59elapsed 90%CPU (0avgtext+0avgdata 137552maxresident)k
+0inputs+80outputs (0major+28675minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : PCON
+2.25user 0.04system 0:02.51elapsed 91%CPU (0avgtext+0avgdata 136016maxresident)k
+0inputs+64outputs (0major+24330minor)pagefaults 0swaps

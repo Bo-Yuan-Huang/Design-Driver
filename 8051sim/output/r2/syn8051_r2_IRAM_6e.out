@@ -1,0 +1,4 @@
+opcode : 0x6e
+state  : IRAM
+1172.84user 0.15system 20:03.91elapsed 97%CPU (0avgtext+0avgdata 279920maxresident)k
+0inputs+128outputs (0major+104025minor)pagefaults 0swaps

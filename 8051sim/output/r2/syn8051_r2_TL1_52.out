@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : TL1
+2.80user 0.06system 0:03.09elapsed 92%CPU (0avgtext+0avgdata 142128maxresident)k
+0inputs+80outputs (0major+30190minor)pagefaults 0swaps

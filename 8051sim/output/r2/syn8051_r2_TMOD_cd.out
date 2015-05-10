@@ -1,0 +1,4 @@
+opcode : 0xcd
+state  : TMOD
+2.74user 0.05system 0:03.59elapsed 77%CPU (0avgtext+0avgdata 136192maxresident)k
+0inputs+88outputs (0major+30636minor)pagefaults 0swaps

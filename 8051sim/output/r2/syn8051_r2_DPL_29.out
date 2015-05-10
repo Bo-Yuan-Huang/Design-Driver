@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : DPL
+3.21user 0.10system 0:03.52elapsed 94%CPU (0avgtext+0avgdata 138576maxresident)k
+0inputs+96outputs (0major+33928minor)pagefaults 0swaps

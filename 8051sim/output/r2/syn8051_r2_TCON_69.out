@@ -1,0 +1,4 @@
+opcode : 0x69
+state  : TCON
+2.52user 0.06system 0:02.86elapsed 90%CPU (0avgtext+0avgdata 138384maxresident)k
+0inputs+96outputs (0major+33340minor)pagefaults 0swaps

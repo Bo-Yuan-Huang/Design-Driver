@@ -1,0 +1,4 @@
+opcode : 0x78
+state  : IRAM
+18.85user 0.17system 0:23.95elapsed 79%CPU (0avgtext+0avgdata 154800maxresident)k
+0inputs+32outputs (0major+15916minor)pagefaults 0swaps

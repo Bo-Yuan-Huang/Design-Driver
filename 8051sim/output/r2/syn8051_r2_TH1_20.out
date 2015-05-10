@@ -1,0 +1,4 @@
+opcode : 0x20
+state  : TH1
+2.15user 0.06system 0:02.42elapsed 91%CPU (0avgtext+0avgdata 136064maxresident)k
+0inputs+80outputs (0major+28537minor)pagefaults 0swaps

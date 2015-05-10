@@ -1,0 +1,4 @@
+opcode : 0x36
+state  : PC
+1.17user 0.02system 0:01.49elapsed 79%CPU (0avgtext+0avgdata 130192maxresident)k
+0inputs+32outputs (0major+13340minor)pagefaults 0swaps

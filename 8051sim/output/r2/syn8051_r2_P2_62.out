@@ -1,0 +1,4 @@
+opcode : 0x62
+state  : P2
+1.86user 0.03system 0:02.18elapsed 86%CPU (0avgtext+0avgdata 140240maxresident)k
+0inputs+72outputs (0major+23505minor)pagefaults 0swaps

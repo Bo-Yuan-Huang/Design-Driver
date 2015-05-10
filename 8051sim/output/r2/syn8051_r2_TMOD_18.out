@@ -1,0 +1,4 @@
+opcode : 0x18
+state  : TMOD
+2.45user 0.04system 0:02.70elapsed 91%CPU (0avgtext+0avgdata 134688maxresident)k
+0inputs+80outputs (0major+27979minor)pagefaults 0swaps

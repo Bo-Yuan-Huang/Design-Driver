@@ -1,0 +1,4 @@
+opcode : 0x2a
+state  : P2
+2.32user 0.06system 0:02.56elapsed 93%CPU (0avgtext+0avgdata 140144maxresident)k
+0inputs+96outputs (0major+33760minor)pagefaults 0swaps

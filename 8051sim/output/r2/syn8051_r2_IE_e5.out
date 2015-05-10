@@ -1,0 +1,4 @@
+opcode : 0xe5
+state  : IE
+2.94user 0.06system 0:03.32elapsed 90%CPU (0avgtext+0avgdata 136576maxresident)k
+0inputs+72outputs (0major+25871minor)pagefaults 0swaps

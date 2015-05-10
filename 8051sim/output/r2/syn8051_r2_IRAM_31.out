@@ -1,0 +1,4 @@
+opcode : 0x31
+state  : IRAM
+19.00user 0.03system 0:19.25elapsed 98%CPU (0avgtext+0avgdata 157088maxresident)k
+0inputs+32outputs (0major+16004minor)pagefaults 0swaps

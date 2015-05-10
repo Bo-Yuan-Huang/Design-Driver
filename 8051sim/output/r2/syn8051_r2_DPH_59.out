@@ -1,0 +1,4 @@
+opcode : 0x59
+state  : DPH
+2.40user 0.09system 0:02.99elapsed 83%CPU (0avgtext+0avgdata 135456maxresident)k
+0inputs+80outputs (0major+28302minor)pagefaults 0swaps

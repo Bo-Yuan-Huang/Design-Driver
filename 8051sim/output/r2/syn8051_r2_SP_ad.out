@@ -1,0 +1,4 @@
+opcode : 0xad
+state  : SP
+3.04user 0.07system 0:03.34elapsed 93%CPU (0avgtext+0avgdata 140608maxresident)k
+0inputs+88outputs (0major+30920minor)pagefaults 0swaps

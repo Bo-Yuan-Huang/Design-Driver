@@ -1,0 +1,4 @@
+opcode : 0x70
+state  : SBUF
+2.32user 0.07system 0:02.68elapsed 89%CPU (0avgtext+0avgdata 136720maxresident)k
+0inputs+80outputs (0major+28463minor)pagefaults 0swaps

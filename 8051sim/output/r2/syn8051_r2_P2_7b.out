@@ -1,0 +1,4 @@
+opcode : 0x7b
+state  : P2
+1.85user 0.04system 0:02.18elapsed 86%CPU (0avgtext+0avgdata 140080maxresident)k
+0inputs+88outputs (0major+31215minor)pagefaults 0swaps

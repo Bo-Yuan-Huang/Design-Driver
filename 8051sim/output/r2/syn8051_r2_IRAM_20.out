@@ -1,0 +1,4 @@
+opcode : 0x20
+state  : IRAM
+8110.99user 0.35system 2:15:38elapsed 99%CPU (0avgtext+0avgdata 376720maxresident)k
+0inputs+160outputs (0major+157528minor)pagefaults 0swaps

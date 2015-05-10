@@ -1,0 +1,4 @@
+opcode : 0x35
+state  : IP
+4.99user 0.09system 0:06.25elapsed 81%CPU (0avgtext+0avgdata 144624maxresident)k
+0inputs+112outputs (0major+39749minor)pagefaults 0swaps

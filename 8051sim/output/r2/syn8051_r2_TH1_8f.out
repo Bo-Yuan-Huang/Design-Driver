@@ -1,0 +1,4 @@
+opcode : 0x8f
+state  : TH1
+3.50user 0.10system 0:03.83elapsed 94%CPU (0avgtext+0avgdata 142880maxresident)k
+0inputs+136outputs (0major+46623minor)pagefaults 0swaps

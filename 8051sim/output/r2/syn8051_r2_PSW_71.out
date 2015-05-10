@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : PSW
+5.96user 0.11system 0:06.29elapsed 96%CPU (0avgtext+0avgdata 179184maxresident)k
+0inputs+128outputs (0major+65526minor)pagefaults 0swaps

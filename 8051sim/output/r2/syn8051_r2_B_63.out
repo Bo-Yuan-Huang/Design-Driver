@@ -1,0 +1,4 @@
+opcode : 0x63
+state  : B
+2.14user 0.04system 0:02.34elapsed 93%CPU (0avgtext+0avgdata 138416maxresident)k
+0inputs+48outputs (0major+16986minor)pagefaults 0swaps

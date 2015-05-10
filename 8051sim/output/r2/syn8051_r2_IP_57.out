@@ -1,0 +1,4 @@
+opcode : 0x57
+state  : IP
+3.34user 0.07system 0:03.55elapsed 96%CPU (0avgtext+0avgdata 140784maxresident)k
+0inputs+96outputs (0major+33758minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x47
+state  : PCON
+1.86user 0.04system 0:02.18elapsed 87%CPU (0avgtext+0avgdata 138096maxresident)k
+0inputs+88outputs (0major+31339minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x54
+state  : ACC
+2.64user 0.06system 0:02.92elapsed 92%CPU (0avgtext+0avgdata 150560maxresident)k
+0inputs+72outputs (0major+29347minor)pagefaults 0swaps

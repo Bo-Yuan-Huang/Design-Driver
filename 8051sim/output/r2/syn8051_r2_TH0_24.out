@@ -1,0 +1,4 @@
+opcode : 0x24
+state  : TH0
+1.99user 0.05system 0:02.55elapsed 80%CPU (0avgtext+0avgdata 134096maxresident)k
+0inputs+64outputs (0major+23516minor)pagefaults 0swaps

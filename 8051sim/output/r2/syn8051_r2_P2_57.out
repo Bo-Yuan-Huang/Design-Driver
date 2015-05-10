@@ -1,0 +1,4 @@
+opcode : 0x57
+state  : P2
+2.97user 0.05system 0:03.27elapsed 92%CPU (0avgtext+0avgdata 143792maxresident)k
+0inputs+96outputs (0major+34521minor)pagefaults 0swaps

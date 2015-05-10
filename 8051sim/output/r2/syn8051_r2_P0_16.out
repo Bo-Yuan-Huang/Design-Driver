@@ -1,0 +1,4 @@
+opcode : 0x16
+state  : P0
+1.95user 0.06system 0:02.12elapsed 94%CPU (0avgtext+0avgdata 135536maxresident)k
+0inputs+88outputs (0major+30603minor)pagefaults 0swaps

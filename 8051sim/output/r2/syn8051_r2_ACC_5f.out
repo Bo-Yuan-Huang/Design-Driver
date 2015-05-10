@@ -1,0 +1,4 @@
+opcode : 0x5f
+state  : ACC
+3.88user 0.13system 0:04.33elapsed 92%CPU (0avgtext+0avgdata 157904maxresident)k
+0inputs+128outputs (0major+51850minor)pagefaults 0swaps

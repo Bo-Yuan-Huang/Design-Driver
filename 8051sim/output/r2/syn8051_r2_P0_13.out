@@ -1,0 +1,4 @@
+opcode : 0x13
+state  : P0
+1.49user 0.06system 0:01.74elapsed 89%CPU (0avgtext+0avgdata 134752maxresident)k
+0inputs+80outputs (0major+27765minor)pagefaults 0swaps

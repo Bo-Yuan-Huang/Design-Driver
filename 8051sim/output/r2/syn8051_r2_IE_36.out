@@ -1,0 +1,4 @@
+opcode : 0x36
+state  : IE
+1.98user 0.07system 0:02.30elapsed 88%CPU (0avgtext+0avgdata 136208maxresident)k
+0inputs+72outputs (0major+25784minor)pagefaults 0swaps

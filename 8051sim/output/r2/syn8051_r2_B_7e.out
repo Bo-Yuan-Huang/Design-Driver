@@ -1,0 +1,4 @@
+opcode : 0x7e
+state  : B
+2.87user 0.08system 0:03.19elapsed 92%CPU (0avgtext+0avgdata 145968maxresident)k
+0inputs+96outputs (0major+36162minor)pagefaults 0swaps

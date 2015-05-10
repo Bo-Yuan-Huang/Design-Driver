@@ -1,0 +1,4 @@
+opcode : 0x66
+state  : DPL
+2.85user 0.08system 0:03.32elapsed 88%CPU (0avgtext+0avgdata 137440maxresident)k
+0inputs+88outputs (0major+31173minor)pagefaults 0swaps

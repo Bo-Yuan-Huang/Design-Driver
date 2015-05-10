@@ -1,0 +1,4 @@
+opcode : 0x93
+state  : B
+3.52user 0.04system 0:03.97elapsed 90%CPU (0avgtext+0avgdata 144800maxresident)k
+0inputs+88outputs (0major+33006minor)pagefaults 0swaps

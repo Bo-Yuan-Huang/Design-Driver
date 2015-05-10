@@ -1,0 +1,4 @@
+opcode : 0xca
+state  : TMOD
+2.48user 0.06system 0:02.94elapsed 86%CPU (0avgtext+0avgdata 136176maxresident)k
+0inputs+88outputs (0major+30842minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x9e
+state  : SCON
+2.90user 0.07system 0:03.28elapsed 90%CPU (0avgtext+0avgdata 140400maxresident)k
+0inputs+104outputs (0major+36739minor)pagefaults 0swaps

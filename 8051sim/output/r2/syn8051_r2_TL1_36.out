@@ -1,0 +1,4 @@
+opcode : 0x36
+state  : TL1
+2.75user 0.07system 0:03.58elapsed 78%CPU (0avgtext+0avgdata 143360maxresident)k
+0inputs+96outputs (0major+35124minor)pagefaults 0swaps

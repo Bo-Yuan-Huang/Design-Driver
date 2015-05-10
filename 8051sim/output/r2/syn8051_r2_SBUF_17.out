@@ -1,0 +1,4 @@
+opcode : 0x17
+state  : SBUF
+1.52user 0.05system 0:01.75elapsed 89%CPU (0avgtext+0avgdata 137584maxresident)k
+0inputs+80outputs (0major+28195minor)pagefaults 0swaps

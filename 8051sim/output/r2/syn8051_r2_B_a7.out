@@ -1,0 +1,4 @@
+opcode : 0xa7
+state  : B
+2.91user 0.05system 0:03.23elapsed 91%CPU (0avgtext+0avgdata 147168maxresident)k
+0inputs+96outputs (0major+36386minor)pagefaults 0swaps

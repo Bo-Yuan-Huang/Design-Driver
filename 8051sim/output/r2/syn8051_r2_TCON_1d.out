@@ -1,0 +1,4 @@
+opcode : 0x1d
+state  : TCON
+2.37user 0.06system 0:02.66elapsed 91%CPU (0avgtext+0avgdata 137776maxresident)k
+0inputs+88outputs (0major+30936minor)pagefaults 0swaps

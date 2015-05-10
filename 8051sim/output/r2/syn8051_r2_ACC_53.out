@@ -1,0 +1,4 @@
+opcode : 0x53
+state  : ACC
+4.02user 0.08system 0:04.74elapsed 86%CPU (0avgtext+0avgdata 160688maxresident)k
+0inputs+96outputs (0major+42204minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : PCON
+2.31user 0.04system 0:02.52elapsed 93%CPU (0avgtext+0avgdata 135504maxresident)k
+0inputs+80outputs (0major+28496minor)pagefaults 0swaps

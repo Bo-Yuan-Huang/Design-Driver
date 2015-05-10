@@ -1,0 +1,4 @@
+opcode : 0x4c
+state  : DPL
+3.07user 0.04system 0:03.35elapsed 93%CPU (0avgtext+0avgdata 137392maxresident)k
+0inputs+88outputs (0major+31214minor)pagefaults 0swaps

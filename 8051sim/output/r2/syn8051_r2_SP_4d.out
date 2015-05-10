@@ -1,0 +1,4 @@
+opcode : 0x4d
+state  : SP
+3.80user 0.06system 0:04.08elapsed 94%CPU (0avgtext+0avgdata 144496maxresident)k
+0inputs+88outputs (0major+31775minor)pagefaults 0swaps

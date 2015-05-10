@@ -1,0 +1,4 @@
+opcode : 0x4c
+state  : TL1
+2.58user 0.08system 0:02.92elapsed 91%CPU (0avgtext+0avgdata 141344maxresident)k
+0inputs+88outputs (0major+32346minor)pagefaults 0swaps

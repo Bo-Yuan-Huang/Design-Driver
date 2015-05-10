@@ -1,0 +1,4 @@
+opcode : 0x23
+state  : IP
+4.06user 0.09system 0:04.34elapsed 95%CPU (0avgtext+0avgdata 143440maxresident)k
+0inputs+104outputs (0major+36758minor)pagefaults 0swaps

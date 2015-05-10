@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : PSW
+2.85user 0.07system 0:03.08elapsed 94%CPU (0avgtext+0avgdata 152544maxresident)k
+0inputs+56outputs (0major+25090minor)pagefaults 0swaps

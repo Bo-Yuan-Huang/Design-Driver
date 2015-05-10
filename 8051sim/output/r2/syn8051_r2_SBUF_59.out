@@ -1,0 +1,4 @@
+opcode : 0x59
+state  : SBUF
+1.56user 0.04system 0:01.80elapsed 88%CPU (0avgtext+0avgdata 136592maxresident)k
+0inputs+80outputs (0major+28480minor)pagefaults 0swaps

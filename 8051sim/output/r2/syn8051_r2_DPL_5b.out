@@ -1,0 +1,4 @@
+opcode : 0x5b
+state  : DPL
+2.62user 0.07system 0:03.05elapsed 88%CPU (0avgtext+0avgdata 138224maxresident)k
+0inputs+88outputs (0major+31426minor)pagefaults 0swaps

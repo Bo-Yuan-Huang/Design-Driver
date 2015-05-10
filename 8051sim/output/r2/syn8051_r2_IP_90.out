@@ -1,0 +1,4 @@
+opcode : 0x90
+state  : IP
+3.09user 0.08system 0:03.36elapsed 94%CPU (0avgtext+0avgdata 141600maxresident)k
+0inputs+96outputs (0major+33951minor)pagefaults 0swaps

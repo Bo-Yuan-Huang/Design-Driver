@@ -1,0 +1,4 @@
+opcode : 0x5d
+state  : SBUF
+2.51user 0.06system 0:02.78elapsed 92%CPU (0avgtext+0avgdata 136672maxresident)k
+0inputs+80outputs (0major+28439minor)pagefaults 0swaps

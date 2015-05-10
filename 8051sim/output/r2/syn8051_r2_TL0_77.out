@@ -1,0 +1,4 @@
+opcode : 0x77
+state  : TL0
+2.28user 0.05system 0:02.95elapsed 79%CPU (0avgtext+0avgdata 136448maxresident)k
+0inputs+80outputs (0major+28404minor)pagefaults 0swaps

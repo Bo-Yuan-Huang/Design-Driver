@@ -1,0 +1,4 @@
+opcode : 0x4a
+state  : B
+4.33user 0.09system 0:04.69elapsed 94%CPU (0avgtext+0avgdata 148368maxresident)k
+0inputs+96outputs (0major+36845minor)pagefaults 0swaps

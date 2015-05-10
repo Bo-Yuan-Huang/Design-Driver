@@ -1,0 +1,4 @@
+opcode : 0x40
+state  : DPL
+2.74user 0.06system 0:03.23elapsed 87%CPU (0avgtext+0avgdata 137152maxresident)k
+0inputs+88outputs (0major+31112minor)pagefaults 0swaps

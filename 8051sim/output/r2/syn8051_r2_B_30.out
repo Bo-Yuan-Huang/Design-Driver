@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : B
+4.18user 0.06system 0:04.43elapsed 96%CPU (0avgtext+0avgdata 144832maxresident)k
+0inputs+96outputs (0major+36022minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x22
+state  : IRAM
+2507.84user 0.22system 41:52.32elapsed 99%CPU (0avgtext+0avgdata 326544maxresident)k
+0inputs+144outputs (0major+135921minor)pagefaults 0swaps

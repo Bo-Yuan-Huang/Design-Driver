@@ -1,0 +1,4 @@
+opcode : 0x9a
+state  : PC
+1.16user 0.03system 0:01.56elapsed 76%CPU (0avgtext+0avgdata 129776maxresident)k
+0inputs+32outputs (0major+13517minor)pagefaults 0swaps

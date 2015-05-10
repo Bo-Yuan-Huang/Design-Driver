@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : P1
+1.76user 0.03system 0:02.00elapsed 89%CPU (0avgtext+0avgdata 132464maxresident)k
+0inputs+48outputs (0major+15812minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : P1
+3.05user 0.04system 0:03.40elapsed 90%CPU (0avgtext+0avgdata 140608maxresident)k
+0inputs+96outputs (0major+33794minor)pagefaults 0swaps

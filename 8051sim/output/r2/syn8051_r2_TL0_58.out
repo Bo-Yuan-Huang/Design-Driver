@@ -1,0 +1,4 @@
+opcode : 0x58
+state  : TL0
+2.28user 0.08system 0:02.63elapsed 89%CPU (0avgtext+0avgdata 136592maxresident)k
+0inputs+80outputs (0major+28515minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x50
+state  : TMOD
+2.33user 0.05system 0:02.72elapsed 87%CPU (0avgtext+0avgdata 135280maxresident)k
+0inputs+88outputs (0major+30501minor)pagefaults 0swaps

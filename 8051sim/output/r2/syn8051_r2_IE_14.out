@@ -1,0 +1,4 @@
+opcode : 0x14
+state  : IE
+2.20user 0.06system 0:02.49elapsed 90%CPU (0avgtext+0avgdata 136912maxresident)k
+0inputs+72outputs (0major+25908minor)pagefaults 0swaps

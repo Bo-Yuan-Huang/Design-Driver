@@ -1,0 +1,4 @@
+opcode : 0x98
+state  : PSW
+4.35user 0.06system 0:04.56elapsed 96%CPU (0avgtext+0avgdata 169280maxresident)k
+0inputs+72outputs (0major+34406minor)pagefaults 0swaps

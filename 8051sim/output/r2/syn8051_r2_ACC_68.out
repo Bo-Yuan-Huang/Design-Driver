@@ -1,0 +1,4 @@
+opcode : 0x68
+state  : ACC
+2.50user 0.04system 0:02.76elapsed 92%CPU (0avgtext+0avgdata 145168maxresident)k
+0inputs+64outputs (0major+25864minor)pagefaults 0swaps

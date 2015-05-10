@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : ACC
+4.58user 0.06system 0:05.01elapsed 92%CPU (0avgtext+0avgdata 155632maxresident)k
+0inputs+96outputs (0major+39459minor)pagefaults 0swaps

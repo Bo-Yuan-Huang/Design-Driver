@@ -1,0 +1,4 @@
+opcode : 0x18
+state  : DPL
+3.16user 0.08system 0:03.48elapsed 93%CPU (0avgtext+0avgdata 135792maxresident)k
+0inputs+88outputs (0major+30804minor)pagefaults 0swaps

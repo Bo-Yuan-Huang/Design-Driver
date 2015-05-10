@@ -1,0 +1,4 @@
+opcode : 0x2f
+state  : PSW
+5.12user 0.04system 0:05.27elapsed 98%CPU (0avgtext+0avgdata 171392maxresident)k
+0inputs+120outputs (0major+55573minor)pagefaults 0swaps

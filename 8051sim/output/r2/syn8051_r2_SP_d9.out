@@ -1,0 +1,4 @@
+opcode : 0xd9
+state  : SP
+2.58user 0.05system 0:02.90elapsed 90%CPU (0avgtext+0avgdata 140128maxresident)k
+0inputs+88outputs (0major+31076minor)pagefaults 0swaps

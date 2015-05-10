@@ -1,0 +1,4 @@
+opcode : 0xc3
+state  : TMOD
+2.26user 0.04system 0:02.63elapsed 87%CPU (0avgtext+0avgdata 137248maxresident)k
+0inputs+80outputs (0major+28498minor)pagefaults 0swaps

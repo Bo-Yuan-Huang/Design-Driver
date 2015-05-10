@@ -1,0 +1,4 @@
+opcode : 0x50
+state  : SP
+3.29user 0.06system 0:03.58elapsed 93%CPU (0avgtext+0avgdata 147568maxresident)k
+0inputs+120outputs (0major+43333minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x8a
+state  : PC
+3.12user 0.06system 0:03.38elapsed 93%CPU (0avgtext+0avgdata 140112maxresident)k
+0inputs+88outputs (0major+31712minor)pagefaults 0swaps

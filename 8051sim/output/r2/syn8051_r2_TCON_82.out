@@ -1,0 +1,4 @@
+opcode : 0x82
+state  : TCON
+2.69user 0.06system 0:03.10elapsed 88%CPU (0avgtext+0avgdata 137216maxresident)k
+0inputs+96outputs (0major+33393minor)pagefaults 0swaps

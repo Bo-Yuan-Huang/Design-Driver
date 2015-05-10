@@ -1,0 +1,4 @@
+opcode : 0x79
+state  : B
+3.65user 0.07system 0:03.93elapsed 94%CPU (0avgtext+0avgdata 148016maxresident)k
+0inputs+96outputs (0major+36359minor)pagefaults 0swaps

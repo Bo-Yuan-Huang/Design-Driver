@@ -1,0 +1,4 @@
+opcode : 0x66
+state  : ACC
+2.42user 0.06system 0:02.82elapsed 88%CPU (0avgtext+0avgdata 151328maxresident)k
+0inputs+80outputs (0major+32562minor)pagefaults 0swaps

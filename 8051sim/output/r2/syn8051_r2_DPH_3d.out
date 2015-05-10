@@ -1,0 +1,4 @@
+opcode : 0x3d
+state  : DPH
+1.92user 0.04system 0:02.30elapsed 85%CPU (0avgtext+0avgdata 138240maxresident)k
+0inputs+88outputs (0major+31271minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x3d
+state  : SCON
+2.95user 0.07system 0:03.30elapsed 91%CPU (0avgtext+0avgdata 144176maxresident)k
+0inputs+104outputs (0major+37526minor)pagefaults 0swaps

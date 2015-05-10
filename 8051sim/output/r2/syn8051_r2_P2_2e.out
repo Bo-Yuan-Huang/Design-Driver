@@ -1,0 +1,4 @@
+opcode : 0x2e
+state  : P2
+1.99user 0.05system 0:02.16elapsed 94%CPU (0avgtext+0avgdata 139200maxresident)k
+0inputs+88outputs (0major+31038minor)pagefaults 0swaps

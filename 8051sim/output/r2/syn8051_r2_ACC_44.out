@@ -1,0 +1,4 @@
+opcode : 0x44
+state  : ACC
+2.04user 0.06system 0:02.24elapsed 93%CPU (0avgtext+0avgdata 143008maxresident)k
+0inputs+64outputs (0major+25713minor)pagefaults 0swaps

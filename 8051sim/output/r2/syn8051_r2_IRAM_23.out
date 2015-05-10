@@ -1,0 +1,4 @@
+opcode : 0x23
+state  : IRAM
+1050.14user 0.17system 17:32.01elapsed 99%CPU (0avgtext+0avgdata 290224maxresident)k
+0inputs+144outputs (0major+128210minor)pagefaults 0swaps

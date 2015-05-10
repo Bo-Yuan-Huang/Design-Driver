@@ -1,0 +1,4 @@
+opcode : 0x45
+state  : B
+2.96user 0.08system 0:03.20elapsed 94%CPU (0avgtext+0avgdata 145984maxresident)k
+0inputs+88outputs (0major+33489minor)pagefaults 0swaps

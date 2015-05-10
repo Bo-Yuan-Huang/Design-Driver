@@ -1,0 +1,4 @@
+opcode : 0x12
+state  : DPL
+2.45user 0.05system 0:02.81elapsed 89%CPU (0avgtext+0avgdata 134416maxresident)k
+0inputs+72outputs (0major+25619minor)pagefaults 0swaps

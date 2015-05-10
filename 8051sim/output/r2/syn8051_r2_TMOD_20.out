@@ -1,0 +1,4 @@
+opcode : 0x20
+state  : TMOD
+2.23user 0.07system 0:02.72elapsed 84%CPU (0avgtext+0avgdata 136720maxresident)k
+0inputs+80outputs (0major+28398minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x27
+state  : TCON
+2.67user 0.07system 0:02.98elapsed 92%CPU (0avgtext+0avgdata 138864maxresident)k
+0inputs+96outputs (0major+33697minor)pagefaults 0swaps

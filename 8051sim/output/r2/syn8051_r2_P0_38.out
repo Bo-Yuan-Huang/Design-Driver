@@ -1,0 +1,4 @@
+opcode : 0x38
+state  : P0
+1.54user 0.04system 0:01.76elapsed 89%CPU (0avgtext+0avgdata 134720maxresident)k
+0inputs+80outputs (0major+27970minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x38
+state  : B
+4.82user 0.09system 0:05.52elapsed 88%CPU (0avgtext+0avgdata 150848maxresident)k
+0inputs+104outputs (0major+40127minor)pagefaults 0swaps

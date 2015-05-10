@@ -1,0 +1,4 @@
+opcode : 0x91
+state  : DPH
+2.46user 0.06system 0:02.77elapsed 91%CPU (0avgtext+0avgdata 136064maxresident)k
+0inputs+80outputs (0major+28432minor)pagefaults 0swaps

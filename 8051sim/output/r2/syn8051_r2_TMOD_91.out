@@ -1,0 +1,4 @@
+opcode : 0x91
+state  : TMOD
+2.38user 0.05system 0:02.60elapsed 93%CPU (0avgtext+0avgdata 135472maxresident)k
+0inputs+88outputs (0major+30337minor)pagefaults 0swaps

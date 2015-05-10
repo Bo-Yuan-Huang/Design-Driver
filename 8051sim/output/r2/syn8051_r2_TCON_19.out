@@ -1,0 +1,4 @@
+opcode : 0x19
+state  : TCON
+2.87user 0.07system 0:03.51elapsed 83%CPU (0avgtext+0avgdata 140720maxresident)k
+0inputs+104outputs (0major+36762minor)pagefaults 0swaps

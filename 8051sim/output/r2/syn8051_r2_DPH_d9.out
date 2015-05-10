@@ -1,0 +1,4 @@
+opcode : 0xd9
+state  : DPH
+2.65user 0.07system 0:02.93elapsed 92%CPU (0avgtext+0avgdata 135328maxresident)k
+0inputs+88outputs (0major+30724minor)pagefaults 0swaps

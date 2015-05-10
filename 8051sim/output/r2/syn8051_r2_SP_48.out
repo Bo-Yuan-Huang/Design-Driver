@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : SP
+3.24user 0.08system 0:03.57elapsed 93%CPU (0avgtext+0avgdata 146000maxresident)k
+0inputs+104outputs (0major+37498minor)pagefaults 0swaps

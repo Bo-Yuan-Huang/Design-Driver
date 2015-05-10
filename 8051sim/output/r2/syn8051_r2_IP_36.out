@@ -1,0 +1,4 @@
+opcode : 0x36
+state  : IP
+4.12user 0.11system 0:04.53elapsed 93%CPU (0avgtext+0avgdata 143920maxresident)k
+0inputs+104outputs (0major+36773minor)pagefaults 0swaps

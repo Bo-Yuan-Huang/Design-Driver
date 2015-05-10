@@ -1,0 +1,4 @@
+opcode : 0x7c
+state  : ACC
+3.85user 0.10system 0:04.20elapsed 94%CPU (0avgtext+0avgdata 158608maxresident)k
+0inputs+88outputs (0major+36910minor)pagefaults 0swaps

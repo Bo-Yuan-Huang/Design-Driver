@@ -1,0 +1,4 @@
+opcode : 0x5a
+state  : PSW
+7.77user 0.07system 0:08.05elapsed 97%CPU (0avgtext+0avgdata 177504maxresident)k
+0inputs+120outputs (0major+60446minor)pagefaults 0swaps

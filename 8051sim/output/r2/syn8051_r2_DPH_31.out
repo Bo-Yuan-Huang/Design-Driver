@@ -1,0 +1,4 @@
+opcode : 0x31
+state  : DPH
+2.51user 0.06system 0:03.49elapsed 73%CPU (0avgtext+0avgdata 138464maxresident)k
+0inputs+88outputs (0major+31221minor)pagefaults 0swaps

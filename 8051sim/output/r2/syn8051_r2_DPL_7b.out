@@ -1,0 +1,4 @@
+opcode : 0x7b
+state  : DPL
+2.54user 0.09system 0:02.78elapsed 94%CPU (0avgtext+0avgdata 138224maxresident)k
+0inputs+96outputs (0major+33932minor)pagefaults 0swaps

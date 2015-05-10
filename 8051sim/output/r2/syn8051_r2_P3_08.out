@@ -1,0 +1,4 @@
+opcode : 0x8
+state  : P3
+2.87user 0.05system 0:03.28elapsed 89%CPU (0avgtext+0avgdata 140992maxresident)k
+0inputs+96outputs (0major+34443minor)pagefaults 0swaps

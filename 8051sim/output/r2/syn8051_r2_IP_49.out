@@ -1,0 +1,4 @@
+opcode : 0x49
+state  : IP
+2.71user 0.07system 0:02.93elapsed 95%CPU (0avgtext+0avgdata 141200maxresident)k
+0inputs+96outputs (0major+33678minor)pagefaults 0swaps

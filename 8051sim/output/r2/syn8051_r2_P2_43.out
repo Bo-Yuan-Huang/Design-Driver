@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : P2
+1.84user 0.02system 0:02.10elapsed 89%CPU (0avgtext+0avgdata 135712maxresident)k
+0inputs+56outputs (0major+19867minor)pagefaults 0swaps

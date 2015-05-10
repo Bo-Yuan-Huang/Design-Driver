@@ -1,0 +1,4 @@
+opcode : 0x78
+state  : P0
+1.62user 0.04system 0:01.87elapsed 88%CPU (0avgtext+0avgdata 135232maxresident)k
+0inputs+80outputs (0major+28079minor)pagefaults 0swaps

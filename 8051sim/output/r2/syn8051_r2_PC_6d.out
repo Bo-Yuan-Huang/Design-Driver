@@ -1,0 +1,4 @@
+opcode : 0x6d
+state  : PC
+1.11user 0.04system 0:01.35elapsed 85%CPU (0avgtext+0avgdata 129392maxresident)k
+0inputs+32outputs (0major+13378minor)pagefaults 0swaps

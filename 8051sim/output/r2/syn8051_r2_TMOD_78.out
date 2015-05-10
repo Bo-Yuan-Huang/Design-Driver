@@ -1,0 +1,4 @@
+opcode : 0x78
+state  : TMOD
+2.08user 0.07system 0:02.38elapsed 90%CPU (0avgtext+0avgdata 134880maxresident)k
+0inputs+80outputs (0major+28016minor)pagefaults 0swaps

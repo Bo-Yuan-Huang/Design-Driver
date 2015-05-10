@@ -1,0 +1,4 @@
+opcode : 0xe3
+state  : IRAM
+1267.12user 0.79system 21:10.31elapsed 99%CPU (0avgtext+0avgdata 274352maxresident)k
+0inputs+128outputs (0major+103804minor)pagefaults 0swaps

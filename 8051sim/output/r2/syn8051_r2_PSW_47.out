@@ -1,0 +1,4 @@
+opcode : 0x47
+state  : PSW
+11.28user 0.14system 0:11.58elapsed 98%CPU (0avgtext+0avgdata 201328maxresident)k
+0inputs+168outputs (0major+94935minor)pagefaults 0swaps

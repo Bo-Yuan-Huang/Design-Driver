@@ -1,0 +1,4 @@
+opcode : 0x81
+state  : IP
+4.40user 0.11system 0:04.66elapsed 96%CPU (0avgtext+0avgdata 144576maxresident)k
+0inputs+112outputs (0major+39855minor)pagefaults 0swaps

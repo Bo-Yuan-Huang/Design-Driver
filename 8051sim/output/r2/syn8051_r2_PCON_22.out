@@ -1,0 +1,4 @@
+opcode : 0x22
+state  : PCON
+2.52user 0.07system 0:03.05elapsed 84%CPU (0avgtext+0avgdata 135904maxresident)k
+0inputs+88outputs (0major+30946minor)pagefaults 0swaps

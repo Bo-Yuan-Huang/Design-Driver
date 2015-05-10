@@ -1,0 +1,4 @@
+opcode : 0xe3
+state  : ACC
+2.24user 0.08system 0:02.62elapsed 88%CPU (0avgtext+0avgdata 148480maxresident)k
+0inputs+72outputs (0major+29949minor)pagefaults 0swaps

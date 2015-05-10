@@ -1,0 +1,4 @@
+opcode : 0x31
+state  : ACC
+3.51user 0.07system 0:03.86elapsed 92%CPU (0avgtext+0avgdata 156288maxresident)k
+0inputs+88outputs (0major+36651minor)pagefaults 0swaps

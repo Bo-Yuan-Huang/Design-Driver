@@ -1,0 +1,4 @@
+opcode : 0x58
+state  : IE
+1.70user 0.04system 0:01.89elapsed 92%CPU (0avgtext+0avgdata 136624maxresident)k
+0inputs+72outputs (0major+25857minor)pagefaults 0swaps

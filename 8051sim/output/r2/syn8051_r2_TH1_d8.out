@@ -1,0 +1,4 @@
+opcode : 0xd8
+state  : TH1
+2.06user 0.04system 0:02.34elapsed 89%CPU (0avgtext+0avgdata 135712maxresident)k
+0inputs+72outputs (0major+25691minor)pagefaults 0swaps

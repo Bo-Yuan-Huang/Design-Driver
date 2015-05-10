@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : DPH
+1.60user 0.06system 0:01.81elapsed 91%CPU (0avgtext+0avgdata 133696maxresident)k
+0inputs+48outputs (0major+16105minor)pagefaults 0swaps

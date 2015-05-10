@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : TH0
+1.85user 0.04system 0:02.24elapsed 84%CPU (0avgtext+0avgdata 133520maxresident)k
+0inputs+48outputs (0major+20342minor)pagefaults 0swaps

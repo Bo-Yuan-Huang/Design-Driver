@@ -1,0 +1,4 @@
+opcode : 0x59
+state  : IRAM
+10974.25user 0.21system 3:03:13elapsed 99%CPU (0avgtext+0avgdata 410000maxresident)k
+0inputs+128outputs (0major+150468minor)pagefaults 0swaps

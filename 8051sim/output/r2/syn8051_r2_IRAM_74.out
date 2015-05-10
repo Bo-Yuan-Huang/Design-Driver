@@ -1,0 +1,4 @@
+opcode : 0x74
+state  : IRAM
+3666.16user 0.42system 1:01:58elapsed 98%CPU (0avgtext+0avgdata 340384maxresident)k
+0inputs+144outputs (0major+137290minor)pagefaults 0swaps

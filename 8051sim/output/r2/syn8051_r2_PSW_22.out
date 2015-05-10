@@ -1,0 +1,4 @@
+opcode : 0x22
+state  : PSW
+8.24user 0.13system 0:08.64elapsed 96%CPU (0avgtext+0avgdata 182304maxresident)k
+0inputs+144outputs (0major+73408minor)pagefaults 0swaps

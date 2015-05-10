@@ -1,0 +1,4 @@
+opcode : 0x47
+state  : IE
+1.89user 0.05system 0:02.46elapsed 78%CPU (0avgtext+0avgdata 136640maxresident)k
+0inputs+72outputs (0major+25871minor)pagefaults 0swaps

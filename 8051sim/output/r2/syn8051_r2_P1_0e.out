@@ -1,0 +1,4 @@
+opcode : 0xe
+state  : P1
+2.06user 0.05system 0:02.40elapsed 87%CPU (0avgtext+0avgdata 142832maxresident)k
+0inputs+104outputs (0major+36691minor)pagefaults 0swaps

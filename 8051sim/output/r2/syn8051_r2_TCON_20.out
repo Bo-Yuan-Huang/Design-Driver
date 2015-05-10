@@ -1,0 +1,4 @@
+opcode : 0x20
+state  : TCON
+2.53user 0.06system 0:02.79elapsed 92%CPU (0avgtext+0avgdata 138720maxresident)k
+0inputs+96outputs (0major+33615minor)pagefaults 0swaps

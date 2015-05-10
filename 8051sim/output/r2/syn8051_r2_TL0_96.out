@@ -1,0 +1,4 @@
+opcode : 0x96
+state  : TL0
+2.37user 0.06system 0:02.57elapsed 94%CPU (0avgtext+0avgdata 135728maxresident)k
+0inputs+80outputs (0major+28458minor)pagefaults 0swaps

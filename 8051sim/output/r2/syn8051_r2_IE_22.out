@@ -1,0 +1,4 @@
+opcode : 0x22
+state  : IE
+2.52user 0.06system 0:02.85elapsed 90%CPU (0avgtext+0avgdata 138448maxresident)k
+0inputs+80outputs (0major+28723minor)pagefaults 0swaps

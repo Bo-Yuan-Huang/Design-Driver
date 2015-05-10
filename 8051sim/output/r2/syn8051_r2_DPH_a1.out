@@ -1,0 +1,4 @@
+opcode : 0xa1
+state  : DPH
+2.44user 0.06system 0:02.63elapsed 95%CPU (0avgtext+0avgdata 139120maxresident)k
+0inputs+96outputs (0major+34042minor)pagefaults 0swaps

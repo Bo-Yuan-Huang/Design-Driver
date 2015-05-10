@@ -1,0 +1,4 @@
+opcode : 0x19
+state  : DPL
+2.52user 0.09system 0:02.89elapsed 90%CPU (0avgtext+0avgdata 134336maxresident)k
+0inputs+72outputs (0major+25650minor)pagefaults 0swaps

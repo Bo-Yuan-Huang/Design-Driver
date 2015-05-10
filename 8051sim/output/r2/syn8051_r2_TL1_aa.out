@@ -1,0 +1,4 @@
+opcode : 0xaa
+state  : TL1
+2.56user 0.06system 0:03.04elapsed 86%CPU (0avgtext+0avgdata 139504maxresident)k
+0inputs+88outputs (0major+31678minor)pagefaults 0swaps

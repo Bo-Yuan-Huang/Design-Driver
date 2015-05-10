@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : TCON
+2.64user 0.07system 0:03.10elapsed 87%CPU (0avgtext+0avgdata 138512maxresident)k
+0inputs+96outputs (0major+33493minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : TL1
+2.28user 0.05system 0:02.82elapsed 82%CPU (0avgtext+0avgdata 139120maxresident)k
+0inputs+64outputs (0major+22891minor)pagefaults 0swaps

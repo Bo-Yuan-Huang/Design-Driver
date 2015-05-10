@@ -1,0 +1,4 @@
+opcode : 0x74
+state  : IE
+1.69user 0.04system 0:02.01elapsed 86%CPU (0avgtext+0avgdata 136736maxresident)k
+0inputs+72outputs (0major+25908minor)pagefaults 0swaps

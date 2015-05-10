@@ -1,0 +1,4 @@
+opcode : 0xbe
+state  : SP
+2.40user 0.08system 0:02.61elapsed 95%CPU (0avgtext+0avgdata 138944maxresident)k
+0inputs+80outputs (0major+28388minor)pagefaults 0swaps

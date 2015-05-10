@@ -1,0 +1,4 @@
+opcode : 0x33
+state  : B
+4.86user 0.07system 0:05.29elapsed 93%CPU (0avgtext+0avgdata 144784maxresident)k
+0inputs+96outputs (0major+36066minor)pagefaults 0swaps

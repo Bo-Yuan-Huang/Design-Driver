@@ -1,0 +1,4 @@
+opcode : 0x9e
+state  : B
+3.25user 0.09system 0:03.56elapsed 93%CPU (0avgtext+0avgdata 147040maxresident)k
+0inputs+104outputs (0major+39138minor)pagefaults 0swaps

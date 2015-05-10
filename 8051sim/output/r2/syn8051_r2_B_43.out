@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : B
+3.84user 0.04system 0:04.17elapsed 92%CPU (0avgtext+0avgdata 142416maxresident)k
+0inputs+64outputs (0major+23508minor)pagefaults 0swaps

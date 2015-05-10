@@ -1,0 +1,4 @@
+opcode : 0xcf
+state  : TMOD
+2.41user 0.06system 0:02.83elapsed 87%CPU (0avgtext+0avgdata 135408maxresident)k
+0inputs+88outputs (0major+30305minor)pagefaults 0swaps

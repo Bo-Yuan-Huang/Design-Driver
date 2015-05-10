@@ -1,0 +1,4 @@
+opcode : 0x85
+state  : TH1
+2.95user 0.04system 0:03.18elapsed 93%CPU (0avgtext+0avgdata 142624maxresident)k
+0inputs+88outputs (0major+28964minor)pagefaults 0swaps

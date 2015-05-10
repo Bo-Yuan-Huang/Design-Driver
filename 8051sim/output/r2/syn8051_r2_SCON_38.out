@@ -1,0 +1,4 @@
+opcode : 0x38
+state  : SCON
+2.99user 0.08system 0:03.22elapsed 95%CPU (0avgtext+0avgdata 141840maxresident)k
+0inputs+104outputs (0major+37227minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x1d
+state  : IRAM
+12.49user 0.03system 0:12.71elapsed 98%CPU (0avgtext+0avgdata 157536maxresident)k
+0inputs+40outputs (0major+19455minor)pagefaults 0swaps

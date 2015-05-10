@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : ACC
+4.85user 0.13system 0:05.34elapsed 93%CPU (0avgtext+0avgdata 171120maxresident)k
+0inputs+128outputs (0major+56463minor)pagefaults 0swaps

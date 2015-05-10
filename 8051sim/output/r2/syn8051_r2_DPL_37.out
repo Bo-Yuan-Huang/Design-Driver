@@ -1,0 +1,4 @@
+opcode : 0x37
+state  : DPL
+2.53user 0.05system 0:02.94elapsed 87%CPU (0avgtext+0avgdata 137264maxresident)k
+0inputs+88outputs (0major+31226minor)pagefaults 0swaps

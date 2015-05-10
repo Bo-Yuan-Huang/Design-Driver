@@ -1,0 +1,4 @@
+opcode : 0xc5
+state  : IRAM
+108.68user 0.03system 1:49.10elapsed 99%CPU (0avgtext+0avgdata 190096maxresident)k
+0inputs+56outputs (0major+30057minor)pagefaults 0swaps

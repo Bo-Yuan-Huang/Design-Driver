@@ -1,0 +1,4 @@
+opcode : 0x8a
+state  : TMOD
+2.74user 0.07system 0:03.04elapsed 92%CPU (0avgtext+0avgdata 139312maxresident)k
+0inputs+96outputs (0major+33093minor)pagefaults 0swaps

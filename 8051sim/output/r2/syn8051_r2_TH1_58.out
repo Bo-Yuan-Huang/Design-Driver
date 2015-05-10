@@ -1,0 +1,4 @@
+opcode : 0x58
+state  : TH1
+2.46user 0.10system 0:02.95elapsed 87%CPU (0avgtext+0avgdata 137472maxresident)k
+0inputs+88outputs (0major+31034minor)pagefaults 0swaps

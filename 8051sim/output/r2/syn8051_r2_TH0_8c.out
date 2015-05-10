@@ -1,0 +1,4 @@
+opcode : 0x8c
+state  : TH0
+3.30user 0.05system 0:03.57elapsed 93%CPU (0avgtext+0avgdata 142288maxresident)k
+0inputs+120outputs (0major+41898minor)pagefaults 0swaps

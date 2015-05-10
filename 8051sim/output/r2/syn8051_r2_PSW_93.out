@@ -1,0 +1,4 @@
+opcode : 0x93
+state  : PSW
+9.59user 0.12system 0:09.89elapsed 98%CPU (0avgtext+0avgdata 193936maxresident)k
+0inputs+152outputs (0major+81881minor)pagefaults 0swaps

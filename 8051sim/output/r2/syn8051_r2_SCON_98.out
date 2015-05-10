@@ -1,0 +1,4 @@
+opcode : 0x98
+state  : SCON
+2.95user 0.06system 0:03.18elapsed 94%CPU (0avgtext+0avgdata 140752maxresident)k
+0inputs+96outputs (0major+34279minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xcd
+state  : TH0
+1.98user 0.07system 0:02.44elapsed 84%CPU (0avgtext+0avgdata 134736maxresident)k
+0inputs+64outputs (0major+23475minor)pagefaults 0swaps

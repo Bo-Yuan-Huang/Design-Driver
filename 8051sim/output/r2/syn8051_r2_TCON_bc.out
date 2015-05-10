@@ -1,0 +1,4 @@
+opcode : 0xbc
+state  : TCON
+2.41user 0.09system 0:02.77elapsed 90%CPU (0avgtext+0avgdata 136608maxresident)k
+0inputs+88outputs (0major+30979minor)pagefaults 0swaps

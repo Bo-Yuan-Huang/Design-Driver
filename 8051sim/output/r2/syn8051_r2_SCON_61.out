@@ -1,0 +1,4 @@
+opcode : 0x61
+state  : SCON
+2.71user 0.05system 0:03.15elapsed 87%CPU (0avgtext+0avgdata 141376maxresident)k
+0inputs+96outputs (0major+34327minor)pagefaults 0swaps

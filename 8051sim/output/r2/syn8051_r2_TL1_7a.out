@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : TL1
+2.41user 0.06system 0:02.74elapsed 90%CPU (0avgtext+0avgdata 138880maxresident)k
+0inputs+80outputs (0major+29210minor)pagefaults 0swaps

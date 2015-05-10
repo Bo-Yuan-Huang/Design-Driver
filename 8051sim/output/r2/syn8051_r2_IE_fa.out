@@ -1,0 +1,4 @@
+opcode : 0xfa
+state  : IE
+2.61user 0.07system 0:02.90elapsed 92%CPU (0avgtext+0avgdata 136608maxresident)k
+0inputs+72outputs (0major+25834minor)pagefaults 0swaps

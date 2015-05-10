@@ -1,0 +1,4 @@
+opcode : 0x34
+state  : B
+3.31user 0.08system 0:03.59elapsed 94%CPU (0avgtext+0avgdata 146880maxresident)k
+0inputs+96outputs (0major+36434minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x66
+state  : DPH
+2.14user 0.08system 0:02.40elapsed 93%CPU (0avgtext+0avgdata 135408maxresident)k
+0inputs+80outputs (0major+28291minor)pagefaults 0swaps

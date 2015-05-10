@@ -1,0 +1,4 @@
+opcode : 0x1e
+state  : DPH
+2.84user 0.07system 0:03.38elapsed 86%CPU (0avgtext+0avgdata 139568maxresident)k
+0inputs+104outputs (0major+36599minor)pagefaults 0swaps

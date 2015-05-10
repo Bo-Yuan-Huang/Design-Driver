@@ -1,0 +1,4 @@
+opcode : 0x5f
+state  : SP
+2.95user 0.06system 0:03.18elapsed 94%CPU (0avgtext+0avgdata 145872maxresident)k
+0inputs+104outputs (0major+37382minor)pagefaults 0swaps

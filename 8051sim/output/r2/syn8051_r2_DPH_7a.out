@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : DPH
+2.85user 0.07system 0:03.21elapsed 91%CPU (0avgtext+0avgdata 135264maxresident)k
+0inputs+80outputs (0major+28393minor)pagefaults 0swaps

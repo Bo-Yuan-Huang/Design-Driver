@@ -1,0 +1,4 @@
+opcode : 0x9f
+state  : IRAM
+2152.44user 0.14system 35:56.77elapsed 99%CPU (0avgtext+0avgdata 300240maxresident)k
+0inputs+120outputs (0major+96094minor)pagefaults 0swaps

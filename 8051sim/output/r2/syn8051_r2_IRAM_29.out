@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : IRAM
+394.84user 0.11system 6:35.44elapsed 99%CPU (0avgtext+0avgdata 242176maxresident)k
+0inputs+112outputs (0major+80908minor)pagefaults 0swaps

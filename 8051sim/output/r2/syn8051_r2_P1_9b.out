@@ -1,0 +1,4 @@
+opcode : 0x9b
+state  : P1
+1.93user 0.06system 0:02.20elapsed 90%CPU (0avgtext+0avgdata 142784maxresident)k
+0inputs+104outputs (0major+36771minor)pagefaults 0swaps

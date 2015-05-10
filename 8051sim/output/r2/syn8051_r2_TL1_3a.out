@@ -1,0 +1,4 @@
+opcode : 0x3a
+state  : TL1
+2.41user 0.07system 0:02.87elapsed 86%CPU (0avgtext+0avgdata 138320maxresident)k
+0inputs+80outputs (0major+29241minor)pagefaults 0swaps

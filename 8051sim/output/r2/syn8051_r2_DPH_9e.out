@@ -1,0 +1,4 @@
+opcode : 0x9e
+state  : DPH
+2.26user 0.05system 0:02.44elapsed 95%CPU (0avgtext+0avgdata 136416maxresident)k
+0inputs+88outputs (0major+31136minor)pagefaults 0swaps

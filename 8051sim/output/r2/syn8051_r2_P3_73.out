@@ -1,0 +1,4 @@
+opcode : 0x73
+state  : P3
+2.20user 0.06system 0:02.41elapsed 93%CPU (0avgtext+0avgdata 144096maxresident)k
+0inputs+96outputs (0major+34584minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x4f
+state  : TL0
+2.22user 0.07system 0:02.75elapsed 83%CPU (0avgtext+0avgdata 136544maxresident)k
+0inputs+80outputs (0major+28432minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x91
+state  : SP
+1.13user 0.04system 0:01.36elapsed 86%CPU (0avgtext+0avgdata 127840maxresident)k
+0inputs+40outputs (0major+15335minor)pagefaults 0swaps

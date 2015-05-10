@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : TL0
+2.48user 0.04system 0:02.79elapsed 90%CPU (0avgtext+0avgdata 136672maxresident)k
+0inputs+80outputs (0major+28582minor)pagefaults 0swaps

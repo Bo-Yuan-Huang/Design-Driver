@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : ACC
+3.44user 0.06system 0:03.87elapsed 90%CPU (0avgtext+0avgdata 155216maxresident)k
+0inputs+80outputs (0major+34670minor)pagefaults 0swaps

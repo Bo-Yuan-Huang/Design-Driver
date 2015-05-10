@@ -1,0 +1,4 @@
+opcode : 0x8a
+state  : DPL
+3.25user 0.09system 0:03.49elapsed 95%CPU (0avgtext+0avgdata 141920maxresident)k
+0inputs+120outputs (0major+41664minor)pagefaults 0swaps

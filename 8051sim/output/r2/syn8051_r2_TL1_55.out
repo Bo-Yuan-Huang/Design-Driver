@@ -1,0 +1,4 @@
+opcode : 0x55
+state  : TL1
+2.41user 0.09system 0:02.67elapsed 93%CPU (0avgtext+0avgdata 137248maxresident)k
+0inputs+80outputs (0major+28993minor)pagefaults 0swaps

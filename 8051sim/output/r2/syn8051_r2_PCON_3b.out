@@ -1,0 +1,4 @@
+opcode : 0x3b
+state  : PCON
+1.97user 0.06system 0:02.34elapsed 86%CPU (0avgtext+0avgdata 137664maxresident)k
+0inputs+88outputs (0major+31514minor)pagefaults 0swaps

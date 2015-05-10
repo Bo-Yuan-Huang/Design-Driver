@@ -1,0 +1,4 @@
+opcode : 0x5b
+state  : IRAM
+3252.48user 0.15system 54:18.64elapsed 99%CPU (0avgtext+0avgdata 299632maxresident)k
+0inputs+128outputs (0major+114323minor)pagefaults 0swaps

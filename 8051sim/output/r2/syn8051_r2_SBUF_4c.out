@@ -1,0 +1,4 @@
+opcode : 0x4c
+state  : SBUF
+2.32user 0.07system 0:03.06elapsed 78%CPU (0avgtext+0avgdata 136432maxresident)k
+0inputs+80outputs (0major+28437minor)pagefaults 0swaps

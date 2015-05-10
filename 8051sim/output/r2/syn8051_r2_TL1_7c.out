@@ -1,0 +1,4 @@
+opcode : 0x7c
+state  : TL1
+2.36user 0.08system 0:02.74elapsed 88%CPU (0avgtext+0avgdata 138736maxresident)k
+0inputs+80outputs (0major+29159minor)pagefaults 0swaps

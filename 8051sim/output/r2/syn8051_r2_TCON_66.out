@@ -1,0 +1,4 @@
+opcode : 0x66
+state  : TCON
+2.50user 0.04system 0:03.13elapsed 81%CPU (0avgtext+0avgdata 138832maxresident)k
+0inputs+96outputs (0major+33975minor)pagefaults 0swaps

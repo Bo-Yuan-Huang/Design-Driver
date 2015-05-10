@@ -1,0 +1,4 @@
+opcode : 0x41
+state  : IRAM
+2557.71user 0.22system 42:42.62elapsed 99%CPU (0avgtext+0avgdata 291520maxresident)k
+0inputs+112outputs (0major+99057minor)pagefaults 0swaps

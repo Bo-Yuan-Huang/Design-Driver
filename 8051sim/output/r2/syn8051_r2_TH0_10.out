@@ -1,0 +1,4 @@
+opcode : 0x10
+state  : TH0
+2.24user 0.04system 0:02.54elapsed 89%CPU (0avgtext+0avgdata 134144maxresident)k
+0inputs+72outputs (0major+25804minor)pagefaults 0swaps

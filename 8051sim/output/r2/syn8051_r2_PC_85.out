@@ -1,0 +1,4 @@
+opcode : 0x85
+state  : PC
+2.30user 0.04system 0:02.59elapsed 90%CPU (0avgtext+0avgdata 135888maxresident)k
+0inputs+72outputs (0major+25870minor)pagefaults 0swaps

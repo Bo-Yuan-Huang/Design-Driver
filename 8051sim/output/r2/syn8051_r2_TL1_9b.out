@@ -1,0 +1,4 @@
+opcode : 0x9b
+state  : TL1
+2.74user 0.06system 0:03.16elapsed 88%CPU (0avgtext+0avgdata 143232maxresident)k
+0inputs+96outputs (0major+35023minor)pagefaults 0swaps

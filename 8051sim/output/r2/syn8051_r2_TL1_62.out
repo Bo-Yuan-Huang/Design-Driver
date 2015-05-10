@@ -1,0 +1,4 @@
+opcode : 0x62
+state  : TL1
+2.52user 0.05system 0:02.86elapsed 89%CPU (0avgtext+0avgdata 139792maxresident)k
+0inputs+64outputs (0major+22271minor)pagefaults 0swaps

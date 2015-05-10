@@ -1,0 +1,4 @@
+opcode : 0x34
+state  : IE
+1.90user 0.08system 0:02.26elapsed 88%CPU (0avgtext+0avgdata 136752maxresident)k
+0inputs+72outputs (0major+25653minor)pagefaults 0swaps

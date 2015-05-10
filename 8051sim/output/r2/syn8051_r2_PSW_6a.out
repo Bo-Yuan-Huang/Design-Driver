@@ -1,0 +1,4 @@
+opcode : 0x6a
+state  : PSW
+11.57user 0.16system 0:11.98elapsed 97%CPU (0avgtext+0avgdata 204448maxresident)k
+0inputs+224outputs (0major+120932minor)pagefaults 0swaps

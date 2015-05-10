@@ -1,0 +1,4 @@
+opcode : 0x33
+state  : TL1
+2.72user 0.08system 0:03.52elapsed 79%CPU (0avgtext+0avgdata 143568maxresident)k
+0inputs+96outputs (0major+34962minor)pagefaults 0swaps

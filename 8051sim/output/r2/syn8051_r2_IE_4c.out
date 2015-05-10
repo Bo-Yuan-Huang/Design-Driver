@@ -1,0 +1,4 @@
+opcode : 0x4c
+state  : IE
+2.52user 0.04system 0:03.95elapsed 64%CPU (0avgtext+0avgdata 136720maxresident)k
+0inputs+72outputs (0major+25665minor)pagefaults 0swaps

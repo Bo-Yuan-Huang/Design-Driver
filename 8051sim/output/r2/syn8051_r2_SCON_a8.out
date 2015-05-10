@@ -1,0 +1,4 @@
+opcode : 0xa8
+state  : SCON
+2.67user 0.07system 0:03.07elapsed 89%CPU (0avgtext+0avgdata 139568maxresident)k
+0inputs+96outputs (0major+34099minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : PSW
+3.43user 0.05system 0:03.69elapsed 94%CPU (0avgtext+0avgdata 160320maxresident)k
+0inputs+88outputs (0major+40776minor)pagefaults 0swaps

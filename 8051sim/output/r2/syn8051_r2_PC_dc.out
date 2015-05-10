@@ -1,0 +1,4 @@
+opcode : 0xdc
+state  : PC
+4.11user 0.08system 0:04.36elapsed 96%CPU (0avgtext+0avgdata 148416maxresident)k
+0inputs+120outputs (0major+44521minor)pagefaults 0swaps

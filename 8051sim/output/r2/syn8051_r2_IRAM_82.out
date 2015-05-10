@@ -1,0 +1,4 @@
+opcode : 0x82
+state  : IRAM
+815.38user 0.12system 14:09.84elapsed 95%CPU (0avgtext+0avgdata 258864maxresident)k
+0inputs+120outputs (0major+88562minor)pagefaults 0swaps

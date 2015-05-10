@@ -1,0 +1,4 @@
+opcode : 0x49
+state  : IE
+1.97user 0.06system 0:02.66elapsed 76%CPU (0avgtext+0avgdata 136304maxresident)k
+0inputs+72outputs (0major+25810minor)pagefaults 0swaps

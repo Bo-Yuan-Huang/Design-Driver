@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : P3
+1.29user 0.03system 0:01.52elapsed 86%CPU (0avgtext+0avgdata 135088maxresident)k
+0inputs+48outputs (0major+16808minor)pagefaults 0swaps

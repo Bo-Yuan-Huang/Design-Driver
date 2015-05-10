@@ -1,0 +1,4 @@
+opcode : 0xde
+state  : TH1
+2.41user 0.08system 0:02.99elapsed 83%CPU (0avgtext+0avgdata 137888maxresident)k
+0inputs+88outputs (0major+31238minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x47
+state  : B
+3.76user 0.07system 0:04.05elapsed 94%CPU (0avgtext+0avgdata 147280maxresident)k
+0inputs+96outputs (0major+36664minor)pagefaults 0swaps

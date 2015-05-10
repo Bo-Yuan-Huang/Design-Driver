@@ -1,0 +1,4 @@
+opcode : 0xfc
+state  : P0
+1.56user 0.04system 0:01.78elapsed 90%CPU (0avgtext+0avgdata 134784maxresident)k
+0inputs+80outputs (0major+27905minor)pagefaults 0swaps

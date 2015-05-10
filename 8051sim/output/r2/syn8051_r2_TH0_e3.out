@@ -1,0 +1,4 @@
+opcode : 0xe3
+state  : TH0
+1.99user 0.04system 0:02.54elapsed 80%CPU (0avgtext+0avgdata 134752maxresident)k
+0inputs+72outputs (0major+25935minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xc5
+state  : DPH
+1.61user 0.06system 0:01.86elapsed 89%CPU (0avgtext+0avgdata 137696maxresident)k
+0inputs+72outputs (0major+25856minor)pagefaults 0swaps

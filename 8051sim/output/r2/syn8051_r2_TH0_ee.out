@@ -1,0 +1,4 @@
+opcode : 0xee
+state  : TH0
+2.07user 0.06system 0:02.62elapsed 81%CPU (0avgtext+0avgdata 135600maxresident)k
+0inputs+72outputs (0major+26205minor)pagefaults 0swaps

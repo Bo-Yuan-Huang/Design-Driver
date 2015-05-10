@@ -1,0 +1,4 @@
+opcode : 0x8b
+state  : TH0
+3.24user 0.06system 0:03.46elapsed 95%CPU (0avgtext+0avgdata 142704maxresident)k
+0inputs+120outputs (0major+41973minor)pagefaults 0swaps

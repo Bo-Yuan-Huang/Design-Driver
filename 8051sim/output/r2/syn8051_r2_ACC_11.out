@@ -1,0 +1,4 @@
+opcode : 0x11
+state  : ACC
+5.62user 0.12system 0:05.95elapsed 96%CPU (0avgtext+0avgdata 159536maxresident)k
+0inputs+112outputs (0major+47836minor)pagefaults 0swaps

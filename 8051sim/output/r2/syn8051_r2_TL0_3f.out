@@ -1,0 +1,4 @@
+opcode : 0x3f
+state  : TL0
+2.17user 0.04system 0:02.49elapsed 88%CPU (0avgtext+0avgdata 137104maxresident)k
+0inputs+80outputs (0major+28538minor)pagefaults 0swaps

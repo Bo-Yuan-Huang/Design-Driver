@@ -1,0 +1,4 @@
+opcode : 0xb5
+state  : SCON
+3.01user 0.04system 0:03.46elapsed 88%CPU (0avgtext+0avgdata 144720maxresident)k
+0inputs+112outputs (0major+40198minor)pagefaults 0swaps

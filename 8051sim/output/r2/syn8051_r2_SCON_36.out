@@ -1,0 +1,4 @@
+opcode : 0x36
+state  : SCON
+2.61user 0.02system 0:02.84elapsed 92%CPU (0avgtext+0avgdata 138576maxresident)k
+0inputs+88outputs (0major+31460minor)pagefaults 0swaps

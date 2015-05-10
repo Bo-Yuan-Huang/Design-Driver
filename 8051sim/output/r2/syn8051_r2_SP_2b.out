@@ -1,0 +1,4 @@
+opcode : 0x2b
+state  : SP
+2.95user 0.06system 0:03.26elapsed 92%CPU (0avgtext+0avgdata 141248maxresident)k
+0inputs+88outputs (0major+31357minor)pagefaults 0swaps

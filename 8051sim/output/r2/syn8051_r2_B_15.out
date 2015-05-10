@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : B
+3.64user 0.06system 0:03.91elapsed 94%CPU (0avgtext+0avgdata 142336maxresident)k
+0inputs+64outputs (0major+27337minor)pagefaults 0swaps

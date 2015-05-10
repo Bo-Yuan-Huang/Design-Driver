@@ -1,0 +1,4 @@
+opcode : 0x79
+state  : PC
+2.66user 0.04system 0:02.83elapsed 95%CPU (0avgtext+0avgdata 138448maxresident)k
+0inputs+88outputs (0major+31446minor)pagefaults 0swaps

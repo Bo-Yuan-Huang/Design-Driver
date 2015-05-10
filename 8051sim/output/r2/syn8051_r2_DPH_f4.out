@@ -1,0 +1,4 @@
+opcode : 0xf4
+state  : DPH
+2.52user 0.08system 0:02.94elapsed 88%CPU (0avgtext+0avgdata 135232maxresident)k
+0inputs+80outputs (0major+28405minor)pagefaults 0swaps

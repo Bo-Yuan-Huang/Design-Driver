@@ -1,0 +1,4 @@
+opcode : 0x18
+state  : PC
+1.12user 0.03system 0:01.45elapsed 79%CPU (0avgtext+0avgdata 129424maxresident)k
+0inputs+32outputs (0major+13287minor)pagefaults 0swaps

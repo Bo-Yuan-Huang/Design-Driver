@@ -1,0 +1,4 @@
+opcode : 0x63
+state  : DPH
+2.69user 0.04system 0:03.10elapsed 88%CPU (0avgtext+0avgdata 137552maxresident)k
+0inputs+64outputs (0major+21129minor)pagefaults 0swaps

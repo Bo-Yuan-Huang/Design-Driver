@@ -1,0 +1,4 @@
+opcode : 0x21
+state  : PCON
+2.02user 0.06system 0:02.24elapsed 92%CPU (0avgtext+0avgdata 136144maxresident)k
+0inputs+64outputs (0major+23662minor)pagefaults 0swaps

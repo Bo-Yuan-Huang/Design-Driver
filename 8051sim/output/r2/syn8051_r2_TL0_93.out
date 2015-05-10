@@ -1,0 +1,4 @@
+opcode : 0x93
+state  : TL0
+2.46user 0.02system 0:02.78elapsed 89%CPU (0avgtext+0avgdata 138368maxresident)k
+0inputs+88outputs (0major+31223minor)pagefaults 0swaps

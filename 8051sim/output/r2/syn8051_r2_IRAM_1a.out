@@ -1,0 +1,4 @@
+opcode : 0x1a
+state  : IRAM
+33.73user 0.04system 0:34.01elapsed 99%CPU (0avgtext+0avgdata 167472maxresident)k
+0inputs+48outputs (0major+24091minor)pagefaults 0swaps

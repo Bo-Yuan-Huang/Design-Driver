@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : IP
+3.88user 0.10system 0:04.15elapsed 95%CPU (0avgtext+0avgdata 143664maxresident)k
+0inputs+104outputs (0major+36948minor)pagefaults 0swaps

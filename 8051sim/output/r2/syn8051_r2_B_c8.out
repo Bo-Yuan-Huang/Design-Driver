@@ -1,0 +1,4 @@
+opcode : 0xc8
+state  : B
+3.14user 0.04system 0:03.54elapsed 89%CPU (0avgtext+0avgdata 145216maxresident)k
+0inputs+96outputs (0major+35928minor)pagefaults 0swaps

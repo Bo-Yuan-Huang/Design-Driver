@@ -1,0 +1,4 @@
+opcode : 0x28
+state  : TCON
+2.44user 0.07system 0:02.75elapsed 91%CPU (0avgtext+0avgdata 137616maxresident)k
+0inputs+96outputs (0major+33496minor)pagefaults 0swaps

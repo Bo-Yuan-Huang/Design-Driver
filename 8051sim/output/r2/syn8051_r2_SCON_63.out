@@ -1,0 +1,4 @@
+opcode : 0x63
+state  : SCON
+2.14user 0.03system 0:02.37elapsed 91%CPU (0avgtext+0avgdata 135664maxresident)k
+0inputs+56outputs (0major+18411minor)pagefaults 0swaps

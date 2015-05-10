@@ -1,0 +1,4 @@
+opcode : 0x92
+state  : PCON
+1.93user 0.04system 0:02.22elapsed 89%CPU (0avgtext+0avgdata 134528maxresident)k
+0inputs+64outputs (0major+23505minor)pagefaults 0swaps

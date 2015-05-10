@@ -1,0 +1,4 @@
+opcode : 0x69
+state  : PSW
+11.58user 0.14system 0:11.94elapsed 98%CPU (0avgtext+0avgdata 204176maxresident)k
+0inputs+192outputs (0major+110918minor)pagefaults 0swaps

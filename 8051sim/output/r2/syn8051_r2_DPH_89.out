@@ -1,0 +1,4 @@
+opcode : 0x89
+state  : DPH
+2.84user 0.09system 0:03.14elapsed 93%CPU (0avgtext+0avgdata 141248maxresident)k
+0inputs+104outputs (0major+36611minor)pagefaults 0swaps

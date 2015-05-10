@@ -1,0 +1,4 @@
+opcode : 0x37
+state  : P3
+2.97user 0.02system 0:03.13elapsed 95%CPU (0avgtext+0avgdata 139904maxresident)k
+0inputs+80outputs (0major+28788minor)pagefaults 0swaps

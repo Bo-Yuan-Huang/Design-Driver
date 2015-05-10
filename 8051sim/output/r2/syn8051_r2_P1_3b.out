@@ -1,0 +1,4 @@
+opcode : 0x3b
+state  : P1
+2.79user 0.07system 0:03.13elapsed 91%CPU (0avgtext+0avgdata 142944maxresident)k
+0inputs+104outputs (0major+36713minor)pagefaults 0swaps

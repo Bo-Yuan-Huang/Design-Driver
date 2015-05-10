@@ -1,0 +1,4 @@
+opcode : 0x61
+state  : PC
+6.31user 0.06system 0:06.58elapsed 96%CPU (0avgtext+0avgdata 146528maxresident)k
+0inputs+40outputs (0major+16918minor)pagefaults 0swaps

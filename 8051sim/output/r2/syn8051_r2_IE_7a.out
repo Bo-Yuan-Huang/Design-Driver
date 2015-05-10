@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : IE
+1.56user 0.06system 0:01.93elapsed 84%CPU (0avgtext+0avgdata 136640maxresident)k
+0inputs+72outputs (0major+25854minor)pagefaults 0swaps

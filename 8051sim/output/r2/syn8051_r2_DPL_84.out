@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : DPL
+2.44user 0.06system 0:02.70elapsed 92%CPU (0avgtext+0avgdata 136000maxresident)k
+0inputs+80outputs (0major+28312minor)pagefaults 0swaps

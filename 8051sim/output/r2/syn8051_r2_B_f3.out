@@ -1,0 +1,4 @@
+opcode : 0xf3
+state  : B
+2.99user 0.06system 0:03.24elapsed 94%CPU (0avgtext+0avgdata 148640maxresident)k
+0inputs+112outputs (0major+42361minor)pagefaults 0swaps

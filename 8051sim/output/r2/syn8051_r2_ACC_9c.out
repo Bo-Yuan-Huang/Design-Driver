@@ -1,0 +1,4 @@
+opcode : 0x9c
+state  : ACC
+3.28user 0.05system 0:03.63elapsed 91%CPU (0avgtext+0avgdata 163920maxresident)k
+0inputs+96outputs (0major+42479minor)pagefaults 0swaps

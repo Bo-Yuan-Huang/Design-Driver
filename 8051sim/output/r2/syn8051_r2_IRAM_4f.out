@@ -1,0 +1,4 @@
+opcode : 0x4f
+state  : IRAM
+2714.09user 1.54system 45:20.54elapsed 99%CPU (0avgtext+0avgdata 305472maxresident)k
+0inputs+160outputs (0major+139491minor)pagefaults 0swaps

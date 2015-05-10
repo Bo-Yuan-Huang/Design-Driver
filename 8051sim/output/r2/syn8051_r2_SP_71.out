@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : SP
+1.02user 0.02system 0:01.23elapsed 85%CPU (0avgtext+0avgdata 127136maxresident)k
+0inputs+40outputs (0major+15287minor)pagefaults 0swaps

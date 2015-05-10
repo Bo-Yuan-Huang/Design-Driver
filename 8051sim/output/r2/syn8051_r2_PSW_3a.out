@@ -1,0 +1,4 @@
+opcode : 0x3a
+state  : PSW
+7.70user 0.12system 0:08.00elapsed 97%CPU (0avgtext+0avgdata 186864maxresident)k
+0inputs+152outputs (0major+78415minor)pagefaults 0swaps

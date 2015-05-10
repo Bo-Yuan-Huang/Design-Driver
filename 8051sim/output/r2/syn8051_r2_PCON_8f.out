@@ -1,0 +1,4 @@
+opcode : 0x8f
+state  : PCON
+3.15user 0.07system 0:03.42elapsed 94%CPU (0avgtext+0avgdata 139824maxresident)k
+0inputs+120outputs (0major+40810minor)pagefaults 0swaps

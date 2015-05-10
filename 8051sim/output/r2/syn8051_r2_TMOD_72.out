@@ -1,0 +1,4 @@
+opcode : 0x72
+state  : TMOD
+2.50user 0.04system 0:03.32elapsed 76%CPU (0avgtext+0avgdata 136912maxresident)k
+0inputs+88outputs (0major+30897minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x3a
+state  : TMOD
+2.55user 0.09system 0:03.07elapsed 86%CPU (0avgtext+0avgdata 138832maxresident)k
+0inputs+96outputs (0major+33689minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x63
+state  : TMOD
+2.26user 0.03system 0:02.78elapsed 82%CPU (0avgtext+0avgdata 137040maxresident)k
+0inputs+64outputs (0major+20993minor)pagefaults 0swaps

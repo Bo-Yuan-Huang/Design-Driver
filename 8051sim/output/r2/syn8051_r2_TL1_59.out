@@ -1,0 +1,4 @@
+opcode : 0x59
+state  : TL1
+2.54user 0.09system 0:02.99elapsed 88%CPU (0avgtext+0avgdata 143232maxresident)k
+0inputs+96outputs (0major+35062minor)pagefaults 0swaps

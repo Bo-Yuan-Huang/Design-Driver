@@ -1,0 +1,4 @@
+opcode : 0x85
+state  : IE
+2.37user 0.05system 0:02.56elapsed 94%CPU (0avgtext+0avgdata 140768maxresident)k
+0inputs+72outputs (0major+27265minor)pagefaults 0swaps

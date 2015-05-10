@@ -1,0 +1,4 @@
+opcode : 0x12
+state  : PCON
+2.10user 0.04system 0:02.36elapsed 90%CPU (0avgtext+0avgdata 134400maxresident)k
+0inputs+72outputs (0major+25795minor)pagefaults 0swaps

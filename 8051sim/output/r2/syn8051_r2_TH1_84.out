@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : TH1
+2.41user 0.05system 0:02.82elapsed 87%CPU (0avgtext+0avgdata 136720maxresident)k
+0inputs+88outputs (0major+30887minor)pagefaults 0swaps

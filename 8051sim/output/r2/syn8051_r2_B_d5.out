@@ -1,0 +1,4 @@
+opcode : 0xd5
+state  : B
+3.32user 0.09system 0:03.66elapsed 93%CPU (0avgtext+0avgdata 142336maxresident)k
+0inputs+64outputs (0major+27497minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x3d
+state  : IRAM
+1890.14user 1.05system 31:34.69elapsed 99%CPU (0avgtext+0avgdata 296864maxresident)k
+0inputs+128outputs (0major+118105minor)pagefaults 0swaps

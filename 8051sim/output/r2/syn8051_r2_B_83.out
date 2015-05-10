@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : B
+2.97user 0.06system 0:03.23elapsed 94%CPU (0avgtext+0avgdata 147008maxresident)k
+0inputs+96outputs (0major+36306minor)pagefaults 0swaps

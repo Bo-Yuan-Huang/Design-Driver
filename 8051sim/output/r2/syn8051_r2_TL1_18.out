@@ -1,0 +1,4 @@
+opcode : 0x18
+state  : TL1
+2.77user 0.05system 0:02.91elapsed 97%CPU (0avgtext+0avgdata 143488maxresident)k
+0inputs+96outputs (0major+35176minor)pagefaults 0swaps

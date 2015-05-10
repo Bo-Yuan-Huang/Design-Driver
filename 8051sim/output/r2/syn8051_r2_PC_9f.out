@@ -1,0 +1,4 @@
+opcode : 0x9f
+state  : PC
+0.92user 0.02system 0:01.52elapsed 62%CPU (0avgtext+0avgdata 129776maxresident)k
+0inputs+32outputs (0major+13290minor)pagefaults 0swaps

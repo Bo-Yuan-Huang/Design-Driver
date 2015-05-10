@@ -1,0 +1,4 @@
+opcode : 0x56
+state  : PSW
+10.65user 0.12system 0:10.98elapsed 98%CPU (0avgtext+0avgdata 192592maxresident)k
+0inputs+160outputs (0major+88050minor)pagefaults 0swaps

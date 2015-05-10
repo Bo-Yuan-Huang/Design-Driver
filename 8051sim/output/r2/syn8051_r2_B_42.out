@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : B
+4.16user 0.06system 0:04.62elapsed 91%CPU (0avgtext+0avgdata 149856maxresident)k
+0inputs+88outputs (0major+33122minor)pagefaults 0swaps

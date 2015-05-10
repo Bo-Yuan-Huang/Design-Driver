@@ -1,0 +1,4 @@
+opcode : 0x5c
+state  : TL1
+2.39user 0.06system 0:02.74elapsed 89%CPU (0avgtext+0avgdata 136112maxresident)k
+0inputs+80outputs (0major+28800minor)pagefaults 0swaps

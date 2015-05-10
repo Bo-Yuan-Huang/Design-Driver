@@ -1,0 +1,4 @@
+opcode : 0x7c
+state  : PC
+3.35user 0.06system 0:03.61elapsed 94%CPU (0avgtext+0avgdata 140608maxresident)k
+0inputs+96outputs (0major+34570minor)pagefaults 0swaps

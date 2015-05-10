@@ -1,0 +1,4 @@
+opcode : 0x27
+state  : P0
+1.49user 0.06system 0:01.75elapsed 88%CPU (0avgtext+0avgdata 134768maxresident)k
+0inputs+80outputs (0major+27729minor)pagefaults 0swaps

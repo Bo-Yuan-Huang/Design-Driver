@@ -1,0 +1,4 @@
+opcode : 0x21
+state  : SCON
+2.82user 0.06system 0:04.08elapsed 70%CPU (0avgtext+0avgdata 140656maxresident)k
+0inputs+104outputs (0major+36675minor)pagefaults 0swaps

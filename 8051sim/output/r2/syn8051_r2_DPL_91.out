@@ -1,0 +1,4 @@
+opcode : 0x91
+state  : DPL
+2.18user 0.09system 0:02.66elapsed 85%CPU (0avgtext+0avgdata 134560maxresident)k
+0inputs+80outputs (0major+28099minor)pagefaults 0swaps

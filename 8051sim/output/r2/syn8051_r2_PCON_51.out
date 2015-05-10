@@ -1,0 +1,4 @@
+opcode : 0x51
+state  : PCON
+1.92user 0.07system 0:02.19elapsed 90%CPU (0avgtext+0avgdata 134272maxresident)k
+0inputs+72outputs (0major+25817minor)pagefaults 0swaps

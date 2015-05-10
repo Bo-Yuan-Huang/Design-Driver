@@ -1,0 +1,4 @@
+opcode : 0x65
+state  : TCON
+2.44user 0.07system 0:03.10elapsed 81%CPU (0avgtext+0avgdata 137216maxresident)k
+0inputs+96outputs (0major+33299minor)pagefaults 0swaps

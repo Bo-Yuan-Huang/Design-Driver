@@ -1,0 +1,4 @@
+opcode : 0x99
+state  : IP
+4.54user 0.10system 0:04.87elapsed 95%CPU (0avgtext+0avgdata 144240maxresident)k
+0inputs+112outputs (0major+39657minor)pagefaults 0swaps

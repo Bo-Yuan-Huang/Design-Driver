@@ -1,0 +1,4 @@
+opcode : 0x98
+state  : P1
+1.99user 0.09system 0:02.26elapsed 92%CPU (0avgtext+0avgdata 142880maxresident)k
+0inputs+104outputs (0major+36854minor)pagefaults 0swaps

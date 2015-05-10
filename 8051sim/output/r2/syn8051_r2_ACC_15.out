@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : ACC
+3.93user 0.08system 0:04.17elapsed 96%CPU (0avgtext+0avgdata 148048maxresident)k
+0inputs+64outputs (0major+25358minor)pagefaults 0swaps

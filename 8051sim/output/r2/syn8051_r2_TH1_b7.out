@@ -1,0 +1,4 @@
+opcode : 0xb7
+state  : TH1
+2.46user 0.04system 0:02.73elapsed 91%CPU (0avgtext+0avgdata 137808maxresident)k
+0inputs+88outputs (0major+31150minor)pagefaults 0swaps

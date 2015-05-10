@@ -1,0 +1,4 @@
+opcode : 0x1
+state  : SP
+2.69user 0.07system 0:03.00elapsed 92%CPU (0avgtext+0avgdata 140208maxresident)k
+0inputs+88outputs (0major+30677minor)pagefaults 0swaps

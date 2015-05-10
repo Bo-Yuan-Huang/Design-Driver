@@ -1,0 +1,4 @@
+opcode : 0x5a
+state  : P0
+1.48user 0.06system 0:01.83elapsed 84%CPU (0avgtext+0avgdata 135056maxresident)k
+0inputs+80outputs (0major+27887minor)pagefaults 0swaps

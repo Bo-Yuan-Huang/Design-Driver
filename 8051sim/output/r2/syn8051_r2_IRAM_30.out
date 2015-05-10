@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : IRAM
+2120.16user 0.17system 35:24.21elapsed 99%CPU (0avgtext+0avgdata 301312maxresident)k
+0inputs+128outputs (0major+110599minor)pagefaults 0swaps

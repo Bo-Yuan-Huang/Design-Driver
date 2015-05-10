@@ -1,0 +1,4 @@
+opcode : 0x5e
+state  : ACC
+3.20user 0.08system 0:03.57elapsed 92%CPU (0avgtext+0avgdata 150240maxresident)k
+0inputs+96outputs (0major+38094minor)pagefaults 0swaps

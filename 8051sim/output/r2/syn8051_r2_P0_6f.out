@@ -1,0 +1,4 @@
+opcode : 0x6f
+state  : P0
+1.75user 0.05system 0:02.02elapsed 88%CPU (0avgtext+0avgdata 136592maxresident)k
+0inputs+88outputs (0major+30583minor)pagefaults 0swaps

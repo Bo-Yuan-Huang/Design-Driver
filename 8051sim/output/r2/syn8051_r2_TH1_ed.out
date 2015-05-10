@@ -1,0 +1,4 @@
+opcode : 0xed
+state  : TH1
+2.59user 0.06system 0:03.03elapsed 87%CPU (0avgtext+0avgdata 137616maxresident)k
+0inputs+88outputs (0major+31113minor)pagefaults 0swaps

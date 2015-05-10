@@ -1,0 +1,4 @@
+opcode : 0x5c
+state  : SBUF
+2.27user 0.05system 0:02.49elapsed 93%CPU (0avgtext+0avgdata 135728maxresident)k
+0inputs+80outputs (0major+28444minor)pagefaults 0swaps

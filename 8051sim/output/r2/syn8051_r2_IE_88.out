@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : IE
+1.67user 0.05system 0:01.92elapsed 89%CPU (0avgtext+0avgdata 137920maxresident)k
+0inputs+56outputs (0major+21144minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : PC
+3.19user 0.06system 0:03.39elapsed 96%CPU (0avgtext+0avgdata 140560maxresident)k
+0inputs+120outputs (0major+42357minor)pagefaults 0swaps

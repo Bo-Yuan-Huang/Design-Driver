@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : TMOD
+2.98user 0.09system 0:03.31elapsed 92%CPU (0avgtext+0avgdata 141376maxresident)k
+0inputs+96outputs (0major+33377minor)pagefaults 0swaps

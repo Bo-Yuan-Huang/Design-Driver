@@ -1,0 +1,4 @@
+opcode : 0xfa
+state  : TH1
+2.54user 0.04system 0:03.00elapsed 86%CPU (0avgtext+0avgdata 136112maxresident)k
+0inputs+88outputs (0major+30729minor)pagefaults 0swaps

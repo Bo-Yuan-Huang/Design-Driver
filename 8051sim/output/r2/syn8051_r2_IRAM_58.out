@@ -1,0 +1,4 @@
+opcode : 0x58
+state  : IRAM
+3512.24user 0.67system 58:42.13elapsed 99%CPU (0avgtext+0avgdata 317520maxresident)k
+0inputs+120outputs (0major+108986minor)pagefaults 0swaps

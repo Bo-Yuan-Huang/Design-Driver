@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : TMOD
+2.33user 0.07system 0:02.84elapsed 84%CPU (0avgtext+0avgdata 135264maxresident)k
+0inputs+80outputs (0major+27994minor)pagefaults 0swaps

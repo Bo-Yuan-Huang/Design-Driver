@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : TCON
+2.74user 0.07system 0:02.96elapsed 95%CPU (0avgtext+0avgdata 140368maxresident)k
+0inputs+104outputs (0major+36905minor)pagefaults 0swaps

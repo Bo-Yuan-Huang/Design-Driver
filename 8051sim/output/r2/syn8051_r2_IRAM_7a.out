@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : IRAM
+13.04user 0.02system 0:13.32elapsed 98%CPU (0avgtext+0avgdata 160240maxresident)k
+0inputs+40outputs (0major+19979minor)pagefaults 0swaps

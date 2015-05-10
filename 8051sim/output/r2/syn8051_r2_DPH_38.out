@@ -1,0 +1,4 @@
+opcode : 0x38
+state  : DPH
+1.64user 0.05system 0:01.86elapsed 91%CPU (0avgtext+0avgdata 135168maxresident)k
+0inputs+80outputs (0major+28375minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x62
+state  : IE
+1.86user 0.02system 0:02.12elapsed 88%CPU (0avgtext+0avgdata 136192maxresident)k
+0inputs+56outputs (0major+21826minor)pagefaults 0swaps

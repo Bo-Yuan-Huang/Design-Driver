@@ -1,0 +1,4 @@
+opcode : 0x66
+state  : TMOD
+2.16user 0.06system 0:02.73elapsed 81%CPU (0avgtext+0avgdata 135280maxresident)k
+0inputs+80outputs (0major+28103minor)pagefaults 0swaps

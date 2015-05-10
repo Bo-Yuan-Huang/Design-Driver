@@ -1,0 +1,4 @@
+opcode : 0x3c
+state  : P1
+2.15user 0.06system 0:02.49elapsed 88%CPU (0avgtext+0avgdata 142736maxresident)k
+0inputs+104outputs (0major+36922minor)pagefaults 0swaps

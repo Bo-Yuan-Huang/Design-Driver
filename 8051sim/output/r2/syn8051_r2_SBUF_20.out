@@ -1,0 +1,4 @@
+opcode : 0x20
+state  : SBUF
+2.27user 0.07system 0:02.67elapsed 87%CPU (0avgtext+0avgdata 137728maxresident)k
+0inputs+80outputs (0major+28556minor)pagefaults 0swaps

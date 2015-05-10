@@ -1,0 +1,4 @@
+opcode : 0x77
+state  : IRAM
+17.91user 0.02system 0:18.35elapsed 97%CPU (0avgtext+0avgdata 152768maxresident)k
+0inputs+32outputs (0major+15726minor)pagefaults 0swaps

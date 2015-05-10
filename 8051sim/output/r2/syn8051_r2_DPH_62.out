@@ -1,0 +1,4 @@
+opcode : 0x62
+state  : DPH
+2.57user 0.04system 0:02.80elapsed 93%CPU (0avgtext+0avgdata 138912maxresident)k
+0inputs+72outputs (0major+27393minor)pagefaults 0swaps

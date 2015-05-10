@@ -1,0 +1,4 @@
+opcode : 0x4
+state  : ACC
+1.40user 0.04system 0:01.61elapsed 89%CPU (0avgtext+0avgdata 132592maxresident)k
+0inputs+32outputs (0major+14147minor)pagefaults 0swaps

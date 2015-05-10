@@ -1,0 +1,4 @@
+opcode : 0x81
+state  : SCON
+3.09user 0.07system 0:03.41elapsed 92%CPU (0avgtext+0avgdata 141024maxresident)k
+0inputs+104outputs (0major+36921minor)pagefaults 0swaps

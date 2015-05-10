@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : P3
+2.67user 0.08system 0:03.01elapsed 91%CPU (0avgtext+0avgdata 144208maxresident)k
+0inputs+96outputs (0major+35371minor)pagefaults 0swaps

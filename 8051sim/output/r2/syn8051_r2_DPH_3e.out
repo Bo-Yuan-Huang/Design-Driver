@@ -1,0 +1,4 @@
+opcode : 0x3e
+state  : DPH
+2.98user 0.08system 0:03.37elapsed 91%CPU (0avgtext+0avgdata 136416maxresident)k
+0inputs+88outputs (0major+30840minor)pagefaults 0swaps

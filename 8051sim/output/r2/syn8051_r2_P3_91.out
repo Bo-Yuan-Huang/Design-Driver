@@ -1,0 +1,4 @@
+opcode : 0x91
+state  : P3
+2.27user 0.04system 0:02.50elapsed 92%CPU (0avgtext+0avgdata 139440maxresident)k
+0inputs+88outputs (0major+31423minor)pagefaults 0swaps

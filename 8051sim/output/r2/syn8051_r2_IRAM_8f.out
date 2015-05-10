@@ -1,0 +1,4 @@
+opcode : 0x8f
+state  : IRAM
+141.84user 0.06system 2:22.49elapsed 99%CPU (0avgtext+0avgdata 201968maxresident)k
+0inputs+64outputs (0major+37184minor)pagefaults 0swaps

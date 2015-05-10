@@ -1,0 +1,4 @@
+opcode : 0xf7
+state  : PC
+0.78user 0.03system 0:01.12elapsed 72%CPU (0avgtext+0avgdata 129600maxresident)k
+0inputs+32outputs (0major+13349minor)pagefaults 0swaps

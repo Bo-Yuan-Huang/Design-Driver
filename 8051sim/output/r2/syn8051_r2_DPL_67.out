@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : DPL
+2.57user 0.07system 0:02.94elapsed 89%CPU (0avgtext+0avgdata 134016maxresident)k
+0inputs+80outputs (0major+28099minor)pagefaults 0swaps

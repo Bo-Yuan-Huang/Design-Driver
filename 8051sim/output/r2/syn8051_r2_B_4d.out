@@ -1,0 +1,4 @@
+opcode : 0x4d
+state  : B
+4.17user 0.06system 0:04.54elapsed 93%CPU (0avgtext+0avgdata 148208maxresident)k
+0inputs+96outputs (0major+36722minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x9a
+state  : SCON
+2.93user 0.07system 0:03.41elapsed 88%CPU (0avgtext+0avgdata 141392maxresident)k
+0inputs+104outputs (0major+37080minor)pagefaults 0swaps

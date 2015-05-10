@@ -1,0 +1,4 @@
+opcode : 0x51
+state  : TL1
+2.13user 0.04system 0:02.43elapsed 89%CPU (0avgtext+0avgdata 136672maxresident)k
+0inputs+72outputs (0major+26312minor)pagefaults 0swaps

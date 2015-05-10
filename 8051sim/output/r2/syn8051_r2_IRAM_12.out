@@ -1,0 +1,4 @@
+opcode : 0x12
+state  : IRAM
+20.72user 0.04system 0:20.99elapsed 98%CPU (0avgtext+0avgdata 158896maxresident)k
+0inputs+32outputs (0major+16072minor)pagefaults 0swaps

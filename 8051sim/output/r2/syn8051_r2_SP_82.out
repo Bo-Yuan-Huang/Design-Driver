@@ -1,0 +1,4 @@
+opcode : 0x82
+state  : SP
+2.49user 0.04system 0:02.82elapsed 89%CPU (0avgtext+0avgdata 137440maxresident)k
+0inputs+80outputs (0major+28185minor)pagefaults 0swaps

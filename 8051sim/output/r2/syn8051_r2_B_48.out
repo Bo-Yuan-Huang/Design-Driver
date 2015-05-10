@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : B
+3.60user 0.07system 0:03.87elapsed 94%CPU (0avgtext+0avgdata 150752maxresident)k
+0inputs+104outputs (0major+40365minor)pagefaults 0swaps

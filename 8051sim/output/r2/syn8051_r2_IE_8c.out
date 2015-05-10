@@ -1,0 +1,4 @@
+opcode : 0x8c
+state  : IE
+3.72user 0.09system 0:03.97elapsed 96%CPU (0avgtext+0avgdata 143168maxresident)k
+0inputs+128outputs (0major+44558minor)pagefaults 0swaps

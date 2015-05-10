@@ -1,0 +1,4 @@
+opcode : 0x9a
+state  : IRAM
+1906.87user 0.36system 32:12.80elapsed 98%CPU (0avgtext+0avgdata 285920maxresident)k
+0inputs+144outputs (0major+120028minor)pagefaults 0swaps

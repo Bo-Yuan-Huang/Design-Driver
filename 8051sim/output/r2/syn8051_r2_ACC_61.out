@@ -1,0 +1,4 @@
+opcode : 0x61
+state  : ACC
+3.62user 0.06system 0:04.00elapsed 92%CPU (0avgtext+0avgdata 157456maxresident)k
+0inputs+88outputs (0major+37069minor)pagefaults 0swaps

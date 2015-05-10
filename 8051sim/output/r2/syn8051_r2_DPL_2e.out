@@ -1,0 +1,4 @@
+opcode : 0x2e
+state  : DPL
+2.90user 0.06system 0:03.17elapsed 93%CPU (0avgtext+0avgdata 134640maxresident)k
+0inputs+80outputs (0major+28082minor)pagefaults 0swaps

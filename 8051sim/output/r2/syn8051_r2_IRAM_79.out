@@ -1,0 +1,4 @@
+opcode : 0x79
+state  : IRAM
+10.82user 0.04system 0:11.13elapsed 97%CPU (0avgtext+0avgdata 150112maxresident)k
+0inputs+32outputs (0major+15555minor)pagefaults 0swaps

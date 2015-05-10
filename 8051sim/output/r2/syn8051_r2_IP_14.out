@@ -1,0 +1,4 @@
+opcode : 0x14
+state  : IP
+4.14user 0.07system 0:04.38elapsed 96%CPU (0avgtext+0avgdata 143200maxresident)k
+0inputs+104outputs (0major+36631minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x40
+state  : PCON
+2.46user 0.03system 0:02.79elapsed 89%CPU (0avgtext+0avgdata 138176maxresident)k
+0inputs+88outputs (0major+31471minor)pagefaults 0swaps

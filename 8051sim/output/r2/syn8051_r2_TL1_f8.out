@@ -1,0 +1,4 @@
+opcode : 0xf8
+state  : TL1
+2.51user 0.07system 0:02.94elapsed 87%CPU (0avgtext+0avgdata 139824maxresident)k
+0inputs+88outputs (0major+31931minor)pagefaults 0swaps

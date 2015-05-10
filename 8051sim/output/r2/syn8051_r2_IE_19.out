@@ -1,0 +1,4 @@
+opcode : 0x19
+state  : IE
+2.49user 0.04system 0:03.22elapsed 78%CPU (0avgtext+0avgdata 136608maxresident)k
+0inputs+72outputs (0major+25724minor)pagefaults 0swaps

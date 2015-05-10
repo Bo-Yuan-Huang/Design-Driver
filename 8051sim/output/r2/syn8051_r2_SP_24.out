@@ -1,0 +1,4 @@
+opcode : 0x24
+state  : SP
+2.62user 0.04system 0:02.83elapsed 94%CPU (0avgtext+0avgdata 140160maxresident)k
+0inputs+88outputs (0major+31190minor)pagefaults 0swaps

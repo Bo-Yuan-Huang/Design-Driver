@@ -1,0 +1,4 @@
+opcode : 0x4f
+state  : PSW
+8.22user 0.13system 0:08.55elapsed 97%CPU (0avgtext+0avgdata 186240maxresident)k
+0inputs+144outputs (0major+75809minor)pagefaults 0swaps

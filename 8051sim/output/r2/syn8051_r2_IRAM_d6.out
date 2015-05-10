@@ -1,0 +1,4 @@
+opcode : 0xd6
+state  : IRAM
+8.28user 0.03system 0:08.54elapsed 97%CPU (0avgtext+0avgdata 152576maxresident)k
+0inputs+32outputs (0major+15737minor)pagefaults 0swaps

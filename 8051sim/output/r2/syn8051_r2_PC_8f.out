@@ -1,0 +1,4 @@
+opcode : 0x8f
+state  : PC
+2.84user 0.06system 0:03.15elapsed 91%CPU (0avgtext+0avgdata 138608maxresident)k
+0inputs+104outputs (0major+36199minor)pagefaults 0swaps

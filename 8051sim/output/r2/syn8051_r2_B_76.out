@@ -1,0 +1,4 @@
+opcode : 0x76
+state  : B
+4.11user 0.09system 0:04.42elapsed 95%CPU (0avgtext+0avgdata 148496maxresident)k
+0inputs+104outputs (0major+39651minor)pagefaults 0swaps

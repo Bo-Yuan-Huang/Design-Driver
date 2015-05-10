@@ -1,0 +1,4 @@
+opcode : 0x49
+state  : TMOD
+2.27user 0.04system 0:02.73elapsed 84%CPU (0avgtext+0avgdata 134896maxresident)k
+0inputs+80outputs (0major+27963minor)pagefaults 0swaps

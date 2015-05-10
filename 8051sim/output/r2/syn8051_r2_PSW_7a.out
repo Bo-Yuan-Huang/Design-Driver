@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : PSW
+7.73user 0.13system 0:08.06elapsed 97%CPU (0avgtext+0avgdata 184800maxresident)k
+0inputs+152outputs (0major+76569minor)pagefaults 0swaps

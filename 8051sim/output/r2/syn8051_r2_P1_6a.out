@@ -1,0 +1,4 @@
+opcode : 0x6a
+state  : P1
+2.07user 0.07system 0:02.42elapsed 88%CPU (0avgtext+0avgdata 143056maxresident)k
+0inputs+104outputs (0major+36914minor)pagefaults 0swaps

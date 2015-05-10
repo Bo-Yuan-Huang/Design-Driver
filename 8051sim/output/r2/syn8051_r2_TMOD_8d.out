@@ -1,0 +1,4 @@
+opcode : 0x8d
+state  : TMOD
+3.86user 0.08system 0:04.10elapsed 95%CPU (0avgtext+0avgdata 143856maxresident)k
+0inputs+152outputs (0major+51855minor)pagefaults 0swaps

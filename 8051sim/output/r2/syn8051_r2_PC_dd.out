@@ -1,0 +1,4 @@
+opcode : 0xdd
+state  : PC
+122.50user 0.10system 2:03.02elapsed 99%CPU (0avgtext+0avgdata 253536maxresident)k
+0inputs+144outputs (0major+61393minor)pagefaults 0swaps

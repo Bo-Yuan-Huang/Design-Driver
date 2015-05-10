@@ -1,0 +1,4 @@
+opcode : 0x82
+state  : P3
+2.94user 0.08system 0:03.22elapsed 93%CPU (0avgtext+0avgdata 143984maxresident)k
+0inputs+104outputs (0major+37766minor)pagefaults 0swaps

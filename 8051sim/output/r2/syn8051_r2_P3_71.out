@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : P3
+3.44user 0.06system 0:03.64elapsed 96%CPU (0avgtext+0avgdata 146128maxresident)k
+0inputs+112outputs (0major+40777minor)pagefaults 0swaps

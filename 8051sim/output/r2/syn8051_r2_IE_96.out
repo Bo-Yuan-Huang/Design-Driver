@@ -1,0 +1,4 @@
+opcode : 0x96
+state  : IE
+2.36user 0.05system 0:02.63elapsed 91%CPU (0avgtext+0avgdata 136672maxresident)k
+0inputs+72outputs (0major+25874minor)pagefaults 0swaps

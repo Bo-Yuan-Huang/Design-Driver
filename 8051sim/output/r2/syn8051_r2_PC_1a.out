@@ -1,0 +1,4 @@
+opcode : 0x1a
+state  : PC
+1.07user 0.02system 0:01.40elapsed 78%CPU (0avgtext+0avgdata 129536maxresident)k
+0inputs+32outputs (0major+13306minor)pagefaults 0swaps

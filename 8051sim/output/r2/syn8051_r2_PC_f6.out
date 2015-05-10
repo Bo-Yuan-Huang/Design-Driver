@@ -1,0 +1,4 @@
+opcode : 0xf6
+state  : PC
+1.29user 0.03system 0:01.49elapsed 88%CPU (0avgtext+0avgdata 129744maxresident)k
+0inputs+32outputs (0major+13500minor)pagefaults 0swaps

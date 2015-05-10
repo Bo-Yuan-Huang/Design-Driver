@@ -1,0 +1,4 @@
+opcode : 0x32
+state  : PC
+1.15user 0.02system 0:01.46elapsed 80%CPU (0avgtext+0avgdata 132016maxresident)k
+0inputs+40outputs (0major+15873minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x33
+state  : PSW
+3.76user 0.04system 0:04.03elapsed 94%CPU (0avgtext+0avgdata 162608maxresident)k
+0inputs+88outputs (0major+39623minor)pagefaults 0swaps

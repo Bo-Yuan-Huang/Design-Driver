@@ -1,0 +1,4 @@
+opcode : 0xc7
+state  : DPL
+2.98user 0.07system 0:03.55elapsed 85%CPU (0avgtext+0avgdata 138272maxresident)k
+0inputs+88outputs (0major+31296minor)pagefaults 0swaps

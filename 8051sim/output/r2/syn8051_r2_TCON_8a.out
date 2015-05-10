@@ -1,0 +1,4 @@
+opcode : 0x8a
+state  : TCON
+2.26user 0.08system 0:02.49elapsed 94%CPU (0avgtext+0avgdata 139936maxresident)k
+0inputs+104outputs (0major+36104minor)pagefaults 0swaps

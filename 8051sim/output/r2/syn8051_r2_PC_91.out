@@ -1,0 +1,4 @@
+opcode : 0x91
+state  : PC
+1.26user 0.04system 0:01.58elapsed 82%CPU (0avgtext+0avgdata 135472maxresident)k
+0inputs+48outputs (0major+18427minor)pagefaults 0swaps

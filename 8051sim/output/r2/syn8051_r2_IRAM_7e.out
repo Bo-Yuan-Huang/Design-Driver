@@ -1,0 +1,4 @@
+opcode : 0x7e
+state  : IRAM
+5.04user 0.02system 0:21.65elapsed 23%CPU (0avgtext+0avgdata 145328maxresident)k
+0inputs+32outputs (0major+15186minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x65
+state  : P2
+1.80user 0.03system 0:02.10elapsed 87%CPU (0avgtext+0avgdata 138960maxresident)k
+0inputs+80outputs (0major+28392minor)pagefaults 0swaps

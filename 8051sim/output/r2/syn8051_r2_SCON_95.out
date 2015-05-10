@@ -1,0 +1,4 @@
+opcode : 0x95
+state  : SCON
+2.72user 0.05system 0:03.07elapsed 90%CPU (0avgtext+0avgdata 140640maxresident)k
+0inputs+96outputs (0major+34232minor)pagefaults 0swaps

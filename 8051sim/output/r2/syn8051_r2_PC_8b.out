@@ -1,0 +1,4 @@
+opcode : 0x8b
+state  : PC
+2.84user 0.06system 0:03.18elapsed 91%CPU (0avgtext+0avgdata 138432maxresident)k
+0inputs+80outputs (0major+28904minor)pagefaults 0swaps

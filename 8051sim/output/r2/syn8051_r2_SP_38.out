@@ -1,0 +1,4 @@
+opcode : 0x38
+state  : SP
+2.21user 0.04system 0:02.41elapsed 93%CPU (0avgtext+0avgdata 142720maxresident)k
+0inputs+88outputs (0major+31630minor)pagefaults 0swaps

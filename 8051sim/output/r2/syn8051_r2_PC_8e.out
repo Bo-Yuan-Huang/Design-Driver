@@ -1,0 +1,4 @@
+opcode : 0x8e
+state  : PC
+2.76user 0.07system 0:03.09elapsed 91%CPU (0avgtext+0avgdata 138992maxresident)k
+0inputs+72outputs (0major+26825minor)pagefaults 0swaps

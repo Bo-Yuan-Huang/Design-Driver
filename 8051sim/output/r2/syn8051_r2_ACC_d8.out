@@ -1,0 +1,4 @@
+opcode : 0xd8
+state  : ACC
+4.29user 0.11system 0:04.99elapsed 88%CPU (0avgtext+0avgdata 164912maxresident)k
+0inputs+120outputs (0major+53637minor)pagefaults 0swaps

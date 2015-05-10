@@ -1,0 +1,4 @@
+opcode : 0x2d
+state  : IRAM
+957.79user 0.15system 16:00.05elapsed 99%CPU (0avgtext+0avgdata 269248maxresident)k
+0inputs+128outputs (0major+100807minor)pagefaults 0swaps

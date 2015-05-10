@@ -1,0 +1,4 @@
+opcode : 0x27
+state  : SBUF
+2.31user 0.04system 0:02.71elapsed 86%CPU (0avgtext+0avgdata 136112maxresident)k
+0inputs+80outputs (0major+28392minor)pagefaults 0swaps

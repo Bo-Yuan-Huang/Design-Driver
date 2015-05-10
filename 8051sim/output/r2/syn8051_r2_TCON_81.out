@@ -1,0 +1,4 @@
+opcode : 0x81
+state  : TCON
+2.54user 0.07system 0:02.98elapsed 87%CPU (0avgtext+0avgdata 138464maxresident)k
+0inputs+96outputs (0major+33559minor)pagefaults 0swaps

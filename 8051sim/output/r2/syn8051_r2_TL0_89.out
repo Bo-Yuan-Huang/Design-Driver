@@ -1,0 +1,4 @@
+opcode : 0x89
+state  : TL0
+1.99user 0.04system 0:02.23elapsed 91%CPU (0avgtext+0avgdata 136448maxresident)k
+0inputs+64outputs (0major+23224minor)pagefaults 0swaps

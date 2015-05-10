@@ -1,0 +1,4 @@
+opcode : 0x5e
+state  : PSW
+6.18user 0.09system 0:06.51elapsed 96%CPU (0avgtext+0avgdata 173696maxresident)k
+0inputs+112outputs (0major+53734minor)pagefaults 0swaps

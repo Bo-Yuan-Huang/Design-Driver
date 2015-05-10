@@ -1,0 +1,4 @@
+opcode : 0x36
+state  : P2
+1.89user 0.04system 0:02.49elapsed 77%CPU (0avgtext+0avgdata 139536maxresident)k
+0inputs+88outputs (0major+31351minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x18
+state  : DPH
+3.53user 0.10system 0:04.13elapsed 88%CPU (0avgtext+0avgdata 140032maxresident)k
+0inputs+112outputs (0major+39211minor)pagefaults 0swaps

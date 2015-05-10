@@ -1,0 +1,4 @@
+opcode : 0x14
+state  : TMOD
+2.35user 0.05system 0:02.65elapsed 90%CPU (0avgtext+0avgdata 135328maxresident)k
+0inputs+80outputs (0major+28266minor)pagefaults 0swaps

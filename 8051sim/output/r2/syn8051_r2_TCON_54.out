@@ -1,0 +1,4 @@
+opcode : 0x54
+state  : TCON
+2.44user 0.06system 0:02.85elapsed 87%CPU (0avgtext+0avgdata 137536maxresident)k
+0inputs+96outputs (0major+33327minor)pagefaults 0swaps

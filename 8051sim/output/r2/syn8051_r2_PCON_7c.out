@@ -1,0 +1,4 @@
+opcode : 0x7c
+state  : PCON
+2.08user 0.04system 0:02.28elapsed 93%CPU (0avgtext+0avgdata 134320maxresident)k
+0inputs+72outputs (0major+25885minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x8d
+state  : SBUF
+3.55user 0.09system 0:03.83elapsed 95%CPU (0avgtext+0avgdata 144416maxresident)k
+0inputs+136outputs (0major+47640minor)pagefaults 0swaps

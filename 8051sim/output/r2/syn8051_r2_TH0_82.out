@@ -1,0 +1,4 @@
+opcode : 0x82
+state  : TH0
+1.89user 0.04system 0:02.16elapsed 89%CPU (0avgtext+0avgdata 134464maxresident)k
+0inputs+64outputs (0major+23514minor)pagefaults 0swaps

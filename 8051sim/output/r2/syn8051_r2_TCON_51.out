@@ -1,0 +1,4 @@
+opcode : 0x51
+state  : TCON
+2.80user 0.08system 0:03.17elapsed 90%CPU (0avgtext+0avgdata 138384maxresident)k
+0inputs+96outputs (0major+33499minor)pagefaults 0swaps

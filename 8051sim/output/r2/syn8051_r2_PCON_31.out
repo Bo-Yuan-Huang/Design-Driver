@@ -1,0 +1,4 @@
+opcode : 0x31
+state  : PCON
+2.14user 0.04system 0:02.47elapsed 88%CPU (0avgtext+0avgdata 135184maxresident)k
+0inputs+72outputs (0major+25917minor)pagefaults 0swaps

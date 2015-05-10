@@ -1,0 +1,4 @@
+opcode : 0xf3
+state  : SP
+2.84user 0.07system 0:03.15elapsed 92%CPU (0avgtext+0avgdata 140624maxresident)k
+0inputs+96outputs (0major+33949minor)pagefaults 0swaps

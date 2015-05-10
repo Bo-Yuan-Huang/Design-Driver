@@ -1,0 +1,4 @@
+opcode : 0x6f
+state  : PCON
+2.38user 0.04system 0:02.68elapsed 90%CPU (0avgtext+0avgdata 137808maxresident)k
+0inputs+88outputs (0major+31309minor)pagefaults 0swaps

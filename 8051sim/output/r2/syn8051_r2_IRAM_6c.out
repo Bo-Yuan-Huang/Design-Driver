@@ -1,0 +1,4 @@
+opcode : 0x6c
+state  : IRAM
+2676.00user 0.23system 45:03.88elapsed 98%CPU (0avgtext+0avgdata 317344maxresident)k
+0inputs+120outputs (0major+120877minor)pagefaults 0swaps

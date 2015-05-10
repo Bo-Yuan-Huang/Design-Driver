@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : B
+4.53user 0.10system 0:04.80elapsed 96%CPU (0avgtext+0avgdata 146800maxresident)k
+0inputs+104outputs (0major+39193minor)pagefaults 0swaps

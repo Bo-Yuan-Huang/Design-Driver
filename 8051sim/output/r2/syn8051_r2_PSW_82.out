@@ -1,0 +1,4 @@
+opcode : 0x82
+state  : PSW
+5.03user 0.08system 0:05.26elapsed 97%CPU (0avgtext+0avgdata 180912maxresident)k
+0inputs+104outputs (0major+46910minor)pagefaults 0swaps

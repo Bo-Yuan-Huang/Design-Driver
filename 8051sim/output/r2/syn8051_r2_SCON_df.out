@@ -1,0 +1,4 @@
+opcode : 0xdf
+state  : SCON
+3.03user 0.06system 0:03.52elapsed 87%CPU (0avgtext+0avgdata 140448maxresident)k
+0inputs+96outputs (0major+34176minor)pagefaults 0swaps

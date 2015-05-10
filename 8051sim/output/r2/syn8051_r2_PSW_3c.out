@@ -1,0 +1,4 @@
+opcode : 0x3c
+state  : PSW
+4.67user 0.04system 0:04.92elapsed 95%CPU (0avgtext+0avgdata 163088maxresident)k
+0inputs+96outputs (0major+43221minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x9e
+state  : TH1
+2.83user 0.09system 0:03.12elapsed 93%CPU (0avgtext+0avgdata 138688maxresident)k
+0inputs+96outputs (0major+33829minor)pagefaults 0swaps

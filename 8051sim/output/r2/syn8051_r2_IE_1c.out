@@ -1,0 +1,4 @@
+opcode : 0x1c
+state  : IE
+2.07user 0.05system 0:02.29elapsed 92%CPU (0avgtext+0avgdata 136624maxresident)k
+0inputs+72outputs (0major+25903minor)pagefaults 0swaps

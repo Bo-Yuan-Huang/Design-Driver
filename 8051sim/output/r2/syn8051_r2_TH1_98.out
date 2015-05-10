@@ -1,0 +1,4 @@
+opcode : 0x98
+state  : TH1
+2.35user 0.10system 0:02.69elapsed 90%CPU (0avgtext+0avgdata 137936maxresident)k
+0inputs+88outputs (0major+31164minor)pagefaults 0swaps

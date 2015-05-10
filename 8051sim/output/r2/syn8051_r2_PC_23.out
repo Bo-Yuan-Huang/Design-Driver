@@ -1,0 +1,4 @@
+opcode : 0x23
+state  : PC
+0.76user 0.02system 0:01.03elapsed 76%CPU (0avgtext+0avgdata 129472maxresident)k
+0inputs+32outputs (0major+13351minor)pagefaults 0swaps

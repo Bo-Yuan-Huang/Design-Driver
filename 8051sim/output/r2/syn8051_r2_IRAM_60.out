@@ -1,0 +1,4 @@
+opcode : 0x60
+state  : IRAM
+1649.13user 0.21system 27:32.47elapsed 99%CPU (0avgtext+0avgdata 305776maxresident)k
+0inputs+136outputs (0major+115312minor)pagefaults 0swaps

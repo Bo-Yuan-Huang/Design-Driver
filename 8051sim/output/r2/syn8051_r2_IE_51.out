@@ -1,0 +1,4 @@
+opcode : 0x51
+state  : IE
+2.27user 0.04system 0:02.53elapsed 91%CPU (0avgtext+0avgdata 136608maxresident)k
+0inputs+72outputs (0major+25864minor)pagefaults 0swaps

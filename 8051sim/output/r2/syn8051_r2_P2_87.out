@@ -1,0 +1,4 @@
+opcode : 0x87
+state  : P2
+2.07user 0.05system 0:02.27elapsed 93%CPU (0avgtext+0avgdata 139056maxresident)k
+0inputs+80outputs (0major+28400minor)pagefaults 0swaps

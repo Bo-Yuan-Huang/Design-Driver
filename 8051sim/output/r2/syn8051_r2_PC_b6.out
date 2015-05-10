@@ -1,0 +1,4 @@
+opcode : 0xb6
+state  : PC
+102.39user 0.08system 1:42.83elapsed 99%CPU (0avgtext+0avgdata 243616maxresident)k
+0inputs+120outputs (0major+51087minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xfc
+state  : TH0
+2.07user 0.06system 0:02.39elapsed 89%CPU (0avgtext+0avgdata 134544maxresident)k
+0inputs+72outputs (0major+25925minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x15
+state  : IRAM
+20.77user 0.04system 0:21.04elapsed 98%CPU (0avgtext+0avgdata 169232maxresident)k
+0inputs+56outputs (0major+31437minor)pagefaults 0swaps

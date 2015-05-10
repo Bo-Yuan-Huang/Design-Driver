@@ -1,0 +1,4 @@
+opcode : 0x25
+state  : IP
+4.62user 0.12system 0:05.01elapsed 94%CPU (0avgtext+0avgdata 144416maxresident)k
+0inputs+112outputs (0major+39610minor)pagefaults 0swaps

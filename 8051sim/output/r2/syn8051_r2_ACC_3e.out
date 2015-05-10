@@ -1,0 +1,4 @@
+opcode : 0x3e
+state  : ACC
+5.85user 0.13system 0:06.26elapsed 95%CPU (0avgtext+0avgdata 159376maxresident)k
+0inputs+128outputs (0major+52651minor)pagefaults 0swaps

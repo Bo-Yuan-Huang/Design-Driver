@@ -1,0 +1,4 @@
+opcode : 0x63
+state  : ACC
+2.65user 0.05system 0:02.99elapsed 90%CPU (0avgtext+0avgdata 155600maxresident)k
+0inputs+80outputs (0major+33700minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x13
+state  : TL1
+2.31user 0.04system 0:02.74elapsed 85%CPU (0avgtext+0avgdata 136800maxresident)k
+0inputs+80outputs (0major+28782minor)pagefaults 0swaps

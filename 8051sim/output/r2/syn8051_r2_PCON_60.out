@@ -1,0 +1,4 @@
+opcode : 0x60
+state  : PCON
+2.17user 0.08system 0:02.50elapsed 90%CPU (0avgtext+0avgdata 135824maxresident)k
+0inputs+80outputs (0major+28593minor)pagefaults 0swaps

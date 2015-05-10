@@ -1,0 +1,4 @@
+opcode : 0x4b
+state  : TMOD
+2.38user 0.06system 0:02.77elapsed 88%CPU (0avgtext+0avgdata 135120maxresident)k
+0inputs+88outputs (0major+30621minor)pagefaults 0swaps

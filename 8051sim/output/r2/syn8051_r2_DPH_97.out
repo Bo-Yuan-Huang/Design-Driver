@@ -1,0 +1,4 @@
+opcode : 0x97
+state  : DPH
+3.03user 0.04system 0:03.40elapsed 90%CPU (0avgtext+0avgdata 139248maxresident)k
+0inputs+96outputs (0major+33792minor)pagefaults 0swaps

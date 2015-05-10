@@ -1,0 +1,4 @@
+opcode : 0x1b
+state  : B
+4.33user 0.08system 0:04.71elapsed 93%CPU (0avgtext+0avgdata 148528maxresident)k
+0inputs+104outputs (0major+39519minor)pagefaults 0swaps

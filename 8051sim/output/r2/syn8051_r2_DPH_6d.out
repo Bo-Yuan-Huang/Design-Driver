@@ -1,0 +1,4 @@
+opcode : 0x6d
+state  : DPH
+2.89user 0.06system 0:03.14elapsed 94%CPU (0avgtext+0avgdata 137888maxresident)k
+0inputs+104outputs (0major+36090minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xf
+state  : DPH
+2.76user 0.07system 0:02.95elapsed 96%CPU (0avgtext+0avgdata 139696maxresident)k
+0inputs+96outputs (0major+33753minor)pagefaults 0swaps

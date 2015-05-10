@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : IRAM
+14043.35user 0.29system 3:54:35elapsed 99%CPU (0avgtext+0avgdata 457744maxresident)k
+0inputs+136outputs (0major+174066minor)pagefaults 0swaps

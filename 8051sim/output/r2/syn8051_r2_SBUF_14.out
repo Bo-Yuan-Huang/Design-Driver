@@ -1,0 +1,4 @@
+opcode : 0x14
+state  : SBUF
+2.43user 0.08system 0:02.77elapsed 90%CPU (0avgtext+0avgdata 139088maxresident)k
+0inputs+88outputs (0major+31221minor)pagefaults 0swaps

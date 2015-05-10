@@ -1,0 +1,4 @@
+opcode : 0x14
+state  : DPL
+2.80user 0.06system 0:03.13elapsed 91%CPU (0avgtext+0avgdata 138160maxresident)k
+0inputs+88outputs (0major+31369minor)pagefaults 0swaps

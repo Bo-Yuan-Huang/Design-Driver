@@ -1,0 +1,4 @@
+opcode : 0x5c
+state  : B
+4.29user 0.08system 0:04.60elapsed 95%CPU (0avgtext+0avgdata 149104maxresident)k
+0inputs+104outputs (0major+39764minor)pagefaults 0swaps

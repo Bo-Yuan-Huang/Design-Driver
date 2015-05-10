@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : DPH
+1.71user 0.06system 0:01.96elapsed 90%CPU (0avgtext+0avgdata 134912maxresident)k
+0inputs+64outputs (0major+23007minor)pagefaults 0swaps

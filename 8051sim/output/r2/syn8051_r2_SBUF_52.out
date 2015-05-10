@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : SBUF
+2.50user 0.08system 0:02.85elapsed 90%CPU (0avgtext+0avgdata 140176maxresident)k
+0inputs+72outputs (0major+23721minor)pagefaults 0swaps

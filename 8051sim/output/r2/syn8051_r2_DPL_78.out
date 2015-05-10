@@ -1,0 +1,4 @@
+opcode : 0x78
+state  : DPL
+3.04user 0.05system 0:03.21elapsed 96%CPU (0avgtext+0avgdata 135824maxresident)k
+0inputs+80outputs (0major+28206minor)pagefaults 0swaps

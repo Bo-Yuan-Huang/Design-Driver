@@ -1,0 +1,4 @@
+opcode : 0x47
+state  : SCON
+2.97user 0.06system 0:03.20elapsed 94%CPU (0avgtext+0avgdata 140576maxresident)k
+0inputs+96outputs (0major+34156minor)pagefaults 0swaps

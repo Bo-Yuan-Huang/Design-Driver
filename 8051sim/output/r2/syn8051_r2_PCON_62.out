@@ -1,0 +1,4 @@
+opcode : 0x62
+state  : PCON
+2.44user 0.04system 0:02.57elapsed 96%CPU (0avgtext+0avgdata 139328maxresident)k
+0inputs+64outputs (0major+25760minor)pagefaults 0swaps

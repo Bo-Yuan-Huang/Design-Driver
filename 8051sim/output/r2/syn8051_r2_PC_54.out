@@ -1,0 +1,4 @@
+opcode : 0x54
+state  : PC
+3.04user 0.04system 0:03.24elapsed 95%CPU (0avgtext+0avgdata 140352maxresident)k
+0inputs+120outputs (0major+41711minor)pagefaults 0swaps

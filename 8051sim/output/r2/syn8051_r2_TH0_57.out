@@ -1,0 +1,4 @@
+opcode : 0x57
+state  : TH0
+1.99user 0.04system 0:02.47elapsed 82%CPU (0avgtext+0avgdata 135568maxresident)k
+0inputs+72outputs (0major+25940minor)pagefaults 0swaps

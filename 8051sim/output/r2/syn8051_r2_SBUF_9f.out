@@ -1,0 +1,4 @@
+opcode : 0x9f
+state  : SBUF
+2.31user 0.06system 0:02.88elapsed 82%CPU (0avgtext+0avgdata 136256maxresident)k
+0inputs+80outputs (0major+28352minor)pagefaults 0swaps

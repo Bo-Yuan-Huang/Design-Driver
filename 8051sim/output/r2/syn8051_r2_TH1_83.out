@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : TH1
+2.19user 0.04system 0:02.54elapsed 87%CPU (0avgtext+0avgdata 136160maxresident)k
+0inputs+80outputs (0major+28400minor)pagefaults 0swaps

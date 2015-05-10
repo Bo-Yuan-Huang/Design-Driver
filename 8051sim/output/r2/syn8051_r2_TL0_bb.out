@@ -1,0 +1,4 @@
+opcode : 0xbb
+state  : TL0
+2.24user 0.04system 0:02.98elapsed 76%CPU (0avgtext+0avgdata 136544maxresident)k
+0inputs+80outputs (0major+28418minor)pagefaults 0swaps

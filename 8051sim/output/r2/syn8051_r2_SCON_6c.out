@@ -1,0 +1,4 @@
+opcode : 0x6c
+state  : SCON
+2.76user 0.05system 0:02.98elapsed 94%CPU (0avgtext+0avgdata 138640maxresident)k
+0inputs+96outputs (0major+34079minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x5b
+state  : TH0
+2.11user 0.03system 0:02.62elapsed 81%CPU (0avgtext+0avgdata 134976maxresident)k
+0inputs+72outputs (0major+25965minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : IP
+3.94user 0.11system 0:04.33elapsed 93%CPU (0avgtext+0avgdata 145408maxresident)k
+0inputs+112outputs (0major+40004minor)pagefaults 0swaps

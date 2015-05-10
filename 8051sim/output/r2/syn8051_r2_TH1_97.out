@@ -1,0 +1,4 @@
+opcode : 0x97
+state  : TH1
+1.95user 0.04system 0:02.20elapsed 90%CPU (0avgtext+0avgdata 135392maxresident)k
+0inputs+72outputs (0major+25622minor)pagefaults 0swaps

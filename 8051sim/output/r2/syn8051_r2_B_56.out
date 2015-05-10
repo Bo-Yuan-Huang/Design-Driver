@@ -1,0 +1,4 @@
+opcode : 0x56
+state  : B
+4.97user 0.11system 0:05.25elapsed 96%CPU (0avgtext+0avgdata 152144maxresident)k
+0inputs+120outputs (0major+46312minor)pagefaults 0swaps

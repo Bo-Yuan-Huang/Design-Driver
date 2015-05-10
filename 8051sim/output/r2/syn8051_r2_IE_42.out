@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : IE
+2.00user 0.04system 0:02.54elapsed 80%CPU (0avgtext+0avgdata 136304maxresident)k
+0inputs+56outputs (0major+21823minor)pagefaults 0swaps

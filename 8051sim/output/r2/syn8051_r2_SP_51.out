@@ -1,0 +1,4 @@
+opcode : 0x51
+state  : SP
+1.00user 0.03system 0:01.25elapsed 82%CPU (0avgtext+0avgdata 127328maxresident)k
+0inputs+40outputs (0major+15291minor)pagefaults 0swaps

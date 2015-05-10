@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : PCON
+2.40user 0.06system 0:02.69elapsed 91%CPU (0avgtext+0avgdata 137840maxresident)k
+0inputs+88outputs (0major+31648minor)pagefaults 0swaps

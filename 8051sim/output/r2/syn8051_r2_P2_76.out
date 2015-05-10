@@ -1,0 +1,4 @@
+opcode : 0x76
+state  : P2
+1.82user 0.06system 0:02.17elapsed 86%CPU (0avgtext+0avgdata 139488maxresident)k
+0inputs+88outputs (0major+31316minor)pagefaults 0swaps

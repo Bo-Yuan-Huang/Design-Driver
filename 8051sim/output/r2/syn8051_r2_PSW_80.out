@@ -1,0 +1,4 @@
+opcode : 0x80
+state  : PSW
+8.08user 0.12system 0:09.03elapsed 90%CPU (0avgtext+0avgdata 194480maxresident)k
+0inputs+144outputs (0major+79914minor)pagefaults 0swaps

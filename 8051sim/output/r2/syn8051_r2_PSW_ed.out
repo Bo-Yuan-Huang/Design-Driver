@@ -1,0 +1,4 @@
+opcode : 0xed
+state  : PSW
+9.81user 0.11system 0:10.08elapsed 98%CPU (0avgtext+0avgdata 194368maxresident)k
+0inputs+160outputs (0major+85871minor)pagefaults 0swaps

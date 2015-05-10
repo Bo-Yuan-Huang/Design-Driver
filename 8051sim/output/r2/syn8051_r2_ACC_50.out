@@ -1,0 +1,4 @@
+opcode : 0x50
+state  : ACC
+4.77user 0.11system 0:05.18elapsed 94%CPU (0avgtext+0avgdata 171168maxresident)k
+0inputs+120outputs (0major+54429minor)pagefaults 0swaps

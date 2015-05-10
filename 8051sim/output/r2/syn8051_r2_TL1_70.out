@@ -1,0 +1,4 @@
+opcode : 0x70
+state  : TL1
+2.61user 0.07system 0:03.10elapsed 86%CPU (0avgtext+0avgdata 141296maxresident)k
+0inputs+88outputs (0major+32129minor)pagefaults 0swaps

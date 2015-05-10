@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : PSW
+3.68user 0.07system 0:03.96elapsed 94%CPU (0avgtext+0avgdata 159712maxresident)k
+0inputs+72outputs (0major+32547minor)pagefaults 0swaps

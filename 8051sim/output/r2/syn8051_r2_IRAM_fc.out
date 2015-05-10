@@ -1,0 +1,4 @@
+opcode : 0xfc
+state  : IRAM
+12.06user 0.02system 0:12.24elapsed 98%CPU (0avgtext+0avgdata 154400maxresident)k
+0inputs+32outputs (0major+15900minor)pagefaults 0swaps

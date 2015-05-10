@@ -1,0 +1,4 @@
+opcode : 0x10
+state  : PC
+63.93user 0.04system 1:04.22elapsed 99%CPU (0avgtext+0avgdata 225680maxresident)k
+0inputs+72outputs (0major+31189minor)pagefaults 0swaps

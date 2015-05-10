@@ -1,0 +1,4 @@
+opcode : 0x93
+state  : SP
+2.92user 0.05system 0:03.33elapsed 89%CPU (0avgtext+0avgdata 139088maxresident)k
+0inputs+88outputs (0major+31100minor)pagefaults 0swaps

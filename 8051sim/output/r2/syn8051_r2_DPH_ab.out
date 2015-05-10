@@ -1,0 +1,4 @@
+opcode : 0xab
+state  : DPH
+2.74user 0.05system 0:03.18elapsed 87%CPU (0avgtext+0avgdata 137296maxresident)k
+0inputs+88outputs (0major+31136minor)pagefaults 0swaps

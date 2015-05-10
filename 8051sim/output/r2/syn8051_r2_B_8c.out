@@ -1,0 +1,4 @@
+opcode : 0x8c
+state  : B
+2.69user 0.04system 0:03.73elapsed 73%CPU (0avgtext+0avgdata 142608maxresident)k
+0inputs+72outputs (0major+26990minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x61
+state  : SP
+3.21user 0.06system 0:03.54elapsed 92%CPU (0avgtext+0avgdata 146208maxresident)k
+0inputs+104outputs (0major+37533minor)pagefaults 0swaps

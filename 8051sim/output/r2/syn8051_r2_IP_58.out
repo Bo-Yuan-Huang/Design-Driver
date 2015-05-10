@@ -1,0 +1,4 @@
+opcode : 0x58
+state  : IP
+4.50user 0.11system 0:04.82elapsed 95%CPU (0avgtext+0avgdata 144528maxresident)k
+0inputs+112outputs (0major+39526minor)pagefaults 0swaps

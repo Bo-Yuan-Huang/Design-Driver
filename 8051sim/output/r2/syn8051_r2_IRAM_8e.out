@@ -1,0 +1,4 @@
+opcode : 0x8e
+state  : IRAM
+71.88user 0.04system 1:36.32elapsed 74%CPU (0avgtext+0avgdata 198608maxresident)k
+0inputs+64outputs (0major+37592minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x28
+state  : P3
+2.26user 0.06system 0:02.70elapsed 86%CPU (0avgtext+0avgdata 140512maxresident)k
+0inputs+80outputs (0major+28904minor)pagefaults 0swaps

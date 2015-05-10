@@ -1,0 +1,4 @@
+opcode : 0x89
+state  : TCON
+2.12user 0.03system 0:02.42elapsed 89%CPU (0avgtext+0avgdata 137424maxresident)k
+0inputs+72outputs (0major+25819minor)pagefaults 0swaps

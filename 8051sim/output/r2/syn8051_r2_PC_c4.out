@@ -1,0 +1,4 @@
+opcode : 0xc4
+state  : PC
+0.80user 0.01system 0:01.00elapsed 81%CPU (0avgtext+0avgdata 129696maxresident)k
+0inputs+32outputs (0major+13488minor)pagefaults 0swaps

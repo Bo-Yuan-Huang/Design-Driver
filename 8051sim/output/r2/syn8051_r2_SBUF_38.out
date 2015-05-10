@@ -1,0 +1,4 @@
+opcode : 0x38
+state  : SBUF
+2.35user 0.05system 0:03.03elapsed 79%CPU (0avgtext+0avgdata 136816maxresident)k
+0inputs+80outputs (0major+28518minor)pagefaults 0swaps

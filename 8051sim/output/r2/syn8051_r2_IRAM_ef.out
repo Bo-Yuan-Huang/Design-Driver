@@ -1,0 +1,4 @@
+opcode : 0xef
+state  : IRAM
+7219.98user 0.64system 2:00:33elapsed 99%CPU (0avgtext+0avgdata 380928maxresident)k
+0inputs+152outputs (0major+169597minor)pagefaults 0swaps

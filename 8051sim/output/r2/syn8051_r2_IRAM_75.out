@@ -1,0 +1,4 @@
+opcode : 0x75
+state  : IRAM
+72.38user 0.04system 1:13.45elapsed 98%CPU (0avgtext+0avgdata 190512maxresident)k
+0inputs+80outputs (0major+44135minor)pagefaults 0swaps

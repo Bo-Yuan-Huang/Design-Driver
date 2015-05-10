@@ -1,0 +1,4 @@
+opcode : 0x6a
+state  : ACC
+4.08user 0.07system 0:04.50elapsed 92%CPU (0avgtext+0avgdata 155824maxresident)k
+0inputs+104outputs (0major+42792minor)pagefaults 0swaps

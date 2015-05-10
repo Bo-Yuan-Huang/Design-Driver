@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : DPL
+2.52user 0.04system 0:02.74elapsed 93%CPU (0avgtext+0avgdata 138000maxresident)k
+0inputs+88outputs (0major+31375minor)pagefaults 0swaps

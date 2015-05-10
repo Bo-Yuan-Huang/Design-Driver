@@ -1,0 +1,4 @@
+opcode : 0x78
+state  : ACC
+4.46user 0.07system 0:04.74elapsed 95%CPU (0avgtext+0avgdata 165936maxresident)k
+0inputs+120outputs (0major+52865minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xbe
+state  : PSW
+3.26user 0.07system 0:03.48elapsed 95%CPU (0avgtext+0avgdata 161360maxresident)k
+0inputs+80outputs (0major+36309minor)pagefaults 0swaps

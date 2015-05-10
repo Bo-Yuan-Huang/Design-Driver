@@ -1,0 +1,4 @@
+opcode : 0x65
+state  : TL0
+2.25user 0.08system 0:02.77elapsed 83%CPU (0avgtext+0avgdata 136416maxresident)k
+0inputs+80outputs (0major+28491minor)pagefaults 0swaps

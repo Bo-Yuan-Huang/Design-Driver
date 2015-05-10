@@ -1,0 +1,4 @@
+opcode : 0x66
+state  : TH0
+2.17user 0.06system 0:02.67elapsed 83%CPU (0avgtext+0avgdata 134928maxresident)k
+0inputs+72outputs (0major+25879minor)pagefaults 0swaps

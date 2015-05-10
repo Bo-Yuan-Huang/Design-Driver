@@ -1,0 +1,4 @@
+opcode : 0xae
+state  : SCON
+2.98user 0.07system 0:03.47elapsed 87%CPU (0avgtext+0avgdata 141024maxresident)k
+0inputs+104outputs (0major+36904minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : P3
+2.99user 0.04system 0:03.18elapsed 95%CPU (0avgtext+0avgdata 144688maxresident)k
+0inputs+88outputs (0major+29723minor)pagefaults 0swaps

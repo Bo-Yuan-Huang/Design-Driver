@@ -1,0 +1,4 @@
+opcode : 0xc6
+state  : P2
+1.91user 0.05system 0:02.19elapsed 89%CPU (0avgtext+0avgdata 139120maxresident)k
+0inputs+88outputs (0major+31128minor)pagefaults 0swaps

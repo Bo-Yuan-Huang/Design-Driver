@@ -1,0 +1,4 @@
+opcode : 0x45
+state  : P2
+2.88user 0.05system 0:03.06elapsed 95%CPU (0avgtext+0avgdata 139808maxresident)k
+0inputs+88outputs (0major+31204minor)pagefaults 0swaps

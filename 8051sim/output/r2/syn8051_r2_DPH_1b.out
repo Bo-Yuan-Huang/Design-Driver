@@ -1,0 +1,4 @@
+opcode : 0x1b
+state  : DPH
+3.13user 0.07system 0:03.51elapsed 91%CPU (0avgtext+0avgdata 139072maxresident)k
+0inputs+104outputs (0major+36253minor)pagefaults 0swaps

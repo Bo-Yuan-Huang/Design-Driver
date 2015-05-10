@@ -1,0 +1,4 @@
+opcode : 0x41
+state  : SBUF
+1.65user 0.02system 0:01.86elapsed 89%CPU (0avgtext+0avgdata 136224maxresident)k
+0inputs+80outputs (0major+28347minor)pagefaults 0swaps

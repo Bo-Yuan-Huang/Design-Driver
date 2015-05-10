@@ -1,0 +1,4 @@
+opcode : 0x25
+state  : PSW
+6.76user 0.06system 0:06.99elapsed 97%CPU (0avgtext+0avgdata 186880maxresident)k
+0inputs+128outputs (0major+59784minor)pagefaults 0swaps

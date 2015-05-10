@@ -1,0 +1,4 @@
+opcode : 0x31
+state  : DPL
+3.20user 0.06system 0:03.53elapsed 92%CPU (0avgtext+0avgdata 138768maxresident)k
+0inputs+88outputs (0major+31351minor)pagefaults 0swaps

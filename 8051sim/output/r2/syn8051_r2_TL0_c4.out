@@ -1,0 +1,4 @@
+opcode : 0xc4
+state  : TL0
+2.25user 0.06system 0:03.20elapsed 72%CPU (0avgtext+0avgdata 136896maxresident)k
+0inputs+80outputs (0major+28484minor)pagefaults 0swaps

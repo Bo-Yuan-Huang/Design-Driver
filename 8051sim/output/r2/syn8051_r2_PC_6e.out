@@ -1,0 +1,4 @@
+opcode : 0x6e
+state  : PC
+1.13user 0.04system 0:01.41elapsed 83%CPU (0avgtext+0avgdata 129808maxresident)k
+0inputs+32outputs (0major+13509minor)pagefaults 0swaps

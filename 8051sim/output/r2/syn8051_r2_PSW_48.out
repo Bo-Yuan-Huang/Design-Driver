@@ -1,0 +1,4 @@
+opcode : 0x48
+state  : PSW
+7.50user 0.08system 0:07.86elapsed 96%CPU (0avgtext+0avgdata 174128maxresident)k
+0inputs+136outputs (0major+65796minor)pagefaults 0swaps

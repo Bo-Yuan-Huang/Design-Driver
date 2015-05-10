@@ -1,0 +1,4 @@
+opcode : 0x96
+state  : IP
+3.14user 0.09system 0:03.38elapsed 95%CPU (0avgtext+0avgdata 139968maxresident)k
+0inputs+96outputs (0major+33691minor)pagefaults 0swaps

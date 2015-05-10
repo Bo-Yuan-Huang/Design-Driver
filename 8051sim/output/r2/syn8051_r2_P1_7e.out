@@ -1,0 +1,4 @@
+opcode : 0x7e
+state  : P1
+1.98user 0.04system 0:02.20elapsed 92%CPU (0avgtext+0avgdata 140944maxresident)k
+0inputs+96outputs (0major+34225minor)pagefaults 0swaps

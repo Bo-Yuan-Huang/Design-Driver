@@ -1,0 +1,4 @@
+opcode : 0x9a
+state  : ACC
+3.50user 0.07system 0:04.20elapsed 85%CPU (0avgtext+0avgdata 162064maxresident)k
+0inputs+72outputs (0major+31575minor)pagefaults 0swaps

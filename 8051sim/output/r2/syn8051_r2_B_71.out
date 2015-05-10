@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : B
+3.86user 0.08system 0:04.14elapsed 95%CPU (0avgtext+0avgdata 145744maxresident)k
+0inputs+88outputs (0major+33358minor)pagefaults 0swaps

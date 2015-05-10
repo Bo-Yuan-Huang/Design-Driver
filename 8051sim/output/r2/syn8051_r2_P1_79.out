@@ -1,0 +1,4 @@
+opcode : 0x79
+state  : P1
+1.94user 0.06system 0:02.21elapsed 90%CPU (0avgtext+0avgdata 142880maxresident)k
+0inputs+104outputs (0major+36648minor)pagefaults 0swaps

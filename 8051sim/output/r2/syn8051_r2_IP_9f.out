@@ -1,0 +1,4 @@
+opcode : 0x9f
+state  : IP
+3.48user 0.08system 0:03.81elapsed 93%CPU (0avgtext+0avgdata 144528maxresident)k
+0inputs+112outputs (0major+39916minor)pagefaults 0swaps

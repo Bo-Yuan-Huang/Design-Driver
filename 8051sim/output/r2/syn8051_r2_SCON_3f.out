@@ -1,0 +1,4 @@
+opcode : 0x3f
+state  : SCON
+2.68user 0.06system 0:02.90elapsed 94%CPU (0avgtext+0avgdata 140736maxresident)k
+0inputs+96outputs (0major+34277minor)pagefaults 0swaps

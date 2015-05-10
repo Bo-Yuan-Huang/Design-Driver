@@ -1,0 +1,4 @@
+opcode : 0x72
+state  : B
+3.73user 0.05system 0:03.97elapsed 95%CPU (0avgtext+0avgdata 147312maxresident)k
+0inputs+96outputs (0major+36357minor)pagefaults 0swaps

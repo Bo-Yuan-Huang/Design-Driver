@@ -1,0 +1,4 @@
+opcode : 0x6b
+state  : ACC
+4.49user 0.10system 0:04.75elapsed 96%CPU (0avgtext+0avgdata 155744maxresident)k
+0inputs+104outputs (0major+42716minor)pagefaults 0swaps

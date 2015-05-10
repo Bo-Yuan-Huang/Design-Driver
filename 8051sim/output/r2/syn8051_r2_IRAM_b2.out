@@ -1,0 +1,4 @@
+opcode : 0xb2
+state  : IRAM
+26.08user 0.06system 0:26.41elapsed 98%CPU (0avgtext+0avgdata 185856maxresident)k
+0inputs+72outputs (0major+30186minor)pagefaults 0swaps

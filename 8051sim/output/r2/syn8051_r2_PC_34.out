@@ -1,0 +1,4 @@
+opcode : 0x34
+state  : PC
+2.52user 0.06system 0:02.72elapsed 94%CPU (0avgtext+0avgdata 134464maxresident)k
+0inputs+72outputs (0major+25752minor)pagefaults 0swaps

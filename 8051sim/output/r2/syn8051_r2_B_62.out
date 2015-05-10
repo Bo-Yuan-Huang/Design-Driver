@@ -1,0 +1,4 @@
+opcode : 0x62
+state  : B
+4.64user 0.06system 0:05.00elapsed 94%CPU (0avgtext+0avgdata 152624maxresident)k
+0inputs+104outputs (0major+40411minor)pagefaults 0swaps

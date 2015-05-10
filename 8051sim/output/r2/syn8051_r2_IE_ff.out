@@ -1,0 +1,4 @@
+opcode : 0xff
+state  : IE
+2.54user 0.04system 0:02.82elapsed 91%CPU (0avgtext+0avgdata 136672maxresident)k
+0inputs+72outputs (0major+25752minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : IE
+2.21user 0.04system 0:02.57elapsed 87%CPU (0avgtext+0avgdata 136560maxresident)k
+0inputs+72outputs (0major+25918minor)pagefaults 0swaps

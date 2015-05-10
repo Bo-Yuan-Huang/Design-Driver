@@ -1,0 +1,4 @@
+opcode : 0x61
+state  : PSW
+8.07user 0.12system 0:08.39elapsed 97%CPU (0avgtext+0avgdata 184400maxresident)k
+0inputs+152outputs (0major+76956minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x70
+state  : PSW
+8.27user 0.11system 0:08.57elapsed 97%CPU (0avgtext+0avgdata 184096maxresident)k
+0inputs+160outputs (0major+81426minor)pagefaults 0swaps

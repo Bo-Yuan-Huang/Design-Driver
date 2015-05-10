@@ -1,0 +1,4 @@
+opcode : 0x8d
+state  : DPL
+3.28user 0.07system 0:03.56elapsed 94%CPU (0avgtext+0avgdata 142768maxresident)k
+0inputs+128outputs (0major+44480minor)pagefaults 0swaps

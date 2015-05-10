@@ -1,0 +1,4 @@
+opcode : 0x6d
+state  : TL0
+2.48user 0.06system 0:02.91elapsed 87%CPU (0avgtext+0avgdata 138224maxresident)k
+0inputs+88outputs (0major+31130minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x34
+state  : SCON
+2.74user 0.07system 0:03.19elapsed 88%CPU (0avgtext+0avgdata 140256maxresident)k
+0inputs+96outputs (0major+34205minor)pagefaults 0swaps

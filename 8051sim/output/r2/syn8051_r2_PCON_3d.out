@@ -1,0 +1,4 @@
+opcode : 0x3d
+state  : PCON
+2.04user 0.05system 0:02.39elapsed 87%CPU (0avgtext+0avgdata 138080maxresident)k
+0inputs+80outputs (0major+28891minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x6d
+state  : B
+3.56user 0.08system 0:03.77elapsed 96%CPU (0avgtext+0avgdata 144752maxresident)k
+0inputs+88outputs (0major+33381minor)pagefaults 0swaps

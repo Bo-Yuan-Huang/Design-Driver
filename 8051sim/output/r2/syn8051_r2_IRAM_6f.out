@@ -1,0 +1,4 @@
+opcode : 0x6f
+state  : IRAM
+4607.73user 2.04system 1:16:58elapsed 99%CPU (0avgtext+0avgdata 360528maxresident)k
+0inputs+160outputs (0major+165490minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x7d
+state  : IRAM
+7.29user 0.02system 0:07.58elapsed 96%CPU (0avgtext+0avgdata 147440maxresident)k
+0inputs+32outputs (0major+15318minor)pagefaults 0swaps

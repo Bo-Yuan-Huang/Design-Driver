@@ -1,0 +1,4 @@
+opcode : 0x8a
+state  : DPH
+1.90user 0.05system 0:02.14elapsed 91%CPU (0avgtext+0avgdata 134640maxresident)k
+0inputs+64outputs (0major+23273minor)pagefaults 0swaps

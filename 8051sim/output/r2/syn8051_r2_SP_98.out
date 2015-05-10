@@ -1,0 +1,4 @@
+opcode : 0x98
+state  : SP
+2.86user 0.05system 0:03.18elapsed 91%CPU (0avgtext+0avgdata 142912maxresident)k
+0inputs+96outputs (0major+34292minor)pagefaults 0swaps

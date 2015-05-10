@@ -1,0 +1,4 @@
+opcode : 0x21
+state  : TL1
+2.48user 0.05system 0:02.78elapsed 90%CPU (0avgtext+0avgdata 138960maxresident)k
+0inputs+88outputs (0major+31770minor)pagefaults 0swaps

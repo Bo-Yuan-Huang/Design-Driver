@@ -1,0 +1,4 @@
+opcode : 0x94
+state  : IP
+3.94user 0.09system 0:04.24elapsed 95%CPU (0avgtext+0avgdata 143888maxresident)k
+0inputs+104outputs (0major+36891minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : PSW
+6.40user 0.11system 0:06.80elapsed 95%CPU (0avgtext+0avgdata 178112maxresident)k
+0inputs+104outputs (0major+51466minor)pagefaults 0swaps

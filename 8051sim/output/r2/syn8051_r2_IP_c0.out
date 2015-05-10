@@ -1,0 +1,4 @@
+opcode : 0xc0
+state  : IP
+4.35user 0.09system 0:04.56elapsed 97%CPU (0avgtext+0avgdata 144992maxresident)k
+0inputs+96outputs (0major+35343minor)pagefaults 0swaps

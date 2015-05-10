@@ -1,0 +1,4 @@
+opcode : 0x23
+state  : ACC
+1.68user 0.08system 0:01.89elapsed 93%CPU (0avgtext+0avgdata 136624maxresident)k
+0inputs+48outputs (0major+19511minor)pagefaults 0swaps

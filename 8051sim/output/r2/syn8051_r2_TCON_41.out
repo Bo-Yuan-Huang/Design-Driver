@@ -1,0 +1,4 @@
+opcode : 0x41
+state  : TCON
+3.09user 0.04system 0:03.35elapsed 93%CPU (0avgtext+0avgdata 139664maxresident)k
+0inputs+104outputs (0major+36295minor)pagefaults 0swaps

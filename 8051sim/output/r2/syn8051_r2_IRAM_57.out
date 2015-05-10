@@ -1,0 +1,4 @@
+opcode : 0x57
+state  : IRAM
+4495.07user 0.22system 1:15:03elapsed 99%CPU (0avgtext+0avgdata 329920maxresident)k
+0inputs+128outputs (0major+131116minor)pagefaults 0swaps

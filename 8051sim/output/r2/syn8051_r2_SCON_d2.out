@@ -1,0 +1,4 @@
+opcode : 0xd2
+state  : SCON
+2.12user 0.04system 0:02.32elapsed 92%CPU (0avgtext+0avgdata 137344maxresident)k
+0inputs+64outputs (0major+20963minor)pagefaults 0swaps

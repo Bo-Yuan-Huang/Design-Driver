@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : SCON
+2.74user 0.08system 0:03.31elapsed 85%CPU (0avgtext+0avgdata 140416maxresident)k
+0inputs+96outputs (0major+34122minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x99
+state  : B
+4.22user 0.08system 0:04.57elapsed 94%CPU (0avgtext+0avgdata 149312maxresident)k
+0inputs+104outputs (0major+39971minor)pagefaults 0swaps

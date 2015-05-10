@@ -1,0 +1,4 @@
+opcode : 0x82
+state  : DPL
+2.49user 0.05system 0:02.72elapsed 93%CPU (0avgtext+0avgdata 134784maxresident)k
+0inputs+80outputs (0major+28165minor)pagefaults 0swaps

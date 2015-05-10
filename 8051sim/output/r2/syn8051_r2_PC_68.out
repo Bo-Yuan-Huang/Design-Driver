@@ -1,0 +1,4 @@
+opcode : 0x68
+state  : PC
+0.72user 0.02system 0:00.91elapsed 82%CPU (0avgtext+0avgdata 129456maxresident)k
+0inputs+32outputs (0major+13487minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xba
+state  : PCON
+2.37user 0.08system 0:02.86elapsed 85%CPU (0avgtext+0avgdata 136048maxresident)k
+0inputs+88outputs (0major+31022minor)pagefaults 0swaps

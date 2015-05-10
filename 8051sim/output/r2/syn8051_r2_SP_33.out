@@ -1,0 +1,4 @@
+opcode : 0x33
+state  : SP
+3.08user 0.07system 0:03.45elapsed 91%CPU (0avgtext+0avgdata 144928maxresident)k
+0inputs+104outputs (0major+37194minor)pagefaults 0swaps

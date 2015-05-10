@@ -1,0 +1,4 @@
+opcode : 0x35
+state  : P1
+2.81user 0.06system 0:03.00elapsed 96%CPU (0avgtext+0avgdata 142768maxresident)k
+0inputs+104outputs (0major+36688minor)pagefaults 0swaps

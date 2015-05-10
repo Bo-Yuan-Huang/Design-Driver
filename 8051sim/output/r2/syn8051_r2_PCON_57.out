@@ -1,0 +1,4 @@
+opcode : 0x57
+state  : PCON
+2.19user 0.05system 0:02.43elapsed 92%CPU (0avgtext+0avgdata 135792maxresident)k
+0inputs+80outputs (0major+28548minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xe1
+state  : PC
+7.26user 0.06system 0:07.56elapsed 96%CPU (0avgtext+0avgdata 146192maxresident)k
+0inputs+40outputs (0major+16894minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x53
+state  : DPH
+4.38user 0.08system 0:04.74elapsed 94%CPU (0avgtext+0avgdata 147696maxresident)k
+0inputs+120outputs (0major+40032minor)pagefaults 0swaps

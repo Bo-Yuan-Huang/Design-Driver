@@ -1,0 +1,4 @@
+opcode : 0x1c
+state  : PC
+1.04user 0.04system 0:01.38elapsed 78%CPU (0avgtext+0avgdata 129472maxresident)k
+0inputs+32outputs (0major+13490minor)pagefaults 0swaps

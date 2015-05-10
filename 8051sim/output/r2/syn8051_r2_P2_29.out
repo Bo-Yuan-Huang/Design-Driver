@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : P2
+2.60user 0.05system 0:02.93elapsed 90%CPU (0avgtext+0avgdata 143296maxresident)k
+0inputs+96outputs (0major+34291minor)pagefaults 0swaps

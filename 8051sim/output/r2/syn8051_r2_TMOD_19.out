@@ -1,0 +1,4 @@
+opcode : 0x19
+state  : TMOD
+2.38user 0.05system 0:02.79elapsed 87%CPU (0avgtext+0avgdata 135712maxresident)k
+0inputs+80outputs (0major+27993minor)pagefaults 0swaps

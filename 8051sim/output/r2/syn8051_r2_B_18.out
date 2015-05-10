@@ -1,0 +1,4 @@
+opcode : 0x18
+state  : B
+3.36user 0.13system 0:03.74elapsed 93%CPU (0avgtext+0avgdata 147104maxresident)k
+0inputs+96outputs (0major+36550minor)pagefaults 0swaps

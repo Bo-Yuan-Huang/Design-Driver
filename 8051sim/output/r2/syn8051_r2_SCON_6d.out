@@ -1,0 +1,4 @@
+opcode : 0x6d
+state  : SCON
+2.78user 0.04system 0:03.00elapsed 94%CPU (0avgtext+0avgdata 139824maxresident)k
+0inputs+96outputs (0major+34073minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x4d
+state  : ACC
+3.36user 0.07system 0:04.20elapsed 81%CPU (0avgtext+0avgdata 155696maxresident)k
+0inputs+96outputs (0major+39619minor)pagefaults 0swaps

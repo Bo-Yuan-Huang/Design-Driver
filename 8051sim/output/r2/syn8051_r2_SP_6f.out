@@ -1,0 +1,4 @@
+opcode : 0x6f
+state  : SP
+3.03user 0.06system 0:03.28elapsed 94%CPU (0avgtext+0avgdata 142608maxresident)k
+0inputs+96outputs (0major+34205minor)pagefaults 0swaps

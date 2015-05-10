@@ -1,0 +1,4 @@
+opcode : 0x36
+state  : PSW
+3.46user 0.05system 0:04.12elapsed 85%CPU (0avgtext+0avgdata 161856maxresident)k
+0inputs+80outputs (0major+35831minor)pagefaults 0swaps

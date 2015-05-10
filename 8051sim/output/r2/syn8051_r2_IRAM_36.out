@@ -1,0 +1,4 @@
+opcode : 0x36
+state  : IRAM
+1331.83user 0.14system 22:14.51elapsed 99%CPU (0avgtext+0avgdata 277056maxresident)k
+0inputs+120outputs (0major+96121minor)pagefaults 0swaps

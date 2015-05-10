@@ -1,0 +1,4 @@
+opcode : 0x33
+state  : TH0
+1.80user 0.04system 0:02.26elapsed 81%CPU (0avgtext+0avgdata 133904maxresident)k
+0inputs+64outputs (0major+23390minor)pagefaults 0swaps

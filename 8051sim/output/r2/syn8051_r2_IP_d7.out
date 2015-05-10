@@ -1,0 +1,4 @@
+opcode : 0xd7
+state  : IP
+4.77user 0.12system 0:05.06elapsed 96%CPU (0avgtext+0avgdata 144480maxresident)k
+0inputs+112outputs (0major+39483minor)pagefaults 0swaps

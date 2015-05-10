@@ -1,0 +1,4 @@
+opcode : 0x20
+state  : TL1
+2.32user 0.05system 0:02.64elapsed 89%CPU (0avgtext+0avgdata 136064maxresident)k
+0inputs+80outputs (0major+28841minor)pagefaults 0swaps

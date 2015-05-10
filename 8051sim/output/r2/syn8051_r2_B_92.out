@@ -1,0 +1,4 @@
+opcode : 0x92
+state  : B
+2.70user 0.04system 0:03.12elapsed 87%CPU (0avgtext+0avgdata 141408maxresident)k
+0inputs+64outputs (0major+21890minor)pagefaults 0swaps

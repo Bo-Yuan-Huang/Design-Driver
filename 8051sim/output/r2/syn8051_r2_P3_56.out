@@ -1,0 +1,4 @@
+opcode : 0x56
+state  : P3
+2.79user 0.07system 0:03.28elapsed 87%CPU (0avgtext+0avgdata 144368maxresident)k
+0inputs+96outputs (0major+35316minor)pagefaults 0swaps

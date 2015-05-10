@@ -1,0 +1,4 @@
+opcode : 0x9a
+state  : TL1
+2.60user 0.04system 0:03.12elapsed 84%CPU (0avgtext+0avgdata 138720maxresident)k
+0inputs+88outputs (0major+31721minor)pagefaults 0swaps

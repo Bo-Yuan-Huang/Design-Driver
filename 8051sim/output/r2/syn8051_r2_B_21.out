@@ -1,0 +1,4 @@
+opcode : 0x21
+state  : B
+4.32user 0.10system 0:04.87elapsed 90%CPU (0avgtext+0avgdata 145696maxresident)k
+0inputs+96outputs (0major+36259minor)pagefaults 0swaps

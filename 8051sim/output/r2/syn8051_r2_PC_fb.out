@@ -1,0 +1,4 @@
+opcode : 0xfb
+state  : PC
+0.71user 0.03system 0:01.03elapsed 72%CPU (0avgtext+0avgdata 129872maxresident)k
+0inputs+32outputs (0major+13418minor)pagefaults 0swaps

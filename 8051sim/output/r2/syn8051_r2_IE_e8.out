@@ -1,0 +1,4 @@
+opcode : 0xe8
+state  : IE
+2.81user 0.09system 0:03.25elapsed 89%CPU (0avgtext+0avgdata 136704maxresident)k
+0inputs+72outputs (0major+25796minor)pagefaults 0swaps

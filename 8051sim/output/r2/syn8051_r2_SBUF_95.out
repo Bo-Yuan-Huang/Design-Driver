@@ -1,0 +1,4 @@
+opcode : 0x95
+state  : SBUF
+2.12user 0.05system 0:02.53elapsed 86%CPU (0avgtext+0avgdata 135488maxresident)k
+0inputs+80outputs (0major+28253minor)pagefaults 0swaps

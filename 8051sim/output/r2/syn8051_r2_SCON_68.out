@@ -1,0 +1,4 @@
+opcode : 0x68
+state  : SCON
+2.92user 0.09system 0:03.64elapsed 82%CPU (0avgtext+0avgdata 140096maxresident)k
+0inputs+96outputs (0major+34105minor)pagefaults 0swaps

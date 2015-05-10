@@ -1,0 +1,4 @@
+opcode : 0x9d
+state  : IE
+2.58user 0.04system 0:02.90elapsed 90%CPU (0avgtext+0avgdata 136624maxresident)k
+0inputs+72outputs (0major+25845minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xae
+state  : TCON
+2.34user 0.07system 0:02.77elapsed 87%CPU (0avgtext+0avgdata 137456maxresident)k
+0inputs+96outputs (0major+33431minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xac
+state  : IE
+2.68user 0.07system 0:02.91elapsed 94%CPU (0avgtext+0avgdata 138320maxresident)k
+0inputs+80outputs (0major+28703minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x50
+state  : PC
+62.04user 0.06system 1:02.43elapsed 99%CPU (0avgtext+0avgdata 252848maxresident)k
+0inputs+64outputs (0major+32501minor)pagefaults 0swaps

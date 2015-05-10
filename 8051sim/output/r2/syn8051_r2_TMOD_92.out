@@ -1,0 +1,4 @@
+opcode : 0x92
+state  : TMOD
+2.17user 0.05system 0:02.42elapsed 91%CPU (0avgtext+0avgdata 135200maxresident)k
+0inputs+80outputs (0major+28019minor)pagefaults 0swaps

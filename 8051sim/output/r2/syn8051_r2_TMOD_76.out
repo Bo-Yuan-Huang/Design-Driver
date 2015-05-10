@@ -1,0 +1,4 @@
+opcode : 0x76
+state  : TMOD
+2.42user 0.07system 0:03.36elapsed 74%CPU (0avgtext+0avgdata 135552maxresident)k
+0inputs+88outputs (0major+30691minor)pagefaults 0swaps

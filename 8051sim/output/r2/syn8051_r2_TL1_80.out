@@ -1,0 +1,4 @@
+opcode : 0x80
+state  : TL1
+2.60user 0.08system 0:02.91elapsed 92%CPU (0avgtext+0avgdata 140528maxresident)k
+0inputs+88outputs (0major+32101minor)pagefaults 0swaps

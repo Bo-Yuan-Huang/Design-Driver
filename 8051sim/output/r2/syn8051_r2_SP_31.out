@@ -1,0 +1,4 @@
+opcode : 0x31
+state  : SP
+1.01user 0.03system 0:01.30elapsed 80%CPU (0avgtext+0avgdata 127184maxresident)k
+0inputs+40outputs (0major+15265minor)pagefaults 0swaps

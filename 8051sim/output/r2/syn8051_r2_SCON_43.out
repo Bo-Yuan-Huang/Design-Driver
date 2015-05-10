@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : SCON
+2.29user 0.03system 0:02.51elapsed 92%CPU (0avgtext+0avgdata 137216maxresident)k
+0inputs+64outputs (0major+21195minor)pagefaults 0swaps

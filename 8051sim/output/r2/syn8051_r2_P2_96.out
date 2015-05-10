@@ -1,0 +1,4 @@
+opcode : 0x96
+state  : P2
+1.83user 0.05system 0:02.07elapsed 91%CPU (0avgtext+0avgdata 139040maxresident)k
+0inputs+88outputs (0major+31194minor)pagefaults 0swaps

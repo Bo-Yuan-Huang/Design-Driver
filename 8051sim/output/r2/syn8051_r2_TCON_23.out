@@ -1,0 +1,4 @@
+opcode : 0x23
+state  : TCON
+2.64user 0.06system 0:03.10elapsed 87%CPU (0avgtext+0avgdata 138592maxresident)k
+0inputs+96outputs (0major+33477minor)pagefaults 0swaps

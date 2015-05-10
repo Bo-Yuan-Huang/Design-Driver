@@ -1,0 +1,4 @@
+opcode : 0x87
+state  : IRAM
+147.27user 0.08system 2:28.03elapsed 99%CPU (0avgtext+0avgdata 202800maxresident)k
+0inputs+64outputs (0major+37138minor)pagefaults 0swaps

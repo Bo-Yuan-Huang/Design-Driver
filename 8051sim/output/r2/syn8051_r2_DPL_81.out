@@ -1,0 +1,4 @@
+opcode : 0x81
+state  : DPL
+2.66user 0.07system 0:03.00elapsed 91%CPU (0avgtext+0avgdata 134208maxresident)k
+0inputs+80outputs (0major+28032minor)pagefaults 0swaps

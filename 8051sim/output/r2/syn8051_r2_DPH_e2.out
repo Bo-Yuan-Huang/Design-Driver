@@ -1,0 +1,4 @@
+opcode : 0xe2
+state  : DPH
+2.39user 0.07system 0:02.76elapsed 89%CPU (0avgtext+0avgdata 137824maxresident)k
+0inputs+88outputs (0major+31168minor)pagefaults 0swaps

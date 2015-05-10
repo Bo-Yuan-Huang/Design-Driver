@@ -1,0 +1,4 @@
+opcode : 0xad
+state  : TL1
+2.65user 0.04system 0:03.04elapsed 88%CPU (0avgtext+0avgdata 140336maxresident)k
+0inputs+88outputs (0major+32004minor)pagefaults 0swaps

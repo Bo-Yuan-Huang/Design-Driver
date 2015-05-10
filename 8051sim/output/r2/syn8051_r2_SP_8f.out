@@ -1,0 +1,4 @@
+opcode : 0x8f
+state  : SP
+3.54user 0.06system 0:03.74elapsed 96%CPU (0avgtext+0avgdata 143360maxresident)k
+0inputs+136outputs (0major+46635minor)pagefaults 0swaps

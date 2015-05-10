@@ -1,0 +1,4 @@
+opcode : 0x46
+state  : SCON
+3.31user 0.04system 0:03.47elapsed 96%CPU (0avgtext+0avgdata 140704maxresident)k
+0inputs+96outputs (0major+34763minor)pagefaults 0swaps

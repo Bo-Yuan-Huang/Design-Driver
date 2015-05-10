@@ -1,0 +1,4 @@
+opcode : 0x98
+state  : IRAM
+2079.61user 0.14system 35:01.12elapsed 98%CPU (0avgtext+0avgdata 295328maxresident)k
+0inputs+104outputs (0major+89522minor)pagefaults 0swaps

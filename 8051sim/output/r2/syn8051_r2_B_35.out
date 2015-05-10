@@ -1,0 +1,4 @@
+opcode : 0x35
+state  : B
+4.19user 0.07system 0:04.62elapsed 92%CPU (0avgtext+0avgdata 144352maxresident)k
+0inputs+88outputs (0major+33128minor)pagefaults 0swaps

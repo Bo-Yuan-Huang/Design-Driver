@@ -1,0 +1,4 @@
+opcode : 0x23
+state  : SBUF
+1.62user 0.05system 0:01.94elapsed 85%CPU (0avgtext+0avgdata 136144maxresident)k
+0inputs+80outputs (0major+28360minor)pagefaults 0swaps

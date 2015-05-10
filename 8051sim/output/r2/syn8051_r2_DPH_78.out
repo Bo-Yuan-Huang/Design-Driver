@@ -1,0 +1,4 @@
+opcode : 0x78
+state  : DPH
+2.96user 0.07system 0:03.39elapsed 89%CPU (0avgtext+0avgdata 137952maxresident)k
+0inputs+88outputs (0major+31291minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xb
+state  : IRAM
+5.57user 0.05system 0:06.59elapsed 85%CPU (0avgtext+0avgdata 151152maxresident)k
+3880inputs+40outputs (63major+18829minor)pagefaults 0swaps

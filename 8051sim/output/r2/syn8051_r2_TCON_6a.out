@@ -1,0 +1,4 @@
+opcode : 0x6a
+state  : TCON
+2.62user 0.07system 0:03.02elapsed 89%CPU (0avgtext+0avgdata 139072maxresident)k
+0inputs+96outputs (0major+33903minor)pagefaults 0swaps

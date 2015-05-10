@@ -1,0 +1,4 @@
+opcode : 0xea
+state  : IP
+3.66user 0.09system 0:03.93elapsed 95%CPU (0avgtext+0avgdata 143824maxresident)k
+0inputs+104outputs (0major+36858minor)pagefaults 0swaps

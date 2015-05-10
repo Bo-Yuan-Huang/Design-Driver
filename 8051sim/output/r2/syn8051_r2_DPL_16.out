@@ -1,0 +1,4 @@
+opcode : 0x16
+state  : DPL
+3.15user 0.04system 0:03.46elapsed 92%CPU (0avgtext+0avgdata 135440maxresident)k
+0inputs+88outputs (0major+30720minor)pagefaults 0swaps

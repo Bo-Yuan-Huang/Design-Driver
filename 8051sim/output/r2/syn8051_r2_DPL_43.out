@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : DPL
+2.61user 0.06system 0:03.09elapsed 86%CPU (0avgtext+0avgdata 137344maxresident)k
+0inputs+80outputs (0major+29784minor)pagefaults 0swaps

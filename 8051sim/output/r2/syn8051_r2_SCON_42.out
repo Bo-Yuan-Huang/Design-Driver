@@ -1,0 +1,4 @@
+opcode : 0x42
+state  : SCON
+2.91user 0.08system 0:03.29elapsed 90%CPU (0avgtext+0avgdata 143008maxresident)k
+0inputs+80outputs (0major+28526minor)pagefaults 0swaps

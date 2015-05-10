@@ -1,0 +1,4 @@
+opcode : 0x38
+state  : IRAM
+1521.47user 0.18system 25:24.47elapsed 99%CPU (0avgtext+0avgdata 272192maxresident)k
+0inputs+112outputs (0major+96801minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xda
+state  : TL1
+2.39user 0.05system 0:02.85elapsed 85%CPU (0avgtext+0avgdata 136304maxresident)k
+0inputs+80outputs (0major+28827minor)pagefaults 0swaps

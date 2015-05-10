@@ -1,0 +1,4 @@
+opcode : 0x31
+state  : TCON
+2.32user 0.06system 0:02.77elapsed 86%CPU (0avgtext+0avgdata 136608maxresident)k
+0inputs+88outputs (0major+30892minor)pagefaults 0swaps

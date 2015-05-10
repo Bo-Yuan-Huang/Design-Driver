@@ -1,0 +1,4 @@
+opcode : 0x9d
+state  : TH1
+2.21user 0.04system 0:02.53elapsed 89%CPU (0avgtext+0avgdata 135312maxresident)k
+0inputs+80outputs (0major+28194minor)pagefaults 0swaps

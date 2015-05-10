@@ -1,0 +1,4 @@
+opcode : 0x82
+state  : PCON
+2.28user 0.05system 0:02.54elapsed 92%CPU (0avgtext+0avgdata 134560maxresident)k
+0inputs+72outputs (0major+25777minor)pagefaults 0swaps

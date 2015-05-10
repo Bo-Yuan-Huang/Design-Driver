@@ -1,0 +1,4 @@
+opcode : 0x90
+state  : SCON
+2.72user 0.06system 0:03.03elapsed 91%CPU (0avgtext+0avgdata 138336maxresident)k
+0inputs+88outputs (0major+31369minor)pagefaults 0swaps

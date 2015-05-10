@@ -1,0 +1,4 @@
+opcode : 0x9d
+state  : TL1
+2.75user 0.04system 0:03.24elapsed 86%CPU (0avgtext+0avgdata 143248maxresident)k
+0inputs+96outputs (0major+35010minor)pagefaults 0swaps

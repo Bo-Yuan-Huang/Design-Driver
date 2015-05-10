@@ -1,0 +1,4 @@
+opcode : 0x12
+state  : TH0
+2.17user 0.07system 0:02.53elapsed 88%CPU (0avgtext+0avgdata 135504maxresident)k
+0inputs+72outputs (0major+26092minor)pagefaults 0swaps

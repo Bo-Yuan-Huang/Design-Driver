@@ -1,0 +1,4 @@
+opcode : 0x2c
+state  : TMOD
+2.37user 0.04system 0:02.80elapsed 86%CPU (0avgtext+0avgdata 135456maxresident)k
+0inputs+88outputs (0major+30753minor)pagefaults 0swaps

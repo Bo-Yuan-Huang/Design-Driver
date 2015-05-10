@@ -1,0 +1,4 @@
+opcode : 0x10
+state  : SP
+3.26user 0.06system 0:03.59elapsed 92%CPU (0avgtext+0avgdata 144320maxresident)k
+0inputs+96outputs (0major+34866minor)pagefaults 0swaps

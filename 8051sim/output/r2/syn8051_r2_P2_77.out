@@ -1,0 +1,4 @@
+opcode : 0x77
+state  : P2
+2.88user 0.06system 0:03.11elapsed 94%CPU (0avgtext+0avgdata 143552maxresident)k
+0inputs+96outputs (0major+34318minor)pagefaults 0swaps

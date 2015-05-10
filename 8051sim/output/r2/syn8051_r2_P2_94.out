@@ -1,0 +1,4 @@
+opcode : 0x94
+state  : P2
+1.85user 0.05system 0:02.11elapsed 90%CPU (0avgtext+0avgdata 138976maxresident)k
+0inputs+88outputs (0major+30993minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x17
+state  : IRAM
+5.56user 0.03system 0:05.82elapsed 96%CPU (0avgtext+0avgdata 146896maxresident)k
+0inputs+32outputs (0major+15352minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x6d
+state  : SBUF
+2.24user 0.04system 0:02.49elapsed 92%CPU (0avgtext+0avgdata 135632maxresident)k
+0inputs+80outputs (0major+28238minor)pagefaults 0swaps

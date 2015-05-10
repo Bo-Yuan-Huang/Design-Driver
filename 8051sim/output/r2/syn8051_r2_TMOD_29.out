@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : TMOD
+2.43user 0.08system 0:02.91elapsed 86%CPU (0avgtext+0avgdata 135840maxresident)k
+0inputs+88outputs (0major+30638minor)pagefaults 0swaps

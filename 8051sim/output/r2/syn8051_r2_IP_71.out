@@ -1,0 +1,4 @@
+opcode : 0x71
+state  : IP
+4.38user 0.11system 0:05.13elapsed 87%CPU (0avgtext+0avgdata 144352maxresident)k
+0inputs+112outputs (0major+39651minor)pagefaults 0swaps

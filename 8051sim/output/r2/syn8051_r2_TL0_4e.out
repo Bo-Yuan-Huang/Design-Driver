@@ -1,0 +1,4 @@
+opcode : 0x4e
+state  : TL0
+2.18user 0.07system 0:02.58elapsed 87%CPU (0avgtext+0avgdata 135872maxresident)k
+0inputs+80outputs (0major+28386minor)pagefaults 0swaps

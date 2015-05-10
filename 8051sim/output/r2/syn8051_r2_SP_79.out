@@ -1,0 +1,4 @@
+opcode : 0x79
+state  : SP
+3.02user 0.06system 0:03.41elapsed 90%CPU (0avgtext+0avgdata 145824maxresident)k
+0inputs+104outputs (0major+37382minor)pagefaults 0swaps

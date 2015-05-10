@@ -1,0 +1,4 @@
+opcode : 0x8a
+state  : IRAM
+56.36user 0.09system 2:37.57elapsed 35%CPU (0avgtext+0avgdata 185328maxresident)k
+0inputs+64outputs (0major+35179minor)pagefaults 0swaps

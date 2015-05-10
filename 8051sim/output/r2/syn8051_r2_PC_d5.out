@@ -1,0 +1,4 @@
+opcode : 0xd5
+state  : PC
+3.73user 0.03system 0:04.01elapsed 93%CPU (0avgtext+0avgdata 145120maxresident)k
+0inputs+96outputs (0major+35802minor)pagefaults 0swaps

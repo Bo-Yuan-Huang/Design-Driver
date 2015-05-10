@@ -1,0 +1,4 @@
+opcode : 0x89
+state  : IRAM
+69.76user 0.06system 1:10.26elapsed 99%CPU (0avgtext+0avgdata 182320maxresident)k
+0inputs+48outputs (0major+25702minor)pagefaults 0swaps

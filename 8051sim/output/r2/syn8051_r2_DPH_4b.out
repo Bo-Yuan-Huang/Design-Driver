@@ -1,0 +1,4 @@
+opcode : 0x4b
+state  : DPH
+2.80user 0.06system 0:03.10elapsed 92%CPU (0avgtext+0avgdata 138064maxresident)k
+0inputs+88outputs (0major+31306minor)pagefaults 0swaps

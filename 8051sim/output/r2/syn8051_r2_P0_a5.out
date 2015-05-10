@@ -1,0 +1,4 @@
+opcode : 0xa5
+state  : P0
+2.14user 0.05system 0:02.34elapsed 93%CPU (0avgtext+0avgdata 134608maxresident)k
+0inputs+80outputs (0major+27705minor)pagefaults 0swaps

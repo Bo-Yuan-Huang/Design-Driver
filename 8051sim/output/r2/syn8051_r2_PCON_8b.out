@@ -1,0 +1,4 @@
+opcode : 0x8b
+state  : PCON
+3.22user 0.06system 0:03.50elapsed 93%CPU (0avgtext+0avgdata 141264maxresident)k
+0inputs+120outputs (0major+41720minor)pagefaults 0swaps

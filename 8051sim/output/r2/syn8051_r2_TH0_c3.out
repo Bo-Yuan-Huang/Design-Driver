@@ -1,0 +1,4 @@
+opcode : 0xc3
+state  : TH0
+1.77user 0.07system 0:01.98elapsed 92%CPU (0avgtext+0avgdata 134272maxresident)k
+0inputs+64outputs (0major+23314minor)pagefaults 0swaps

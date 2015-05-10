@@ -1,0 +1,4 @@
+opcode : 0x5b
+state  : P2
+1.68user 0.04system 0:01.96elapsed 88%CPU (0avgtext+0avgdata 138976maxresident)k
+0inputs+88outputs (0major+31005minor)pagefaults 0swaps

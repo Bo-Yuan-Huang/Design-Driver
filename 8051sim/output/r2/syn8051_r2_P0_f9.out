@@ -1,0 +1,4 @@
+opcode : 0xf9
+state  : P0
+1.37user 0.02system 0:01.60elapsed 87%CPU (0avgtext+0avgdata 133552maxresident)k
+0inputs+72outputs (0major+25091minor)pagefaults 0swaps

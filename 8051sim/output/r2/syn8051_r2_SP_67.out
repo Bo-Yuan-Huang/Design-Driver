@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : SP
+3.38user 0.07system 0:03.69elapsed 93%CPU (0avgtext+0avgdata 147824maxresident)k
+0inputs+120outputs (0major+43556minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x9d
+state  : TCON
+2.52user 0.07system 0:03.03elapsed 85%CPU (0avgtext+0avgdata 138400maxresident)k
+0inputs+96outputs (0major+33430minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : TL1
+2.51user 0.06system 0:02.92elapsed 88%CPU (0avgtext+0avgdata 140880maxresident)k
+0inputs+88outputs (0major+32291minor)pagefaults 0swaps

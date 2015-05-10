@@ -1,0 +1,4 @@
+opcode : 0x1a
+state  : TH0
+2.06user 0.07system 0:02.69elapsed 79%CPU (0avgtext+0avgdata 135648maxresident)k
+0inputs+72outputs (0major+26136minor)pagefaults 0swaps

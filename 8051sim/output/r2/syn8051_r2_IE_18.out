@@ -1,0 +1,4 @@
+opcode : 0x18
+state  : IE
+2.44user 0.06system 0:03.10elapsed 80%CPU (0avgtext+0avgdata 136768maxresident)k
+0inputs+72outputs (0major+25755minor)pagefaults 0swaps

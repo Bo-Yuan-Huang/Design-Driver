@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : PC
+5.84user 0.12system 0:06.17elapsed 96%CPU (0avgtext+0avgdata 150144maxresident)k
+0inputs+200outputs (0major+73044minor)pagefaults 0swaps

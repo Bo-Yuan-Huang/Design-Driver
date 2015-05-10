@@ -1,0 +1,4 @@
+opcode : 0x9e
+state  : IP
+2.64user 0.09system 0:02.94elapsed 92%CPU (0avgtext+0avgdata 141664maxresident)k
+0inputs+96outputs (0major+33899minor)pagefaults 0swaps

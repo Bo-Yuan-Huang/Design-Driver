@@ -1,0 +1,4 @@
+opcode : 0x8b
+state  : DPH
+3.27user 0.10system 0:03.53elapsed 95%CPU (0avgtext+0avgdata 142336maxresident)k
+0inputs+128outputs (0major+44532minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x9d
+state  : IRAM
+3984.84user 0.16system 1:06:33elapsed 99%CPU (0avgtext+0avgdata 321312maxresident)k
+0inputs+136outputs (0major+134409minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x9f
+state  : SCON
+3.13user 0.05system 0:03.45elapsed 92%CPU (0avgtext+0avgdata 144224maxresident)k
+0inputs+104outputs (0major+37541minor)pagefaults 0swaps

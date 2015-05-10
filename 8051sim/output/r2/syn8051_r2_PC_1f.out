@@ -1,0 +1,4 @@
+opcode : 0x1f
+state  : PC
+1.11user 0.03system 0:01.44elapsed 79%CPU (0avgtext+0avgdata 129568maxresident)k
+0inputs+32outputs (0major+13383minor)pagefaults 0swaps

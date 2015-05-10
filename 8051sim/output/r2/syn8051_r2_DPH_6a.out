@@ -1,0 +1,4 @@
+opcode : 0x6a
+state  : DPH
+2.32user 0.08system 0:02.68elapsed 89%CPU (0avgtext+0avgdata 138272maxresident)k
+0inputs+88outputs (0major+30957minor)pagefaults 0swaps

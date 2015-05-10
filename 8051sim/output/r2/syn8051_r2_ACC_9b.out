@@ -1,0 +1,4 @@
+opcode : 0x9b
+state  : ACC
+3.82user 0.08system 0:04.14elapsed 94%CPU (0avgtext+0avgdata 163056maxresident)k
+0inputs+96outputs (0major+42434minor)pagefaults 0swaps

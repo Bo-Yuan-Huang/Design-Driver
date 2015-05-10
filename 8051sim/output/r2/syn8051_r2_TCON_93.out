@@ -1,0 +1,4 @@
+opcode : 0x93
+state  : TCON
+2.38user 0.08system 0:03.05elapsed 80%CPU (0avgtext+0avgdata 138352maxresident)k
+0inputs+96outputs (0major+33445minor)pagefaults 0swaps

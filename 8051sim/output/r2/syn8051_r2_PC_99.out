@@ -1,0 +1,4 @@
+opcode : 0x99
+state  : PC
+1.07user 0.04system 0:01.56elapsed 71%CPU (0avgtext+0avgdata 129472maxresident)k
+0inputs+32outputs (0major+13343minor)pagefaults 0swaps

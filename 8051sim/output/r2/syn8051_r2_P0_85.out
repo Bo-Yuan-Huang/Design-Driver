@@ -1,0 +1,4 @@
+opcode : 0x85
+state  : P0
+2.04user 0.04system 0:02.34elapsed 88%CPU (0avgtext+0avgdata 139632maxresident)k
+0inputs+80outputs (0major+27633minor)pagefaults 0swaps

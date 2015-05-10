@@ -1,0 +1,4 @@
+opcode : 0x8a
+state  : P3
+2.64user 0.06system 0:02.90elapsed 93%CPU (0avgtext+0avgdata 141392maxresident)k
+0inputs+96outputs (0major+33719minor)pagefaults 0swaps

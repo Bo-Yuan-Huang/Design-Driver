@@ -1,0 +1,4 @@
+opcode : 0x38
+state  : TCON
+2.52user 0.05system 0:02.82elapsed 91%CPU (0avgtext+0avgdata 138784maxresident)k
+0inputs+96outputs (0major+33407minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xf6
+state  : TH0
+1.93user 0.06system 0:02.46elapsed 80%CPU (0avgtext+0avgdata 135024maxresident)k
+0inputs+64outputs (0major+23633minor)pagefaults 0swaps

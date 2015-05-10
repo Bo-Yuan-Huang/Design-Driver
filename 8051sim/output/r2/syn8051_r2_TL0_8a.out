@@ -1,0 +1,4 @@
+opcode : 0x8a
+state  : TL0
+2.79user 0.08system 0:03.03elapsed 94%CPU (0avgtext+0avgdata 139872maxresident)k
+0inputs+104outputs (0major+36195minor)pagefaults 0swaps

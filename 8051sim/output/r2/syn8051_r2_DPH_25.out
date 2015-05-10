@@ -1,0 +1,4 @@
+opcode : 0x25
+state  : DPH
+2.60user 0.09system 0:02.83elapsed 95%CPU (0avgtext+0avgdata 137280maxresident)k
+0inputs+96outputs (0major+33491minor)pagefaults 0swaps

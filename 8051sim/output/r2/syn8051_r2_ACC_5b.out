@@ -1,0 +1,4 @@
+opcode : 0x5b
+state  : ACC
+2.68user 0.04system 0:03.30elapsed 82%CPU (0avgtext+0avgdata 147792maxresident)k
+0inputs+80outputs (0major+31798minor)pagefaults 0swaps

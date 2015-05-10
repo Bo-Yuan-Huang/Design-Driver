@@ -1,0 +1,4 @@
+opcode : 0x30
+state  : IE
+1.92user 0.05system 0:02.23elapsed 88%CPU (0avgtext+0avgdata 136544maxresident)k
+0inputs+72outputs (0major+25783minor)pagefaults 0swaps

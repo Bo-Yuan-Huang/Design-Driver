@@ -1,0 +1,4 @@
+opcode : 0x60
+state  : IP
+3.31user 0.07system 0:03.88elapsed 87%CPU (0avgtext+0avgdata 144896maxresident)k
+0inputs+112outputs (0major+39733minor)pagefaults 0swaps

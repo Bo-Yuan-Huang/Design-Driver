@@ -1,0 +1,4 @@
+opcode : 0xbf
+state  : P0
+2.40user 0.05system 0:02.58elapsed 94%CPU (0avgtext+0avgdata 135248maxresident)k
+0inputs+88outputs (0major+30487minor)pagefaults 0swaps

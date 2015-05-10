@@ -1,0 +1,4 @@
+opcode : 0x4a
+state  : ACC
+3.16user 0.05system 0:03.69elapsed 87%CPU (0avgtext+0avgdata 148272maxresident)k
+0inputs+80outputs (0major+31608minor)pagefaults 0swaps

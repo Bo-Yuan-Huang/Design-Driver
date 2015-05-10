@@ -1,0 +1,4 @@
+opcode : 0xea
+state  : SBUF
+2.33user 0.06system 0:02.98elapsed 80%CPU (0avgtext+0avgdata 136608maxresident)k
+0inputs+80outputs (0major+28598minor)pagefaults 0swaps

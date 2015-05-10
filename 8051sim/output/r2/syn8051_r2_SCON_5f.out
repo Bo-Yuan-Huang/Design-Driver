@@ -1,0 +1,4 @@
+opcode : 0x5f
+state  : SCON
+2.63user 0.06system 0:02.98elapsed 90%CPU (0avgtext+0avgdata 139936maxresident)k
+0inputs+96outputs (0major+34066minor)pagefaults 0swaps

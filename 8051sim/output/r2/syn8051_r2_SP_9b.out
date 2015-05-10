@@ -1,0 +1,4 @@
+opcode : 0x9b
+state  : SP
+2.86user 0.08system 0:03.42elapsed 85%CPU (0avgtext+0avgdata 141136maxresident)k
+0inputs+88outputs (0major+31135minor)pagefaults 0swaps

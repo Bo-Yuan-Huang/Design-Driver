@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : DPL
+2.19user 0.06system 0:02.46elapsed 91%CPU (0avgtext+0avgdata 140000maxresident)k
+0inputs+80outputs (0major+28769minor)pagefaults 0swaps

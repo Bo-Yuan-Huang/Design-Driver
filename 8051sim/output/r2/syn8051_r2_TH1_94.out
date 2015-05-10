@@ -1,0 +1,4 @@
+opcode : 0x94
+state  : TH1
+2.42user 0.11system 0:02.75elapsed 91%CPU (0avgtext+0avgdata 136768maxresident)k
+0inputs+88outputs (0major+30799minor)pagefaults 0swaps

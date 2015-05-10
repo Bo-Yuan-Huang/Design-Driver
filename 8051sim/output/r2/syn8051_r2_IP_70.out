@@ -1,0 +1,4 @@
+opcode : 0x70
+state  : IP
+3.95user 0.10system 0:04.20elapsed 96%CPU (0avgtext+0avgdata 141008maxresident)k
+0inputs+96outputs (0major+34110minor)pagefaults 0swaps

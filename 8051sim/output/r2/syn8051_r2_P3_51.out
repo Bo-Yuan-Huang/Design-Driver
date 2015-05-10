@@ -1,0 +1,4 @@
+opcode : 0x51
+state  : P3
+2.28user 0.05system 0:03.01elapsed 77%CPU (0avgtext+0avgdata 142560maxresident)k
+0inputs+96outputs (0major+34345minor)pagefaults 0swaps

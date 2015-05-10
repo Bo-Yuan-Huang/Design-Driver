@@ -1,0 +1,4 @@
+opcode : 0x40
+state  : IP
+4.08user 0.14system 0:04.45elapsed 94%CPU (0avgtext+0avgdata 141808maxresident)k
+0inputs+104outputs (0major+36496minor)pagefaults 0swaps

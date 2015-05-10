@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : TCON
+2.85user 0.09system 0:03.21elapsed 91%CPU (0avgtext+0avgdata 140944maxresident)k
+0inputs+88outputs (0major+33922minor)pagefaults 0swaps

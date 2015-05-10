@@ -1,0 +1,4 @@
+opcode : 0x5b
+state  : IE
+2.12user 0.05system 0:02.43elapsed 89%CPU (0avgtext+0avgdata 136672maxresident)k
+0inputs+72outputs (0major+25657minor)pagefaults 0swaps

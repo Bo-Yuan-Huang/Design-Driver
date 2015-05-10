@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : PC
+0.96user 0.02system 0:01.26elapsed 77%CPU (0avgtext+0avgdata 129536maxresident)k
+0inputs+32outputs (0major+13497minor)pagefaults 0swaps

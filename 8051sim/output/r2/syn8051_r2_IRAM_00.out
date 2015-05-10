@@ -1,0 +1,4 @@
+opcode : 0x0
+state  : IRAM
+1634.44user 0.21system 27:17.36elapsed 99%CPU (0avgtext+0avgdata 361312maxresident)k
+0inputs+144outputs (0major+163104minor)pagefaults 0swaps

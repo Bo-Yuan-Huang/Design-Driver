@@ -1,0 +1,4 @@
+opcode : 0x67
+state  : SBUF
+1.74user 0.04system 0:02.04elapsed 87%CPU (0avgtext+0avgdata 136752maxresident)k
+0inputs+80outputs (0major+28354minor)pagefaults 0swaps

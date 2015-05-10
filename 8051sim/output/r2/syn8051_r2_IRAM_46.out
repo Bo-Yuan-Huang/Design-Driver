@@ -1,0 +1,4 @@
+opcode : 0x46
+state  : IRAM
+566.58user 0.10system 9:27.89elapsed 99%CPU (0avgtext+0avgdata 245440maxresident)k
+0inputs+96outputs (0major+71632minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x7b
+state  : IRAM
+5.13user 0.01system 0:05.43elapsed 94%CPU (0avgtext+0avgdata 149520maxresident)k
+0inputs+40outputs (0major+18636minor)pagefaults 0swaps

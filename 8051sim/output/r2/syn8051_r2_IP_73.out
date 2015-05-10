@@ -1,0 +1,4 @@
+opcode : 0x73
+state  : IP
+4.09user 0.06system 0:05.04elapsed 82%CPU (0avgtext+0avgdata 145360maxresident)k
+0inputs+112outputs (0major+39656minor)pagefaults 0swaps

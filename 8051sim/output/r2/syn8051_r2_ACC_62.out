@@ -1,0 +1,4 @@
+opcode : 0x62
+state  : ACC
+5.39user 0.09system 0:05.90elapsed 92%CPU (0avgtext+0avgdata 172128maxresident)k
+0inputs+136outputs (0major+56341minor)pagefaults 0swaps

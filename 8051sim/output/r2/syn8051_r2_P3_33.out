@@ -1,0 +1,4 @@
+opcode : 0x33
+state  : P3
+1.95user 0.04system 0:02.25elapsed 88%CPU (0avgtext+0avgdata 145488maxresident)k
+0inputs+96outputs (0major+35227minor)pagefaults 0swaps

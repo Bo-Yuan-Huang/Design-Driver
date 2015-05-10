@@ -1,0 +1,4 @@
+opcode : 0xb6
+state  : PSW
+3.08user 0.06system 0:03.38elapsed 93%CPU (0avgtext+0avgdata 159696maxresident)k
+0inputs+64outputs (0major+29389minor)pagefaults 0swaps

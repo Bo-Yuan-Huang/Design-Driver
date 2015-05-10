@@ -1,0 +1,4 @@
+opcode : 0x16
+state  : TH1
+2.34user 0.06system 0:02.70elapsed 89%CPU (0avgtext+0avgdata 137952maxresident)k
+0inputs+88outputs (0major+31269minor)pagefaults 0swaps

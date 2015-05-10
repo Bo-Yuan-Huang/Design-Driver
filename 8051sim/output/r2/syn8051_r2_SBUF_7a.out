@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : SBUF
+2.41user 0.04system 0:02.88elapsed 85%CPU (0avgtext+0avgdata 136864maxresident)k
+0inputs+80outputs (0major+28591minor)pagefaults 0swaps

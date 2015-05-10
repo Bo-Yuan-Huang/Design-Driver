@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : PC
+3.41user 0.06system 0:03.62elapsed 96%CPU (0avgtext+0avgdata 141856maxresident)k
+0inputs+120outputs (0major+42688minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x91
+state  : IRAM
+20.18user 0.05system 0:21.38elapsed 94%CPU (0avgtext+0avgdata 155360maxresident)k
+0inputs+32outputs (0major+15913minor)pagefaults 0swaps

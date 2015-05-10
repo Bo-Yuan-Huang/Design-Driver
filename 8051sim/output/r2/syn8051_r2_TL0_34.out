@@ -1,0 +1,4 @@
+opcode : 0x34
+state  : TL0
+2.41user 0.04system 0:02.95elapsed 83%CPU (0avgtext+0avgdata 138560maxresident)k
+0inputs+88outputs (0major+31349minor)pagefaults 0swaps

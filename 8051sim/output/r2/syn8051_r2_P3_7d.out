@@ -1,0 +1,4 @@
+opcode : 0x7d
+state  : P3
+2.30user 0.06system 0:02.62elapsed 90%CPU (0avgtext+0avgdata 144832maxresident)k
+0inputs+104outputs (0major+37560minor)pagefaults 0swaps

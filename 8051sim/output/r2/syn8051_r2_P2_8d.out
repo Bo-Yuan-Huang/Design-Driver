@@ -1,0 +1,4 @@
+opcode : 0x8d
+state  : P2
+3.35user 0.10system 0:03.62elapsed 95%CPU (0avgtext+0avgdata 143152maxresident)k
+0inputs+128outputs (0major+44279minor)pagefaults 0swaps

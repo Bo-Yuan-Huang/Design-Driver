@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : TH1
+2.82user 0.05system 0:03.10elapsed 92%CPU (0avgtext+0avgdata 140368maxresident)k
+0inputs+88outputs (0major+28179minor)pagefaults 0swaps

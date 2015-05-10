@@ -1,0 +1,4 @@
+opcode : 0x3b
+state  : DPH
+2.05user 0.08system 0:02.49elapsed 85%CPU (0avgtext+0avgdata 136272maxresident)k
+0inputs+88outputs (0major+31046minor)pagefaults 0swaps

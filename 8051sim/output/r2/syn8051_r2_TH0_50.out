@@ -1,0 +1,4 @@
+opcode : 0x50
+state  : TH0
+1.91user 0.03system 0:02.26elapsed 86%CPU (0avgtext+0avgdata 134368maxresident)k
+0inputs+64outputs (0major+23379minor)pagefaults 0swaps

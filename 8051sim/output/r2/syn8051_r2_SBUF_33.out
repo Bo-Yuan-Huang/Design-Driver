@@ -1,0 +1,4 @@
+opcode : 0x33
+state  : SBUF
+2.07user 0.04system 0:02.89elapsed 73%CPU (0avgtext+0avgdata 135472maxresident)k
+0inputs+80outputs (0major+28303minor)pagefaults 0swaps

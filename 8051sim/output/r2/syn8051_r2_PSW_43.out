@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : PSW
+8.98user 0.13system 0:09.30elapsed 97%CPU (0avgtext+0avgdata 195232maxresident)k
+0inputs+168outputs (0major+81035minor)pagefaults 0swaps

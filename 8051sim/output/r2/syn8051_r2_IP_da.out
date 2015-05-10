@@ -1,0 +1,4 @@
+opcode : 0xda
+state  : IP
+4.36user 0.09system 0:04.66elapsed 95%CPU (0avgtext+0avgdata 144928maxresident)k
+0inputs+112outputs (0major+39891minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xb6
+state  : P1
+2.00user 0.06system 0:02.30elapsed 89%CPU (0avgtext+0avgdata 140848maxresident)k
+0inputs+96outputs (0major+33963minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x50
+state  : DPH
+1.90user 0.07system 0:02.10elapsed 94%CPU (0avgtext+0avgdata 138112maxresident)k
+0inputs+88outputs (0major+31279minor)pagefaults 0swaps

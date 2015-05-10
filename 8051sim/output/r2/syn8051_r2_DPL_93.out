@@ -1,0 +1,4 @@
+opcode : 0x93
+state  : DPL
+2.18user 0.07system 0:02.64elapsed 85%CPU (0avgtext+0avgdata 135632maxresident)k
+0inputs+80outputs (0major+28423minor)pagefaults 0swaps

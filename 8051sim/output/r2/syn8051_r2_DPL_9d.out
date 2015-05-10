@@ -1,0 +1,4 @@
+opcode : 0x9d
+state  : DPL
+2.35user 0.05system 0:02.70elapsed 89%CPU (0avgtext+0avgdata 136144maxresident)k
+0inputs+88outputs (0major+30851minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x88
+state  : PC
+3.70user 0.06system 0:04.00elapsed 93%CPU (0avgtext+0avgdata 139904maxresident)k
+0inputs+112outputs (0major+39014minor)pagefaults 0swaps

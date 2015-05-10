@@ -1,0 +1,4 @@
+opcode : 0x24
+state  : PSW
+5.31user 0.07system 0:05.56elapsed 96%CPU (0avgtext+0avgdata 177520maxresident)k
+0inputs+104outputs (0major+49068minor)pagefaults 0swaps

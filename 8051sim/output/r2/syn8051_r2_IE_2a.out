@@ -1,0 +1,4 @@
+opcode : 0x2a
+state  : IE
+2.38user 0.07system 0:02.95elapsed 83%CPU (0avgtext+0avgdata 136640maxresident)k
+0inputs+72outputs (0major+25855minor)pagefaults 0swaps

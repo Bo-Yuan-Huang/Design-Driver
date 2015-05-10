@@ -1,0 +1,4 @@
+opcode : 0xea
+state  : TH0
+2.29user 0.04system 0:02.80elapsed 83%CPU (0avgtext+0avgdata 135648maxresident)k
+0inputs+72outputs (0major+26159minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x2e
+state  : ACC
+4.73user 0.10system 0:05.06elapsed 95%CPU (0avgtext+0avgdata 159440maxresident)k
+0inputs+120outputs (0major+50094minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xc9
+state  : TH0
+2.10user 0.04system 0:02.54elapsed 84%CPU (0avgtext+0avgdata 134112maxresident)k
+0inputs+72outputs (0major+25693minor)pagefaults 0swaps

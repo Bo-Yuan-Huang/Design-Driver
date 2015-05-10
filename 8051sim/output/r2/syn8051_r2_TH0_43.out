@@ -1,0 +1,4 @@
+opcode : 0x43
+state  : TH0
+2.21user 0.05system 0:03.01elapsed 75%CPU (0avgtext+0avgdata 135536maxresident)k
+0inputs+64outputs (0major+22438minor)pagefaults 0swaps

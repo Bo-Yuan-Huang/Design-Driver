@@ -1,0 +1,4 @@
+opcode : 0x9d
+state  : P2
+2.54user 0.06system 0:02.78elapsed 93%CPU (0avgtext+0avgdata 138336maxresident)k
+0inputs+88outputs (0major+30845minor)pagefaults 0swaps

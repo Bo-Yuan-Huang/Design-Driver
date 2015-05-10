@@ -1,0 +1,4 @@
+opcode : 0x65
+state  : DPL
+2.69user 0.10system 0:03.15elapsed 88%CPU (0avgtext+0avgdata 134992maxresident)k
+0inputs+80outputs (0major+28250minor)pagefaults 0swaps

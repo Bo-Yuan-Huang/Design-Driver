@@ -1,0 +1,4 @@
+opcode : 0x1b
+state  : PC
+1.12user 0.03system 0:01.44elapsed 80%CPU (0avgtext+0avgdata 129296maxresident)k
+0inputs+32outputs (0major+13370minor)pagefaults 0swaps

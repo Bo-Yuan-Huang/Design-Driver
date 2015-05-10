@@ -1,0 +1,4 @@
+opcode : 0x19
+state  : IP
+3.01user 0.08system 0:03.29elapsed 94%CPU (0avgtext+0avgdata 143312maxresident)k
+0inputs+104outputs (0major+36806minor)pagefaults 0swaps

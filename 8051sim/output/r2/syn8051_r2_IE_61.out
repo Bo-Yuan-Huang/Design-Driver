@@ -1,0 +1,4 @@
+opcode : 0x61
+state  : IE
+1.96user 0.06system 0:02.23elapsed 90%CPU (0avgtext+0avgdata 136736maxresident)k
+0inputs+72outputs (0major+25661minor)pagefaults 0swaps

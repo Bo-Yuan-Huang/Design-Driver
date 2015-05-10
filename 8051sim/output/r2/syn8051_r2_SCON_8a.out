@@ -1,0 +1,4 @@
+opcode : 0x8a
+state  : SCON
+3.16user 0.07system 0:03.47elapsed 93%CPU (0avgtext+0avgdata 142032maxresident)k
+0inputs+104outputs (0major+36603minor)pagefaults 0swaps

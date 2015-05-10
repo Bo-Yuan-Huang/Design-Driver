@@ -1,0 +1,4 @@
+opcode : 0x79
+state  : SBUF
+2.58user 0.04system 0:03.23elapsed 81%CPU (0avgtext+0avgdata 135824maxresident)k
+0inputs+80outputs (0major+28315minor)pagefaults 0swaps

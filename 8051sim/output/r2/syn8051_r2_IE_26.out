@@ -1,0 +1,4 @@
+opcode : 0x26
+state  : IE
+2.29user 0.05system 0:02.66elapsed 88%CPU (0avgtext+0avgdata 136800maxresident)k
+0inputs+72outputs (0major+25851minor)pagefaults 0swaps

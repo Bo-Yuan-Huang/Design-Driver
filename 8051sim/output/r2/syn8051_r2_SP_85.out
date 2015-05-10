@@ -1,0 +1,4 @@
+opcode : 0x85
+state  : SP
+2.00user 0.05system 0:02.28elapsed 89%CPU (0avgtext+0avgdata 135904maxresident)k
+0inputs+56outputs (0major+22571minor)pagefaults 0swaps

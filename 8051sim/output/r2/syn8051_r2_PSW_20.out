@@ -1,0 +1,4 @@
+opcode : 0x20
+state  : PSW
+7.52user 0.06system 0:07.84elapsed 96%CPU (0avgtext+0avgdata 175424maxresident)k
+0inputs+120outputs (0major+58946minor)pagefaults 0swaps

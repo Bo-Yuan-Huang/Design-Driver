@@ -1,0 +1,4 @@
+opcode : 0x5a
+state  : IE
+1.80user 0.08system 0:02.07elapsed 91%CPU (0avgtext+0avgdata 136544maxresident)k
+0inputs+72outputs (0major+25844minor)pagefaults 0swaps

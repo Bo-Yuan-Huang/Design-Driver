@@ -1,0 +1,4 @@
+opcode : 0x5f
+state  : IRAM
+3259.82user 0.22system 54:26.03elapsed 99%CPU (0avgtext+0avgdata 321440maxresident)k
+0inputs+152outputs (0major+146523minor)pagefaults 0swaps

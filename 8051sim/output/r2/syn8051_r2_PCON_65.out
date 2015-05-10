@@ -1,0 +1,4 @@
+opcode : 0x65
+state  : PCON
+2.48user 0.07system 0:02.82elapsed 90%CPU (0avgtext+0avgdata 138304maxresident)k
+0inputs+88outputs (0major+31368minor)pagefaults 0swaps

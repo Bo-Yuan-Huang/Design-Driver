@@ -1,0 +1,4 @@
+opcode : 0xac
+state  : PSW
+5.36user 0.07system 0:06.25elapsed 86%CPU (0avgtext+0avgdata 176496maxresident)k
+0inputs+96outputs (0major+47643minor)pagefaults 0swaps

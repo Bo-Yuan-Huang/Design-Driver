@@ -1,0 +1,4 @@
+opcode : 0x41
+state  : PSW
+8.82user 0.11system 0:09.17elapsed 97%CPU (0avgtext+0avgdata 183728maxresident)k
+0inputs+136outputs (0major+68909minor)pagefaults 0swaps

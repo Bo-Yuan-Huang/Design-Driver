@@ -1,0 +1,4 @@
+opcode : 0xef
+state  : PC
+0.96user 0.02system 0:01.10elapsed 89%CPU (0avgtext+0avgdata 129824maxresident)k
+0inputs+32outputs (0major+13374minor)pagefaults 0swaps

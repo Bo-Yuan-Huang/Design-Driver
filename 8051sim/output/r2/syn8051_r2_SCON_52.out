@@ -1,0 +1,4 @@
+opcode : 0x52
+state  : SCON
+3.90user 0.09system 0:04.23elapsed 94%CPU (0avgtext+0avgdata 151056maxresident)k
+0inputs+128outputs (0major+45707minor)pagefaults 0swaps

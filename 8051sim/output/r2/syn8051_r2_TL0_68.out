@@ -1,0 +1,4 @@
+opcode : 0x68
+state  : TL0
+2.76user 0.07system 0:03.01elapsed 94%CPU (0avgtext+0avgdata 138688maxresident)k
+0inputs+88outputs (0major+31324minor)pagefaults 0swaps

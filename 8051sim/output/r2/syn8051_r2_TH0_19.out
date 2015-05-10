@@ -1,0 +1,4 @@
+opcode : 0x19
+state  : TH0
+2.14user 0.06system 0:02.79elapsed 79%CPU (0avgtext+0avgdata 135392maxresident)k
+0inputs+72outputs (0major+26114minor)pagefaults 0swaps

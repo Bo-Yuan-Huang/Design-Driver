@@ -1,0 +1,4 @@
+opcode : 0xff
+state  : ACC
+5.58user 0.08system 0:06.59elapsed 86%CPU (0avgtext+0avgdata 182416maxresident)k
+0inputs+128outputs (0major+62415minor)pagefaults 0swaps

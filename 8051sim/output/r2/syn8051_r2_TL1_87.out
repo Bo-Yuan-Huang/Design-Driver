@@ -1,0 +1,4 @@
+opcode : 0x87
+state  : TL1
+2.01user 0.03system 0:02.25elapsed 90%CPU (0avgtext+0avgdata 137920maxresident)k
+0inputs+72outputs (0major+26163minor)pagefaults 0swaps

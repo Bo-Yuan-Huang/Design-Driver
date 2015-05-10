@@ -1,0 +1,4 @@
+opcode : 0x56
+state  : PCON
+2.46user 0.04system 0:02.63elapsed 95%CPU (0avgtext+0avgdata 136000maxresident)k
+0inputs+88outputs (0major+30980minor)pagefaults 0swaps

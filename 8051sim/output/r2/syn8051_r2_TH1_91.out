@@ -1,0 +1,4 @@
+opcode : 0x91
+state  : TH1
+2.40user 0.05system 0:02.66elapsed 92%CPU (0avgtext+0avgdata 136928maxresident)k
+0inputs+88outputs (0major+30742minor)pagefaults 0swaps

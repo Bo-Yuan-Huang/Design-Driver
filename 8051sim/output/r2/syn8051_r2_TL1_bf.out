@@ -1,0 +1,4 @@
+opcode : 0xbf
+state  : TL1
+2.34user 0.04system 0:02.73elapsed 87%CPU (0avgtext+0avgdata 138640maxresident)k
+0inputs+80outputs (0major+29071minor)pagefaults 0swaps

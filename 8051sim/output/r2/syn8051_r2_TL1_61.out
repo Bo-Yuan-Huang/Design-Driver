@@ -1,0 +1,4 @@
+opcode : 0x61
+state  : TL1
+2.12user 0.04system 0:02.37elapsed 91%CPU (0avgtext+0avgdata 136176maxresident)k
+0inputs+80outputs (0major+28742minor)pagefaults 0swaps

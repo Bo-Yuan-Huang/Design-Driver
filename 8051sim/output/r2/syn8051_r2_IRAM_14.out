@@ -1,0 +1,4 @@
+opcode : 0x14
+state  : IRAM
+1160.68user 0.14system 19:22.69elapsed 99%CPU (0avgtext+0avgdata 268608maxresident)k
+0inputs+112outputs (0major+91442minor)pagefaults 0swaps

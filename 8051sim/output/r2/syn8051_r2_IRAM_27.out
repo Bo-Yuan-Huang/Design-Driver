@@ -1,0 +1,4 @@
+opcode : 0x27
+state  : IRAM
+1294.61user 0.13system 21:36.83elapsed 99%CPU (0avgtext+0avgdata 277472maxresident)k
+0inputs+112outputs (0major+86264minor)pagefaults 0swaps

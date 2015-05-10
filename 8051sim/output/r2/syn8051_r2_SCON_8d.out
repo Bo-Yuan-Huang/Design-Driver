@@ -1,0 +1,4 @@
+opcode : 0x8d
+state  : SCON
+3.39user 0.07system 0:03.70elapsed 93%CPU (0avgtext+0avgdata 143536maxresident)k
+0inputs+128outputs (0major+44862minor)pagefaults 0swaps

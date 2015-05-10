@@ -1,0 +1,4 @@
+opcode : 0xb3
+state  : DPH
+2.34user 0.04system 0:02.55elapsed 93%CPU (0avgtext+0avgdata 135792maxresident)k
+0inputs+88outputs (0major+30843minor)pagefaults 0swaps

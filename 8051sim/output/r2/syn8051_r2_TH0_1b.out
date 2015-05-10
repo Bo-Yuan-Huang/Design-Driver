@@ -1,0 +1,4 @@
+opcode : 0x1b
+state  : TH0
+2.14user 0.04system 0:02.88elapsed 75%CPU (0avgtext+0avgdata 135024maxresident)k
+0inputs+72outputs (0major+25869minor)pagefaults 0swaps

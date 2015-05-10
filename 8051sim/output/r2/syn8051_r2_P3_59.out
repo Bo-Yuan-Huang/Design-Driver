@@ -1,0 +1,4 @@
+opcode : 0x59
+state  : P3
+2.21user 0.05system 0:02.45elapsed 92%CPU (0avgtext+0avgdata 138720maxresident)k
+0inputs+88outputs (0major+31287minor)pagefaults 0swaps

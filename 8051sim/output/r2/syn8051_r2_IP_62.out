@@ -1,0 +1,4 @@
+opcode : 0x62
+state  : IP
+2.98user 0.04system 0:03.19elapsed 94%CPU (0avgtext+0avgdata 141840maxresident)k
+0inputs+88outputs (0major+28580minor)pagefaults 0swaps

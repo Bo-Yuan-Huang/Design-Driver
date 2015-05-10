@@ -1,0 +1,4 @@
+opcode : 0x8a
+state  : PCON
+2.65user 0.06system 0:03.21elapsed 84%CPU (0avgtext+0avgdata 139536maxresident)k
+0inputs+88outputs (0major+31332minor)pagefaults 0swaps

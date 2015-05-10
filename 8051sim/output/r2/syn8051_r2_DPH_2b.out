@@ -1,0 +1,4 @@
+opcode : 0x2b
+state  : DPH
+2.42user 0.06system 0:03.14elapsed 79%CPU (0avgtext+0avgdata 137408maxresident)k
+0inputs+88outputs (0major+31262minor)pagefaults 0swaps

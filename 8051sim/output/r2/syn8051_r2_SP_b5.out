@@ -1,0 +1,4 @@
+opcode : 0xb5
+state  : SP
+2.71user 0.07system 0:03.07elapsed 90%CPU (0avgtext+0avgdata 138768maxresident)k
+0inputs+88outputs (0major+31080minor)pagefaults 0swaps

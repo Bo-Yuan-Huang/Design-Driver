@@ -1,0 +1,4 @@
+opcode : 0x96
+state  : IRAM
+2500.24user 0.49system 41:45.47elapsed 99%CPU (0avgtext+0avgdata 306752maxresident)k
+0inputs+128outputs (0major+119409minor)pagefaults 0swaps

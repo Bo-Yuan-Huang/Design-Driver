@@ -1,0 +1,4 @@
+opcode : 0x6d
+state  : TMOD
+2.32user 0.05system 0:02.63elapsed 90%CPU (0avgtext+0avgdata 135664maxresident)k
+0inputs+88outputs (0major+30372minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xc8
+state  : DPH
+2.82user 0.04system 0:03.45elapsed 83%CPU (0avgtext+0avgdata 138384maxresident)k
+0inputs+88outputs (0major+31385minor)pagefaults 0swaps

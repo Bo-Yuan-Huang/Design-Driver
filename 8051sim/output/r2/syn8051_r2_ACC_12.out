@@ -1,0 +1,4 @@
+opcode : 0x12
+state  : ACC
+6.19user 0.12system 0:06.57elapsed 96%CPU (0avgtext+0avgdata 157952maxresident)k
+0inputs+112outputs (0major+46887minor)pagefaults 0swaps

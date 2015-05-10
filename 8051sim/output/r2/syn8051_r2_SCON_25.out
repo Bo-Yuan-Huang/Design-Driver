@@ -1,0 +1,4 @@
+opcode : 0x25
+state  : SCON
+2.80user 0.07system 0:04.13elapsed 69%CPU (0avgtext+0avgdata 140880maxresident)k
+0inputs+104outputs (0major+36679minor)pagefaults 0swaps

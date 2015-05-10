@@ -1,0 +1,4 @@
+opcode : 0x3c
+state  : IRAM
+2570.70user 0.18system 43:11.22elapsed 99%CPU (0avgtext+0avgdata 314176maxresident)k
+0inputs+144outputs (0major+117328minor)pagefaults 0swaps

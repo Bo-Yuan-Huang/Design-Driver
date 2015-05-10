@@ -1,0 +1,4 @@
+opcode : 0x21
+state  : SBUF
+2.27user 0.07system 0:02.62elapsed 89%CPU (0avgtext+0avgdata 136176maxresident)k
+0inputs+80outputs (0major+28352minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x69
+state  : DPL
+2.41user 0.05system 0:02.74elapsed 89%CPU (0avgtext+0avgdata 134528maxresident)k
+0inputs+72outputs (0major+25662minor)pagefaults 0swaps

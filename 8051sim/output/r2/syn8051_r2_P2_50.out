@@ -1,0 +1,4 @@
+opcode : 0x50
+state  : P2
+1.97user 0.04system 0:02.24elapsed 89%CPU (0avgtext+0avgdata 140224maxresident)k
+0inputs+96outputs (0major+34051minor)pagefaults 0swaps

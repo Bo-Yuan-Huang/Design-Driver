@@ -1,0 +1,4 @@
+opcode : 0x60
+state  : P3
+3.68user 0.06system 0:03.89elapsed 96%CPU (0avgtext+0avgdata 142624maxresident)k
+0inputs+88outputs (0major+31764minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x35
+state  : PSW
+8.86user 0.11system 0:09.17elapsed 97%CPU (0avgtext+0avgdata 197632maxresident)k
+0inputs+136outputs (0major+67554minor)pagefaults 0swaps

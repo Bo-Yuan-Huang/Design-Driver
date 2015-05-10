@@ -1,0 +1,4 @@
+opcode : 0x7c
+state  : TMOD
+2.42user 0.09system 0:02.83elapsed 88%CPU (0avgtext+0avgdata 136768maxresident)k
+0inputs+88outputs (0major+30822minor)pagefaults 0swaps

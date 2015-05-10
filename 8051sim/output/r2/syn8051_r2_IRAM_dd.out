@@ -1,0 +1,4 @@
+opcode : 0xdd
+state  : IRAM
+17.12user 0.03system 0:17.36elapsed 98%CPU (0avgtext+0avgdata 158704maxresident)k
+0inputs+40outputs (0major+19670minor)pagefaults 0swaps

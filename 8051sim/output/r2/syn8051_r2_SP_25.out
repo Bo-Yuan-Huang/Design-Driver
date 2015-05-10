@@ -1,0 +1,4 @@
+opcode : 0x25
+state  : SP
+4.93user 0.07system 0:05.24elapsed 95%CPU (0avgtext+0avgdata 152336maxresident)k
+0inputs+112outputs (0major+41222minor)pagefaults 0swaps

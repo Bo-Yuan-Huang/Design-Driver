@@ -1,0 +1,4 @@
+opcode : 0x83
+state  : TL0
+2.25user 0.04system 0:02.59elapsed 88%CPU (0avgtext+0avgdata 137952maxresident)k
+0inputs+88outputs (0major+30969minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x60
+state  : B
+3.26user 0.07system 0:03.50elapsed 95%CPU (0avgtext+0avgdata 144896maxresident)k
+0inputs+88outputs (0major+33395minor)pagefaults 0swaps

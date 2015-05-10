@@ -1,0 +1,4 @@
+opcode : 0xd8
+state  : PCON
+2.42user 0.07system 0:02.65elapsed 94%CPU (0avgtext+0avgdata 138288maxresident)k
+0inputs+88outputs (0major+31558minor)pagefaults 0swaps

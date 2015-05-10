@@ -1,0 +1,4 @@
+opcode : 0x84
+state  : PSW
+3.66user 0.07system 0:03.90elapsed 95%CPU (0avgtext+0avgdata 165440maxresident)k
+0inputs+72outputs (0major+33290minor)pagefaults 0swaps

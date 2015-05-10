@@ -1,0 +1,4 @@
+opcode : 0xf9
+state  : SCON
+3.29user 0.07system 0:03.74elapsed 89%CPU (0avgtext+0avgdata 144960maxresident)k
+0inputs+112outputs (0major+39953minor)pagefaults 0swaps

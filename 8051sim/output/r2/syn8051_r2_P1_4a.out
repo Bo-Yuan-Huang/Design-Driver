@@ -1,0 +1,4 @@
+opcode : 0x4a
+state  : P1
+1.98user 0.09system 0:02.36elapsed 87%CPU (0avgtext+0avgdata 142816maxresident)k
+0inputs+104outputs (0major+36867minor)pagefaults 0swaps

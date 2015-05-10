@@ -1,0 +1,4 @@
+opcode : 0x13
+state  : SBUF
+2.48user 0.06system 0:02.81elapsed 90%CPU (0avgtext+0avgdata 138800maxresident)k
+0inputs+96outputs (0major+33620minor)pagefaults 0swaps

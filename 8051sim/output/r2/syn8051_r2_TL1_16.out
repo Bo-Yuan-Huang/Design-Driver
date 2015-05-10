@@ -1,0 +1,4 @@
+opcode : 0x16
+state  : TL1
+2.50user 0.10system 0:03.48elapsed 74%CPU (0avgtext+0avgdata 139312maxresident)k
+0inputs+88outputs (0major+31882minor)pagefaults 0swaps

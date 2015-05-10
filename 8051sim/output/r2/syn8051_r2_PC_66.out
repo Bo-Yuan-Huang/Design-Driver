@@ -1,0 +1,4 @@
+opcode : 0x66
+state  : PC
+1.19user 0.02system 0:01.48elapsed 82%CPU (0avgtext+0avgdata 129312maxresident)k
+0inputs+32outputs (0major+13450minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x80
+state  : P3
+2.60user 0.07system 0:02.87elapsed 93%CPU (0avgtext+0avgdata 139840maxresident)k
+0inputs+88outputs (0major+31642minor)pagefaults 0swaps

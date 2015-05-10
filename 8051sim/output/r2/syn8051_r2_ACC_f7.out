@@ -1,0 +1,4 @@
+opcode : 0xf7
+state  : ACC
+4.91user 0.10system 0:05.36elapsed 93%CPU (0avgtext+0avgdata 177952maxresident)k
+0inputs+120outputs (0major+57093minor)pagefaults 0swaps

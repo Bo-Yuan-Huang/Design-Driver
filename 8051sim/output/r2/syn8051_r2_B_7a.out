@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : B
+4.37user 0.10system 0:04.64elapsed 96%CPU (0avgtext+0avgdata 148464maxresident)k
+0inputs+96outputs (0major+36533minor)pagefaults 0swaps

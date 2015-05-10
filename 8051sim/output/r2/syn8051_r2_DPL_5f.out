@@ -1,0 +1,4 @@
+opcode : 0x5f
+state  : DPL
+3.25user 0.07system 0:03.66elapsed 90%CPU (0avgtext+0avgdata 138128maxresident)k
+0inputs+88outputs (0major+31233minor)pagefaults 0swaps

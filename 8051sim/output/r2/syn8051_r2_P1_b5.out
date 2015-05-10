@@ -1,0 +1,4 @@
+opcode : 0xb5
+state  : P1
+2.82user 0.07system 0:03.11elapsed 93%CPU (0avgtext+0avgdata 142976maxresident)k
+0inputs+104outputs (0major+36802minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x80
+state  : SP
+2.87user 0.09system 0:03.33elapsed 88%CPU (0avgtext+0avgdata 140368maxresident)k
+0inputs+96outputs (0major+33975minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x21
+state  : ACC
+4.62user 0.11system 0:04.86elapsed 97%CPU (0avgtext+0avgdata 158064maxresident)k
+0inputs+96outputs (0major+40655minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x29
+state  : SBUF
+2.39user 0.06system 0:02.71elapsed 90%CPU (0avgtext+0avgdata 136560maxresident)k
+0inputs+80outputs (0major+28444minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0x13
+state  : B
+3.97user 0.11system 0:04.43elapsed 92%CPU (0avgtext+0avgdata 143984maxresident)k
+0inputs+104outputs (0major+38054minor)pagefaults 0swaps

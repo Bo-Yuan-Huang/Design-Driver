@@ -1,0 +1,4 @@
+opcode : 0x41
+state  : IE
+2.10user 0.05system 0:02.30elapsed 93%CPU (0avgtext+0avgdata 136704maxresident)k
+0inputs+72outputs (0major+25798minor)pagefaults 0swaps

@@ -1,0 +1,4 @@
+opcode : 0xe4
+state  : PCON
+2.14user 0.07system 0:02.37elapsed 93%CPU (0avgtext+0avgdata 138144maxresident)k
+0inputs+80outputs (0major+29058minor)pagefaults 0swaps

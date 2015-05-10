@@ -1,0 +1,4 @@
+opcode : 0xde
+state  : IP
+4.07user 0.06system 0:04.30elapsed 96%CPU (0avgtext+0avgdata 146208maxresident)k
+0inputs+120outputs (0major+42895minor)pagefaults 0swaps

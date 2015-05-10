@@ -1,0 +1,4 @@
+opcode : 0x9a
+state  : P3
+3.07user 0.08system 0:03.42elapsed 92%CPU (0avgtext+0avgdata 143232maxresident)k
+0inputs+104outputs (0major+37285minor)pagefaults 0swaps

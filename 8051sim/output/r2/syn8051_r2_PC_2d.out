@@ -1,0 +1,4 @@
+opcode : 0x2d
+state  : PC
+0.81user 0.01system 0:01.10elapsed 75%CPU (0avgtext+0avgdata 130032maxresident)k
+0inputs+32outputs (0major+13374minor)pagefaults 0swaps

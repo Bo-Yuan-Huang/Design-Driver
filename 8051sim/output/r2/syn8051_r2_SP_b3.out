@@ -1,0 +1,4 @@
+opcode : 0xb3
+state  : SP
+3.04user 0.06system 0:03.26elapsed 95%CPU (0avgtext+0avgdata 142912maxresident)k
+0inputs+96outputs (0major+34185minor)pagefaults 0swaps

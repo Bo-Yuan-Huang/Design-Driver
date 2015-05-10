@@ -1,0 +1,4 @@
+opcode : 0x7a
+state  : DPL
+2.44user 0.06system 0:02.62elapsed 95%CPU (0avgtext+0avgdata 135216maxresident)k
+0inputs+88outputs (0major+30702minor)pagefaults 0swaps

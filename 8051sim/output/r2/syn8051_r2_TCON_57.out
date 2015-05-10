@@ -1,0 +1,4 @@
+opcode : 0x57
+state  : TCON
+2.59user 0.10system 0:03.02elapsed 89%CPU (0avgtext+0avgdata 138480maxresident)k
+0inputs+96outputs (0major+33387minor)pagefaults 0swaps

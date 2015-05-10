@@ -1,0 +1,4 @@
+opcode : 0x4d
+state  : TL1
+2.49user 0.07system 0:02.79elapsed 91%CPU (0avgtext+0avgdata 139424maxresident)k
+0inputs+88outputs (0major+31842minor)pagefaults 0swaps

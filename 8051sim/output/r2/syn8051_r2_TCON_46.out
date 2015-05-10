@@ -1,0 +1,4 @@
+opcode : 0x46
+state  : TCON
+2.62user 0.06system 0:03.04elapsed 88%CPU (0avgtext+0avgdata 139104maxresident)k
+0inputs+96outputs (0major+33797minor)pagefaults 0swaps

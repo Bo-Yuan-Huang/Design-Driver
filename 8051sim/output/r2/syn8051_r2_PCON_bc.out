@@ -1,0 +1,4 @@
+opcode : 0xbc
+state  : PCON
+2.27user 0.07system 0:02.76elapsed 84%CPU (0avgtext+0avgdata 135328maxresident)k
+0inputs+72outputs (0major+26170minor)pagefaults 0swaps

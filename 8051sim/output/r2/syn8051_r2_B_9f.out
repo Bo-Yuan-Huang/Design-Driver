@@ -1,0 +1,4 @@
+opcode : 0x9f
+state  : B
+3.12user 0.08system 0:03.37elapsed 95%CPU (0avgtext+0avgdata 149840maxresident)k
+0inputs+104outputs (0major+40042minor)pagefaults 0swaps

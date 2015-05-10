@@ -1,0 +1,4 @@
+opcode : 0x55
+state  : IP
+3.12user 0.06system 0:03.32elapsed 96%CPU (0avgtext+0avgdata 140752maxresident)k
+0inputs+96outputs (0major+33582minor)pagefaults 0swaps

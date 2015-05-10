@@ -1,0 +1,4 @@
+opcode : 0x76
+state  : PSW
+8.27user 0.10system 0:08.54elapsed 98%CPU (0avgtext+0avgdata 183152maxresident)k
+0inputs+128outputs (0major+67653minor)pagefaults 0swaps

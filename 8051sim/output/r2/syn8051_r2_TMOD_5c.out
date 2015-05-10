@@ -1,0 +1,4 @@
+opcode : 0x5c
+state  : TMOD
+2.55user 0.04system 0:03.14elapsed 82%CPU (0avgtext+0avgdata 135968maxresident)k
+0inputs+88outputs (0major+30518minor)pagefaults 0swaps

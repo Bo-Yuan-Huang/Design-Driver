@@ -1,0 +1,4 @@
+opcode : 0x72
+state  : P3
+2.71user 0.06system 0:02.99elapsed 92%CPU (0avgtext+0avgdata 139936maxresident)k
+0inputs+88outputs (0major+31556minor)pagefaults 0swaps
