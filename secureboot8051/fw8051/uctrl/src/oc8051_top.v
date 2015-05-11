@@ -469,6 +469,7 @@ wire [7:0] iram0 = iram[7:0];
 wire [7:0] iram1 = iram[15:8];
 wire [7:0] iram8 = iram[71:64];
 wire [7:0] iram9 = iram[79:72];
+wire [7:0] wr_addr_m, wr_data_m;
 
 oc8051_ram_top oc8051_ram_top1(.clk(wb_clk_i),
                                .rst(wb_rst_i),
@@ -478,6 +479,8 @@ oc8051_ram_top oc8051_ram_top1(.clk(wb_clk_i),
                                .bit_addr(bit_addr_o),
                                .wr_data(wr_dat),
                                .wr(wr_o && (!wr_addr[7] || wr_ind)),
+                               .wr_data_m(wr_data_m),
+                               .wr_addr_m(wr_addr_m),
                                .iram(iram),
                                .bit_data_in(desCy),
                                .bit_data_out(bit_data)
@@ -569,6 +572,8 @@ oc8051_indi_addr oc8051_indi_addr1 (.clk(wb_clk_i),
                                     .ri_out(ri),
                                     .sel(op1_cur[0]),
                                     .bank(bank_sel),
+                                    .wr_addr_m(wr_addr_m),
+                                    .wr_data_m(wr_data_m),
                                     .iram0(iram0),
                                     .iram1(iram1),
                                     .iram8(iram8),

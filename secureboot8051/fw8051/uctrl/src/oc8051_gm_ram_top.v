@@ -85,6 +85,8 @@ module oc8051_ram_top (clk,
 		       bit_data_in, 
 		       bit_data_out,
                        iram,
+                       wr_data_m,
+                       wr_addr_m
 `ifdef OC8051_BIST
          ,
          scanb_rst,
@@ -116,6 +118,7 @@ input [7:0] wr_data;
 input [7:0] rd_addr, wr_addr;
 output bit_data_out;
 output [7:0] rd_data;
+output [7:0] wr_addr_m, wr_data_m;
 
 output [2047:0] iram;
 

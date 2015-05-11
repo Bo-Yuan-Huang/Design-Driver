@@ -13,6 +13,7 @@ module oc8051_gm_top(
     clk,
     rst,
     word_in,
+    xram_data_in,
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
     p0_in,             // port 0 input
@@ -59,6 +60,7 @@ module oc8051_gm_top(
     input rst;
     input [127:0] word_in;
 
+    input [7:0] xram_data_in;
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
     input  [7:0]  p0_in;             // port 0 input
@@ -166,8 +168,9 @@ input         t2_i,             // counter 2 input
     wire [7:0]  rd_rom_0, rd_rom_1, rd_rom_2;
     wire [127:0] IRAM_gm;
 
-    reg [7:0] p0in_reg, p1in_reg, p2in_reg, p3in_reg;
+    reg [7:0] xram_data_in_reg, p0in_reg, p1in_reg, p2in_reg, p3in_reg;
 
+    wire [7:0] xram_data_in_model = inst_finished ? xram_data_in : xram_data_in_reg;
     wire [7:0] p0in_model = inst_finished ? p0_in : p0in_reg;
     wire [7:0] p1in_model = inst_finished ? p1_in : p1in_reg;
     wire [7:0] p2in_model = inst_finished ? p2_in : p2in_reg;
@@ -245,7 +248,19 @@ input         t2_i,             // counter 2 input
     reg inst_finished_r;
 
     // if we see a non-zero op, property is always valid.
-    wire op0_cnst_next = op0_cnst ? ((rd_rom_0 <= 8'h80)) : 0;
+    wire bad_inst = 
+        (rd_rom_0 == 8'hc2) || (rd_rom_0 == 8'hc3) ||
+        (rd_rom_0 == 8'hb2) || (rd_rom_0 == 8'hb3) ||
+        (rd_rom_0 == 8'ha2) || (rd_rom_0 == 8'h82) ||
+        (rd_rom_0 == 8'hb0) || (rd_rom_0 == 8'h92) ||
+        (rd_rom_0 == 8'h72) || (rd_rom_0 == 8'ha0) ||
+        (rd_rom_0 == 8'hd2) || (rd_rom_0 == 8'hd3) ||
+        (rd_rom_0 == 8'hd4) || (rd_rom_0 == 8'hd0) ||
+        (rd_rom_0 == 8'h10) || (rd_rom_0 == 8'h20) || (rd_rom_0 == 8'h30) ||
+        (rd_rom_0 == 8'he0) || (rd_rom_0 == 8'he2) || (rd_rom_0 == 8'he3) ||
+        (rd_rom_0 == 8'hf0) || (rd_rom_0 == 8'hf2) || (rd_rom_0 == 8'hf3);
+
+    wire op0_cnst_next = op0_cnst ? (!bad_inst) : 0;
     wire cnst_valid = op0_cnst && op0_cnst_next;
 
     assign property_invalid_pc = cnst_valid && inst_finished && (PC_gm_next != pc_impl);
@@ -273,6 +288,7 @@ input         t2_i,             // counter 2 input
         if (rst) begin
             op0_cnst <= 1;
             inst_finished_r <= 0;
+            xram_data_in_reg <= 8'b0;
             p0in_reg <= 8'b0;
             p1in_reg <= 8'b0;
             p2in_reg <= 8'b0;
@@ -286,6 +302,7 @@ input         t2_i,             // counter 2 input
             property_invalid_psw_1_r <= property_invalid_psw_1;
             property_invalid_sp_1_r <= property_invalid_sp_1;
             if (inst_finished) begin
+                xram_data_in_reg <= xram_data_in;
                 p0in_reg <= p0_in;
                 p1in_reg <= p1_in;
                 p2in_reg <= p2_in;

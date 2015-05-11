@@ -272,7 +272,7 @@ def synthesize(opc, regs, logfilename, outputfilename, verbosity, unsat_core):
 
     STK_DATA = Choice('STK_DATA', ctx.op0, [mem_SP, mem_SP_plus1, mem_SP_minus1])
     ctxPOP = ctxNOP.writeDirect(STK_SRC_DIR_ADDR, STK_DATA)
-    ctxPOP.SP = Choice('POP_SP', ctx.op0, [STK_SP, ctxPOP.SP])
+    ctxPOP.SP = If(Equal(STK_SRC_DIR_ADDR, BitVecVal(0x81, 8)), ctxPOP.SP, STK_SP)
 
     # instructions which write to specific bit addressable registers.
     ctxBIT = ctxNOP.clone()
@@ -378,7 +378,10 @@ def synthesize(opc, regs, logfilename, outputfilename, verbosity, unsat_core):
     syn.addOutput('XRAM_DATA_OUT', ctxFINAL.XRAM_DATA_OUT, Synthesizer.BITVEC)
 
     if logfilename:
-        lf = open(logfilename, 'wt')
+        if logfilename == 'STDOUT':
+            lf = sys.stdout
+        else:
+            lf = open(logfilename, 'wt')
         syn.debug(vb=verbosity, lf=lf, uc=unsat_core)
     else:
         lf = None

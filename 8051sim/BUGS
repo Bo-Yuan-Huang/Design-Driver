@@ -66,4 +66,7 @@ as addr D0, through RRC, through bit addressable instructions etc.
 
 * 
 
+* SP modeling bug:
 
+ctxPOP.SP = If(Equal(STK_SRC_DIR_ADDR, BitVecVal(0x81, 8)), ctxPOP.SP, STK_SP)
+POP needs to worry about the case when the destination is SP itself!
