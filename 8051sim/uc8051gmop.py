@@ -104,23 +104,41 @@ def rewritePortsAsInputs(opcode, st, v):
     else:
         return v
                 
-def main(argv):
-    if len(argv) != 5:
-        print 'Syntax error.'
-        print 'Usage: %s <ast-dir> <cnst> <opcode> <output.v>'
-        return 1
 
-    asts = readAllASTs(argv[1])
+def hasCinput(vctx, name):
+    for (i, w) in vctx.cinputs:
+        if name == i: return True
+    return False
+
+def addMissingInputs(vctx):
+    inputs = [
+        ('WR_COND_ABSTR_IRAM_0', None),
+        ('WR_ADDR_ABSTR_IRAM_0', (3, 0)),
+        ('WR_DATA_ABSTR_IRAM_0', (7, 0)),
+        ('WR_COND_ABSTR_IRAM_1', None),
+        ('WR_ADDR_ABSTR_IRAM_1', (3,0)),
+        ('WR_DATA_ABSTR_IRAM_1', (7,0)),
+        ('RD_IRAM_0_ABSTR_ADDR', (7,0)),
+        ('RD_IRAM_1_ABSTR_ADDR', (7,0)),
+        ('RD_ROM_1_ABSTR_ADDR', (15,0)),
+        ('RD_ROM_2_ABSTR_ADDR', (15,0))
+    ]
+    for inp, width in inputs:
+        if not hasCinput(vctx, inp):
+            vctx.cinputs.append((inp, width))
+
+def gen_gm(astdir, cnstfile, opcode, outputfile):
+    asts = readAllASTs(astdir)
     assert len(asts) == 0x100
 
     vctx = VerilogContext() 
-    cnst = readCnst(argv[2])
+    cnst = readCnst(cnstfile)
 
     subs = ast2verilog.AddrSubs()
     cnst_p = ast2verilog.rewriteMemReads(-1, cnst, subs)
     vctx.setCnst(cnst_p)
 
-    this_opcode = int(argv[3], 0)
+    this_opcode = opcode
     vctx.cinputs.append(('XRAM_DATA_IN', (7, 0)))
     vctx.objects[ast.BitVecVar('XRAM_DATA_IN', 8)] = 'XRAM_DATA_IN'
     vctx.addInput(ast.BitVecVar('XRAM_ADDR', 16), (15,0))
@@ -218,11 +236,28 @@ def main(argv):
     vctx.setRst('TCON', '0')
     vctx.setRst('SP', '7')
     addZeroRegs(vctx)
+    addMissingInputs(vctx)
 
     vctx.init_mem_guard = 'OC8051_SIMULATION'
-    with open(argv[4], 'wt') as f:
+    with open(outputfile, 'wt') as f:
         vctx.dump(f, 'oc8051_golden_model')
 
+
+def main(argv):
+    if len(argv) != 5:
+        print 'Syntax error.'
+        print 'Usage: %s <ast-dir> <cnst> <opcode> <output.v>'
+        return 1
+    astdir = argv[1]
+    cnstfile = argv[2]
+    outputfile = argv[4]
+    if argv[3] != 'all':
+        opcode = int(argv[3], 0)
+        gen_gm(astdir, cnstfile, opcode, outputfile)
+    else:
+        for opcode in xrange(0x100):
+            print 'generating golden model for opcode: %x' % opcode
+            gen_gm(astdir, cnstfile, opcode, outputfile % opcode)
 
 if __name__ == '__main__':
     main(sys.argv)

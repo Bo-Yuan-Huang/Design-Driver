@@ -1,3 +1,8 @@
+import sys
+import os
+from string import Template
+
+vtemp=Template("""
 //////////////////////////////////////////////////////////////////////
 //// OC8051 formal verification top module                      //////
 //////////////////////////////////////////////////////////////////////
@@ -324,7 +329,7 @@ input         t2_i,             // counter 2 input
 
     wire [7:0] opcode = rd_rom_0;
 
-    wire this_op_cnst = opcode == 8'h49;
+    wire this_op_cnst = opcode == 8'h${opcode};
     reg this_op_cnst_r;
 
     wire bad_inst = 
@@ -499,3 +504,14 @@ input         t2_i,             // counter 2 input
          .ea_in(1'b1));
 
 endmodule
+""")
+
+for op in xrange(0x100):
+    opcode = '%02x' % op
+    print opcode
+    filename = 'ind-models/oc8051_gm_ind_top_%s.v' % opcode
+    with open(filename, 'wt') as f:
+        verilog = vtemp.substitute(opcode=opcode)
+        print >> f, verilog
+
+
