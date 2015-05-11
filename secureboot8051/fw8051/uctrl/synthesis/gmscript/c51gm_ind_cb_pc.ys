@@ -1,0 +1,17 @@
+
+read_verilog ../src/ind-models/oc8051_gm_ind_top_cb.v ../src/golden-models/oc8051_gm_cb.v ../src/oc8051_top.v ../src/oc8051_alu_src_sel.v ../src/oc8051_alu.v ../src/oc8051_decoder.v ../src/oc8051_divide.v ../src/oc8051_multiply.v ../src/oc8051_memory_interface.v ../src/oc8051_gm_ram_top.v ../src/oc8051_acc.v ../src/oc8051_comp.v ../src/oc8051_sp.v ../src/oc8051_dptr.v ../src/oc8051_cy_select.v ../src/oc8051_psw.v ../src/oc8051_gm_indi_addr.v ../src/oc8051_ports.v ../src/oc8051_b_register.v ../src/oc8051_uart.v ../src/oc8051_int.v ../src/oc8051_tc.v ../src/oc8051_tc2.v ../src/oc8051_wb_iinterface.v ../src/oc8051_sfr.v ../src/oc8051_rom.v ../src/oc8051_cache_ram.v ../src/oc8051_gm_ram_256x8_two_bist.v ../src/oc8051_gm_cxrom.v 
+
+cd oc8051_gm_top
+delexcept property_invalid_pc
+cd ..
+hierarchy -check  -top oc8051_gm_top
+proc -global_arst rst 
+techmap -map adff2dff.v 
+memory
+techmap
+flatten
+dfflibmap -liberty abcv2.lib
+abc -liberty abcv2.lib
+opt
+write_verilog -bcd -noinst -noclk -nocmt netlist/gms/oc8051_gm_cb_pc.v
+
