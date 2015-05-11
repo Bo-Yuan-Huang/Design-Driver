@@ -24,7 +24,13 @@ module sha_top (
     xram_data_in,   // XRAM ==> SHA
     xram_ack,       // XRAM ==> SHA
     xram_stb,       // SHA ==> XRAM
-    xram_wr
+    xram_wr,
+    sha_state,
+    sha_rdaddr,
+    sha_wraddr,
+    sha_len,
+    sha_step,
+    sha_core_assumps_valid
 );
 
 //
@@ -53,6 +59,11 @@ input [7:0] xram_data_in;
 input xram_ack;
 output xram_stb;
 output xram_wr;
+// verif output
+output [1:0] sha_state;
+output [15:0] sha_rdaddr, sha_wraddr, sha_len;
+output sha_step;
+output sha_core_assumps_valid;
 
 // FIRST ADDRESS ALLOCATED TO THIS UNIT.
 localparam SHA_ADDR_START  = 16'hfe00;
@@ -75,6 +86,7 @@ wire ack = stb && in_addr_range;
 
 // state register.
 reg [1:0]  sha_reg_state;
+wire [1:0] sha_state = sha_reg_state;
 
 // state predicates.
 wire sha_state_idle       = sha_reg_state == SHA_STATE_IDLE;
@@ -111,6 +123,8 @@ assign sha_state_next =
     sha_state_read_data  ? sha_state_next_read_data  : 
     sha_state_operate    ? sha_state_next_operate    : 
     sha_state_write_data ? sha_state_next_write_data : 2'bx;
+
+wire sha_step = sha_reg_state != sha_state_next;
 
 // Go to the read data state if we get a start signal.  
 assign sha_state_next_idle = start_op ? SHA_STATE_READ_DATA : SHA_STATE_IDLE; 
@@ -284,6 +298,10 @@ reg2byte sha_reg_len_i(
     .reg_out    (sha_reg_len)
 );
 
+wire [15:0] sha_rdaddr = sha_reg_rd_addr;
+wire [15:0] sha_wraddr = sha_reg_wr_addr;
+wire [15:0] sha_len = sha_reg_len;
+
 // Active low reset.
 wire sha_core_rst_n = !rst; 
 // Set to one to start hashing the first block of data.
@@ -304,6 +322,22 @@ reg [159:0] sha_reg_digest;
 wire [159:0] sha_reg_digest_next;
 assign sha_reg_digest_next = sha_core_digest_valid ? sha_core_digest : sha_reg_digest;
     
+reg sha_core_assumps_valid_reg;
+wire sha_core_assumps_valid_reg_next = 
+    sha_core_assumps_valid_reg ? !(sha_core_ready != sha_core_digest_valid) : 0;
+
+wire sha_core_assumps_valid = 1; // sha_core_assumps_valid_reg && sha_core_assumps_valid_reg_next;
+
+always @(posedge clk)
+begin
+    if (rst) begin
+        sha_core_assumps_valid_reg <= 1;
+    end
+    else begin
+        sha_core_assumps_valid_reg <= sha_core_assumps_valid_reg_next;
+    end
+end
+
 // instantiate the SHA1 core.
 sha1_core sha1_core_i (
     .clk          ( clk                   ),

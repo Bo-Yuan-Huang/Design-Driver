@@ -95,11 +95,11 @@ wire stb        = selected_port == PORT_A ? stb_A     :
 wire wr         = selected_port == PORT_A ? wr_A      : 
                   selected_port == PORT_B ? wr_B      : wr_C;
 
-wire addr       = selected_port == PORT_A ? addr_A    : 
-                  selected_port == PORT_B ? addr_B    : addr_C;
+wire [15:0] addr = selected_port == PORT_A ? addr_A    : 
+                   selected_port == PORT_B ? addr_B    : addr_C;
 
-wire data_in    = selected_port == PORT_A ? data_in_A : 
-                  selected_port == PORT_B ? data_in_B : data_in_C;
+wire [7:0] data_in = selected_port == PORT_A ? data_in_A : 
+                     selected_port == PORT_B ? data_in_B : data_in_C;
 
 wire ack_A      = selected_port == PORT_A ? ack : 1'b0;
 wire ack_B      = selected_port == PORT_B ? ack : 1'b0;

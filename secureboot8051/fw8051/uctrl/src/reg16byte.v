@@ -70,9 +70,8 @@ module reg16byte(clk, rst, en, wr, addr, data_in, data_out, reg_out);
                     addr == 4'd12 ? reg_out[103:96]  :
                     addr == 4'd13 ? reg_out[111:104] :
                     addr == 4'd14 ? reg_out[119:112] :
-                    addr == 4'd15 ? reg_out[127:120] :
-                    8'dX;
-    assign data_out = en ? data_out_mux : 8'dz;
+                    reg_out[127:120];
+    assign data_out = data_out_mux;
 
     always @(posedge clk)
     begin

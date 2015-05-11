@@ -1,3 +1,3 @@
 state : (1,0)
-0.45user 0.02system 0:01.02elapsed 46%CPU (0avgtext+0avgdata 115232maxresident)k
-0inputs+16outputs (0major+7863minor)pagefaults 0swaps
+0.37user 0.00system 0:00.97elapsed 39%CPU (0avgtext+0avgdata 115136maxresident)k
+0inputs+16outputs (0major+7892minor)pagefaults 0swaps

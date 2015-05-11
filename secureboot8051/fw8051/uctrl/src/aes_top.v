@@ -24,7 +24,14 @@ module aes_top (
     xram_data_in,   // XRAM ==> AES
     xram_ack,       // XRAM ==> AES
     xram_stb,       // AES ==> XRAM
-    xram_wr
+    xram_wr,
+    aes_state,
+    aes_addr,
+    aes_len,
+    aes_ctr,
+    aes_key0,
+    aes_key1,
+    aes_step
 );
 
 //
@@ -53,6 +60,11 @@ input [7:0] xram_data_in;
 input xram_ack;
 output xram_stb;
 output xram_wr;
+// verif output.
+output [1:0] aes_state;
+output [15:0] aes_addr, aes_len;
+output [127:0] aes_ctr, aes_key0, aes_key1;
+output aes_step;
 
 // FIRST ADDRESS ALLOCATED TO THIS UNIT.
 localparam AES_ADDR_START  = 16'hff00;
@@ -91,13 +103,15 @@ wire sel_reg_key1  = {addr[15:4], 4'b0} == AES_REG_KEY1;
 
 // state register.
 reg [1:0]  aes_reg_state;
-wire [7:0] data_out = sel_reg_state ? {6'b0, aes_reg_state} : 8'dz;
-// default data out.
-assign data_out = (!sel_reg_state   && !sel_reg_state   &&
-                   !sel_reg_addr    && !sel_reg_len     &&
-                   !sel_reg_ctr     && !sel_reg_key0    &&
-                   !sel_reg_key1    && in_addr_range) 
-                ? 8'd0 : 8'dz;
+wire [1:0] aes_state = aes_reg_state;
+
+wire [7:0] data_out = 
+    sel_reg_state ? {6'b0, aes_reg_state} : 
+    sel_reg_addr  ? aes_addr_dataout      : 
+    sel_reg_len   ? aes_len_dataout       : 
+    sel_reg_ctr   ? aes_ctr_dataout       : 
+    sel_reg_key0  ? aes_key0_dataout      : 
+    sel_reg_key1  ? aes_key1_dataout      : 8'd0;
 
 // state predicates.
 wire aes_state_idle = aes_reg_state == AES_STATE_IDLE;
@@ -111,6 +125,7 @@ wire start_op = sel_reg_start && data_in[0] && wren;
 
 // address register.
 wire [15:0] aes_reg_opaddr;
+wire [7:0] aes_addr_dataout;
 reg2byte aes_reg_opaddr_i(
     .clk        (clk),
     .rst        (rst),
@@ -118,12 +133,13 @@ reg2byte aes_reg_opaddr_i(
     .wr         (sel_reg_addr && wren),
     .addr       (addr[0]),
     .data_in    (data_in),
-    .data_out   (data_out),
+    .data_out   (aes_addr_dataout),
     .reg_out    (aes_reg_opaddr)
 );
 
 // length register.
 wire [15:0] aes_reg_oplen;
+wire [7:0] aes_len_dataout;
 reg2byte aes_reg_oplen_i(
     .clk        (clk),
     .rst        (rst),
@@ -131,12 +147,16 @@ reg2byte aes_reg_oplen_i(
     .wr         (sel_reg_len && wren),
     .addr       (addr[0]),
     .data_in    (data_in),
-    .data_out   (data_out),
+    .data_out   (aes_len_dataout),
     .reg_out    (aes_reg_oplen)
 );
 
+wire [15:0] aes_addr = aes_reg_opaddr;
+wire [15:0] aes_len = aes_reg_oplen;
+
 // ctr register.
 wire [127:0] aes_reg_ctr;
+wire [7:0] aes_ctr_dataout;
 reg16byte aes_reg_ctr_i (
     .clk        (clk),
     .rst        (rst),
@@ -144,12 +164,13 @@ reg16byte aes_reg_ctr_i (
     .wr         (sel_reg_ctr && wren),
     .addr       (addr[3:0]),
     .data_in    (data_in),
-    .data_out   (data_out),
+    .data_out   (aes_ctr_dataout),
     .reg_out    (aes_reg_ctr)
 );
 
 // key0 register.
 wire [127:0] aes_reg_key0;
+wire [7:0] aes_key0_dataout;
 reg16byte aes_reg_key0_i(
     .clk        (clk),
     .rst        (rst),
@@ -157,12 +178,13 @@ reg16byte aes_reg_key0_i(
     .wr         (sel_reg_key0 && wren),
     .addr       (addr[3:0]),
     .data_in    (data_in),
-    .data_out   (data_out),
+    .data_out   (aes_key0_dataout),
     .reg_out    (aes_reg_key0)
 );
 
 // key1 register.
 wire [127:0] aes_reg_key1;
+wire [7:0] aes_key1_dataout;
 reg16byte aes_reg_key1_i(
     .clk        (clk),
     .rst        (rst),
@@ -170,9 +192,13 @@ reg16byte aes_reg_key1_i(
     .wr         (sel_reg_key1 && wren),
     .addr       (addr[3:0]),
     .data_in    (data_in),
-    .data_out   (data_out),
+    .data_out   (aes_key1_dataout),
     .reg_out    (aes_reg_key1)
 );
+
+wire [127:0] aes_ctr = aes_reg_ctr;
+wire [127:0] aes_key0 = aes_reg_key0;
+wire [127:0] aes_key1 = aes_reg_key1;
 
 // keep track of the number of bytes operated upon.
 reg [15:0] operated_bytes_count;
@@ -222,6 +248,8 @@ wire [1:0] aes_reg_state_next =
         (aes_state_write_data) ? aes_reg_state_next_write_data :
         AES_STATE_IDLE;
 
+wire aes_step = (aes_reg_state != aes_reg_state_next);
+
 // Data read from memory.
 reg [127:0] mem_data_buf;
 wire [127:0] mem_data_buf_next;
@@ -243,12 +271,12 @@ assign mem_data_buf_next[119 : 112 ] =  ( xram_ack && byte_counter == 14 )  ? xr
 assign mem_data_buf_next[127 : 120 ] =  ( xram_ack && byte_counter == 15 )  ? xram_data_in : mem_data_buf[127 : 120 ];
 
 // Actual encryption happens here.
-wire [127:0] aes_ctr = aes_reg_ctr + {112'b0, block_counter};
+wire [127:0] aes_ctr_v = aes_reg_ctr + {112'b0, block_counter};
 wire [127:0] aes_out;
 wire [127:0] encrypted_data = aes_out ^ mem_data_buf;
 aes_128 aes_128_i (
     .clk        (clk),
-    .state      (aes_ctr),
+    .state      (aes_ctr_v),
     .key        (aes_reg_key0),
     .out        (aes_out)
 );
@@ -273,8 +301,7 @@ assign xram_data_out = (byte_counter == 0)  ? encrypted_data_buf [7   :0  ]  :
                        (byte_counter == 12) ? encrypted_data_buf [103 : 96]  : 
                        (byte_counter == 13) ? encrypted_data_buf [111 : 104] : 
                        (byte_counter == 14) ? encrypted_data_buf [119 : 112] : 
-                       (byte_counter == 15) ? encrypted_data_buf [127 : 120] : 
-                       8'dX;
+                       encrypted_data_buf [127 : 120];
 
 // Flip-flops instantiated here.
 always @(posedge clk or posedge rst)

@@ -388,12 +388,12 @@ def modelSHA(syn, rd_en, wr_en, xmem):
 
     sha_state_next_1 = ast.If(sha_start_next, SHA_READ, SHA_IDLE)
     sha_state_next_2 = ast.If(sha_step, SHA_OP, SHA_READ)
-    sha_state_next_3 = ast.If(sha_step, SHA_WRITE, SHA_OP)
-    sha_state_next_4 = ast.If(sha_step,
+    sha_state_next_3 = ast.If(sha_step,
                                 ast.If(ast.ULT(xmem.sha_bytes_processed_next, xmem.sha_len),
                                         SHA_READ,
-                                        SHA_IDLE),
-                                SHA_WRITE)
+                                        SHA_WRITE),
+                                SHA_OP)
+    sha_state_next_4 = ast.If(sha_step, SHA_IDLE, SHA_WRITE)
     xmem.sha_state_next = ast.Choice('sha_state_next', xmem.sha_state,
                                         [sha_state_next_1, sha_state_next_2, sha_state_next_3, sha_state_next_4])
     return in_sha_range, sha_dataout

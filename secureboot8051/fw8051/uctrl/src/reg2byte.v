@@ -27,10 +27,8 @@ module reg2byte(clk, rst, en, wr, addr, data_in, data_out, reg_out);
     wire [7:0] reg1_next = wr1 ? data_in : reg_out[15:8];
 
     wire [7:0] data_out_mux = 
-                    addr == 1'd0 ? reg_out[7:0]  :
-                    addr == 1'd1 ? reg_out[15:8] :
-                    8'dX;
-    assign data_out = en ? data_out_mux : 8'dz;
+                    addr == 1'd0 ? reg_out[7:0] : reg_out[15:8];
+    assign data_out = data_out_mux;
 
     always @(posedge clk)
     begin

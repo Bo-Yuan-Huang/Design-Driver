@@ -13,5 +13,5 @@ Exception z3types.Z3Exception: Z3Exception() in  ignored
 Exception z3types.Z3Exception: Z3Exception() in  ignored
 Exception z3types.Z3Exception: Z3Exception() in  ignored
 Command exited with non-zero status 1
-2.82user 0.02system 0:02.89elapsed 98%CPU (0avgtext+0avgdata 143264maxresident)k
-0inputs+8outputs (0major+10051minor)pagefaults 0swaps
+2.62user 0.02system 0:02.76elapsed 95%CPU (0avgtext+0avgdata 143248maxresident)k
+0inputs+8outputs (0major+10047minor)pagefaults 0swaps
