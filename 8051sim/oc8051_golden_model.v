@@ -54,6 +54,7 @@ module oc8051_golden_model(
   IE_next,
   IP,
   IP_next,
+  XRAM_DATA_IN,
   P0IN,
   P1IN,
   P2IN,
@@ -116,6 +117,7 @@ output [7:0] IP;
 output [7:0] IP_next;
 
 input clk, rst, step;
+input [7:0] XRAM_DATA_IN;
 input [7:0] P0IN;
 input [7:0] P1IN;
 input [7:0] P2IN;
@@ -151,7 +153,6 @@ reg [7:0] TL0;
 reg [7:0] TL1;
 reg [7:0] TMOD;
 reg [15:0] XRAM_ADDR;
-reg [7:0] XRAM_DATA_IN;
 reg [7:0] XRAM_DATA_OUT;
 
 wire [7:0] ACC_03;
@@ -14761,7 +14762,6 @@ always @(posedge clk) begin
     TL1 <= 8'h0;
     TMOD <= 8'h0;
     XRAM_ADDR <= 16'h0;
-    XRAM_DATA_IN <= 8'h0;
     XRAM_DATA_OUT <= 8'h0;
 `ifdef OC8051_SIMULATION
     IRAM[0] = 8'b0;

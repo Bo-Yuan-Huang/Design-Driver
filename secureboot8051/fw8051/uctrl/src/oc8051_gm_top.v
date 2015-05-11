@@ -54,7 +54,9 @@ module oc8051_gm_top(
     property_invalid_p2,
     property_invalid_p3,
     property_invalid_psw,
-    property_invalid_sp
+    property_invalid_sp,
+    property_invalid_xram_addr,
+    property_invalid_xram_data_out
 );
     input clk;
     input rst;
@@ -109,6 +111,8 @@ input         t2_i,             // counter 2 input
     output property_invalid_p3;
     output property_invalid_psw;
     output property_invalid_sp;
+    output property_invalid_xram_addr;
+    output property_invalid_xram_data_out;
 
     wire int0 = 0;
     wire int1 = 1;
@@ -118,21 +122,23 @@ input         t2_i,             // counter 2 input
 `endif
 
 
-    wire [7:0] wbd_dat_i = 0;
+    // output data interface.
+    wire [7:0] wbd_dat_i = xram_data_in_model;
+    wire [15:0] wbd_adr_o;
+    wire wbd_stb_o;
+    wire wbd_ack_i = wbd_stb_o;
+
     wire [31:0] wbi_dat_i = 0;
-    wire wbd_ack_i = 0;
     wire wbi_ack_i = 0;
     wire wbd_err_i = 0;
     wire wbi_err_i = 0;
 
     wire [7:0] data_out_uart, data_out_xram;
     wire wbd_we_o;
-    wire wbd_stb_o;
     wire wbd_cyc_o;
     wire wbi_stb_o;
     wire wbi_cyc_o;
     wire [7:0] wbd_dat_o;
-    wire [15:0] wbd_adr_o;
     wire [15:0] cxrom_addr;
     wire [31:0] cxrom_data_out;
     wire [15:0] wbi_adr_o;
@@ -163,6 +169,10 @@ input         t2_i,             // counter 2 input
     wire [7:0] TL0_gm, TL0_gm_next;
     wire [7:0] TL1_gm, TL1_gm_next;
     wire [7:0] TMOD_gm, TMOD_gm_next;
+    wire [7:0] xram_data_out_gm; 
+    wire [7:0] xram_data_out_gm_next;
+    wire [15:0] xram_addr_gm;
+    wire [15:0] xram_addr_gm_next;
 
     wire [15:0] rd_rom_0_addr, rd_rom_1_addr, rd_rom_2_addr;
     wire [7:0]  rd_rom_0, rd_rom_1, rd_rom_2;
@@ -170,7 +180,7 @@ input         t2_i,             // counter 2 input
 
     reg [7:0] xram_data_in_reg, p0in_reg, p1in_reg, p2in_reg, p3in_reg;
 
-    wire [7:0] xram_data_in_model = inst_finished ? xram_data_in : xram_data_in_reg;
+    wire [7:0] xram_data_in_model = xram_data_in_reg;
     wire [7:0] p0in_model = inst_finished ? p0_in : p0in_reg;
     wire [7:0] p1in_model = inst_finished ? p1_in : p1in_reg;
     wire [7:0] p2in_model = inst_finished ? p2_in : p2in_reg;
@@ -192,56 +202,61 @@ input         t2_i,             // counter 2 input
 
 
     oc8051_golden_model oc8051_golden_model_1(
-        .clk            (clk),
-        .rst            (rst),
-        .step           (inst_finished),
-        .RD_ROM_0_ADDR  (rd_rom_0_addr),
-        .RD_ROM_1_ADDR  (rd_rom_1_addr),
-        .RD_ROM_2_ADDR  (rd_rom_2_addr),
-        .RD_ROM_0       (rd_rom_0),
-        .RD_ROM_1       (rd_rom_1),
-        .RD_ROM_2       (rd_rom_2),
-        .ACC            (ACC_gm),
-        .B              (B_gm),
-        .DPL            (DPL_gm),
-        .DPH            (DPH_gm),
-        .IE             (IE_gm),
-        .IE_next        (IE_gm_next),
-        .IP             (IP_gm),
-        .IP_next        (IP_gm_next),
-        .P0IN           (p0in_model),
-        .P1IN           (p1in_model),
-        .P2IN           (p2in_model),
-        .P3IN           (p3in_model),
-        .P0             (P0_gm),
-        .P1             (P1_gm),
-        .P2             (P2_gm),
-        .P3             (P3_gm),
-        .PC             (PC_gm),
-        .PC_next        (PC_gm_next),
-        .PCON_next      (PCON_gm_next),
-        .PSW            (PSW_gm),
-        .PSW_next       (PSW_gm_next),
-        .PCON           (PCON_gm),
-        .IRAM_full      (IRAM_gm),
-        .SBUF_next      (SBUF_gm_next),
-        .SBUF           (SBUF_gm),
-        .SCON_next      (SCON_gm_next),
-        .SCON           (SCON_gm),
-        .SP             (SP_gm),
-        .SP_next        (SP_gm_next),
-        .TCON_next      (TCON_gm_next),
-        .TCON           (TCON_gm),
-        .TH0_next       (TH0_gm_next),
-        .TH0            (TH0_gm),
-        .TH1_next       (TH1_gm_next),
-        .TH1            (TH1_gm),
-        .TL0_next       (TL0_gm_next),
-        .TL0            (TL0_gm),
-        .TL1_next       (TL1_gm_next),
-        .TL1            (TL1_gm),
-        .TMOD_next      (TMOD_gm_next),
-        .TMOD           (TMOD_gm)
+        .clk                ( clk                   ), 
+        .rst                ( rst                   ), 
+        .step               ( inst_finished         ), 
+        .RD_ROM_0_ADDR      ( rd_rom_0_addr         ), 
+        .RD_ROM_1_ADDR      ( rd_rom_1_addr         ), 
+        .RD_ROM_2_ADDR      ( rd_rom_2_addr         ), 
+        .RD_ROM_0           ( rd_rom_0              ), 
+        .RD_ROM_1           ( rd_rom_1              ), 
+        .RD_ROM_2           ( rd_rom_2              ), 
+        .ACC                ( ACC_gm                ), 
+        .B                  ( B_gm                  ), 
+        .DPL                ( DPL_gm                ), 
+        .DPH                ( DPH_gm                ), 
+        .IE                 ( IE_gm                 ), 
+        .IE_next            ( IE_gm_next            ), 
+        .IP                 ( IP_gm                 ), 
+        .IP_next            ( IP_gm_next            ), 
+        .P0IN               ( p0in_model            ), 
+        .P1IN               ( p1in_model            ), 
+        .P2IN               ( p2in_model            ), 
+        .P3IN               ( p3in_model            ), 
+        .P0                 ( P0_gm                 ), 
+        .P1                 ( P1_gm                 ), 
+        .P2                 ( P2_gm                 ), 
+        .P3                 ( P3_gm                 ), 
+        .PC                 ( PC_gm                 ), 
+        .PC_next            ( PC_gm_next            ), 
+        .PCON_next          ( PCON_gm_next          ), 
+        .PSW                ( PSW_gm                ), 
+        .PSW_next           ( PSW_gm_next           ), 
+        .PCON               ( PCON_gm               ), 
+        .IRAM_full          ( IRAM_gm               ), 
+        .SBUF_next          ( SBUF_gm_next          ), 
+        .SBUF               ( SBUF_gm               ), 
+        .SCON_next          ( SCON_gm_next          ), 
+        .SCON               ( SCON_gm               ), 
+        .SP                 ( SP_gm                 ), 
+        .SP_next            ( SP_gm_next            ), 
+        .TCON_next          ( TCON_gm_next          ), 
+        .TCON               ( TCON_gm               ), 
+        .TH0_next           ( TH0_gm_next           ), 
+        .TH0                ( TH0_gm                ), 
+        .TH1_next           ( TH1_gm_next           ), 
+        .TH1                ( TH1_gm                ), 
+        .TL0_next           ( TL0_gm_next           ), 
+        .TL0                ( TL0_gm                ), 
+        .TL1_next           ( TL1_gm_next           ), 
+        .TL1                ( TL1_gm                ), 
+        .TMOD_next          ( TMOD_gm_next          ), 
+        .TMOD               ( TMOD_gm               ), 
+        .XRAM_DATA_OUT      ( xram_data_out_gm      ), 
+        .XRAM_DATA_OUT_next ( xram_data_out_gm_next ), 
+        .XRAM_ADDR          ( xram_addr_gm          ), 
+        .XRAM_ADDR_next     ( xram_addr_gm_next     ), 
+        .XRAM_DATA_IN       ( xram_data_in_model    )
     );
 
     reg op0_cnst;
@@ -256,9 +271,9 @@ input         t2_i,             // counter 2 input
         (rd_rom_0 == 8'h72) || (rd_rom_0 == 8'ha0) ||
         (rd_rom_0 == 8'hd2) || (rd_rom_0 == 8'hd3) ||
         (rd_rom_0 == 8'hd4) || (rd_rom_0 == 8'hd0) ||
-        (rd_rom_0 == 8'h10) || (rd_rom_0 == 8'h20) || (rd_rom_0 == 8'h30) ||
-        (rd_rom_0 == 8'he0) || (rd_rom_0 == 8'he2) || (rd_rom_0 == 8'he3) ||
-        (rd_rom_0 == 8'hf0) || (rd_rom_0 == 8'hf2) || (rd_rom_0 == 8'hf3);
+        (rd_rom_0 == 8'h10) || (rd_rom_0 == 8'h20) || (rd_rom_0 == 8'h30);
+        //(rd_rom_0 == 8'he0) || (rd_rom_0 == 8'he2) || (rd_rom_0 == 8'he3) ||
+        //(rd_rom_0 == 8'hf0) || (rd_rom_0 == 8'hf2) || (rd_rom_0 == 8'hf3);
 
     wire op0_cnst_next = op0_cnst ? (!bad_inst) : 0;
     wire cnst_valid = op0_cnst && op0_cnst_next;
@@ -273,6 +288,8 @@ input         t2_i,             // counter 2 input
     assign property_invalid_p1 = cnst_valid && inst_finished_r && (P1_gm != p1_out);
     assign property_invalid_p2 = cnst_valid && inst_finished_r && (P2_gm != p2_out);
     assign property_invalid_p3 = cnst_valid && inst_finished_r && (P3_gm != p3_out);
+    assign property_invalid_xram_addr = cnst_valid && inst_finished && (xram_addr_gm_next != wbd_adr_o);
+    assign property_invalid_xram_data_out = cnst_valid && inst_finished && (xram_data_out_gm_next != wbd_dat_o);
 
     wire property_invalid_psw_1 = cnst_valid && inst_finished && (PSW_gm_next[7:1] != psw_impl[7:1]);
     wire property_invalid_psw_2 = cnst_valid && inst_finished_r && (PSW_gm[7:1] != psw_impl[7:1]);

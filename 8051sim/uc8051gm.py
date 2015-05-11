@@ -120,6 +120,8 @@ def main(argv):
     cnst_p = ast2verilog.rewriteMemReads(-1, cnst, subs)
     vctx.setCnst(cnst_p)
 
+    vctx.cinputs.append(('XRAM_DATA_IN', (7, 0)))
+    vctx.objects[ast.BitVecVar('XRAM_DATA_IN', 8)] = 'XRAM_DATA_IN'
     vctx.addInput(ast.BitVecVar('XRAM_ADDR', 16), (15,0))
     vctx.addInput(ast.BitVecVar('XRAM_DATA_OUT', 8), (7,0))
 

@@ -16,7 +16,10 @@ module oc8051_gm_tb();
     reg clk, rst;
     wire property_invalid_pc;
     reg [127:0] word_in;
+    reg [7:0] xram_data_in = 8'hff;
 
+    reg [7:0] XRAM_DATA_OUT_abstr = 8'hff;
+    reg [15:0] XRAM_ADDR_abstr = 16'hff;
 
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
@@ -134,7 +137,7 @@ module oc8051_gm_tb();
 //  `include "cexGM6.v"
 //  `include "cexGM7.v"
 //  `include "cexGM11.v"
-    `include "cexBMC0.v"
+    `include "cexA0.v"
 
       #8000
       $display("time ",$time, "; end of time\n");
@@ -200,7 +203,10 @@ module oc8051_gm_tb();
         .WR_DATA_ABSTR_IRAM_0 ( WR_DATA_ABSTR_IRAM_0 ) ,
         .WR_COND_ABSTR_IRAM_1 ( WR_COND_ABSTR_IRAM_1 ) ,
         .WR_ADDR_ABSTR_IRAM_1 ( WR_ADDR_ABSTR_IRAM_1 ) ,
-        .WR_DATA_ABSTR_IRAM_1 ( WR_DATA_ABSTR_IRAM_1 ) 
+        .WR_DATA_ABSTR_IRAM_1 ( WR_DATA_ABSTR_IRAM_1 ) ,
+        .xram_data_in         ( xram_data_in         ) ,
+        .XRAM_DATA_OUT_abstr  ( XRAM_DATA_OUT_abstr  ) ,
+        .XRAM_ADDR_abstr      ( XRAM_ADDR_abstr      )
     );
 
 endmodule

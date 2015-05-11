@@ -87,7 +87,7 @@ def addZeroRegs(vctx):
         vctx.statements.append('assign %s_next = %s;' % (r, r))
 
 def rewritePortsAsInputs(opcode, st, v):
-    port_names = ['P0', 'P1', 'P2', 'P3']
+    port_names = set(['P0', 'P1', 'P2', 'P3'])
     def f(n):
         if n.nodetype == ast.Node.BITVECVAR and n.name in port_names:
             assert n.width == 8
@@ -98,6 +98,9 @@ def rewritePortsAsInputs(opcode, st, v):
 
     if (opcode not in rmw_opcodes) and (st not in port_names):
         return v.apply(f)
+    elif (opcode == 0x85):
+        assert v.nodetype == ast.Node.IF
+        return ast.If(v.cond, v.exptrue.apply(f), v.expfalse)
     else:
         return v
                 
@@ -109,7 +112,6 @@ def main(argv):
 
     asts = readAllASTs(argv[1])
     assert len(asts) == 0x100
-    opcodes_to_exclude = [0xF0, 0xF2, 0xF3, 0xE0, 0xE2, 0xE3]
 
     vctx = VerilogContext() 
     cnst = readCnst(argv[2])
@@ -119,6 +121,10 @@ def main(argv):
     vctx.setCnst(cnst_p)
 
     this_opcode = int(argv[3], 0)
+    vctx.cinputs.append(('XRAM_DATA_IN', (7, 0)))
+    vctx.objects[ast.BitVecVar('XRAM_DATA_IN', 8)] = 'XRAM_DATA_IN'
+    vctx.addInput(ast.BitVecVar('XRAM_ADDR', 16), (15,0))
+    vctx.addInput(ast.BitVecVar('XRAM_DATA_OUT', 8), (7,0))
 
     for i in xrange(4):
         pi = 'P%dIN' % i
@@ -178,8 +184,7 @@ def main(argv):
             vctx.outputs.append((addr_name, vctx.getWidth(addr_expr)))
 
     for opcode, astdict in enumerate(asts_p):
-        if opcode in opcodes_to_exclude: continue
-        assert len(astdict) == 24
+        assert len(astdict) == 25
 
         for st, v in astdict:
             # ignore the case where nothing changes.

@@ -16,6 +16,7 @@ module oc8051_gm_tb();
     reg clk, rst;
     wire property_invalid_pc;
     reg [127:0] word_in;
+    reg [7:0] xram_data_in = 8'hff;
 
 
 `ifdef OC8051_PORTS
@@ -129,6 +130,7 @@ module oc8051_gm_tb();
         .clk(clk),
         .rst(rst),
         .word_in(word_in),
+        .xram_data_in(xram_data_in),
 `ifdef OC8051_PORTS
  `ifdef OC8051_PORT0
         .p0_in(p0_in),             // port 0 input
