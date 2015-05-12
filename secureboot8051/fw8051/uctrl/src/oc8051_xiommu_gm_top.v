@@ -74,6 +74,9 @@ module oc8051_xiommu_gm_top(
     property_invalid_sha_state,
     property_invalid_aes_addr,
     property_invalid_aes_len,
+    property_invalid_aes_ctr,
+    property_invalid_aes_key0,
+    property_invalid_aes_key1,
     property_invalid_sha_rdaddr,
     property_invalid_sha_wraddr,
     property_invalid_sha_len
@@ -349,6 +352,9 @@ output property_invalid_aes_state;
 output property_invalid_sha_state;
 output property_invalid_aes_addr;
 output property_invalid_aes_len;
+output property_invalid_aes_ctr;
+output property_invalid_aes_key0;
+output property_invalid_aes_key1;
 output property_invalid_sha_rdaddr;
 output property_invalid_sha_wraddr;
 output property_invalid_sha_len;
@@ -382,6 +388,8 @@ end
 
 wire [15:0] aes_addr_impl, aes_len_impl, sha_rdaddr_impl, sha_wraddr_impl, sha_len_impl;
 wire [15:0] aes_addr_gm, aes_len_gm, sha_rdaddr_gm, sha_wraddr_gm, sha_len_gm;
+wire [127:0] aes_ctr_gm, aes_key0_gm, aes_key1_gm;
+wire [127:0] aes_ctr_impl, aes_key0_impl, aes_key1_impl;
 
 oc8051_xiommu oc8051_xiommu_impl_1 (
     .clk                    ( clk                    ) ,
@@ -401,7 +409,10 @@ oc8051_xiommu oc8051_xiommu_impl_1 (
     .aes_len                ( aes_len_impl           ) ,
     .sha_rdaddr             ( sha_rdaddr_impl        ) ,
     .sha_wraddr             ( sha_wraddr_impl        ) ,
-    .sha_len                ( sha_len_impl           ) 
+    .sha_len                ( sha_len_impl           ) ,
+    .aes_ctr                ( aes_ctr_impl           ) ,
+    .aes_key0               ( aes_key0_impl          ) ,
+    .aes_key1               ( aes_key1_impl          ) 
 );
 
 wire pr_valid = proc_stb_valid && proc_stb_valid_next && sha_core_assumps_valid;
@@ -416,6 +427,9 @@ wire [7:0] sha_state_gm, sha_state_next_gm;
 wire property_invalid_aes_state  = pr_valid &&  ( aes_state_gm[1:0] != aes_state_impl ) ;
 wire property_invalid_sha_state  = pr_valid &&  ( sha_state_gm[1:0] != sha_state_impl ) ;
 wire property_invalid_aes_addr   = pr_valid &&  ( aes_addr_impl     != aes_addr_gm    ) ;
+wire property_invalid_aes_ctr    = pr_valid &&  ( aes_ctr_impl      != aes_ctr_gm     ) ;
+wire property_invalid_aes_key0   = pr_valid &&  ( aes_key0_impl     != aes_key0_gm    ) ;
+wire property_invalid_aes_key1   = pr_valid &&  ( aes_key1_impl     != aes_key1_gm    ) ;
 wire property_invalid_aes_len    = pr_valid &&  ( aes_len_impl      != aes_len_gm     ) ;
 wire property_invalid_sha_rdaddr = pr_valid &&  ( sha_rdaddr_impl   != sha_rdaddr_gm  ) ;
 wire property_invalid_sha_wraddr = pr_valid &&  ( sha_wraddr_impl   != sha_wraddr_gm  ) ;
@@ -539,6 +553,9 @@ xm8051_golden_model xm8051_golden_model_1(
     .WR_XRAM_EN                 ( WR_XRAM_EN                 ),
     .WR_XRAM_EN_next            ( WR_XRAM_EN_next            ),
 */
+    .aes_ctr                    ( aes_ctr_gm                 ),
+    .aes_key0                   ( aes_key0_gm                ),
+    .aes_key1                   ( aes_key1_gm                ),
     .aes_addr                   ( aes_addr_gm                ),
     .aes_len                    ( aes_len_gm                 ),
     .sha_rdaddr                 ( sha_rdaddr_gm              ),
