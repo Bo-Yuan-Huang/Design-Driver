@@ -24,8 +24,7 @@ def get_time(filename):
     assert False
 
 
-prefix = 'syn8051_r2_'
-def get_times(directory):
+def get_times(prefix, directory):
     files = [f for f in os.listdir(directory) if f.endswith('.out')]
     times = defaultdict(list)
     for f in files:
@@ -35,10 +34,11 @@ def get_times(directory):
 
     for t in sorted(times.iterkeys()):
         vec = np.array(times[t])
-        print t, np.average(vec), max(vec), min(vec)
+        print '%-20s & %6.1f & %6.1f \\\\' % (t, np.average(vec), max(vec))
 
 
+# prefix = 'syn8051_r2_'
 if __name__ == '__main__':
-    get_times(sys.argv[1])
+    get_times(sys.argv[1], sys.argv[2])
 
 

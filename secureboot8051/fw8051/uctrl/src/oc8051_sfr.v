@@ -111,6 +111,7 @@ module oc8051_sfr (rst, clk,
        comp_sel,
        comp_wait,
        psw,
+       p,
 
 `ifdef OC8051_PORTS
 
@@ -195,7 +196,8 @@ output [7:0] dat0,	//data output
 	     dptr_lo,
 	     acc,
              b_reg,
-             psw;
+             psw; 
+output       p;
 output [7:0] sp,
              sp_w;
 

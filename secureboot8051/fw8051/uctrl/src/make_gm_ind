@@ -1,7 +1,7 @@
 iverilog -o oc8051_gm -Wall -Wno-timescale -D OC8051_SIMULATION    \
-oc8051_gm_ind_tb.v                  \
+oc8051_gm_ind_tb.v              \
 oc8051_gm_ind_top.v             \
-oc8051_golden_model_05.v           \
+golden-models/oc8051_gm_25.v    \
 oc8051_top.v                    \
 oc8051_alu_src_sel.v            \
 oc8051_alu.v                    \

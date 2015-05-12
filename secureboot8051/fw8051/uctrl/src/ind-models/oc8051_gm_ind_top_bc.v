@@ -1,4 +1,5 @@
 
+// BEGIN
 //////////////////////////////////////////////////////////////////////
 //// OC8051 formal verification top module                      //////
 //////////////////////////////////////////////////////////////////////
@@ -189,7 +190,8 @@ input         t2_i,             // counter 2 input
     reg  first_instr;
     wire inst_finished;
     wire [15:0] pc2, pc1;
-    wire [7:0] psw_impl;
+    wire p;
+    wire [7:0] psw_impl_in, psw_impl;
     wire [7:0] sp_impl;
     wire [7:0] acc_impl, b_reg_impl;
     wire [15:0] dptr_impl;
@@ -226,6 +228,8 @@ input         t2_i,             // counter 2 input
     wire [7:0] p1in_model = inst_finished ? p1_in : p1in_reg;
     wire [7:0] p2in_model = inst_finished ? p2_in : p2in_reg;
     wire [7:0] p3in_model = inst_finished ? p3_in : p3in_reg;
+
+    assign psw_impl = {psw_impl_in[7:1], p};
 
     oc8051_gm_cxrom oc8051_gm_cxrom_1(
         .clk            (clk),
@@ -326,6 +330,7 @@ input         t2_i,             // counter 2 input
     wire [7:0] opcode = rd_rom_0;
 
     wire this_op_cnst = opcode == 8'hbc;
+    // wire this_op_cnst = opcode == 8'h25;
     reg this_op_cnst_r;
 
     wire bad_inst = 
@@ -357,20 +362,22 @@ input         t2_i,             // counter 2 input
     wire property_valid_p3_2 = (P3_gm == p3_out);
 
     reg property_valid_psw_1_r;
-    wire property_valid_psw_1 = (PSW_gm_next[7:1] == psw_impl[7:1]);
-    wire property_valid_psw_2o = (PSW_gm[7:1] == psw_impl[7:1]);
-    wire property_valid_psw_2 = property_valid_psw_1_r || property_valid_psw_2o;
+    wire property_valid_psw_1 = (PSW_gm_next == psw_impl);
+    wire property_valid_psw_2o = (PSW_gm == psw_impl);
+    wire property_valid_psw_2 = property_valid_psw_1_r && property_valid_psw_2o;
 
     reg property_valid_sp_1_r;
     wire property_valid_sp_1 = (SP_gm_next == sp_impl);
     wire property_valid_sp_2o = (SP_gm == sp_impl);
-    wire property_valid_sp_2 = property_valid_sp_1_r || property_valid_sp_2o;
+    wire property_valid_sp_2 = property_valid_sp_1_r && property_valid_sp_2o;
 
     wire p1_valid = 
         inst_finished                   && 
         property_valid_pc_1             && 
         property_valid_xram_addr_1      && 
-        property_valid_xram_data_out_1;
+        property_valid_xram_data_out_1  && 
+        property_valid_sp_1             &&
+        property_valid_psw_1;
 
     wire p2_valid = 
         ( property_valid_acc_2      &&
@@ -382,6 +389,8 @@ input         t2_i,             // counter 2 input
           property_valid_p1_2       &&
           property_valid_p2_2       &&
           property_valid_p3_2       &&
+          property_valid_psw_2      &&
+          property_valid_sp_2       &&
           (PSW_gm_next == psw_impl) &&
           (SP_gm == sp_impl))       && inst_finished_r;
 
@@ -458,7 +467,8 @@ input         t2_i,             // counter 2 input
          .pc_change             (inst_finished),
          .pc                    (pc2),
          .pc_log                (pc1),
-         .psw                   (psw_impl),
+         .psw                   (psw_impl_in),
+         .p                     (p),
          .sp                    (sp_impl),
          .acc                   (acc_impl),
          .b_reg                 (b_reg_impl),
@@ -500,4 +510,5 @@ input         t2_i,             // counter 2 input
          .ea_in(1'b1));
 
 endmodule
+// END
 

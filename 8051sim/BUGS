@@ -63,7 +63,8 @@ as addr D0, through RRC, through bit addressable instructions etc.
 
 
 * undefined SFR addresses return garbage (last value stored in a latch).
-
+* bugs in DA
+* bugs in POP
 * 
 
 * SP modeling bug:

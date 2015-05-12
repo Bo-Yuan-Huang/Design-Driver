@@ -196,7 +196,7 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 dptr,
                 ie,
                 iram,
-                psw,
+                psw, p,
                 sp,
                 op1, op2, op3,
                 op1_d,
@@ -220,6 +220,7 @@ output [15:0] pc;
 output [15:0] pc_log;
 output [15:0] pc_log_prev;
 output [7:0]  psw;
+output p;
 output [7:0]  sp;
 output [7:0]  acc;
 output [7:0]  b_reg;
@@ -703,6 +704,7 @@ oc8051_sfr oc8051_sfr1(.rst(wb_rst_i),
                        .srcAc(srcAc), 
                        .cy(cy),
                        .psw(psw),
+                       .p(p),
 // ports
                        .rmw(rmw),
 
