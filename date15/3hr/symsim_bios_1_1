@@ -1,0 +1,63 @@
++-----------------------------------------------------------------------------+
+| Logfile        : symsim_bios_1_1                                            |
+| Job id         : 2154623646                 Class: ((16G) && (nosusp)) && (SLES10) Qslot: /ccdo/pdx_normal_vp|
+| Executed on    : plxc16278                  Pool : pdx_ccdo                 |
+| Queueing time  : Thu Sep  3 18:17:55 2015                                   |
+| Starting time  : Fri Sep  4 00:37:30 2015          Qwait:   6h:19m:35s      |
+| Command        : fox2 --symbolic-exec --symbolic-exec-verbosity 0 --symbolic-exec-preverif 1 --symbolic-exec-timeout 10800 -o . -c /nfs/pdx/disks/pve_secoe_tab01/pramodsu/bxta0/punit/verif/tb/foxcode/fox2/tests/symsim_bios_1.cfg |
++-----------------------------------------------------------------------------+
+Fox2, by Doron Rajwan, 2009--2014 (ver: 2014ww19)
+De-serializing metadata from /nfs/pdx/disks/pve_secoe_tab01/pramodsu/bxta0/target/pcode/aceroot/results/target/foxcode/fox2/gen/metadata.bin ...
+Done metadata de-serialization.
+INITALIZED SYMSIM
+abstract fn: lip=4a74
+regs trashed: R10 R15 isr_valid isr_data 
+abstract fn: lip=4a54
+regs trashed: R15 isr_valid isr_data 
+abstract fn: lip=97
+regs trashed: R15 R11 isr_valid isr_data 
+FOX2 MEM RANGE: 0x18000 to 0x1dfff
+FOX2 MEM RANGE: 0x5c98 to 0x5cdf
+UC_SYMSIM_MEM_INIT final_addr=65536
+UC_SYMSIM_MEM_INIT final_addr=65536
+addr=1fa2c; prefix=IO_BIOS_MAILBOX_DATA
+addr=1fa28; prefix=IO_BIOS_MAILBOX_INTERFACE
+addr=1fc14; prefix=IO_GTDRIVER_MAILBOX_DATA_HIGH
+addr=1fc18; prefix=IO_GTDRIVER_MAILBOX_DATA_LOW
+addr=1fc10; prefix=IO_GTDRIVER_MAILBOX_INTERFACE
+addr=1fc28; prefix=IO_ISPDRIVER_MAILBOX_DATA_HIGH
+addr=1fc2c; prefix=IO_ISPDRIVER_MAILBOX_DATA_LOW
+addr=1fc24; prefix=IO_ISPDRIVER_MAILBOX_INTERFACE
+addr=1f9ac; prefix=IO_THERMAL_MAILBOX_INTERFACE
+addr=1f9b0; prefix=IO_THERMAL_MAILBOX_DATA0
+addr=1f9b4; prefix=IO_THERMAL_MAILBOX_DATA1
+addr=1fdbc; prefix=IO_PCODE_P24C_MAILBOX_INTERFACE_ADDRESS
+addr=1fda0; prefix=IO_P24C_PCODE_MAILBOX_DATA_ADDRESS
+addr=1f970; prefix=IO_MAIN_IOSFSB_HEADER_0; expr = (eq (extract #31 #31 $this) 1'd0)
+PROPERTY: (or (ule $mem_op0 2'd1) (not (and (uge $mem_addr0 17'd23704) (ule $mem_addr0 17'd23775))))
+FINISHED creating reachability graph.
+# of reachable LIPs                   : 663
+# of potentially failing LIPs         : 16
+# of LIPs on path to potential fails  : 662
+PROBLEM: mem addr spans fox2/symbolic ranges! (bvadd #b00011010001010010
+       (concat ((_ extract 23 8) IO_BIOS_MAILBOX_INTERFACE_smem_414) #b0))
+Symbolic Simulation FINISHED!
+# of failed properties        : 0
+# of paths executed           : 162
+# of truncated paths          : 0
+# of instructions executed    : 5690
+# of SMT solver calls         : 18095
+## TIMING INFORMATION ##
+create_reachability_graph           : 0.132009       
+preverification                     : 1.10407        
+symbolic_execution                  : 14.1489        
+total time                          : 15.389         
+[1000ms][400000000] Done. Final coverage: PCODE: inst=0,code=0(0.000%),branches=0(0.000%)
+[CLEANUP] -W- Had 15 CONFIG entries that were never consumed by code. Check output for more info: .//out_configuration
++-----------------------------------------------------------------------------+
+| Exit Status    : 0                                                          |
+| Finishing time : Fri Sep  4 00:37:53 2015                                   |
+| CPU time       : Usr 22.145s Sys 0.048s  WC  0h:00m:23s                     |
+| Rusage Stats   : Mem:49     PF:  12991/0   CSv/f:  0/0     Swaps:0          |
+|                :           Msg:    0/0     IOops:  0/0     Sigs :0          |
++-----------------------------------------------------------------------------+
