@@ -34,6 +34,7 @@ def readAllASTs(d):
         ast = readAST(f)
         for (name, opcode), tree in ast.iteritems():
             assert opcode < 0x100 and opcode >= 0
+            print f
             asts[opcode][name] = tree
 
     return asts

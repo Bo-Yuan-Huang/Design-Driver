@@ -4,8 +4,8 @@ from subprocess import Popen, PIPE, STDOUT
 import stat
 
 properties = [
-    'pc',
-    'acc',
+#    'pc',
+#    'acc',
 #    'b_reg',
 #    'dpl',
 #    'dph',
@@ -14,10 +14,10 @@ properties = [
 #    'p1',
 #    'p2',
 #    'p3',
-#    'psw',
+    'psw',
 #    '// sp',
-    'xram_addr',
-    'xram_data_out'
+#    'xram_addr',
+#    'xram_data_out'
 ]
 
 

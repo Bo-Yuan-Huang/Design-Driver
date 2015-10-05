@@ -62,6 +62,9 @@ def createInputs(syn):
     aes_bytes_processed = syn.addInput(ast.BitVecVar('aes_bytes_processed', 16))
     aes_read_data = syn.addInput(ast.BitVecVar('aes_read_data', 128))
     aes_enc_data = syn.addInput(ast.BitVecVar('aes_enc_data', 128))
+    # There is a minor bug here - the aes_func should be from bv384 -> bv128 
+    # I forgot to include the key in the input. But it doesn't matter that much
+    # right now because we don't verify the AES output.
     aes_func = syn.addInput(ast.FuncVar('aes_func', 256, 128))
 
     sha_state = syn.addInput(ast.BitVecVar('sha_state', 8))

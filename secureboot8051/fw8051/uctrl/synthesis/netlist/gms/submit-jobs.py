@@ -3,7 +3,12 @@ import os
 import subprocess
 import time
 
-files = [f for f in os.listdir('.') if f.endswith('.sh')]
+def count_jobs():
+    output  = subprocess.check_output(['qstat'])
+    lines = [l.strip() for l in output.split('\n') if len(l.strip())]
+    return len(lines)
+
+files = [f for f in os.listdir('.') if f.endswith('acc_gla.avy.sh')]
 files.sort()
 
 #idx = -1
@@ -15,30 +20,24 @@ files.sort()
 #
 #files = files[idx:]
 #print idx, len(files)
+cnt = count_jobs()
+
 print 'total # of jobs: %d' % len(files)
+print 'running jobs: %d' % cnt
 
-cnt = 0
-flag = 0
-nodes = ['nodes=sat8', 'nodes=sat9', 'nodes=sat6', 'nodes=sat7']
-LT = 48
-
+LT = 60
 for f in files:
-    # output = subprocess.check_output(['qsub', '-l', nodes[flag], f])
     output = subprocess.check_output(['qsub', f])
     print f, output.strip()
-
-    flag = (flag + 1) % len(nodes)
 
     cnt += 1
     if cnt >= LT:
         while True:
-            output  = subprocess.check_output(['qstat'])
-            lines = [l.strip() for l in output.split('\n') if len(l.strip())]
-            if len(lines) >= LT:
-                print 'pausing (cnt=%d).' % len(lines)
-                time.sleep(180)
+            time.sleep(240)
+            cnt = count_jobs()
+            if cnt >= LT:
+                print 'pausing (cnt=%d).' % cnt
             else:
-                cnt = len(lines)
                 break
 
 

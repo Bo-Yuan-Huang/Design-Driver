@@ -32,9 +32,15 @@ def get_times(prefix, directory):
         t = f[len(prefix):-7]
         times[t].append(get_time(os.path.join(directory, f)))
 
+    f = 0
     for t in sorted(times.iterkeys()):
+        f = (f + 1) % 2
         vec = np.array(times[t])
-        print '%-20s & %6.1f & %6.1f \\\\' % (t, np.average(vec), max(vec))
+        s = '%s & %.1f/%.1f' % (t, np.average(vec), max(vec))
+        if f == 1:
+            print s + ' & '
+        else:
+            print s + ' \\\\ '
 
 
 # prefix = 'syn8051_r2_'
