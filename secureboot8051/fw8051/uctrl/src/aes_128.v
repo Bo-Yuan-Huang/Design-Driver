@@ -60,10 +60,12 @@ module expand_key_128(clk, in, out_1, out_2, rcon);
     input              clk;
     input      [127:0] in;
     input      [7:0]   rcon;
-    output reg [127:0] out_1;
+    output     [127:0] out_1;
     output     [127:0] out_2;
+
     wire       [31:0]  k0, k1, k2, k3,
                        v0, v1, v2, v3;
+    reg [127:0] out_1;
     reg        [31:0]  k0a, k1a, k2a, k3a;
     wire       [31:0]  k0b, k1b, k2b, k3b, k4a;
 
