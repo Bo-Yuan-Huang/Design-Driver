@@ -6,12 +6,6 @@ void quit() {
     // FIXME: Do we need something here?
 }
 
-uint8_t inb(uint16_t addr)
-{
-    // TODO: read data.
-    return mem[addr];
-}
-
 void outb(uint16_t addr, uint8_t data)
 {
     // TODO; write data.
@@ -26,6 +20,26 @@ void outb(uint16_t addr, uint8_t data)
 #define AES_REG_KEY0_ADDR 0xFF20
 #define AES_REG_KEY1_ADDR 0xFF30
 #define DATA_ADDR 0xE000
+
+void reset()
+{
+    aes_top.rst = 1;
+    set_inputs();
+    next_timeframe();
+
+    aes_top.rst = 0;
+    aes_top.wr = 0; 
+    aes_top.stb = 0;
+    aes_top.rst = 0;
+    aes_top.data_in = 0;
+    aes_top.addr = 0;
+    aes_top.data_out = 0;
+}
+
+_u8 inb(_u16 addr)
+{
+}
+
 
 /*---------------------------------------------------------------------------*/
 
