@@ -61,7 +61,9 @@ endmodule
 module S (clk, in, out);
     input clk;
     input [7:0] in;
-    output reg [7:0] out;
+    output [7:0] out;
+
+    reg [7:0] out;
 
     always @ (posedge clk)
     case (in)
@@ -328,7 +330,8 @@ endmodule
 module xS (clk, in, out);
     input clk;
     input [7:0] in;
-    output reg [7:0] out;
+    output [7:0] out;
+    reg [7:0] out;
 
     always @ (posedge clk)
     case (in)

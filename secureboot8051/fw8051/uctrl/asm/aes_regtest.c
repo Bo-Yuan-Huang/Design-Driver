@@ -1,7 +1,7 @@
 #include <stdint.h>
+#include "aes_regtest.h"
 
 uint8_t mem[65536];
-
 void quit() {
     // FIXME: Do we need something here?
 }
@@ -36,7 +36,7 @@ void main() {
 
     // test writing to XRAM.
     for(i=0; i < 32; i++) {
-        outb(DATA_ADDR+i, i+1);
+        outb(DATA_ADDR+i, i);
     }
     for(i=0; i < 32; i++) {
         assert(inb(DATA_ADDR+i) == i);
