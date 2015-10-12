@@ -108,13 +108,13 @@ reg [1:0]  aes_reg_state;
 wire [1:0] aes_state = aes_reg_state;
 
 wire [7:0] data_out = 
-    sel_reg_state  ? {6'b0, aes_reg_state} : 
-    sel_reg_addr   ? aes_addr_dataout      : 
-    sel_reg_len    ? aes_len_dataout       :
-    sel_reg_keysel ? aes_len_dataout       :
-    sel_reg_ctr    ? aes_ctr_dataout       :
-    sel_reg_key0   ? aes_key0_dataout      : 
-    sel_reg_key1   ? aes_key1_dataout      : 8'd0;
+    sel_reg_state  ? {6'b0, aes_reg_state}  : 
+    sel_reg_addr   ? aes_addr_dataout       : 
+    sel_reg_len    ? aes_len_dataout        :
+    sel_reg_keysel ? {7'b0, aes_reg_keysel} :
+    sel_reg_ctr    ? aes_ctr_dataout        :
+    sel_reg_key0   ? aes_key0_dataout       : 
+    sel_reg_key1   ? aes_key1_dataout       : 8'd0;
 
 // state predicates.n
 wire aes_state_idle = aes_reg_state == AES_STATE_IDLE;
@@ -128,7 +128,7 @@ wire start_op = sel_reg_start && data_in[0] && wren;
 
 // key select register
 reg aes_reg_keysel;
-wire aes_reg_keysel_next = sel_reg_keysel && wren ? data_in : aes_reg_keysel;
+wire aes_reg_keysel_next = sel_reg_keysel && wren ? data_in[0] : aes_reg_keysel;
    
 // address register.
 wire [15:0] aes_reg_opaddr;
@@ -319,7 +319,7 @@ begin
         block_counter        <= 0;
         byte_counter         <= 0;
         operated_bytes_count <= 0;
-       aes_reg_keysel       <= 0;
+        aes_reg_keysel       <= 0;
        
     end
     else begin
