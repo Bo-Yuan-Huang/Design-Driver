@@ -74,7 +74,8 @@ localparam AES_ADDR_START  = 16'hff00;
 localparam AES_REG_START   = 16'hff00; // 1 byte.
 localparam AES_REG_STATE   = 16'hff01; // 1 byte.
 localparam AES_REG_ADDR    = 16'hff02; // 2 bytes
-localparam AES_REG_LEN     = 16'hff04; // 2 bytes.
+localparam AES_REG_LEN     = 16'hff04; // 2 bytes
+localparam AES_REG_KEYSEL  = 16'hff06; // 1 byte.
 // some empty space for more registers
 localparam AES_REG_CTR     = 16'hff10;
 localparam AES_REG_KEY0    = 16'hff20;
@@ -93,27 +94,29 @@ localparam AES_STATE_WRITE_DATA = 2'd3;
 wire in_addr_range = addr >= AES_ADDR_START && addr < AES_ADDR_END;
 wire ack = stb && in_addr_range;
 
-wire sel_reg_start = addr == AES_REG_START;
-wire sel_reg_state = addr == AES_REG_STATE;
-wire sel_reg_addr  = {addr[15:1], 1'b0} == AES_REG_ADDR;
-wire sel_reg_len   = {addr[15:1], 1'b0} == AES_REG_LEN;
-wire sel_reg_ctr   = {addr[15:4], 4'b0} == AES_REG_CTR;
-wire sel_reg_key0  = {addr[15:4], 4'b0} == AES_REG_KEY0;
-wire sel_reg_key1  = {addr[15:4], 4'b0} == AES_REG_KEY1;
+wire sel_reg_start  = addr == AES_REG_START;
+wire sel_reg_state  = addr == AES_REG_STATE;
+wire sel_reg_keysel = addr == AES_REG_KEYSEL;
+wire sel_reg_addr   = {addr[15:1], 1'b0} == AES_REG_ADDR;
+wire sel_reg_len    = {addr[15:1], 1'b0} == AES_REG_LEN;
+wire sel_reg_ctr    = {addr[15:4], 4'b0} == AES_REG_CTR;
+wire sel_reg_key0   = {addr[15:4], 4'b0} == AES_REG_KEY0;
+wire sel_reg_key1   = {addr[15:4], 4'b0} == AES_REG_KEY1;
 
 // state register.
 reg [1:0]  aes_reg_state;
 wire [1:0] aes_state = aes_reg_state;
 
 wire [7:0] data_out = 
-    sel_reg_state ? {6'b0, aes_reg_state} : 
-    sel_reg_addr  ? aes_addr_dataout      : 
-    sel_reg_len   ? aes_len_dataout       : 
-    sel_reg_ctr   ? aes_ctr_dataout       : 
-    sel_reg_key0  ? aes_key0_dataout      : 
-    sel_reg_key1  ? aes_key1_dataout      : 8'd0;
+    sel_reg_state  ? {6'b0, aes_reg_state} : 
+    sel_reg_addr   ? aes_addr_dataout      : 
+    sel_reg_len    ? aes_len_dataout       :
+    sel_reg_keysel ? aes_len_dataout       :
+    sel_reg_ctr    ? aes_ctr_dataout       :
+    sel_reg_key0   ? aes_key0_dataout      : 
+    sel_reg_key1   ? aes_key1_dataout      : 8'd0;
 
-// state predicates.
+// state predicates.n
 wire aes_state_idle = aes_reg_state == AES_STATE_IDLE;
 wire aes_state_read_data = aes_reg_state == AES_STATE_READ_DATA;
 wire aes_state_operate = aes_reg_state == AES_STATE_OPERATE;
@@ -123,6 +126,10 @@ wire aes_state_write_data = aes_reg_state == AES_STATE_WRITE_DATA;
 wire wren = wr && aes_state_idle;
 wire start_op = sel_reg_start && data_in[0] && wren;
 
+// key select register
+reg aes_reg_keysel;
+wire aes_reg_keysel_next = sel_reg_keysel && wren ? data_in : aes_reg_keysel;
+   
 // address register.
 wire [15:0] aes_reg_opaddr;
 wire [7:0] aes_addr_dataout;
@@ -274,10 +281,11 @@ assign mem_data_buf_next[127 : 120 ] =  ( xram_ack && byte_counter == 15 )  ? xr
 wire [127:0] aes_ctr_v = aes_reg_ctr + {112'b0, block_counter};
 wire [127:0] aes_out;
 wire [127:0] encrypted_data = aes_out ^ mem_data_buf;
+wire [127:0] aes_curr_key = aes_reg_keysel ? aes_reg_key1 : aes_reg_key0;
 aes_128 aes_128_i (
     .clk        (clk),
     .state      (aes_ctr_v),
-    .key        (aes_reg_key0),
+    .key        (aes_curr_key),
     .out        (aes_out)
 );
 // Encrypted data buffer.
@@ -311,6 +319,8 @@ begin
         block_counter        <= 0;
         byte_counter         <= 0;
         operated_bytes_count <= 0;
+       aes_reg_keysel       <= 0;
+       
     end
     else begin
         block_counter        <= block_counter_next;
@@ -319,6 +329,7 @@ begin
         mem_data_buf         <= mem_data_buf_next;
         encrypted_data_buf   <= encrypted_data_buf_next;
         operated_bytes_count <= operated_bytes_count_next;
+        aes_reg_keysel       <= aes_reg_keysel_next;
     end
 end
 
