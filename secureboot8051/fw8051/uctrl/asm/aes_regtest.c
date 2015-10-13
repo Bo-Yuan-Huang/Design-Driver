@@ -1,15 +1,10 @@
+#include <assert.h>
 #include <stdint.h>
 #include "aes_regtest.h"
 
 uint8_t mem[65536];
 void quit() {
     // FIXME: Do we need something here?
-}
-
-void outb(uint16_t addr, uint8_t data)
-{
-    // TODO; write data.
-    mem[addr] = data;
 }
 
 #define AES_REG_START_ADDR 0xFF00
@@ -23,21 +18,63 @@ void outb(uint16_t addr, uint8_t data)
 
 void reset()
 {
-    aes_top.rst = 1;
-    set_inputs();
-    next_timeframe();
+    int i;
 
-    aes_top.rst = 0;
-    aes_top.wr = 0; 
-    aes_top.stb = 0;
-    aes_top.rst = 0;
-    aes_top.data_in = 0;
-    aes_top.addr = 0;
-    aes_top.data_out = 0;
+    top.rst = 1;
+    set_inputs();
+    for(i=0; i < 10; i++) {
+        next_timeframe();
+    }
+
+    top.rst = 0;
+    top.proc_wr = 0; 
+    top.proc_stb = 0;
+    top.proc_data_in = 0;
+    top.proc_addr = 0;
 }
 
 _u8 inb(_u16 addr)
 {
+    int cnt = 0;
+
+    top.proc_wr = 0;
+    top.proc_stb = 1;
+    top.proc_addr = addr;
+    set_inputs();
+    next_timeframe();
+
+    while(top.proc_ack == 0) {
+        next_timeframe();
+        cnt += 1;
+        if (cnt >= 20) break;
+    }
+    assert (cnt < 20);
+    
+    top.proc_stb = 0;
+    top.proc_addr = 0;
+    return top.proc_data_out;
+}
+
+void outb(_u16 addr, _u8 data)
+{
+    int cnt = 0;
+
+    top.proc_wr = 1;
+    top.proc_stb = 1;
+    top.proc_addr = addr;
+    top.proc_data_in = data;
+    set_inputs();
+    next_timeframe();
+
+    while(top.proc_ack == 0) {
+        next_timeframe();
+        cnt += 1;
+        if (cnt >= 20) break;
+    }
+    assert (cnt < 20);
+    
+    top.proc_stb = 0;
+    top.proc_addr = 0;
 }
 
 
@@ -45,16 +82,16 @@ _u8 inb(_u16 addr)
 
 void main() {
     
-    int i;
-    int good=1;
+    _u16 i;
+    reset();
 
     // test writing to XRAM.
-    for(i=0; i < 32; i++) {
+    for(i=0; i < 1; i++) {
         outb(DATA_ADDR+i, i);
     }
-    for(i=0; i < 32; i++) {
-        assert(inb(DATA_ADDR+i) == i);
-    }
+    //for(i=0; i < 1; i++) {
+    //    assert(inb(DATA_ADDR+i) == i);
+    //}
 
     quit();
 }

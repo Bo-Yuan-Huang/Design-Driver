@@ -155,7 +155,7 @@ module sha1_core(
   // asynchronous active low reset.
   //----------------------------------------------------------------
   always @ (posedge clk or negedge reset_n)
-    begin : reg_update
+    begin 
       if (!reset_n)
         begin
           a_reg            <= 32'h00000000;
@@ -216,7 +216,7 @@ module sha1_core(
   // The logic needed to init as well as update the digest.
   //----------------------------------------------------------------
   always @*
-    begin : digest_logic
+    begin 
       H0_new = 32'h00000000;
       H1_new = 32'h00000000;
       H2_new = 32'h00000000;
@@ -253,7 +253,7 @@ module sha1_core(
   // round processing.
   //----------------------------------------------------------------
   always @*
-    begin : state_logic
+    begin 
       reg [31 : 0] a5;
       reg [31 : 0] f;
       reg [31 : 0] k;
@@ -335,7 +335,7 @@ module sha1_core(
   // increasing counter with reset.
   //----------------------------------------------------------------
   always @*
-    begin : round_ctr
+    begin 
       round_ctr_new = 0;
       round_ctr_we  = 0;
 
@@ -358,7 +358,7 @@ module sha1_core(
   // Logic for the state machine controlling the core behaviour.
   //----------------------------------------------------------------
   always @*
-    begin : sha1_ctrl_fsm
+    begin 
       digest_init      = 0;
       digest_update    = 0;
       state_init       = 0;

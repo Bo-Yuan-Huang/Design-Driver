@@ -112,7 +112,7 @@ module sha1_w_mem(
   // asynchronous active low reset.
   //----------------------------------------------------------------
   always @ (posedge clk or negedge reset_n)
-    begin : reg_update
+    begin
       if (!reset_n)
         begin
           w_mem[00]           <= 32'h00000000;
@@ -177,7 +177,7 @@ module sha1_w_mem(
   // memory or the next w value calculated.
   //----------------------------------------------------------------
   always @*
-    begin : select_w
+    begin 
       if (w_ctr_reg < 16)
         begin
           w_tmp = w_mem[w_ctr_reg[3 : 0]];
@@ -196,7 +196,7 @@ module sha1_w_mem(
   // based on a sliding window is implemented.
   //----------------------------------------------------------------
   always @*
-    begin : w_mem_update_logic
+    begin 
       reg [31 : 0] w_0;
       reg [31 : 0] w_2;
       reg [31 : 0] w_8;
@@ -279,7 +279,7 @@ module sha1_w_mem(
   // is used to expand the block into words.
   //----------------------------------------------------------------
   always @*
-    begin : w_ctr
+    begin 
       w_ctr_new = 7'h00;
       w_ctr_we  = 0;
 
@@ -303,7 +303,7 @@ module sha1_w_mem(
   // Logic for the w shedule FSM.
   //----------------------------------------------------------------
   always @*
-    begin : sha1_w_mem_fsm
+    begin 
       w_ctr_rst           = 0;
       w_ctr_inc           = 0;
       sha1_w_mem_ctrl_new = CTRL_IDLE;
