@@ -732,26 +732,26 @@ struct module_oc8051_xiommu {
   _Bool aes_xram_ack;
   _Bool aes_xram_stb;
   _Bool aes_xram_wr;
-  struct module_aes_top aes_top_i;
+  //struct module_aes_top aes_top_i;
   _u16 sha_xram_addr;
   _u8 sha_xram_data_out;
   _u8 sha_xram_data_in;
   _Bool sha_xram_ack;
   _Bool sha_xram_stb;
   _Bool sha_xram_wr;
-  struct module_sha_top sha_top_i;
+  //struct module_sha_top sha_top_i;
   _Bool stb_out;
   _Bool ack_in;
   _Bool wr_out;
   _u16 addr_out;
   _u8 memarbiter_data_in;
   _u8 memarbiter_data_out;
-  struct module_oc8051_memarbiter oc8051_memarbiter_i;
+  //struct module_oc8051_memarbiter oc8051_memarbiter_i;
   struct module_oc8051_xram oc8051_xram_i;
 };
 
 // top module
-extern struct module_oc8051_xiommu top;
+extern struct module_oc8051_xiommu oc8051_xiommu;
 
 
 #endif

@@ -20,61 +20,59 @@ void reset()
 {
     int i;
 
-    top.rst = 1;
+    oc8051_xiommu.rst = 1;
     set_inputs();
     for(i=0; i < 10; i++) {
         next_timeframe();
     }
 
-    top.rst = 0;
-    top.proc_wr = 0; 
-    top.proc_stb = 0;
-    top.proc_data_in = 0;
-    top.proc_addr = 0;
+    oc8051_xiommu.rst = 0;
+    oc8051_xiommu.proc_wr = 0; 
+    oc8051_xiommu.proc_stb = 0;
+    oc8051_xiommu.proc_data_in = 0;
+    oc8051_xiommu.proc_addr = 0;
 }
 
 _u8 inb(_u16 addr)
 {
     int cnt = 0;
 
-    top.proc_wr = 0;
-    top.proc_stb = 1;
-    top.proc_addr = addr;
+    oc8051_xiommu.proc_wr = 0;
+    oc8051_xiommu.proc_stb = 1;
+    oc8051_xiommu.proc_addr = addr;
     set_inputs();
     next_timeframe();
 
-    while(top.proc_ack == 0) {
+    while(oc8051_xiommu.proc_ack == 0) {
         next_timeframe();
-        cnt += 1;
-        if (cnt >= 20) break;
+        if (cnt++ >= 32) break;
     }
-    assert (cnt < 20);
+    assert (oc8051_xiommu.proc_ack == 1);
     
-    top.proc_stb = 0;
-    top.proc_addr = 0;
-    return top.proc_data_out;
+    oc8051_xiommu.proc_stb = 0;
+    oc8051_xiommu.proc_addr = 0;
+    return oc8051_xiommu.proc_data_out;
 }
 
 void outb(_u16 addr, _u8 data)
 {
     int cnt = 0;
 
-    top.proc_wr = 1;
-    top.proc_stb = 1;
-    top.proc_addr = addr;
-    top.proc_data_in = data;
+    oc8051_xiommu.proc_wr = 1;
+    oc8051_xiommu.proc_stb = 1;
+    oc8051_xiommu.proc_addr = addr;
+    oc8051_xiommu.proc_data_in = data;
     set_inputs();
     next_timeframe();
 
-    while(top.proc_ack == 0) {
+    while(oc8051_xiommu.proc_ack == 0) {
         next_timeframe();
-        cnt += 1;
-        if (cnt >= 20) break;
+        if (cnt++ >= 32) break;
     }
-    assert (cnt < 20);
+    assert (oc8051_xiommu.proc_ack == 1);
     
-    top.proc_stb = 0;
-    top.proc_addr = 0;
+    oc8051_xiommu.proc_stb = 0;
+    oc8051_xiommu.proc_addr = 0;
 }
 
 
@@ -85,13 +83,16 @@ void main() {
     _u16 i;
     reset();
 
+    assert (1 == 2);
+
     // test writing to XRAM.
-    for(i=0; i < 1; i++) {
-        outb(DATA_ADDR+i, i);
+    for(i=0; i < 4; i++) {
+        outb(DATA_ADDR+i, i+1);
     }
-    //for(i=0; i < 1; i++) {
-    //    assert(inb(DATA_ADDR+i) == i);
-    //}
+    assert (oc8051_xiommu.oc8051_xram_i.buff[0xE001] == 3);
+    for(i=0; i < 4; i++) {
+        assert(inb(DATA_ADDR+i) == i);
+    }
 
     quit();
 }
