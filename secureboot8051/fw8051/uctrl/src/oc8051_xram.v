@@ -86,11 +86,13 @@ reg [2:0] cnt;
 
 //
 // buffer
-reg [7:0] buff [65535:0];  //64kb
+//reg [7:0] buff [65535:0];  //64kb
+reg [7:0] buff [15:0];  //64kb
 //reg [7:0] buff [8388607:0];  //8Mb
 
 assign ack =  ackw || ackr;
 
+wire [3:0] addr0 = addr[3:0];
 
 //
 // writing to ram
@@ -99,7 +101,7 @@ begin
   if (rst)
     ackw <= #1 1'b0;
   else if (wr && stb && ((DELAY==3'b000) || (cnt==3'b000))) begin
-    buff[addr] <= #1 data_in;
+    buff[addr0] <= #1 data_in;
     ackw <= #1 1'b1;
   end else ackw <= #1 1'b0;
 end
@@ -108,7 +110,7 @@ always @(posedge clk or posedge rst)
   if (rst)
     ackr <= #1 1'b0;
   else if (stb && !wr && ((DELAY==3'b000) || (cnt==3'b000))) begin
-    data_out <= #1 buff[addr];
+    data_out <= #1 buff[addr0];
     ackr <= #1 1'b1;
   end else begin
     ackr <= #1 1'b0;

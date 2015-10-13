@@ -339,7 +339,7 @@ begin
 end
 
 // instantiate the SHA1 core.
-sha1_core sha1_core_i (
+/*sha1_core sha1_core_i (
     .clk          ( clk                   ),
     .reset_n      ( sha_core_rst_n        ),
     .init         ( sha_core_init         ),
@@ -348,7 +348,7 @@ sha1_core sha1_core_i (
     .digest_valid ( sha_core_digest_valid ),
     .block        ( sha_core_block        ),
     .digest       ( sha_core_digest       ) 
-);
+);*/
 
 // XRAM interface.
 assign xram_addr = sha_state_read_data  ? sha_reg_rd_addr + {10'b0, byte_counter} + block_counter :
