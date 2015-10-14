@@ -282,13 +282,13 @@ wire [127:0] aes_ctr_v = aes_reg_ctr + {112'b0, block_counter};
 wire [127:0] aes_out;
 wire [127:0] encrypted_data = aes_out ^ mem_data_buf;
 wire [127:0] aes_curr_key = aes_reg_keysel ? aes_reg_key1 : aes_reg_key0;
-//aes_128 aes_128_i (
-//    .clk        (clk),
-//    .state      (aes_ctr_v),
-//    .key        (aes_curr_key),
-//    .out        (aes_out)
-//);
-assign aes_out = aes_ctr_v ^ aes_curr_key;
+aes_128 aes_128_i (
+    .clk        (clk),
+    .state      (aes_ctr_v),
+    .key        (aes_curr_key),
+    .out        (aes_out)
+);
+//assign aes_out = aes_ctr_v ^ aes_curr_key;
 
 // Encrypted data buffer.
 reg  [127:0] encrypted_data_buf;

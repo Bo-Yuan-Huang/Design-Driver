@@ -195,13 +195,13 @@ module sha1_w_mem(
   // Update logic for the W memory. This is where the scheduling
   // based on a sliding window is implemented.
   //----------------------------------------------------------------
+  reg [31 : 0] w_0;
+  reg [31 : 0] w_2;
+  reg [31 : 0] w_8;
+  reg [31 : 0] w_13;
+  reg [31 : 0] w_16;
   always @*
     begin 
-      reg [31 : 0] w_0;
-      reg [31 : 0] w_2;
-      reg [31 : 0] w_8;
-      reg [31 : 0] w_13;
-      reg [31 : 0] w_16;
 
       w_mem00_new = 32'h00000000;
       w_mem01_new = 32'h00000000;

@@ -86,13 +86,13 @@ reg [2:0] cnt;
 
 //
 // buffer
-//reg [7:0] buff [65535:0];  //64kb
-reg [7:0] buff [15:0];  //64kb
+reg [7:0] buff [65535:0];  //64kb
+//reg [7:0] buff [15:0];  //16b
 //reg [7:0] buff [8388607:0];  //8Mb
 
 assign ack =  ackw || ackr;
 
-wire [3:0] addr0 = addr[3:0];
+wire [15:0] addr0 = addr[15:0];
 
 //
 // writing to ram

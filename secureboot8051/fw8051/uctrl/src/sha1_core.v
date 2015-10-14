@@ -252,13 +252,13 @@ module sha1_core(
   // The logic needed to init as well as update the state during
   // round processing.
   //----------------------------------------------------------------
+  reg [31 : 0] a5;
+  reg [31 : 0] f;
+  reg [31 : 0] k;
+  reg [31 : 0] t;
+
   always @*
     begin 
-      reg [31 : 0] a5;
-      reg [31 : 0] f;
-      reg [31 : 0] k;
-      reg [31 : 0] t;
-
       a5     = 32'h00000000;
       f      = 32'h00000000;
       k      = 32'h00000000;
