@@ -20,11 +20,11 @@ void quit() {
     while(1);
 }
 
-__xdata __at(0xFE00) unsigned char aes_reg_start;
-__xdata __at(0xFE01) unsigned char aes_reg_state;
-__xdata __at(0xFE02) unsigned int aes_reg_rd_addr;
-__xdata __at(0xFE04) unsigned int aes_reg_wr_addr;
-__xdata __at(0xFE06) unsigned int aes_reg_len;
+__xdata __at(0xFE00) unsigned char sha_reg_start;
+__xdata __at(0xFE01) unsigned char sha_reg_state;
+__xdata __at(0xFE02) unsigned int sha_reg_rd_addr;
+__xdata __at(0xFE04) unsigned int sha_reg_wr_addr;
+__xdata __at(0xFE06) unsigned int sha_reg_len;
 __xdata __at(0xE000) unsigned char d1[64];
 __xdata __at(0xE100) unsigned char d2[128];
 __xdata __at(0xE200) unsigned char hash[20];
@@ -45,14 +45,14 @@ void main() {
     }
 
     // setup address, length, counter and key.
-    aes_reg_rd_addr = (unsigned int) &d1;
-    aes_reg_wr_addr = (unsigned int) &hash;
-    aes_reg_len = 64;
+    sha_reg_rd_addr = (unsigned int) &d1;
+    sha_reg_wr_addr = (unsigned int) &hash;
+    sha_reg_len = 64;
 
     // now start encryption.
-    aes_reg_start = 1;
+    sha_reg_start = 1;
     // now wait for encryption to complete.
-    while(aes_reg_state != 0);
+    while(sha_reg_state != 0);
 
     // read encrypted data and dump it to P0.
     for(i=0; i < 20; i++) {
@@ -60,12 +60,12 @@ void main() {
         P0 = hash[i];
     }
 
-    aes_reg_rd_addr = (unsigned int) &d2;
-    aes_reg_len = 128;
+    sha_reg_rd_addr = (unsigned int) &d2;
+    sha_reg_len = 128;
     // now start encryption.
-    aes_reg_start = 1;
+    sha_reg_start = 1;
     // now wait for encryption to complete.
-    while(aes_reg_state != 0);
+    while(sha_reg_state != 0);
 
     // read encrypted data and dump it to P0.
     for(i=0; i < 20; i++) {
