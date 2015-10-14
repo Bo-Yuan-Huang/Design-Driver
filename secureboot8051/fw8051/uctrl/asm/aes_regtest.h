@@ -747,7 +747,7 @@ struct module_oc8051_xiommu {
   _u8 memarbiter_data_in;
   _u8 memarbiter_data_out;
   //struct module_oc8051_memarbiter oc8051_memarbiter_i;
-  struct module_oc8051_xram oc8051_xram_i;
+  //struct module_oc8051_xram oc8051_xram_i;
 };
 
 // top module
