@@ -60,7 +60,7 @@ input xram_ack;
 output xram_stb;
 output xram_wr;
 // verif output
-output [1:0] sha_state;
+output [2:0] sha_state;
 output [15:0] sha_rdaddr, sha_wraddr, sha_len;
 output sha_step;
 output sha_core_assumps_valid;
@@ -85,13 +85,14 @@ wire in_addr_range = addr >= SHA_ADDR_START && addr < SHA_ADDR_END;
 wire ack = stb && in_addr_range;
 
 // state register.
-reg [1:0]  sha_reg_state;
-wire [1:0] sha_state = sha_reg_state;
+reg [2:0]  sha_reg_state;
+wire [2:0] sha_state = sha_reg_state;
 
 // state predicates.
 wire sha_state_idle       = sha_reg_state == SHA_STATE_IDLE;
 wire sha_state_read_data  = sha_reg_state == SHA_STATE_READ_DATA;
-wire sha_state_operate    = sha_reg_state == SHA_STATE_OPERATE;
+wire sha_state_op1        = sha_reg_state == SHA_STATE_OP1;
+wire sha_state_op2        = sha_reg_state == SHA_STATE_OP2;
 wire sha_state_write_data = sha_reg_state == SHA_STATE_WRITE_DATA;
 
 // register selector predicates.
@@ -105,23 +106,26 @@ wire wren = wr && sha_state_idle;
 wire start_op         = sel_reg_start && data_in[0] && stb && wren;
 
 // The current state of the AES module.
-localparam SHA_STATE_IDLE       = 2'd0;
-localparam SHA_STATE_READ_DATA  = 2'd1;
-localparam SHA_STATE_OPERATE    = 2'd2;
-localparam SHA_STATE_WRITE_DATA = 2'd3;
+localparam SHA_STATE_IDLE       = 3'd0;
+localparam SHA_STATE_READ_DATA  = 3'd1;
+localparam SHA_STATE_OP1        = 3'd2;
+localparam SHA_STATE_OP2        = 3'd3;
+localparam SHA_STATE_WRITE_DATA = 3'd4;
 
 // BEGIN: next state computation
-wire [1:0] sha_state_next;
+wire [2:0] sha_state_next;
 
-wire [1:0] sha_state_next_idle;
-wire [1:0] sha_state_next_read_data;
-wire [1:0] sha_state_next_operate;
-wire [1:0] sha_state_next_write_data;
+wire [2:0] sha_state_next_idle;
+wire [2:0] sha_state_next_read_data;
+wire [2:0] sha_state_next_op1;
+wire [2:0] sha_state_next_op2;
+wire [2:0] sha_state_next_write_data;
 
 assign sha_state_next = 
     sha_state_idle       ? sha_state_next_idle       : 
     sha_state_read_data  ? sha_state_next_read_data  : 
-    sha_state_operate    ? sha_state_next_operate    : 
+    sha_state_op1        ? sha_state_next_op1        : 
+    sha_state_op2        ? sha_state_next_op2        : 
     sha_state_write_data ? sha_state_next_write_data : 2'bx;
 
 wire sha_step = sha_reg_state != sha_state_next;
@@ -129,10 +133,12 @@ wire sha_step = sha_reg_state != sha_state_next;
 // Go to the read data state if we get a start signal.  
 assign sha_state_next_idle = start_op ? SHA_STATE_READ_DATA : SHA_STATE_IDLE; 
 // We will continue to be in the read data state until all the data is read.
-assign sha_state_next_read_data = read_last_byte_acked ? SHA_STATE_OPERATE : SHA_STATE_READ_DATA;
-// We will continue to be in the operate state until we received a digest_ready signal from the SHA core.
-assign sha_state_next_operate = sha_finished    ? SHA_STATE_WRITE_DATA :
-                                sha_more_blocks ? SHA_STATE_READ_DATA  : SHA_STATE_OPERATE;
+assign sha_state_next_read_data = read_last_byte_acked ? SHA_STATE_OP1 : SHA_STATE_READ_DATA;
+// We always go from the op1 to the op2 state in a cycle.
+assign sha_state_next_op1 = SHA_STATE_OP2;
+// We will continue to be in the op2 state until we received a digest_ready signal from the SHA core.
+assign sha_state_next_op2 = sha_finished    ? SHA_STATE_WRITE_DATA :
+                            sha_more_blocks ? SHA_STATE_READ_DATA  : SHA_STATE_OP2;
 // We will leave the write data state when we are finished writing into the XRAM.
 assign sha_state_next_write_data = write_last_byte_acked ? SHA_STATE_IDLE : SHA_STATE_WRITE_DATA;
 
@@ -142,9 +148,9 @@ wire [5:0] byte_counter_next;
 wire [5:0] byte_counter_next_rw;
 assign byte_counter_next_rw = xram_ack ? byte_counter + 1 : byte_counter;
 assign byte_counter_next = 
-    sha_state_idle || sha_state_operate ? 6'b0                 : 
-    sha_state_read_data                 ? byte_counter_next_rw : 
-    sha_state_write_data                ? byte_counter_next_rw : byte_counter;
+    sha_state_idle || sha_state_op1 || sha_state_op2 ? 6'b0                 : 
+    sha_state_read_data                              ? byte_counter_next_rw : 
+    sha_state_write_data                             ? byte_counter_next_rw : byte_counter;
 
 // Keeping track of the number of bytes processed.
 reg [15:0] reg_bytes_read;
@@ -157,8 +163,8 @@ assign bytes_read_next =
 reg [15:0] block_counter;
 wire [15:0] block_counter_next;
 assign block_counter_next = 
-    sha_state_idle                       ? 16'b0              : 
-    sha_state_operate && sha_more_blocks ? block_counter + 64 : block_counter;
+    sha_state_idle                   ? 16'b0              : 
+    sha_state_op2 && sha_more_blocks ? block_counter + 64 : block_counter;
 
 // Are we reading the last byte?
 wire reading_last_byte = (byte_counter == 6'd63) || (bytes_read_next == sha_reg_len);
@@ -250,7 +256,7 @@ wire [7:0] data_out_state,
            data_out_len;
 
 // allow the processor to read the current state.
-assign data_out_state = {6'd0, sha_reg_state};
+assign data_out_state = {5'd0, sha_reg_state};
 
 wire [7:0] data_out;
 assign data_out = sel_reg_state     ? data_out_state
@@ -305,9 +311,9 @@ wire [15:0] sha_len = sha_reg_len;
 // Active low reset.
 wire sha_core_rst_n = !rst; 
 // Set to one to start hashing the first block of data.
-wire sha_core_init = sha_state_operate && sha_core_ready && (block_counter == 0);
+wire sha_core_init = sha_state_op1 && sha_core_ready && (block_counter == 0);
 // Set to one to start hashing the next blocks of data.
-wire sha_core_next = sha_state_operate && sha_core_ready && (block_counter != 0);
+wire sha_core_next = sha_state_op1 && sha_core_ready && (block_counter != 0);
 // Output from core signalling that it is ready for init/next to be set to 1.
 wire sha_core_ready;
 // Output from core signalling that the hash result is ready.
