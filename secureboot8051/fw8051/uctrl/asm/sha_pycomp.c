@@ -37,34 +37,24 @@ void main() {
     int i;
     int good=1;
     int N = 128;
-    int start_size = N-64;
-    int end_size = start_size+8;
 
-    #include "pyhash.c"
+    // #include "pyhash.c"
+    pyhash[0] = 0xc6; pyhash[1] = 0x13; pyhash[2] = 0x8d; pyhash[3] = 0x51; 
+    pyhash[4] = 0x4f; pyhash[5] = 0xfa; pyhash[6] = 0x21; pyhash[7] = 0x35; 
+    pyhash[8] = 0xbf; pyhash[9] = 0xce; pyhash[10] = 0xe; pyhash[11] = 0xd0; 
+    pyhash[12] = 0xb8; pyhash[13] = 0xfa; pyhash[14] = 0xc6; pyhash[15] = 0x56; 
+    pyhash[16] = 0x69; pyhash[17] = 0x91; pyhash[18] = 0x7e; pyhash[19] = 0xc7;
 
-    // test writing to XRAM. little endian in 64 byte blocks
-    for(i=0; i < start_size; i++) {
-        d2[i] = i;
-    }
 
-    // put message size (in bits) in last 2 words of last block
-    // leave space for 8 bytes of size and 1 byte for appended bit
-    d2[i++] = (N-9) << 3 & 0xFF;  
-    d2[i++] = (N-9) >> 5 & 0xFF;
-
-    for(; i<end_size; i++)
-    {
-      d2[i] = 0;
-    }
-
-    // append 1 to end of message, then pad 0s
-    d2[i++] = 0x80;
-
-    // rest of message
-    for(; i<N; i++)
-    {
-      d2[i] = i;
-    }
+    // reset the entire block.
+    for(i=0; i<N; i++) { d2[i] = 0; }
+    // initialize bytes 0-63
+    for(i=0; i < 64; i++) { d2[i] = i; }
+    // add binary string of the form 10* after this (only need the 1).
+    d2[64] = 0x80;
+    // put message size (in bits) in last 8 bytes of the block
+    d2[126] = 0x02;
+    d2[127] = 0x00;
 
     sha_reg_rd_addr = (unsigned int) &d2;
     sha_reg_wr_addr = (unsigned int) &hash;
@@ -79,7 +69,7 @@ void main() {
     for(i=0; i < 20; i++) {
         P1 = 2;
         P0 = hash[i];
-        if(hash[i] != pyhash[i])
+        if(hash[i] != pyhash[19-i])
         {
           good = 0;
           break;
