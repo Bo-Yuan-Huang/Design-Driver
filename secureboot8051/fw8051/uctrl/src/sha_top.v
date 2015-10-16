@@ -360,26 +360,26 @@ sha1_core sha1_core_i (
 assign xram_addr = sha_state_read_data  ? sha_reg_rd_addr + {10'b0, byte_counter} + block_counter :
                    sha_state_write_data ? sha_reg_wr_addr + {10'b0, byte_counter}                 : 16'bx;
 assign xram_data_out = 
-    byte_counter == 0  ? sha_reg_digest[7   : 0]   : 
-    byte_counter == 1  ? sha_reg_digest[15  : 8]   : 
-    byte_counter == 2  ? sha_reg_digest[23  : 16]  : 
-    byte_counter == 3  ? sha_reg_digest[31  : 24]  : 
-    byte_counter == 4  ? sha_reg_digest[39  : 32]  : 
-    byte_counter == 5  ? sha_reg_digest[47  : 40]  : 
-    byte_counter == 6  ? sha_reg_digest[55  : 48]  : 
-    byte_counter == 7  ? sha_reg_digest[63  : 56]  : 
-    byte_counter == 8  ? sha_reg_digest[71  : 64]  : 
-    byte_counter == 9  ? sha_reg_digest[79  : 72]  : 
-    byte_counter == 10 ? sha_reg_digest[87  : 80]  : 
-    byte_counter == 11 ? sha_reg_digest[95  : 88]  : 
-    byte_counter == 12 ? sha_reg_digest[103 : 96]  : 
-    byte_counter == 13 ? sha_reg_digest[111 : 104] : 
-    byte_counter == 14 ? sha_reg_digest[119 : 112] : 
-    byte_counter == 15 ? sha_reg_digest[127 : 120] : 
-    byte_counter == 16 ? sha_reg_digest[135 : 128] : 
-    byte_counter == 17 ? sha_reg_digest[143 : 136] : 
-    byte_counter == 18 ? sha_reg_digest[151 : 144] : 
-    byte_counter == 19 ? sha_reg_digest[159 : 152] : 8'bx;
+    byte_counter == 19 ? sha_reg_digest[7   : 0]   : 
+    byte_counter == 18 ? sha_reg_digest[15  : 8]   : 
+    byte_counter == 17 ? sha_reg_digest[23  : 16]  : 
+    byte_counter == 16 ? sha_reg_digest[31  : 24]  : 
+    byte_counter == 15 ? sha_reg_digest[39  : 32]  : 
+    byte_counter == 14 ? sha_reg_digest[47  : 40]  : 
+    byte_counter == 13 ? sha_reg_digest[55  : 48]  : 
+    byte_counter == 12 ? sha_reg_digest[63  : 56]  : 
+    byte_counter == 11 ? sha_reg_digest[71  : 64]  : 
+    byte_counter == 10 ? sha_reg_digest[79  : 72]  : 
+    byte_counter == 9  ? sha_reg_digest[87  : 80]  : 
+    byte_counter == 8  ? sha_reg_digest[95  : 88]  : 
+    byte_counter == 7  ? sha_reg_digest[103 : 96]  : 
+    byte_counter == 6  ? sha_reg_digest[111 : 104] : 
+    byte_counter == 5  ? sha_reg_digest[119 : 112] : 
+    byte_counter == 4  ? sha_reg_digest[127 : 120] : 
+    byte_counter == 3  ? sha_reg_digest[135 : 128] : 
+    byte_counter == 2  ? sha_reg_digest[143 : 136] : 
+    byte_counter == 1  ? sha_reg_digest[151 : 144] : 
+    byte_counter == 0  ? sha_reg_digest[159 : 152] : 8'bx;
 
 assign xram_stb = sha_state_read_data || sha_state_write_data;
 assign xram_wr = sha_state_write_data;

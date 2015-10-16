@@ -69,7 +69,7 @@ void main() {
     for(i=0; i < 20; i++) {
         P1 = 2;
         P0 = hash[i];
-        if(hash[i] != pyhash[19-i])
+        if(hash[i] != pyhash[i])
         {
           good = 0;
           break;
