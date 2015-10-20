@@ -11,6 +11,17 @@
 #define AES_REG_KEY1_ADDR 0xFF30
 #define DATA_ADDR 0xE000
 
+void idle_cycle()
+{
+    oc8051_xiommu.rst = 0;
+    oc8051_xiommu.proc_wr = 0;
+    oc8051_xiommu.proc_stb = 0;
+    oc8051_xiommu.proc_addr = 0;
+    oc8051_xiommu.proc_data_in = 0;
+    set_inputs();
+    next_timeframe();
+}
+
 void reset()
 {
     int i;
@@ -19,13 +30,13 @@ void reset()
     set_inputs();
     next_timeframe();
 
-    oc8051_xiommu.rst = 0;
-    set_inputs();
+    idle_cycle();
 }
 
 _u8 inb(_u16 addr)
 {
     int cnt = 0;
+    _u8 data;
 
     oc8051_xiommu.rst = 0;
     oc8051_xiommu.proc_wr = 0;
@@ -44,7 +55,10 @@ _u8 inb(_u16 addr)
         if (cnt++ >= 4) break;
     }
     assert (oc8051_xiommu.proc_ack == 1);
-    return oc8051_xiommu.proc_data_out;
+    data = oc8051_xiommu.proc_data_out;
+
+    idle_cycle();
+    return data;
 }
 
 void outb(_u16 addr, _u8 data)
@@ -70,6 +84,7 @@ void outb(_u16 addr, _u8 data)
         if (cnt++ >= 4) break;
     }
     assert (oc8051_xiommu.proc_ack == 1);
+    idle_cycle();
 }
 
 
@@ -81,10 +96,10 @@ void main() {
 
     // test writing to XRAM.
     for(i=0; i < 2; i++) {
-        outb(DATA_ADDR+i, i);
+        outb(DATA_ADDR+i, i*i+1);
     }
     // assert (oc8051_xiommu.oc8051_xram_i.buff[0xE001] == 3);
     for(i=0; i < 2; i++) {
-        assert(inb(DATA_ADDR+i) == i);
+        assert(inb(DATA_ADDR+i) == i*i+1);
     }
 }
