@@ -36,6 +36,13 @@ module oc8051_memarbiter(
     addr_C,
     data_in_C,
     data_out_C,
+    // port D.
+    stb_D,
+    wr_D,
+    ack_D,
+    addr_D,
+    data_in_D,
+    data_out_D,
     // memory (XRAM) port.
     stb,
     wr,
@@ -71,6 +78,14 @@ input [15:0]    addr_C;
 input [7:0]     data_in_C;
 output [7:0]    data_out_C;
 
+// port D.
+input           stb_D;
+output          ack_D;
+input           wr_D;
+input [15:0]    addr_D;
+input [7:0]     data_in_D;
+output [7:0]    data_out_D;
+
 // XRAM (memory) port.
 output          stb;
 output          wr;
@@ -82,6 +97,7 @@ input [7:0]     data_out;
 localparam PORT_A = 2'd0;
 localparam PORT_B = 2'd1;
 localparam PORT_C = 2'd2;
+localparam PORT_D = 2'd3;
 
 wire [1:0] selected_port;
 
@@ -90,24 +106,30 @@ reg arbiter_state;
 
 // arbitration muxes.
 wire stb        = selected_port == PORT_A ? stb_A     : 
-                  selected_port == PORT_B ? stb_B     : stb_C;
+                  selected_port == PORT_B ? stb_B     :
+                  selected_port == PORT_C ? stb_C     : stb_D;
 
 wire wr         = selected_port == PORT_A ? wr_A      : 
-                  selected_port == PORT_B ? wr_B      : wr_C;
+                  selected_port == PORT_B ? wr_B      :
+                  selected_port == PORT_C ? wr_C      : wr_D;
 
 wire [15:0] addr = selected_port == PORT_A ? addr_A    : 
-                   selected_port == PORT_B ? addr_B    : addr_C;
+                   selected_port == PORT_B ? addr_B    :
+                   selected_port == PORT_C ? addr_C    : addr_D;
 
 wire [7:0] data_in = selected_port == PORT_A ? data_in_A : 
-                     selected_port == PORT_B ? data_in_B : data_in_C;
+                     selected_port == PORT_B ? data_in_B :
+                     selected_port == PORT_C ? data_in_C : data_in_D;
 
 wire ack_A      = selected_port == PORT_A ? ack : 1'b0;
 wire ack_B      = selected_port == PORT_B ? ack : 1'b0;
 wire ack_C      = selected_port == PORT_C ? ack : 1'b0;
+wire ack_D      = selected_port == PORT_D ? ack : 1'b0;
 
 wire [7:0] data_out_A = data_out;
 wire [7:0] data_out_B = data_out;
 wire [7:0] data_out_C = data_out;
+wire [7:0] data_out_D = data_out;
 
 // selection logic.
 localparam STATE_INUSE = 1'd1;
@@ -119,7 +141,7 @@ wire arbiter_state_inuse_next = ack ? STATE_IDLE : STATE_INUSE;
 
 // If current idle and someone made a request, transition to inuse.
 wire arbiter_state_idle_next  = 
-        ((stb_A || stb_B || stb_C) && !ack) ? STATE_INUSE : STATE_IDLE;
+        ((stb_A || stb_B || stb_C || stb_D) && !ack) ? STATE_INUSE : STATE_IDLE;
 // Next state of the arbiter.
 wire arbiter_state_next = 
         (arbiter_state == STATE_IDLE)  ? arbiter_state_idle_next  :
@@ -129,8 +151,9 @@ wire arbiter_state_next =
 // currently idle and won't be idle in the next cycle.
 wire arbit_select_winner = (arbiter_state == STATE_IDLE) && (arbiter_state_next == STATE_INUSE);
 
-// Who is the new winner? C has the lowest priority, then B then A.
-wire [1:0] arbit_winner = (!stb_A && !stb_B && stb_C) ? PORT_C :
+// Who is the new winner? D has the lowest priority, then C then B then A.
+wire [1:0] arbit_winner = (!stb_A && !stb_B && !stb_C && stb_D) ? PORT_D :
+                    (!stb_A && !stb_B && stb_C) ? PORT_C :
                     (!stb_A && stb_B)           ? PORT_B : PORT_A;
 // Who is the current holder of the arbitration?
 reg [1:0] arbit_holder;       
