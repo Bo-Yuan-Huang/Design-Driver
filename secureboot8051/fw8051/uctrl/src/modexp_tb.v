@@ -1,4 +1,4 @@
-//////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 ////                                                              ////
 ////  8051 top level test bench                                   ////
 ////                                                              ////
@@ -241,15 +241,9 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
         wire done = 0;
     `endif
 
-    wire pass;
-
     always @(posedge done)
     begin
         $display("time ",$time, "   Read DONE signal on ports 0-3\n");
-	if (pass)
-	    $display("passed\n");
-	else
-	    $display("failed\n");
         #500 $finish;
     end
 
@@ -258,9 +252,6 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
 //
 // oc8051_xram oc8051_xram1 (.clk(clk), .rst(rst), .wr(write_xram), .addr(ext_addr), .data_in(data_out), .data_out(data_out_xram), .ack(ack_xram), .stb(stb_o));
 oc8051_xiommu oc8051_xiommu1 (.clk(clk), .rst(rst), .proc_wr(write_xram), .proc_addr(ext_addr), .proc_data_in(data_out), .proc_data_out(data_out_xram), .proc_ack(ack_xram), .proc_stb(stb_o));
-
-'include "pass.v" 
-//assign pass = oc8051_xiommu1.modexp_top_i.modexp_i.c == 2048'h4e316da688cf54b2cc1b592a5d8f05aac47903d27e5c006a2d36f0c8cd5dd02a964d8871211225ff829a9485ab43f3cf9a8f9cf5ca527b6ae5b7c684e6a5f18e564841dd40dd8f5eea677c6f4a6a83b4df6a3c332c8416c55f7a4ec4dc5939303dbddcde769d5e62746b7862496deec7bdf2cf5b3e1405fecc2e6a49e49028073948b7401892be5e0c8fad69f3fdb92c9de65ac446b18ef122fa0130d20d2b72d168be0c839d567139b6c75588226aaa37d31187b625259944af754701444031657d68f7b0405e4d71e04263e439ed09ec17fe950dcc5aca8243010035129ea6ad59c0cb2f1ec8ef853d33c8c314447a627b81c7a4b2f833cdc2bbee3a765c00;
 
 defparam oc8051_xiommu1.oc8051_xram_i.DELAY = 2;
 
@@ -307,13 +298,17 @@ assign int0 = p3_out[3];
 assign int1 = p3_out[4];
 assign t2 = p3_out[5];
 assign t2ex = p3_out[2];
+//integer idx;
 
 initial begin
   $dumpon;
   $dumpfile("modexp.lxt");
+//for (idx = 16'hE000; idx < 16'hE128; idx = idx + 1) $dumpvars(0,modexp_tb.oc8051_xiommu1.oc8051_xram_i.buff[idx]);
+  $dumpvars(1,modexp_tb.oc8051_xiommu1.oc8051_xram_i);
   $dumpvars(1,modexp_tb.oc8051_xiommu1.modexp_top_i);
   $dumpvars(1,modexp_tb.oc8051_xiommu1.modexp_top_i.modexp_i);
   $dumpvars(1,modexp_tb);
+  $dumpvars(1,modexp_tb.oc8051_xiommu1.sha_top_i);
   rst= 1'b1;
   p0_in = 8'h00;
   p1_in = 8'h00;
