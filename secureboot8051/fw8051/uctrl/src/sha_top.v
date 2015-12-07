@@ -126,7 +126,7 @@ assign sha_state_next =
     sha_state_read_data  ? sha_state_next_read_data  : 
     sha_state_op1        ? sha_state_next_op1        : 
     sha_state_op2        ? sha_state_next_op2        : 
-    sha_state_write_data ? sha_state_next_write_data : 2'bx;
+    sha_state_write_data ? sha_state_next_write_data : 3'bx;
 
 wire sha_step = sha_reg_state != sha_state_next;
 
@@ -311,11 +311,13 @@ wire [15:0] sha_len = sha_reg_len;
 // Active low reset.
 wire sha_core_rst_n = !rst; 
 // Set to one to start hashing the first block of data.
-wire sha_core_init = sha_state_op1 && sha_core_ready && (block_counter == 0);
+wire sha_core_init = sha_state_op1 && sha_core_ready_r && (block_counter == 0);
 // Set to one to start hashing the next blocks of data.
-wire sha_core_next = sha_state_op1 && sha_core_ready && (block_counter != 0);
+wire sha_core_next = sha_state_op1 && sha_core_ready_r && (block_counter != 0);
 // Output from core signalling that it is ready for init/next to be set to 1.
 wire sha_core_ready;
+// flopped version.
+reg sha_core_ready_r;
 // Output from core signalling that the hash result is ready.
 wire sha_core_digest_valid;
 // Register which holds the data to be hashed.
@@ -330,7 +332,7 @@ assign sha_reg_digest_next = sha_core_digest_valid ? sha_core_digest : sha_reg_d
     
 reg sha_core_assumps_valid_reg;
 wire sha_core_assumps_valid_reg_next = 
-    sha_core_assumps_valid_reg ? !(sha_core_ready != sha_core_digest_valid) : 0;
+    sha_core_assumps_valid_reg ? !(sha_core_ready_r != sha_core_digest_valid) : 0;
 
 wire sha_core_assumps_valid = 1; // sha_core_assumps_valid_reg && sha_core_assumps_valid_reg_next;
 
@@ -388,20 +390,22 @@ assign xram_wr = sha_state_write_data;
 always @(posedge clk)
 begin
     if (rst) begin
-        sha_reg_state  <= SHA_STATE_IDLE;
-        byte_counter   <= 0;
-        sha_core_block <= 0;
-        reg_bytes_read <= 0;
-        block_counter  <= 0;
-        sha_reg_digest <= 0;
+        sha_reg_state       <= SHA_STATE_IDLE;
+        byte_counter        <= 0;
+        sha_core_block      <= 0;
+        reg_bytes_read      <= 0;
+        block_counter       <= 0;
+        sha_reg_digest      <= 0;
+        sha_core_ready_r    <= 0;
     end
     else begin
-        sha_reg_state  <= sha_state_next;
-        byte_counter   <= byte_counter_next;
-        sha_core_block <= sha_core_block_next;
-        reg_bytes_read <= bytes_read_next;
-        block_counter  <= block_counter_next;
-        sha_reg_digest <= sha_reg_digest_next;
+        sha_reg_state       <= sha_state_next;
+        byte_counter        <= byte_counter_next;
+        sha_core_block      <= sha_core_block_next;
+        reg_bytes_read      <= bytes_read_next;
+        block_counter       <= block_counter_next;
+        sha_reg_digest      <= sha_reg_digest_next;
+        sha_core_ready_r    <= sha_core_ready;
     end
 end
 endmodule

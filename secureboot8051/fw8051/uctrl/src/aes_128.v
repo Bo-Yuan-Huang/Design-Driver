@@ -29,6 +29,7 @@ module aes_128(clk, state, key, out);
         k0 <= key;
       end
 
+    /* verilator lint_off PINNOCONNECT */
     expand_key_128
         a1 (clk, k0, k1, k0b, 8'h1),
         a2 (clk, k1, k2, k1b, 8'h2),
@@ -40,6 +41,7 @@ module aes_128(clk, state, key, out);
         a8 (clk, k7, k8, k7b, 8'h80),
         a9 (clk, k8, k9, k8b, 8'h1b),
        a10 (clk, k9,   , k9b, 8'h36);
+    /* verilator lint_on PINNOCONNECT */
 
     one_round
         r1 (clk, s0, k0b, s1),

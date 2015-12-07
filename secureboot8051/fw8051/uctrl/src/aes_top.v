@@ -314,7 +314,7 @@ assign xram_data_out = (byte_counter == 0)  ? encrypted_data_buf [7   :0  ]  :
                        encrypted_data_buf [127 : 120];
 
 // Flip-flops instantiated here.
-always @(posedge clk or posedge rst)
+always @(posedge clk)
 begin
     if (rst) begin
         aes_reg_state        <= AES_STATE_IDLE;

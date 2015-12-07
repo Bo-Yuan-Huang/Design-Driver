@@ -94,9 +94,10 @@ assign ack =  ackw || ackr;
 
 wire [15:0] addr0 = addr[15:0];
 
+/* verilator lint_off ASSIGNDLY */
 //
 // writing to ram
-always @(posedge clk or posedge rst)
+always @(posedge clk)
 begin
   if (rst)
     ackw <= #1 1'b0;
@@ -106,7 +107,7 @@ begin
   end else ackw <= #1 1'b0;
 end
 
-always @(posedge clk or posedge rst)
+always @(posedge clk)
   if (rst)
     ackr <= #1 1'b0;
   else if (stb && !wr && ((DELAY==3'b000) || (cnt==3'b000))) begin
@@ -117,7 +118,7 @@ always @(posedge clk or posedge rst)
     data_out <= #1 8'h00;
   end
 
-always @(posedge clk or posedge rst)
+always @(posedge clk)
 begin
   if (rst)
     cnt <= #1 DELAY;
@@ -127,6 +128,7 @@ begin
     cnt <= #1 cnt - 3'b001;
   else cnt <= #1 DELAY;
 end
+/* verilator lint_on ASSIGNDLY */
 
 
 endmodule
