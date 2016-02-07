@@ -47,4 +47,5 @@ sha1_w_mem.v                    \
 sha_top.v                       \
 modmul.v                        \
 modexp.v                        \
-modexp_top.v
+modexp_top.v                    \
+mem_wr.v

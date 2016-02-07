@@ -302,13 +302,15 @@ assign t2ex = p3_out[2];
 
 initial begin
   $dumpon;
-  $dumpfile("modexp.lxt");
+  $dumpfile("run.lxt");
 //for (idx = 16'hE000; idx < 16'hE128; idx = idx + 1) $dumpvars(0,modexp_tb.oc8051_xiommu1.oc8051_xram_i.buff[idx]);
-  $dumpvars(1,modexp_tb.oc8051_xiommu1.oc8051_xram_i);
-  $dumpvars(1,modexp_tb.oc8051_xiommu1.modexp_top_i);
-  $dumpvars(1,modexp_tb.oc8051_xiommu1.modexp_top_i.modexp_i);
-  $dumpvars(1,modexp_tb);
-  $dumpvars(1,modexp_tb.oc8051_xiommu1.sha_top_i);
+  $dumpvars(0,modexp_tb);
+//  $dumpvars(1,modexp_tb.oc8051_xiommu1.oc8051_xram_i);
+//  $dumpvars(1,modexp_tb.oc8051_xiommu1.modexp_top_i);
+//  $dumpvars(1,modexp_tb.oc8051_xiommu1.modexp_top_i.modexp_i);
+//  $dumpvars(1,modexp_tb);
+//  $dumpvars(1,modexp_tb.oc8051_xiommu1.sha_top_i);
+//  $dumpvars(1,modexp_tb.oc8051_xiommu1.memwr_i);
   rst= 1'b1;
   p0_in = 8'h00;
   p1_in = 8'h00;
@@ -349,6 +351,12 @@ begin
   end
 end
 */
+
+always @(modexp_tb.oc8051_top_1.oc8051_decoder1.op_cur)
+  if(modexp_tb.oc8051_top_1.oc8051_decoder1.op_cur===8'hxx) begin
+    #100
+    $finish;
+  end
 
 
 endmodule
