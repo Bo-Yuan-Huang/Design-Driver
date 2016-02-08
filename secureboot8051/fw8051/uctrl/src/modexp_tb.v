@@ -352,12 +352,18 @@ begin
 end
 */
 
+integer cnt = 0;
 always @(modexp_tb.oc8051_top_1.oc8051_decoder1.op_cur)
   if(modexp_tb.oc8051_top_1.oc8051_decoder1.op_cur===8'hxx) begin
-    #100
-    $finish;
+      $display("invalid instruction cnt=%d", cnt, "; time=", $time);
+      if (cnt > 2) begin
+        #10000
+        $finish;
+      end
+      else begin
+          cnt = cnt + 1;
+      end
   end
-
 
 endmodule
 
