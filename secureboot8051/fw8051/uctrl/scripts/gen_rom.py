@@ -70,10 +70,10 @@ def dump_assigns(data):
     print '  wire [15:0] addr1 = addr+1;'
     print '  wire [15:0] addr2 = addr+2;'
     print '  wire [15:0] addr3 = addr+3;'
-    print '  wire [7:0] data_o0 = (addr0 < %d) ? buff[addr0] : 8\'hx;' % N
-    print '  wire [7:0] data_o1 = (addr1 < %d) ? buff[addr1] : 8\'hx;' % N
-    print '  wire [7:0] data_o2 = (addr2 < %d) ? buff[addr2] : 8\'hx;' % N
-    print '  wire [7:0] data_o3 = (addr3 < %d) ? buff[addr3] : 8\'hx;' % N
+    print '  wire [7:0] data_o0 = (addr0 < %d) ? buff[addr0] : 8\'h0;' % N
+    print '  wire [7:0] data_o1 = (addr1 < %d) ? buff[addr1] : 8\'h0;' % N
+    print '  wire [7:0] data_o2 = (addr2 < %d) ? buff[addr2] : 8\'h0;' % N
+    print '  wire [7:0] data_o3 = (addr3 < %d) ? buff[addr3] : 8\'h0;' % N
     print '  wire [31:0] data_out = {data_o3, data_o2, data_o1, data_o0};';
 
 def main(argv):
