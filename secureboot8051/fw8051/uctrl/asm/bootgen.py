@@ -210,7 +210,7 @@ def removeOAEP(msg):
     
 def addMarkerByte(msg):
     out = bytearray([1])
-    out[len(out):] = msg
+    out.extend(msg)
     return out
 
 def removeMarkerByte(out):
@@ -279,92 +279,49 @@ def verifySig(data, sig):
     #print "".join("{:02X}".format(ord(c)) for c in SIGNSEED.translate(trans_5C))
 
     return not cmp(decrypt(sig, public),hashed)
+class Module:
+    def __init__(self, data):
+        self.size = len(data)
+        self.data = data
+        self.sign = sign(data)
+        assert verifySig(data, self.sign)
+        sha = hashlib.sha1()
+        sha.update(data)
+        self.hash = bytearray(sha.digest())
 
-def dump_data(original):
-    with open('prog.h','wt') as f:
-        print >> f, 'int readprogram(int modnum, unsigned char* dataout){'
-        print >> f, '    switch(modnum){'
-        for i,b in enumerate((original)):
-            if i % 256 == 0:
-                print >> f, '    case %d:' %(i/256)
-            print >> f, '        dataout[%d] = 0x%02X;' %(i%256,b)
-            if (i+1)%256 == 0:
-                print >> f, '        return 256;'
-            if i == len(original)-1:
-                print >> f, '        return %d;' %(len(original)%256)
-        print >> f, '    default: return 0;'    
-        print >> f, '    }'
-        print >> f, '}'
-        print >> f
+class Image:
+    def __init__(self, data, exp, mod):
+        N = int(math.ceil(len(data)/256.))
+        self.num = N
+        self.exp = exp
+        self.mod = mod
+        self.modules = [0]*N
 
-def dump_header(header):
-    with open('prog.h', 'at') as f:
-        print >> f, 'int readheader(unsigned char* dataout){'
-        for i,b in enumerate(bytearray(header)):
-            print >> f, '    dataout[%d] = 0x%02X;' %(i,b)
-        print >> f, '    return %d;' %len(header)
-        print >> f, '}'
-        print >> f
+        # keys
+        self.head = int2bytes(exp, 256)
+        self.head.extend(int2bytes(mod, 256))
+        # num modules
+        self.head.extend(bytearray([N & 0xFF, N >> 8]))
+        # modules
+        for i in xrange(N):
+            self.modules[i] = Module(data[i*256:min((i+1)*256,len(data))])
+            size = self.modules[i].size
+            self.head.extend(bytearray([size & 0xFF, size >> 8]))
+            self.head.extend(self.modules[i].hash)
 
-def sig_def():
-    with open('prog.h', 'at') as f:
-        print >> f, 'int signature(int modnum, unsigned char* dataout){'
-        print >> f, '    switch(modnum){'
-
-def dump_sig(modnum, signature):
-    with open('prog.h', 'at') as f:
-        print >> f, '    case %d:' %modnum
-        #for i,b in enumerate(signature):
-        #print >> f, '    dataout[%d] = 0x%02X;' %(i,b)
-        for i in xrange(256):
-            print >> f, '        dataout[%d] = 0x%02X;' %(i,(signature >> (255-i)*8) & 0xFF)
-        print >> f, '        break;'
-
-def sig_end():
-    with open('prog.h', 'at') as f:
-        print >> f, '    default: break;'    
-        print >> f, '    }'
-        print >> f, '    return 256;'
-        print >> f, '}'    
+        # put everything together
+        self.image = int2bytes(sign(self.head), 256)  # signature of header
+        self.image.extend(self.head)             # header
+        for i in xrange(N):                      # modules
+            self.image.extend(self.modules[i].data)
+            self.image.extend(int2bytes(self.modules[i].sign, 256))
 
 def makefile(data):
-    dump_data(data)
-    N = int(math.ceil(len(data)/256.))
-    head = bytearray(N*(2+20) + 256 + 2 + 256)
-    # number of modules
-    head[0] = N & 0xFF;
-    head[1] = N >> 8;
-    head[2:258] = int2bytes(public, 256)
-    prf = PRF(SIGNSEED)
-    sig_def()
-    for i in xrange(N-1):
-        offset = i*22+2+256
-        ndata = data[i*256:(i+1)*256]
-        head[offset] = 0
-        head[offset+1] = 1
-        head[offset+2:offset+2+20] = prf.eval(ndata)
-        sig = sign(ndata)
-        assert verifySig(ndata,sig)
-        dump_sig(i, sig)
-    #last module might be shorter than 256 bytes
-    offset = (N-1)*22+2+256
-    ndata = data[(N-1)*256:]
-    modlen = len(data) % 256
-    head[offset] = modlen & 0xFF
-    head[offset+1] = modlen >> 8 & 0xFF
-    head[offset+2:offset+2+20] = prf.eval(ndata)
-    sig = sign(ndata)
-    assert verifySig(ndata,sig)
-    dump_sig(N-1, sig)
-    
-    sig_end()
-    hsig = sign(head[:2+256+N*22])
-    assert verifySig(head[:2+256+N*22], hsig)
-    offset = 2+256+22*N
-    head[offset:offset+256] = int2bytes(hsig, 256)
-    dump_header(head)
+    bootimage = Image(data, public, modulus)
 
-
+    with open('prog.hex','wt') as f:
+        for i,b in enumerate (bootimage.image):
+            print >> f, "%02X" %b,
     
 def main(argv):
     if len(argv) != 2:
@@ -373,6 +330,8 @@ def main(argv):
         filename = argv[1]
         if filename.endswith('.hex') or filename.endswith('.ihx'):
             data = read_hex(filename)
+            print data[:256]
+            print data[256:]
             data = bytearray(data)
             #print data
         elif filename.endswith('.in'):
@@ -380,7 +339,8 @@ def main(argv):
         
         sha = hashlib.sha1()
         sha.update(int2bytes(public, 256))
-        #print ", 0x".join("{:02X}".format(ord(c)) for c in sha.digest())
+        sha.update(int2bytes(modulus, 256))
+#        print ", 0x".join("{:02X}".format(ord(c)) for c in sha.digest())
         makefile(data)
         
 if __name__ == '__main__':

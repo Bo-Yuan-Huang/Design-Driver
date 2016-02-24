@@ -213,11 +213,11 @@ mem_wr memwr_i(
     .xram_ack      (memwr_xram_ack     ),
     .xram_stb      (memwr_xram_stb     ),
     .xram_wr       (memwr_xram_wr      ),
-    .state         (memwr_state        ),
-    .rdaddr        (memwr_rdaddr       ),
-    .wraddr        (memwr_wraddr       ),
-    .len           (memwr_len          ),
-    .step          (memwr_step         )
+    .memwr_state   (memwr_state        ),
+    .memwr_rdaddr  (memwr_rdaddr       ),
+    .memwr_wraddr  (memwr_wraddr       ),
+    .memwr_len     (memwr_len          ),
+    .memwr_step    (memwr_step         )
 );
 
 wire stb_out, ack_in, wr_out;

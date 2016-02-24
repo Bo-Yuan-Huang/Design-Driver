@@ -1,6 +1,5 @@
 #include <reg51.h>
-#include "rsa_keyin.h"
-#include "prog.h"
+
 
 /*
  * Copyright (c) 1999-2001 Tony Givargis.  Permission to copy is granted
@@ -33,30 +32,37 @@ __xdata __at(0xE000) unsigned char d[0x300];
 __xdata __at(0xE300) unsigned char data2[0x200];
 __xdata __at(0xE500) unsigned char data1[20];
 
+struct RSAmsg{
+    unsigned char padbyte;
+    unsigned char m[N-K2-K1-1];
+    unsigned char zeros[K1];
+    unsigned char r[K2];
+};
 
 void pad(int len)
 {
     int i;
-
-    exp_reg_m[len+1] = 1;
-    for(i=len+2; i < N-K1-K2; i++)
-	exp_reg_m[i] = 0;
+    struct RSAmsg* rsamsg = (struct RSAmsg*)exp_reg_m; 
+    
+    rsamsg->m[len+1] = 1;
+    for(i=len+1; i < N-K1-K2-1; i++)
+	rsamsg->m[i] = 0;
 }
 
 // returns length of message
 int unpad()
 {
     int len;
+    struct RSAmsg* rsamsg = (struct RSAmsg*)exp_reg_m; 
 
-    for(len = N-K1-K2-1; len>0; len--)
+    for(len = N-K1-K2-2; len>=0; len--)
     {
-	//P0 = exp_reg_m[len];
-	if(exp_reg_m[len] == 1)
+	if(rsamsg->m[len] == 1)
 	    break;
-	else if(exp_reg_m[len] != 0)
+	else if(rsamsg->m[len] != 0)
 	    return -1;
     }
-    return len-1;
+    return len;
 }
 
 // set up message for sha. assumes sha_reg_rd_addr is d
@@ -184,7 +190,7 @@ unsigned char* PRG(unsigned char* state)
 }
 
 // seed for generating R in OAEP
-const unsigned char rseed[] = {
+const __xdata unsigned char rseed[] = {
     0x14, 0xb8, 0xfb, 0x04,
     0x98, 0x43, 0x98, 0xa2,
     0x35, 0xd0, 0x3e, 0xca,
@@ -199,7 +205,7 @@ void RSAinit()
 {
     rprg = PRGinit(rseed);
     exp_reg_opaddr = (unsigned int)&d;  // setup address to write to
-    setN(exp_reg_n);  // setup N
+    //setN(exp_reg_n);  // setup N
 }
 
 const unsigned char Hseed[] = {
@@ -219,36 +225,39 @@ void OAEP()
     int i,j;
     unsigned char *hash;
     unsigned char *gprg;
+    struct RSAmsg* rsamsg = (struct RSAmsg*)exp_reg_m; 
 
     // K1 0s
-    for(i=N-K1-K2; i < N-K2; i++)
-	exp_reg_m[i] = 0;
+    for(i=0; i<K1; i++)
+	rsamsg->zeros[i] = 0;
 
     // do G to compute X
     hash = PRG(rprg); // make r
     for(i=K2; i<20; i++)
 	hash[i] = 0;
     for(i=0; i<K2; i++)
-	exp_reg_m[N-K2+i] = hash[i];
+	rsamsg->r[i] = hash[i];
     gprg = PRGinit(hash);
     hash = PRG(gprg);
-    i=1; j=0;
-    while(i < N-K2)
+    i=0; j=0;
+    while(i < N-K2-1)
     {
 	if(j == 20)
 	{
 	    hash = PRG(gprg);
 	    j = 0;
 	}
-	exp_reg_m[i] = exp_reg_m[i] ^ hash[j];
+	rsamsg->m[i] = rsamsg->m[i] ^ hash[j];
 	i++;
 	j++;
     }
 
     // do H to compute Y
-    hash = HMAC(Hseed, 20, exp_reg_m+1, N-K2-1);
+    hash = HMAC(Hseed, 20, rsamsg->m, N-K2-1);
     for(i=0; i<K2; i++)
-	exp_reg_m[i+N-K2] = exp_reg_m[i+N-K2] ^ hash[i];
+	rsamsg->r[i] = rsamsg->r[i] ^ hash[i];
+
+    rsamsg->padbyte = 1; // marker byte
 }
 
 void removeOAEP()
@@ -257,16 +266,17 @@ void removeOAEP()
     unsigned char *hash;
     __xdata unsigned char r[20];
     unsigned char *gprg;
+    struct RSAmsg* rsamsg = (struct RSAmsg*)exp_reg_m; 
 
     // find r
-    hash = HMAC(Hseed, 20, exp_reg_m+1, N-K2-1);
+    hash = HMAC(Hseed, 20, rsamsg->m, N-K2-1);
     for(i=0; i< K2; i++)
-	r[i] = exp_reg_m[N-K2+i] ^ hash[i];
+	r[i] = rsamsg->r[i] ^ hash[i];
 
     // find m
     gprg = PRGinit(r);
     hash = PRG(gprg);
-    i=1; j=0;
+    i=0; j=0;
     while(i < N-K2)
     {
 	if(j == 20)
@@ -274,7 +284,7 @@ void removeOAEP()
 	    hash = PRG(gprg);
 	    j = 0;
 	}
-	exp_reg_m[i] = exp_reg_m[i] ^ hash[j];
+	rsamsg->m[i] = rsamsg->m[i] ^ hash[j];
 	i++;
 	j++;
     }
@@ -283,16 +293,16 @@ void removeOAEP()
 // encrypt message, len bytes
 unsigned char* encrypt(unsigned char* msg, int len){
     int i;
+    struct RSAmsg* rsamsg = (struct RSAmsg*)exp_reg_m; 
 
     sha_reg_rd_addr= (unsigned int)&d;
     sha_reg_wr_addr = (unsigned int)&data1;
 
-    if(msg != exp_reg_m+1)
+    if(msg != rsamsg->m)
 	for (i=0; i<len; i++)
-	    exp_reg_m[i+1] = msg[i];
+	    rsamsg->m[i] = msg[i];
     pad(len);
     OAEP();
-    exp_reg_m[0] = 1; // marker byte
 
     exp_reg_start = 1;  // start encryption
     while(exp_reg_state != 0);  // wait for encryption to finish
@@ -312,7 +322,7 @@ unsigned char* decrypt(unsigned char* msg, int* len){
     // decrypt
     exp_reg_start = 1;
     while(exp_reg_state != 0);
-    if(d[0] != 1) return 0;
+    if(((struct RSAmsg*)d)->padbyte != 1) return 0;
     
     // copy back message
     for (i=0; i<N; i++)
@@ -323,7 +333,7 @@ unsigned char* decrypt(unsigned char* msg, int* len){
     if(*len == -1)
 	return 0;
 
-    return exp_reg_m + 1;
+    return ((struct RSAmsg*)exp_reg_m)->m;
 }
 
 const unsigned char SIGNSEED[] = {
@@ -358,30 +368,13 @@ unsigned char verifySignature(unsigned char* msg, int len, unsigned char* signat
     else{
 	hash = HMAC(SIGNSEED, 32, msg, len);
 	for(i=0; i<slen; i++){
+	    P0 = sign[i];
 	    if(hash[i] != sign[i])
 		return 0;
 	}
 	return 1;
     }
 }
-
-int bootdata(unsigned char* address, int maxlen)
-{
-    int i = readheader(address);
-    int n = ((int)address[1] << 8) + address[0];
-    int j;
-    for(j=0; j<n; j++){
-	i += readprogram(j, address+i);
-	i += signature(j, address+i);
-    }
-    if(i > maxlen)
-	return 0;
-    return 1;
-}
-
-
-
-int good = 1;
 
 void quit() {
     P0 = P1 = P2 = P3 = 0xDE;
