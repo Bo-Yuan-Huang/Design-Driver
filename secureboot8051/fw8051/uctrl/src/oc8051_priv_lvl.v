@@ -6,7 +6,6 @@
 // synopsys translate_off
 `include "oc8051_timescale.v"
 // synopsys translate_on
-
 `include "oc8051_defines.v"
 
 module oc8051_priv_lvl (rst, clk,
@@ -36,3 +35,5 @@ always @(posedge rst)
 begin
 	priv_lvl = 1'b0;
 end
+
+endmodule

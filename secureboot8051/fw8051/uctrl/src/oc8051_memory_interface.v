@@ -967,7 +967,7 @@ begin
         `OC8051_PIS_I16:   pc_buf        <= #1 {op2_out, op3_out};
         `OC8051_PIS_SO1:   pc_buf        <= #1 pcs_result;
         `OC8051_PIS_SO2:   pc_buf        <= #1 pcs_result;
-        `OC8051_PIS_ECALL: pc_buf        <= #1 0x008A;
+        `OC8051_PIS_ECALL: pc_buf        <= #1 16'h8A;
       endcase
 //  end else if (inc_pc) begin
   end else begin

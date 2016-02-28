@@ -447,8 +447,8 @@ oc8051_decoder oc8051_decoder1(.clk(wb_clk_i),
                                .istb(istb),
                                .mem_act(mem_act),
                                .mem_wait(mem_wait),
-                               .wait_data(wait_data)
-                               .enter_su_mode(enter_su_mode)
+                               .wait_data(wait_data),
+                               .enter_su_mode(enter_su_mode),
                                .leave_su_mode(leave_su_mode));
 
 
