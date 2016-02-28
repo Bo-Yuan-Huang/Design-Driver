@@ -390,6 +390,7 @@ begin
               ram_rd_sel = `OC8051_RRS_SP;
               pc_wr = `OC8051_PCW_Y;
               pc_sel = `OC8051_PIS_AH;
+              leave_su_mode = 1'b0;
             end
           `OC8051_DIV : begin
               ram_rd_sel = `OC8051_RRS_B;
@@ -941,6 +942,18 @@ begin
               stb_i = 1'b0;
               bit_addr = 1'b0;
             end
+            // added by me
+          `OC8051_ECALL :begin
+              ram_rd_sel = `OC8051_RRS_DC;
+              pc_wr = `OC8051_PCW_Y;
+              pc_sel = `OC8051_PIS_ECALL;
+              comp_sel =  `OC8051_CSS_DC;
+              rmw = `OC8051_RMW_N;
+              stb_i = 1'b0;
+              bit_addr = 1'b0;
+              enter_su_mode = 1'b1;
+            end
+            ///////////////////////////////////////////////////
           `OC8051_LJMP : begin
               ram_rd_sel = `OC8051_RRS_DC;
               pc_wr = `OC8051_PCW_Y;
@@ -1330,6 +1343,16 @@ begin
               wr <= #1 1'b1;
               psw_set <= #1 `OC8051_PS_NOT;
             end
+            // added by me:
+            `OC8051_ECALL :begin
+              ram_wr_sel <= #1 `OC8051_RWS_SP;
+              src_sel1 <= #1 `OC8051_AS1_PCH;
+              src_sel2 <= #1 `OC8051_AS2_DC;
+              alu_op <= #1 `OC8051_ALU_NOP;
+              wr <= #1 1'b1;
+              psw_set <= #1 `OC8051_PS_NOT;
+            end
+            /////////////////////////////////////
           `OC8051_JBC : begin
               ram_wr_sel <= #1 `OC8051_RWS_D;
               src_sel1 <= #1 `OC8051_AS1_RAM;
@@ -2194,6 +2217,19 @@ begin
               src_sel3 <= #1 `OC8051_AS3_DC;
               wr_sfr <= #1 `OC8051_WRS_N;
             end
+            // added by me:
+            `OC8051_ECALL :begin
+              ram_wr_sel <= #1 `OC8051_RWS_SP;
+              src_sel1 <= #1 `OC8051_AS1_PCL;
+              src_sel2 <= #1 `OC8051_AS2_DC;
+              alu_op <= #1 `OC8051_ALU_NOP;
+              wr <= #1 1'b1;
+              psw_set <= #1 `OC8051_PS_NOT;
+              cy_sel <= #1 `OC8051_CY_0;
+              src_sel3 <= #1 `OC8051_AS3_DC;
+              wr_sfr <= #1 `OC8051_WRS_N;
+            end
+            ///////////////////////////////////////////
           `OC8051_LJMP : begin
               ram_wr_sel <= #1 `OC8051_RWS_DC;
               src_sel1 <= #1 `OC8051_AS1_DC;
@@ -2669,6 +2705,7 @@ begin
             `OC8051_DJNZ_R  : state <= #1 2'b10;
             `OC8051_DJNZ_D  : state <= #1 2'b10;
             `OC8051_LCALL   : state <= #1 2'b10;
+            `OC8051_ECALL   : state <= #1 2'b10; // added by me
             `OC8051_MOVC_DP : state <= #1 2'b11;
             `OC8051_MOVC_PC : state <= #1 2'b11;
             `OC8051_MOVX_IA : state <= #1 2'b10;
