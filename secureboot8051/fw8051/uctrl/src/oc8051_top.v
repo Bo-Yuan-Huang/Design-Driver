@@ -200,7 +200,7 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 sp,
                 op1, op2, op3,
                 op1_d,
-                decoder_state
+                decoder_state,
                 );
 
 
@@ -299,6 +299,9 @@ output  scanb_so;
 input   scanb_en;
 wire    scanb_soi;
 `endif
+
+input   enter_su_mode;
+input   leave_su_mode;
 
 
 wire [15:0] dptr;
@@ -408,6 +411,9 @@ wire [15:0] iadr_o;
 
 wire [1:0] decoder_state;
 
+wire       enter_su_mode, // from decoder to priv_lvl
+           leave_su_mode; // from decoder to priv_lvl
+
 assign pc_change = decoder_new_valid_pc;
 
 //
@@ -441,7 +447,9 @@ oc8051_decoder oc8051_decoder1(.clk(wb_clk_i),
                                .istb(istb),
                                .mem_act(mem_act),
                                .mem_wait(mem_wait),
-                               .wait_data(wait_data));
+                               .wait_data(wait_data)
+                               .enter_su_mode(enter_su_mode)
+                               .leave_su_mode(leave_su_mode));
 
 
 wire [7:0] sub_result;
@@ -759,6 +767,13 @@ oc8051_sfr oc8051_sfr1(.rst(wb_rst_i),
                        .dptr_hi(dptr_hi),
                        .dptr_lo(dptr_lo),
                        .wait_data(wait_data)
+                       );
+
+oc8051_priv_lvl oc8051_priv_lvl1(
+                       .clk(wb_clk_i),
+                       .rst(wb_rst_i),
+                       .enter_su_mode(enter_su_mode),
+                       .leave_su_mode(leave_su_mode)
                        );
 
 

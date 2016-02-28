@@ -959,14 +959,15 @@ begin
 //
 //case of writing new value to pc (jupms)
       case (pc_wr_sel) 
-        `OC8051_PIS_ALU: pc_buf        <= #1 alu;
-        `OC8051_PIS_AL:  pc_buf[7:0]   <= #1 alu[7:0];
-        `OC8051_PIS_AH:  pc_buf[15:8]  <= #1 alu[7:0];
+        `OC8051_PIS_ALU:   pc_buf        <= #1 alu;
+        `OC8051_PIS_AL:    pc_buf[7:0]   <= #1 alu[7:0];
+        `OC8051_PIS_AH:    pc_buf[15:8]  <= #1 alu[7:0];
         // spramod changed this code to attempt to make AJMP work according to spec.
-        `OC8051_PIS_I11: pc_buf        <= #1 {pc_for_ajmp[15:11], op1_out[7:5], op2_out};
-        `OC8051_PIS_I16: pc_buf        <= #1 {op2_out, op3_out};
-        `OC8051_PIS_SO1: pc_buf        <= #1 pcs_result;
-        `OC8051_PIS_SO2: pc_buf        <= #1 pcs_result;
+        `OC8051_PIS_I11:   pc_buf        <= #1 {pc_for_ajmp[15:11], op1_out[7:5], op2_out};
+        `OC8051_PIS_I16:   pc_buf        <= #1 {op2_out, op3_out};
+        `OC8051_PIS_SO1:   pc_buf        <= #1 pcs_result;
+        `OC8051_PIS_SO2:   pc_buf        <= #1 pcs_result;
+        `OC8051_PIS_ECALL: pc_buf        <= #1 0x008A;
       endcase
 //  end else if (inc_pc) begin
   end else begin
