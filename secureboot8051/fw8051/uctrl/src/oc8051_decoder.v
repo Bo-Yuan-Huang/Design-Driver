@@ -96,7 +96,8 @@ module oc8051_decoder (clk, rst,
   src_sel1, src_sel2, src_sel3,
   alu_op_o, psw_set, eq, cy_sel, comp_sel,
   pc_wr, pc_sel, rd, rmw, istb, mem_act, mem_wait,
-  wait_data, state);
+  wait_data, state, 
+  enter_su_mode, leave_su_mode);
 
 //
 // clk          (in)  clock
@@ -140,6 +141,8 @@ output [2:0] mem_act, src_sel1, ram_rd_sel_o, ram_wr_sel_o, pc_sel, op1_c;
 output [3:0] alu_op_o;
 output rd;
 
+output enter_su_mode, leave_su_mode;
+
 reg rmw;
 reg src_sel3, wr,  bit_addr, pc_wr;
 reg [3:0] alu_op;
@@ -176,6 +179,9 @@ assign wr_sfr_o     = wait_data ? `OC8051_WRS_N   : wr_sfr;
 assign ram_rd_sel_o = wait_data ? ram_rd_sel_r    : ram_rd_sel;
 assign ram_wr_sel_o = wait_data ? `OC8051_RWS_DC  : ram_wr_sel;
 assign wr_o         = wait_data ? 1'b0            : wr;
+
+reg enter_su_mode;
+reg leave_su_mode;
 
 //
 // main block
