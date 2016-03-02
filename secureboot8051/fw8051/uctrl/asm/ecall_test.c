@@ -24,12 +24,20 @@ void quit() {
 
 void main() {
     __asm
-    MOV R0, 0
-    INC R0
-    CJNE R0, #5, out
-    .db 0x12
+    MOV R0, #0
+
+// this is ecall
+loop:
+    .db 0xA5
     .db 0x00
-    .db 0x8A
+    .db 0x00
+    MOV A, R0
+    SUBB A, #5
+    JZ out
+    SJMP loop
+
+    INC R0
+    RETI
 out:
     __endasm;
 
