@@ -300,9 +300,6 @@ input   scanb_en;
 wire    scanb_soi;
 `endif
 
-input   enter_su_mode;
-input   leave_su_mode;
-
 
 wire [15:0] dptr;
 wire [7:0]  dptr_hi,

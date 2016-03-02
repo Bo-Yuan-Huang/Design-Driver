@@ -182,6 +182,8 @@ assign wr_o         = wait_data ? 1'b0            : wr;
 // unregisterd outputs
 always @(op_cur or eq or state_dec or mem_wait)
 begin
+    enter_su_mode = 1'b0;
+    leave_su_mode = 1'b0;
     case (state_dec) 
       2'b01: begin
         casex (op_cur) 
@@ -390,7 +392,7 @@ begin
               ram_rd_sel = `OC8051_RRS_SP;
               pc_wr = `OC8051_PCW_Y;
               pc_sel = `OC8051_PIS_AH;
-              leave_su_mode = 1'b0;
+              leave_su_mode = 1'b1;
             end
           `OC8051_DIV : begin
               ram_rd_sel = `OC8051_RRS_B;

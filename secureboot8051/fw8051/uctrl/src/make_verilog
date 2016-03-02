@@ -33,6 +33,7 @@ oc8051_rom.v                    \
 oc8051_cache_ram.v              \
 oc8051_ram_256x8_two_bist.v     \
 oc8051_ram_64x32_dual_bist.v    \
+oc8051_priv_lvl.v               \
 aes_128.v                       \
 aes_round.v                     \
 aes_table.v                     \
@@ -49,3 +50,4 @@ modmul.v                        \
 modexp.v                        \
 modexp_top.v                    \
 mem_wr.v
+
