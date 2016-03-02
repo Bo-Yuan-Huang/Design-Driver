@@ -179,7 +179,7 @@ static int dis_inst1(struct hexfile *hf, int memPtr)
 			/* long addr calculation */
 			newaddr = longaddr(op1, op2);
 			/* if this is a call, continue disassembly */
-			if (opcode == 0x12)
+			if (opcode == 0x12 || opcode == 0xA5)
 				pass1(hf, memPtr);
 			break;
 		default:
