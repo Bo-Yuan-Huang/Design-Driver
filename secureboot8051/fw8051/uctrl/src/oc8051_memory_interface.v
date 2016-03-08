@@ -737,6 +737,7 @@ begin
           `OC8051_JNZ :    op_length = 2'h2;
           `OC8051_JZ :     op_length = 2'h2;
           `OC8051_LCALL :  op_length = 2'h3;
+          `OC8051_ECALL :  op_length = 2'h3;
           `OC8051_LJMP :   op_length = 2'h3;
           `OC8051_MOV_D :  op_length = 2'h2;
           `OC8051_MOV_C :  op_length = 2'h2;
