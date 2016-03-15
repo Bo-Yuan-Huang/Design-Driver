@@ -165,7 +165,8 @@ module oc8051_memory_interface (clk, rst,
      sp_w, 
      rn, 
      acc, 
-     reti
+     reti,
+     etr
    );
 
 
@@ -193,6 +194,7 @@ output        out_of_rst;
 input         decoder_new_valid_pc;
 output [15:0] pc_log;
 output [15:0] pc_log_prev;
+input [15:0]  etr;
 
 reg           bit_out,
               reti;
@@ -317,6 +319,7 @@ reg [15:0]    pc;
 //pc            program counter register, save current value
 reg [15:0]    pc_buf;
 wire [15:0]   alu;
+wire [15:0]   etr;
 
 
 reg           int_buff,
@@ -968,7 +971,7 @@ begin
         `OC8051_PIS_I16:   pc_buf        <= #1 {op2_out, op3_out};
         `OC8051_PIS_SO1:   pc_buf        <= #1 pcs_result;
         `OC8051_PIS_SO2:   pc_buf        <= #1 pcs_result;
-        `OC8051_PIS_ECALL: pc_buf        <= #1 16'h94;
+        `OC8051_PIS_ECALL: pc_buf        <= #1 etr;
       endcase
 //  end else if (inc_pc) begin
   end else begin

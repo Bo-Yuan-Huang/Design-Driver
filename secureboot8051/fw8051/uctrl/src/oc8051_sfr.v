@@ -112,6 +112,7 @@ module oc8051_sfr (rst, clk,
        comp_wait,
        psw,
        p,
+       etr,
 
 `ifdef OC8051_PORTS
 
@@ -201,6 +202,8 @@ output       p;
 output [7:0] sp,
              sp_w;
 
+output [15:0] etr;
+
 // ports
 `ifdef OC8051_PORTS
 
@@ -256,6 +259,7 @@ reg [7:0]  dat0,
 reg        wr_bit_r;
 reg [2:0]  ram_wr_sel_r;
 
+wire [15:0] etr;
 
 wire       p,
            uart_int,
@@ -340,6 +344,18 @@ oc8051_b_register oc8051_b_register (.clk(clk),
 				     .wr_bit(wr_bit_r), 
 				     .wr_addr(adr1),
 				     .data_out(b_reg));
+
+
+//
+// ecall target register
+// ETR
+oc8051_etr oc8051_etr1 (.clk(clk),
+						.rst(rst),
+					.wr_bit(wr_bit_r),
+					.data_in(dat1),
+					.wr(we),
+					.wr_addr(adr1),
+					.etr(etr));
 
 //
 //stack pointer
