@@ -318,7 +318,7 @@ initial begin
 #2000
   rst = 1'b0;
 
-#20000000000
+#3000000000
   $display("time ",$time, "\n failure: end of time\n \n");
   $display("");
   $finish;

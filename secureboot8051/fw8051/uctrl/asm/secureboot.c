@@ -36,7 +36,7 @@ struct image{
     unsigned char exp[N];
     unsigned char mod[N];  // n in modexp
     unsigned int num;      // total number of blocks
-    struct modules module;
+    struct modules module[1];
 };
 
 //public key hash
@@ -76,9 +76,10 @@ void main() {
     im  = (struct image*) boot;
     num = im->num;
 
-    // check that key matches hash
     sha_reg_rd_addr = (unsigned int)&d;
     sha_reg_wr_addr = (unsigned int)&data1;
+
+    // check that key matches hash
     shadata(im->exp, 512);
     hash = sha1();
     for(i=0; i<20; i++){
@@ -101,7 +102,6 @@ void main() {
 
     // sign header and check
     size = N*2 + 2 + num*(20+2); // size of header
-
     if(!verifySignature(im->exp, size, im->sig))
     {
 	P0 = 0;
@@ -109,41 +109,35 @@ void main() {
     }
 
     // load blocks
-    block = &im->module;  // block data in header
+    block = im->module;  // block data in header
     moddata = (unsigned char*)(block + num); // program data of this module
     size = block->size;     // size of current block
     i = 0;
     while(i < num && sum + size <= MAX_PRG_SIZE)
     {
-	// check module hash 
-	shadata(moddata, size);
+	// check module hash
+	shadata(moddata + sum, size);
 	hash = sha1();
 	for(j=0; j<20; j++){
 	    if(hash[j] != block->hash[j]){
 		P0 = 0;
 		quit();
 	    }
-	}// check signature
-	if(!verifySignature(moddata, size, moddata+size))
-	{
-	    P0 = 0;
-	    quit();
 	}
+
 	// load data
-	load(moddata, size, program+sum, 0);
+	load(moddata+sum, size, program+sum, 0);
 	block++;
 	sum += size;
-	moddata += size + N;
 	size = block->size;
 	i++;
     }
 
     // check that program loaded correctly
-    moddata = (unsigned char*)(&im->module + num);
+    moddata = (unsigned char*)(im->module + num);
     for(i=0; i<sum; i++){
 	P0 = program[i];
-	j = (i/N)*(2*N) + i%N;
-	if(program[i] != moddata[j]){
+	if(program[i] != moddata[i]){
 	    good = 0;
 	    break;
 	}

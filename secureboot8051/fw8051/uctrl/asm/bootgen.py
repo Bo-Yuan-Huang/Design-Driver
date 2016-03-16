@@ -283,8 +283,8 @@ class Module:
     def __init__(self, data):
         self.size = len(data)
         self.data = data
-        self.sign = sign(data)
-        assert verifySig(data, self.sign)
+        #self.sign = sign(data)
+        #assert verifySig(data, self.sign)
         sha = hashlib.sha1()
         sha.update(data)
         self.hash = bytearray(sha.digest())
@@ -314,7 +314,7 @@ class Image:
         self.image.extend(self.head)             # header
         for i in xrange(N):                      # modules
             self.image.extend(self.modules[i].data)
-            self.image.extend(int2bytes(self.modules[i].sign, 256))
+            #self.image.extend(int2bytes(self.modules[i].sign, 256))
 
 def makefile(data):
     bootimage = Image(data, public, modulus)
@@ -326,7 +326,7 @@ def makefile(data):
 def main(argv):
     if len(argv) != 2:
         print 'Usage: %s <hex-file>' %argv[0]
-    else:
+    else: # read in hex file
         filename = argv[1]
         if filename.endswith('.hex') or filename.endswith('.ihx'):
             data = read_hex(filename)
@@ -337,9 +337,10 @@ def main(argv):
         elif filename.endswith('.in'):
             data = read_in(filename)
         
-        sha = hashlib.sha1()
-        sha.update(int2bytes(public, 256))
-        sha.update(int2bytes(modulus, 256))
+        # hash keys
+        #sha = hashlib.sha1()
+        #sha.update(int2bytes(public, 256))
+        #sha.update(int2bytes(modulus, 256))
 #        print ", 0x".join("{:02X}".format(ord(c)) for c in sha.digest())
         makefile(data)
         
