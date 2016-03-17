@@ -139,11 +139,11 @@
   assign buff[136] = 8'h78;
   assign buff[137] = 8'h0;
   assign buff[138] = 8'h75;
-  assign buff[139] = 8'h8e;
-  assign buff[140] = 8'h9a;
+  assign buff[139] = 8'h8f;
+  assign buff[140] = 8'h0;
   assign buff[141] = 8'h75;
-  assign buff[142] = 8'h8f;
-  assign buff[143] = 8'h0;
+  assign buff[142] = 8'h8e;
+  assign buff[143] = 8'h9a;
   assign buff[144] = 8'ha5;
   assign buff[145] = 8'h0;
   assign buff[146] = 8'h0;

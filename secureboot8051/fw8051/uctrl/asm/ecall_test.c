@@ -25,8 +25,8 @@ void quit() {
 void main() {
     __asm
     MOV     R0, #0
-    MOV     0x8E, #0x9A
     MOV     0x8F, #0x00
+    MOV     0x8E, #0x9A
 
 loop:
 // this is ecall
