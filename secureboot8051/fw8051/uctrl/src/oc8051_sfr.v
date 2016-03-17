@@ -350,7 +350,7 @@ oc8051_b_register oc8051_b_register (.clk(clk),
 // ecall target register
 // ETR
 oc8051_etr oc8051_etr1 (.clk(clk),
-						.rst(rst),
+					.rst(rst),
 					.wr_bit(wr_bit_r),
 					.data_in(dat1),
 					.wr(we),
@@ -641,6 +641,9 @@ begin
       `OC8051_SFR_B: 		dat0 <= #1 b_reg;
       `OC8051_SFR_DPTR_HI: 	dat0 <= #1 dptr_hi;
       `OC8051_SFR_DPTR_LO: 	dat0 <= #1 dptr_lo;
+
+      `OC8051_SFR_ETR_LO:       dat0 <= #1 etr[7:0];
+      `OC8051_SFR_ETR_HI:       dat0 <= #1 etr[15:8];
 
 `ifdef OC8051_UART
       `OC8051_SFR_SCON: 	dat0 <= #1 scon;
