@@ -27,6 +27,7 @@ __xdata __at(0x3000) unsigned char boot[MAX_IM_SIZE];
 /*---------------------------------------------------------------------------*/
 
 struct modules{
+    unsigned int addr;
     unsigned int size;
     unsigned char hash[20];
 };
@@ -47,13 +48,13 @@ __code unsigned char pkhash[20] = {0x37, 0x34, 0xA6, 0x83,
 				   0xBA, 0x79, 0xCB, 0x8F};
 
 // set up data transfer
-void load(unsigned char* data, int length, unsigned char* startaddr, unsigned char skipread)
+void load(unsigned char* data, int length, unsigned int startaddr, unsigned char skipread)
 {
     // wait for previous load to finish first
     while(memwr_reg_state != 0);
 
     memwr_reg_rd_addr = (unsigned int)data;
-    memwr_reg_wr_addr = (unsigned int)startaddr;
+    memwr_reg_wr_addr = startaddr;
     memwr_reg_len = length;
     memwr_reg_start = (unsigned char)(skipread << 1 | 1);
 }
@@ -66,11 +67,11 @@ void main() {
     struct modules* block; // current block
     unsigned char* hash;
     unsigned int size;
-    unsigned int sum = 0;
+    unsigned int ldaddr;
     unsigned char* moddata;
 
     // read image into RAM
-    load(0, MAX_IM_SIZE, boot, 1);
+    load(0, MAX_IM_SIZE, (unsigned int)&boot, 1);
     while(memwr_reg_state != 0);
 
     im  = (struct image*) boot;
@@ -101,7 +102,8 @@ void main() {
     exp_reg_opaddr = (unsigned int)&d;  // set up address to write to
 
     // sign header and check
-    size = N*2 + 2 + num*(20+2); // size of header
+    // sizeof image struct includes extra signature and first module
+    size = sizeof(struct image) - 256 + sizeof(struct modules) * (num-1);
     if(!verifySignature(im->exp, size, im->sig))
     {
 	P0 = 0;
@@ -111,12 +113,22 @@ void main() {
     // load blocks
     block = im->module;  // block data in header
     moddata = (unsigned char*)(block + num); // program data of this module
-    size = block->size;     // size of current block
-    i = 0;
-    while(i < num && sum + size <= MAX_PRG_SIZE)
+
+    for(i=0; i<num; i++)
     {
+	// check that size and address are valid
+	size = block->size;     // size of current module
+	ldaddr = block->addr;   // address to load this module into
+	if(ldaddr < (unsigned int)program ||
+	   size + ldaddr > (unsigned int)program + MAX_PRG_SIZE ||
+	   (unsigned int)program + size < (unsigned int)program) // overflow
+	{
+	    P0 = 0;
+	    quit();
+	}
+
 	// check module hash
-	shadata(moddata + sum, size);
+	shadata(moddata, size);
 	hash = sha1();
 	for(j=0; j<20; j++){
 	    if(hash[j] != block->hash[j]){
@@ -126,23 +138,21 @@ void main() {
 	}
 
 	// load data
-	load(moddata+sum, size, program+sum, 0);
+	load(moddata, size, ldaddr, 0);
+
+	// update to next module
+	moddata += size;
 	block++;
-	sum += size;
-	size = block->size;
-	i++;
     }
 
     // check that program loaded correctly
-    moddata = (unsigned char*)(im->module + num);
-    for(i=0; i<sum; i++){
+    for(i=0; i<(unsigned int)moddata-(unsigned int)block; i++){
 	P0 = program[i];
-	if(program[i] != moddata[i]){
+	if(program[i] != *((unsigned char*)block + i)){
 	    good = 0;
 	    break;
 	}
     }
-
 
     P0 = good;
     quit();

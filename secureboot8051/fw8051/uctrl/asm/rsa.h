@@ -26,7 +26,7 @@ __xdata __at(0xFD01) unsigned char exp_reg_state;
 __xdata __at(0xFD02) unsigned int  exp_reg_opaddr;
 __xdata __at(0xFC00) unsigned char exp_reg_n[N];
 __xdata __at(0xFB00) unsigned char exp_reg_exp[N];
-__xdata __at(0xFA00) unsigned char exp_reg_m[N];
+__xdata __at(0xFA00) struct RSAmsg exp_reg_m;
 
 __xdata __at(0xE000) unsigned char d[0x300];
 __xdata __at(0xE300) unsigned char data2[0x200];
@@ -42,24 +42,22 @@ struct RSAmsg{
 void pad(int len)
 {
     int i;
-    struct RSAmsg* rsamsg = (struct RSAmsg*)exp_reg_m; 
     
-    rsamsg->m[len+1] = 1;
+    exp_reg_m.m[len+1] = 1;
     for(i=len+1; i < N-K1-K2-1; i++)
-	rsamsg->m[i] = 0;
+	exp_reg_m.m[i] = 0;
 }
 
 // returns length of message
 int unpad()
 {
     int len;
-    struct RSAmsg* rsamsg = (struct RSAmsg*)exp_reg_m; 
 
     for(len = N-K1-K2-2; len>=0; len--)
     {
-	if(rsamsg->m[len] == 1)
+	if(exp_reg_m.m[len] == 1)
 	    break;
-	else if(rsamsg->m[len] != 0)
+	else if(exp_reg_m.m[len] != 0)
 	    return -1;
     }
     return len;
@@ -75,16 +73,17 @@ void shadata(unsigned char *m, int len)
     mlen = ((len+4) & 0xFFC0) + 64; // round len+5 up to multiple of 64
     sha_reg_len = mlen;
         
-    if((unsigned int)m == sha_reg_rd_addr)
+    
+    if((unsigned int)m == sha_reg_rd_addr) // don't copy if already in right address
     {
 	for(i=len+1; i<mlen; i++) // start at len+1 to leave room for padding
 	    d[i] = 0;
     }
     else
     {
-	for(i=0; i<mlen; i++)
+	for(i=0; i<mlen; i++)  // clear all
 	    d[i] = 0;
-	for(i=0; i<len; i++)
+	for(i=0; i<len; i++)   // copy
 	    d[i] = m[i];
     }
     d[len] = 0x80;  // add 100.. padding
@@ -225,18 +224,17 @@ void OAEP()
     int i,j;
     unsigned char *hash;
     unsigned char *gprg;
-    struct RSAmsg* rsamsg = (struct RSAmsg*)exp_reg_m; 
 
     // K1 0s
     for(i=0; i<K1; i++)
-	rsamsg->zeros[i] = 0;
+	exp_reg_m.zeros[i] = 0;
 
     // do G to compute X
     hash = PRG(rprg); // make r
     for(i=K2; i<20; i++)
 	hash[i] = 0;
     for(i=0; i<K2; i++)
-	rsamsg->r[i] = hash[i];
+	exp_reg_m.r[i] = hash[i];
     gprg = PRGinit(hash);
     hash = PRG(gprg);
     i=0; j=0;
@@ -247,60 +245,64 @@ void OAEP()
 	    hash = PRG(gprg);
 	    j = 0;
 	}
-	rsamsg->m[i] = rsamsg->m[i] ^ hash[j];
+	exp_reg_m.m[i] = exp_reg_m.m[i] ^ hash[j];
 	i++;
 	j++;
     }
 
     // do H to compute Y
-    hash = HMAC(Hseed, 20, rsamsg->m, N-K2-1);
+    hash = HMAC(Hseed, 20, exp_reg_m.m, N-K2-1);
     for(i=0; i<K2; i++)
-	rsamsg->r[i] = rsamsg->r[i] ^ hash[i];
+	exp_reg_m.r[i] = exp_reg_m.r[i] ^ hash[i];
 
-    rsamsg->padbyte = 1; // marker byte
+    exp_reg_m.padbyte = 1; // marker byte
 }
 
-void removeOAEP()
+int removeOAEP()
 {
     int i,j;
     unsigned char *hash;
     __xdata unsigned char r[20];
     unsigned char *gprg;
-    struct RSAmsg* rsamsg = (struct RSAmsg*)exp_reg_m; 
 
     // find r
-    hash = HMAC(Hseed, 20, rsamsg->m, N-K2-1);
+    hash = HMAC(Hseed, 20, exp_reg_m.m, N-K2-1);
     for(i=0; i< K2; i++)
-	r[i] = rsamsg->r[i] ^ hash[i];
+	r[i] = exp_reg_m.r[i] ^ hash[i];
 
     // find m
     gprg = PRGinit(r);
     hash = PRG(gprg);
     i=0; j=0;
-    while(i < N-K2)
+    while(i < N-K2-1)
     {
 	if(j == 20)
 	{
 	    hash = PRG(gprg);
 	    j = 0;
 	}
-	rsamsg->m[i] = rsamsg->m[i] ^ hash[j];
+	exp_reg_m.m[i] = exp_reg_m.m[i] ^ hash[j];
 	i++;
 	j++;
     }
+
+    // check zeros
+    for(i = N-K2-K1-1; i< N-K2-1; i++)
+	if(exp_reg_m.m[i])
+	    return 0;
+    return 1;
 }
 
 // encrypt message, len bytes
 unsigned char* encrypt(unsigned char* msg, int len){
     int i;
-    struct RSAmsg* rsamsg = (struct RSAmsg*)exp_reg_m; 
 
     sha_reg_rd_addr= (unsigned int)&d;
     sha_reg_wr_addr = (unsigned int)&data1;
 
-    if(msg != rsamsg->m)
+    if(msg != exp_reg_m.m)
 	for (i=0; i<len; i++)
-	    rsamsg->m[i] = msg[i];
+	    exp_reg_m.m[i] = msg[i];
     pad(len);
     OAEP();
 
@@ -310,15 +312,15 @@ unsigned char* encrypt(unsigned char* msg, int len){
     return d;
 }
 
-unsigned char* decrypt(unsigned char* msg, int* len){
+int decrypt(unsigned char* msg){
     int i;
 
     sha_reg_rd_addr = (unsigned int)&d;
     sha_reg_wr_addr = (unsigned int)&data1;
 
-    if(msg != exp_reg_m)
+    if(msg != (unsigned char*)exp_reg_m)
 	for(i=0; i<N; i++)
-	    exp_reg_m[i] = msg[i];
+	    ((unsigned char*)exp_reg_m)[i] = msg[i];
     // decrypt
     exp_reg_start = 1;
     while(exp_reg_state != 0);
@@ -326,14 +328,12 @@ unsigned char* decrypt(unsigned char* msg, int* len){
     
     // copy back message
     for (i=0; i<N; i++)
-    exp_reg_m[i] = d[i];
+    ((unsigned char*)exp_reg_m)[i] = d[i];
 
-    removeOAEP();
-    *len = unpad();
-    if(*len == -1)
-	return 0;
+    if(!removeOAEP())
+	return -1;
 
-    return ((struct RSAmsg*)exp_reg_m)->m;
+    return unpad();
 }
 
 const unsigned char SIGNSEED[] = {
@@ -359,19 +359,19 @@ unsigned char verifySignature(unsigned char* msg, int len, unsigned char* signat
     int i;
     int slen;
     unsigned char* hash;
-    unsigned char* sign;
     sha_reg_rd_addr = (unsigned int)&d;
     sha_reg_wr_addr = (unsigned int)&data1;
-    sign = decrypt(signature, &slen);
+    slen = decrypt(signature);
 
-    if(!sign) return 0;
+    if(slen == -1) return 0;
     else{
 	hash = HMAC(SIGNSEED, 32, msg, len);
 	for(i=0; i<slen; i++){
-	    P0 = sign[i];
-	    if(hash[i] != sign[i])
+	    P0 = exp_reg_m.m[i];
+	    if(hash[i] != exp_reg_m.m[i])
 		return 0;
 	}
+	P0 = 0xFF;
 	return 1;
     }
 }
