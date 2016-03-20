@@ -200,7 +200,7 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 sp,
                 op1, op2, op3,
                 op1_d,
-                decoder_state
+                decoder_state,
                 );
 
 
@@ -321,6 +321,7 @@ wire [7:0]  dptr_hi,
 wire [31:0] idat_onchip;
 
 wire [15:0] pc;
+wire [15:0] etr;
 
 assign wbd_cyc_o = wbd_stb_o;
 
@@ -408,6 +409,9 @@ wire [15:0] iadr_o;
 
 wire [1:0] decoder_state;
 
+wire       enter_su_mode, // from decoder to priv_lvl
+           leave_su_mode; // from decoder to priv_lvl
+
 assign pc_change = decoder_new_valid_pc;
 
 //
@@ -441,7 +445,9 @@ oc8051_decoder oc8051_decoder1(.clk(wb_clk_i),
                                .istb(istb),
                                .mem_act(mem_act),
                                .mem_wait(mem_wait),
-                               .wait_data(wait_data));
+                               .wait_data(wait_data),
+                               .enter_su_mode(enter_su_mode),
+                               .leave_su_mode(leave_su_mode));
 
 
 wire [7:0] sub_result;
@@ -665,7 +671,8 @@ oc8051_memory_interface oc8051_memory_interface1(.clk(wb_clk_i),
                        .dptr({dptr_hi, dptr_lo}),
                        .ri(ri), 
                        .acc(acc),
-                       .sp(sp)
+                       .sp(sp),
+                       .etr(etr)
                        );
 
 
@@ -693,6 +700,8 @@ oc8051_sfr oc8051_sfr1(.rst(wb_rst_i),
 // acc
                        .acc(acc),
                        .b_reg(b_reg),
+// etr
+                       .etr(etr),
 // sp
                        .sp(sp), 
                        .sp_w(sp_w),
@@ -759,6 +768,13 @@ oc8051_sfr oc8051_sfr1(.rst(wb_rst_i),
                        .dptr_hi(dptr_hi),
                        .dptr_lo(dptr_lo),
                        .wait_data(wait_data)
+                       );
+
+oc8051_priv_lvl oc8051_priv_lvl1(
+                       .clk(wb_clk_i),
+                       .rst(wb_rst_i),
+                       .enter_su_mode(enter_su_mode),
+                       .leave_su_mode(leave_su_mode)
                        );
 
 

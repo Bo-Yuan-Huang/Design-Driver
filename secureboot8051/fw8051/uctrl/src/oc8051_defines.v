@@ -144,6 +144,9 @@
 `define OC8051_SFR_TH2 8'hcd // timer 2 high
 `define OC8051_SFR_TL2 8'hcc // timer 2 low
 
+`define OC8051_SFR_ETR_HI 8'h8f // upper bit of etr
+`define OC8051_SFR_ETR_LO 8'h8e // lower bit of etr
+
 
 
 //
@@ -294,7 +297,8 @@
 `define OC8051_XRL_C 8'b0110_0100 // XOR A=A XOR constant
 `define OC8051_XRL_AD 8'b0110_0010 // XOR (direct)=(direct) XOR A
 `define OC8051_XRL_CD 8'b0110_0011 // XOR (direct)=(direct) XOR constant
-
+`define OC8051_ECALL 8'b1010_0101 // ECALL
+////////////////////////////////////////////////////////////////////////
 
 //
 // default values (used after reset)
@@ -405,14 +409,15 @@
 //
 // pc in select
 //
-`define OC8051_PIS_DC  3'b000 // dont c
-`define OC8051_PIS_AL  3'b000 // alu low
-`define OC8051_PIS_AH  3'b001 // alu high
-`define OC8051_PIS_SO1 3'b010 // relative address, op1
-`define OC8051_PIS_SO2 3'b011 // relative address, op2
-`define OC8051_PIS_I11 3'b100 // 11 bit immediate
-`define OC8051_PIS_I16 3'b101 // 16 bit immediate
-`define OC8051_PIS_ALU 3'b110 // alu destination {des2, des1}
+`define OC8051_PIS_DC    3'b000 // dont c
+`define OC8051_PIS_AL    3'b000 // alu low
+`define OC8051_PIS_AH    3'b001 // alu high
+`define OC8051_PIS_SO1   3'b010 // relative address, op1
+`define OC8051_PIS_SO2   3'b011 // relative address, op2
+`define OC8051_PIS_I11   3'b100 // 11 bit immediate
+`define OC8051_PIS_I16   3'b101 // 16 bit immediate
+`define OC8051_PIS_ALU   3'b110 // alu destination {des2, des1}
+`define OC8051_PIS_ECALL 3'b111 // ecall instruction
 
 //
 // compare source select

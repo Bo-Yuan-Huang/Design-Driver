@@ -165,7 +165,8 @@ module oc8051_memory_interface (clk, rst,
      sp_w, 
      rn, 
      acc, 
-     reti
+     reti,
+     etr
    );
 
 
@@ -193,6 +194,7 @@ output        out_of_rst;
 input         decoder_new_valid_pc;
 output [15:0] pc_log;
 output [15:0] pc_log_prev;
+input [15:0]  etr;
 
 reg           bit_out,
               reti;
@@ -317,6 +319,7 @@ reg [15:0]    pc;
 //pc            program counter register, save current value
 reg [15:0]    pc_buf;
 wire [15:0]   alu;
+wire [15:0]   etr;
 
 
 reg           int_buff,
@@ -737,6 +740,7 @@ begin
           `OC8051_JNZ :    op_length = 2'h2;
           `OC8051_JZ :     op_length = 2'h2;
           `OC8051_LCALL :  op_length = 2'h3;
+          `OC8051_ECALL :  op_length = 2'h3;
           `OC8051_LJMP :   op_length = 2'h3;
           `OC8051_MOV_D :  op_length = 2'h2;
           `OC8051_MOV_C :  op_length = 2'h2;
@@ -959,14 +963,15 @@ begin
 //
 //case of writing new value to pc (jupms)
       case (pc_wr_sel) 
-        `OC8051_PIS_ALU: pc_buf        <= #1 alu;
-        `OC8051_PIS_AL:  pc_buf[7:0]   <= #1 alu[7:0];
-        `OC8051_PIS_AH:  pc_buf[15:8]  <= #1 alu[7:0];
+        `OC8051_PIS_ALU:   pc_buf        <= #1 alu;
+        `OC8051_PIS_AL:    pc_buf[7:0]   <= #1 alu[7:0];
+        `OC8051_PIS_AH:    pc_buf[15:8]  <= #1 alu[7:0];
         // spramod changed this code to attempt to make AJMP work according to spec.
-        `OC8051_PIS_I11: pc_buf        <= #1 {pc_for_ajmp[15:11], op1_out[7:5], op2_out};
-        `OC8051_PIS_I16: pc_buf        <= #1 {op2_out, op3_out};
-        `OC8051_PIS_SO1: pc_buf        <= #1 pcs_result;
-        `OC8051_PIS_SO2: pc_buf        <= #1 pcs_result;
+        `OC8051_PIS_I11:   pc_buf        <= #1 {pc_for_ajmp[15:11], op1_out[7:5], op2_out};
+        `OC8051_PIS_I16:   pc_buf        <= #1 {op2_out, op3_out};
+        `OC8051_PIS_SO1:   pc_buf        <= #1 pcs_result;
+        `OC8051_PIS_SO2:   pc_buf        <= #1 pcs_result;
+        `OC8051_PIS_ECALL: pc_buf        <= #1 etr;
       endcase
 //  end else if (inc_pc) begin
   end else begin
