@@ -1,0 +1,19 @@
+Properties
+I.memory writes
+   a. when writing to arrays in memory (program, boot, d, data2, data1,
+   exp_reg_*), index should not exceed bounds (array out of bounds)
+   b. RSA keys should only change during the key hash check/load step
+II. locking
+   a. input data to modules is locked while modules are running
+   b. during the whole secureboot process, the RSA message register and write
+   location is locked to outside processes
+   c. in between when the header is checked and the program is loaded, the whole
+   image is locked
+III. program flow
+   a. module that starts will finish
+   b. either verification fails, or verification passes each stage and program
+   is loaded, no skipping steps
+IV. hyperproperties
+   a. if # modules is the same, SP is always the same
+   b. if a memory address is locked, then nothing that the processor/attacker
+   does will change the memory contents
