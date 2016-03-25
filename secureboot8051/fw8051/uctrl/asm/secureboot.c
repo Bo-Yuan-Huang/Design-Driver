@@ -67,7 +67,7 @@ void load(unsigned char* data, int length, unsigned int startaddr, unsigned char
 }
 
 void main() {
-    int good = 1;
+    unsigned char good = 1;
     unsigned int i, j;
     int num;   // total number of blocks
     struct image* im;
@@ -76,8 +76,9 @@ void main() {
     unsigned int size;
     unsigned int ldaddr;
     unsigned char* moddata;
+    unsigned char pass = 0; // 0-indeterminate, 1-fail, 2-pass
 
-    // read image into RAM
+    // STAGE 1: read image into RAM  
     load(0, MAX_IM_SIZE, (unsigned int)&boot, 1);
     while(memwr_reg_state != 0);
 
@@ -90,12 +91,13 @@ void main() {
     sha_reg_rd_addr = (unsigned int)&d;
     sha_reg_wr_addr = (unsigned int)&data1;
 
-    // check that key matches hash
+    // STAGE 2: check that key matches hash
     shadata(im->exp, 512);
     hash = sha1();
     for(i=0; i<20; i++){
 	if(hash[i] != pkhash[i]){
 	    P0 = 0;
+	    pass = 1;  // FAIL
 	    quit();
 	}
     }
@@ -111,16 +113,17 @@ void main() {
     // set up RSA
     exp_reg_opaddr = (unsigned int)&d;  // set up address to write to
 
-    // sign header and check
+    // STAGE 3: sign header and check
     // sizeof image struct includes extra signature and first module
     size = sizeof(struct image) - (unsigned int) (&(im->exp) - &im) + sizeof(struct modules) * (num-1);
     if(!verifySignature(im->exp, size, im->sig))
     {
 	P0 = 0;
+	pass = 1;  // FAIL
 	quit();
     }
 
-    // load blocks
+    // STAGE 4: load blocks
     block = im->module;  // block data in header
     moddata = (unsigned char*)(block + num); // program data of this module
 
@@ -134,6 +137,7 @@ void main() {
 	   (unsigned int)program + size < (unsigned int)program) // overflow
 	{
 	    P0 = 0;
+	    pass = 1;  // FAIL
 	    quit();
 	}
 
@@ -143,6 +147,7 @@ void main() {
 	for(j=0; j<20; j++){
 	    if(hash[j] != block->hash[j]){
 		P0 = 0;
+		pass = 1;  // FAIL
 		quit();
 	    }
 	}
@@ -155,15 +160,17 @@ void main() {
 	block++;
     }
 
-    // check that program loaded correctly
+    // check that program loaded correctly, for testing only
     for(i=0; i<(unsigned int)moddata-(unsigned int)block; i++){
 	P0 = program[i];
 	if(program[i] != *((unsigned char*)block + i)){
-	    good = 0;
+	    good = 0;  // FAIL
 	    break;
 	}
     }
 
-    P0 = good;
+    // PASS or FAIL
+    pass = good+1;
+    P0 = pass;
     quit();
 }

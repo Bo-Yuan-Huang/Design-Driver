@@ -1,0 +1,70 @@
+\documentclass[10pt,openany]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[toc,page]{appendix}
+\onehalfspacing
+\usepackage[margin=1in]{geometry}
+\author{Elaine Chou}
+\begin{document}
+
+\section{Secure Boot Properties}
+Checking array bounds
+\[G(a\rightarrow(ptr+i <= ptrHi(ptr) \land ptr+i >= ptrLo(ptr)))\]
+a - array access or assignment to ptr[i]\\
+ptrHi - highest address in range of array associated with ptr\\
+ptrLow - lowest address\\\\
+%
+Maintain execution order
+\[F(pass=F)\lor((\lnot qUp)\land(\lnot rUq)\land(\lnot sUr)\land Fs\land F(pass=P))\]
+p - stage = 1, read image\\
+q - stage = 2, check public key hash\\
+r - stage = 3, verify header signature\\
+s - stage = 4, check module hashes and load module data\\\\
+%
+Only change RSA keys during public key check stage
+\[G(w\land addr=RSAkeyrange)\rightarrow stage=2\]
+w - write signal high\\
+addr - write address\\
+RSAkeyrange - memory addresses where exp\_reg\_n and exp\_reg\_exp are stored\\
+stage 2 - check RSA key hash and load it into HW module\\\\
+%
+Memory can't change values when the address is locked
+\[G(l\rightarrow\lnot w)\]
+l - memory address M[i] is locked\\
+w - write to M[i], event\\\\
+%
+When are which memory locations locked?
+\begin{enumerate}
+\item module inputs locked while module is running\\
+  \[G(state\neq 0\rightarrow l)\]
+  state - state of any HW module\\
+  l - lock from reg\_rd\_addr[0] to reg\_rd\_addr[len-1] on the started module\\
+\item image locked during verification
+  \[G(pass=undet\rightarrow l)\]
+  l - lock from boot[0] to boot[size-1]
+\end{enumerate}
+%
+HW module that starts will finish
+\[G(s\rightarrow XF(state\eq 0\lor pass=F))\]
+s - start = 1 on any module\\
+state - state of the module\\
+pass = F - for copying data, verification can fail while the module is still running\\\\
+%
+If \# modules in image is the same, SP is always the same
+\[\forall \pi_1 \forall \pi_2G(num_{\pi_1}=num_{\pi_2}\land pass_{\pi_1}\neq F\land pass_{\pi_2}\neq F\rightarrow SP_{\pi_1}=SP_{\pi_2})\]
+src: entire image\\
+dst: SP\\
+srcpred: $num_{\pi_1} = num_{\pi_2}$\\
+finalpred: pass=P\\\\
+%
+SHA/RSA read/write locations are locked to outside processes during secureboot
+\[\forall \pi_1 \forall \pi_2 (image_{\pi_1}=image_{\pi_2})\rightarrow G(M[i]_{\pi_1}=M[i]_{\pi_2})\]
+M[i] - SHA read address range (d in rsa.h), SHA write(data1), RSA read(exp\_reg\_m, memory mapped reg in RSA), RSA write(d, same as SHA read addresses)\\
+src: attacker\\
+dst: memory cells M[i]\\
+dstpred: $image_{\pi_1}=image_{\pi_2}\land$ pass=undet\\\\
+%
+
+\end{document}
