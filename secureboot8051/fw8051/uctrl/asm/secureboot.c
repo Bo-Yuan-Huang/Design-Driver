@@ -32,6 +32,13 @@ struct modules{
     unsigned char hash[20];
 };
 
+void lock_wr(unsigned int startaddr, unsigned int endaddr)
+{
+    // make unused argument warnings go away
+    (void) startaddr;
+    (void) endaddr;
+}
+
 struct image{
     unsigned char sig[N];  // signature of header
     unsigned char exp[N];
@@ -74,6 +81,9 @@ void main() {
     load(0, MAX_IM_SIZE, (unsigned int)&boot, 1);
     while(memwr_reg_state != 0);
 
+    // image is loaded.
+    // now we need to lock boot to boot + MAX_IM_SIZE
+
     im  = (struct image*) boot;
     num = im->num;
 
@@ -103,7 +113,7 @@ void main() {
 
     // sign header and check
     // sizeof image struct includes extra signature and first module
-    size = sizeof(struct image) - 256 + sizeof(struct modules) * (num-1);
+    size = sizeof(struct image) - (unsigned int) (&(im->exp) - &im) + sizeof(struct modules) * (num-1);
     if(!verifySignature(im->exp, size, im->sig))
     {
 	P0 = 0;
