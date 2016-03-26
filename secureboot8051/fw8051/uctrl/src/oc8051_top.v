@@ -139,6 +139,9 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 int0_i, 
                 int1_i,
 
+// priv_lvl output for xram
+                priv_lvl,
+
 
 // port interface
   `ifdef OC8051_PORTS
@@ -216,6 +219,7 @@ input         wb_rst_i,         // reset input
               wbi_err_i;        // instruction error
 
 output        pc_change;
+output        priv_lvl;
 output [15:0] pc;
 output [15:0] pc_log;
 output [15:0] pc_log_prev;
@@ -410,7 +414,8 @@ wire [15:0] iadr_o;
 wire [1:0] decoder_state;
 
 wire       enter_su_mode, // from decoder to priv_lvl
-           leave_su_mode; // from decoder to priv_lvl
+           leave_su_mode, // from decoder to priv_lvl
+           priv_lvl;      // from priv_lvl
 
 assign pc_change = decoder_new_valid_pc;
 
@@ -702,6 +707,7 @@ oc8051_sfr oc8051_sfr1(.rst(wb_rst_i),
                        .b_reg(b_reg),
 // etr
                        .etr(etr),
+                       .priv_lvl(priv_lvl),
 // sp
                        .sp(sp), 
                        .sp_w(sp_w),
@@ -774,7 +780,8 @@ oc8051_priv_lvl oc8051_priv_lvl1(
                        .clk(wb_clk_i),
                        .rst(wb_rst_i),
                        .enter_su_mode(enter_su_mode),
-                       .leave_su_mode(leave_su_mode)
+                       .leave_su_mode(leave_su_mode),
+                       .priv_lvl(priv_lvl)
                        );
 
 

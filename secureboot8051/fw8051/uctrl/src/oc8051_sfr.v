@@ -113,6 +113,7 @@ module oc8051_sfr (rst, clk,
        psw,
        p,
        etr,
+       priv_lvl,
 
 `ifdef OC8051_PORTS
 
@@ -203,6 +204,7 @@ output [7:0] sp,
              sp_w;
 
 output [15:0] etr;
+input priv_lvl;
 
 // ports
 `ifdef OC8051_PORTS
@@ -260,6 +262,7 @@ reg        wr_bit_r;
 reg [2:0]  ram_wr_sel_r;
 
 wire [15:0] etr;
+wire priv_lvl;
 
 wire       p,
            uart_int,
@@ -355,7 +358,8 @@ oc8051_etr oc8051_etr1 (.clk(clk),
 					.data_in(dat1),
 					.wr(we),
 					.wr_addr(adr1),
-					.etr(etr));
+					.etr(etr),
+					.priv_lvl(priv_lvl));
 
 //
 //stack pointer
