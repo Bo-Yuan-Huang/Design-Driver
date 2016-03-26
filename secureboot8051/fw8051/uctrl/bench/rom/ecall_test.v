@@ -167,8 +167,8 @@
   wire [15:0] addr1 = addr+1;
   wire [15:0] addr2 = addr+2;
   wire [15:0] addr3 = addr+3;
-  wire [7:0] data_o0 = (addr0 < 163) ? buff[addr0] : 8'h0;
-  wire [7:0] data_o1 = (addr1 < 163) ? buff[addr1] : 8'h0;
-  wire [7:0] data_o2 = (addr2 < 163) ? buff[addr2] : 8'h0;
-  wire [7:0] data_o3 = (addr3 < 163) ? buff[addr3] : 8'h0;
+  wire [7:0] data_o0 = (addr0 < 163) ? buff[addr0] : 8'hxx;
+  wire [7:0] data_o1 = (addr1 < 163) ? buff[addr1] : 8'hxx;
+  wire [7:0] data_o2 = (addr2 < 163) ? buff[addr2] : 8'hxx;
+  wire [7:0] data_o3 = (addr3 < 163) ? buff[addr3] : 8'hxx;
   wire [31:0] data_out = {data_o3, data_o2, data_o1, data_o0};
