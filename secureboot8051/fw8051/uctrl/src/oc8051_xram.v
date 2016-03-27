@@ -57,7 +57,7 @@
 // synopsys translate_on
 
 
-module oc8051_xram (clk, rst, wr, addr, data_in, data_out, ack, stb);
+module oc8051_xram (clk, rst, wr, wr_en, addr, data_in, data_out, ack, stb, rd_en);
 //
 // external data ram for simulation. part of oc8051_tb
 // it's tehnology dependent
@@ -74,7 +74,7 @@ module oc8051_xram (clk, rst, wr, addr, data_in, data_out, ack, stb);
 parameter DELAY=1;
 
 
-input clk, wr, stb, rst;
+input clk, wr, wr_en, stb, rst, rd_en;
 input [7:0] data_in;
 input [15:0] addr;
 output [7:0] data_out;
@@ -101,8 +101,10 @@ always @(posedge clk)
 begin
   if (rst)
     ackw <= #1 1'b0;
-  else if (wr && stb && ((DELAY==3'b000) || (cnt==3'b000))) begin
+  else if (wr && wr_en && stb && ((DELAY==3'b000) || (cnt==3'b000))) begin
     buff[addr0] <= #1 data_in;
+    ackw <= #1 1'b1;
+  end else if (wr && stb && ((DELAY==3'b000) || (cnt==3'b000))) begin
     ackw <= #1 1'b1;
   end else ackw <= #1 1'b0;
 end
@@ -110,9 +112,12 @@ end
 always @(posedge clk)
   if (rst)
     ackr <= #1 1'b0;
-  else if (stb && !wr && ((DELAY==3'b000) || (cnt==3'b000))) begin
+  else if (rd_en && stb && !wr && ((DELAY==3'b000) || (cnt==3'b000))) begin
     data_out <= #1 buff[addr0];
     ackr <= #1 1'b1;
+  end else if (stb && !wr && ((DELAY==3'b000) || (cnt==3'b000))) begin
+    ackr <= #1 1'b1;
+    data_out <= #1 8'h00;
   end else begin
     ackr <= #1 1'b0;
     data_out <= #1 8'h00;

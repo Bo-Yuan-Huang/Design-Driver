@@ -30,11 +30,13 @@ module oc8051_xiommu (
     exp_valid,
     exp_m,
     exp_n,
-    exp_exp
+    exp_exp,
+    priv_lvl
 );
 
 input clk, rst; 
 input proc_wr, proc_stb;
+input priv_lvl;
 input [7:0] proc_data_in;
 input [15:0] proc_addr;
 output [7:0] proc_data_out;
@@ -51,6 +53,7 @@ wire write_xram, write_aes, write_sha, write_exp, write_memwr;
 wire ack_xram, ack_aes, ack_sha, ack_exp, ack_memwr;
 wire stb_xram, stb_aes, stb_sha, stb_exp, stb_memwr;
 wire aes_addr_range, sha_addr_range, exp_addr_range, memwr_addr_range;
+wire wr_en, rd_en, priv_lvl, pt_addr_range, stb_pt, ack_pt;
 
 wire [1:0] aes_state; 
 wire [2:0] sha_state;
@@ -66,10 +69,12 @@ assign stb_aes = proc_stb && aes_addr_range;
 assign stb_sha = proc_stb && sha_addr_range;
 assign stb_exp = proc_stb && exp_addr_range;
 assign stb_memwr = proc_stb && memwr_addr_range;
+assign stb_pt = proc_stb && pt_addr_range;
 assign stb_xram = proc_stb && !(aes_addr_range || sha_addr_range ||
-                                exp_addr_range || memwr_addr_range);
-
+                                exp_addr_range || memwr_addr_range ||
+                                pt_addr_range);
 // WRITE.
+
 assign write_xram = stb_xram && proc_wr;
 assign write_aes = stb_aes && proc_wr;
 assign write_sha = stb_sha && proc_wr;
@@ -77,7 +82,7 @@ assign write_exp = stb_exp && proc_wr;
 assign write_memwr = stb_memwr && proc_wr;
 
 // ACK OUTPUT.
-wire proc_ack = ack_xram || ack_aes || ack_sha || ack_exp || ack_memwr;
+wire proc_ack = ack_xram || ack_aes || ack_sha || ack_exp || ack_memwr || ack_pt;
 
 // DATA OUT.
 wire [7:0] proc_data_out;
@@ -276,11 +281,26 @@ oc8051_xram oc8051_xram_i (
     .clk      ( clk                 ),
     .rst      ( rst                 ),
     .wr       ( wr_out              ),
+    .wr_en    ( wr_en               ),
     .addr     ( addr_out            ),
     .data_in  ( memarbiter_data_in  ),
     .data_out ( memarbiter_data_out ),
     .ack      ( ack_in        ),
-    .stb      ( stb_out       ) 
+    .stb      ( stb_out       ),
+    .rd_en    ( rd_en         ) 
+);
+
+oc8051_page_table oc8051_page_table_i (
+    .clk           ( clk                ),
+    .rst           ( rst                ),
+    .wr_en         ( wr_en              ),
+    .rd_en         ( rd_en              ),
+    .pt_addr_range ( pt_addr_range      ),
+    .stb           ( stb_pt             ),
+    .ack           ( ack_pt             ),
+    .xram_addr     ( addr_out           ),
+    .xram_data_in  ( memarbiter_data_in ),
+    .priv_lvl      ( priv_lvl           )
 );
 
 endmodule

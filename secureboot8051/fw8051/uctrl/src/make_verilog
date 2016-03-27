@@ -35,6 +35,7 @@ oc8051_ram_256x8_two_bist.v     \
 oc8051_ram_64x32_dual_bist.v    \
 oc8051_etr.v                    \
 oc8051_priv_lvl.v               \
+oc8051_page_table.v             \
 aes_128.v                       \
 aes_round.v                     \
 aes_table.v                     \
