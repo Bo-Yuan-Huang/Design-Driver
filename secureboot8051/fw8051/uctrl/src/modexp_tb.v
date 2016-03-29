@@ -104,6 +104,7 @@ wire write, write_xram, write_uart, txd, rxd, int_uart, int0, int1, t0, t1, bit_
 wire ack_xram, ack_uart, cyc_o, iack_i, istb_o, icyc_o, t2, t2ex;
 wire [7:0] data_in, data_out, p0_out, p1_out, p2_out, p3_out, data_out_uart, data_out_xram, p3_in;
 wire wbi_err_i, wbd_err_i;
+wire priv_lvl;
 
 `ifdef OC8051_XILINX_RAMB
   reg  [31:0] idat_i;
@@ -149,6 +150,8 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
 
          .cxrom_addr            ( cxrom_addr     ),
          .cxrom_data_out        ( cxrom_data_out ),
+
+         .priv_lvl              ( priv_lvl       ),
 
   `ifdef OC8051_PORTS
 
@@ -251,7 +254,7 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
 // external data ram
 //
 // oc8051_xram oc8051_xram1 (.clk(clk), .rst(rst), .wr(write_xram), .addr(ext_addr), .data_in(data_out), .data_out(data_out_xram), .ack(ack_xram), .stb(stb_o));
-oc8051_xiommu oc8051_xiommu1 (.clk(clk), .rst(rst), .proc_wr(write_xram), .proc_addr(ext_addr), .proc_data_in(data_out), .proc_data_out(data_out_xram), .proc_ack(ack_xram), .proc_stb(stb_o));
+oc8051_xiommu oc8051_xiommu1 (.clk(clk), .rst(rst), .proc_wr(write_xram), .proc_addr(ext_addr), .proc_data_in(data_out), .proc_data_out(data_out_xram), .proc_ack(ack_xram), .proc_stb(stb_o), .priv_lvl(priv_lvl));
 
 defparam oc8051_xiommu1.oc8051_xram_i.DELAY = 2;
 
@@ -302,7 +305,7 @@ assign t2ex = p3_out[2];
 
 initial begin
   $dumpon;
-  $dumpfile("secureboot.lxt");
+  $dumpfile("rsa_test.lxt");
 //for (idx = 16'hE000; idx < 16'hE128; idx = idx + 1) $dumpvars(0,modexp_tb.oc8051_xiommu1.oc8051_xram_i.buff[idx]);
   $dumpvars(0,modexp_tb);
 //  $dumpvars(1,modexp_tb.oc8051_xiommu1.oc8051_xram_i);
@@ -318,7 +321,7 @@ initial begin
 #2000
   rst = 1'b0;
 
-#80000000
+#3000000000
   $display("time ",$time, "\n failure: end of time\n \n");
   $display("");
   $finish;
@@ -351,19 +354,6 @@ begin
   end
 end
 */
-
-integer cnt = 0;
-always @(modexp_tb.oc8051_top_1.oc8051_decoder1.op_cur)
-  if(modexp_tb.oc8051_top_1.oc8051_decoder1.op_cur===8'hxx) begin
-      $display("invalid instruction cnt=%d", cnt, "; time=", $time);
-      if (cnt > 2) begin
-        #10000
-        $finish;
-      end
-      else begin
-          cnt = cnt + 1;
-      end
-  end
 
 endmodule
 

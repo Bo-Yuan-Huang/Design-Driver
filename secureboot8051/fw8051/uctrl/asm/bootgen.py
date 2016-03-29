@@ -73,19 +73,6 @@ class PRF:
         #print ",".join("{:02X}".format(ord(c)) for c in self.key)
 
     def eval(self, message):
-        # manual HMAC for debugging
-#        trans_5C = "".join ([chr (x ^ 0x5C) for x in xrange(256)])
-#        trans_36 = "".join ([chr (x ^ 0x36) for x in xrange(256)])
-#        sha = hashlib.sha1()
-#        sha.update(self.key.translate(trans_36)+chr(0x36)*(64-len(self.key)))
-#        print "".join("{:02X}".format(ord(c)) for c in str(self.key.translate(trans_36)))
-#        sha.update(message)
-#        sha2 = hashlib.sha1()
-#        sha2.update(self.key.translate(trans_5C)+chr(0x5C)*(64-len(self.key)))
-#        sha2.update(sha.digest())
-#        print "".join("{:02X}".format(ord(c)) for c in sha.digest())
-#        print "".join("{:02X}".format(ord(c)) for c in str(self.key.translate(trans_5C)))
-#        print "".join("{:02X}".format(ord(c)) for c in sha2.digest())
         return bytearray(hmac.new(self.key,message,hashlib.sha1).digest())
 
 class PRGen:
@@ -258,18 +245,21 @@ SIGNSEED = bytearray([
     
 def sign(data):
     assert not(data is None)
-    prf = PRF(SIGNSEED)
-    hashed = prf.eval(data)
+    sha = hashlib.sha1()
+    sha.update(data)
+    hashed = bytearray(sha.digest())
     #print "hash"
     #print "".join("{:02X}".format(ord(c)) for c in str(hashed))
     return encrypt(preprocess(hashed), private)
 
 def verifySig(data, sig):
     assert not (sig is None or data is None)
-    prf = PRF(SIGNSEED)
-    hashed = prf.eval(data)
+    sha = hashlib.sha1()
+    sha.update(data)
+    hashed = bytearray(sha.digest())
 
     return not cmp(decrypt(sig, public),hashed)
+
 class Module:
     def __init__(self, data, addr):
         self.addr = addr
@@ -296,7 +286,7 @@ class Image:
         self.head.extend(bytearray([N & 0xFF, N >> 8]))
         # modules data
         for i in xrange(N):
-            module = Module(data[i*256:min((i+1)*256,len(data))], 0x1000 + i*256)
+            module = Module(data[i*256:min((i+1)*256,len(data))], i*256)
             self.modules[i] = module
             addr = module.addr
             self.head.extend(bytearray([addr & 0xFF, addr >> 8]))

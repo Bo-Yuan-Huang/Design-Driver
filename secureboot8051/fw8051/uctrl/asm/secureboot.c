@@ -13,16 +13,18 @@
 
 
 /*---------------------------------------------------------------------------*/
-#define MAX_PRG_SIZE 0x2000
-#define MAX_IM_SIZE  0x5000
+#define MAX_PRG_SIZE 0x5000
+#define MAX_IM_SIZE  0x2000
 
-__xdata __at(0xFE40) unsigned char memwr_reg_start;
-__xdata __at(0xFE41) unsigned char memwr_reg_state;
-__xdata __at(0xFE42) unsigned int memwr_reg_rd_addr;
-__xdata __at(0xFE44) unsigned int memwr_reg_wr_addr;
-__xdata __at(0xFE46) unsigned int memwr_reg_len;
-__xdata __at(0x1000) unsigned char program[MAX_PRG_SIZE];
-__xdata __at(0x3000) unsigned char boot[MAX_IM_SIZE];
+__xdata __at(0xFF80) unsigned char pt_wren[32];
+__xdata __at(0xFFA0) unsigned char pt_rden[32];
+
+__xdata __at(0x0000) unsigned char program[MAX_PRG_SIZE];
+__xdata __at(0x5000) unsigned char boot[MAX_IM_SIZE];
+
+__xdata __at(0xC000) unsigned char sha_in[0x2080];
+__xdata __at(0xE080) unsigned char sha_out[20];
+__xdata __at(0xE100) unsigned char rsa_out[N];
 
 /*---------------------------------------------------------------------------*/
 
@@ -32,19 +34,18 @@ struct modules{
     unsigned char hash[20];
 };
 
-void lock_wr(unsigned int startaddr, unsigned int endaddr)
-{
-    // make unused argument warnings go away
-    (void) startaddr;
-    (void) endaddr;
-}
-
 struct image{
     unsigned char sig[N];  // signature of header
     unsigned char exp[N];
     unsigned char mod[N];  // n in modexp
     unsigned int num;      // total number of blocks
     struct modules module[1];
+};
+
+enum status{
+    UNDET,
+    FAIL,
+    PASS
 };
 
 //public key hash
@@ -54,72 +55,84 @@ __code unsigned char pkhash[20] = {0x37, 0x34, 0xA6, 0x83,
 				   0x6C, 0x92, 0x6C, 0x7C, 
 				   0xBA, 0x79, 0xCB, 0x8F};
 
-// set up data transfer
-void load(unsigned char* data, int length, unsigned int startaddr, unsigned char skipread)
-{
-    // wait for previous load to finish first
-    while(memwr_reg_state != 0);
-
-    memwr_reg_rd_addr = (unsigned int)data;
-    memwr_reg_wr_addr = startaddr;
-    memwr_reg_len = length;
-    memwr_reg_start = (unsigned char)(skipread << 1 | 1);
-}
-
 void main() {
-    unsigned char good = 1;
     unsigned int i, j;
     int num;   // total number of blocks
     struct image* im;
     struct modules* block; // current block
-    unsigned char* hash;
     unsigned int size;
     unsigned int ldaddr;
     unsigned char* moddata;
-    unsigned char pass = 0; // 0-indeterminate, 1-fail, 2-pass
+    enum status pass = UNDET;
+
+    // enable reading and writing everywhere for now
+    for(i=0; i<32; i++)
+    {
+	pt_wren[i]=0xFF;
+	pt_rden[i]=0xFF;
+    }
 
     // STAGE 1: read image into RAM  
+    unlock_wr((unsigned int)&boot, (unsigned int)boot+MAX_IM_SIZE);
     load(0, MAX_IM_SIZE, (unsigned int)&boot, 1);
-    while(memwr_reg_state != 0);
 
     // image is loaded.
     // now we need to lock boot to boot + MAX_IM_SIZE
+    lock_wr((unsigned int)boot, (unsigned int)boot+MAX_IM_SIZE);
 
     im  = (struct image*) boot;
-    num = im->num;
+    num = im->num;  // number of modules
+    // sizeof image struct includes extra signature and first module
+    size = sizeof(struct image) - ((unsigned int)&(im->exp) -(unsigned int)im) + sizeof(struct modules) * (num-1);
+    if(size > MAX_IM_SIZE)
+    {
+	P0 = 0;
+	pass = FAIL; // FAIL: image too large
+	quit();
+    }
 
-    sha_reg_rd_addr = (unsigned int)&d;
-    sha_reg_wr_addr = (unsigned int)&data1;
+    // set SHA read and write addresses
+    sha_reg_rd_addr = (unsigned int)&sha_in;
+    sha_reg_wr_addr = (unsigned int)&sha_out;
+    lock_wr((unsigned int)(&sha_reg_rd_addr), (unsigned int)(&sha_reg_rd_addr+1));
+    lock_wr((unsigned int)(&sha_reg_wr_addr), (unsigned int)(&sha_reg_wr_addr+1));
+
+    // set up RSA
+    exp_reg_opaddr = (unsigned int)&rsa_out;  // set up address to write to
+    lock_wr(exp_reg_opaddr, exp_reg_opaddr+2);
+    RSAinit();
 
     // STAGE 2: check that key matches hash
-    shadata(im->exp, 512);
-    hash = sha1();
+    sha1(im->exp, 512);
+    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
     for(i=0; i<20; i++){
-	if(hash[i] != pkhash[i]){
+	if(sha_out[i] != pkhash[i]){
 	    P0 = 0;
-	    pass = 1;  // FAIL
+	    pass = FAIL;  // FAIL: key hash mismatch
 	    quit();
 	}
     }
+    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);    
 
     // set signature key
+    //load(im->exp, N, (unsigned int)exp_reg_exp, 0);
     for(i=0; i<N; i++)
 	exp_reg_exp[i] = im->exp[i];
 
+    lock_wr((unsigned int)exp_reg_exp, (unsigned int)exp_reg_exp+N);
+
     // set signature modulus
+    //load(im->mod, N, (unsigned int)exp_reg_n, 0);
     for(i=0; i<N; i++)
 	exp_reg_n[i] = im->mod[i];
+    lock_wr((unsigned int)exp_reg_n, (unsigned int)exp_reg_n+N);
 
-    // set up RSA
-    exp_reg_opaddr = (unsigned int)&d;  // set up address to write to
 
-    // STAGE 3: sign header and check
-    // sizeof image struct includes extra signature and first module
-    size = sizeof(struct image) - (unsigned int) (&(im->exp) - &im) + sizeof(struct modules) * (num-1);
+    // STAGE 3: verify signature in boot
     if(!verifySignature(im->exp, size, im->sig))
     {
 	P0 = 0;
-	pass = 1;  // FAIL
+	pass = FAIL;  // FAIL: signature mismatch
 	quit();
     }
 
@@ -137,23 +150,27 @@ void main() {
 	   (unsigned int)program + size < (unsigned int)program) // overflow
 	{
 	    P0 = 0;
-	    pass = 1;  // FAIL
+	    pass = FAIL;  // FAIL: program write out of range
 	    quit();
-	}
-
-	// check module hash
-	shadata(moddata, size);
-	hash = sha1();
-	for(j=0; j<20; j++){
-	    if(hash[j] != block->hash[j]){
-		P0 = 0;
-		pass = 1;  // FAIL
-		quit();
-	    }
 	}
 
 	// load data
 	load(moddata, size, ldaddr, 0);
+
+	// lock newly loaded data
+	lock_wr(ldaddr, ldaddr+size);
+
+	// check module hash
+	sha1((__xdata unsigned char*)ldaddr, size);
+	lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
+	for(j=0; j<20; j++){
+	    if(sha_out[j] != block->hash[j]){
+		P0 = 0;
+		pass = FAIL;  // FAIL: module hash mismatch
+		quit();
+	    }
+	}
+	unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
 
 	// update to next module
 	moddata += size;
@@ -164,13 +181,14 @@ void main() {
     for(i=0; i<(unsigned int)moddata-(unsigned int)block; i++){
 	P0 = program[i];
 	if(program[i] != *((unsigned char*)block + i)){
-	    good = 0;  // FAIL
+	    pass = FAIL;  // FAIL
 	    break;
 	}
     }
 
     // PASS or FAIL
-    pass = good+1;
+    if(pass != FAIL)
+	pass = PASS;
     P0 = pass;
     quit();
 }

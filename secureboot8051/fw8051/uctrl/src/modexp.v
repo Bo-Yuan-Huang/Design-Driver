@@ -42,7 +42,8 @@ module modexp(clk, rst, start, ready, m, e, n, c);
 
   wire [2:0] state_next_idle = start ? BUSY1 : IDLE;
 
-  wire [2:0] state_next_busy1 = (c == 1 && ei == 0) ? BUSY1
+  wire [2:0] state_next_busy1 = m == 0 ? IDLE
+                              : (c == 1 && ei == 0) ? BUSY1
                               : WAIT1;
 
   wire [2:0] state_next_wait1 = !sq_ready ? WAIT1
@@ -90,7 +91,8 @@ module modexp(clk, rst, start, ready, m, e, n, c);
                 : (next_busy) ? i-1
                 : i;
 
-  assign c_next = (state_idle && next_busy) ? (e[W-1] ? m : 1)
+  assign c_next = m == 0 ? 0
+                : (state_idle && next_busy) ? (e[W-1] ? m : 1)
                 : (sq_ready && state_wait1) ? sq
                 : (m_ready && state_wait2) ? p
                 : c;

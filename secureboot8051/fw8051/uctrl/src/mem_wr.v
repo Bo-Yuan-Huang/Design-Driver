@@ -136,7 +136,7 @@ wire write_last_byte_acked = writing_last_byte && xram_ack;
 wire finished = write_last_byte_acked;
 
 
-reg [7:0] block [0:'h5000];
+reg [7:0] block [0:'h2000];
 
 wire [7:0] data_out_state, data_out_rd_addr, data_out_wr_addr, data_out_len;
 

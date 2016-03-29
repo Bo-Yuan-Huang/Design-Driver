@@ -50,4 +50,5 @@ modexp.v                        \
 mem_wr.v			\
 modexp_top.v			\
 oc8051_priv_lvl.v               \
-oc8051_etr.v
+oc8051_etr.v                    \
+oc8051_page_table.v

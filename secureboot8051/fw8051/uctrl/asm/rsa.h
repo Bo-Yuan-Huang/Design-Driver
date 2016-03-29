@@ -28,9 +28,15 @@ __xdata __at(0xFC00) unsigned char exp_reg_n[N];
 __xdata __at(0xFB00) unsigned char exp_reg_exp[N];
 __xdata __at(0xFA00) struct RSAmsg exp_reg_m;
 
-__xdata __at(0xE000) unsigned char d[0x300];
-__xdata __at(0xE300) unsigned char data2[0x200];
-__xdata __at(0xE500) unsigned char data1[20];
+__xdata __at(0xFE40) unsigned char memwr_reg_start;
+__xdata __at(0xFE41) unsigned char memwr_reg_state;
+__xdata __at(0xFE42) unsigned int memwr_reg_rd_addr;
+__xdata __at(0xFE44) unsigned int memwr_reg_wr_addr;
+__xdata __at(0xFE46) unsigned int memwr_reg_len;
+
+// state of PRG for R and G in OAEP
+__xdata __at(0xFD10) unsigned char rprg[20];
+__xdata __at(0xFD30) unsigned char gprg[20];
 
 struct RSAmsg{
     unsigned char padbyte;
@@ -39,13 +45,41 @@ struct RSAmsg{
     unsigned char r[K2];
 };
 
-void pad(int len)
+struct RSAmsg *decrypted;
+unsigned char *hash;
+unsigned char *data;
+
+// for locking and unlocking memory
+void lock_wr(unsigned int startaddr, unsigned int endaddr)
 {
-    int i;
-    
-    exp_reg_m.m[len+1] = 1;
-    for(i=len+1; i < N-K1-K2-1; i++)
-	exp_reg_m.m[i] = 0;
+    // make unused argument warnings go away
+    (void) startaddr;
+    (void) endaddr;
+}
+void unlock_wr(unsigned int startaddr, unsigned int endaddr)
+{
+    // make unused argument warnings go away
+    (void) startaddr;
+    (void) endaddr;
+}
+
+// set up data transfer
+void load(unsigned char* data, int length, unsigned int startaddr, unsigned char skipread)
+{
+    memwr_reg_rd_addr = (unsigned int)data;
+    memwr_reg_wr_addr = startaddr;
+    memwr_reg_len = length;
+    memwr_reg_start = (unsigned char)(skipread << 1 | 1);
+
+    // wait for load to finish
+    while(memwr_reg_state != 0);
+}
+
+void RSAinit()
+{
+    decrypted = (__xdata struct RSAmsg*)exp_reg_opaddr;
+    hash = (__xdata unsigned char*)sha_reg_wr_addr;
+    data = (__xdata unsigned char*)sha_reg_rd_addr;
 }
 
 // returns length of message
@@ -55,16 +89,16 @@ int unpad()
 
     for(len = N-K1-K2-2; len>=0; len--)
     {
-	if(exp_reg_m.m[len] == 1)
+	if(decrypted->m[len] == 1)
 	    break;
-	else if(exp_reg_m.m[len] != 0)
+	else if(decrypted->m[len] != 0)
 	    return -1;
     }
     return len;
 }
 
-// set up message for sha. assumes sha_reg_rd_addr is d
-void shadata(unsigned char *m, int len)
+// set up message and compute SHA
+void sha1(unsigned char *m, int len)
 {
     int i;
     int mlen;
@@ -74,83 +108,67 @@ void shadata(unsigned char *m, int len)
     sha_reg_len = mlen;
         
     
-    if((unsigned int)m == sha_reg_rd_addr) // don't copy if already in right address
-    {
-	for(i=len+1; i<mlen; i++) // start at len+1 to leave room for padding
-	    d[i] = 0;
-    }
-    else
-    {
-	for(i=0; i<mlen; i++)  // clear all
-	    d[i] = 0;
-	for(i=0; i<len; i++)   // copy
-	    d[i] = m[i];
-    }
-    d[len] = 0x80;  // add 100.. padding
+    if((unsigned int)m != sha_reg_rd_addr) // don't copy if already in right address
+	load(m, len, sha_reg_rd_addr, 0); // copy m
+
+    // add 100.. padding
+    data[len] = 0x80;
+
+    for(i=len+1; i<mlen; i++)
+	data[i] = 0;
 
     // insert length in bits
-    d[mlen-1] = (len << 3) & 0xFF;
-    d[mlen-2] = (len >> 5) & 0xFF;
-    d[mlen-3] = (len >> 13) & 0xFF;
-    d[mlen-4] = (len >> 21) & 0xFF;
-}
+    data[mlen-1] = (len << 3) & 0xFF;
+    data[mlen-2] = (len >> 5) & 0xFF;
+    data[mlen-3] = (len >> 13) & 0xFF;
+    data[mlen-4] = (len >> 21) & 0xFF;
 
-// do sha
-unsigned char* sha1()
-{
     // encrypt with sha1
+    lock_wr(sha_reg_rd_addr, sha_reg_rd_addr+sha_reg_len);
     sha_reg_start = 1;
     while(sha_reg_state != 0);
-    
-    return data1;
+    unlock_wr(sha_reg_rd_addr, sha_reg_rd_addr+sha_reg_len);
 }
 
-unsigned char* HMAC(unsigned char *key, int klen, unsigned char *message, int mlen)
+// HMAC computed and written to sha_reg_wr_addr
+void HMAC(unsigned char *key, int klen, unsigned char *message, int mlen)
 {
     int i;
-    unsigned char *hash;
-    
-    // hash key to be 1 block long
-    if(klen > 64)  
-    {
-	shadata(key, klen);
-	key = sha1();
-	klen = 20;
-    }
 
     // inner hash
     for(i=0; i<klen; i++)
-	d[i] = key[i] ^ 0x36;
+	data[i] = key[i] ^ 0x36;
     for(i=klen; i<64;i++)
-	d[i] = 0x36;
+	data[i] = 0x36;
     for(i=0; i<mlen; i++)
-	d[i+64] = message[i];
+	data[i+64] = message[i];
 
-    shadata(d, 64+mlen);
-
-    hash = sha1();
+    sha1(data, 64+mlen);
+    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
 
     // outer hash
     for(i=0; i<klen; i++)
-	d[i] = key[i] ^ 0x5c;
+	data[i] = key[i] ^ 0x5c;
     for(i=klen; i<64;i++)
-	d[i] = 0x5c;
+	data[i] = 0x5c;
     for(i=0; i<20; i++)
-	d[i+64] = hash[i];
-    shadata(d, 84);
+	data[i+64] = hash[i];
 
-    return sha1();
+    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
+    sha1(data, 84);
 }
 
-unsigned char* PRGinit(unsigned char *seed)
+// copy seed into the PRG state
+void PRGinit(unsigned char *seed, int slen, unsigned char *state)
 {
-    __xdata unsigned char state[20];
     int i;
-
-    for(i=0; i<20; i++)
+    for(i=0; i<slen && i < 20; i++)
 	state[i] = seed[i];
-    return state;
+    for(i=slen; i<20; i++)
+	state[i] = 0;
 }
+
+// random zero and one for PRG
 const unsigned char zero[] = {0x98, 0xBC, 0x1B, 0x58,
 			     0xC2, 0x5B, 0x7B, 0x51,
 			     0x48, 0x14, 0x83, 0xA7,
@@ -171,42 +189,23 @@ const unsigned char one[] = {0xA2, 0x66, 0x95, 0x53,
 
 
 // generate random number, put in hash
-unsigned char* PRG(unsigned char* state)
+void PRG(unsigned char* state)
 {
     int i;
-    unsigned char *hash;
     unsigned char next[20];
 
-    hash = HMAC(state, 20, one, 32);
+    HMAC(state, 20, one, 32);
+    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
     for(i=0; i<20; i++)
 	next[i] = hash[i];
+    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
 
-    hash = HMAC(state, 20, zero, 32);
+    HMAC(state, 20, zero, 32);
     for(i=0; i<20; i++)
 	state[i] = next[i];
-
-    return hash;
 }
 
-// seed for generating R in OAEP
-const __xdata unsigned char rseed[] = {
-    0x14, 0xb8, 0xfb, 0x04,
-    0x98, 0x43, 0x98, 0xa2,
-    0x35, 0xd0, 0x3e, 0xca,
-    0x38, 0xd9, 0x41, 0xaf,
-    0x00, 0x00, 0x00, 0x00
-};
-
-// PRG for generating R in OAEP padding
-unsigned char* rprg;
-
-void RSAinit()
-{
-    rprg = PRGinit(rseed);
-    exp_reg_opaddr = (unsigned int)&d;  // setup address to write to
-    //setN(exp_reg_n);  // setup N
-}
-
+// seed for computing H function in OAEP
 const unsigned char Hseed[] = {
     0x66, 0x02, 0x5D, 0xC9,
     0x80, 0x48, 0xA5, 0x9F,
@@ -217,160 +216,100 @@ const unsigned char Hseed[] = {
     0xEB, 0xC0, 0x4F, 0x3A,
     0x0D, 0x2F, 0x8F, 0x0A*/
 };
-    
 
-void OAEP()
-{
-    int i,j;
-    unsigned char *hash;
-    unsigned char *gprg;
-
-    // K1 0s
-    for(i=0; i<K1; i++)
-	exp_reg_m.zeros[i] = 0;
-
-    // do G to compute X
-    hash = PRG(rprg); // make r
-    for(i=K2; i<20; i++)
-	hash[i] = 0;
-    for(i=0; i<K2; i++)
-	exp_reg_m.r[i] = hash[i];
-    gprg = PRGinit(hash);
-    hash = PRG(gprg);
-    i=0; j=0;
-    while(i < N-K2-1)
-    {
-	if(j == 20)
-	{
-	    hash = PRG(gprg);
-	    j = 0;
-	}
-	exp_reg_m.m[i] = exp_reg_m.m[i] ^ hash[j];
-	i++;
-	j++;
-    }
-
-    // do H to compute Y
-    hash = HMAC(Hseed, 20, exp_reg_m.m, N-K2-1);
-    for(i=0; i<K2; i++)
-	exp_reg_m.r[i] = exp_reg_m.r[i] ^ hash[i];
-
-    exp_reg_m.padbyte = 1; // marker byte
-}
-
+// remove OAEP from message at location exp_reg_opaddr
+// return 1 if succeed, 0 if fail
 int removeOAEP()
 {
     int i,j;
-    unsigned char *hash;
-    __xdata unsigned char r[20];
-    unsigned char *gprg;
 
-    // find r
-    hash = HMAC(Hseed, 20, exp_reg_m.m, N-K2-1);
+    // compute r
+    HMAC(Hseed, 20, decrypted->m, N-K2-1);
+    // lock hash and copy r to message
+    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr + 20);
     for(i=0; i< K2; i++)
-	r[i] = exp_reg_m.r[i] ^ hash[i];
+	decrypted->r[i] = decrypted->r[i] ^ hash[i];
+    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
 
     // find m
-    gprg = PRGinit(r);
-    hash = PRG(gprg);
+    PRGinit(decrypted->r, K2, gprg);
+    PRG(gprg);
+    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
     i=0; j=0;
     while(i < N-K2-1)
     {
 	if(j == 20)
 	{
-	    hash = PRG(gprg);
+	    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
+	    PRG(gprg);
+	    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
 	    j = 0;
 	}
-	exp_reg_m.m[i] = exp_reg_m.m[i] ^ hash[j];
+	decrypted->m[i] = decrypted->m[i] ^ hash[j];
+	lock_wr((unsigned int)decrypted->m + i,(unsigned int)decrypted->m + i+1);
 	i++;
 	j++;
     }
+    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
 
     // check zeros
-    for(i = N-K2-K1-1; i< N-K2-1; i++)
-	if(exp_reg_m.m[i])
+    for(i = 0; i< K1; i++)
+	if(decrypted->zeros[i])
 	    return 0;
     return 1;
 }
 
-// encrypt message, len bytes
-unsigned char* encrypt(unsigned char* msg, int len){
-    int i;
-
-    sha_reg_rd_addr= (unsigned int)&d;
-    sha_reg_wr_addr = (unsigned int)&data1;
-
-    if(msg != exp_reg_m.m)
-	for (i=0; i<len; i++)
-	    exp_reg_m.m[i] = msg[i];
-    pad(len);
-    OAEP();
-
-    exp_reg_start = 1;  // start encryption
-    while(exp_reg_state != 0);  // wait for encryption to finish
-    
-    return d;
-}
-
+// decrypt msg, puts decrypted text in exp_reg_opaddr
+// returns length of decrypted message
 int decrypt(unsigned char* msg){
     int i;
 
-    sha_reg_rd_addr = (unsigned int)&d;
-    sha_reg_wr_addr = (unsigned int)&data1;
-
+    // copy msg into RSA m register
     if(msg != (unsigned char*)exp_reg_m)
+	//load(msg, N, (unsigned int)exp_reg_m, 0);
 	for(i=0; i<N; i++)
 	    ((unsigned char*)exp_reg_m)[i] = msg[i];
+
+    // lock message during exponentiation
+    lock_wr((unsigned int)exp_reg_m, (unsigned int)exp_reg_m + N);
+
     // decrypt
     exp_reg_start = 1;
     while(exp_reg_state != 0);
-    if(((struct RSAmsg*)d)->padbyte != 1) return 0;
-    
-    // copy back message
-    for (i=0; i<N; i++)
-    ((unsigned char*)exp_reg_m)[i] = d[i];
+    lock_wr(exp_reg_opaddr, exp_reg_opaddr+N);
+    unlock_wr((unsigned int)exp_reg_m, (unsigned int)exp_reg_m + N);
 
+    // check pad byte
+    if(decrypted->padbyte != 1) return 0;
+    
     if(!removeOAEP())
 	return -1;
 
     return unpad();
 }
 
-const unsigned char SIGNSEED[] = {
-    0x22, 0x1B, 0x35, 0xA1,
-    0xC2, 0x30, 0x6A, 0x0B,
-    0xF6, 0xDA, 0xDE, 0x2C,
-    0x7A, 0x2D, 0x58, 0x42,
-    0x4C, 0xED, 0x43, 0x13,
-    0x5E, 0x71, 0x6D, 0xA4,
-    0x80, 0xBE, 0x9D, 0x47,
-    0x4A, 0x9A, 0xAC, 0xA8
-};
-
-unsigned char* sign(unsigned char* message, int len){
-    unsigned char* hash;
-    sha_reg_rd_addr = (unsigned int)&d;
-    sha_reg_wr_addr = (unsigned int)&data1;
-    hash = HMAC(SIGNSEED, 32, message, len);
-    return encrypt(hash,20);
-}
-
 unsigned char verifySignature(unsigned char* msg, int len, unsigned char* signature){
     int i;
     int slen;
-    unsigned char* hash;
-    sha_reg_rd_addr = (unsigned int)&d;
-    sha_reg_wr_addr = (unsigned int)&data1;
-    slen = decrypt(signature);
 
-    if(slen == -1) return 0;
-    else{
-	hash = HMAC(SIGNSEED, 32, msg, len);
+    // decrypt the signature
+    slen = decrypt(signature);
+    lock_wr((unsigned int)decrypted->m, (unsigned int)decrypted->m+20);
+
+    // compare with hash of msg
+    if(slen != 20)
+    {
+	unlock_wr((unsigned int)decrypted->m, (unsigned int)decrypted->m+20);
+	return 0;
+    } else{
+	sha1(msg, len);
+	lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
 	for(i=0; i<slen; i++){
-	    P0 = exp_reg_m.m[i];
-	    if(hash[i] != exp_reg_m.m[i])
+	    P0 = decrypted->m[i];
+	    if(hash[i] != decrypted->m[i])
 		return 0;
 	}
+	unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
 	P0 = 0xFF;
 	return 1;
     }

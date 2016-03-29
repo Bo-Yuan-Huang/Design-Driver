@@ -56,23 +56,19 @@ Notes:
     (verifySignature(img, img.key) && hash(img.key) == hash(true_key)) => verifySignature(img, true_key)
       hash(img.key) == hash(true_key) => img.key == true_key
 
- - modules is loaded between 0x1000 and 0x3000
+ - modules is loaded between 0x0000 and 0x5000
 
 TODO
- - move __xdata unsigned char r[20] into a global at some fixed location.
- - move const __xdata unsigned char rseed[] into code RAM.
-   (or possibly remove it)
- - delete __xdata __at(0xE300) unsigned char data2[0x200] (not used)
-
- - lock 'boot' right after loading.
- - then verify signature in boot
- - lock 'program' after we load each module into it.
- - then verify hashes
+ x lock 'boot' right after loading.
+ x then verify signature in boot
+ x lock 'program' after we load each module into it.
+ x then verify hashes
  - lock hashes after they are computed, but before they are verified.
 
 Whitelist
  - all the hardware registers
- - modules (0x1000 - 0x3000)
- - __xdata __at(0xE000) unsigned char d[0x300];
- - __xdata __at(0xE500) unsigned char data1[20];
+ - modules (0x0000 - 0x5000)
+ - __xdata __at(0x0000) unsigned char program[MAX_PRG_SIZE];
+ - __xdata __at(0xE080) unsigned char sha_out[20];
+ - __xdata __at(0xE100) unsigned char rsa_out[N];
  - a property that says that all regions outside this range are never modified.
