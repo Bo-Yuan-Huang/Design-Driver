@@ -305,7 +305,7 @@ assign t2ex = p3_out[2];
 
 initial begin
   $dumpon;
-  $dumpfile("rsa_test.lxt");
+  $dumpfile("secureboot.lxt");
 //for (idx = 16'hE000; idx < 16'hE128; idx = idx + 1) $dumpvars(0,modexp_tb.oc8051_xiommu1.oc8051_xram_i.buff[idx]);
   $dumpvars(0,modexp_tb);
 //  $dumpvars(1,modexp_tb.oc8051_xiommu1.oc8051_xram_i);
@@ -321,7 +321,7 @@ initial begin
 #2000
   rst = 1'b0;
 
-#3000000000
+#80000000
   $display("time ",$time, "\n failure: end of time\n \n");
   $display("");
   $finish;

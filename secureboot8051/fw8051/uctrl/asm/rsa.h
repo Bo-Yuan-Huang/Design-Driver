@@ -105,8 +105,6 @@ void sha1(unsigned char *m, int len)
 
     // setup data
     mlen = ((len+4) & 0xFFC0) + 64; // round len+5 up to multiple of 64
-    sha_reg_len = mlen;
-        
     
     if((unsigned int)m != sha_reg_rd_addr) // don't copy if already in right address
 	load(m, len, sha_reg_rd_addr, 0); // copy m
@@ -125,6 +123,7 @@ void sha1(unsigned char *m, int len)
 
     // encrypt with sha1
     lock_wr(sha_reg_rd_addr, sha_reg_rd_addr+sha_reg_len);
+    sha_reg_len = mlen;
     sha_reg_start = 1;
     while(sha_reg_state != 0);
     unlock_wr(sha_reg_rd_addr, sha_reg_rd_addr+sha_reg_len);
