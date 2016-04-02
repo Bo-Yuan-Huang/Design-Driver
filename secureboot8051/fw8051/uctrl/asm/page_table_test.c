@@ -42,6 +42,10 @@ void main() {
     pt_wren[0] = 0x01;
     pt_rden[0] = 0x01;
 
+    // check to make sure the page table is activated
+    P0 = pt_wren[0];
+    P0 = pt_rden[0];
+
     // try writing to 0x000 and 0x001 again
     xram_start_data[0] = 0x1a;
     xram_start_data[1] = 0x2a;
@@ -64,6 +68,10 @@ void main() {
     // now allow writes but not reads
     pt_wren[0] = 0x01;
     pt_rden[0] = 0x00;
+
+    // check for wren activated but rden disabled
+    P0 = pt_wren[0];
+    P0 = pt_rden[0];
 
     // try to write to 0x000 and 0x001
     xram_start_data[0] = 0x01;
@@ -104,6 +112,10 @@ void main() {
     pt_wren[1] = 0x01;
     pt_rden[1] = 0x01;
 
+    // check to make sure the page table is activated
+    P0 = pt_wren[1];
+    P0 = pt_rden[1];
+
     // try writing to 0x800 and 0x801 again
     xram_mid_data[0] = 0x32;
     xram_mid_data[1] = 0x44;
@@ -126,6 +138,10 @@ void main() {
     // now allow writes but not reads
     pt_wren[1] = 0x01;
     pt_rden[1] = 0x00;
+
+    // check for wren activated but rden disabled
+    P0 = pt_wren[1];
+    P0 = pt_rden[1];
 
     // try to write to 0x800 and 0x801
     xram_mid_data[0] = 0x08;
@@ -165,6 +181,10 @@ void main() {
     // now enable reading and writing for the page.
     pt_wren[31] = 0x80;
     pt_rden[31] = 0x80;
+
+    // check to make sure the page table is activated
+    P0 = pt_wren[31];
+    P0 = pt_rden[31];
 
     // try writing to 0xffee and 0xffef again
     xram_end_data[0xee] = 0xfa;
@@ -246,6 +266,10 @@ void main() {
     pt_wren[0] = 0x01;
     pt_rden[0] = 0x01;
 
+    // check to make sure the page table is activated
+    P0 = pt_wren[0];
+    P0 = pt_rden[0];
+
     // try to encrypt data at 0x000 and 0x001 again
     aes_data[0x00] = 1;
     while (aes_data[0x01] != 0);
@@ -276,6 +300,10 @@ void main() {
     // now allow writes but not reads
     pt_wren[0] = 0x01;
     pt_rden[0] = 0x00;
+
+    // check for wren activated but rden disabled
+    P0 = pt_wren[0];
+    P0 = pt_rden[0];
 
     // encrypt again
     aes_data[0x00] = 1;
