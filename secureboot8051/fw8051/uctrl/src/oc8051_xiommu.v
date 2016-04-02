@@ -49,7 +49,7 @@ output [15:0] aes_addr, aes_len, sha_rdaddr, sha_wraddr, sha_len, exp_addr;
 output [127:0] aes_ctr, aes_key0, aes_key1;
 output [2047:0] exp_m, exp_exp, exp_n;
 
-wire write_xram, write_aes, write_sha, write_exp, write_memwr;
+wire write_xram, write_aes, write_sha, write_exp, write_memwr, write_pt;
 wire ack_xram, ack_aes, ack_sha, ack_exp, ack_memwr;
 wire stb_xram, stb_aes, stb_sha, stb_exp, stb_memwr;
 wire aes_addr_range, sha_addr_range, exp_addr_range, memwr_addr_range;
@@ -80,6 +80,8 @@ assign write_aes = stb_aes && proc_wr;
 assign write_sha = stb_sha && proc_wr;
 assign write_exp = stb_exp && proc_wr;
 assign write_memwr = stb_memwr && proc_wr;
+assign write_pt = stb_pt && proc_wr;
+
 
 // ACK OUTPUT.
 wire proc_ack = ack_xram || ack_aes || ack_sha || ack_exp || ack_memwr || ack_pt;
@@ -91,11 +93,13 @@ wire [7:0] data_out_aes;
 wire [7:0] data_out_sha;
 wire [7:0] data_out_exp;
 wire [7:0] data_out_memwr;
+wire [7:0] data_out_pt;
 
 assign proc_data_out = stb_aes   ? data_out_aes   : 
                        stb_sha   ? data_out_sha   :
                        stb_exp   ? data_out_exp   : 
-                       stb_memwr ? data_out_memwr : data_out_xram;
+                       stb_memwr ? data_out_memwr : 
+                       stb_pt    ? data_out_pt    : data_out_xram;
 
 // AES <=> XRAM signals
 wire [15:0] aes_xram_addr;
@@ -293,6 +297,7 @@ oc8051_xram oc8051_xram_i (
 oc8051_page_table oc8051_page_table_i (
     .clk           ( clk                ),
     .rst           ( rst                ),
+    .wr            ( write_pt           ),
     .wr_en         ( wr_en              ),
     .rd_en         ( rd_en              ),
     .pt_addr_range ( pt_addr_range      ),
@@ -300,6 +305,7 @@ oc8051_page_table oc8051_page_table_i (
     .ack           ( ack_pt             ),
     .xram_addr     ( addr_out           ),
     .xram_data_in  ( memarbiter_data_in ),
+    .pt_data_out   ( data_out_pt        ),
     .priv_lvl      ( priv_lvl           )
 );
 
