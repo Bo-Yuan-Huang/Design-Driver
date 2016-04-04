@@ -53,7 +53,7 @@ wire write_xram, write_aes, write_sha, write_exp, write_memwr, write_pt;
 wire ack_xram, ack_aes, ack_sha, ack_exp, ack_memwr;
 wire stb_xram, stb_aes, stb_sha, stb_exp, stb_memwr;
 wire aes_addr_range, sha_addr_range, exp_addr_range, memwr_addr_range;
-wire wr_en, rd_en, priv_lvl, pt_addr_range, stb_pt, ack_pt;
+wire wr_en, rd_en, priv_lvl, pt_addr_range, ia_addr_range, stb_pt, ack_pt, stb_ia, ack_ia;
 
 wire [1:0] aes_state; 
 wire [2:0] sha_state;
@@ -70,9 +70,10 @@ assign stb_sha = proc_stb && sha_addr_range;
 assign stb_exp = proc_stb && exp_addr_range;
 assign stb_memwr = proc_stb && memwr_addr_range;
 assign stb_pt = proc_stb && pt_addr_range;
+assign stb_ia = proc_stb && ia_addr_range;
 assign stb_xram = proc_stb && !(aes_addr_range || sha_addr_range ||
                                 exp_addr_range || memwr_addr_range ||
-                                pt_addr_range);
+                                pt_addr_range  || ia_addr_range);
 // WRITE.
 
 assign write_xram = stb_xram && proc_wr;
@@ -84,7 +85,7 @@ assign write_pt = stb_pt && proc_wr;
 
 
 // ACK OUTPUT.
-wire proc_ack = ack_xram || ack_aes || ack_sha || ack_exp || ack_memwr || ack_pt;
+wire proc_ack = ack_xram || ack_aes || ack_sha || ack_exp || ack_memwr || ack_pt || ack_ia;
 
 // DATA OUT.
 wire [7:0] proc_data_out;
@@ -94,12 +95,14 @@ wire [7:0] data_out_sha;
 wire [7:0] data_out_exp;
 wire [7:0] data_out_memwr;
 wire [7:0] data_out_pt;
+wire [7:0] data_out_ia;
 
 assign proc_data_out = stb_aes   ? data_out_aes   : 
                        stb_sha   ? data_out_sha   :
                        stb_exp   ? data_out_exp   : 
                        stb_memwr ? data_out_memwr : 
-                       stb_pt    ? data_out_pt    : data_out_xram;
+                       stb_pt    ? data_out_pt    : 
+                       stb_ia    ? data_out_ia    : data_out_xram;
 
 // AES <=> XRAM signals
 wire [15:0] aes_xram_addr;
@@ -297,15 +300,21 @@ oc8051_xram oc8051_xram_i (
 oc8051_page_table oc8051_page_table_i (
     .clk           ( clk                ),
     .rst           ( rst                ),
-    .wr            ( write_pt           ),
+    .pt_wr         ( write_pt           ),
+    .xram_wr       ( wr_out             ),
+    .xram_stb      ( stb_out            ),
     .wr_en         ( wr_en              ),
     .rd_en         ( rd_en              ),
     .pt_addr_range ( pt_addr_range      ),
-    .stb           ( stb_pt             ),
-    .ack           ( ack_pt             ),
+    .ia_addr_range ( ia_addr_range      ),
+    .pt_stb        ( stb_pt             ),
+    .pt_ack        ( ack_pt             ),
+    .ia_stb        ( stb_ia             ),
+    .ia_ack        ( ack_ia             ),
     .xram_addr     ( addr_out           ),
     .xram_data_in  ( memarbiter_data_in ),
     .pt_data_out   ( data_out_pt        ),
+    .ia_data_out   ( data_out_ia        ),
     .priv_lvl      ( priv_lvl           )
 );
 
