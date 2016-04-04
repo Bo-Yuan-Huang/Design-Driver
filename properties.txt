@@ -15,7 +15,7 @@ III. program flow
    b. either verification fails, or verification passes each stage and program
    is loaded, no skipping steps
 IV. hyperproperties
-   a. if # modules is the same, SP is always the same
+   a. if # modules is the same, SP is always the same until verification fails
    b. if a memory address is locked, then nothing that the processor/attacker
    does will change the memory contents
    c. Image: src
