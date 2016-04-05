@@ -1,15 +1,12 @@
 \documentclass[10pt,openany]{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{graphicx}
 \usepackage{setspace}
-\usepackage[toc,page]{appendix}
 \onehalfspacing
 \usepackage[margin=1in]{geometry}
 \author{Elaine Chou}
 \begin{document}
-
-\section{Secure Boot Properties}
+\section{LTL}
 Checking array bounds
 \[G(a\rightarrow(ptr+i <= ptrHi(ptr) \land ptr+i >= ptrLo(ptr)))\]
 a - array access or assignment to ptr[i]\\
@@ -37,21 +34,31 @@ w - write to M[i], event\\\\
 %
 When are which memory locations locked?
 \begin{enumerate}
-\item module inputs locked while module is running\\
+\item input to SHA locked while module is running\\
   \[G(state\neq 0\rightarrow l)\]
-  state - state of any HW module\\
-  l - lock from reg\_rd\_addr[0] to reg\_rd\_addr[len-1] on the started module\\
+  state - state of SHA accelerator\\
+  l - lock sha\_in to sha\_in + len-1
 \item image locked during verification
-  \[G(pass=undet\rightarrow l)\]
-  l - lock from boot[0] to boot[size-1]
+  \[G((stage > 1 \land pass=undet)\rightarrow l)\]
+  l - lock from boot to boot + size-1
 \end{enumerate}
 %
 HW module that starts will finish
-\[G(s\rightarrow XF(state\eq 0\lor pass=F))\]
-s - start = 1 on any module\\
-state - state of the module\\
-pass = F - for copying data, verification can fail while the module is still running\\\\
+\[G(start_m=1\rightarrow XF(state_m=0))\]
+start - on any module\\
+state - state of the same module\\
 %
+Correctness of authenticated booth
+\[hash(img.key) \neq hash_{key} \rightarrow fail\]
+hash(img.key) - secure boot will compute the hash of the key contained in the image\\
+$hash_{key}$ - secure boot has a stored copy of the key hash\\
+\[\text{!verifySignature(img, img.key)} \rightarrow fail\]
+\[\text{hash(module)} \neq \text{module.hash} \rightarrow fail\]
+hash(module) - computed hash of each module\\
+module.hash - hash provided in the image header
+\[G(PC \in known_PC_locs)\]
+known\_PC\_locs - statically computer beforehand for now
+\section{hyperproperties}
 If \# modules in image is the same, SP is always the same
 \[\forall \pi_1 \forall \pi_2G(num_{\pi_1}=num_{\pi_2}\land pass_{\pi_1}\neq F\land pass_{\pi_2}\neq F\rightarrow SP_{\pi_1}=SP_{\pi_2})\]
 src: entire image\\
@@ -61,10 +68,26 @@ finalpred: pass=P\\\\
 %
 SHA/RSA read/write locations are locked to outside processes during secureboot
 \[\forall \pi_1 \forall \pi_2 (image_{\pi_1}=image_{\pi_2})\rightarrow G(M[i]_{\pi_1}=M[i]_{\pi_2})\]
-M[i] - SHA read address range (d in rsa.h), SHA write(data1), RSA read(exp\_reg\_m, memory mapped reg in RSA), RSA write(d, same as SHA read addresses)\\
+M[i] - SHA read address range (sha\_in), SHA write(sha\_out), RSA read(exp\_reg\_m, memory mapped reg in RSA), RSA write(rsa\_out)\\
 src: attacker\\
 dst: memory cells M[i]\\
 dstpred: $image_{\pi_1}=image_{\pi_2}\land$ pass=undet\\\\
 %
+No progagation from image to whitelist: 
+HW regs, 
+modules/program(0x0000 - 0x4FFF), 
+sha\_in(0xC000-0xE079), 
+sha\_out(0xE080-0cE093), 
+rsa\_out(0xE100-0xE1FF) \\
+src: image\\
+dst: range of addresses not in whitelist\\\\
+%
+src: untrusted module\\
+dst: boot to boot+MAX\_IM\_SIZE\\
+srcpred: after the image is loaded into boot\\\\
+%
+src: untrusted module\\
+dst: program to program+MAX\_PRG\_SIZE
+
 
 \end{document}

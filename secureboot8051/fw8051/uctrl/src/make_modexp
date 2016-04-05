@@ -38,6 +38,7 @@ aes_round.v                     \
 aes_table.v                     \
 reg2byte.v                      \
 reg16byte.v                     \
+reg32byte.v                     \
 reg256byte.v                    \
 aes_top.v                       \
 oc8051_memarbiter.v             \

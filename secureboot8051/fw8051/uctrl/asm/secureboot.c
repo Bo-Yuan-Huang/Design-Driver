@@ -71,9 +71,22 @@ void main() {
 	pt_wren[i]=0xFF;
 	pt_rden[i]=0xFF;
     }
+    
+    // STAGE 0: set up
+    lock_wr((unsigned int)program, (unsigned int)program + MAX_PRG_SIZE);
+    // set SHA read and write addresses
+    sha_reg_rd_addr = (unsigned int)&sha_in;
+    sha_reg_wr_addr = (unsigned int)&sha_out;
+    lock_wr((unsigned int)(&sha_reg_rd_addr), (unsigned int)(&sha_reg_rd_addr+1));
+    lock_wr((unsigned int)(&sha_reg_wr_addr), (unsigned int)(&sha_reg_wr_addr+1));
+
+    // set up RSA
+    exp_reg_opaddr = (unsigned int)&rsa_out;  // set up address to write to
+    lock_wr(exp_reg_opaddr, exp_reg_opaddr+2);
+    RSAinit();
+
 
     // STAGE 1: read image into RAM  
-    unlock_wr((unsigned int)&boot, (unsigned int)boot+MAX_IM_SIZE);
     load(0, MAX_IM_SIZE, (unsigned int)&boot, 1);
 
     // image is loaded.
@@ -90,17 +103,6 @@ void main() {
 	pass = FAIL; // FAIL: image too large
 	quit();
     }
-
-    // set SHA read and write addresses
-    sha_reg_rd_addr = (unsigned int)&sha_in;
-    sha_reg_wr_addr = (unsigned int)&sha_out;
-    lock_wr((unsigned int)(&sha_reg_rd_addr), (unsigned int)(&sha_reg_rd_addr+1));
-    lock_wr((unsigned int)(&sha_reg_wr_addr), (unsigned int)(&sha_reg_wr_addr+1));
-
-    // set up RSA
-    exp_reg_opaddr = (unsigned int)&rsa_out;  // set up address to write to
-    lock_wr(exp_reg_opaddr, exp_reg_opaddr+2);
-    RSAinit();
 
     // STAGE 2: check that key matches hash
     sha1(im->exp, 512);
@@ -155,6 +157,7 @@ void main() {
 	}
 
 	// load data
+	unlock_wr(ldaddr, ldaddr+size);
 	load(moddata, size, ldaddr, 0);
 
 	// lock newly loaded data
@@ -189,6 +192,10 @@ void main() {
     // PASS or FAIL
     if(pass != FAIL)
 	pass = PASS;
+    unlock_wr((unsigned int)boot, (unsigned int)boot+MAX_IM_SIZE);
+    unlock_wr((unsigned int)(&sha_reg_rd_addr), (unsigned int)(&sha_reg_rd_addr+1));
+    unlock_wr((unsigned int)(&sha_reg_wr_addr), (unsigned int)(&sha_reg_wr_addr+1));
+    unlock_wr(exp_reg_opaddr, exp_reg_opaddr+2);
     P0 = pass;
     quit();
 }

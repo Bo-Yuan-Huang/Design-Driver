@@ -156,7 +156,7 @@ def addOAEP(msg):
     paddedMsg = bytearray(255)
     paddedMsg[:len(msg)] = msg
     r = rprg.next(16)
-    #print "".join("{:02X}".format(ord(c)) for c in r)
+    #print "".join("{:02X}".format(ord(c)) for c in str(r))
     g = getOAEPGen(r)
     # X
     n = len(msg) + 16
@@ -164,15 +164,16 @@ def addOAEP(msg):
 #        paddedMsg[i] = paddedMsg[i] ^ g.next(1)
     for i in xrange(0,len(msg)+16,20):
         nexthash = g.next(20)
-        #print "".join("{:02X}".format(ord(c)) for c in nexthash)
+        #print "".join("{:02X}".format(ord(c)) for c in str(nexthash))
         end = min(i+19,n-1)
-        #print "".join("{:02X}".format(ord(c)) for c in nexthash[:end%20])
+        #print "".join("{:02X}".format(ord(c)) for c in str(nexthash[:end%20]))
         paddedMsg[i:end+1] = map(int.__xor__,paddedMsg[i:end+1],nexthash[:(end%20)+1])
+        #print  "".join("{:02X}".format(ord(c)) for c in str(paddedMsg[i:end+1]))
     #print "".join("{:02X}".format(ord(c)) for c in paddedMsg[:20])
     # Y
     h = PRF(OAEPHSEED)
     yhash = h.eval(paddedMsg[:n])
-    #print "".join("{:02X}".format(ord(c)) for c in yhash)
+    #print "".join("{:02X}".format(ord(c)) for c in str(yhash))
     paddedMsg[n:] = map(int.__xor__,yhash[:16],r)
     
     return paddedMsg
@@ -215,6 +216,7 @@ private = 0x2f17d2e2b267bda595327170028cbcd808104a6eb121fa96556a1506d511f890d3de
 
 def preprocess(plaintext):
     padded = addMarkerByte(addOAEP(padMessage(plaintext)))
+    #print  "".join("{:02X}".format(ord(c)) for c in str(padded))
     return padded
 
 def encrypt(padded, exp):
@@ -274,9 +276,6 @@ class Module:
 class Image:
     def __init__(self, data, exp, mod):
         N = int(math.ceil(len(data)/256.))
-        self.num = N
-        self.exp = exp
-        self.mod = mod
         self.modules = [0]*N
 
         # keys

@@ -1,7 +1,8 @@
 Properties
 I.memory writes
-   a. when writing to arrays in memory (program, boot, d, data2, data1,
-   exp_reg_*), index should not exceed bounds (array out of bounds)
+   a. when writing to arrays in memory or HW registers (program, boot, sha_in,
+   sha_out, rsa_out, exp_reg_*), index should not exceed bounds (array out of
+   bounds)
    b. RSA keys should only change during the key hash check/load step
 II. locking
    a. input data to modules is locked while modules are running
@@ -14,7 +15,7 @@ III. program flow
    b. either verification fails, or verification passes each stage and program
    is loaded, no skipping steps
 IV. hyperproperties
-   a. if # modules is the same, SP is always the same
+   a. if # modules is the same, SP is always the same until verification fails
    b. if a memory address is locked, then nothing that the processor/attacker
    does will change the memory contents
    c. Image: src

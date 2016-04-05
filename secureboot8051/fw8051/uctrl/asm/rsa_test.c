@@ -120,7 +120,7 @@ void pad(int len)
 {
     int i;
     
-    exp_reg_m.m[len+1] = 1;
+    exp_reg_m.m[len] = 1;
     for(i=len+1; i < N-K1-K2-1; i++)
 	exp_reg_m.m[i] = 0;
 }
@@ -425,7 +425,7 @@ void main() {
 
     // load some data
     load(0, 0x2000, (unsigned int)&boot, 1);
-    im  = (struct image*) (boot+N);
+    im  = (struct image*)boot;
     num = im->num;  // number of modules
     // sizeof image struct includes extra signature and first module
     size = sizeof(struct image) - ((unsigned int)&(im->exp) -(unsigned int)im) + sizeof(struct modules) * (num-1);
@@ -441,11 +441,11 @@ void main() {
     // set signature modulus
     for(i=0; i<N; i++)
 	exp_reg_n[i] = im->mod[i];
-/*
+
     // set signature key
     for(i=0; i<N; i++)
 	exp_reg_exp[i] = im->exp[i];
-
+/*
     // verify signature
     if(!verifySignature(im->exp, size, im->sig))
     {
@@ -454,18 +454,15 @@ void main() {
     }
 */
 
-    // now do it the other way
-    // set signature key
-    for(i=0; i<N; i++)
-	exp_reg_exp[i] = boot[i];
-    
+    // sign header
     PRGinit(rseed, 20, rprg);
     sign(im->exp, size);
 
+    // check for signature match
     for(i=0; i<N; i++)
     {
-	P0 = data[i];
-	if(data[i] != im->sig[i])
+	P0 = ((unsigned char*)decrypted)[i];
+	if(((unsigned char*)decrypted)[i] != im->sig[i])
 	{
 	    good = 0;
 	    break;
