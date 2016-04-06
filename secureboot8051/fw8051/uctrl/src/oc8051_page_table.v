@@ -1,5 +1,6 @@
 /*
- * Page Table Module
+ * Page Table Module 
+ * Contains page table registers and illegal access registers
  * 
  * Written by Samuel Miller
  */
@@ -9,24 +10,30 @@
 `include "oc8051_defines.v"
 
 module oc8051_page_table (clk, rst, 
-	wr,
+	pt_wr,
+	xram_wr,
+	xram_stb,
 	wr_en, 
 	rd_en, 
-	pt_addr_range, 
-	stb,
-	ack,
+	pt_addr_range,
+	ia_addr_range, 
+	pt_stb,
+	pt_ack,
+	ia_stb,
+	ia_ack,
 	xram_addr, 
 	xram_data_in, 
 	pt_data_out,
+	ia_data_out,
 	priv_lvl
 );
 
-input wire clk, rst, wr, priv_lvl, stb;
+input wire clk, rst, pt_wr, xram_wr, xram_stb, priv_lvl, pt_stb, ia_stb;
 input wire [15:0] xram_addr;
 input wire [7:0] xram_data_in;
 
-output wire wr_en, rd_en, pt_addr_range, ack;
-output wire [7:0] pt_data_out;
+output wire wr_en, rd_en, pt_addr_range, ia_addr_range, pt_ack, ia_ack;
+output wire [7:0] pt_data_out, ia_data_out;
 
 // page table wires (broken up into bytes for easy indexing)
 wire [255:0] unsplit_pages_wr;
@@ -34,8 +41,9 @@ wire [255:0] unsplit_pages_rd;
 wire [7:0] wr_enabled [31:0];
 wire [7:0] rd_enabled [31:0];
 
-// internal wires to keep track of address range and what reg is being used (wr_en or rd_en)
+// internal wires to keep track of address range and what set of regs is being used
 wire pt_in_wr_range, pt_in_rd_range, pt_wr_reg_use, pt_rd_reg_use;
+wire ia_addr_rwn, ia_addr_hi, ia_addr_lo;
 wire [7:0] data_out_wr, data_out_rd;
 
 // possible ranges for addresses involving pt registers
@@ -43,15 +51,24 @@ localparam PT_WR_ADDR_START  = 16'hff80;
 localparam PT_WR_ADDR_END    = 16'hff9f;
 localparam PT_RD_ADDR_START  = 16'hffa0;
 localparam PT_RD_ADDR_END    = 16'hffbf;
+localparam IA_ADDR_RWN       = 16'hffc0;
+localparam IA_ADDR_HI		 = 16'hffc1;
+localparam IA_ADDR_LO		 = 16'hffc2;
 
 // find the range of the addresses (or that it isn't in the page table ranges)
 assign pt_in_wr_range = ((xram_addr >= PT_WR_ADDR_START) && (xram_addr <= PT_WR_ADDR_END));
 assign pt_in_rd_range = ((xram_addr >= PT_RD_ADDR_START) && (xram_addr <= PT_RD_ADDR_END));
 assign pt_addr_range  = (pt_in_wr_range || pt_in_rd_range);
 
+// find out if the illegal access registers are being accessed
+assign ia_addr_rwn = (xram_addr == IA_ADDR_RWN);
+assign ia_addr_hi = (xram_addr == IA_ADDR_HI);
+assign ia_addr_lo = (xram_addr == IA_ADDR_LO);
+assign ia_addr_range  = (ia_addr_rwn || ia_addr_hi || ia_addr_lo);
+
 // figure out if page table reg should be read/written to, and if so, which section (wr_en or rd_en)
-assign pt_wr_reg_use = priv_lvl && stb && pt_in_wr_range;
-assign pt_rd_reg_use = priv_lvl && stb && pt_in_rd_range;
+assign pt_wr_reg_use = priv_lvl && pt_stb && pt_in_wr_range;
+assign pt_rd_reg_use = priv_lvl && pt_stb && pt_in_rd_range;
 
 // figure out which data set (wr_en or rd_en) to read from
 assign pt_data_out = pt_in_wr_range ? data_out_wr :
@@ -60,7 +77,7 @@ assign pt_data_out = pt_in_wr_range ? data_out_wr :
 // allow reads and writes only to enabled pages
 assign wr_en = wr_enabled[xram_addr[15:11]][xram_addr[10:8]];
 assign rd_en = rd_enabled[xram_addr[15:11]][xram_addr[10:8]];
-assign ack = stb && pt_addr_range;
+assign pt_ack = pt_stb && pt_addr_range;
 
 // split 256-bit wire into 32 8-bit wires for easy indexing
 assign wr_enabled[0]  = unsplit_pages_wr[7:0];
@@ -135,7 +152,7 @@ reg32byte reg32byte0(
 	.clk 		(clk),
 	.rst 		(rst),
 	.en 		(pt_wr_reg_use),
-	.wr 		(wr),
+	.wr 		(pt_wr),
 	.addr 		(xram_addr[4:0]),
 	.data_in 	(xram_data_in),
 	.data_out 	(data_out_wr),
@@ -147,11 +164,46 @@ reg32byte reg32byte1(
 	.clk 		(clk),
 	.rst 		(rst),
 	.en 		(pt_rd_reg_use),
-	.wr 		(wr),
+	.wr 		(pt_wr),
 	.addr 		(xram_addr[4:0]),
 	.data_in 	(xram_data_in),
 	.data_out 	(data_out_rd),
 	.reg_out 	(unsplit_pages_rd)
 );
+
+// for ia's last illegal access address and type of access
+reg [15:0]  ia_addr_reg;
+reg [1:0]   ia_rwn_reg;
+
+// type of illegal access
+wire illegal_wr = (xram_stb && xram_wr && !wr_en);
+wire illegal_rd = (xram_stb && !xram_wr && !rd_en);
+
+wire [15:0] ia_reg_next = (illegal_wr || illegal_rd) ? xram_addr : ia_addr_reg;
+
+assign ia_data_out = ia_addr_lo ? ia_addr_reg[7:0]  : 
+                 	 ia_addr_hi ? ia_addr_reg[15:8] : 
+                   	 {6'b000000, ia_rwn_reg};
+
+assign ia_ack = (ia_stb && ia_addr_range);
+
+// update illegal access registers
+always @(posedge clk)
+begin
+    if (rst) begin
+        ia_addr_reg <= 16'b0;
+        ia_rwn_reg  <= 2'b00;
+    end 
+    else begin
+        ia_addr_reg <= ia_reg_next;
+
+     	if (illegal_wr) begin
+     		ia_rwn_reg <= 2'b01;
+       	end 
+       	else if (illegal_rd) begin
+       		ia_rwn_reg <= 2'b10;
+       	end
+    end
+end
 
 endmodule

@@ -1,9 +1,30 @@
+
+STAGE 1: read image into RAM  
+STAGE 2: check that key matches hash
+STAGE 3: verify signature in boot
+STAGE 4: load blocks
+STAGE 5: verify blocks.
+STAGE 6: complete
+
 Properties
 I.memory writes
    a. when writing to arrays in memory or HW registers (program, boot, sha_in,
-   sha_out, rsa_out, exp_reg_*), index should not exceed bounds (array out of
-   bounds)
-   b. RSA keys should only change during the key hash check/load step
+   sha_out, rsa_out, exp_reg_*), index should not exceed bounds (array out of  bounds
+            instead lets have a whitelist:
+
+      (xram_wr = 1) => (xram_addr \in whitelist)
+         - __xdata __at(0x0000) unsigned char program[MAX_PRG_SIZE];
+         - __xdata __at(0x5000) unsigned char boot[MAX_PRG_SIZE];
+         - __xdata __at(0xE080) unsigned char sha_out[20];
+         - __xdata __at(0xE100) unsigned char rsa_out[N];
+         - a property that says that all regions outside this range are never modified.
+      (xram_wr = 1 && stage > 1) => (xram_addr \in whitelist')
+         - whitelist' does not contain boot
+
+   b. RSA keys should only change during the key hash check/load step (stage == 3)
+
+      (mem_wr = 1 && stage != 3) => (mem_addr < RSA_RANGE_START || mem_addr >= RSA_RANGE_END)
+
 II. locking
    a. input data to modules is locked while modules are running
    b. during the whole secureboot process, the RSA message register and write
@@ -18,7 +39,7 @@ IV. hyperproperties
    a. if # modules is the same, SP is always the same until verification fails
    b. if a memory address is locked, then nothing that the processor/attacker
    does will change the memory contents
-   c. Image: src
+   c. mem_wr module: src
       (range of addresses not in whitelist): dst
   
    d. mem_wr module: src
