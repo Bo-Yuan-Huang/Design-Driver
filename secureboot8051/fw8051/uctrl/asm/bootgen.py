@@ -282,15 +282,15 @@ class Image:
         self.head = int2bytes(exp, 256)
         self.head.extend(int2bytes(mod, 256))
         # num modules
-        self.head.extend(bytearray([N & 0xFF, N >> 8]))
+        self.head.extend(bytearray([N & 0xFF, N >> 8, 0, 0]))
         # modules data
         for i in xrange(N):
             module = Module(data[i*256:min((i+1)*256,len(data))], i*256)
             self.modules[i] = module
             addr = module.addr
-            self.head.extend(bytearray([addr & 0xFF, addr >> 8]))
+            self.head.extend(bytearray([addr & 0xFF, addr >> 8, 0, 0]))
             size = module.size
-            self.head.extend(bytearray([size & 0xFF, size >> 8]))
+            self.head.extend(bytearray([size & 0xFF, size >> 8, 0, 0]))
             self.head.extend(module.hash)
 
         # put everything together

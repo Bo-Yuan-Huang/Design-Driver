@@ -29,7 +29,7 @@ module reg32byte(clk, rst, en, wr, addr, data_in, data_out, reg_out);
     always @(posedge clk)
     begin
         if (rst) begin
-            for (i=0; i < 32; i+=1) begin
+            for (i=0; i < 32; i=i+1) begin
                 reg_data[i] <= 8'b0;
             end
         end
