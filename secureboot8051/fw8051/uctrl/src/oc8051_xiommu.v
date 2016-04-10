@@ -5,12 +5,18 @@
 module oc8051_xiommu (
     clk, 
     rst, 
-    proc_wr, 
+    proc_wr,
     proc_addr, 
     proc_data_in, 
     proc_data_out, 
     proc_ack, 
     proc_stb,
+    proc0_wr, 
+    proc0_addr, 
+    proc0_data_in, 
+    proc0_data_out, 
+    proc0_ack, 
+    proc0_stb,
     aes_state,
     aes_step,
     aes_addr,
@@ -36,11 +42,16 @@ module oc8051_xiommu (
 
 input clk, rst; 
 input proc_wr, proc_stb;
+input proc0_wr, proc0_stb;
 input priv_lvl;
 input [7:0] proc_data_in;
+input [7:0] proc0_data_in;
 input [15:0] proc_addr;
+input [15:0] proc0_addr;
 output [7:0] proc_data_out;
+output [7:0] proc0_data_out;
 output proc_ack;
+output proc0_ack;
 output [1:0] aes_state; 
 output [2:0] sha_state;
 output [1:0] exp_state;
@@ -49,7 +60,7 @@ output [15:0] aes_addr, aes_len, sha_rdaddr, sha_wraddr, sha_len, exp_addr;
 output [127:0] aes_ctr, aes_key0, aes_key1;
 output [2047:0] exp_m, exp_exp, exp_n;
 
-wire write_xram, write_aes, write_sha, write_exp, write_memwr, write_pt;
+wire write_xram, write0_xram, write_aes, write_sha, write_exp, write_memwr, write_pt;
 wire ack_xram, ack_aes, ack_sha, ack_exp, ack_memwr;
 wire stb_xram, stb_aes, stb_sha, stb_exp, stb_memwr;
 wire aes_addr_range, sha_addr_range, exp_addr_range, memwr_addr_range;
@@ -74,9 +85,11 @@ assign stb_ia = proc_stb && ia_addr_range;
 assign stb_xram = proc_stb && !(aes_addr_range || sha_addr_range ||
                                 exp_addr_range || memwr_addr_range ||
                                 pt_addr_range  || ia_addr_range);
+
 // WRITE.
 
 assign write_xram = stb_xram && proc_wr;
+assign write0_xram = proc0_stb && proc0_wr;
 assign write_aes = stb_aes && proc_wr;
 assign write_sha = stb_sha && proc_wr;
 assign write_exp = stb_exp && proc_wr;
@@ -275,6 +288,13 @@ oc8051_memarbiter8 oc8051_memarbiter_i (
     .addr_E     ( memwr_xram_addr     ),
     .data_in_E  ( memwr_xram_data_out ),
     .data_out_E ( memwr_xram_data_in  ),
+
+    .stb_F      ( proc0_stb           ),
+    .ack_F      ( proc0_ack           ),
+    .wr_F       ( write0_xram         ),
+    .addr_F     ( proc0_addr          ),
+    .data_in_F  ( proc0_data_in       ),
+    .data_out_F ( proc0_data_out      ),
 
     .stb        ( stb_out             ),
     .ack        ( ack_in              ),
