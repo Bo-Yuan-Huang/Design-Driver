@@ -15,6 +15,7 @@
 module oc8051_memarbiter8(
     clk, 
     rst, 
+    arbit_holder,
     // port A.
     stb_A,
     wr_A, 
@@ -65,64 +66,65 @@ module oc8051_memarbiter8(
     data_in,
     data_out
 );
-input           clk;
-input           rst;
+input            clk;
+input            rst;
+output reg [2:0] arbit_holder;
 
 // port A.
-input           stb_A;
-output          ack_A;
-input           wr_A;
-input [15:0]    addr_A;
-input [7:0]     data_in_A;
-output [7:0]    data_out_A;
+input            stb_A;
+output           ack_A;
+input            wr_A;
+input [15:0]     addr_A;
+input [7:0]      data_in_A;
+output [7:0]     data_out_A;
 
 // port B.
-input           stb_B;
-output          ack_B;
-input           wr_B;
-input [15:0]    addr_B;
-input [7:0]     data_in_B;
-output [7:0]    data_out_B;
+input            stb_B;
+output           ack_B;
+input            wr_B;
+input [15:0]     addr_B;
+input [7:0]      data_in_B;
+output [7:0]     data_out_B;
 
 // port C.
-input           stb_C;
-output          ack_C;
-input           wr_C;
-input [15:0]    addr_C;
-input [7:0]     data_in_C;
-output [7:0]    data_out_C;
+input            stb_C;
+output           ack_C;
+input            wr_C;
+input [15:0]     addr_C;
+input [7:0]      data_in_C;
+output [7:0]     data_out_C;
 
 // port D.
-input           stb_D;
-output          ack_D;
-input           wr_D;
-input [15:0]    addr_D;
-input [7:0]     data_in_D;
-output [7:0]    data_out_D;
+input            stb_D;
+output           ack_D;
+input            wr_D;
+input [15:0]     addr_D;
+input [7:0]      data_in_D;
+output [7:0]     data_out_D;
 
 // port E.
-input           stb_E;
-output          ack_E;
-input           wr_E;
-input [15:0]    addr_E;
-input [7:0]     data_in_E;
-output [7:0]    data_out_E;
+input            stb_E;
+output           ack_E;
+input            wr_E;
+input [15:0]     addr_E;
+input [7:0]      data_in_E;
+output [7:0]     data_out_E;
 
 // port F.
-input           stb_F;
-output          ack_F;
-input           wr_F;
-input [15:0]    addr_F;
-input [7:0]     data_in_F;
-output [7:0]    data_out_F;
+input            stb_F;
+output           ack_F;
+input            wr_F;
+input [15:0]     addr_F;
+input [7:0]      data_in_F;
+output [7:0]     data_out_F;
 
 // XRAM (memory) port.
-output          stb;
-output          wr;
-input           ack;
-output [15:0]   addr;
-output [7:0]    data_in;
-input [7:0]     data_out;
+output           stb;
+output           wr;
+input            ack;
+output [15:0]    addr;
+output [7:0]     data_in;
+input [7:0]      data_out;
 
 localparam PORT_A = 3'd0;
 localparam PORT_B = 3'd1;
@@ -202,8 +204,7 @@ wire [2:0] arbit_winner = (!stb_A && !stb_B && !stb_C && !stb_D && stb_E && !stb
                     (!stb_A && stb_B && !stb_F)                     ? PORT_B :
                     (!stb_A && stb_F)                               ? PORT_F : PORT_A;
                     
-// Who is the current holder of the arbitration?
-reg [2:0] arbit_holder;       
+// Who is the current holder of the arbitration?      
 wire [2:0] arbit_holder_next = arbit_select_winner ? arbit_winner : arbit_holder;
 
 // The selected port is the current cycle winner if we are idle

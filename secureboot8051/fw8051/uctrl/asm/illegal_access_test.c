@@ -21,9 +21,11 @@ void quit() {
 void main() {
     __xdata __at(0xFF80) unsigned char pt_wren[32];
     __xdata __at(0xFFA0) unsigned char pt_rden[32];
+    __xdata __at(0xFF00) unsigned char aes_data[256];
     __xdata __at(0x0800) unsigned char xram_data[256];
     __xdata __at(0x1200) unsigned char xram_data_two[256];
-    __xdata __at(0xffc0) unsigned char ia_regs[3];
+    __xdata __at(0xffc0) unsigned char ia_regs[4];
+    int i;
 
 
     // first disable writing to and reading from the page
@@ -148,6 +150,53 @@ void main() {
     pt_wren[2] = 0x00;
     pt_rden[2] = 0x00;
 
+
+
+    /*
+     * now try this with the aes module
+     */
+
+
+    // first enable writing to and reading from the page
+    pt_wren[1] = 0x01;
+    pt_rden[1] = 0x01;
+    
+    // write to 0x000 and 0x001
+    xram_data[0] = 0x10;
+    xram_data[1] = 0x20;
+
+    // now disable writing to and reading from the page
+    pt_wren[1] = 0x00;
+    pt_rden[1] = 0x00;
+
+    // this should indicate that the processor was the last illegal accesser (0x00)
+    P0 = ia_regs[3];
+
+    // try to encrypt data at 0x000 and 0x001
+    aes_data[0x02] = xram_data[0];
+    aes_data[0x04] = 2;
+
+    // this should (still) indicate that the processor was the last illegal accesser (0x00)
+    P0 = ia_regs[3];
+
+    for (i = 0; i < 16; i++) 
+    {
+        aes_data[0x10 + i] = i * i * i;
+    }
+    for (i = 0; i < 16; i++)
+    {
+        aes_data[0x20 + i] = i | (i << 4);
+    }
+    aes_data[0x00] = 1;
+    while (aes_data[0x01] != 0);
+
+    // this should indicate that aes was last illegal accesser (0x01)
+    P0 = ia_regs[3];
+
+    P0 = xram_data[0];
+
+    // this should indicate that the processer was last illegal accesser (0x00)
+    P0 = ia_regs[3];
 
     quit();
 }

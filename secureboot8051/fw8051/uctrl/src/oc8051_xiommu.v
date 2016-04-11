@@ -246,62 +246,64 @@ mem_wr memwr_i(
 );
 
 wire stb_out, ack_in, wr_out;
+wire [2:0] arbit_holder;
 wire [15:0] addr_out;
 wire [7:0] memarbiter_data_in;
 wire [7:0] memarbiter_data_out;
 
 oc8051_memarbiter8 oc8051_memarbiter_i (
-    .clk        ( clk                 ),
-    .rst        ( rst                 ),
+    .clk          ( clk                 ),
+    .rst          ( rst                 ),
+    .arbit_holder ( arbit_holder        ),
    
-    .stb_A      ( stb_xram            ),
-    .ack_A      ( ack_xram            ),
-    .wr_A       ( write_xram          ),
-    .addr_A     ( proc_addr           ),
-    .data_in_A  ( proc_data_in        ),
-    .data_out_A ( data_out_xram       ),
+    .stb_A        ( stb_xram            ),
+    .ack_A        ( ack_xram            ),
+    .wr_A         ( write_xram          ),
+    .addr_A       ( proc_addr           ),
+    .data_in_A    ( proc_data_in        ),
+    .data_out_A   ( data_out_xram       ),
 
-    .stb_B      ( aes_xram_stb        ),
-    .ack_B      ( aes_xram_ack        ),
-    .wr_B       ( aes_xram_wr         ),
-    .addr_B     ( aes_xram_addr       ),
-    .data_in_B  ( aes_xram_data_out   ),
-    .data_out_B ( aes_xram_data_in    ),
+    .stb_B        ( aes_xram_stb        ),
+    .ack_B        ( aes_xram_ack        ),
+    .wr_B         ( aes_xram_wr         ),
+    .addr_B       ( aes_xram_addr       ),
+    .data_in_B    ( aes_xram_data_out   ),
+    .data_out_B   ( aes_xram_data_in    ),
 
-    .stb_C      ( sha_xram_stb        ),
-    .ack_C      ( sha_xram_ack        ),
-    .wr_C       ( sha_xram_wr         ),
-    .addr_C     ( sha_xram_addr       ),
-    .data_in_C  ( sha_xram_data_out   ),
-    .data_out_C ( sha_xram_data_in    ),
+    .stb_C        ( sha_xram_stb        ),
+    .ack_C        ( sha_xram_ack        ),
+    .wr_C         ( sha_xram_wr         ),
+    .addr_C       ( sha_xram_addr       ),
+    .data_in_C    ( sha_xram_data_out   ),
+    .data_out_C   ( sha_xram_data_in    ),
 
-    .stb_D      ( exp_xram_stb        ),
-    .ack_D      ( exp_xram_ack        ),
-    .wr_D       ( exp_xram_wr         ),
-    .addr_D     ( exp_xram_addr       ),
-    .data_in_D  ( exp_xram_data_out   ),
-    .data_out_D ( exp_xram_data_in    ),
+    .stb_D        ( exp_xram_stb        ),
+    .ack_D        ( exp_xram_ack        ),
+    .wr_D         ( exp_xram_wr         ),
+    .addr_D       ( exp_xram_addr       ),
+    .data_in_D    ( exp_xram_data_out   ),
+    .data_out_D   ( exp_xram_data_in    ),
 
-    .stb_E      ( memwr_xram_stb      ),
-    .ack_E      ( memwr_xram_ack      ),
-    .wr_E       ( memwr_xram_wr       ),
-    .addr_E     ( memwr_xram_addr     ),
-    .data_in_E  ( memwr_xram_data_out ),
-    .data_out_E ( memwr_xram_data_in  ),
+    .stb_E        ( memwr_xram_stb      ),
+    .ack_E        ( memwr_xram_ack      ),
+    .wr_E         ( memwr_xram_wr       ),
+    .addr_E       ( memwr_xram_addr     ),
+    .data_in_E    ( memwr_xram_data_out ),
+    .data_out_E   ( memwr_xram_data_in  ),
 
-    .stb_F      ( proc0_stb           ),
-    .ack_F      ( proc0_ack           ),
-    .wr_F       ( write0_xram         ),
-    .addr_F     ( proc0_addr          ),
-    .data_in_F  ( proc0_data_in       ),
-    .data_out_F ( proc0_data_out      ),
+    .stb_F        ( proc0_stb           ),
+    .ack_F        ( proc0_ack           ),
+    .wr_F         ( write0_xram         ),
+    .addr_F       ( proc0_addr          ),
+    .data_in_F    ( proc0_data_in       ),
+    .data_out_F   ( proc0_data_out      ),
 
-    .stb        ( stb_out             ),
-    .ack        ( ack_in              ),
-    .wr         ( wr_out              ),
-    .addr       ( addr_out            ),
-    .data_in    ( memarbiter_data_in  ),
-    .data_out   ( memarbiter_data_out ) 
+    .stb          ( stb_out             ),
+    .ack          ( ack_in              ),
+    .wr           ( wr_out              ),
+    .addr         ( addr_out            ),
+    .data_in      ( memarbiter_data_in  ),
+    .data_out     ( memarbiter_data_out ) 
 );
 
 oc8051_xram oc8051_xram_i (
@@ -320,6 +322,7 @@ oc8051_xram oc8051_xram_i (
 oc8051_page_table oc8051_page_table_i (
     .clk           ( clk                ),
     .rst           ( rst                ),
+    .accesser      ( arbit_holder       ),
     .pt_wr         ( write_pt           ),
     .xram_wr       ( wr_out             ),
     .xram_stb      ( stb_out            ),

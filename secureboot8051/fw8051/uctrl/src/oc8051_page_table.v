@@ -10,6 +10,7 @@
 `include "oc8051_defines.v"
 
 module oc8051_page_table (clk, rst, 
+	accesser,
 	pt_wr,
 	xram_wr,
 	xram_stb,
@@ -31,6 +32,7 @@ module oc8051_page_table (clk, rst,
 input wire clk, rst, pt_wr, xram_wr, xram_stb, priv_lvl, pt_stb, ia_stb;
 input wire [15:0] xram_addr;
 input wire [7:0] xram_data_in;
+input wire [2:0] accesser;
 
 output wire wr_en, rd_en, pt_addr_range, ia_addr_range, pt_ack, ia_ack;
 output wire [7:0] pt_data_out, ia_data_out;
@@ -43,7 +45,7 @@ wire [7:0] rd_enabled [31:0];
 
 // internal wires to keep track of address range and what set of regs is being used
 wire pt_in_wr_range, pt_in_rd_range, pt_wr_reg_use, pt_rd_reg_use;
-wire ia_addr_rwn, ia_addr_hi, ia_addr_lo;
+wire ia_addr_rwn, ia_addr_hi, ia_addr_lo, ia_addr_src;
 wire [7:0] data_out_wr, data_out_rd;
 
 // possible ranges for addresses involving pt registers
@@ -54,6 +56,7 @@ localparam PT_RD_ADDR_END    = 16'hffbf;
 localparam IA_ADDR_RWN       = 16'hffc0;
 localparam IA_ADDR_HI		 = 16'hffc1;
 localparam IA_ADDR_LO		 = 16'hffc2;
+localparam IA_ADDR_SRC       = 16'hffc3;
 
 // find the range of the addresses (or that it isn't in the page table ranges)
 assign pt_in_wr_range = ((xram_addr >= PT_WR_ADDR_START) && (xram_addr <= PT_WR_ADDR_END));
@@ -62,9 +65,10 @@ assign pt_addr_range  = (pt_in_wr_range || pt_in_rd_range);
 
 // find out if the illegal access registers are being accessed
 assign ia_addr_rwn = (xram_addr == IA_ADDR_RWN);
-assign ia_addr_hi = (xram_addr == IA_ADDR_HI);
-assign ia_addr_lo = (xram_addr == IA_ADDR_LO);
-assign ia_addr_range  = (ia_addr_rwn || ia_addr_hi || ia_addr_lo);
+assign ia_addr_hi  = (xram_addr == IA_ADDR_HI);
+assign ia_addr_lo  = (xram_addr == IA_ADDR_LO);
+assign ia_addr_src = (xram_addr == IA_ADDR_SRC);
+assign ia_addr_range = (ia_addr_rwn || ia_addr_hi || ia_addr_lo || ia_addr_src);
 
 // figure out if page table reg should be read/written to, and if so, which section (wr_en or rd_en)
 assign pt_wr_reg_use = priv_lvl && pt_stb && pt_in_wr_range;
@@ -174,16 +178,19 @@ reg32byte reg32byte1(
 // for ia's last illegal access address and type of access
 reg [15:0]  ia_addr_reg;
 reg [1:0]   ia_rwn_reg;
+reg [2:0]   illegal_src;
 
 // type of illegal access
 wire illegal_wr = (xram_stb && xram_wr && !wr_en);
 wire illegal_rd = (xram_stb && !xram_wr && !rd_en);
 
 wire [15:0] ia_reg_next = (illegal_wr || illegal_rd) ? xram_addr : ia_addr_reg;
+wire [2:0]  ia_src_next = (illegal_wr || illegal_rd) ? accesser  : illegal_src;
 
-assign ia_data_out = ia_addr_lo ? ia_addr_reg[7:0]  : 
-                 	 ia_addr_hi ? ia_addr_reg[15:8] : 
-                   	 {6'b000000, ia_rwn_reg};
+assign ia_data_out = ia_addr_rwn ? {6'b000000, ia_rwn_reg} :
+					 ia_addr_lo  ? ia_addr_reg[7:0]        : 
+                 	 ia_addr_hi  ? ia_addr_reg[15:8]       : 
+                   	 {5'b00000, illegal_src};
 
 assign ia_ack = (ia_stb && ia_addr_range);
 
@@ -193,9 +200,11 @@ begin
     if (rst) begin
         ia_addr_reg <= 16'b0;
         ia_rwn_reg  <= 2'b00;
+        illegal_src <= 3'b000;
     end 
     else begin
         ia_addr_reg <= ia_reg_next;
+        illegal_src <= ia_src_next;
 
      	if (illegal_wr) begin
      		ia_rwn_reg <= 2'b01;
