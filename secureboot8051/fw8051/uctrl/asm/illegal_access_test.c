@@ -24,7 +24,7 @@ void main() {
     __xdata __at(0xFF00) unsigned char aes_data[256];
     __xdata __at(0x0800) unsigned char xram_data[256];
     __xdata __at(0x1200) unsigned char xram_data_two[256];
-    __xdata __at(0xffc0) unsigned char ia_regs[4];
+    __xdata __at(0xffc0) unsigned char ia_regs[6];
     int i;
 
 
@@ -150,6 +150,16 @@ void main() {
     pt_wren[2] = 0x00;
     pt_rden[2] = 0x00;
 
+    // test repeated illegal accesses
+    xram_data_two[9] = 0x99;
+    xram_data_two[3] = 0x30;
+    P0 = xram_data_two[9];
+    P0 = xram_data_two[3];
+    xram_data_two[4] = 0x56;
+
+    // now look at pc for last illegal access
+    P0 = ia_regs[4];
+    P0 = ia_regs[5];
 
 
     /*
@@ -179,6 +189,10 @@ void main() {
     // this should (still) indicate that the processor was the last illegal accesser (0x00)
     P0 = ia_regs[3];
 
+    // check pc from illegal access
+    P0 = ia_regs[4];
+    P0 = ia_regs[5];
+
     for (i = 0; i < 16; i++) 
     {
         aes_data[0x10 + i] = i * i * i;
@@ -193,10 +207,19 @@ void main() {
     // this should indicate that aes was last illegal accesser (0x01)
     P0 = ia_regs[3];
 
+    // make sure illegal access pc wasn't affected by aes illegal access
+    P0 = ia_regs[4];
+    P0 = ia_regs[5];
+
+    // make illegal access using processor
     P0 = xram_data[0];
 
     // this should indicate that the processer was last illegal accesser (0x00)
     P0 = ia_regs[3];
+
+    // check pc from illegal access
+    P0 = ia_regs[4];
+    P0 = ia_regs[5];
 
     quit();
 }

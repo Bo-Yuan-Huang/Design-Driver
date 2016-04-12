@@ -5,6 +5,7 @@
 module oc8051_xiommu (
     clk, 
     rst, 
+    pc,
     proc_wr,
     proc_addr, 
     proc_data_in, 
@@ -48,6 +49,7 @@ input [7:0] proc_data_in;
 input [7:0] proc0_data_in;
 input [15:0] proc_addr;
 input [15:0] proc0_addr;
+input [15:0] pc;
 output [7:0] proc_data_out;
 output [7:0] proc0_data_out;
 output proc_ack;
@@ -322,6 +324,7 @@ oc8051_xram oc8051_xram_i (
 oc8051_page_table oc8051_page_table_i (
     .clk           ( clk                ),
     .rst           ( rst                ),
+    .pc            ( pc                 ),
     .accesser      ( arbit_holder       ),
     .pt_wr         ( write_pt           ),
     .xram_wr       ( wr_out             ),

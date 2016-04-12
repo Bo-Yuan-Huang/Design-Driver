@@ -9,7 +9,7 @@
 
 `include "oc8051_defines.v"
 
-module oc8051_page_table (clk, rst, 
+module oc8051_page_table (clk, rst, pc,
 	accesser,
 	pt_wr,
 	xram_wr,
@@ -30,6 +30,7 @@ module oc8051_page_table (clk, rst,
 );
 
 input wire clk, rst, pt_wr, xram_wr, xram_stb, priv_lvl, pt_stb, ia_stb;
+input wire [15:0] pc;
 input wire [15:0] xram_addr;
 input wire [7:0] xram_data_in;
 input wire [2:0] accesser;
@@ -57,6 +58,8 @@ localparam IA_ADDR_RWN       = 16'hffc0;
 localparam IA_ADDR_HI		 = 16'hffc1;
 localparam IA_ADDR_LO		 = 16'hffc2;
 localparam IA_ADDR_SRC       = 16'hffc3;
+localparam IA_PC_HI          = 16'hffc4;
+localparam IA_PC_LO          = 16'hffc5;
 
 // find the range of the addresses (or that it isn't in the page table ranges)
 assign pt_in_wr_range = ((xram_addr >= PT_WR_ADDR_START) && (xram_addr <= PT_WR_ADDR_END));
@@ -68,7 +71,9 @@ assign ia_addr_rwn = (xram_addr == IA_ADDR_RWN);
 assign ia_addr_hi  = (xram_addr == IA_ADDR_HI);
 assign ia_addr_lo  = (xram_addr == IA_ADDR_LO);
 assign ia_addr_src = (xram_addr == IA_ADDR_SRC);
-assign ia_addr_range = (ia_addr_rwn || ia_addr_hi || ia_addr_lo || ia_addr_src);
+assign ia_pc_hi    = (xram_addr == IA_PC_HI);
+assign ia_pc_lo    = (xram_addr == IA_PC_LO);
+assign ia_addr_range = (ia_addr_rwn || ia_addr_hi || ia_addr_lo || ia_addr_src || ia_pc_hi || ia_pc_lo);
 
 // figure out if page table reg should be read/written to, and if so, which section (wr_en or rd_en)
 assign pt_wr_reg_use = priv_lvl && pt_stb && pt_in_wr_range;
@@ -175,10 +180,16 @@ reg32byte reg32byte1(
 	.reg_out 	(unsplit_pages_rd)
 );
 
-// for ia's last illegal access address and type of access
+// for ia's last illegal access address and type of access, as well as shift register due to pc delay
 reg [15:0]  ia_addr_reg;
 reg [1:0]   ia_rwn_reg;
 reg [2:0]   illegal_src;
+reg [15:0]  pc_input_reg;
+reg [15:0]  pc_intermediate_reg1;
+reg [15:0]  pc_intermediate_reg2;
+reg [15:0]  pc_intermediate_reg3;
+reg [15:0]  pc_ia_reg;
+reg [1:0]   pc_counter;
 
 // type of illegal access
 wire illegal_wr = (xram_stb && xram_wr && !wr_en);
@@ -190,7 +201,8 @@ wire [2:0]  ia_src_next = (illegal_wr || illegal_rd) ? accesser  : illegal_src;
 assign ia_data_out = ia_addr_rwn ? {6'b000000, ia_rwn_reg} :
 					 ia_addr_lo  ? ia_addr_reg[7:0]        : 
                  	 ia_addr_hi  ? ia_addr_reg[15:8]       : 
-                   	 {5'b00000, illegal_src};
+                   	 ia_addr_src ? {5'b00000, illegal_src} :
+                   	 ia_pc_lo    ? pc_ia_reg[7:0]          : pc_ia_reg[15:8];
 
 assign ia_ack = (ia_stb && ia_addr_range);
 
@@ -198,13 +210,37 @@ assign ia_ack = (ia_stb && ia_addr_range);
 always @(posedge clk)
 begin
     if (rst) begin
-        ia_addr_reg <= 16'b0;
-        ia_rwn_reg  <= 2'b00;
-        illegal_src <= 3'b000;
+        ia_addr_reg          <= 16'h0000;
+        ia_rwn_reg           <= 2'b00;
+        illegal_src          <= 3'b000;
+        pc_input_reg         <= 16'h0000;
+        pc_intermediate_reg1 <= 16'h0000;
+        pc_intermediate_reg2 <= 16'h0000;
+        pc_intermediate_reg3 <= 16'h0000;
+        pc_ia_reg            <= 16'h0000;
+        pc_counter           <= 2'b00;
     end 
     else begin
         ia_addr_reg <= ia_reg_next;
         illegal_src <= ia_src_next;
+        pc_input_reg <= pc;
+        pc_intermediate_reg1 <= pc_input_reg;
+        pc_intermediate_reg2 <= pc_intermediate_reg1;
+        pc_intermediate_reg3 <= pc_intermediate_reg2;
+
+        // when illegal access occurs, wait another two cycles
+        if (illegal_wr || illegal_rd) begin
+        	pc_counter <= pc_counter + 2'b01;
+        end else begin
+        	pc_counter <= 2'b00;
+        end
+
+        // after these two cycles, load in the appropriate pc from illegal access if from the processor
+        if (pc_counter == 2'b10) begin
+        	if (illegal_src == 3'b000) begin
+        		pc_ia_reg <= pc_intermediate_reg3;
+        	end
+        end
 
      	if (illegal_wr) begin
      		ia_rwn_reg <= 2'b01;
