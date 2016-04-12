@@ -1,6 +1,4 @@
 #include <reg51.h>
-#include "rsakeyin.h"
-#include "prog.h"
 
 /*
  * Copyright (c) 1999-2001 Tony Givargis.  Permission to copy is granted
@@ -76,29 +74,29 @@ unsigned char *data;
 // set up RSA
 void RSAinit();
 // encrypt msg and put result in exp_reg_opaddr
-void encrypt(unsigned char* msg, int len);
+void encrypt(unsigned char* msg, unsigned int len);
 // decrypt msg and put result in exp_reg_opaddr->m
 int decrypt(unsigned char* msg);
 // sign message, put signature in exp_reg_opaddr
-void sign(unsigned char* message, int len);
+void sign(unsigned char* message, unsigned int len);
 // verify that msg matches sign, ret 1 if match, 0 if not 
-unsigned char verifySignature(unsigned char* msg, int len, unsigned char* sign);
+unsigned char verifySignature(unsigned char* msg,unsigned int len, unsigned char* sign);
 
-void pad(int len);
+void pad(unsigned int len);
 int unpad();
-void sha1(unsigned char *m, int len);
-void HMAC(unsigned char *key, int klen, unsigned char *message, int mlen);
-void PRGinit(unsigned char *seed, int slen, unsigned char *state);
+void sha1(unsigned char *m, unsigned int len);
+void HMAC(unsigned char *key, unsigned int klen, unsigned char *message, unsigned int mlen);
+void PRGinit(unsigned char *seed, unsigned int slen, unsigned char *state);
 void PRG(unsigned char *prg);
 void OAEP();
 int removeOAEP();
 
 // copy length bytes from data in XRAM to startaddr
-void load(unsigned char* data, int length, unsigned int startaddr, unsigned char skipread);
+void load(unsigned char* data, unsigned int length, unsigned int startaddr, unsigned char skipread);
 
 
 // set up data transfer
-void load(unsigned char* data, int length, unsigned int startaddr, unsigned char skipread)
+void load(unsigned char* data, unsigned int length, unsigned int startaddr, unsigned char skipread)
 {
     memwr_reg_rd_addr = (unsigned int)data;
     memwr_reg_wr_addr = startaddr;
@@ -116,12 +114,12 @@ void RSAinit()
     data = (__xdata unsigned char*)sha_reg_rd_addr;
 }
 
-void pad(int len)
+void pad(unsigned int len)
 {
-    int i;
+    unsigned int i;
     
     exp_reg_m.m[len] = 1;
-    for(i=len+1; i < N-K1-K2-1; i++)
+    for(i=len+1; i < sizeof(exp_reg_m.m); i++)
 	exp_reg_m.m[i] = 0;
 }
 
@@ -130,7 +128,7 @@ int unpad()
 {
     int len;
 
-    for(len = N-K1-K2-2; len>=0; len--)
+    for(len = sizeof(exp_reg_m.m)-1; len>=0; len--)
     {
 	if(decrypted->m[len] == 1)
 	    break;
@@ -141,10 +139,10 @@ int unpad()
 }
 
 // set up message for sha
-void sha1(unsigned char *m, int len)
+void sha1(unsigned char *m, unsigned int len)
 {
-    int i;
-    int mlen;
+    unsigned int i;
+    unsigned int mlen;
 
     // setup data
     mlen = ((len+4) & 0xFFC0) + 64; // round len+5 up to multiple of 64
@@ -164,16 +162,15 @@ void sha1(unsigned char *m, int len)
     data[mlen-1] = (len << 3) & 0xFF;
     data[mlen-2] = (len >> 5) & 0xFF;
     data[mlen-3] = (len >> 13) & 0xFF;
-    data[mlen-4] = (len >> 21) & 0xFF;
 
     // encrypt with sha1
     sha_reg_start = 1;
     while(sha_reg_state != 0);
 }
 
-void HMAC(unsigned char *key, int klen, unsigned char *message, int mlen)
+void HMAC(unsigned char *key, unsigned int klen, unsigned char *message, unsigned int mlen)
 {
-    int i;
+    unsigned int i;
     
     // inner hash
     for(i=0; i<klen; i++)
@@ -196,9 +193,9 @@ void HMAC(unsigned char *key, int klen, unsigned char *message, int mlen)
 }
 
 // copy seed into the PRG state
-void PRGinit(unsigned char *seed, int slen, unsigned char *state)
+void PRGinit(unsigned char *seed, unsigned int slen, unsigned char *state)
 {
-    int i;
+    unsigned int i;
     for(i=0; i<slen && i < 20; i++)
 	state[i] = seed[i];
     for(i=slen; i<20; i++)
@@ -227,7 +224,7 @@ const unsigned char one[] = {0xA2, 0x66, 0x95, 0x53,
 // generate random number, put in hash
 void PRG(unsigned char* state)
 {
-    int i;
+    unsigned int i;
     unsigned char next[20];
 
     HMAC(state, 20, one, 32);
@@ -261,7 +258,7 @@ const unsigned char Hseed[] = {
     
 void OAEP()
 {
-    int i,j;
+    unsigned int i,j;
 
     // K1 0s
     for(i=0; i<K1; i++)
@@ -298,7 +295,7 @@ void OAEP()
 // return 1 if succeed, 0 if fail
 int removeOAEP()
 {
-    int i,j;
+    unsigned int i,j;
 
     // find r
     HMAC(Hseed, 20, decrypted->m, N-K2-1);
@@ -329,8 +326,8 @@ int removeOAEP()
 }
 
 // encrypt message, len bytes
-void encrypt(unsigned char* msg, int len){
-    int i;
+void encrypt(unsigned char* msg, unsigned int len){
+    unsigned int i;
 
     if(msg != exp_reg_m.m)
 	for (i=0; i<len; i++)
@@ -345,7 +342,7 @@ void encrypt(unsigned char* msg, int len){
 // decrypt msg, puts decrypted text in exp_reg_opaddr
 // returns length of decrypted message
 int decrypt(unsigned char* msg){
-    int i;
+    unsigned int i;
 
     if(msg != (unsigned char*)exp_reg_m)
 	for(i=0; i<N; i++)
@@ -373,15 +370,15 @@ const unsigned char SIGNSEED[] = {
     0x4A, 0x9A, 0xAC, 0xA8
 };
 
-void sign(unsigned char* message, int len){
+void sign(unsigned char* message, unsigned int len){
     sha1(message, len);
     //HMAC(SIGNSEED, 32, message, len);
     encrypt(hash,20);
 }
 
-unsigned char verifySignature(unsigned char* msg, int len, unsigned char* signature){
-    int i;
-    int slen;
+unsigned char verifySignature(unsigned char* msg, unsigned int len, unsigned char* signature){
+    unsigned int i;
+    unsigned int slen;
 
     // decrypt the signature
     slen = decrypt(signature);
@@ -411,9 +408,9 @@ void quit() {
 }
 
 void main() {
-    int i;
-    int size;
-    int num;
+    unsigned int i;
+    unsigned int size;
+    unsigned int num;
     struct image* im;
 
     // enable reading and writing everywhere for now

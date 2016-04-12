@@ -45,20 +45,20 @@ output memwr_step;
 
 
 // FIRST ADDRESS ALLOCATED TO THIS UNIT.
-localparam MEMWR_ADDR_START = 16'hfe40;
+localparam MEMWR_ADDR_START = 16'hf9f0;
 // see also MEMWR_ADDR_END.
 
 // The addresses of the registers.
-localparam MEMWR_REG_START     = 16'hfe40; // 1 byte
-localparam MEMWR_REG_STATE     = 16'hfe41; // 1 byte
-localparam MEMWR_REG_RD_ADDR   = 16'hfe42; // 2 bytes
-localparam MEMWR_REG_WR_ADDR   = 16'hfe44; // 2 bytes 
-localparam MEMWR_REG_LEN       = 16'hfe46; // 2 bytes
-localparam MEMWR_REG_BUFF_ADDR = 16'hfe48; // 2 bytes  // index in memwr buffer
-localparam MEMWR_REG_MODE      = 16'hfe49; // 1 byte   // bit 0=rd_en, bit 1=wr_en
+localparam MEMWR_REG_START     = 16'hf9f0; // 1 byte
+localparam MEMWR_REG_STATE     = 16'hf9f1; // 1 byte
+localparam MEMWR_REG_RD_ADDR   = 16'hf9f2; // 2 bytes
+localparam MEMWR_REG_WR_ADDR   = 16'hf9f4; // 2 bytes 
+localparam MEMWR_REG_LEN       = 16'hf9f6; // 2 bytes
+localparam MEMWR_REG_BUFF_ADDR = 16'hf9f8; // 2 bytes  // index in memwr buffer
+localparam MEMWR_REG_MODE      = 16'hf9f9; // 1 byte   // bit 0=rd_en, bit 1=wr_en
 
 // END OF THE ADDRESS RANGE ALLOCATED TO THIS UNIT.
-localparam MEMWR_ADDR_END = 16'hfe50;
+localparam MEMWR_ADDR_END = 16'hfa00;
 // see also MEMWR_ADDR_START.
 
 // response to the xiommu module.

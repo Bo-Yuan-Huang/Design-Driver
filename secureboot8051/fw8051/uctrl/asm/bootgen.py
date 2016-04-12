@@ -275,7 +275,8 @@ class Module:
 
 class Image:
     def __init__(self, data, exp, mod):
-        N = int(math.ceil(len(data)/256.))
+        S = 256
+        N = int(math.ceil(len(data)*1./S))
         self.modules = [0]*N
 
         # keys
@@ -285,7 +286,7 @@ class Image:
         self.head.extend(bytearray([N & 0xFF, N >> 8, 0, 0]))
         # modules data
         for i in xrange(N):
-            module = Module(data[i*256:min((i+1)*256,len(data))], i*256)
+            module = Module(data[i*S:min((i+1)*S,len(data))], i*S)
             self.modules[i] = module
             addr = module.addr
             self.head.extend(bytearray([addr & 0xFF, addr >> 8, 0, 0]))

@@ -1,17 +1,20 @@
-#ifdef CBMC
+#ifdef C
 #include <openssl/sha.h>
 #include <openssl/bn.h>
 #include <stdio.h>
 #define XDATA_VAR(addr, type, name) type name
 #define XDATA_ARR(addr, size, type, name) type name[size]
 #define XDATA_PTR(addr, type, name) type* name
+#define XDATA_STRUCT(addr, type, name) struct type name
 #define XDATA
 #define CODE
+#define BUFF_SIZE 0x2000
 #else
 #include <reg51.h>
 #define XDATA_VAR(addr, type, name) __xdata __at(addr) type name
 #define XDATA_ARR(addr, size, type, name) __xdata __at(addr) type name[size]
 #define XDATA_PTR(addr, type, name) __xdata type* __xdata __at(addr) name
+#define XDATA_STRUCT(addr, type, name) __xdata __at(addr) struct type name
 #define XDATA __xdata
 #define CODE __code
 #endif
@@ -25,104 +28,396 @@
  */
 
 /*---------------------------------------------------------------------------*/
-
+#ifdef CBMC 
+#define N 16
+#define H 4
+#define K1 4
+#define K2 4
+#else
 #define N 256
+#define H 20
 #define K1 16
 #define K2 16
-
-XDATA_VAR(0xFE00, unsigned char, sha_reg_start);
-XDATA_VAR(0xFE01, unsigned char, sha_reg_state);
-XDATA_PTR(0xFE02, unsigned char, sha_reg_rd_addr);
-XDATA_PTR(0xFE04, unsigned char, sha_reg_wr_addr);
-XDATA_VAR(0xFE06, unsigned int, sha_reg_len);
-
-XDATA_VAR(0xFD00, unsigned char, exp_reg_start);
-XDATA_VAR(0xFD01, unsigned char, exp_reg_state);
-XDATA_PTR(0xFD02, unsigned char, exp_reg_opaddr);
-XDATA_ARR(0xFC00, N, unsigned char, exp_reg_n);
-XDATA_ARR(0xFB00, N, unsigned char, exp_reg_exp);
-XDATA_VAR(0xFA00, struct RSAmsg, exp_reg_m);
-
-XDATA_VAR(0xFE40, unsigned char, memwr_reg_start);
-XDATA_VAR(0xFE41, unsigned char, memwr_reg_state);
-XDATA_PTR(0xFE42, unsigned char, memwr_reg_rd_addr);
-XDATA_PTR(0xFE44, unsigned char, memwr_reg_wr_addr);
-XDATA_VAR(0xFE46, unsigned int, memwr_reg_len);
-
-// state of PRG for R and G in OAEP
-XDATA_ARR(0xFD10, 20, unsigned char, rprg);
-XDATA_ARR(0xFD30, 20, unsigned char, gprg);
+#endif
 
 struct RSAmsg{
     unsigned char padbyte;
     unsigned char m[N-K2-K1-1];
     unsigned char zeros[K1];
     unsigned char r[K2];
+} *decrypted;
+
+struct acc_regs{
+    unsigned char start;
+    unsigned char state;
+    XDATA unsigned char *rd_addr;
+    XDATA unsigned char *wr_addr;
+    unsigned int len;
 };
 
-struct RSAmsg *decrypted;
-unsigned char *hash;
-unsigned char *data;
+XDATA_VAR(0xFE00, struct acc_regs, sha_regs);
+XDATA_VAR(0xF9F0, struct acc_regs, memwr_regs);
+
+struct {
+    struct RSAmsg m;
+    unsigned char exp[N];
+    unsigned char n[N];
+    unsigned char start;
+    unsigned char state;
+    unsigned char *opaddr;
+} XDATA_VAR(0xFA00, , rsa_regs);
+
+#ifndef C
+// page table permissions
+XDATA_ARR(0xFF80, 32, unsigned char, pt_wren);
+XDATA_ARR(0xFFA0, 32, unsigned char, pt_rden);
+#endif
+
+// state of PRG for G in OAEP
+XDATA_ARR(0xF8E0, H, unsigned char, gprg);
+
+#ifdef C
+#define PAGES 11
+struct {
+    unsigned char* start[PAGES];
+    unsigned char* end[PAGES];
+    unsigned char locked[PAGES];
+} pt = {{(unsigned char*)&memwr_regs,
+	 (unsigned char*)&rsa_regs.m, 
+	 (unsigned char*)&rsa_regs.exp, 
+	 (unsigned char*)&rsa_regs.start,
+	 (unsigned char*)&sha_regs, 
+	 gprg},
+	{(unsigned char*)(&memwr_regs+1),
+	 (unsigned char*)&rsa_regs.exp,
+	 (unsigned char*)&rsa_regs.start,
+	 (unsigned char*)(&rsa_regs+1),
+	 (unsigned char*)(&sha_regs+1),
+	 (unsigned char*)(&gprg+1)},
+	{1,1,1,1,1,1}};
+#endif
 
 // for locking and unlocking memory
-void lock_wr(unsigned char* startaddr, unsigned char* endaddr)
+// lock/unlock the pages spanning [startaddr, endaddr)
+// return 1 if succeed, 0 if fail
+int lock_wr(unsigned char* startaddr, unsigned char* endaddr)
 {
-    // make unused argument warnings go away
-    (void) startaddr;
-    (void) endaddr;
+#ifdef C
+    int found = 0;
+    unsigned int i;
+    for(i=0; i < PAGES; i++)
+    {
+	if(startaddr >= pt.start[i] && endaddr <= pt.end[i]){
+	    found = 1;
+	    pt.locked[i] = 1;
+	    break;
+	}
+    }
+#else
+    // index of pt_wren
+    unsigned int curr = (unsigned int)startaddr >> 11;
+    unsigned int end = (unsigned int)endaddr-1 >> 11;
+    // range of pages in pt_wren[i]
+    unsigned int lowpage = (unsigned int)startaddr >> 8 & 7;
+    unsigned int highpage = (unsigned int)endaddr-1 >> 8 & 7;
+
+    // no memory in range
+    if(startaddr > endaddr)
+	return 0;
+
+    // all pages are in the same index of pt_wren
+    if(curr == end)
+	pt_wren[curr] &= (1 << highpage+1) - (1 << lowpage) ^ 0xFF;
+    else{
+	// don't unlock pages below lowpage
+	pt_wren[curr] &= (unsigned char)(0xFF << lowpage & 0xFF);
+	for(;curr < end; curr++)
+	    pt_wren[curr] = 0x00;
+	// don't unlock pages above highpage
+	pt_wren[end] &= (1 << highpage+1) - 1 ^ 0xFF;
+    }
+    return 1;
+#endif
 }
-void unlock_wr(unsigned char* startaddr, unsigned char* endaddr)
+
+int unlock_wr(unsigned char* startaddr, unsigned char* endaddr)
 {
-    // make unused argument warnings go away
-    (void) startaddr;
-    (void) endaddr;
+#ifdef C
+    unsigned int i;
+    int found = 0;
+    for(i=0; i < PAGES; i++)
+    {
+	if(startaddr >= pt.start[i] && endaddr <= pt.end[i]){
+	    found = 1;
+	    pt.locked[i] = 0;
+	    break;
+	}
+    }    
+    return found;
+#else
+    unsigned int curr = (unsigned int)startaddr >> 11;
+    unsigned int end = (unsigned int)endaddr-1 >> 11;
+    unsigned int lowpage = (unsigned int)startaddr >> 8 & 7;
+    unsigned int highpage = (unsigned int)endaddr-1 >> 8 & 7;
+
+    if(startaddr >= endaddr)
+	return 0;
+
+    // similar to lock, except OR replaces AND, and the bits to write are flipped
+    if(curr == end)
+	pt_wren[curr] |= (1 << highpage+1) - (1 << lowpage);
+    else{
+	pt_wren[curr] |= (unsigned char)(0xFF << lowpage & 0xFF);
+	for(;curr < end; curr++)
+	    pt_wren[curr] = 0xFF;
+	pt_wren[end] |= (1 << highpage+1) - 1;
+    }
+    return 1;
+#endif
 }
 
 #ifdef CBMC
+//void assert(int a);
+//unsigned char nondet_uchar();
+//unsigned int nondet_uint();
+/*
+// compare 2 arrays of length len
+// return 0 if equal
+int cmparr(unsigned char* a, unsigned char* b, unsigned int len)
+{
+    unsigned int i;
+    for(i=0; i<len; i++)
+	if(a[i] != b[i])
+	    return 1;
+    return 0;
+}
+*/
+// return array of n nondet bytes
+unsigned char* gen(unsigned char* out, unsigned int n)
+{
+    unsigned int i;
+    for(i=0; i<n; i++)
+	out[i] = nondet_uchar();
+    return out;
+}
+
+// uninterpreted function that takes input array, input length
+// produces output array of H bytes
+unsigned char* uninterp_sha(unsigned char* input, unsigned int inlen, unsigned char* output, unsigned char save)
+{
+    static char* inputs[4];
+    static unsigned int lens[4];
+    static char outputs[4][H];
+    static int total = 0;
+    int i, j;
+    unsigned int match;
+
+    if(!save)
+    {
+	for(i=0; i<H; i++)
+	    output[i] = nondet_uchar();
+	return output;
+    }
+
+    // try and find a match of input with previously seen inputs
+    for(i=0; i<total; i++){
+	if(lens[i] != inlen)  
+	    continue;   // stop comparing if lengths differ
+	for(j=0; j < inlen; j++)
+	    if(input[j] != inputs[i][j])  
+		break;  // stop comparing on first wrong char
+	break;  // input match
+    }
+    if(i < total) // found input match
+	return outputs[i];
+    
+    // make a new random output to return
+    for(i=0; i<H; i++)
+    {
+	output[i] = nondet_uchar();
+	outputs[total][i] = output[i];
+    }
+    return outputs[total++];
+}
+
+unsigned char* uninterp_rsa(unsigned char* input, unsigned char* output)
+{
+    static char* inputs[2];
+    static char outputs[2][N];
+    static int total = 0;
+    int i, j;
+    unsigned int match;
+
+    // try and find a match of input with previously seen inputs
+    for(i=0; i<total; i++){
+	for(j=0; j < N; j++)
+	    if(input[j] != inputs[i][j])  
+		break;  // stop comparing on first wrong char
+	break;  // input match
+    }
+    if(i < total) // found input match
+	return outputs[i];
+    
+    // make a new random output to return
+    for(i=0; i<N; i++)
+    {
+	output[i] = nondet_uchar();
+	outputs[total][i] = output[i];
+    }
+    return outputs[total++];
+}
+
+unsigned char sig_val, addr_val;
+
+void makeimage(unsigned char* arr);
+#endif
+
+#ifdef C
+// return number of unlocked bytes, starting at start addr
+unsigned int writable(unsigned char* start, unsigned char* end)
+{
+    unsigned int bytes = 0;
+    unsigned int tot = end-start;
+    unsigned int i;
+    
+    if(end <= start)
+	return 0;
+
+    for(i=0; i<PAGES; i++)
+    {
+	if(start >= pt.start[i] && start < pt.end[i])
+	{
+	    if(!pt.locked[i])
+		bytes = (unsigned int)((end > pt.end[i] ? pt.end[i] : end) - start);
+	    break;
+	}
+    }
+    if(!bytes)
+	printf("checking %p, %p, %d\n", start, end, bytes);
+    assert(bytes <= (unsigned int) (end-start));
+    return bytes;
+}
+
+// write len bytes from data to addr
+int writecarr(unsigned char* addr, unsigned char* data, unsigned int len)
+{
+    unsigned int i;
+    len = writable(addr, addr+len);
+    for(i=0; i<len; i++)
+	addr[i] = data[i];
+    if(!len) printf("%p locked!\n", addr);
+    return len;
+}
+
+// write H bytes from data to addr
+int writecarrH(unsigned char* addr, unsigned char* data)
+{
+    unsigned int i;
+    unsigned int len = writable(addr, addr+H);
+#ifdef CBMC
+    assert(len < H);
+#endif
+    for(i=0; i<len; i++)
+	addr[i] = data[i];
+    if(!len) printf("%p locked!\n", addr);
+    return len;
+}
+
+// write data to addr
+int writec(unsigned char* addr, unsigned char data)
+{
+    unsigned char unlocked = writable(addr, addr+1);
+    if(unlocked)
+	*addr = data;
+    else printf("%p locked!\n", addr);
+    return unlocked;
+}
+int writei(unsigned int* addr, unsigned int data)
+{
+    unsigned char unlocked = writable((unsigned char*)addr, (unsigned char*)(addr+1));
+    if(unlocked)
+	*addr = data;
+    else printf("%p locked!\n", addr);
+    return unlocked;
+}
+int writeptr(unsigned char** addr, unsigned char* data)
+{
+    unsigned char unlocked = writable((unsigned char*)addr, (unsigned char*)(addr+1));
+    if(unlocked)
+	*addr = data;
+    else printf("%p locked!\n", addr);
+    return unlocked;
+}
+
+unsigned char P0 = 0xFF;
+
 // c abstraction of memwr
 // return 1 if succeed, 0 if fail
 int c_load(unsigned char skipread)
 {
-    static unsigned char buff[0x2000];
+    static unsigned char buff[BUFF_SIZE];
     static unsigned char initial = 1;
-    int i = 0;
+    static unsigned int max;
+    unsigned int stop;
+    unsigned int i = 0;
 
-    memwr_reg_start = 0;
-    memwr_reg_state = 1;
+    writec(&memwr_regs.start, 0);
+    writec(&memwr_regs.state, 1);
 
     // make a program image
     if(initial)
     {
+#ifndef CBMC
 	unsigned int hex;
-	// for now just read from stdin
-	while(scanf("%x",&hex)!=EOF)
+        // read in image
+	while(scanf("%x",&hex)!=EOF && i < BUFF_SIZE)
 	{
 	    buff[i] = hex;
 	    i++;
 	}
+	max = i;
+#else
+	makeimage(buff);
+#endif
 	initial = 0;
     }
-    if(!skipread)
-	for(i=0; i < memwr_reg_len; i++)
-	    buff[i] = memwr_reg_rd_addr[i];
-    memwr_reg_state = 2;
-    for(i=0; i< memwr_reg_len; i++)
-	memwr_reg_wr_addr[i] = buff[i];
-    memwr_reg_state = 0;    
+
+    if(!skipread){
+	stop = memwr_regs.len > BUFF_SIZE ? BUFF_SIZE : memwr_regs.len;
+	if(stop > max) max = stop;
+	for(i=0; i < stop; i++)
+	    buff[i] = memwr_regs.rd_addr[i];
+    }
+    else stop = max > memwr_regs.len ? memwr_regs.len : max;
+
+    memwr_regs.state = 2;
+    writecarr(memwr_regs.wr_addr, buff, stop);
+    memwr_regs.state = 0;    
 }
 
-void c_sha(int len)
+// generate some H byte output
+// save result in buffer if indicated
+void c_sha(int len, unsigned char save)
 {
-    sha_reg_start = 0;
-    sha_reg_state = 1;
-    SHA1(sha_reg_rd_addr, len, sha_reg_wr_addr);
-    sha_reg_state = 0;
+    unsigned int i;
+    unsigned char hash[H];
+    writec(&sha_regs.start, 0);
+    writec(&sha_regs.state, 1);
+#ifndef CBMC
+    SHA1(sha_regs.rd_addr, len, hash);
+#else
+    uninterp_sha(sha_regs.rd_addr, len, hash, save);
+#endif
+    writecarrH(sha_regs.wr_addr, hash);
+
+    writec(&sha_regs.state, 0);
 }
 
 // C implementation of modular exponentiation
 // return 1 if succeed, 0 if fail
 int c_exp()
 {
+#ifndef CBMC
     BIGNUM *r = BN_new();
     BIGNUM *a = BN_new();
     BIGNUM *p = BN_new();
@@ -131,19 +426,19 @@ int c_exp()
     if(!ctx)
 	return 0;
 
-    exp_reg_start = 0;
-    exp_reg_state = 1;
+    writec(&rsa_regs.start, 0);
+    writec(&rsa_regs.state, 1);
 
     // initialize values
-    a = BN_bin2bn((unsigned char*)&exp_reg_m, N, a);
-    p = BN_bin2bn(exp_reg_exp, N, p);
-    m = BN_bin2bn(exp_reg_n, N, m);
+    a = BN_bin2bn((unsigned char*)&rsa_regs.m, N, a);
+    p = BN_bin2bn(rsa_regs.exp, N, p);
+    m = BN_bin2bn(rsa_regs.n, N, m);
 
     // do exponentiation
     BN_mod_exp(r, a, p, m, ctx); //r = a^p mod m
     // write back
-    exp_reg_state = 2;
-    if(BN_bn2bin(r, exp_reg_opaddr) != N)
+    writec(&rsa_regs.state, 2);
+    if(writable(rsa_regs.opaddr, rsa_regs.opaddr+N) != N || BN_bn2bin(r, rsa_regs.opaddr) != N)
 	return 0;
 
     // clear and free
@@ -152,121 +447,173 @@ int c_exp()
     BN_free(a);
     BN_free(p);
     BN_free(m);
+#else
+    writec(&rsa_regs.start, 0);
+    writec(&rsa_regs.state, 1);
 
-    exp_reg_state = 0;
+    uninterp_rsa((unsigned char*)&rsa_regs.m, rsa_regs.opaddr);
+#endif
+    writec(&rsa_regs.state, 0);
+    return 1;
 }
+#else
+#define writecarr(addr, data, len) for(i=0; i<len; i++) addr[i]=data[i];
+#define writecarrH(addr, data) for(i=0; i<H; i++) addr[i]=data[i];
+#define writec(addr, data) *(addr) = data;
+#define writei(addr, data) *(addr) = data;
+#define writeptr(addr, data) *(addr) = data;
+#define c_load(skipread)
+#define c_sha(len, save)
+#define c_exp()
 #endif
 
 // set up data transfer
 // copy data of length bytes to startaddr
 // if skipread, don't read from data, just write values already in memwr buffer to startaddr
-void load(unsigned char* data, int length, unsigned char* startaddr, unsigned char skipread)
+void load(unsigned char* data, unsigned int length, unsigned char* startaddr, unsigned char skipread)
 {
-    memwr_reg_rd_addr = (XDATA unsigned char*)data;
-    memwr_reg_wr_addr = (XDATA unsigned char*)startaddr;
-    memwr_reg_len = length;
-    memwr_reg_start = (unsigned char)(skipread << 1 | 1);
-#ifdef CBMC
-    c_load(skipread);
-#endif
+    writeptr(&memwr_regs.rd_addr,(XDATA unsigned char*)data);
+    writeptr(&memwr_regs.wr_addr, (XDATA unsigned char*)startaddr);
+    writei(&memwr_regs.len, length);
+    writec(&memwr_regs.start, (unsigned char)(skipread << 1 | 1)); // load in HW
 
+    c_load(skipread);  // load in SW
+#ifndef CBMC
     // wait for load to finish
-    while(memwr_reg_state != 0);
+    while(memwr_regs.state != 0);
+#endif
 }
 
 void RSAinit()
 {
-    decrypted = (struct RSAmsg*)exp_reg_opaddr;
-    hash = sha_reg_wr_addr;
-    data = sha_reg_rd_addr;
+    decrypted = (struct RSAmsg*)rsa_regs.opaddr;
 }
 
 // returns length of message
 int unpad()
 {
-    int len;
+  int len;
 
-    for(len = N-K1-K2-2; len>=0; len--)
-    {
-	if(decrypted->m[len] == 1)
-	    break;
-	else if(decrypted->m[len] != 0)
-	    return -1;
-    }
-    return len;
+  for(len = sizeof(rsa_regs.m.m)-1; len>=0; len--)
+  {
+      if(decrypted->m[len] == 1)
+	  break;
+      else if(decrypted->m[len] != 0)
+	  return -1;
+  }
+  return len;
 }
 
 // set up message and compute SHA
-void sha1(unsigned char *m, int len)
+void sha1(unsigned char *m, unsigned int len, unsigned char save)
 {
-    int i;
-    int mlen;
-
+    unsigned int i;
+    unsigned int mlen;
+#ifdef CBMC
+    unsigned char* zeros;
+#endif
+    (void) save;
     // setup data
     mlen = ((len+4) & 0xFFC0) + 64; // round len+5 up to multiple of 64
-    
-    if(m != sha_reg_rd_addr) // don't copy if already in right address
-	load(m, len, sha_reg_rd_addr, 0); // copy m
+    unlock_wr(sha_regs.rd_addr, sha_regs.rd_addr+mlen);
+
+    if(m != sha_regs.rd_addr) // don't copy if already in right address
+	load(m, len, sha_regs.rd_addr, 0); // copy m
 
     // add 100.. padding
-    data[len] = 0x80;
-
+    writec(sha_regs.rd_addr+len, 0x80);
+#ifndef CBMC
     for(i=len+1; i<mlen; i++)
-	data[i] = 0;
-
+	writec(sha_regs.rd_addr+i, 0);
+#else
+    zeros = (unsigned char*)calloc(mlen-len-1,1);
+    writecarr(sha_regs.rd_addr+len+1, zeros, mlen-len-1);
+#endif
     // insert length in bits
-    data[mlen-1] = (len << 3) & 0xFF;
-    data[mlen-2] = (len >> 5) & 0xFF;
-    data[mlen-3] = (len >> 13) & 0xFF;
-    data[mlen-4] = (len >> 21) & 0xFF;
+    writec(sha_regs.rd_addr+mlen-1, (len << 3) & 0xFF);
+    writec(sha_regs.rd_addr+mlen-2, (len >> 5) & 0xFF);
+    writec(sha_regs.rd_addr+mlen-3, (len >> 13) & 0xFF);
 
     // encrypt with sha1
-    lock_wr(sha_reg_rd_addr, sha_reg_rd_addr+sha_reg_len);
-    sha_reg_len = mlen;
-    sha_reg_start = 1;
-#ifdef CBMC
-    c_sha(len);
+    lock_wr(sha_regs.rd_addr, sha_regs.rd_addr+mlen);
+    unlock_wr(sha_regs.wr_addr, sha_regs.wr_addr+H);
+    unlock_wr(&sha_regs.start, (unsigned char*)(&sha_regs.len));
+    writei(&sha_regs.len, mlen);
+    writec(&sha_regs.start, 1);  // start HW
+
+    c_sha(len, save);         // do SW
+#ifndef CBMC
+    while(sha_regs.state != 0);
 #endif
-    while(sha_reg_state != 0);
-    unlock_wr(sha_reg_rd_addr, sha_reg_rd_addr+sha_reg_len);
+    lock_wr(sha_regs.wr_addr, sha_regs.wr_addr+H);
+    unlock_wr(&sha_regs.start, (unsigned char*)(&sha_regs.len));
 }
 
-// HMAC computed and written to sha_reg_wr_addr
-void HMAC(const unsigned char *key, int klen, const unsigned char *message, int mlen)
+// HMAC computed and written to sha_regs.wr_addr
+void HMAC(const unsigned char *key, unsigned int klen, const unsigned char *message, unsigned int mlen)
 {
-    int i;
+    unsigned int i;
+#ifdef C
+    unsigned char *buff = (unsigned char*)malloc(64 + (mlen > H ? mlen : H));
 
     // inner hash
+    unlock_wr(sha_regs.rd_addr, sha_regs.rd_addr+mlen+64);
     for(i=0; i<klen; i++)
-	data[i] = key[i] ^ 0x36;
+	buff[i] = key[i] ^ 0x36;
     for(i=klen; i<64;i++)
-	data[i] = 0x36;
+	buff[i] = 0x36;
     for(i=0; i<mlen; i++)
-	data[i+64] = message[i];
+	buff[i+64] = message[i];
 
-    sha1(data, 64+mlen);
-    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
+    writecarr(sha_regs.rd_addr, buff, mlen+64);
+    sha1(sha_regs.rd_addr, 64+mlen, 0);
 
     // outer hash
+    unlock_wr(sha_regs.rd_addr, sha_regs.rd_addr+84);
     for(i=0; i<klen; i++)
-	data[i] = key[i] ^ 0x5c;
+	buff[i] = key[i] ^ 0x5c;
     for(i=klen; i<64;i++)
-	data[i] = 0x5c;
-    for(i=0; i<20; i++)
-	data[i+64] = hash[i];
+	buff[i] = 0x5c;
+    for(i=0; i<H; i++)
+	buff[i+64] = sha_regs.wr_addr[i];
 
-    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
-    sha1(data, 84);
+    writecarr(sha_regs.rd_addr, buff, H + 64);
+    sha1(sha_regs.rd_addr, 64 + H, 0);
+#else
+    // inner hash
+    unlock_wr(sha_regs.rd_addr, sha_regs.rd_addr+mlen+64);
+    for(i=0; i<klen; i++)
+	writec(sha_regs.rd_addr+i, key[i] ^ 0x36);
+    for(i=klen; i<64;i++)
+	writec(sha_regs.rd_addr+i, 0x36);
+    for(i=0; i<mlen; i++)
+	writec(sha_regs.rd_addr+i+64, message[i]);
+
+    sha1(sha_regs.rd_addr, 64+mlen, 0);
+
+    // outer hash
+    unlock_wr(sha_regs.rd_addr, sha_regs.rd_addr+84);
+    for(i=0; i<klen; i++)
+	writec(sha_regs.rd_addr+i, key[i] ^ 0x5c);
+    for(i=klen; i<64;i++)
+	writec(sha_regs.rd_addr+i, 0x5c);
+    for(i=0; i<H; i++)
+	writec(sha_regs.rd_addr+i+64, sha_regs.wr_addr[i]);
+
+    sha1(sha_regs.rd_addr, 64 + H, 0);
+#endif
 }
 
 // copy seed into the PRG state
-void PRGinit(unsigned char *seed, int slen, unsigned char *state)
+void PRGinit(unsigned char *seed, unsigned int slen, unsigned char *state)
 {
-    int i;
-    for(i=0; i<slen && i < 20; i++)
-	state[i] = seed[i];
-    for(i=slen; i<20; i++)
-	state[i] = 0;
+    unsigned int i;
+    if(slen > H) slen = H;
+    unlock_wr(state, state+H);
+    writecarr(state, seed, slen);
+    for(i=slen; i<H; i++)
+	writec(state+i, 0);
+    lock_wr(state, state+H);
 }
 
 // random zero and one for PRG
@@ -292,18 +639,19 @@ const unsigned char one[] = {0xA2, 0x66, 0x95, 0x53,
 // generate random number, put in hash
 void PRG(unsigned char* state)
 {
-    int i;
-    unsigned char next[20];
+    unsigned int i;
+    unsigned char next[H];
 
-    HMAC(state, 20, one, 32);
-    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
-    for(i=0; i<20; i++)
-	next[i] = hash[i];
-    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
+    // compute next state
+    HMAC(state, H, one, 32);
+    for(i=0; i<H; i++)
+	next[i] = sha_regs.wr_addr[i];
 
-    HMAC(state, 20, zero, 32);
-    for(i=0; i<20; i++)
-	state[i] = next[i];
+    // computer next output
+    HMAC(state, H, zero, 32);
+    unlock_wr(state, state+H);
+    writecarrH(state, next);
+    lock_wr(state, state+H);
 }
 
 // seed for computing H function in OAEP
@@ -318,124 +666,97 @@ const unsigned char Hseed[] = {
     0x0D, 0x2F, 0x8F, 0x0A*/
 };
 
-// remove OAEP from message at location exp_reg_opaddr
-// return 1 if succeed, 0 if fail
-int removeOAEP()
+// remove OAEP from message at location rsa_regs.opaddr
+void removeOAEP()
 {
-    int i,j;
+    unsigned int i,j;
 
     // compute r
-    HMAC(Hseed, 20, decrypted->m, N-K2-1);
-    // lock hash and copy r to message
-    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr + 20);
+    HMAC(Hseed, H, decrypted->m, N-K2-1);
+    // copy r to message
+    unlock_wr((unsigned char*)decrypted, (unsigned char*)decrypted + N);
     for(i=0; i< K2; i++)
-	decrypted->r[i] = decrypted->r[i] ^ hash[i];
-    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
+	writec(decrypted->r+i,decrypted->r[i] ^ sha_regs.wr_addr[i]);
+    lock_wr((unsigned char*)decrypted, (unsigned char*) decrypted+N);
 
     // find m
     PRGinit(decrypted->r, K2, gprg);
     PRG(gprg);
-    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
+    unlock_wr((unsigned char*)decrypted, (unsigned char*)decrypted + N);
     i=0; j=0;
     while(i < N-K2-1)
     {
-	if(j == 20)
+	if(j == H)
 	{
-	    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
+	    lock_wr((unsigned char*)decrypted, (unsigned char*) decrypted+N);
 	    PRG(gprg);
-	    lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
 	    j = 0;
+	    unlock_wr((unsigned char*)decrypted, (unsigned char*)decrypted + N);
 	}
-	decrypted->m[i] = decrypted->m[i] ^ hash[j];
-	lock_wr(decrypted->m + i,decrypted->m + i+1);
+	writec(decrypted->m+i, decrypted->m[i] ^ sha_regs.wr_addr[j]);
 	i++;
 	j++;
     }
-    unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
-
-    // check zeros
-    for(i = 0; i< K1; i++)
-	if(decrypted->zeros[i])
-	    return 0;
-    return 1;
+    lock_wr((unsigned char*)decrypted, (unsigned char*) decrypted+N);
 }
 
-// decrypt msg, puts decrypted text in exp_reg_opaddr
+// decrypt msg, puts decrypted text in rsa_regs.opaddr
 // returns length of decrypted message
 int decrypt(unsigned char* msg){
-    int i;
+    unsigned int i;
 
     // copy msg into RSA m register
-    if(msg != (unsigned char*)&exp_reg_m)
-	//load(msg, N, (unsigned int)exp_reg_m, 0);
+    if(msg != (unsigned char*)&rsa_regs.m)
+    {
+	unlock_wr((unsigned char*)&rsa_regs.m, (unsigned char*)&rsa_regs.m+N);
+	//load(msg, N, (unsigned int)rsa_regs.m, 0);
 	for(i=0; i<N; i++)
-	    ((unsigned char*)&exp_reg_m)[i] = msg[i];
+	    writec((unsigned char*)&rsa_regs.m+i, msg[i]);
 
-    // lock message during exponentiation
-    lock_wr((unsigned char*)&exp_reg_m, (unsigned char*)&exp_reg_m + N);
+	// lock message during exponentiation
+	lock_wr((unsigned char*)&rsa_regs.m, (unsigned char*)&rsa_regs.m + N);
+    }
 
     // decrypt
-    exp_reg_start = 1;
+    unlock_wr(rsa_regs.opaddr, rsa_regs.opaddr+N);
+    unlock_wr(&rsa_regs.start, (unsigned char*)(&rsa_regs.state+1));    
+    writec(&rsa_regs.start, 1);
 
-#ifdef CBMC
-    c_exp();
+    c_exp();  // c abstraction
+#ifndef CBMC
+    while(rsa_regs.state != 0);
 #endif
-
-    while(exp_reg_state != 0);
-    lock_wr(exp_reg_opaddr, exp_reg_opaddr+N);
-    unlock_wr((unsigned char*)&exp_reg_m, (unsigned char*)&exp_reg_m + N);
+    lock_wr(rsa_regs.opaddr, rsa_regs.opaddr+N);
+    lock_wr(&rsa_regs.start, (unsigned char*)(&rsa_regs.state+1));    
 
     // check pad byte
     if(decrypted->padbyte != 1)
-    {
-#ifdef CBMC
-      printf("padbyte fail\n");
-#endif
-      return 0;
-    }
-    
-    if(!removeOAEP())
 	return -1;
+    
+    removeOAEP();
 
     return unpad();
 }
 
-unsigned char verifySignature(unsigned char* msg, int len, unsigned char* signature){
-    int i;
+unsigned char verifySignature(unsigned char* msg, unsigned int len, unsigned char* signature){
+    unsigned int i;
     int slen;
 
     // decrypt the signature
     slen = decrypt(signature);
-    lock_wr(decrypted->m, decrypted->m+20);
 
     // compare with hash of msg
-    if(slen != 20)
-    {
-	unlock_wr(decrypted->m, decrypted->m+20);
+    if(slen != H)
 	return 0;
-    } else{
-	sha1(msg, len);
-	lock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
-	for(i=0; i<slen; i++){
-#ifndef CBMC
+    else{
+	sha1(msg, len, 1);
+	for(i=0; i<H; i++){
 	    P0 = decrypted->m[i];
-#endif
-	    if(hash[i] != decrypted->m[i])
+	    if(sha_regs.wr_addr[i] != decrypted->m[i])
 		return 0;
 	}
-	unlock_wr(sha_reg_wr_addr, sha_reg_wr_addr+20);
-#ifndef CBMC	
 	P0 = 0xFF;
-#endif
 	return 1;
     }
 }
 
-#ifndef CBMC
-void quit() {
-    P0 = P1 = P2 = P3 = 0xDE;
-    P0 = P1 = P2 = P3 = 0xAD;
-    P0 = P1 = P2 = P3 = 0x00;
-    while(1);
-}
-#endif
