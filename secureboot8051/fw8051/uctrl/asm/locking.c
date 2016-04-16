@@ -1,0 +1,62 @@
+/*
+ * Copyright (c) 1999-2001 Tony Givargis.  Permission to copy is granted
+ * provided that this header remains intact.  This software is provided
+ * with no warranties.
+ *
+ * Version : 2.9
+ */
+
+/*---------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------*/
+#include "rsa.h"
+#ifdef C
+#ifndef CBMC
+#include <stdio.h>
+#endif
+#else
+#include <reg51.h>
+#endif
+
+XDATA_ARR(0x0000, MAX_PRG_SIZE, unsigned char, program);
+XDATA_ARR(0x5000, MAX_IM_SIZE, unsigned char, boot);
+
+XDATA_ARR(0xC000, MAX_IM_SIZE+0x40, unsigned char, sha_in);
+XDATA_ARR(0xE100, H, unsigned char, sha_out);
+XDATA_ARR(0xE200, N, unsigned char, rsa_out);
+
+/*---------------------------------------------------------------------------*/
+void main() {
+#ifdef CBMC
+    unsigned char before, after;
+    const unsigned int compind = nondet_uint()%MAX_IM_SIZE;
+
+#endif
+
+#ifdef C
+    // put new arrays into pt
+    pt_add(boot, MAX_IM_SIZE);
+#endif
+    // STAGE 1: read image into RAM  
+    unlock_wr(boot, boot+MAX_IM_SIZE);
+    
+    // something might break the image here
+    if(nondet_uint())
+       writec(nondet_uint(), nondet_uchar(), 0);
+
+    // image is loaded.
+    // now we need to lock boot to boot + MAX_IM_SIZE
+    //lock_wr(boot, boot+MAX_IM_SIZE);
+
+    before = boot[compind];
+
+    //if(nondet_uint())
+    //writec(boot+compind, nondet_uchar(), 0);
+    //writec(nondet_ptr(), nondet_uchar(), 0);
+    
+    assert(nondet_ptr() != boot + compind);
+
+    //writec(boot+compind, nondet_uchar(),0);
+    after = boot[compind];
+    assert(before==after);
+}
