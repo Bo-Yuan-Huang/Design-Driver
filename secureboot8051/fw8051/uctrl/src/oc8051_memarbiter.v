@@ -15,7 +15,7 @@
 module oc8051_memarbiter8(
     clk, 
     rst, 
-    arbit_holder,
+    selected_port,
     // port A.
     stb_A,
     wr_A, 
@@ -68,7 +68,6 @@ module oc8051_memarbiter8(
 );
 input            clk;
 input            rst;
-output reg [2:0] arbit_holder;
 
 // port A.
 input            stb_A;
@@ -133,10 +132,11 @@ localparam PORT_D = 3'd3;
 localparam PORT_E = 3'd4;
 localparam PORT_F = 3'd5;
 
-wire [2:0] selected_port;
+output wire [2:0] selected_port;
 
 // Is the arbiter already held, or is it going to make a new choice?
 reg arbiter_state;      
+reg [2:0] arbit_holder;
 
 // arbitration muxes.
 wire stb        = selected_port == PORT_A ? stb_A     : 
@@ -198,11 +198,11 @@ wire arbiter_state_next =
 wire arbit_select_winner = (arbiter_state == STATE_IDLE) && (arbiter_state_next == STATE_INUSE);
 
 // Who is the new winner? D has the lowest priority, then C then B then A.
-wire [2:0] arbit_winner = (!stb_A && !stb_B && !stb_C && !stb_D && stb_E && !stb_F) ? PORT_E :
-                    (!stb_A && !stb_B && !stb_C && stb_D && !stb_F) ? PORT_D :
-                    (!stb_A && !stb_B && stb_C && !stb_F)           ? PORT_C :
-                    (!stb_A && stb_B && !stb_F)                     ? PORT_B :
-                    (!stb_A && stb_F)                               ? PORT_F : PORT_A;
+wire [2:0] arbit_winner = (!stb_A && !stb_B && !stb_C && !stb_D && !stb_E && stb_F) ? PORT_F :
+                          (!stb_A && !stb_B && !stb_C && !stb_D && stb_E)           ? PORT_E :
+                          (!stb_A && !stb_B && !stb_C && stb_D)                     ? PORT_D :
+                          (!stb_A && !stb_B && stb_C)                               ? PORT_C :
+                          (!stb_A && stb_B)                                         ? PORT_B : PORT_A;
                     
 // Who is the current holder of the arbitration?      
 wire [2:0] arbit_holder_next = arbit_select_winner ? arbit_winner : arbit_holder;

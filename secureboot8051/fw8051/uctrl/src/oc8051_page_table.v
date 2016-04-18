@@ -9,7 +9,7 @@
 
 `include "oc8051_defines.v"
 
-module oc8051_page_table (clk, rst, pc,
+module oc8051_page_table (clk, rst, dpc_ot,
 	accesser,
 	pt_wr,
 	xram_wr,
@@ -30,7 +30,7 @@ module oc8051_page_table (clk, rst, pc,
 );
 
 input wire clk, rst, pt_wr, xram_wr, xram_stb, priv_lvl, pt_stb, ia_stb;
-input wire [15:0] pc;
+input wire [15:0] dpc_ot;
 input wire [15:0] xram_addr;
 input wire [7:0] xram_data_in;
 input wire [2:0] accesser;
@@ -184,12 +184,7 @@ reg32byte reg32byte1(
 reg [15:0]  ia_addr_reg;
 reg [1:0]   ia_rwn_reg;
 reg [2:0]   illegal_src;
-reg [15:0]  pc_input_reg;
-reg [15:0]  pc_intermediate_reg1;
-reg [15:0]  pc_intermediate_reg2;
-reg [15:0]  pc_intermediate_reg3;
 reg [15:0]  pc_ia_reg;
-reg [1:0]   pc_counter;
 
 // type of illegal access
 wire illegal_wr = (xram_stb && xram_wr && !wr_en);
@@ -213,33 +208,15 @@ begin
         ia_addr_reg          <= 16'h0000;
         ia_rwn_reg           <= 2'b00;
         illegal_src          <= 3'b000;
-        pc_input_reg         <= 16'h0000;
-        pc_intermediate_reg1 <= 16'h0000;
-        pc_intermediate_reg2 <= 16'h0000;
-        pc_intermediate_reg3 <= 16'h0000;
         pc_ia_reg            <= 16'h0000;
-        pc_counter           <= 2'b00;
     end 
     else begin
         ia_addr_reg <= ia_reg_next;
         illegal_src <= ia_src_next;
-        pc_input_reg <= pc;
-        pc_intermediate_reg1 <= pc_input_reg;
-        pc_intermediate_reg2 <= pc_intermediate_reg1;
-        pc_intermediate_reg3 <= pc_intermediate_reg2;
 
         // when illegal access occurs, wait another two cycles
-        if (illegal_wr || illegal_rd) begin
-        	pc_counter <= pc_counter + 2'b01;
-        end else begin
-        	pc_counter <= 2'b00;
-        end
-
-        // after these two cycles, load in the appropriate pc from illegal access if from the processor
-        if (pc_counter == 2'b10) begin
-        	if (illegal_src == 3'b000) begin
-        		pc_ia_reg <= pc_intermediate_reg3;
-        	end
+        if ((illegal_wr || illegal_rd) && (accesser == 3'b000)) begin
+            pc_ia_reg <= dpc_ot;
         end
 
      	if (illegal_wr) begin
