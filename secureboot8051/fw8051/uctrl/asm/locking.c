@@ -18,6 +18,17 @@
 #include <reg51.h>
 #endif
 
+#ifdef CBMC
+unsigned char* nondet_ptr();
+unsigned int nondet_uint();
+unsigned char nondet_uchar();
+int nondet_int();
+#endif
+
+#ifdef C
+unsigned char mem[MEM_SIZE];
+#endif
+
 XDATA_ARR(0x0000, MAX_PRG_SIZE, unsigned char, program);
 XDATA_ARR(0x5000, MAX_IM_SIZE, unsigned char, boot);
 
@@ -28,35 +39,35 @@ XDATA_ARR(0xE200, N, unsigned char, rsa_out);
 /*---------------------------------------------------------------------------*/
 void main() {
 #ifdef CBMC
-    unsigned char before, after;
-    const unsigned int compind = nondet_uint()%MAX_IM_SIZE;
-
+   unsigned char before, after;
+   const unsigned int compind = nondet_uint()%MAX_IM_SIZE;
 #endif
-
 #ifdef C
-    // put new arrays into pt
-    pt_add(boot, MAX_IM_SIZE);
+   // put new arrays into pt
+   int page;
+   boot = mem_add(MAX_IM_SIZE);
+   page = pt_add(boot, MAX_IM_SIZE);
 #endif
-    // STAGE 1: read image into RAM  
-    unlock_wr(boot, boot+MAX_IM_SIZE);
-    
-    // something might break the image here
-    if(nondet_uint())
-       writec(nondet_uint(), nondet_uchar(), 0);
+   // STAGE 1: read image into RAM
+   assert(unlock(page, boot, boot+MAX_IM_SIZE));
+   //assert(writec(page, boot, 5, 0));
 
-    // image is loaded.
-    // now we need to lock boot to boot + MAX_IM_SIZE
-    //lock_wr(boot, boot+MAX_IM_SIZE);
+   // something might break the image here
+   if(nondet_uint())
+	writec(nondet_uint(), nondet_ptr(), nondet_uchar(), 0);
 
-    before = boot[compind];
+   // image is loaded.
+   // now we need to lock boot to boot + MAX_IM_SIZE
+   //lock(page, boot, boot+MAX_IM_SIZE);
 
-    //if(nondet_uint())
-    //writec(boot+compind, nondet_uchar(), 0);
-    //writec(nondet_ptr(), nondet_uchar(), 0);
-    
-    assert(nondet_ptr() != boot + compind);
+   before = boot[compind];
+   //before = pt_valid(boot);
 
-    //writec(boot+compind, nondet_uchar(),0);
-    after = boot[compind];
-    assert(before==after);
+   if(nondet_uint())
+       writec(nondet_int(), nondet_ptr(), nondet_uchar(), 0);
+   
+   //after = pt_valid(boot);
+   after = boot[compind];
+   assert(after==before);
 }
+
