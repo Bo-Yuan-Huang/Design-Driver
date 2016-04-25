@@ -97,7 +97,8 @@ module oc8051_decoder (clk, rst,
   alu_op_o, psw_set, eq, cy_sel, comp_sel,
   pc_wr, pc_sel, rd, rmw, istb, mem_act, mem_wait,
   wait_data, state, 
-  enter_su_mode, leave_su_mode);
+  enter_su_mode, leave_su_mode,
+  pc, mem_pc);
 
 //
 // clk          (in)  clock
@@ -127,7 +128,9 @@ module oc8051_decoder (clk, rst,
 //
 
 input clk, rst, eq, mem_wait, wait_data;
-input [7:0] op_in;
+input  [7:0] op_in;
+input  [15:0] pc;
+output [15:0] mem_pc;
 
 input irom_out_of_rst;
 output new_valid_pc;
@@ -148,6 +151,7 @@ reg src_sel3, wr,  bit_addr, pc_wr;
 reg [3:0] alu_op;
 reg [1:0] src_sel2, comp_sel, psw_set, cy_sel, wr_sfr;
 reg [2:0] mem_act, src_sel1, ram_wr_sel, ram_rd_sel, pc_sel;
+reg [15:0] mem_pc;
 
 //
 // state        if 2'b00 then normal execution, sle instructin that need more than one clock
@@ -2740,6 +2744,15 @@ begin
   end
 end
 
+// as mem_act is set, move pc to mem_pc reg
+always @(posedge clk or posedge rst) begin
+  if (rst) begin
+    mem_pc <= #1 16'h00;
+  end
+  else begin
+    mem_pc <= #1 pc;
+  end
+end
 
 //
 //in case of writing to external ram

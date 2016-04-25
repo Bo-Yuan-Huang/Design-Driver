@@ -103,6 +103,8 @@ module oc8051_memory_interface (clk, rst,
      mem_wait,
      mem_act,
      istb,
+     mem_pc,
+     dpc_ot,
 
 //internal ram
      wr_o, 
@@ -194,7 +196,10 @@ output        out_of_rst;
 input         decoder_new_valid_pc;
 output [15:0] pc_log;
 output [15:0] pc_log_prev;
-input [15:0]  etr;
+input  [15:0] etr;
+
+input  [15:0] mem_pc;
+output [15:0] dpc_ot;
 
 reg           bit_out,
               reti;
@@ -315,6 +320,7 @@ output [15:0] pc;
 
 reg [15:0]    pc;
 
+reg [15:0]    dpc_ot;
 //
 //pc            program counter register, save current value
 reg [15:0]    pc_buf;
@@ -511,6 +517,7 @@ begin
         ddat_o <= #1 8'h00;
         dadr_ot <= #1 {7'h0, dptr};
         dmem_wait <= #1 1'b1;
+        dpc_ot <= #1 mem_pc;
       end
       `OC8051_MAS_DPTR_W: begin  // write to external rom: (dptr)=acc
         dwe_o <= #1 1'b1;
@@ -518,6 +525,7 @@ begin
         ddat_o <= #1 acc;
         dadr_ot <= #1 {7'h0, dptr};
         dmem_wait <= #1 1'b1;
+        dpc_ot <= #1 mem_pc;
       end
       `OC8051_MAS_RI_R:   begin  // read from external rom: acc=(Ri)
         dwe_o <= #1 1'b0;
@@ -525,6 +533,7 @@ begin
         ddat_o <= #1 8'h00;
         dadr_ot <= #1 {15'h0, ri};
         dmem_wait <= #1 1'b1;
+        dpc_ot <= #1 mem_pc;
       end
       `OC8051_MAS_RI_W: begin    // write to external rom: (Ri)=acc
         dwe_o <= #1 1'b1;
@@ -532,6 +541,7 @@ begin
         ddat_o <= #1 acc;
         dadr_ot <= #1 {15'h0, ri};
         dmem_wait <= #1 1'b1;
+        dpc_ot <= #1 mem_pc;
       end
     endcase
   end

@@ -1,5 +1,7 @@
 /*
  * Module for keeping track of privilege level
+ *
+ * Written by Samuel Miller
  */
 
 
@@ -18,7 +20,7 @@ input wire clk, rst, enter_su_mode, leave_su_mode;
 output wire priv_lvl;
 reg [6:0] priv_counter;
 
-// if at any level other that zero "virtual empty stack", 
+// if at any level other that zero ("virtual empty stack"), 
 // processor is in supervisor mode
 assign priv_lvl = |priv_counter;
 

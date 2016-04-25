@@ -142,6 +142,9 @@ module oc8051_top (wb_rst_i, wb_clk_i,
 // priv_lvl output for xram
                 priv_lvl,
 
+// tracks pc value in case of illegal access
+                dpc_ot,
+
 
 // port interface
   `ifdef OC8051_PORTS
@@ -213,7 +216,7 @@ input         wb_rst_i,         // reset input
               int0_i,           // interrupt 0
               int1_i,           // interrupt 1
               ea_in,            // external access
-              wbd_ack_i,        // data acknowalge
+              wbd_ack_i,        // data acknowlage
               wbi_ack_i,        // instruction acknowlage
               wbd_err_i,        // data error
               wbi_err_i;        // instruction error
@@ -221,6 +224,7 @@ input         wb_rst_i,         // reset input
 output        pc_change;
 output        priv_lvl;
 output [15:0] pc;
+output [15:0] dpc_ot;
 output [15:0] pc_log;
 output [15:0] pc_log_prev;
 output [7:0]  psw;
@@ -279,7 +283,6 @@ output [7:0]  p3_o;             // port 3 output
 
 
 
-
 `ifdef OC8051_UART
 input         rxd_i;            // receive
 output        txd_o;            // transnmit
@@ -325,6 +328,8 @@ wire [7:0]  dptr_hi,
 wire [31:0] idat_onchip;
 
 wire [15:0] pc;
+wire [15:0] dpc_ot;
+wire [15:0] mem_pc;
 wire [15:0] etr;
 
 assign wbd_cyc_o = wbd_stb_o;
@@ -452,7 +457,9 @@ oc8051_decoder oc8051_decoder1(.clk(wb_clk_i),
                                .mem_wait(mem_wait),
                                .wait_data(wait_data),
                                .enter_su_mode(enter_su_mode),
-                               .leave_su_mode(leave_su_mode));
+                               .leave_su_mode(leave_su_mode),
+                               .mem_pc(mem_pc),
+                               .pc(pc));
 
 
 wire [7:0] sub_result;
@@ -646,6 +653,7 @@ oc8051_memory_interface oc8051_memory_interface1(.clk(wb_clk_i),
                        .rd(rd),
                        .mem_act(mem_act),
                        .mem_wait(mem_wait),
+                       .mem_pc(mem_pc),
 
 // external access
                        .ea(ea_in),
@@ -670,6 +678,7 @@ oc8051_memory_interface oc8051_memory_interface1(.clk(wb_clk_i),
                        .pc_wr_sel(pc_wr_sel), 
                        .pc_wr(pc_wr & comp_wait),
                        .pc(pc),
+                       .dpc_ot(dpc_ot),
 
 // sfr's
                        .sp_w(sp_w), 
