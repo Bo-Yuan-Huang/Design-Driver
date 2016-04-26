@@ -111,7 +111,7 @@ void meminit(struct image* image)
     for(i=0; i<2; i++){
 	image->module[0].addr = nondet_uint();
 	image->module[0].size = nondet_uint();
-	image-?module[0].hash[nondet_uint()%H] = nondet_uchar();
+	image->module[0].hash[nondet_uint()%H] = nondet_uchar();
     }
 }
 #endif

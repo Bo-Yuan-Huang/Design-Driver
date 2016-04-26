@@ -31,7 +31,7 @@
 #define K2 4
 #define BUFF_SIZE 100
 #else
-#define MAX_PRG_SIZE 0x5000
+#define MAX_PRG_SIZE 0x3000
 #define MAX_IM_SIZE  0x2000
 #define N 256
 #define H 20
