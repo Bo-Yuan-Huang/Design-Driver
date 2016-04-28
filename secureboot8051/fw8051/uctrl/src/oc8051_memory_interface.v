@@ -505,6 +505,7 @@ begin
     dstb_o <= #1 1'b0;
     ddat_o <= #1 8'h00;
     dadr_ot <= #1 23'h0;
+    dpc_ot  <= #1 16'h0;
   end else if (dack_i) begin
     dwe_o <= #1 1'b0;
     dstb_o <= #1 1'b0;
