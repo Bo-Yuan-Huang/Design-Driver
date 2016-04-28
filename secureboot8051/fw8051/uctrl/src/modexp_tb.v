@@ -105,6 +105,7 @@ wire ack_xram, ack_uart, cyc_o, iack_i, istb_o, icyc_o, t2, t2ex;
 wire [7:0] data_in, data_out, p0_out, p1_out, p2_out, p3_out, data_out_uart, data_out_xram, p3_in;
 wire wbi_err_i, wbd_err_i;
 wire priv_lvl;
+wire [15:0] pc;
 
 `ifdef OC8051_XILINX_RAMB
   reg  [31:0] idat_i;
@@ -152,6 +153,7 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
          .cxrom_data_out        ( cxrom_data_out ),
 
          .priv_lvl              ( priv_lvl       ),
+         .pc                    ( pc             ),
 
   `ifdef OC8051_PORTS
 
@@ -250,11 +252,28 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
         #500 $finish;
     end
 
+wire [7:0] data_ignore;
+wire ignore;
 //
 // external data ram
 //
 // oc8051_xram oc8051_xram1 (.clk(clk), .rst(rst), .wr(write_xram), .addr(ext_addr), .data_in(data_out), .data_out(data_out_xram), .ack(ack_xram), .stb(stb_o));
-oc8051_xiommu oc8051_xiommu1 (.clk(clk), .rst(rst), .proc_wr(write_xram), .proc_addr(ext_addr), .proc_data_in(data_out), .proc_data_out(data_out_xram), .proc_ack(ack_xram), .proc_stb(stb_o), .priv_lvl(priv_lvl));
+oc8051_xiommu oc8051_xiommu1 (.clk(clk), .rst(rst), 
+  .proc_wr(write_xram), 
+  .proc0_wr(1'b0), 
+  .proc_addr(ext_addr), 
+  .proc0_addr(16'h0000), 
+  .proc_data_in(data_out), 
+  .proc0_data_in(8'h00), 
+  .proc_data_out(data_out_xram), 
+  .proc0_data_out(data_ignore), 
+  .proc_ack(ack_xram), 
+  .proc0_ack(ignore), 
+  .proc_stb(stb_o), 
+  .proc0_stb(1'b0), 
+  .priv_lvl(priv_lvl),
+  .pc(pc)
+);
 
 defparam oc8051_xiommu1.oc8051_xram_i.DELAY = 2;
 
