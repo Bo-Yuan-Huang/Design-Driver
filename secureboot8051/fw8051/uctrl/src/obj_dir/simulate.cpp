@@ -99,14 +99,16 @@ int main(int argc, char* argv[])
     // Initialize the ROM
     std::cout << "Init ROM\n";
     top->init = 1;
-    
+    // ADD 10
+    // AJUMP
     for (int i = 0; i < 255; i++)
         initRom(i, 0);
     initRom(0x10, 0x24);
     initRom(0x11, 0x10);
     initRom(0x1c, 0x21);
-
+   
     /*
+    // begining of secureboot.v
     initRom(0x00, 0x2);
     initRom(0x01, 0x00);
     initRom(0x02, 0x34);
