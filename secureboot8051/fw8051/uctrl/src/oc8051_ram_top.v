@@ -84,7 +84,7 @@ module oc8051_ram_top (clk,
 		       wr, 
 		       bit_data_in, 
 		       bit_data_out,
-                       iram,
+                       iram
 `ifdef OC8051_BIST
          ,
          scanb_rst,

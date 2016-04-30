@@ -206,7 +206,7 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 sp,
                 op1, op2, op3,
                 op1_d,
-                decoder_state,
+                decoder_state
                 );
 
 
