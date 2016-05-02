@@ -119,7 +119,14 @@ wire arbiter_state_next =
 wire arbit_select_winner = (arbiter_state == STATE_IDLE) && (arbiter_state_next == STATE_INUSE);
 
 // Selection of winner of Arbitration. Proc A gets priority
-wire arbit_winner = (!stb_A && stb_B) ? PROC_B : PROC_A;
+`ifdef OC8051_FAIR_PROCARBIT
+	wire arbit_winner = (stb_A && stb_B && (arbit_holder == PROC_A)) || (!stb_A && stb_B) ? PROC_B : PROC_A;
+`endif
+
+`ifdef OC8051_UNFAIR_PROCARBIT
+	wire arbit_winner = (!stb_A && stb_B) ? PROC_B : PROC_A;
+`endif
+
 
 // next holder of arbitration
 wire arbit_holder_next = arbit_select_winner ? arbit_winner : arbit_holder;

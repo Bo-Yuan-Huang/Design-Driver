@@ -122,12 +122,15 @@ always @(posedge clk)
     ackr <= #1 1'b0;
     data_out <= #1 8'h00;
   end
-
+integer i;
 always @(posedge clk)
 begin
-  if (rst)
+  if (rst) begin
     cnt <= #1 DELAY;
-  else if (cnt==3'b000)
+    for (i=0; i < 65536; i+=1) begin
+      buff[i] <= 8'h00;
+    end
+  end else if (cnt==3'b000)
     cnt <= #1 DELAY;
   else if (stb)
     cnt <= #1 cnt - 3'b001;

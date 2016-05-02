@@ -518,6 +518,9 @@
 `define OC8051_RW0 1'b1
 `define OC8051_RW1 1'b0
 
+// always define exactly one of these two:
+`define OC8051_FAIR_PROCARBIT
+// `define OC8051_UNFAIR_PROCARBIT
 
 //
 // read modify write instruction
