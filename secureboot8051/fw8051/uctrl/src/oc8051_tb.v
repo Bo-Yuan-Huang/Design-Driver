@@ -136,6 +136,7 @@ oc8051_cxrom oc8051_cxrom1(
         .cxrom_data_out     ( cxrom_data_out )
 );
 
+
 //
 // oc8051 controller
 //
@@ -154,6 +155,14 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
 
          .priv_lvl              ( priv_lvl       ),
          .dpc_ot                ( dpc_ot         ),
+
+  `ifdef OC8051_PROC1_SU_EN
+         .su_en(1'b1),
+  `endif
+
+  `ifndef OC8051_PROC1_SU_EN
+         .su_en(1'b0),
+  `endif
 
   `ifdef OC8051_PORTS
 

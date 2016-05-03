@@ -139,8 +139,9 @@ module oc8051_top (wb_rst_i, wb_clk_i,
                 int0_i, 
                 int1_i,
 
-// priv_lvl output for xram
+// priv_lvl output and su_en input
                 priv_lvl,
+                su_en,
 
 // tracks pc value in case of illegal access
                 dpc_ot,
@@ -222,6 +223,7 @@ input         wb_rst_i,         // reset input
               wbi_err_i;        // instruction error
 
 output        pc_change;
+input         su_en;
 output        priv_lvl;
 output [15:0] pc;
 output [15:0] dpc_ot;
@@ -458,6 +460,7 @@ oc8051_decoder oc8051_decoder1(.clk(wb_clk_i),
                                .wait_data(wait_data),
                                .enter_su_mode(enter_su_mode),
                                .leave_su_mode(leave_su_mode),
+                               .su_en(su_en),
                                .mem_pc(mem_pc),
                                .pc(pc));
 
@@ -790,7 +793,8 @@ oc8051_priv_lvl oc8051_priv_lvl1(
                        .rst(wb_rst_i),
                        .enter_su_mode(enter_su_mode),
                        .leave_su_mode(leave_su_mode),
-                       .priv_lvl(priv_lvl)
+                       .priv_lvl(priv_lvl),
+                       .su_en(su_en)
                        );
 
 

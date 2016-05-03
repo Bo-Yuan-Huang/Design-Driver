@@ -1,8 +1,7 @@
 /*
- * Module for arbitrating between two processing cores.
+ * Module for arbitrating between two processing cores
  *
  * Written by Samuel Miller (adapted from memarbiter)
- *
  */
 
 // synopsys translate_off
@@ -64,7 +63,7 @@ output [7:0]     data_out_B;
 input            priv_lvl_B;
 input [15:0]     dpc_ot_B;
 
-// proc selected controls these
+// Proc selected controls these.
 output           stb;
 output           wr;
 input            ack;
@@ -77,8 +76,10 @@ output [15:0]    dpc_ot;
 localparam PROC_A = 1'b1;
 localparam PROC_B = 1'b0;
 
-// reg for whether the arbiter is active or is waiting for more requests
+// Whether arbiter is active or is waiting for more requests.
 reg arbiter_state;
+
+// Current holder of arbitration.
 reg arbit_holder;
 
 wire stb = (selected_proc == PROC_A) ? stb_A : stb_B;
@@ -99,7 +100,6 @@ wire priv_lvl = (selected_proc == PROC_A) ? priv_lvl_A : priv_lvl_B;
 
 wire [15:0] dpc_ot = (selected_proc == PROC_A) ? dpc_ot_A : dpc_ot_B;
 
-// states for arbiter
 localparam STATE_INUSE = 1'b1;
 localparam STATE_IDLE  = 1'b0;
 
@@ -110,7 +110,7 @@ wire arbiter_state_inuse_next = ack ? STATE_IDLE : STATE_INUSE;
 wire arbiter_state_idle_next  = 
         ((stb_A || stb_B) && !ack) ? STATE_INUSE : STATE_IDLE;
 
-// next state of the arbiter
+// Next state of the arbiter.
 wire arbiter_state_next = 
         (arbiter_state == STATE_IDLE)  ? arbiter_state_idle_next  :
         (arbiter_state == STATE_INUSE) ? arbiter_state_inuse_next : 1'bX;
@@ -118,23 +118,26 @@ wire arbiter_state_next =
 // Select new winner for arbitration if currently idle but won't be idle in next cycle.
 wire arbit_select_winner = (arbiter_state == STATE_IDLE) && (arbiter_state_next == STATE_INUSE);
 
-// Selection of winner of Arbitration. Proc A gets priority
+// Selection of winner of Arbitration. 
 `ifdef OC8051_FAIR_PROCARBIT
+	// If both strobes are high and proc_A is already in control, give control to proc_B.
 	wire arbit_winner = (stb_A && stb_B && (arbit_holder == PROC_A)) || (!stb_A && stb_B) ? PROC_B : PROC_A;
 `endif
 
-`ifdef OC8051_UNFAIR_PROCARBIT
+`ifndef OC8051_FAIR_PROCARBIT
+	// Proc A gets priority in ties.
 	wire arbit_winner = (!stb_A && stb_B) ? PROC_B : PROC_A;
 `endif
 
 
-// next holder of arbitration
+// Next holder of arbitration.
 wire arbit_holder_next = arbit_select_winner ? arbit_winner : arbit_holder;
 
 // If idle, selected proc is current cycle winner.
 // If in use, selected proc is current holder
 assign #1 selected_proc = (arbiter_state == STATE_IDLE) ? arbit_winner : arbit_holder;
 
+// Update arbiter_state and arbit_holder.
 always @(posedge clk)
 begin
     if (rst) begin

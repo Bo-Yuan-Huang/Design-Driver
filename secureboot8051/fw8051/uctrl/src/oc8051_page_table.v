@@ -40,16 +40,16 @@ input wire selected_proc;
 output wire wr_en, rd_en, pt_addr_range, ia_addr_range, pt_ack, ia_ack;
 output wire [7:0] pt_data_out, ia_data_out;
 
-// page table registers, broken up into bytes for easy indexing
+// Page table registers, broken up into bytes for easy indexing.
 reg [7:0] wr_enabled [31:0];
 reg [7:0] rd_enabled [31:0];
 
-// internal wires to keep track of address range and what set of regs is being used
+// Internal wires to keep track of address range and what set of regs is being used.
 wire pt_in_wr_range, pt_in_rd_range, pt_wr_reg_use, pt_rd_reg_use;
 wire ia_addr_rwn, ia_addr_hi, ia_addr_lo, ia_addr_src;
 wire [7:0] data_out_wr, data_out_rd;
 
-// possible ranges for addresses involving pt registers
+// Possible ranges for addresses involving pt registers.
 localparam PT_WR_ADDR_START  = 16'hff80;
 localparam PT_WR_ADDR_END    = 16'hff9f;
 localparam PT_RD_ADDR_START  = 16'hffa0;
@@ -61,12 +61,12 @@ localparam IA_ADDR_SRC       = 16'hffc3;
 localparam IA_PC_HI          = 16'hffc4;
 localparam IA_PC_LO          = 16'hffc5;
 
-// find the range of the addresses (or that it isn't in the page table ranges)
+// Find the range of the addresses (or that it isn't in the page table ranges).
 assign pt_in_wr_range = ((xram_addr >= PT_WR_ADDR_START) && (xram_addr <= PT_WR_ADDR_END));
 assign pt_in_rd_range = ((xram_addr >= PT_RD_ADDR_START) && (xram_addr <= PT_RD_ADDR_END));
 assign pt_addr_range  = (pt_in_wr_range || pt_in_rd_range);
 
-// find out if the illegal access registers are being accessed
+// Find out if the illegal access registers are being accessed.
 assign ia_addr_rwn = (xram_addr == IA_ADDR_RWN);
 assign ia_addr_hi  = (xram_addr == IA_ADDR_HI);
 assign ia_addr_lo  = (xram_addr == IA_ADDR_LO);
@@ -75,24 +75,24 @@ assign ia_pc_hi    = (xram_addr == IA_PC_HI);
 assign ia_pc_lo    = (xram_addr == IA_PC_LO);
 assign ia_addr_range = (ia_addr_rwn || ia_addr_hi || ia_addr_lo || ia_addr_src || ia_pc_hi || ia_pc_lo);
 
-// figure out if page table reg should be read/written to, and if so, which section (wr_en or rd_en)
+// Figure out if page table reg should be read/written to, and if so, which section (wr_en or rd_en).
 assign pt_wr_reg_use = priv_lvl && pt_stb && pt_in_wr_range;
 assign pt_rd_reg_use = priv_lvl && pt_stb && pt_in_rd_range;
 
-// figure out which data set (wr_en or rd_en) to read from
+// Figure out which data set (wr_en or rd_en) to read from.
 assign pt_data_out = pt_in_wr_range ? data_out_wr :
 			  		 pt_in_rd_range ? data_out_rd : 8'h00;
 
-// allow reads and writes only to enabled pages
+// Allow reads and writes only to enabled pages.
 assign wr_en = wr_enabled[xram_addr[15:11]][xram_addr[10:8]];
 assign rd_en = rd_enabled[xram_addr[15:11]][xram_addr[10:8]];
 assign pt_ack = pt_stb && pt_addr_range;
 
-// assign the output data to the corresponding 8-bit register of page table
+// Assign the output data to the corresponding 8-bit register of page table.
 assign data_out_wr = pt_wr_reg_use ? wr_enabled[xram_addr[4:0]] : 8'h00;
 assign data_out_rd = pt_rd_reg_use ? rd_enabled[xram_addr[4:0]] : 8'h00;
 
-// update page table
+// Update page table.
 integer i;
 always @(posedge clk)
 begin
@@ -112,20 +112,20 @@ begin
     end
 end
 
-// ia_access_reg value for proc0 access
+// ia_access_reg value for proc0 access.
 localparam PROC0_IA = 3'd5;
 
-// for ia's last illegal access address and type of access, as well as shift register due to pc delay
+// For ia's last illegal access address and type of access.
 reg [15:0]  ia_addr_reg;
 reg [1:0]   ia_rwn_reg;
 reg [2:0]   illegal_src;
 reg [15:0]  pc_ia_reg;
 
-// type of illegal access
+// Type of illegal access.
 wire illegal_wr = (xram_stb && xram_wr && !wr_en);
 wire illegal_rd = (xram_stb && !xram_wr && !rd_en);
 
-// port or proc currently holding the memarbiter
+// Port or proc currently holding the memarbiter.
 wire accesser = (selected_port != 3'b000) ? selected_port :
                 (selected_proc == 1'b0)   ? PROC0_IA      : selected_port;
 
@@ -140,7 +140,7 @@ assign ia_data_out = ia_addr_rwn ? {6'b000000, ia_rwn_reg} :
 
 assign ia_ack = (ia_stb && ia_addr_range);
 
-// update illegal access registers
+// Update illegal access registers.
 always @(posedge clk)
 begin
     if (rst) begin
@@ -153,12 +153,12 @@ begin
         ia_addr_reg <= ia_reg_next;
         illegal_src <= ia_src_next;
 
-        // when illegal access occurs, pull pc corresponding to executed instruction from dpc_ot
+        // When illegal access occurs, pull pc corresponding to executed instruction from dpc_ot.
         if ((illegal_wr || illegal_rd) && (accesser == 3'b000)) begin
             pc_ia_reg <= dpc_ot;
         end
 
-        // if illegal write, store 1, if illegal read, store 2
+        // If illegal write, store 1. If illegal read, store 2.
      	if (illegal_wr) begin
      		ia_rwn_reg <= 2'b01;
        	end 

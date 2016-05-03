@@ -105,7 +105,7 @@ wire ack_xram1, ack_uart, cyc_o1, iack_i1, istb_o1, icyc_o1, t2, t2ex;
 wire [7:0] data_in1, data_out1, p0_out1, p1_out1, p2_out1, p3_out1, data_out_uart, data_out_xram1, p3_in1;
 wire wbi_err_i1, wbd_err_i1;
 
-wire priv_lvl1;
+wire priv_lvl1, priv_lvl0;
 wire [15:0] dpc_ot1;
 
 `ifdef OC8051_XILINX_RAMB
@@ -122,7 +122,6 @@ wire [15:0] ext_addr0, iadr_o0;
 wire [7:0] data_in0, data_out0, p0_out0, p1_out0, p2_out0, p3_out0, data_out_xram0, p3_in0;
 wire wbi_err_i0, wbd_err_i0;
 
-wire priv_lvl0 = 1'b0;
 wire [15:0] dpc_ot0;
 
 `ifdef OC8051_XILINX_RAMB
@@ -177,6 +176,14 @@ oc8051_top oc8051_top_1(.wb_rst_i(rst), .wb_clk_i(clk),
 
          .priv_lvl              ( priv_lvl1       ),
          .dpc_ot                ( dpc_ot1         ),
+
+  `ifdef OC8051_PROC1_SU_EN
+        .su_en(1'b1),
+  `endif
+
+  `ifndef OC8051_PROC1_SU_EN
+        .su_en(1'b0),
+  `endif
 
   `ifdef OC8051_PORTS
 
@@ -302,7 +309,16 @@ oc8051_top oc8051_top_0(.wb_rst_i(rst), .wb_clk_i(clk),
          .cxrom_addr            ( cxrom_addr0     ),
          .cxrom_data_out        ( cxrom_data_out0 ),
 
+         .priv_lvl              ( priv_lvl0       ),
          .dpc_ot                ( dpc_ot0         ),
+
+  `ifdef OC8051_PROC0_SU_EN
+        .su_en(1'b1),
+  `endif
+
+  `ifndef OC8051_PROC0_SU_EN
+        .su_en(1'b0),
+  `endif
 
   `ifdef OC8051_PORTS
 
