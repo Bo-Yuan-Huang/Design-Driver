@@ -4,9 +4,11 @@
  * Written by Samuel Miller (adapted from memarbiter)
  */
 
-// synopsys translate_off
+
 `include "oc8051_timescale.v"
-// synopsys translate_on
+
+`include "oc8051_defines.v"
+
 
 module oc8051_procarbiter(
 	clk,
