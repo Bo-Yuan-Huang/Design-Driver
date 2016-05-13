@@ -92,8 +92,8 @@ oc8051_xram oc8051_xram1(
     .wr             (xram_wr),
     .wr_en          (xram_wr_en),
     .addr           (xram_addr),
-    .data_in        (xram_data_in),
-    .data_out       (xram_data_out),
+    .data_in        (xram_data_out),
+    .data_out       (xram_data_in),
     .ack            (xram_ack),
     .stb            (xram_stb),
     .rd_en          (xram_rd_en)

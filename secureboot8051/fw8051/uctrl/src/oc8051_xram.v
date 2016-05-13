@@ -128,7 +128,7 @@ begin
   if (rst) begin
     cnt <= #1 DELAY;
     for (i=0; i < 65536; i+=1) begin
-      buff[i] <= 8'h00;
+      buff[i] = 8'h00;
     end
   end else if (cnt==3'b000)
     cnt <= #1 DELAY;
