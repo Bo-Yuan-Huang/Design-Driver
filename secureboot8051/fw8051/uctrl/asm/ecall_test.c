@@ -1,11 +1,9 @@
 #include <reg51.h>
 
 /*
- * Copyright (c) 1999-2001 Tony Givargis.  Permission to copy is granted
- * provided that this header remains intact.  This software is provided
- * with no warranties.
+ * Test for ECALL instruction.
  *
- * Version : 2.9
+ * Written by Pramod Subramanyan
  */
 
 /*---------------------------------------------------------------------------*/

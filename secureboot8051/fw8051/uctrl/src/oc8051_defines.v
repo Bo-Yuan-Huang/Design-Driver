@@ -519,6 +519,11 @@
 `define OC8051_RW1 1'b0
 
 
+`define OC8051_FAIR_PROCARBIT
+
+`define OC8051_PROC1_SU_EN
+// `define OC8051_PROC0_SU_EN
+
 //
 // read modify write instruction
 //

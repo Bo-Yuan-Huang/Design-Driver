@@ -97,7 +97,7 @@ module oc8051_decoder (clk, rst,
   alu_op_o, psw_set, eq, cy_sel, comp_sel,
   pc_wr, pc_sel, rd, rmw, istb, mem_act, mem_wait,
   wait_data, state, 
-  enter_su_mode, leave_su_mode,
+  enter_su_mode, leave_su_mode, su_en,
   pc, mem_pc);
 
 //
@@ -128,6 +128,7 @@ module oc8051_decoder (clk, rst,
 //
 
 input clk, rst, eq, mem_wait, wait_data;
+input su_en;
 input  [7:0] op_in;
 input  [15:0] pc;
 output [15:0] mem_pc;
@@ -956,14 +957,24 @@ begin
             end
             // added by me
           `OC8051_ECALL :begin
-              ram_rd_sel = `OC8051_RRS_DC;
-              pc_wr = `OC8051_PCW_Y;
-              pc_sel = `OC8051_PIS_ECALL;
-              comp_sel =  `OC8051_CSS_DC;
-              rmw = `OC8051_RMW_N;
-              stb_i = 1'b0;
-              bit_addr = 1'b0;
-              enter_su_mode = 1'b1;
+              if (su_en) begin
+                ram_rd_sel = `OC8051_RRS_DC;
+                pc_wr = `OC8051_PCW_Y;
+                pc_sel = `OC8051_PIS_ECALL;
+                comp_sel =  `OC8051_CSS_DC;
+                rmw = `OC8051_RMW_N;
+                stb_i = 1'b0;
+                bit_addr = 1'b0;
+                enter_su_mode = 1'b1;
+              end else begin
+                ram_rd_sel = `OC8051_RRS_DC;
+                pc_wr = `OC8051_PCW_Y;
+                pc_sel = `OC8051_PIS_I16;
+                comp_sel =  `OC8051_CSS_DC;
+                rmw = `OC8051_RMW_N;
+                stb_i = 1'b0;
+                bit_addr = 1'b0;
+              end
             end
             ///////////////////////////////////////////////////
           `OC8051_LJMP : begin
