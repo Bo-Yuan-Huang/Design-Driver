@@ -31,7 +31,6 @@ __xdata __at(0xE100) unsigned long comp[64];
 
 /*---------------------------------------------------------------------------*/
 
-void fillcomparr();
 
 void main() {
     int i;
@@ -39,7 +38,7 @@ void main() {
 
     // setup address, m, e, n
     exp_reg_addr = 0xE000;
-    for(i=0; i < 256; i++) { exp[i] = i*i*i; }
+    for(i=0; i < 3; i++) { exp[i] = i*i*i; }
     for(i=0; i < 256; i++) { n[i] = i | (i << 4); }
     for(i=0; i < 256; i++) { m[i] = i;}
 
@@ -48,8 +47,6 @@ void main() {
 
     // now wait for encryption to complete.
     while(exp_reg_state != 0);
-
-    fillcomparr();
 
     // read encrypted data and dump it to P0.
     for(i=0; i < 256; i++) {

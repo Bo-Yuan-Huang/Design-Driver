@@ -15,6 +15,7 @@ int nondet_int();
 #endif
 
 #ifdef C
+#define BUFF_SIZE 0x2000
 #define GPRG 5
 int pshai, pshao, prsao; // read and write address pages for SHA, and opaddr of RSA
 #endif
@@ -23,8 +24,8 @@ XDATA_VAR(0xFE00, struct acc_regs, sha_ptr);
 XDATA_VAR(0xF9F0, struct acc_regs, memwr_ptr);
 XDATA_VAR(0xFA00, struct RSA_regs, rsa_ptr);
 struct RSAmsg *decrypted;
-unsigned char *sha_m;
-unsigned char *hash;
+XDATA unsigned char *sha_m;
+XDATA unsigned char *hash;
 
 
 #ifdef CBMC
@@ -39,7 +40,7 @@ XDATA_ARR(0xFFA0, 32, unsigned char, pt_rden);
 // state of PRG for G in OAEP
 XDATA_ARR(0xF8E0, H, unsigned char, gprg);
 
-
+/*
 #ifdef CBMC
 // uninterpreted function that takes input array, input length
 // mode: 0=random output, 1=try to look up matching input, 2=setting new hash
@@ -138,7 +139,7 @@ unsigned char* uninterp_rsa(unsigned char* input)
     return outputs[total++];
 }
 #endif
-
+*/
 #ifdef C
 #define PAGES 11
 #define GPRG  5
@@ -147,6 +148,7 @@ struct {
     unsigned char* end[PAGES];
     unsigned char locked[PAGES];
     unsigned char valid[PAGES];
+    unsigned char lockchange[PAGES];
 } pt;
 
 // add new variables to mem
@@ -186,11 +188,21 @@ int pt_add(unsigned char* start, unsigned int size)
     pt.end[index] = start+size;
     pt.locked[index] = 1;
     pt.valid[index] = 1;
+    pt.lockchange[index] = 0;
 
     return index++;
 }
 
-// check whether this address has been corrupted by an untrusted write
+
+// check whether this page has been unlocked since the last reset
+int pt_lockchange(int page)
+{
+    if(page < 0 || page >= PAGES)
+	return 0;
+    return pt.lockchange[page];
+}
+
+// check whether this page has been corrupted by an untrusted write
 int pt_valid(int page)
 {
     if(page < 0 || page >= PAGES)
@@ -198,11 +210,13 @@ int pt_valid(int page)
     return pt.valid[page];
 }
 
+// reset the page
 int pt_reset(int page)
 {
     if(page < 0 || page >= PAGES)
 	return 0;
     pt.valid[page] = 1;
+    pt.lockchange[page] = 0;
     return 1;
 }
 
@@ -212,7 +226,10 @@ int writec(int page, unsigned char* addr, unsigned char data, unsigned char trus
     unsigned char old;
     if(page < 0 || page >= PAGES || pt.locked[page] || // invalid page, or page is locked
        addr < pt.start[page] || addr >= pt.end[page]) // addr not on this page
+    {
+	assert(!trusted);
 	return 0;
+    }
     old = mem[addr-mem];
     //assert(addr-mem >= 0);
     mem[addr-mem] = data;
@@ -225,18 +242,18 @@ int writec(int page, unsigned char* addr, unsigned char data, unsigned char trus
 // write len bytes from data to addr
 int writecarr(int page, unsigned char* addr, unsigned char* data, unsigned int len)
 {
-//#ifndef CBMC
+#ifndef CBMC
     unsigned int i;
     for(i=0; i<len; i++){
 	writec(page, addr+i, data[i], 1);
     }
     return page;
-//#else
-//    unsigned int offset = nondet_uint()%len;
-//    int wr_success = writec(page, addr+offset, data[offset], 1);
+#else
+    unsigned int offset = nondet_uint()%len;
+    int wr_success = writec(page, addr+offset, data[offset], 1);
     //assert(wr_success);
-//    return wr_success;
-//#endif
+    return wr_success;
+    #endif
 }
 
 int writei(int page, unsigned int* addr, unsigned int data)
@@ -252,6 +269,7 @@ int writei(int page, unsigned int* addr, unsigned int data)
 
     return page;
 }
+
 int writeptr(int page, unsigned char** addr, unsigned char* data)
 {
     if(page < 0 || page >= PAGES || pt.locked[page] ||
@@ -277,8 +295,8 @@ int c_load(unsigned char skipread)
     unsigned int i = 0;
     int page;
     
-    writec(MEMWR, &memwr_regs.start, 0, 1);
-    writec(MEMWR, &memwr_regs.state, 1, 1);
+    memwr_regs.start = 0;
+    memwr_regs.state = 1;
 
     // make a program image
     if(initial)
@@ -314,6 +332,12 @@ int c_load(unsigned char skipread)
 	writecarr(page, memwr_regs.wr_addr, buff, stop);
     }
     writec(MEMWR, &memwr_regs.state, 0, 1);    
+
+    if(memwr_regs.len > BUFF_SIZE){
+	//assert(0);
+	return 0;
+    }
+
     return 1;
 }
 
@@ -324,25 +348,24 @@ void c_sha(int len)
     unsigned int i;
     unsigned char hash[20];
 
-    writec(SHA, &sha_regs.start, 0, 1);
-    writec(SHA, &sha_regs.state, 1, 1);
+    sha_regs.start = 0;
+    sha_regs.state = 1;
 #ifndef CBMC
     SHA1(sha_regs.rd_addr, len, hash);
-#else
-    uninterp_sha(sha_regs.rd_addr, len, 1, hash);
 #endif
+//    uninterp_sha(sha_regs.rd_addr, len, 1, hash);
+
     pt.valid[pshao] = 1;
     writecarr(pshao, sha_regs.wr_addr, hash, H);
 
-    writec(SHA, &sha_regs.state, 0, 1);
+    sha_regs.state = 0;
     return;
 }
 
 // C implementation of modular exponentiation
 // return 1 if succeed, 0 if fail
-int c_exp()
+void c_exp()
 {
-    unsigned char *output;
 #ifndef CBMC
     BIGNUM *r = BN_new();
     BIGNUM *a = BN_new();
@@ -350,10 +373,10 @@ int c_exp()
     BIGNUM *m = BN_new();
     BN_CTX *ctx = BN_CTX_new(); // temp variables
     if(!ctx)
-	return 0;
+	return;
 
-    writec(RSA, &rsa_regs.start, 0, 1);
-    writec(RSA, &rsa_regs.state, 1, 1);
+    rsa_regs.start = 0;
+    rsa_regs.state = 1;
 
     // initialize values
     a = BN_bin2bn((unsigned char*)&rsa_regs.m, N, a);
@@ -364,9 +387,10 @@ int c_exp()
     BN_mod_exp(r, a, p, m, ctx); //r = a^p mod m
     // write back
     writec(RSA, &rsa_regs.state, 2, 1);
-    if(pt.locked[prsao] || BN_bn2bin(r, (unsigned char*)decrypted) != N){
+    if(pt.locked[prsao] || BN_bn2bin(r, (unsigned char*)decrypted) != N)
+    {
 	writec(RSA, &rsa_regs.state, 0, 1);
-	return 0;
+	return;
     }
     
     // clear and free
@@ -376,22 +400,24 @@ int c_exp()
     BN_free(p);
     BN_free(m);
 #else
-    writec(RSA, &rsa_regs.start, 0, 1);
-    writec(RSA, &rsa_regs.state, 1, 1);
+    unsigned char output[N];
 
-    output = uninterp_rsa((unsigned char*)&rsa_regs.m);
+    rsa_regs.start = 0;
+    rsa_regs.state = 1;
+
+    //output = uninterp_rsa((unsigned char*)&rsa_regs.m);
     writecarr(prsao, rsa_regs.opaddr, output, N);
 #endif
-    writec(RSA, &rsa_regs.state, 0, 1);
-    return 1;
+    rsa_regs.state = 0;
 }
+
 int lock(int page, unsigned char* startaddr, unsigned char* endaddr)
 {
     // addresses are not in this page
     if(page < 0 || page >= PAGES || 
        startaddr < pt.start[page] || endaddr > pt.end[page])
     {
-	assert(0);
+	//assert(0);
 	return 0;
     }
 
@@ -404,11 +430,12 @@ int unlock(int page, unsigned char* startaddr, unsigned char* endaddr)
     if(page < 0 || page >= PAGES || 
        startaddr < pt.start[page] || endaddr > pt.end[page]){
 	//printf("incorrect page %d\n", page);
-	assert(0);
+	//assert(0);
 	return 0;
     }
 
     pt.locked[page] = 0;
+    pt.lockchange[page] = 1;
     return 1;
 }
 #else
@@ -496,8 +523,8 @@ void pt_init()
 unsigned char RSAinit(unsigned char* rsa_out, unsigned char* sha_in, unsigned char* sha_out)
 {
     decrypted = (struct RSAmsg*)rsa_out;
-    sha_m = sha_in;
-    hash = sha_out;
+    sha_m = (XDATA unsigned char*)sha_in;
+    hash = (XDATA unsigned char*)sha_out;
 #ifdef C
     pshai = pt_find(sha_m);
     pshao = pt_find(hash);
@@ -542,58 +569,70 @@ int unpad()
 }
 
 // set up message and compute SHA
-unsigned char sha1(unsigned char *m, unsigned int len)
+void sha1(unsigned char *m, unsigned int len)
 {
     unsigned int i;
     unsigned int mlen;
 
     // addresses have changed
     if(sha_regs.rd_addr != sha_m || sha_regs.wr_addr != hash)
-	return 0;
+    {
+#ifdef CBMC
+	valid = 0;
+#endif
+	return;
+    }
 
     // setup data
     mlen = ((len+4) & 0xFFC0) + 64; // round len+5 up to multiple of 64
+#ifdef CBMC
+     pt.valid[pshai]=1; // reset validity of sha input
+#endif
+    unlock(pshai, sha_m, sha_m+mlen);
 
-    pt.valid[pshai]=1; // reset validity of sha input
-    unlock(pshai, sha_regs.rd_addr, sha_regs.rd_addr+mlen);
-
-    if(m != sha_regs.rd_addr) // don't copy if already in right address
-	load(m, len, sha_regs.rd_addr, 0); // copy m
+    if(m != sha_m && len > 0) // don't copy if already in right address
+	writecarr(pshai, sha_m, m, len);
 
 #ifndef CBMC
     // add 100.. padding
-    writec(pshai, sha_regs.rd_addr+len, 0x80, 1);
+    writec(pshai, sha_m+len, 0x80, 1);
 
     for(i=len+1; i<mlen; i++)
-	writec(pshai, sha_regs.rd_addr+i, 0, 1);
+	writec(pshai, sha_m+i, 0, 1);
 
     // insert length in bits
-    writec(pshai, sha_regs.rd_addr+mlen-1, (len << 3) & 0xFF, 1);
-    writec(pshai, sha_regs.rd_addr+mlen-2, (len >> 5) & 0xFF, 1);
-    writec(pshai, sha_regs.rd_addr+mlen-3, (len >> 13) & 0xFF, 1);
+    writec(pshai, sha_m+mlen-1, (len << 3) & 0xFF, 1);
+    writec(pshai, sha_m+mlen-2, (len >> 5) & 0xFF, 1);
+    writec(pshai, sha_m+mlen-3, (len >> 13) & 0xFF, 1);
 #else
     unsigned char buff[mlen-len];
-    writecarr(pshai, sha_regs.rd_addr+len, m, mlen);
+    writecarr(pshai, sha_m+len, buff, mlen-len);
 #endif
     // encrypt with sha1
-    lock(pshai, sha_regs.rd_addr, sha_regs.rd_addr+mlen);
-    pt.valid[pshao]=1; // reset validity of sha output
-    unlock(pshao, sha_regs.wr_addr, sha_regs.wr_addr+H);
+    lock(pshai, sha_m, sha_m+mlen);
+#ifdef CBMC
     pt.valid[SHA]=1;
+    pt.valid[pshao]=1; // reset validity of sha output
+#endif
+    unlock(pshao, hash, hash+H);
     unlock(SHA, &sha_regs.start, (unsigned char*)(&sha_regs.len));
+#ifdef CBMC
+    if(nondet_uchar())
+	writec(nondet_int(), nondet_prt(), nondet_char(), 0);
+#endif
     writei(SHA, &sha_regs.len, mlen);
     writec(SHA, &sha_regs.start, 1, 1);  // start HW
-
     c_sha(len);         // do SW
 #ifndef CBMC
     while(sha_regs.state != 0);
 #endif
-    lock(pshao, sha_regs.wr_addr, sha_regs.wr_addr+H);
     lock(SHA, &sha_regs.start, (unsigned char*)(&sha_regs.len));
+    lock(pshao, hash, hash+H);
+
 #ifdef CBMC
-    return (pt.valid[SHA] && pt.valid[pshai] && pt.valid[pshao]);
-#else
-    return 1;
+    if(sha_regs.len != mlen || sha_regs.rd_addr != sha_m ||
+       sha_regs.wr_addr != hash)
+	valid = 0;
 #endif
 }
 
@@ -601,43 +640,40 @@ unsigned char sha1(unsigned char *m, unsigned int len)
 void HMAC(const unsigned char *key, unsigned int klen, const unsigned char *message, unsigned int mlen)
 {
     unsigned int i;
-#ifdef C
-    int page = pt_find(sha_regs.rd_addr);
-#endif
 #ifdef CBMC
     unsigned char buff[64 + (mlen > H ? mlen : H)];
 
     // inner hash
-    unlock(page, sha_regs.rd_addr, sha_regs.rd_addr+mlen+64);
-    writecarr(page, sha_regs.rd_addr, buff, mlen+64);
-    sha1(sha_regs.rd_addr, 64+mlen);
+    unlock(pshai, sha_m, sha_m+mlen+64);
+    writecarr(pshai, sha_m, buff, mlen+64);
+    sha1(sha_m, 64+mlen);
 
     // outer hash
-    unlock(page, sha_regs.rd_addr, sha_regs.rd_addr+84);
-    writecarr(page, sha_regs.rd_addr, buff, H + 64);
-    sha1(sha_regs.rd_addr, 64 + H);
+    unlock(pshai, sha_m, sha_m+84);
+    writecarr(pshai, sha_m, buff, H + 64);
+    sha1(sha_m, 64 + H);
 #else
     // inner hash
-    unlock(page, sha_regs.rd_addr, sha_regs.rd_addr+mlen+64);
+    unlock(pshai, sha_m, sha_m+mlen+64);
     for(i=0; i<klen; i++)
-	writec(page, sha_regs.rd_addr+i, key[i] ^ 0x36, 1);
+	writec(pshai, sha_m+i, key[i] ^ 0x36, 1);
     for(i=klen; i<64;i++)
-	writec(page, sha_regs.rd_addr+i, 0x36, 1);
+	writec(pshai, sha_m+i, 0x36, 1);
     for(i=0; i<mlen; i++)
-	writec(page, sha_regs.rd_addr+i+64, message[i], 1);
+	writec(pshai, sha_m+i+64, message[i], 1);
 
-    sha1(sha_regs.rd_addr, 64+mlen);
+    sha1(sha_m, 64+mlen);
 
     // outer hash
-    unlock(page, sha_regs.rd_addr, sha_regs.rd_addr+84);
+    unlock(pshai, sha_m, sha_m+84);
     for(i=0; i<klen; i++)
-	writec(page, sha_regs.rd_addr+i, key[i] ^ 0x5c, 1);
+	writec(pshai, sha_m+i, key[i] ^ 0x5c, 1);
     for(i=klen; i<64;i++)
-	writec(page, sha_regs.rd_addr+i, 0x5c, 1);
+	writec(pshai, sha_m+i, 0x5c, 1);
     for(i=0; i<H; i++)
-	writec(page, sha_regs.rd_addr+i+64, sha_regs.wr_addr[i], 1);
+	writec(pshai, sha_m+i+64, hash[i], 1);
 
-    sha1(sha_regs.rd_addr, 64 + H);
+    sha1(sha_m, 64 + H);
 #endif
 }
 
@@ -712,72 +748,92 @@ const unsigned char Hseed[] = {
 void removeOAEP()
 {
     unsigned int i,j;
-#ifdef C
-    int page = pt_find(rsa_regs.opaddr);
-#endif
+
     // compute r
     HMAC(Hseed, H, decrypted->m, N-K2-1);
     // copy r to message
-    unlock(page, rsa_regs.opaddr, rsa_regs.opaddr + N);
+    unlock(prsao, rsa_regs.opaddr, rsa_regs.opaddr + N);
     for(i=0; i< K2; i++)
-	writec(page, decrypted->r+i,decrypted->r[i] ^ sha_regs.wr_addr[i], 1);
-    lock(page, rsa_regs.opaddr, rsa_regs.opaddr+N);
+	writec(prsao, decrypted->r+i,decrypted->r[i] ^ sha_regs.wr_addr[i], 1);
+    lock(prsao, rsa_regs.opaddr, rsa_regs.opaddr+N);
 
     // find m
     PRGinit(decrypted->r, K2, gprg);
     PRG(gprg);
-    unlock(page, rsa_regs.opaddr, rsa_regs.opaddr + N);
+    unlock(prsao, rsa_regs.opaddr, rsa_regs.opaddr + N);
     i=0; j=0;
     while(i < N-K2-1)
     {
 	if(j == H)
 	{
-	    lock(page, rsa_regs.opaddr, rsa_regs.opaddr+N);
+	    lock(prsao, rsa_regs.opaddr, rsa_regs.opaddr+N);
 	    PRG(gprg);
 	    j = 0;
-	    unlock(page, rsa_regs.opaddr, rsa_regs.opaddr + N);
+	    unlock(prsao, rsa_regs.opaddr, rsa_regs.opaddr + N);
 	}
-	writec(page, decrypted->m+i, decrypted->m[i] ^ sha_regs.wr_addr[j], 1);
+	writec(prsao, decrypted->m+i, decrypted->m[i] ^ sha_regs.wr_addr[j], 1);
 	i++;
 	j++;
     }
-    lock(page, rsa_regs.opaddr, rsa_regs.opaddr+N);
+    lock(prsao, rsa_regs.opaddr, rsa_regs.opaddr+N);
 }
 
 // decrypt msg, puts decrypted text in rsa_regs.opaddr
 // returns length of decrypted message
 int decrypt(unsigned char* msg){
     unsigned int i;
+    
+    if(rsa_regs.opaddr != (unsigned char*)decrypted)
+	return -1;
 
     // copy msg into RSA m register
     if(msg != (unsigned char*)&rsa_regs.m)
     {
+#ifdef C
+	pt.valid[RSA_M] = 1;
+#endif
 	unlock(RSA_M, (unsigned char*)&rsa_regs.m, (unsigned char*)&rsa_regs.m+N);
 	//load(msg, N, (unsigned int)rsa_regs.m, 0);
 	writecarr(RSA_M, (unsigned char*)&rsa_regs.m, msg, N);
-
+#ifdef CBMC	
+	if(nondet_uchar())
+	    writec(nondet_int(), nondet_prt(), nondet_char(), 0);
+#endif
 	// lock message during exponentiation
 	lock(RSA_M, (unsigned char*)&rsa_regs.m, (unsigned char*)&rsa_regs.m + N);
     }
 
     // decrypt
     unlock(prsao, rsa_regs.opaddr, rsa_regs.opaddr+N);
-    unlock(RSA, &rsa_regs.start, (unsigned char*)(&rsa_regs.state+1));    
+#ifdef C
+    pt.valid[RSA] = 1;
+#endif
+    unlock(RSA, &rsa_regs.start, (unsigned char*)(&rsa_regs.state+1));
+#ifdef CBMC
+    if(nondet_uchar())
+	writec(nondet_int(), nondet_ptr(), nondet_uchar(), 0);
+#endif
     writec(RSA, &rsa_regs.start, 1, 1);
-
+    if(rsa_regs.opaddr != (unsigned char*)decrypted)
+	return -1;
     c_exp();  // c abstraction
 #ifndef CBMC
     while(rsa_regs.state != 0);
 #endif
-    lock(prsao, rsa_regs.opaddr, rsa_regs.opaddr+N);
     lock(RSA, &rsa_regs.start, (unsigned char*)(&rsa_regs.state+1));    
+    lock(prsao, rsa_regs.opaddr, rsa_regs.opaddr+N);
+
+#ifndef CBMC
     // check pad byte
     if(decrypted->padbyte != 1)
 	return -1;
-    
+#endif
     removeOAEP();
-
+#ifndef CBMC
     return unpad();
+#else
+    return H;
+#endif
 }
 
 unsigned char verifySignature(unsigned char* msg, unsigned int len, unsigned char* signature){
@@ -790,13 +846,16 @@ unsigned char verifySignature(unsigned char* msg, unsigned int len, unsigned cha
     // compare with hash of msg
     if(slen != H)
 	return 0;
-    else{
-	sha1(msg, len);
-	for(i=0; i<H; i++){
-	    if(sha_regs.wr_addr[i] != decrypted->m[i])
-		return 0;
-	}
-	return 1;
+    sha1(msg, len);
+#ifndef CBMC
+    for(i=0; i<H; i++){
+	if(sha_regs.wr_addr[i] != decrypted->m[i])
+	    return 0;
     }
+    return 1;
+#else
+    return valid && pt.valid[prsao] && pt.valid[RSA_M];
+#endif
 }
+
 

@@ -23,6 +23,8 @@ unsigned char* nondet_ptr();
 unsigned int nondet_uint();
 unsigned char nondet_uchar();
 int nondet_int();
+
+unsigned char valid = 1;
 #endif
 
 #ifdef C
@@ -36,7 +38,7 @@ unsigned char mem[MEM_SIZE];
 #endif
 
 XDATA_ARR(0x0000, MAX_PRG_SIZE, unsigned char, program);
-XDATA_ARR(0x5000, MAX_IM_SIZE, unsigned char, boot);
+XDATA_ARR(0x3000, MAX_IM_SIZE, unsigned char, boot);
 
 XDATA_ARR(0xC000, MAX_IM_SIZE+0x40, unsigned char, sha_in);
 XDATA_ARR(0xE100, H, unsigned char, sha_out);
@@ -132,8 +134,8 @@ void main() {
 //    unsigned char before, after;
     unsigned int compind;
     // is the image valid?
-    unsigned char key_val = nondet_uchar();
-    unsigned char sig_val = nondet_uchar();
+    unsigned char key_val = 1;
+    unsigned char sig_val = 1;
     unsigned char addr_val = 1;
 #endif
 
@@ -177,24 +179,25 @@ void main() {
 #ifndef CBMC  // for CBMC just use initialized values
     load(0, MAX_IM_SIZE, boot, 1);
 #else
+    pt_reset(pages[BOOT]);
     meminit((struct image*)boot);
-/*
+
     compind = nondet_uint() % MAX_IM_SIZE;  // checking image locking
-    before = boot[compind[0]];
+    //before = boot[compind[0]];
     // something might break the image here
-    if(nondet_uint())
+/*    if(nondet_uchar())
 	writec(nondet_int(), nondet_ptr(), nondet_uchar(), 0);
 */
 #endif
     // image is loaded.
     // now we need to lock boot to boot + MAX_IM_SIZE
     lock(pages[BOOT], boot, boot+MAX_IM_SIZE);
-/*
+
 #ifdef CBMC
-    if(nondet_uint())
+    if(nondet_uchar())
 	writec(nondet_int(), nondet_ptr(), nondet_uint(), 0);
 #endif
-*/
+
     // STAGE 2: check that key matches hash
     im  = (struct image*) boot;
     // set signature key
@@ -205,6 +208,7 @@ void main() {
     unlock(RSA_KEYS, rsa_regs.n, rsa_regs.n+N);
     writecarr(RSA_KEYS, rsa_regs.n, im->mod, N);
     lock(RSA_KEYS, rsa_regs.n, rsa_regs.n+N);
+
     // check the hashes
     sha1(rsa_regs.exp, 2*N);
 #ifndef CBMC
@@ -217,18 +221,15 @@ void main() {
     }
 #else
     // key in image was incorrect, or image has been compromised
-    if(!key_val || !pt_valid(pages[BOOT]) ||
-       !pt_valid(RSA_KEYS)) // keys copied incorrectly
+    if(!valid || !key_val || !pt_valid(pages[BOOT]) ||
+       !pt_valid(RSA_KEYS) || // keys copied incorrectly
+       !pt_valid(pages[SHAI]) || !pt_valid(pages[SHAO]) || !pt_valid(SHA))
     {
 	pass = FAIL;
+	fail("key hash mismatch");
 	return;
     }
 #endif
-
-//#ifdef CBMC
-//    assert(size <= MAX_IM_SIZE);
-//    __CPROVER_assume(size <= MAX_IM_SIZE);
-//#endif
 
     // STAGE 3: verify signature in boot
     num = im->num & 0xFFFF;  // number of modules
@@ -242,18 +243,24 @@ void main() {
 	fail("header too large");
 	return;
     }
-/*
+
 #ifdef CBMC
-    if(nondet_uint())
+    if(nondet_uchar())
 	writec(nondet_int(), nondet_ptr(), nondet_uint(), 0);
 #endif
-*/
-    if(!verifySignature(im->exp, size, im->sig))
+
+    if(!verifySignature(im->exp, size, im->sig)
+#ifdef CBMC
+       || !sig_val)
+#else
+	)
+#endif
     {
 	pass = FAIL;  // FAIL: signature mismatch
 	fail("signature mismatch");
 	return;
     }
+
 
     // STAGE 4: load blocks
     if(num == 0){  // no blocks to load, done
@@ -268,16 +275,16 @@ void main() {
 
     for(i=0; i<num; i++)
     {
-/*
+
 #ifdef CBMC
         unsigned int ldaddr2 = ldaddr;  // checking program loading
 	unsigned int size2 = size;
 #endif
-*/
+
 	// check that size and address are valid
 	size = block->size & 0xFFFF;     // size of current module
 	ldaddr = block->addr;   // address to load this module into
-//	__CPROVER_assume(size!=0);  // checking program loading
+
 	// the data does not fit inside the image
 	if(moddata + size > boot + MAX_IM_SIZE ||
 	   moddata + size < moddata)  // overflow
@@ -300,29 +307,26 @@ void main() {
 #ifdef CBMC
 	if(ldaddr < ldaddr2+size2 && ldaddr2 < ldaddr+size)
 	    addr_val = 0;
-//	if(i == 0)  // checking program loading
-//	    compind = (nondet_uint()%size);
 #endif 
 	// load data
-	load(moddata, size, program+ldaddr, 0);
-//	assert(program[ldaddr+compind]==moddata[compind]);  // checking module loading
+	if(size != 0){
+	    load(moddata, size, program+ldaddr, 0);	
+	}
 	// update to next module
 	moddata += size;
 	block++;
     }
-/*
+
 #ifdef CBMC
-    if(nondet_uint())
+    if(nondet_uchar())
 	writec(nondet_int(), nondet_ptr(), nondet_uint(), 0);
 #endif
-*/
+
     // lock newly loaded data
     lock(pages[PRG], program, program + MAX_PRG_SIZE);
 
     block = im->module;  // go back to first module
     moddata = (unsigned char*)(block + num); // program data of this module
-//    ldaddr = block->addr;  // checking program loading
-//    assert(!addr_val || program[ldaddr+compind]==moddata[compind]);
 
     for(i=0; i<num; i++)
     {
@@ -347,9 +351,10 @@ void main() {
     }
 #ifdef CBMC
     // fail if modules overlap, or image or program was corrupted
-    if(!addr_val || !pt_valid(pages[BOOT]) || !pt_valid(pages[PRG]))
+    if(!valid || !addr_val || !pt_valid(pages[BOOT]) || !pt_valid(pages[PRG]))
     {
 	pass = FAIL;
+	fail("module hash mismatch");
 	return;
     }
 #endif
@@ -375,8 +380,9 @@ void main() {
     P0 = pass;
 
 #ifdef CBMC
-//    after = boot[compind];  // checking image locking
-//    assert(after==before || !pt_valid(pages[BOOT]));
+    //after = boot[compind];  // checking image locking;
+    assert(pt_valid(pages[BOOT]));
+    //assert(!pt_lockchange(pages[BOOT]));  // bootlock
 #else
 #ifdef C
     printf("pass: %d\n", pass);
@@ -386,3 +392,4 @@ void main() {
 #endif
 }
 
+// bootlock: image does not change once it is loaded

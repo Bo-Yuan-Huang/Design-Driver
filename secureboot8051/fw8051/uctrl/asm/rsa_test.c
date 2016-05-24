@@ -96,7 +96,8 @@ void load(unsigned char* data, unsigned int length, unsigned int startaddr, unsi
 
 
 // set up data transfer
-void load(unsigned char* data, unsigned int length, unsigned int startaddr, unsigned char skipread)
+void load(unsigned char* data, unsigned int length, unsigned int startaddr,
+	  unsigned char skipread)
 {
     memwr_reg_rd_addr = (unsigned int)data;
     memwr_reg_wr_addr = startaddr;

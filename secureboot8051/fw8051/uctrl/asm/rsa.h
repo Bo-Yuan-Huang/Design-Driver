@@ -21,26 +21,22 @@
 #define XDATA __xdata
 #define CODE __code
 #endif
-
+/*
 #ifdef CBMC 
-#define MAX_PRG_SIZE 50
-#define MAX_IM_SIZE  100
+#define MAX_PRG_SIZE 80
+#define MAX_IM_SIZE  70
 #define N 16
 #define H 4
 #define K1 4
 #define K2 4
-#define BUFF_SIZE 100
-#else
+#else*/
 #define MAX_PRG_SIZE 0x3000
 #define MAX_IM_SIZE  0x2000
 #define N 256
 #define H 20
 #define K1 16
 #define K2 16
-#ifdef C
-#define BUFF_SIZE 0x2000
-#endif
-#endif
+//#endif
 
 #ifdef C
 // pages in pt
@@ -53,6 +49,7 @@
 unsigned char* mem_add(unsigned int size);
 int pt_add(unsigned char* start, unsigned int size);
 int pt_valid(int page);
+int pt_lockchange(int page);
 int pt_reset(int page);
 int pt_find(unsigned char* start);
 int writec(int page, unsigned char* addr, unsigned char data, unsigned char trusted);
@@ -123,7 +120,7 @@ unsigned char* mem_add(unsigned int size);
 void pt_init(void);
 unsigned char RSAinit(unsigned char* rsa_out, unsigned char* sha_in, unsigned char* sha_out);
 void load(unsigned char* data, unsigned int length, unsigned char* startaddr, unsigned char skipread);
-unsigned char sha1(unsigned char *m, unsigned int len);
+void sha1(unsigned char *m, unsigned int len);
 unsigned char verifySignature(unsigned char* msg, unsigned int len, unsigned char* signature);
 
 #endif
