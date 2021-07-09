@@ -82,10 +82,19 @@ cp rom/test.v rom/proc0_test.v
 cp rom/test.v rom/proc1_test.v
 ```
 
-Now we're ready to run the simulation.
+The to-be-authenticated [image](https://github.com/Bo-Yuan-Huang/Design-Driver/blob/804819f9dd1a32db92fcc10d7748421348ec38b6/hw_sec_design_driver/secureboot8051/fw8051/uctrl/src/mem_wr.v#L213).
+(Since there's no image provided, it'll be some random value.)
+
+To run the simulation.
 
 ``` bash
 source script/make_dc.sh
 ./oc8051
 ```
+
+The simulation result will be dumped into `run.vcd`, which can be viewed with GTKWave.
+
+### Notes
+
+The `quit` function and the `DEAD00` state transition if for simulation termination, as shown [here](https://github.com/Bo-Yuan-Huang/Design-Driver/blob/804819f9dd1a32db92fcc10d7748421348ec38b6/hw_sec_design_driver/secureboot8051/fw8051/uctrl/src/oc8051_tb_dc.v#L478).
 
